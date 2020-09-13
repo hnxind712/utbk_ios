@@ -1,0 +1,69 @@
+PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - CocoaAsyncSocket (7.6.4)
+  - IQKeyboardManager (6.5.6)
+  - Masonry (1.1.0)
+  - MJExtension (3.0.17)
+  - MJRefresh (3.1.17)
+  - SDCycleScrollView (1.80):
+    - SDWebImage (>= 5.0.0)
+  - SDWebImage (5.9.1):
+    - SDWebImage/Core (= 5.9.1)
+  - SDWebImage/Core (5.9.1)
+  - Toast (2.0)
+  - TZImagePickerController (3.3.1)
+
+DEPENDENCIES:
+  - AFNetworking
+  - CocoaAsyncSocket
+  - IQKeyboardManager
+  - Masonry
+  - MJExtension (~> 3.0.10)
+  - MJRefresh (~> 3.1.0)
+  - SDCycleScrollView (~> 1.64)
+  - SDWebImage
+  - Toast (= 2.0.0)
+  - TZImagePickerController (= 3.3.1)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - CocoaAsyncSocket
+    - IQKeyboardManager
+    - Masonry
+    - MJExtension
+    - MJRefresh
+    - SDCycleScrollView
+    - SDWebImage
+    - Toast
+    - TZImagePickerController
+
+SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
+  MJRefresh: ee5b68f639775462faba4db0fd243baf4d42c2cf
+  SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
+  SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
+  Toast: 5cc02678e496690856164aa49c834d05e4fb314f
+  TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
+
+PODFILE CHECKSUM: 3bb5a25313ce011f18e7639662671fd570a20951
+
+COCOAPODS: 1.9.3
