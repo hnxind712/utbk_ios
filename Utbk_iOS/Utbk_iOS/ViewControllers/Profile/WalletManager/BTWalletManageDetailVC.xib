@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BTWalletManageDetailVC">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cE-zh-LGI">
+                    <rect key="frame" x="12" y="64" width="390" height="240"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvC-1a-Y9E">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="钱包名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiS-2I-zBM">
+                                    <rect key="frame" x="12" y="20.5" width="65.5" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_walletEnter" translatesAutoresizingMaskIntoConstraints="NO" id="bAD-OH-vrf">
+                                    <rect key="frame" x="370" y="23" width="8" height="14"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="8" id="bcM-ef-1gs"/>
+                                        <constraint firstAttribute="height" constant="14" id="vo7-ql-dkv"/>
+                                    </constraints>
+                                </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amP-lh-vR5">
+                                    <rect key="frame" x="0.0" y="59" width="390" height="1"/>
+                                    <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="2xt-RR-daY"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="bAD-OH-vrf" secondAttribute="trailing" constant="12" id="Lp3-9k-20H"/>
+                                <constraint firstItem="TiS-2I-zBM" firstAttribute="leading" secondItem="hvC-1a-Y9E" secondAttribute="leading" constant="12" id="UKw-ce-ZgR"/>
+                                <constraint firstAttribute="trailing" secondItem="amP-lh-vR5" secondAttribute="trailing" id="bjb-6u-HCf"/>
+                                <constraint firstAttribute="bottom" secondItem="amP-lh-vR5" secondAttribute="bottom" id="htv-Z7-6cS"/>
+                                <constraint firstItem="amP-lh-vR5" firstAttribute="leading" secondItem="hvC-1a-Y9E" secondAttribute="leading" id="jzI-a2-Vfk"/>
+                                <constraint firstItem="TiS-2I-zBM" firstAttribute="centerY" secondItem="hvC-1a-Y9E" secondAttribute="centerY" id="lFe-TG-Srk"/>
+                                <constraint firstItem="bAD-OH-vrf" firstAttribute="centerY" secondItem="TiS-2I-zBM" secondAttribute="centerY" id="mB9-xe-mUL"/>
+                                <constraint firstAttribute="height" constant="60" id="tIS-UY-n2N"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="K29-oY-0Jv" appends="YES" id="ybS-51-Sro"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieZ-YJ-STB">
+                            <rect key="frame" x="0.0" y="60" width="390" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备份助记词" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hh-Pt-f5B">
+                                    <rect key="frame" x="12" y="20" width="82" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_walletEnter" translatesAutoresizingMaskIntoConstraints="NO" id="fgN-QU-hGI">
+                                    <rect key="frame" x="370" y="23" width="8" height="14"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="8" id="Lrw-0V-tmb"/>
+                                        <constraint firstAttribute="height" constant="14" id="Lw3-uj-Kck"/>
+                                    </constraints>
+                                </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UxR-te-F4m">
+                                    <rect key="frame" x="0.0" y="59" width="390" height="1"/>
+                                    <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="Zzw-MX-9Gq"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="3Hh-Pt-f5B" firstAttribute="leading" secondItem="ieZ-YJ-STB" secondAttribute="leading" constant="12" id="MkO-V2-Dpf"/>
+                                <constraint firstAttribute="trailing" secondItem="fgN-QU-hGI" secondAttribute="trailing" constant="12" id="OS0-2U-Mwa"/>
+                                <constraint firstAttribute="trailing" secondItem="UxR-te-F4m" secondAttribute="trailing" id="W0q-hk-Vmd"/>
+                                <constraint firstAttribute="bottom" secondItem="UxR-te-F4m" secondAttribute="bottom" id="b1e-vl-OTN"/>
+                                <constraint firstItem="fgN-QU-hGI" firstAttribute="centerY" secondItem="3Hh-Pt-f5B" secondAttribute="centerY" id="bmN-yB-Of0"/>
+                                <constraint firstItem="UxR-te-F4m" firstAttribute="leading" secondItem="ieZ-YJ-STB" secondAttribute="leading" id="f0t-tx-dbQ"/>
+                                <constraint firstAttribute="height" constant="60" id="w7Q-NU-lIl"/>
+                                <constraint firstItem="3Hh-Pt-f5B" firstAttribute="centerY" secondItem="ieZ-YJ-STB" secondAttribute="centerY" id="yri-Vm-j0G"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="R6g-Sn-COq" appends="YES" id="7Kn-TW-ocw"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yny-NC-ESC">
+                            <rect key="frame" x="0.0" y="120" width="390" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="导出私钥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBJ-ry-243">
+                                    <rect key="frame" x="12" y="20.5" width="65.5" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_walletEnter" translatesAutoresizingMaskIntoConstraints="NO" id="Jlc-N5-X6W">
+                                    <rect key="frame" x="370" y="23" width="8" height="14"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="14" id="ZAQ-jN-rDY"/>
+                                        <constraint firstAttribute="width" constant="8" id="zXh-Eo-D4I"/>
+                                    </constraints>
+                                </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2a-Kd-Yj7">
+                                    <rect key="frame" x="0.0" y="59" width="390" height="1"/>
+                                    <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="0xL-kt-DFM"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="PBJ-ry-243" firstAttribute="centerY" secondItem="Yny-NC-ESC" secondAttribute="centerY" id="2Mx-SR-Ivz"/>
+                                <constraint firstItem="PBJ-ry-243" firstAttribute="leading" secondItem="Yny-NC-ESC" secondAttribute="leading" constant="12" id="FTf-Tu-UlA"/>
+                                <constraint firstAttribute="trailing" secondItem="z2a-Kd-Yj7" secondAttribute="trailing" id="MNP-Rf-bb3"/>
+                                <constraint firstItem="Jlc-N5-X6W" firstAttribute="centerY" secondItem="PBJ-ry-243" secondAttribute="centerY" id="VN5-80-yH9"/>
+                                <constraint firstAttribute="height" constant="60" id="WF3-kq-Juq"/>
+                                <constraint firstAttribute="trailing" secondItem="Jlc-N5-X6W" secondAttribute="trailing" constant="12" id="ZyH-E9-osx"/>
+                                <constraint firstAttribute="bottom" secondItem="z2a-Kd-Yj7" secondAttribute="bottom" id="h3I-su-FMf"/>
+                                <constraint firstItem="z2a-Kd-Yj7" firstAttribute="leading" secondItem="Yny-NC-ESC" secondAttribute="leading" id="i7e-u7-Mv5"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="X4m-WS-62h" appends="YES" id="PYk-YG-RxJ"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbP-AO-JXb">
+                            <rect key="frame" x="0.0" y="180" width="390" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="修改密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnB-r5-Uly">
+                                    <rect key="frame" x="12" y="20.5" width="65.5" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_walletEnter" translatesAutoresizingMaskIntoConstraints="NO" id="2uS-Jk-jgC">
+                                    <rect key="frame" x="370" y="23" width="8" height="14"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="8" id="dBO-pT-c6g"/>
+                                        <constraint firstAttribute="height" constant="14" id="g8V-FU-v8m"/>
+                                    </constraints>
+                                </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGO-Hf-GCh">
+                                    <rect key="frame" x="0.0" y="59" width="390" height="1"/>
+                                    <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="vC6-Ra-Aik"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="VGO-Hf-GCh" secondAttribute="bottom" id="1Yu-FH-e9C"/>
+                                <constraint firstAttribute="height" constant="60" id="LKt-NN-gUh"/>
+                                <constraint firstItem="2uS-Jk-jgC" firstAttribute="centerY" secondItem="EnB-r5-Uly" secondAttribute="centerY" id="XpI-lQ-k6a"/>
+                                <constraint firstItem="EnB-r5-Uly" firstAttribute="leading" secondItem="lbP-AO-JXb" secondAttribute="leading" constant="12" id="fQH-0P-peS"/>
+                                <constraint firstAttribute="trailing" secondItem="VGO-Hf-GCh" secondAttribute="trailing" id="i8c-Yc-r57"/>
+                                <constraint firstItem="VGO-Hf-GCh" firstAttribute="leading" secondItem="lbP-AO-JXb" secondAttribute="leading" id="pP7-qs-DCc"/>
+                                <constraint firstItem="EnB-r5-Uly" firstAttribute="centerY" secondItem="lbP-AO-JXb" secondAttribute="centerY" id="rOx-6T-Sep"/>
+                                <constraint firstAttribute="trailing" secondItem="2uS-Jk-jgC" secondAttribute="trailing" constant="12" id="y1f-PO-rwf"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="DvN-Jl-ljS" appends="YES" id="scJ-aP-En0"/>
+                            </connections>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="hvC-1a-Y9E" secondAttribute="trailing" id="1e4-Ka-iu9"/>
+                        <constraint firstItem="Yny-NC-ESC" firstAttribute="leading" secondItem="6cE-zh-LGI" secondAttribute="leading" id="2XW-ut-u1q"/>
+                        <constraint firstItem="ieZ-YJ-STB" firstAttribute="leading" secondItem="6cE-zh-LGI" secondAttribute="leading" id="5rX-LG-fa7"/>
+                        <constraint firstItem="Yny-NC-ESC" firstAttribute="top" secondItem="ieZ-YJ-STB" secondAttribute="bottom" id="6EX-H8-esT"/>
+                        <constraint firstAttribute="trailing" secondItem="lbP-AO-JXb" secondAttribute="trailing" id="Jdq-j6-bgK"/>
+                        <constraint firstItem="lbP-AO-JXb" firstAttribute="leading" secondItem="6cE-zh-LGI" secondAttribute="leading" id="NF6-zu-rfD"/>
+                        <constraint firstItem="ieZ-YJ-STB" firstAttribute="top" secondItem="hvC-1a-Y9E" secondAttribute="bottom" id="NxF-16-Xv5"/>
+                        <constraint firstAttribute="bottom" secondItem="lbP-AO-JXb" secondAttribute="bottom" id="SfR-RD-X58"/>
+                        <constraint firstItem="hvC-1a-Y9E" firstAttribute="top" secondItem="6cE-zh-LGI" secondAttribute="top" id="YpV-tH-Gag"/>
+                        <constraint firstItem="hvC-1a-Y9E" firstAttribute="leading" secondItem="6cE-zh-LGI" secondAttribute="leading" id="kgU-VX-r2U"/>
+                        <constraint firstItem="lbP-AO-JXb" firstAttribute="top" secondItem="Yny-NC-ESC" secondAttribute="bottom" id="lZC-BL-wkj"/>
+                        <constraint firstAttribute="trailing" secondItem="Yny-NC-ESC" secondAttribute="trailing" id="saA-dc-yg2"/>
+                        <constraint firstAttribute="trailing" secondItem="ieZ-YJ-STB" secondAttribute="trailing" id="wp2-sG-gAw"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9u7-vq-30Q">
+                    <rect key="frame" x="38" y="354" width="338" height="44"/>
+                    <color key="backgroundColor" red="0.81960784313725488" green="0.6588235294117647" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="epV-Sa-URh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <state key="normal" title="删除钱包"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="9"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="deleteWallet:" destination="-1" eventType="touchUpInside" id="wVk-Tv-bNM"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="9u7-vq-30Q" firstAttribute="top" secondItem="6cE-zh-LGI" secondAttribute="bottom" constant="50" id="3RG-Zc-HPu"/>
+                <constraint firstItem="9u7-vq-30Q" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="38" id="BLB-TN-JgK"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="6cE-zh-LGI" secondAttribute="trailing" constant="12" id="Rg2-3j-3CP"/>
+                <constraint firstItem="6cE-zh-LGI" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="dlE-g0-WdC"/>
+                <constraint firstItem="6cE-zh-LGI" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="12" id="gSh-uC-TLH"/>
+                <constraint firstItem="9u7-vq-30Q" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="odv-9g-VZE"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="139" y="125"/>
+        </view>
+        <tapGestureRecognizer id="K29-oY-0Jv">
+            <connections>
+                <action selector="modifyWalletName:" destination="-1" id="kKo-lW-4n6"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="R6g-Sn-COq">
+            <connections>
+                <action selector="backUpMnemonicWord:" destination="-1" id="nRg-sf-EUf"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="X4m-WS-62h">
+            <connections>
+                <action selector="exportPrivateKey:" destination="-1" id="MGg-9x-p9M"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="DvN-Jl-ljS">
+            <connections>
+                <action selector="modifyWalletPassword:" destination="-1" id="Zb5-uF-pTn"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="icon_walletEnter" width="12" height="12"/>
+    </resources>
+</document>

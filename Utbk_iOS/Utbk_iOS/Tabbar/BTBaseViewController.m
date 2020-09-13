@@ -16,9 +16,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = NavColor;
     // Do any additional setup after loading the view.
 }
+- (void)setupLayout{
+    
+}
 
+- (void)setupBind{
+    
+}
 /*
 #pragma mark - Navigation
 

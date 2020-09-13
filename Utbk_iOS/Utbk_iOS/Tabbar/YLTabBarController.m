@@ -9,10 +9,10 @@
 #import "YLTabBarController.h"
 #import "YLNavigationController.h"
 #import "BTHomeViewController.h"
-//#import "MarketViewController.h"
-//#import "TransactionViewController.h"
-//#import "AssetsViewController.h"
-//#import "MineViewController.h"
+#import "BTTradingViewController.h"
+#import "BTAssetsViewController.h"
+#import "BTProfileViewController.h"
+
 @interface YLTabBarController ()<UITabBarControllerDelegate, UITabBarDelegate>
 
 @end
@@ -37,12 +37,12 @@
         UITabBarItem *barItem = [UITabBarItem appearance];
         //设置item中文字的普通样式
         NSMutableDictionary *normalAttributes = [NSMutableDictionary dictionary];
-        normalAttributes[NSForegroundColorAttributeName] = RGBOF(0x999999);
+        normalAttributes[NSForegroundColorAttributeName] = RGBOF(0x9A9A9A);
         normalAttributes[NSFontAttributeName] = [UIFont fontWithName:@"PingFang-SC-Medium" size:11];
         [barItem setTitleTextAttributes:normalAttributes forState:UIControlStateNormal];
         //设置item中文字被选中的样式
         NSMutableDictionary *selectedAttributes = [NSMutableDictionary dictionary];
-        selectedAttributes[NSForegroundColorAttributeName] =RGBOF(0x3399FF);//RGBOF(0xF0A70A);
+        selectedAttributes[NSForegroundColorAttributeName] = RGBOF(0xA8865A);//RGBOF(0xF0A70A);
         selectedAttributes[NSFontAttributeName] = [UIFont fontWithName:@"PingFang-SC-Medium" size:11];
         [barItem setTitleTextAttributes:selectedAttributes forState:UIControlStateSelected];
     }
@@ -83,21 +83,18 @@
 
 -(void)initTabbar{
     BTHomeViewController   *Section1VC = [[BTHomeViewController alloc] init];
-    BTBaseViewController *Section2VC = [[BTBaseViewController alloc] init];
-    BTBaseViewController  *Section3VC = [[BTBaseViewController alloc] init];
-    BTBaseViewController   *Section4VC = [[BTBaseViewController alloc] init];
-    BTBaseViewController   *Section5VC = [[BTBaseViewController alloc] init];
-    Section1VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"tabbar1") image:[[UIImage imageNamed:@"shouye_un"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"shouye_checked"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    Section2VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"tabbar2") image:[[UIImage imageNamed:@"hangqiang_un"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"hangqiang_checked"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    Section3VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"tabbar3") image:[[UIImage imageNamed:@"bibi_un"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"bibi_checked"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    Section4VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"tabbar4") image:[[UIImage imageNamed:@"fabi_un"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"fabi_checked"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    Section5VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"tabbar5") image:[[UIImage imageNamed:@"wode_un"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"wode_checked"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    BTAssetsViewController *Section2VC = [[BTAssetsViewController alloc] init];
+    BTTradingViewController  *Section3VC = [[BTTradingViewController alloc] init];
+    BTProfileViewController *Section4VC = [[BTProfileViewController alloc] init];
+    Section1VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"首页" image:[[UIImage imageNamed:@"icon_tabHomePage"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabHomePageSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    Section2VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"交易" image:[[UIImage imageNamed:@"icon_tabTrading"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabTradingSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    Section3VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"资产" image:[[UIImage imageNamed:@"icon_tabAssets"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabAssetsSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    Section4VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的" image:[[UIImage imageNamed:@"icon_tabProfile"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabProfileSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     YLNavigationController *Section1Navi = [[YLNavigationController alloc] initWithRootViewController:Section1VC];
     YLNavigationController *Section2Navi = [[YLNavigationController alloc] initWithRootViewController:Section2VC];
     YLNavigationController *Section3Navi = [[YLNavigationController alloc] initWithRootViewController:Section3VC];
     YLNavigationController *Section4Navi = [[YLNavigationController alloc] initWithRootViewController:Section4VC];
-    YLNavigationController *Section5Navi = [[YLNavigationController alloc] initWithRootViewController:Section5VC];
-    self.viewControllers = @[Section1Navi,Section2Navi,Section3Navi,Section4Navi,Section5Navi];
+    self.viewControllers = @[Section1Navi,Section2Navi,Section3Navi,Section4Navi];
     
 }
 

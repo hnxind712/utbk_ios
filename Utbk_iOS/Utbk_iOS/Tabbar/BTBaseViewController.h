@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTBaseViewController : UIViewController
 
+- (void)setupLayout;
+
+- (void)setupBind;
+
 @end
 
 NS_ASSUME_NONNULL_END

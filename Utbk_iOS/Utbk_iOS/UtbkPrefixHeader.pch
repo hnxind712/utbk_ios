@@ -26,5 +26,6 @@
 #    import "UtbkConstant.h"
 #    import "ChangeLanguage.h"
 #    import "UINavigationController+Transition.h"
+#    import "UIView+HJViewStyle.h"
 
 #endif

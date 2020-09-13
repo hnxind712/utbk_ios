@@ -22,7 +22,7 @@
 #define BackColor  RGBOF(0xEEEEEE)
 #define BlackTextColor  RGBOF(0x333333)
 #define GrayTextColor  RGBOF(0x999999)
-#define NavColor    RGBOF(0x3399FF)
+#define NavColor    RGBOF(0xF0F0F0)
 #define AppTextColor_333333   RGBOF(0x333333)
 //#define mainColor  RGBOF(0x3399FF)
 #define mainColor  RGBOF(0x1F2833)
@@ -57,6 +57,8 @@ alpha:1.0]
 // 安全区域高度
 #define TabbarSafeBottomMargin     (IS_iPhoneX ? 34.f : 0.f)
 
+//keyWindow
+#define BTKeyWindow [UIApplication sharedApplication].keyWindow
 // 屏幕rect
 #define SCREEN_BOUNDS ([UIScreen mainScreen].bounds)
 // 屏幕宽度
@@ -67,3 +69,6 @@ alpha:1.0]
 #define SCREEN_RESOLUTION (SCREEN_WIDTH * SCREEN_HEIGHT * ([UIScreen mainScreen].scale))
 
 #define  C_WIDTH(WIDTH) WIDTH * [UIScreen mainScreen].bounds.size.width/375.0
+
+#define ToastHideDelay 1.f
+#define ToastPosition @"center"

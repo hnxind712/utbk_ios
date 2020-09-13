@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Utbk_iOS
+
+  Created by heyong on 2020/9/13.
+  Copyright © 2020 HY. All rights reserved.
+*/
+//我的
+"钱包管理" = "wallet Manager";
+"复制成功" = "copy success";
