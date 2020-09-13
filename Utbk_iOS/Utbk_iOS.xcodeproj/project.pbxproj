@@ -40,6 +40,13 @@
 		3C63D458250DD4E0001CEC7D /* BTAssetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C63D456250DD4E0001CEC7D /* BTAssetsViewController.xib */; };
 		3C63D45C250DD4F2001CEC7D /* BTProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C63D45A250DD4F2001CEC7D /* BTProfileViewController.m */; };
 		3C63D45D250DD4F2001CEC7D /* BTProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C63D45B250DD4F2001CEC7D /* BTProfileViewController.xib */; };
+		3CACD614250E4F7E00B50D9A /* BTTeamAchievementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CACD612250E4F7E00B50D9A /* BTTeamAchievementVC.m */; };
+		3CACD615250E4F7E00B50D9A /* BTTeamAchievementVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CACD613250E4F7E00B50D9A /* BTTeamAchievementVC.xib */; };
+		3CACD61B250E538500B50D9A /* BTTeamAchievementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CACD619250E538500B50D9A /* BTTeamAchievementCell.m */; };
+		3CACD61C250E538500B50D9A /* BTTeamAchievementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CACD61A250E538500B50D9A /* BTTeamAchievementCell.xib */; };
+		3CACD61F250E545A00B50D9A /* BTTeamAchievementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CACD61E250E545A00B50D9A /* BTTeamAchievementModel.m */; };
+		3CACD625250E593300B50D9A /* BTAssetsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CACD623250E593300B50D9A /* BTAssetsCell.m */; };
+		3CACD626250E593300B50D9A /* BTAssetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CACD624250E593300B50D9A /* BTAssetsCell.xib */; };
 		3CAF5E66250E3119002482C1 /* BTCreateWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF5E64250E3119002482C1 /* BTCreateWalletVC.m */; };
 		3CAF5E67250E3119002482C1 /* BTCreateWalletVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CAF5E65250E3119002482C1 /* BTCreateWalletVC.xib */; };
 		3CAF5E6B250E35C0002482C1 /* BTModifyTradePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF5E69250E35C0002482C1 /* BTModifyTradePasswordVC.m */; };
@@ -116,6 +123,17 @@
 		3C63D459250DD4F2001CEC7D /* BTProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTProfileViewController.h; sourceTree = "<group>"; };
 		3C63D45A250DD4F2001CEC7D /* BTProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTProfileViewController.m; sourceTree = "<group>"; };
 		3C63D45B250DD4F2001CEC7D /* BTProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTProfileViewController.xib; sourceTree = "<group>"; };
+		3CACD611250E4F7E00B50D9A /* BTTeamAchievementVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTTeamAchievementVC.h; sourceTree = "<group>"; };
+		3CACD612250E4F7E00B50D9A /* BTTeamAchievementVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTTeamAchievementVC.m; sourceTree = "<group>"; };
+		3CACD613250E4F7E00B50D9A /* BTTeamAchievementVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTTeamAchievementVC.xib; sourceTree = "<group>"; };
+		3CACD618250E538500B50D9A /* BTTeamAchievementCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTTeamAchievementCell.h; sourceTree = "<group>"; };
+		3CACD619250E538500B50D9A /* BTTeamAchievementCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTTeamAchievementCell.m; sourceTree = "<group>"; };
+		3CACD61A250E538500B50D9A /* BTTeamAchievementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTTeamAchievementCell.xib; sourceTree = "<group>"; };
+		3CACD61D250E545A00B50D9A /* BTTeamAchievementModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTTeamAchievementModel.h; sourceTree = "<group>"; };
+		3CACD61E250E545A00B50D9A /* BTTeamAchievementModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTTeamAchievementModel.m; sourceTree = "<group>"; };
+		3CACD622250E593300B50D9A /* BTAssetsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTAssetsCell.h; sourceTree = "<group>"; };
+		3CACD623250E593300B50D9A /* BTAssetsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTAssetsCell.m; sourceTree = "<group>"; };
+		3CACD624250E593300B50D9A /* BTAssetsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTAssetsCell.xib; sourceTree = "<group>"; };
 		3CAF5E63250E3119002482C1 /* BTCreateWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTCreateWalletVC.h; sourceTree = "<group>"; };
 		3CAF5E64250E3119002482C1 /* BTCreateWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTCreateWalletVC.m; sourceTree = "<group>"; };
 		3CAF5E65250E3119002482C1 /* BTCreateWalletVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTCreateWalletVC.xib; sourceTree = "<group>"; };
@@ -344,6 +362,7 @@
 				3C63D45A250DD4F2001CEC7D /* BTProfileViewController.m */,
 				3C63D45B250DD4F2001CEC7D /* BTProfileViewController.xib */,
 				3C138488250E089C00866D69 /* WalletManager */,
+				3CACD610250E4F5E00B50D9A /* TeamAchievement */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -351,11 +370,61 @@
 		3C63D453250DD4D4001CEC7D /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3CACD620250E591800B50D9A /* Model */,
+				3CACD621250E591900B50D9A /* View */,
 				3C63D454250DD4E0001CEC7D /* BTAssetsViewController.h */,
 				3C63D455250DD4E0001CEC7D /* BTAssetsViewController.m */,
 				3C63D456250DD4E0001CEC7D /* BTAssetsViewController.xib */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		3CACD610250E4F5E00B50D9A /* TeamAchievement */ = {
+			isa = PBXGroup;
+			children = (
+				3CACD616250E535F00B50D9A /* Model */,
+				3CACD617250E535F00B50D9A /* View */,
+				3CACD611250E4F7E00B50D9A /* BTTeamAchievementVC.h */,
+				3CACD612250E4F7E00B50D9A /* BTTeamAchievementVC.m */,
+				3CACD613250E4F7E00B50D9A /* BTTeamAchievementVC.xib */,
+			);
+			path = TeamAchievement;
+			sourceTree = "<group>";
+		};
+		3CACD616250E535F00B50D9A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3CACD61D250E545A00B50D9A /* BTTeamAchievementModel.h */,
+				3CACD61E250E545A00B50D9A /* BTTeamAchievementModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3CACD617250E535F00B50D9A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3CACD618250E538500B50D9A /* BTTeamAchievementCell.h */,
+				3CACD619250E538500B50D9A /* BTTeamAchievementCell.m */,
+				3CACD61A250E538500B50D9A /* BTTeamAchievementCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3CACD620250E591800B50D9A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3CACD621250E591900B50D9A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3CACD622250E593300B50D9A /* BTAssetsCell.h */,
+				3CACD623250E593300B50D9A /* BTAssetsCell.m */,
+				3CACD624250E593300B50D9A /* BTAssetsCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7A0521A7907C178B55B806B6 /* Frameworks */ = {
@@ -438,16 +507,19 @@
 			files = (
 				3CAF5E76250E3CB3002482C1 /* BTWalletPopView.xib in Resources */,
 				3C1384A4250E175F00866D69 /* BTImportWalletVC.xib in Resources */,
+				3CACD626250E593300B50D9A /* BTAssetsCell.xib in Resources */,
 				3C63D45D250DD4F2001CEC7D /* BTProfileViewController.xib in Resources */,
 				3C13848D250E08AE00866D69 /* BTWalletManagerVC.xib in Resources */,
 				3C138480250DFB0D00866D69 /* BTTradingViewController.xib in Resources */,
 				3C63D418250DA73E001CEC7D /* LaunchScreen.storyboard in Resources */,
 				3C63D415250DA73E001CEC7D /* Assets.xcassets in Resources */,
+				3CACD615250E4F7E00B50D9A /* BTTeamAchievementVC.xib in Resources */,
 				3C13849C250E160000866D69 /* Localizable.strings in Resources */,
 				3C63D458250DD4E0001CEC7D /* BTAssetsViewController.xib in Resources */,
 				3C63D413250DA73C001CEC7D /* Main.storyboard in Resources */,
 				3CAF5E71250E3A69002482C1 /* BTWalletManageDetailVC.xib in Resources */,
 				3CAF5E67250E3119002482C1 /* BTCreateWalletVC.xib in Resources */,
+				3CACD61C250E538500B50D9A /* BTTeamAchievementCell.xib in Resources */,
 				3C138493250E0B3400866D69 /* BTWalletManagerCell.xib in Resources */,
 				3CAF5E6C250E35C0002482C1 /* BTModifyTradePasswordVC.xib in Resources */,
 				3C63D44A250DBD3D001CEC7D /* BTHomeViewController.xib in Resources */,
@@ -503,7 +575,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CACD625250E593300B50D9A /* BTAssetsCell.m in Sources */,
 				3CAF5E66250E3119002482C1 /* BTCreateWalletVC.m in Sources */,
+				3CACD614250E4F7E00B50D9A /* BTTeamAchievementVC.m in Sources */,
 				3C138486250DFEDA00866D69 /* UIView+HJTheme.m in Sources */,
 				3C13848C250E08AE00866D69 /* BTWalletManagerVC.m in Sources */,
 				3C138487250DFEDA00866D69 /* UIView+HJViewStyle.m in Sources */,
@@ -518,11 +592,13 @@
 				3C63D457250DD4E0001CEC7D /* BTAssetsViewController.m in Sources */,
 				3C63D451250DC126001CEC7D /* UINavigationController+Transition.m in Sources */,
 				3CAF5E6B250E35C0002482C1 /* BTModifyTradePasswordVC.m in Sources */,
+				3CACD61B250E538500B50D9A /* BTTeamAchievementCell.m in Sources */,
 				3CAF5E74250E3CA9002482C1 /* BTWalletPopView.m in Sources */,
 				3C63D43D250DBB20001CEC7D /* AnimationContoller.m in Sources */,
 				3C63D449250DBD3D001CEC7D /* BTHomeViewController.m in Sources */,
 				3C63D43B250DBB20001CEC7D /* YLNavigationController.m in Sources */,
 				3C63D42F250DADBF001CEC7D /* NSString+Md5.m in Sources */,
+				3CACD61F250E545A00B50D9A /* BTTeamAchievementModel.m in Sources */,
 				3C63D40A250DA73C001CEC7D /* AppDelegate.m in Sources */,
 				3C63D41B250DA73E001CEC7D /* main.m in Sources */,
 				3CAF5E70250E3A69002482C1 /* BTWalletManageDetailVC.m in Sources */,

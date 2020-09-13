@@ -83,8 +83,8 @@
 
 -(void)initTabbar{
     BTHomeViewController   *Section1VC = [[BTHomeViewController alloc] init];
-    BTAssetsViewController *Section2VC = [[BTAssetsViewController alloc] init];
-    BTTradingViewController  *Section3VC = [[BTTradingViewController alloc] init];
+    BTTradingViewController*Section2VC = [[BTTradingViewController alloc] init];
+    BTAssetsViewController  *Section3VC = [[BTAssetsViewController alloc] init];
     BTProfileViewController *Section4VC = [[BTProfileViewController alloc] init];
     Section1VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"首页" image:[[UIImage imageNamed:@"icon_tabHomePage"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabHomePageSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     Section2VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"交易" image:[[UIImage imageNamed:@"icon_tabTrading"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabTradingSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];

@@ -8,6 +8,7 @@
 
 #import "BTProfileViewController.h"
 #import "BTWalletManagerVC.h"//钱包管理列表
+#import "BTTeamAchievementVC.h"//团队业绩
 
 @interface BTProfileViewController ()
 
@@ -41,6 +42,9 @@
 }
 //团队业绩
 - (IBAction)teamAchievementAction:(UITapGestureRecognizer *)sender {
+    BTTeamAchievementVC *team = [[BTTeamAchievementVC alloc]init];
+    team.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:team animated:YES];
 }
 //社区客服
 - (IBAction)communityServiceAction:(UITapGestureRecognizer *)sender {

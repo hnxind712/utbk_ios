@@ -28,7 +28,7 @@
 #define mainColor  RGBOF(0x1F2833)
 #define baseColor  NavColor
 #define ViewBackgroundColor  kRGBColor(18,22,28)
-#define AppTextColor  RGBOF(0xE6E6E6)
+#define AppTextColor  RGBOF(0x333333)
 #define AppTextColor_999999  RGBOF(0x999999)
 #define AppTextColor_666666  RGBOF(0x666666)
 #define AppTextColor_E6E6E6  RGBOF(0xE6E6E6)
