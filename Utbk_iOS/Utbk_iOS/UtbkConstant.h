@@ -13,7 +13,8 @@
 #endif /* UtbkConstant_h */
 
 #define LocalLanguageKey         @"LocalLanguageKey" //选择语言
-#define LocalizationKey(key) [[ChangeLanguage bundle] localizedStringForKey:key value:nil table:@"English"]
+#define LocalizationKey(key)     [NSBundle.mainBundle localizedStringForKey:(key) value:@"" table:nil]
+//[[ChangeLanguage bundle] localizedStringForKey:key value:nil table:@"English"]
 //图片
 #define BTUIIMAGE(name) [UIImage imageNamed:name]
 

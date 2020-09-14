@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BTCreateSuccessVC">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_createSuccess" translatesAutoresizingMaskIntoConstraints="NO" id="MQ3-M3-8Vr">
+                    <rect key="frame" x="153.5" y="144" width="107.5" height="81.5"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创建成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuK-HF-dHq">
+                    <rect key="frame" x="174.5" y="251.5" width="65.5" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="为了您的资产安全，请及时备份助记词" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhn-kx-MU8">
+                    <rect key="frame" x="94.5" y="290" width="225.5" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZU-MT-YSQ">
+                    <rect key="frame" x="48" y="670" width="318" height="44"/>
+                    <color key="backgroundColor" red="0.85490196080000003" green="0.76862745099999996" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="jO0-An-YG7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <state key="normal" title="马上备份">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="9"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="copyImmediately:" destination="-1" eventType="touchUpInside" id="mcH-jW-eu4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Gm-lh-NK7">
+                    <rect key="frame" x="48" y="734" width="318" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="hUg-vt-Pbc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <state key="normal" title="稍后备份">
+                        <color key="titleColor" red="0.65490196079999996" green="0.52549019610000003" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="9"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.65490196079999996" green="0.52549019610000003" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="copyLater:" destination="-1" eventType="touchUpInside" id="Qlc-3i-Acm"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="MQ3-M3-8Vr" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="100" id="4QJ-8u-RGr"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="7Gm-lh-NK7" secondAttribute="bottom" constant="84" id="7Qh-wk-rDC"/>
+                <constraint firstItem="7Gm-lh-NK7" firstAttribute="top" secondItem="mZU-MT-YSQ" secondAttribute="bottom" constant="20" id="LoK-CM-Jbz"/>
+                <constraint firstItem="mZU-MT-YSQ" firstAttribute="trailing" secondItem="7Gm-lh-NK7" secondAttribute="trailing" id="O96-vo-GFU"/>
+                <constraint firstItem="mZU-MT-YSQ" firstAttribute="leading" secondItem="7Gm-lh-NK7" secondAttribute="leading" id="P0Z-dS-kaH"/>
+                <constraint firstItem="nuK-HF-dHq" firstAttribute="centerX" secondItem="MQ3-M3-8Vr" secondAttribute="centerX" id="ck1-Ux-Kdi"/>
+                <constraint firstItem="7Gm-lh-NK7" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="48" id="dob-QG-cYx"/>
+                <constraint firstItem="Nhn-kx-MU8" firstAttribute="top" secondItem="nuK-HF-dHq" secondAttribute="bottom" constant="19" id="frO-rC-88e"/>
+                <constraint firstItem="nuK-HF-dHq" firstAttribute="top" secondItem="MQ3-M3-8Vr" secondAttribute="bottom" constant="26" id="rF7-mz-Eyf"/>
+                <constraint firstItem="7Gm-lh-NK7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sU3-Vb-XXO"/>
+                <constraint firstItem="Nhn-kx-MU8" firstAttribute="centerX" secondItem="MQ3-M3-8Vr" secondAttribute="centerX" id="soC-hp-csa"/>
+                <constraint firstItem="MQ3-M3-8Vr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wBV-A7-W8p"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="133" y="154"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_createSuccess" width="107.5" height="81.5"/>
+    </resources>
+</document>

@@ -17,7 +17,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = NavColor;
+    if (self.navigationController.viewControllers.count > 1) {
+        [self addLeftNavigation];
+    }
+    
     // Do any additional setup after loading the view.
+}
+- (void)addLeftNavigation{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:BTUIIMAGE(@"icon_navLeft") forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    btn.frame = CGRectMake(20, StatusBarHeight, 40, 40);
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
+- (void)backAction{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)setupLayout{
     

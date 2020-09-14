@@ -8,6 +8,10 @@
 
 #import "BTAssetsViewController.h"
 #import "BTAssetsCell.h"
+#import "BTAssetsRechargeVC.h"
+#import "BTSweepAccountVC.h"
+#import "BTAssetsWithdrawVC.h"
+#import "BTAssetsTransiferVC.h"
 
 @interface BTAssetsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -41,6 +45,33 @@
     BTAssetsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTAssetsCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell configureCellWithAssetsModel:nil];
+    cell.cellBtnClickAction = ^(NSInteger index) {
+        switch (index) {
+            case 0://收款/充币,USDT则为充币，其他币种为收款
+            {
+                BTAssetsRechargeVC *recharge = [[BTAssetsRechargeVC alloc]init];
+                recharge.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:recharge animated:YES];
+            }
+                break;
+            case 1://转账
+            {
+                BTAssetsTransiferVC *transfer = [[BTAssetsTransiferVC alloc]init];
+                transfer.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:transfer animated:YES];
+            }
+                break;
+            case 2://划转
+            {
+                BTSweepAccountVC *sweep = [[BTSweepAccountVC alloc]init];
+                sweep.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:sweep animated:YES];
+            }
+                break;
+            default:
+                break;
+        }
+    };
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

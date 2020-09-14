@@ -41,6 +41,7 @@
         //.预备步骤，先要获取导航条的外观
         UINavigationBar *bar = [UINavigationBar appearance];
         bar.translucent = NO;//默认为YES
+        
         //1.可以设置背景色
         [bar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];//去除导航栏黑线
         [bar setShadowImage:[UIImage new]];
