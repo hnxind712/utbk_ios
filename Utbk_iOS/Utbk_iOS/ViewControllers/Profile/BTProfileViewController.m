@@ -11,6 +11,8 @@
 #import "BTTeamAchievementVC.h"//团队业绩
 #import <TZImagePickerController/TZImagePickerController.h>
 
+
+#import "BTBackupMnemonicsVC.h"
 @interface BTProfileViewController ()<TZImagePickerControllerDelegate>
 
 @property (strong, nonatomic) UIImageView *navgationBg;
@@ -111,6 +113,9 @@
 }
 //社区客服
 - (IBAction)communityServiceAction:(UITapGestureRecognizer *)sender {
+    BTBackupMnemonicsVC *mnemonics = [[BTBackupMnemonicsVC alloc]init];
+    mnemonics.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:mnemonics animated:YES];
 }
 //开源地址
 - (IBAction)openSourceAddressAction:(UITapGestureRecognizer *)sender {
