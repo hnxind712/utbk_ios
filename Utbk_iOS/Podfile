@@ -11,7 +11,7 @@ target 'Utbk_iOS' do
     pod 'Masonry'
     pod 'MJRefresh', '~> 3.1.0'
     pod 'SDWebImage'
-    pod 'SDCycleScrollView', '~> 1.64'
+    pod 'SDCycleScrollView'
     pod 'TZImagePickerController','3.3.1'
     pod 'IQKeyboardManager'
     pod 'Toast', '2.0.0'
