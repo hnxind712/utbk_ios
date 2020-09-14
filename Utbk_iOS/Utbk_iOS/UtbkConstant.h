@@ -16,7 +16,8 @@
 #define LocalizationKey(key) [[ChangeLanguage bundle] localizedStringForKey:key value:nil table:@"English"]
 //图片
 #define BTUIIMAGE(name) [UIImage imageNamed:name]
-
+#define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+#define StrongSelf(strongSelf) __strong __typeof(&*self)strongSelf = weakSelf;
 //主色调
 #define MainBackColor [UIColor whiteColor]
 #define BackColor  RGBOF(0xEEEEEE)
