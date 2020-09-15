@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C10CDD72510F2CE00517422 /* BTShareWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C10CDD52510F2CE00517422 /* BTShareWalletVC.m */; };
+		3C10CDD82510F2CE00517422 /* BTShareWalletVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C10CDD62510F2CE00517422 /* BTShareWalletVC.xib */; };
 		3C13847F250DFB0D00866D69 /* BTTradingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C13847D250DFB0D00866D69 /* BTTradingViewController.m */; };
 		3C138480250DFB0D00866D69 /* BTTradingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C13847E250DFB0D00866D69 /* BTTradingViewController.xib */; };
 		3C138486250DFEDA00866D69 /* UIView+HJTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138484250DFEDA00866D69 /* UIView+HJTheme.m */; };
@@ -119,6 +121,9 @@
 /* Begin PBXFileReference section */
 		0ECA3E851DF9799B3966E954 /* Pods-Utbk_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utbk_iOS.release.xcconfig"; path = "Target Support Files/Pods-Utbk_iOS/Pods-Utbk_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		184416C493E57E1A09CF2792 /* Pods-Utbk_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utbk_iOS.debug.xcconfig"; path = "Target Support Files/Pods-Utbk_iOS/Pods-Utbk_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		3C10CDD42510F2CE00517422 /* BTShareWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTShareWalletVC.h; sourceTree = "<group>"; };
+		3C10CDD52510F2CE00517422 /* BTShareWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTShareWalletVC.m; sourceTree = "<group>"; };
+		3C10CDD62510F2CE00517422 /* BTShareWalletVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTShareWalletVC.xib; sourceTree = "<group>"; };
 		3C138479250DF90D00866D69 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		3C13847A250DF90D00866D69 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		3C13847C250DFB0D00866D69 /* BTTradingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTTradingViewController.h; sourceTree = "<group>"; };
@@ -541,6 +546,9 @@
 				D7451DD32510C38A00BC4548 /* BTLanguageVC.h */,
 				D7451DD42510C38A00BC4548 /* BTLanguageVC.m */,
 				D7451DD52510C38A00BC4548 /* BTLanguageVC.xib */,
+				3C10CDD42510F2CE00517422 /* BTShareWalletVC.h */,
+				3C10CDD52510F2CE00517422 /* BTShareWalletVC.m */,
+				3C10CDD62510F2CE00517422 /* BTShareWalletVC.xib */,
 				3C138488250E089C00866D69 /* WalletManager */,
 				3CACD610250E4F5E00B50D9A /* TeamAchievement */,
 			);
@@ -816,6 +824,7 @@
 				3C63D413250DA73C001CEC7D /* Main.storyboard in Resources */,
 				3CAF5E71250E3A69002482C1 /* BTWalletManageDetailVC.xib in Resources */,
 				D7055459250F69A8005E367E /* BTBackupMnemonicsCell.xib in Resources */,
+				3C10CDD82510F2CE00517422 /* BTShareWalletVC.xib in Resources */,
 				D7074EBA2510B6A8000EC935 /* BTWithdrawRecordDetailVC.xib in Resources */,
 				D7055463250F73BF005E367E /* BTHomeTransiferCoinVC.xib in Resources */,
 				D71C85C9250EFCAC0067B4C7 /* BTAssetsTransiferVC.xib in Resources */,
@@ -927,6 +936,7 @@
 				3C63D40A250DA73C001CEC7D /* AppDelegate.m in Sources */,
 				D7074E9A25109487000EC935 /* BTOrePoolViewController.m in Sources */,
 				3C63D41B250DA73E001CEC7D /* main.m in Sources */,
+				3C10CDD72510F2CE00517422 /* BTShareWalletVC.m in Sources */,
 				D7074E9F2510A335000EC935 /* BTHistoryViewController.m in Sources */,
 				D71C85CD250F05380067B4C7 /* BTAssetsWithdrawVC.m in Sources */,
 				D7707D7325105759009EF151 /* BTHomeRiseFallCell.m in Sources */,
