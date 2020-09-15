@@ -13,6 +13,9 @@
 #import "BTAssetsWithdrawVC.h"
 #import "BTAssetsTransiferVC.h"
 
+//测试用
+#import "BTAssetsWithdrawVC.h"
+
 @interface BTAssetsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *totalAccount;
@@ -49,6 +52,8 @@
         switch (index) {
             case 0://收款/充币,USDT则为充币，其他币种为收款
             {
+                BTAssetsWithdrawVC *withdraw = [[BTAssetsWithdrawVC alloc]init];
+                [self.navigationController pushViewController:withdraw animated:YES];return;
                 BTAssetsRechargeVC *recharge = [[BTAssetsRechargeVC alloc]init];
                 recharge.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:recharge animated:YES];

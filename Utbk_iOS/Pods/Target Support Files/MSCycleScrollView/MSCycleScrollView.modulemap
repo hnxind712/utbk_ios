@@ -1,0 +1,6 @@
+framework module MSCycleScrollView {
+  umbrella header "MSCycleScrollView-umbrella.h"
+
+  export *
+  module * { export * }
+}

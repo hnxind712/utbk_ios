@@ -7,6 +7,7 @@
 //
 
 #import "BTAssetsWithdrawVC.h"
+#import "BTWithdrawRecordVC.h"
 
 @interface BTAssetsWithdrawVC ()
 @property (weak, nonatomic) IBOutlet UIButton *chainsERC;
@@ -24,7 +25,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LocalizationKey(@"提币");
+    [self addRightNavigation];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)addRightNavigation{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:BTUIIMAGE(@"icon_transferRecord") forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(withDrawRecordAction) forControlEvents:UIControlEventTouchUpInside];
+    [btn sizeToFit];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
+- (void)withDrawRecordAction{
+    BTWithdrawRecordVC *withdrawRecord = [[BTWithdrawRecordVC alloc]init];
+    [self.navigationController pushViewController:withdrawRecord animated:YES];
 }
 //扫描
 - (IBAction)scanCoinAddrssAction:(UIButton *)sender {

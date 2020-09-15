@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="BTHomeNoticeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于BTCK正式上线公告" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doN-JZ-saZ">
+                        <rect key="frame" x="40" y="18" width="268" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="5av-9M-Ocv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全球区块链相关热点技术层出不穷，新模式不断出现。央行发行数字人民币DCEP, 未来可以解决美元霸权问题。让数字资产上网，用dcep背书建立数字资产交易所。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9f-l9-CdH">
+                        <rect key="frame" x="40" y="47" width="268" height="43"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNx-Kl-glq">
+                        <rect key="frame" x="13" y="47" width="5" height="5"/>
+                        <color key="backgroundColor" red="0.65490196079999996" green="0.52549019610000003" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="UNx-Kl-glq" secondAttribute="height" multiplier="1:1" id="57Q-CN-tcu"/>
+                            <constraint firstAttribute="width" constant="5" id="eZs-2k-RFL"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="2.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="UNx-Kl-glq" firstAttribute="top" secondItem="T9f-l9-CdH" secondAttribute="top" id="CdO-fW-jsj"/>
+                    <constraint firstAttribute="trailing" secondItem="T9f-l9-CdH" secondAttribute="trailing" constant="12" id="FfA-XP-7UQ"/>
+                    <constraint firstItem="doN-JZ-saZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="TWV-Wo-LaY"/>
+                    <constraint firstItem="T9f-l9-CdH" firstAttribute="top" secondItem="doN-JZ-saZ" secondAttribute="bottom" constant="15" id="e58-mc-UfR"/>
+                    <constraint firstItem="UNx-Kl-glq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="gd7-v2-sw1"/>
+                    <constraint firstAttribute="trailing" secondItem="doN-JZ-saZ" secondAttribute="trailing" constant="12" id="l8R-Ow-LST"/>
+                    <constraint firstItem="T9f-l9-CdH" firstAttribute="leading" secondItem="doN-JZ-saZ" secondAttribute="leading" id="rQ7-AQ-r42"/>
+                    <constraint firstItem="doN-JZ-saZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="xPK-UF-Ggh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="noticeMessage" destination="T9f-l9-CdH" id="yh6-iU-Jvn"/>
+                <outlet property="noticeTitle" destination="doN-JZ-saZ" id="ZPP-JG-eUH"/>
+                <outlet property="redView" destination="UNx-Kl-glq" id="9K8-za-0mE"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
+        </tableViewCell>
+    </objects>
+</document>

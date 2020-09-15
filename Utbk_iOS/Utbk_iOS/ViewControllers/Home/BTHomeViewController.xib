@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,8 +11,11 @@
             <connections>
                 <outlet property="adImageView" destination="az4-Mj-agN" id="w7A-44-r4e"/>
                 <outlet property="bannerSuperView" destination="fxV-GE-LCE" id="mq1-eP-gwQ"/>
+                <outlet property="bottomViewHeight" destination="vnN-7m-Jt4" id="58m-Nz-7qg"/>
                 <outlet property="coinCount" destination="Y9A-BB-TQ6" id="OAm-6F-ut0"/>
                 <outlet property="convertCount" destination="iq4-dX-W4D" id="4eQ-we-hfn"/>
+                <outlet property="mainBtn" destination="AfO-OB-ah1" id="jT5-Af-l2a"/>
+                <outlet property="riseFallBtn" destination="Lbn-Gz-cpt" id="DaL-ZC-iT2"/>
                 <outlet property="tableView" destination="6h6-OE-sSD" id="0Bd-zP-vsa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -344,23 +347,26 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bni-o0-WM0">
                             <rect key="frame" x="12" y="493" width="390" height="314"/>
                             <subviews>
-                                <button opaque="NO" tag="107" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfO-OB-ah1">
-                                    <rect key="frame" x="12" y="12" width="49" height="15"/>
+                                <button opaque="NO" tag="108" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfO-OB-ah1">
+                                    <rect key="frame" x="12" y="12" width="49" height="16"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="15" id="euq-jX-1eX"/>
+                                        <constraint firstAttribute="height" constant="16" id="euq-jX-1eX"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                     <state key="normal" title="主板区">
                                         <color key="titleColor" red="0.82352941176470584" green="0.6588235294117647" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <state key="selected" title="主板区">
+                                        <color key="titleColor" red="0.81960784313725488" green="0.6588235294117647" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
                                     <connections>
                                         <action selector="typeButtonClickAction:" destination="-1" eventType="touchUpInside" id="a1d-GY-3c7"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbn-Gz-cpt">
-                                    <rect key="frame" x="91" y="12" width="85" height="15"/>
+                                <button opaque="NO" tag="109" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbn-Gz-cpt">
+                                    <rect key="frame" x="91" y="12" width="85" height="16"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="15" id="Vzf-vD-EeZ"/>
+                                        <constraint firstAttribute="height" constant="16" id="Vzf-vD-EeZ"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <state key="normal" title="涨幅榜/24H">
@@ -370,9 +376,13 @@
                                         <action selector="typeButtonClickAction:" destination="-1" eventType="touchUpInside" id="nYA-7x-sMn"/>
                                     </connections>
                                 </button>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6h6-OE-sSD">
-                                    <rect key="frame" x="0.0" y="39" width="390" height="275"/>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6h6-OE-sSD">
+                                    <rect key="frame" x="0.0" y="40" width="390" height="274"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="881-mn-GjS"/>
+                                        <outlet property="delegate" destination="-1" id="8n6-Pe-yfX"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

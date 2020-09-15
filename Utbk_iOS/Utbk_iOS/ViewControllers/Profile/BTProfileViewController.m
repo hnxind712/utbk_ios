@@ -10,7 +10,7 @@
 #import "BTWalletManagerVC.h"//钱包管理列表
 #import "BTTeamAchievementVC.h"//团队业绩
 #import <TZImagePickerController/TZImagePickerController.h>
-
+#import "BTSettingViewController.h"
 
 #import "BTBackupMnemonicsVC.h"
 @interface BTProfileViewController ()<TZImagePickerControllerDelegate>
@@ -23,15 +23,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addRightNavigation];
+    self.title = LocalizationKey(@"个人中心");
     // Do any additional setup after loading the view from its nib.
+}
+- (void)addRightNavigation{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:BTUIIMAGE(@"icon_settings") forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(settingAction) forControlEvents:UIControlEventTouchUpInside];
+    [btn sizeToFit];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
+- (void)settingAction{
+    BTSettingViewController *withdrawRecord = [[BTSettingViewController alloc]init];
+    [self.navigationController pushViewController:withdrawRecord animated:YES];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:BTUIIMAGE(@"icon_profileTopbg") forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:RGBOF(0xffffff)}];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];;
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:AppTextColor}];
+    
 }
 - (void)selectImageWithTZImagePickerController{
     TZImagePickerController *imagePicker = [[TZImagePickerController alloc]initWithMaxImagesCount:1 delegate:self];

@@ -12,7 +12,7 @@
 
 #endif /* UtbkConstant_h */
 
-#define LocalLanguageKey         @"LocalLanguageKey" //选择语言
+#define LocalLanguageKey         @"LocalLanguageKey" //选择语言（0代表简体中文，1代表繁体中文，2代表英文）
 #define LocalizationKey(key)     [NSBundle.mainBundle localizedStringForKey:(key) value:@"" table:nil]
 //[[ChangeLanguage bundle] localizedStringForKey:key value:nil table:@"English"]
 //图片
@@ -60,7 +60,7 @@ alpha:1.0]
 #define TabbarSafeBottomMargin     (IS_iPhoneX ? 34.f : 0.f)
 
 //keyWindow
-#define BTKeyWindow [UIApplication sharedApplication].keyWindow
+#define BTKeyWindow [AppDelegate sharedAppDelegate].window
 // 屏幕rect
 #define SCREEN_BOUNDS ([UIScreen mainScreen].bounds)
 // 屏幕宽度

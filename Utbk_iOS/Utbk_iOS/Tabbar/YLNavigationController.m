@@ -119,18 +119,21 @@
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    
-    if (self.viewControllers.count > 0) {
-        viewController.navigationItem.hidesBackButton = YES;
-        UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(popAction)];
-        viewController.navigationItem.leftBarButtonItem = backBarButtonItem;
+    if (self.viewControllers.count == 1) {
+        viewController.hidesBottomBarWhenPushed = YES;
     }
-    
+//    if (self.viewControllers.count > 0) {
+//        viewController.navigationItem.hidesBackButton = YES;
+//        UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(popAction)];
+//        viewController.navigationItem.leftBarButtonItem = backBarButtonItem;
+//
+//    }
+
     // 只有在导航控制器里面有子控制器的时候才需要截图
-    if (self.viewControllers.count >= 1) {
-        // 调用自定义方法,使用上下文截图
-        [self screenShot];
-    }
+//    if (self.viewControllers.count >= 1) {
+//        // 调用自定义方法,使用上下文截图
+//        [self screenShot];
+//    }
     
     [super pushViewController:viewController animated:animated];
     

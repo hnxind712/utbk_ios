@@ -19,8 +19,10 @@ PODS:
   - Masonry (1.1.0)
   - MJExtension (3.0.17)
   - MJRefresh (3.1.17)
-  - SDCycleScrollView (1.80):
-    - SDWebImage (>= 5.0.0)
+  - MSCycleScrollView (0.0.6):
+    - MSPageControl
+    - SDWebImage
+  - MSPageControl (0.0.3)
   - SDWebImage (5.9.1):
     - SDWebImage/Core (= 5.9.1)
   - SDWebImage/Core (5.9.1)
@@ -34,7 +36,7 @@ DEPENDENCIES:
   - Masonry
   - MJExtension (~> 3.0.10)
   - MJRefresh (~> 3.1.0)
-  - SDCycleScrollView (~> 1.64)
+  - MSCycleScrollView
   - SDWebImage
   - Toast (= 2.0.0)
   - TZImagePickerController (= 3.3.1)
@@ -47,7 +49,8 @@ SPEC REPOS:
     - Masonry
     - MJExtension
     - MJRefresh
-    - SDCycleScrollView
+    - MSCycleScrollView
+    - MSPageControl
     - SDWebImage
     - Toast
     - TZImagePickerController
@@ -59,11 +62,12 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
   MJRefresh: ee5b68f639775462faba4db0fd243baf4d42c2cf
-  SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
+  MSCycleScrollView: 2129e810011c74432ea363119d4a26e0e3070d0b
+  MSPageControl: d1b695ec3641f75baa74a29ed7dbc28a0aabfb61
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   Toast: 5cc02678e496690856164aa49c834d05e4fb314f
   TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
 
-PODFILE CHECKSUM: 3bb5a25313ce011f18e7639662671fd570a20951
+PODFILE CHECKSUM: 4e975dc1282eec222dddacc00390a0b5f8e13b4e
 
 COCOAPODS: 1.9.3

@@ -19,7 +19,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = LocalizationKey(@"划转");
+    [self addRightNavigation];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)addRightNavigation{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:BTUIIMAGE(@"icon_transferRecord") forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(transferRecordAction) forControlEvents:UIControlEventTouchUpInside];
+    [btn sizeToFit];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
+- (void)transferRecordAction{
+    
 }
 - (IBAction)confirmAction:(UIButton *)sender {
 }

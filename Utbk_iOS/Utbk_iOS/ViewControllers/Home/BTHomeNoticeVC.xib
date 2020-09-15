@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BTHomeNoticeVC">
+            <connections>
+                <outlet property="tableView" destination="n3e-Ab-PAc" id="3qK-Ko-HT9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pir-SR-w9f">
+                    <rect key="frame" x="12" y="64" width="390" height="768"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n3e-Ab-PAc">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="768"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="e25-Rz-Cqk"/>
+                                <outlet property="delegate" destination="-1" id="GP5-NX-89u"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="n3e-Ab-PAc" secondAttribute="trailing" id="9gf-Dj-nug"/>
+                        <constraint firstItem="n3e-Ab-PAc" firstAttribute="top" secondItem="pir-SR-w9f" secondAttribute="top" id="QBx-Q4-aKf"/>
+                        <constraint firstAttribute="bottom" secondItem="n3e-Ab-PAc" secondAttribute="bottom" id="aPf-Iw-en5"/>
+                        <constraint firstItem="n3e-Ab-PAc" firstAttribute="leading" secondItem="pir-SR-w9f" secondAttribute="leading" id="heh-4O-IGG"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="pir-SR-w9f" secondAttribute="trailing" constant="12" id="2xr-uj-vzU"/>
+                <constraint firstItem="pir-SR-w9f" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="12" id="F0x-hv-B7Z"/>
+                <constraint firstItem="pir-SR-w9f" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="RFx-fq-fzX"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="pir-SR-w9f" secondAttribute="bottom" constant="30" id="fJ0-7W-ezk"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="133" y="137"/>
+        </view>
+    </objects>
+</document>
