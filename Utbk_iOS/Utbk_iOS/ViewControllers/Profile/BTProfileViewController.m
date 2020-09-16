@@ -10,7 +10,8 @@
 #import "BTWalletManagerVC.h"//钱包管理列表
 #import "BTTeamAchievementVC.h"//团队业绩
 #import <TZImagePickerController/TZImagePickerController.h>
-#import "BTSettingViewController.h"
+#import "BTSettingViewController.h"//设置
+#import "BTShareWalletVC.h"//分享
 
 #import "BTBackupMnemonicsVC.h"
 @interface BTProfileViewController ()<TZImagePickerControllerDelegate>
@@ -119,19 +120,16 @@
 //钱包管理
 - (IBAction)walletManagerAction:(UITapGestureRecognizer *)sender {
     BTWalletManagerVC *wallet = [[BTWalletManagerVC alloc]init];
-    wallet.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:wallet animated:YES];
 }
 //团队业绩
 - (IBAction)teamAchievementAction:(UITapGestureRecognizer *)sender {
     BTTeamAchievementVC *team = [[BTTeamAchievementVC alloc]init];
-    team.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:team animated:YES];
 }
 //社区客服
 - (IBAction)communityServiceAction:(UITapGestureRecognizer *)sender {
     BTBackupMnemonicsVC *mnemonics = [[BTBackupMnemonicsVC alloc]init];
-    mnemonics.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:mnemonics animated:YES];
 }
 //开源地址
@@ -142,6 +140,8 @@
 }
 //分享APP
 - (IBAction)shareAppAction:(UITapGestureRecognizer *)sender {
+    BTShareWalletVC *share = [[BTShareWalletVC alloc]init];
+    [self.navigationController pushViewController:share animated:YES];
 }
 //帮助中心
 - (IBAction)helpCenterAction:(UITapGestureRecognizer *)sender {

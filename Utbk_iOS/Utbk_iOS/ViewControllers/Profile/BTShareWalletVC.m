@@ -7,8 +7,10 @@
 //
 
 #import "BTShareWalletVC.h"
+#import "BTShareSecondVC.h"
 
 @interface BTShareWalletVC ()
+@property (weak, nonatomic) IBOutlet UIImageView *codeImageView;
 
 @end
 
@@ -16,9 +18,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+- (void)setupBind{
+    self.codeImageView.image = [BTCommonUtils createQRCodeWithUrl:@"测试" image:BTUIIMAGE(@"icon_registerLogo") size:self.codeImageView.bounds.size.width];
+    //[BTCommonUtils logoQrCode:BTUIIMAGE(@"icon_registerLogo") code:@"cehsi"];
+}
+- (IBAction)backAction:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)shareAction:(UIButton *)sender {
+    BTShareSecondVC *share = [[BTShareSecondVC alloc]init];
+    share.url = @"测试";
+    share.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:share animated:YES completion:nil];
+}
 /*
 #pragma mark - Navigation
 

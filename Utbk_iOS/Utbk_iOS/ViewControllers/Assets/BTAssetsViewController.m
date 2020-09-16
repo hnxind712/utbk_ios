@@ -12,6 +12,8 @@
 #import "BTSweepAccountVC.h"
 #import "BTAssetsWithdrawVC.h"
 #import "BTAssetsTransiferVC.h"
+#import "BTAssetsDetailVC.h"
+#import "BTAssetsModel.h"
 
 //测试用
 #import "BTAssetsWithdrawVC.h"
@@ -47,7 +49,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTAssetsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTAssetsCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell configureCellWithAssetsModel:nil];
+//    BTAssetsModel *model = self.datasource[indexPath.row];
+//    [cell configureCellWithAssetsModel:model];
     cell.cellBtnClickAction = ^(NSInteger index) {
         switch (index) {
             case 0://收款/充币,USDT则为充币，其他币种为收款
@@ -55,27 +58,29 @@
                 BTAssetsWithdrawVC *withdraw = [[BTAssetsWithdrawVC alloc]init];
                 [self.navigationController pushViewController:withdraw animated:YES];return;
                 BTAssetsRechargeVC *recharge = [[BTAssetsRechargeVC alloc]init];
-                recharge.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:recharge animated:YES];
             }
                 break;
             case 1://转账
             {
                 BTAssetsTransiferVC *transfer = [[BTAssetsTransiferVC alloc]init];
-                transfer.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:transfer animated:YES];
             }
                 break;
             case 2://划转
             {
                 BTSweepAccountVC *sweep = [[BTSweepAccountVC alloc]init];
-                sweep.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:sweep animated:YES];
             }
                 break;
             default:
                 break;
         }
+    };
+    cell.assetsDetailAction = ^{
+        BTAssetsDetailVC *detail = [[BTAssetsDetailVC alloc]init];
+//        detail.assetsModel = model;
+        [self.navigationController pushViewController:detail animated:YES];
     };
     return cell;
 }

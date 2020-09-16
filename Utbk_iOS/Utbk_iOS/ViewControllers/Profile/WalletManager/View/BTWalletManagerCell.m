@@ -27,17 +27,25 @@
     // Initialization code
 }
 - (void)configureWithModel:(BTWalletManagerModel *)model{
-    
+    self.selectedBtn.selected = model.isCurrent;
+    self.currentLabel.textColor = model.isCurrent ? RGBOF(0x333333) : RGBOF(0xcccccc);
+    //下面两个暂定
+    self.activityView.backgroundColor = model.isActive ? RGBOF(0xDAC49D) : RGBOF(0xcccccc);
+    self.activityLabel.textColor = model.isActive ? RGBOF(0x786236) : RGBOF(0x333333);
 }
 - (IBAction)copyAddressAction:(UIButton *)sender {
     if (!_address.length) {
-        //LocalizationKey(@"地址为空")
         [BTKeyWindow makeToast:LocalizationKey(@"地址为空") duration:ToastHideDelay position:ToastPosition];return;
     }
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = _address;
     [self makeToast:LocalizationKey(@"复制成功") duration:ToastHideDelay position:ToastPosition];
 //    [MBProgressHUD bwm_showTitle:NSLocalizedString(@"复制成功",nil) toView:[UIApplication sharedApplication].keyWindow hideAfter:2.f];
+}
+- (IBAction)walletDetail:(UIButton *)sender {
+    if (self.walletDetailAction) {
+        self.walletDetailAction();
+    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

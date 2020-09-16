@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BTMnemonisConfirmCell">
+            <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5g-Fh-ZQQ">
+                        <rect key="frame" x="0.0" y="13" width="60" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="6TD-Lc-Nfg"/>
+                            <constraint firstAttribute="width" constant="60" id="gd6-bD-wtD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="UHYE"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3KR-KO-Ydz">
+                        <rect key="frame" x="55" y="0.0" width="15" height="22"/>
+                        <state key="normal" image="icon_delete"/>
+                        <connections>
+                            <action selector="deleteSelectedMnemonis:" destination="gTV-IL-0wX" eventType="touchUpInside" id="P5G-S7-Mxq"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="N5g-Fh-ZQQ" secondAttribute="bottom" id="DSo-24-bIA"/>
+                <constraint firstAttribute="trailing" secondItem="3KR-KO-Ydz" secondAttribute="trailing" id="g53-fZ-gSy"/>
+                <constraint firstItem="N5g-Fh-ZQQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="grv-bi-H41"/>
+                <constraint firstItem="3KR-KO-Ydz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="wNU-wU-K6Q"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <connections>
+                <outlet property="deleteBtn" destination="3KR-KO-Ydz" id="yYZ-fZ-n0h"/>
+                <outlet property="mnemonisBtn" destination="N5g-Fh-ZQQ" id="7yD-4R-wxE"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="icon_delete" width="15" height="15"/>
+    </resources>
+</document>

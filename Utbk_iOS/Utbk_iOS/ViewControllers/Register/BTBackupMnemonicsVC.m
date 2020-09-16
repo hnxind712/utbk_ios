@@ -8,6 +8,7 @@
 
 #import "BTBackupMnemonicsVC.h"
 #import "BTBackupMnemonicsCell.h"
+#import "BTComfirmMnemonicsVC.h"
 
 #define KItemHeight  40.f
 @interface BTBackupMnemonicsVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -55,6 +56,8 @@
 }
 //下一步
 - (IBAction)nextStep:(UIButton *)sender {
+    BTComfirmMnemonicsVC *comfirm = [[BTComfirmMnemonicsVC alloc]init];
+    [self.navigationController pushViewController:comfirm animated:YES];
 }
 
 /*

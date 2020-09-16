@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="BTCurrencyCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fL1-z6-1l3">
+                        <rect key="frame" x="12" y="5" width="296" height="60"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTCK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoN-3K-Mf9">
+                                <rect key="frame" x="10" y="21" width="41" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.47058823529411764" green="0.38431372549019605" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfC-h4-v6x">
+                                <rect key="frame" x="269" y="19" width="15" height="22"/>
+                                <state key="normal" image="icon_walletnoSelected"/>
+                                <state key="selected" image="icon_walletSelected"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="yfC-h4-v6x" firstAttribute="centerY" secondItem="fL1-z6-1l3" secondAttribute="centerY" id="B4N-HX-HNb"/>
+                            <constraint firstItem="yoN-3K-Mf9" firstAttribute="centerY" secondItem="yfC-h4-v6x" secondAttribute="centerY" id="BQl-xd-yQ7"/>
+                            <constraint firstItem="yoN-3K-Mf9" firstAttribute="leading" secondItem="fL1-z6-1l3" secondAttribute="leading" constant="10" id="TS9-5s-Gb0"/>
+                            <constraint firstAttribute="trailing" secondItem="yfC-h4-v6x" secondAttribute="trailing" constant="12" id="kQL-vS-HWk"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fL1-z6-1l3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="7Kt-6H-P4Y"/>
+                    <constraint firstItem="fL1-z6-1l3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="NtL-YH-w0P"/>
+                    <constraint firstAttribute="bottom" secondItem="fL1-z6-1l3" secondAttribute="bottom" constant="5" id="lbZ-TO-HG4"/>
+                    <constraint firstAttribute="trailing" secondItem="fL1-z6-1l3" secondAttribute="trailing" constant="12" id="y3I-gi-isH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="currency" destination="yoN-3K-Mf9" id="bjo-sp-At2"/>
+                <outlet property="selectedBtn" destination="yfC-h4-v6x" id="ppW-uF-iaC"/>
+            </connections>
+            <point key="canvasLocation" x="133" y="154"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_walletSelected" width="15" height="15"/>
+        <image name="icon_walletnoSelected" width="15" height="15"/>
+    </resources>
+</document>

@@ -27,5 +27,6 @@
 #    import "ChangeLanguage.h"
 #    import "UINavigationController+Transition.h"
 #    import "UIView+HJViewStyle.h"
+#    import "BTCommonUtils.h"
 
 #endif

@@ -24,6 +24,11 @@
 - (void)configureCellWithAssetsModel:(id)model{
     
 }
+- (IBAction)assetsDetail:(UIButton *)sender {
+    if (self.assetsDetailAction) {
+        self.assetsDetailAction();
+    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
