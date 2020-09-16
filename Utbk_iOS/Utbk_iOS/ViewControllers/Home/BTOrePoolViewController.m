@@ -7,8 +7,26 @@
 //
 
 #import "BTOrePoolViewController.h"
+#import "BTHistoryRecordCell.h"
+#import "BTHistoryRecordModel.h"//排行榜
 
-@interface BTOrePoolViewController ()
+@interface BTOrePoolViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UILabel *currency;//币种
+@property (weak, nonatomic) IBOutlet UILabel *earningsYes;//昨日收益
+@property (weak, nonatomic) IBOutlet UILabel *earningYesConvert;//昨日收益折合
+@property (weak, nonatomic) IBOutlet UILabel *earningTotal;//累计收益
+@property (weak, nonatomic) IBOutlet UILabel *earningTotalConvert;//累计收益h折合
+@property (weak, nonatomic) IBOutlet UILabel *houdCount;//持有
+@property (weak, nonatomic) IBOutlet UILabel *houdCountConvert;//持有折合
+@property (weak, nonatomic) IBOutlet UILabel *extendCount;//推广
+@property (weak, nonatomic) IBOutlet UILabel *extendCountConvert;//推广折合
+@property (weak, nonatomic) IBOutlet UILabel *myHoud;//我的持有
+@property (weak, nonatomic) IBOutlet UILabel *areaTotal;//小区小计
+@property (weak, nonatomic) IBOutlet UILabel *bestHoud;//最佳持有
+@property (weak, nonatomic) IBOutlet UILabel *minHoud;//最小持有
+@property (weak, nonatomic) IBOutlet UILabel *earningsDescription;//收益描述
+@property (weak, nonatomic) IBOutlet UITableView *tableView;//排行榜
 
 @end
 
@@ -16,52 +34,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self addRightNavigation];
+//    [self addRightNavigation];
+    [self setupLayout];
     // Do any additional setup after loading the view from its nib.
 }
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self addSegment];
+
+- (void)setupLayout{
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTHistoryRecordCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTHistoryRecordCell class])];
+    self.tableView.tableFooterView = [UIView new];
 }
-- (void)addSegment{
-    NSArray *segmentedArray = [NSArray arrayWithObjects:@"共享挖矿",@"持币空投",nil];
-
-    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:segmentedArray];
-
-    segmentedControl.frame = CGRectMake(0, 0, 200, 32);
-
-    segmentedControl.selectedSegmentIndex = 0;
-
-    segmentedControl.tintColor = RGBOF(0xD1A870);
-    segmentedControl.backgroundColor = [UIColor clearColor];
-    segmentedControl.layer.cornerRadius = 16.f;
-    segmentedControl.layer.borderWidth = 0.5;
-    segmentedControl.layer.borderColor = RGBOF(0xD1A870).CGColor;
-
-//    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-
-    [segmentedControl addTarget:self  action:@selector(indexDidChangeForSegmentedControl:)
-
-    forControlEvents:UIControlEventValueChanged];
-
-    //方法1
-    [self.navigationItem setTitleView:segmentedControl];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 10;
 }
-- (void)addRightNavigation{
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:BTUIIMAGE(@"icon_transferRecord") forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(transferRecordAction) forControlEvents:UIControlEventTouchUpInside];
-    [btn sizeToFit];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    BTHistoryRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTHistoryRecordCell class])];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    [cell configureCellWithModel:self.datasource[indexPath.row]];
+    return cell;
 }
-- (void)transferRecordAction{
-    
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 30.f;
 }
-#pragma mark 分段控件事件
-- (void)indexDidChangeForSegmentedControl:(UISegmentedControl *)segment{
-    
-}
+
 /*
 #pragma mark - Navigation
 

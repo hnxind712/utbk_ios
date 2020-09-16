@@ -17,7 +17,8 @@
 #import "BTInvitationActivityVC.h"//邀请激活
 #import "BTHomeNoticeView.h"
 #import "BTHomeNoticeVC.h"//消息列表
-#import "BTOrePoolViewController.h"
+#import "BTPoolViewController.h"//矿池
+#import "BTOnCurrencyVC.h"//上币
 
 #define KBottomTopHeight 40.f //主板区标签对应的高度间隔
 #define KRiseFallCellHeight 60.f
@@ -161,9 +162,15 @@
             [self.navigationController pushViewController:transifer animated:YES];
         }
             break;
+            case 103://上币
+        {
+            BTOnCurrencyVC *onCurrency = [[BTOnCurrencyVC alloc]init];
+            [self.navigationController pushViewController:onCurrency animated:YES];
+        }
+            break;
             case 104://矿池
         {
-            BTOrePoolViewController *pool = [[BTOrePoolViewController alloc]init];
+            BTPoolViewController *pool = [[BTPoolViewController alloc]init];
             [self.navigationController pushViewController:pool animated:YES];
         }
             break;

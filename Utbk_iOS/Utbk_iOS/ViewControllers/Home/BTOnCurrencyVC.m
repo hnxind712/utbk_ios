@@ -8,7 +8,17 @@
 
 #import "BTOnCurrencyVC.h"
 
-@interface BTOnCurrencyVC ()
+@interface BTOnCurrencyVC ()<UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *name;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNum;
+@property (weak, nonatomic) IBOutlet UITextField *chineseName;
+@property (weak, nonatomic) IBOutlet UITextField *englishName;
+@property (weak, nonatomic) IBOutlet UITextField *circulation;//发行量
+@property (weak, nonatomic) IBOutlet UITextField *discharge;//流通量
+@property (weak, nonatomic) IBOutlet UITextView *subjectDescription;
+@property (weak, nonatomic) IBOutlet UILabel *placeH;
+@property (weak, nonatomic) IBOutlet UITextField *userCount;
+@property (weak, nonatomic) IBOutlet UITextField *markingBudget;//营销预算
 
 @end
 
@@ -25,6 +35,42 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+- (void)textViewDidChange:(UITextView *)textView{
+    self.placeH.hidden = textView.text.length;
+}
+- (IBAction)back:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+//完成
+- (IBAction)completedAction:(UIButton *)sender {
+    if (!_name.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入联系人姓名") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (!_phoneNum.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入联系人手机号") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (!_chineseName.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入中文币种名称") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (!_englishName.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入英文币种名称") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (!_circulation.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入发行总量") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (!_discharge.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入市场已流通量") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (!_subjectDescription.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入项目介绍") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (!_userCount.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入社区用户量") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (!_markingBudget.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入营销预算") duration:ToastHideDelay position:ToastPosition];return;
+    }
 }
 /*
 #pragma mark - Navigation

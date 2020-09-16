@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		3C10CDD72510F2CE00517422 /* BTShareWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C10CDD52510F2CE00517422 /* BTShareWalletVC.m */; };
 		3C10CDD82510F2CE00517422 /* BTShareWalletVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C10CDD62510F2CE00517422 /* BTShareWalletVC.xib */; };
-		3C13847F250DFB0D00866D69 /* BTTradingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C13847D250DFB0D00866D69 /* BTTradingViewController.m */; };
-		3C138480250DFB0D00866D69 /* BTTradingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C13847E250DFB0D00866D69 /* BTTradingViewController.xib */; };
 		3C138486250DFEDA00866D69 /* UIView+HJTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138484250DFEDA00866D69 /* UIView+HJTheme.m */; };
 		3C138487250DFEDA00866D69 /* UIView+HJViewStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138485250DFEDA00866D69 /* UIView+HJViewStyle.m */; };
 		3C13848C250E08AE00866D69 /* BTWalletManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C13848A250E08AE00866D69 /* BTWalletManagerVC.m */; };
@@ -21,6 +19,13 @@
 		3C13849C250E160000866D69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C13849E250E160000866D69 /* Localizable.strings */; };
 		3C1384A3250E175F00866D69 /* BTImportWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1384A1250E175F00866D69 /* BTImportWalletVC.m */; };
 		3C1384A4250E175F00866D69 /* BTImportWalletVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1384A2250E175F00866D69 /* BTImportWalletVC.xib */; };
+		3C1D2FEE251239E7002AE5AA /* BTPoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D2FEC251239E7002AE5AA /* BTPoolViewController.m */; };
+		3C1D2FEF251239E7002AE5AA /* BTPoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1D2FED251239E7002AE5AA /* BTPoolViewController.xib */; };
+		3C1D2FF325123ABE002AE5AA /* BTSharePoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D2FF125123ABE002AE5AA /* BTSharePoolVC.m */; };
+		3C1D2FF425123ABE002AE5AA /* BTSharePoolVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1D2FF225123ABE002AE5AA /* BTSharePoolVC.xib */; };
+		3C1D2FF825123ED1002AE5AA /* SPMultipleSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D2FF625123ED1002AE5AA /* SPMultipleSwitch.m */; };
+		3C1D305F25124F72002AE5AA /* BTTradingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D305C25124F72002AE5AA /* BTTradingViewController.m */; };
+		3C1D306025124F72002AE5AA /* BTTradingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1D305D25124F72002AE5AA /* BTTradingViewController.xib */; };
 		3C63D40A250DA73C001CEC7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C63D409250DA73C001CEC7D /* AppDelegate.m */; };
 		3C63D413250DA73C001CEC7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C63D411250DA73C001CEC7D /* Main.storyboard */; };
 		3C63D415250DA73E001CEC7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C63D414250DA73E001CEC7D /* Assets.xcassets */; };
@@ -144,9 +149,6 @@
 		3C10CDD62510F2CE00517422 /* BTShareWalletVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTShareWalletVC.xib; sourceTree = "<group>"; };
 		3C138479250DF90D00866D69 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		3C13847A250DF90D00866D69 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		3C13847C250DFB0D00866D69 /* BTTradingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTTradingViewController.h; sourceTree = "<group>"; };
-		3C13847D250DFB0D00866D69 /* BTTradingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTTradingViewController.m; sourceTree = "<group>"; };
-		3C13847E250DFB0D00866D69 /* BTTradingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTTradingViewController.xib; sourceTree = "<group>"; };
 		3C138482250DFEDA00866D69 /* UIView+HJTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HJTheme.h"; sourceTree = "<group>"; };
 		3C138483250DFEDA00866D69 /* UIView+HJViewStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HJViewStyle.h"; sourceTree = "<group>"; };
 		3C138484250DFEDA00866D69 /* UIView+HJTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HJTheme.m"; sourceTree = "<group>"; };
@@ -164,6 +166,17 @@
 		3C1384A0250E175F00866D69 /* BTImportWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTImportWalletVC.h; sourceTree = "<group>"; };
 		3C1384A1250E175F00866D69 /* BTImportWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTImportWalletVC.m; sourceTree = "<group>"; };
 		3C1384A2250E175F00866D69 /* BTImportWalletVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTImportWalletVC.xib; sourceTree = "<group>"; };
+		3C1D2FEB251239E7002AE5AA /* BTPoolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPoolViewController.h; sourceTree = "<group>"; };
+		3C1D2FEC251239E7002AE5AA /* BTPoolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTPoolViewController.m; sourceTree = "<group>"; };
+		3C1D2FED251239E7002AE5AA /* BTPoolViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTPoolViewController.xib; sourceTree = "<group>"; };
+		3C1D2FF025123ABE002AE5AA /* BTSharePoolVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTSharePoolVC.h; sourceTree = "<group>"; };
+		3C1D2FF125123ABE002AE5AA /* BTSharePoolVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTSharePoolVC.m; sourceTree = "<group>"; };
+		3C1D2FF225123ABE002AE5AA /* BTSharePoolVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTSharePoolVC.xib; sourceTree = "<group>"; };
+		3C1D2FF625123ED1002AE5AA /* SPMultipleSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMultipleSwitch.m; sourceTree = "<group>"; };
+		3C1D2FF725123ED1002AE5AA /* SPMultipleSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMultipleSwitch.h; sourceTree = "<group>"; };
+		3C1D305C25124F72002AE5AA /* BTTradingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTradingViewController.m; sourceTree = "<group>"; };
+		3C1D305D25124F72002AE5AA /* BTTradingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BTTradingViewController.xib; sourceTree = "<group>"; };
+		3C1D305E25124F72002AE5AA /* BTTradingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTradingViewController.h; sourceTree = "<group>"; };
 		3C63D405250DA73C001CEC7D /* Utbk_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Utbk_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C63D408250DA73C001CEC7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3C63D409250DA73C001CEC7D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -360,16 +373,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3C13847B250DFAFD00866D69 /* Trading */ = {
-			isa = PBXGroup;
-			children = (
-				3C13847C250DFB0D00866D69 /* BTTradingViewController.h */,
-				3C13847D250DFB0D00866D69 /* BTTradingViewController.m */,
-				3C13847E250DFB0D00866D69 /* BTTradingViewController.xib */,
-			);
-			path = Trading;
-			sourceTree = "<group>";
-		};
 		3C138481250DFEDA00866D69 /* HJViewStyle */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,6 +441,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3C1D2FF525123ED1002AE5AA /* SPMultipleSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				3C1D2FF725123ED1002AE5AA /* SPMultipleSwitch.h */,
+				3C1D2FF625123ED1002AE5AA /* SPMultipleSwitch.m */,
+			);
+			path = SPMultipleSwitch;
+			sourceTree = "<group>";
+		};
+		3C1D305B25124F72002AE5AA /* Trading */ = {
+			isa = PBXGroup;
+			children = (
+				3C1D305E25124F72002AE5AA /* BTTradingViewController.h */,
+				3C1D305C25124F72002AE5AA /* BTTradingViewController.m */,
+				3C1D305D25124F72002AE5AA /* BTTradingViewController.xib */,
+			);
+			path = Trading;
+			sourceTree = "<group>";
+		};
 		3C63D3FC250DA73C001CEC7D = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +508,7 @@
 				3C63D44C250DC023001CEC7D /* ChangeLanguage.m */,
 				D7429BCC25119774003B04E4 /* BTCommonUtils.h */,
 				D7429BCD25119774003B04E4 /* BTCommonUtils.m */,
+				3C1D2FF525123ED1002AE5AA /* SPMultipleSwitch */,
 				3C63D425250DADBF001CEC7D /* NSString+MD5 */,
 				3C63D42B250DADBF001CEC7D /* NSString+URLEncode */,
 				3C63D422250DADBF001CEC7D /* NSString+Verify */,
@@ -550,7 +573,7 @@
 			isa = PBXGroup;
 			children = (
 				3C63D43F250DBB86001CEC7D /* Home */,
-				3C13847B250DFAFD00866D69 /* Trading */,
+				3C1D305B25124F72002AE5AA /* Trading */,
 				3C63D453250DD4D4001CEC7D /* Assets */,
 				3C63D452250DD4D4001CEC7D /* Profile */,
 				D7055443250F61D8005E367E /* Register */,
@@ -581,6 +604,12 @@
 				D7074E92251092FF000EC935 /* BTNoticeDetailVC.h */,
 				D7074E93251092FF000EC935 /* BTNoticeDetailVC.m */,
 				D7074E94251092FF000EC935 /* BTNoticeDetailVC.xib */,
+				3C1D2FEB251239E7002AE5AA /* BTPoolViewController.h */,
+				3C1D2FEC251239E7002AE5AA /* BTPoolViewController.m */,
+				3C1D2FED251239E7002AE5AA /* BTPoolViewController.xib */,
+				3C1D2FF025123ABE002AE5AA /* BTSharePoolVC.h */,
+				3C1D2FF125123ABE002AE5AA /* BTSharePoolVC.m */,
+				3C1D2FF225123ABE002AE5AA /* BTSharePoolVC.xib */,
 				D7074E9725109487000EC935 /* BTOrePoolViewController.h */,
 				D7074E9825109487000EC935 /* BTOrePoolViewController.m */,
 				D7074E9925109487000EC935 /* BTOrePoolViewController.xib */,
@@ -865,6 +894,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C1D306025124F72002AE5AA /* BTTradingViewController.xib in Resources */,
 				D7429BFA251212B5003B04E4 /* BTOnCurrencyVC.xib in Resources */,
 				D705545E250F71B3005E367E /* BTBackupSuccessVC.xib in Resources */,
 				D7429BD32511ADEA003B04E4 /* BTShareSecondVC.xib in Resources */,
@@ -875,11 +905,12 @@
 				D7429BEA2511F8F7003B04E4 /* BTCurrencyCell.xib in Resources */,
 				3CACD626250E593300B50D9A /* BTAssetsCell.xib in Resources */,
 				D7707D8625107028009EF151 /* BTHomeNoticeVC.xib in Resources */,
+				3C1D2FEF251239E7002AE5AA /* BTPoolViewController.xib in Resources */,
 				D7074EB22510AD32000EC935 /* BTWithdrawRecordCell.xib in Resources */,
 				3C63D45D250DD4F2001CEC7D /* BTProfileViewController.xib in Resources */,
+				3C1D2FF425123ABE002AE5AA /* BTSharePoolVC.xib in Resources */,
 				3C13848D250E08AE00866D69 /* BTWalletManagerVC.xib in Resources */,
 				D7074EAD2510ABF8000EC935 /* BTWithdrawRecordVC.xib in Resources */,
-				3C138480250DFB0D00866D69 /* BTTradingViewController.xib in Resources */,
 				3C63D418250DA73E001CEC7D /* LaunchScreen.storyboard in Resources */,
 				D7055452250F677C005E367E /* BTBackupMnemonicsVC.xib in Resources */,
 				D7074E9B25109487000EC935 /* BTOrePoolViewController.xib in Resources */,
@@ -975,6 +1006,7 @@
 				3CAF5E66250E3119002482C1 /* BTCreateWalletVC.m in Sources */,
 				D7074E95251092FF000EC935 /* BTNoticeDetailVC.m in Sources */,
 				D71C85C8250EFCAC0067B4C7 /* BTAssetsTransiferVC.m in Sources */,
+				3C1D2FF325123ABE002AE5AA /* BTSharePoolVC.m in Sources */,
 				3CACD614250E4F7E00B50D9A /* BTTeamAchievementVC.m in Sources */,
 				3C138486250DFEDA00866D69 /* UIView+HJTheme.m in Sources */,
 				D7074EB92510B6A8000EC935 /* BTWithdrawRecordDetailVC.m in Sources */,
@@ -983,11 +1015,11 @@
 				3C13848C250E08AE00866D69 /* BTWalletManagerVC.m in Sources */,
 				3C138487250DFEDA00866D69 /* UIView+HJViewStyle.m in Sources */,
 				D7451DD62510C38A00BC4548 /* BTLanguageVC.m in Sources */,
+				3C1D2FF825123ED1002AE5AA /* SPMultipleSwitch.m in Sources */,
 				3C63D42E250DADBF001CEC7D /* NSString+Verify.m in Sources */,
 				D7707D6D2510516F009EF151 /* BTPayPasswordPopView.m in Sources */,
 				3C63D43C250DBB20001CEC7D /* YLTabBarController.m in Sources */,
 				D7429BE02511DE75003B04E4 /* BTMnemonisModel.m in Sources */,
-				3C13847F250DFB0D00866D69 /* BTTradingViewController.m in Sources */,
 				3C63D445250DBD27001CEC7D /* BTBaseViewController.m in Sources */,
 				3C63D430250DADBF001CEC7D /* UITextFeild+ChangePlaceholder.m in Sources */,
 				D7074E8825108944000EC935 /* BTHomeNoticeCell.m in Sources */,
@@ -1024,6 +1056,7 @@
 				D7055458250F69A8005E367E /* BTBackupMnemonicsCell.m in Sources */,
 				3C63D42F250DADBF001CEC7D /* NSString+Md5.m in Sources */,
 				3CACD61F250E545A00B50D9A /* BTTeamAchievementModel.m in Sources */,
+				3C1D2FEE251239E7002AE5AA /* BTPoolViewController.m in Sources */,
 				3C63D40A250DA73C001CEC7D /* AppDelegate.m in Sources */,
 				D7074E9A25109487000EC935 /* BTOrePoolViewController.m in Sources */,
 				D7429BE42511F873003B04E4 /* BTCurrencyViewController.m in Sources */,
@@ -1034,6 +1067,7 @@
 				D7707D7325105759009EF151 /* BTHomeRiseFallCell.m in Sources */,
 				D7429BF9251212B5003B04E4 /* BTOnCurrencyVC.m in Sources */,
 				D7707D8525107028009EF151 /* BTHomeNoticeVC.m in Sources */,
+				3C1D305F25124F72002AE5AA /* BTTradingViewController.m in Sources */,
 				3CAF5E70250E3A69002482C1 /* BTWalletManageDetailVC.m in Sources */,
 				D7074EA82510A720000EC935 /* BTHistoryRecordModel.m in Sources */,
 				3C63D45C250DD4F2001CEC7D /* BTProfileViewController.m in Sources */,

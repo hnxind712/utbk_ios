@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BTOnCurrencyVC">
             <connections>
+                <outlet property="chineseName" destination="vyd-UG-vwO" id="joj-Mu-J47"/>
+                <outlet property="circulation" destination="v4W-WR-ASI" id="eCx-rX-2Tm"/>
+                <outlet property="discharge" destination="5ht-qD-fv0" id="OSD-9v-6Gn"/>
+                <outlet property="englishName" destination="5ht-fj-4r7" id="AOh-xs-dbO"/>
+                <outlet property="markingBudget" destination="ad8-K0-nZS" id="Z7M-9t-FFC"/>
+                <outlet property="name" destination="JuI-PV-HFT" id="88z-ul-618"/>
+                <outlet property="phoneNum" destination="k7m-M3-l5n" id="pNn-CA-0F7"/>
+                <outlet property="placeH" destination="SLO-uf-Nid" id="7jM-5K-8B1"/>
+                <outlet property="subjectDescription" destination="5R4-gb-gDP" id="OKl-Po-rDf"/>
+                <outlet property="userCount" destination="aNM-Da-O1T" id="CIA-c9-x8h"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,10 +28,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGk-rD-cyd">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_onCurrencyBg" translatesAutoresizingMaskIntoConstraints="NO" id="bys-tR-PmE">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -33,17 +43,20 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8d-8W-UEn">
-                    <rect key="frame" x="20" y="44" width="20" height="22"/>
+                    <rect key="frame" x="20" y="44" width="40" height="40"/>
                     <state key="normal" image="icon_cardBack"/>
+                    <connections>
+                        <action selector="back:" destination="-1" eventType="touchUpInside" id="7VN-je-N1E"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上币申请" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4X-6R-yfw">
-                    <rect key="frame" x="170" y="44" width="74" height="22"/>
+                    <rect key="frame" x="170" y="53" width="74" height="22"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <color key="textColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3t-Go-fgR">
-                    <rect key="frame" x="40" y="81" width="8" height="10"/>
+                    <rect key="frame" x="60" y="99" width="8" height="10"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="1Ri-ZE-xIm"/>
                     </constraints>
@@ -52,7 +65,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 为必填项" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZh-GC-Uwz">
-                    <rect key="frame" x="53" y="76.5" width="69.5" height="15"/>
+                    <rect key="frame" x="73" y="94.5" width="69.5" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="QFA-LM-1U4"/>
                     </constraints>
@@ -61,7 +74,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L75-h6-vsn">
-                    <rect key="frame" x="12" y="101.5" width="390" height="752.5"/>
+                    <rect key="frame" x="12" y="119.5" width="390" height="734.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Mu-HK-xZC">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="90"/>
@@ -85,7 +98,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入联系人姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JuI-PV-HFT">
-                                    <rect key="frame" x="24" y="46.5" width="354" height="17.5"/>
+                                    <rect key="frame" x="24" y="46.5" width="354" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -134,7 +147,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入联系人手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k7m-M3-l5n">
-                                    <rect key="frame" x="24" y="46.5" width="354" height="17.5"/>
+                                    <rect key="frame" x="24" y="46.5" width="354" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -183,7 +196,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入中文币种名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vyd-UG-vwO">
-                                    <rect key="frame" x="24" y="46.5" width="354" height="17.5"/>
+                                    <rect key="frame" x="24" y="46.5" width="354" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -232,7 +245,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入英文币种名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ht-fj-4r7">
-                                    <rect key="frame" x="24" y="46.5" width="354" height="17.5"/>
+                                    <rect key="frame" x="24" y="46.5" width="354" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -281,7 +294,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入发行总量" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v4W-WR-ASI">
-                                    <rect key="frame" x="24" y="46.5" width="354" height="17.5"/>
+                                    <rect key="frame" x="24" y="46.5" width="354" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -330,7 +343,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入市场已流通量" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ht-qD-fv0">
-                                    <rect key="frame" x="24" y="46.5" width="354" height="17.5"/>
+                                    <rect key="frame" x="24" y="46.5" width="354" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -396,6 +409,9 @@
                                             <real key="value" value="4"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="BrE-CG-42N"/>
+                                    </connections>
                                 </textView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入项目介绍" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLO-uf-Nid">
                                     <rect key="frame" x="20" y="53.5" width="93" height="16"/>
@@ -444,7 +460,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入社区用户量" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aNM-Da-O1T">
-                                    <rect key="frame" x="24" y="46.5" width="354" height="17.5"/>
+                                    <rect key="frame" x="24" y="46.5" width="354" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -493,7 +509,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入营销预算" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ad8-K0-nZS">
-                                    <rect key="frame" x="24" y="46.5" width="354" height="17.5"/>
+                                    <rect key="frame" x="24" y="46.5" width="354" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -543,6 +559,9 @@
                                     <real key="value" value="9"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="completedAction:" destination="-1" eventType="touchUpInside" id="3Zp-3P-Jvl"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>

@@ -12,6 +12,9 @@
 
 #endif /* UtbkConstant_h */
 
+//自定义block
+typedef void(^ResultBlock)(id resultObject,int isSuccessed);
+
 #define LocalLanguageKey         @"LocalLanguageKey" //选择语言（0代表简体中文，1代表繁体中文，2代表英文）
 #define LocalizationKey(key)     [NSBundle.mainBundle localizedStringForKey:(key) value:@"" table:nil]
 //[[ChangeLanguage bundle] localizedStringForKey:key value:nil table:@"English"]
