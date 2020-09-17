@@ -513,11 +513,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 //    }
     [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:SUBSCRIBE_EXCHANGE_TRADE withVersion:COMMANDS_VERSION withRequestId: 0 withbody:dic];
     [SocketManager share].delegate=self;
-    if ([YLUserInfo isLogIn]) {
+//    if ([YLUserInfo isLogIn]) {
         [self getCommissionData:[marketManager shareInstance].symbol];
         [self getHistoryCommissionData];
         [self getPersonAllCollection];
-    }
+//    }
 }
 
 #pragma mark-头部右侧的进入K线按钮点击事件
@@ -530,10 +530,10 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 }
 #pragma mark-头部右侧的收藏按钮点击事件
 - (IBAction)moreAction:(UIButton *)sender {
-    if (![YLUserInfo isLogIn]) {//未登录
-        [self showLoginViewController];
-        return;
-    }
+//    if (![YLUserInfo isLogIn]) {//未登录
+//        [self showLoginViewController];
+//        return;
+//    }
     if (_isCollect) {
         [self deleteCollectionWithsymbol:[marketManager shareInstance].symbol];
     }else{
@@ -789,10 +789,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                 }];
 
                  NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-                if ([YLUserInfo isLogIn]) {
-                    [self getBasewalletwithcoin:[coinArray lastObject]];
-                    
-                }
+                [self getBasewalletwithcoin:[coinArray lastObject]];
+//                if ([YLUserInfo isLogIn]) {
+//                    [self getBasewalletwithcoin:[coinArray lastObject]];
+//
+//                }
             }
             if (self.priceType == PriceType_Market) {
                 self.heightConstant.constant=0;
@@ -831,9 +832,10 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             
             
             NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-            if ([YLUserInfo isLogIn]) {
-                [self getCoinwalletwithcoin:[coinArray firstObject]];
-            }
+            [self getCoinwalletwithcoin:[coinArray firstObject]];
+//            if ([YLUserInfo isLogIn]) {
+//                [self getCoinwalletwithcoin:[coinArray firstObject]];
+//            }
             if (self.priceType == PriceType_Market) {
                 self.heightConstant.constant=0;
                 self.PriceTF.text=LocalizationKey(@"Optimal");
@@ -883,14 +885,16 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                     self.TradeNumber.text=[NSString stringWithFormat:@"%@--",LocalizationKey(@"entrustment")];
                     if (!_IsSell) {
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-                        if ([YLUserInfo isLogIn]) {
-                            [self getBasewalletwithcoin:[coinArray lastObject]];
-                        }
+                        [self getBasewalletwithcoin:[coinArray lastObject]];
+//                        if ([YLUserInfo isLogIn]) {
+//                            [self getBasewalletwithcoin:[coinArray lastObject]];
+//                        }
                     }else{
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-                        if ([YLUserInfo isLogIn]) {
-                            [self getCoinwalletwithcoin:[coinArray firstObject]];
-                        }
+                        [self getCoinwalletwithcoin:[coinArray firstObject]];
+//                        if ([YLUserInfo isLogIn]) {
+//[self getBasewalletwithcoin:[coinArray lastObject]];
+//                        }
                     }
 
                 }else if (didRow==1){
@@ -914,16 +918,19 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                         self.AmountTF.placeholder=LocalizationKey(@"entrustment");
                         self.objectCoin.text=_baseCoinName;
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-                        if ([YLUserInfo isLogIn]) {
-                            [self getBasewalletwithcoin:[coinArray lastObject]];                }
+                        [self getBasewalletwithcoin:[coinArray lastObject]];
+//                        if ([YLUserInfo isLogIn]) {
+//                            [self getBasewalletwithcoin:[coinArray lastObject]];
+//                        }
                     }else{
                         //卖出
                         self.AmountTF.placeholder=LocalizationKey(@"amonut");
                         self.objectCoin.text=_ObjectCoinName;
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-                        if ([YLUserInfo isLogIn]) {
-                            [self getCoinwalletwithcoin:[coinArray firstObject]];
-                        }
+                        [self getBasewalletwithcoin:[coinArray lastObject]];
+//                        if ([YLUserInfo isLogIn]) {
+//                            [self getCoinwalletwithcoin:[coinArray firstObject]];
+//                        }
                     }
                 }else if (didRow==2){
                     //止盈止损
@@ -946,14 +953,16 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                     self.TradeNumber.text=[NSString stringWithFormat:@"%@--",LocalizationKey(@"entrustment")];
                     if (!_IsSell) {
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-                        if ([YLUserInfo isLogIn]) {
-                            [self getBasewalletwithcoin:[coinArray lastObject]];
-                        }
+                        [self getBasewalletwithcoin:[coinArray lastObject]];
+//                        if ([YLUserInfo isLogIn]) {
+//                            [self getBasewalletwithcoin:[coinArray lastObject]];
+//                        }
                     }else{
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-                        if ([YLUserInfo isLogIn]) {
-                            [self getCoinwalletwithcoin:[coinArray firstObject]];
-                        }
+                        [self getBasewalletwithcoin:[coinArray lastObject]];
+//                        if ([YLUserInfo isLogIn]) {
+//                            [self getCoinwalletwithcoin:[coinArray firstObject]];
+//                        }
                     }
                 }
             }];
@@ -988,17 +997,17 @@ typedef NS_ENUM(NSUInteger, PriceType) {
         {
             [self.PriceTF resignFirstResponder];
             [self.AmountTF resignFirstResponder];
-            if(![YLUserInfo isLogIn]){
-                [self showLoginViewController];
-                return;
-            }
-            
-            //实名认证
-            if (![self.accountInfo.realVerified isEqualToString:@"1"]) {
-                [self.view makeToast:LocalizationKey(@"validateYourID") duration:1.5 position:ToastPosition];
-                
-                return;
-            }
+//            if(![YLUserInfo isLogIn]){
+//                [self showLoginViewController];
+//                return;
+//            }
+//
+//            //实名认证
+//            if (![self.accountInfo.realVerified isEqualToString:@"1"]) {
+//                [self.view makeToast:LocalizationKey(@"validateYourID") duration:1.5 position:ToastPosition];
+//
+//                return;
+//            }
             if (!_IsSell) { /*买入*/
     
                 if (self.priceType == PriceType_Fixed) {
@@ -1183,10 +1192,10 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             break;
         case 106: //查看全部当前委托
         {
-            if(![YLUserInfo isLogIn]){
-                [self showLoginViewController];
-                return;
-            }
+//            if(![YLUserInfo isLogIn]){
+//                [self showLoginViewController];
+//                return;
+//            }
             if ([marketManager shareInstance].symbol) {
                 EntrustmentRecordViewController *record = [[EntrustmentRecordViewController alloc] init];
                 record.symbol = [marketManager shareInstance].symbol;
@@ -1233,17 +1242,26 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     }];
     self.isHistory = NO;
 
-    if ([YLUserInfo isLogIn]) {
-        if (self.contentArr.count > 0) {
-            self.noDataLabel.hidden = YES;
-        }else{
-            self.noDataLabel.hidden = NO;
-
-        }
-        self.viewheights.constant = [self getviewheightspce];
-
-        [self.entrusttableView reloadData];
+    if (self.contentArr.count > 0) {
+        self.noDataLabel.hidden = YES;
+    }else{
+        self.noDataLabel.hidden = NO;
+        
     }
+    self.viewheights.constant = [self getviewheightspce];
+    
+    [self.entrusttableView reloadData];
+//    if ([YLUserInfo isLogIn]) {
+//        if (self.contentArr.count > 0) {
+//            self.noDataLabel.hidden = YES;
+//        }else{
+//            self.noDataLabel.hidden = NO;
+//
+//        }
+//        self.viewheights.constant = [self getviewheightspce];
+//
+//        [self.entrusttableView reloadData];
+//    }
    
 }
 
@@ -1260,18 +1278,27 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     }];
     self.isHistory = YES;
 
-    if ([YLUserInfo isLogIn]) {
-        if (self.hisdataArr.count > 0) {
-            self.noDataLabel.hidden = YES;
-        }else{
-            self.noDataLabel.hidden = NO;
-            
-        }
-        self.viewheights.constant = [self getviewheightspce];
-
-        [self.entrusttableView reloadData];
-//        [self getHistoryCommissionData];
+    if (self.hisdataArr.count > 0) {
+        self.noDataLabel.hidden = YES;
+    }else{
+        self.noDataLabel.hidden = NO;
+        
     }
+    self.viewheights.constant = [self getviewheightspce];
+    
+    [self.entrusttableView reloadData];
+//    if ([YLUserInfo isLogIn]) {
+//        if (self.hisdataArr.count > 0) {
+//            self.noDataLabel.hidden = YES;
+//        }else{
+//            self.noDataLabel.hidden = NO;
+//
+//        }
+//        self.viewheights.constant = [self getviewheightspce];
+//
+//        [self.entrusttableView reloadData];
+////        [self getHistoryCommissionData];
+//    }
    
 }
 
@@ -1382,15 +1409,20 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                         }else{
                             self.nowPrice.textColor=GreenColor;
                         }
-                        if ([YLUserInfo isLogIn]) {
-                            if (!_IsSell) {
-                                [self getBasewalletwithcoin:[coinArray lastObject]];
-                            }else{
-                                [self getCoinwalletwithcoin:[coinArray firstObject]];
-                            }
+                        if (!_IsSell) {
+                            [self getBasewalletwithcoin:[coinArray lastObject]];
                         }else{
-                            
+                            [self getCoinwalletwithcoin:[coinArray firstObject]];
                         }
+//                        if ([YLUserInfo isLogIn]) {
+//                            if (!_IsSell) {
+//                                [self getBasewalletwithcoin:[coinArray lastObject]];
+//                            }else{
+//                                [self getCoinwalletwithcoin:[coinArray firstObject]];
+//                            }
+//                        }else{
+//
+//                        }
                     }
                 }
             }else{
@@ -1425,11 +1457,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
         }
     }
     NSDictionary*dic;
-    if ([YLUserInfo isLogIn]) {
-        dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",[YLUserInfo shareUserInfo].ID,@"uid",nil];
-    }else{
+//    if ([YLUserInfo isLogIn]) {
+//        dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",[YLUserInfo shareUserInfo].ID,@"uid",nil];
+//    }else{
         dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",nil];
-    }
+//    }
     [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:SUBSCRIBE_EXCHANGE_TRADE withVersion:COMMANDS_VERSION withRequestId: 0 withbody:dic];
     [SocketManager share].delegate=self;
     NSString*kind=notif.userInfo[@"kind"];
@@ -1443,10 +1475,10 @@ typedef NS_ENUM(NSUInteger, PriceType) {
         UIButton*sellBtn=(UIButton*)[self.view viewWithTag:101];
         [self touchEvents:sellBtn];
     }else{
-        if ([YLUserInfo isLogIn]) {
+//        if ([YLUserInfo isLogIn]) {
             [self getCommissionData:[marketManager shareInstance].symbol];
             [self getHistoryCommissionData];
-        }
+//        }
     }
     [self getPersonAllCollection];
 }
@@ -1465,11 +1497,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                 if (contentArray.count==0) {
                     [self.contentArr removeAllObjects];
                     [self.entrusttableView reloadData];
-                    if ([YLUserInfo isLogIn]) {
+//                    if ([YLUserInfo isLogIn]) {
                         if (!self.isHistory) {
                              self.noDataLabel.hidden=NO;
                         }
-                    }
+//                    }
                     return ;
                 }
                 if (!self.isHistory) {
@@ -1510,11 +1542,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                 if (dataArr.count==0) {
                     [self.hisdataArr removeAllObjects];
                     [self.entrusttableView reloadData];
-                    if ([YLUserInfo isLogIn]) {
+//                    if ([YLUserInfo isLogIn]) {
                         if (self.isHistory) {
                             self.noDataLabel.hidden=NO;
                         }
-                    }
+//                    }
                     return ;
                 }
                 if (self.isHistory) {
@@ -1902,11 +1934,11 @@ kRemoveCellSeparator
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:YES];
     NSDictionary*dic;
-    if ([YLUserInfo isLogIn]) {
-        dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",[YLUserInfo shareUserInfo].ID,@"uid",nil];
-    }else{
+//    if ([YLUserInfo isLogIn]) {
+//        dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",[YLUserInfo shareUserInfo].ID,@"uid",nil];
+//    }else{
         dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",nil];
-    }
+//    }
     [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:UNSUBSCRIBE_SYMBOL_THUMB withVersion:COMMANDS_VERSION withRequestId: 0 withbody:nil];
     [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:UNSUBSCRIBE_EXCHANGE_TRADE withVersion:COMMANDS_VERSION withRequestId: 0 withbody:dic];
     [SocketManager share].delegate = nil;
