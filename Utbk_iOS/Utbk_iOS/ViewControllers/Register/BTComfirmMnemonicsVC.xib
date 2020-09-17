@@ -80,6 +80,9 @@
                                     <real key="value" value="9"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="completedAction:" destination="-1" eventType="touchUpInside" id="djx-va-aOa"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>

@@ -205,9 +205,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/MSCycleScrollView/MSCycleScrollView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MSPageControl/MSPageControl.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PGDatePicker/PGDatePicker.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PGPickerView/PGPickerView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Toast/Toast.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/VTMagic/VTMagic.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/YBPopupMenu/YBPopupMenu.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
@@ -218,9 +222,13 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/MSCycleScrollView/MSCycleScrollView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MSPageControl/MSPageControl.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PGDatePicker/PGDatePicker.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PGPickerView/PGPickerView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Toast/Toast.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/VTMagic/VTMagic.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/YBPopupMenu/YBPopupMenu.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

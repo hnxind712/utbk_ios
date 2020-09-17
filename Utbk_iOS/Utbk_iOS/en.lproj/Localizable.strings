@@ -10,3 +10,255 @@
 //我的
 "钱包管理" = "wallet Manager";
 "复制成功" = "copy success";
+
+//我的订单
+"unPaying" = "unPaying";
+"paid" = "paid";
+"completed" = "completed";
+"cancelled" = "cancelled";
+"complaint" = "complaint";
+"buy" = "Buy";
+"sell" = "Sell";
+"unPayingTip" = "There is no outstanding order for payment";
+"paidTip" = "An order without payment";
+"completedTip" = "Orders that have not been completed";
+"cancelledTip" = "No cancellations";
+"complaintTip" = "There is no order in the complaint";
+//订单详情
+"orderID" = "orderID";
+"orderDetail" = "orderDetail";
+"orderStatus" = "orderStatus";
+"orderInformation" = "orderInformation";
+"tradingObject" = "tradingObject";
+"orderNo" = "orderNo";
+"tradingPrice" = "tradingPrice";
+"tradingNumber" = "tradingNumber";
+"tradingCash" = "tradingCash";
+"createTime" = "createTime";
+"payInfo" = "payInfo";
+"alipayAccount" = "alipayAccount";
+"WeChatAccount" = "WeChatAccount";
+"bankCardAccount" = "bankCardAccount";
+"alipayAccountTip" = "Users have not added alipay account";
+"WeChatAccountTip" = "User has not added WeChat account";
+"bankCardAccountTip" = "User has not added bank card account";
+"payment" = "payment";
+"cancelOrder" = "cancelOrder";
+"orderComplaint" = "orderComplaint";
+"putCoin" = "putCoin";
+"contactMe" = "contact me";
+"Contactus" = "Contact us";
+"orderDetailTip1" = "and";
+"orderDetailTip2" = "of the deal";
+"cancelOrderTip" = "Confirm cancellation of order";
+"noAlipayQRImage" = "There is no alipay qr code picture";
+"noWeChatQRImage" = "No WeChat 2d image";
+"alipayQR" = "Alipay qr code";
+"weChatQR" = "WeChat qr code";
+"orderComplaintReason" = "Click to enter the complaint···";
+"noOrderComplaintTip" = "The reason for the complaint cannot be empty";
+"certainPayTip" = "Confirm payment";
+"complaints" = "complaints";
+"schemeallot" = "Allocation scheme";
+"Nocurrency" = "No currency dividends";
+"Companyprofile" = "Company profile";
+
+//K线图
+"highest" = "H";
+"minimumest" = "L";
+"nowopen" = "Open";
+"closingprice" = "Close";
+"24H" = "24H";
+"index" = "Index";
+"line" = "Line";
+"min" = "1min";
+"fivemin" = "5min";
+"thirtymin" = "30min";
+"hours" = "1hour";
+"days" = "1day";
+"weeks" = "1week";
+"closemunu" = "close";
+"addFavo" = "Favorites";
+"deleteFavo" = "Added";
+"increase" = "";
+"traded" = "Traded";
+"openplate" = "Open：";
+"closeplate" = "Close：";
+"hightplate" = "Highest：";
+"lowplate" = "Minimum：";
+"confirmoperation" = "Do you confirm the above operation？";
+//补充增加K线
+"morekline" = "More";
+"mainKline" = "Main";
+"subKline" = "Sub";
+"hideKline" = "Hide";
+"fivethmin" = "15min";
+"monthkline" = "1mon";
+//增加深度图
+"depth" = "Depth";
+"marketTrades" = "Market Trades";
+"buyplate" = "Buy";
+"sellplate" = "Sell";
+"depthtime" = "Date";
+"depthDirection" = "Type";
+
+//后期添加功能增加的国际化
+"justTime" = "just";
+"GestureMessage" = "System upgrade maintenance, specific maintenance progress, please pay attention to computer version of ztuo.";
+"Noviceguide" = "Novice Guide";
+"helpMore" = "More";
+"Commonproblem" = "Common Problem";
+"rescinded" = "Rescinded";
+"Startandstoptime" = "Start and stop time";
+"Reset" = "Reset";
+"PleaseEnterTheTransactionPair" = "Please enter the transaction pair";
+"PleaseEnterTheType" = "Please Enter The Type";
+"PleaseEnterTheDirection" = "Please Enter The Direction";
+"startAndEndTime" = "Start and stop time is the time of formalities";
+"LockTime" = "Lock Time";
+"EnterYouWantChooseTime" = "Please enter the time you have to choose";
+"project" = "Project";
+"UnitPrice" = "Unit Price";
+"securitySetting" = "Security Setting";
+"accountSecurity" = "Account security";
+"securityTiXing" = "To ensure the safety of your account, please complete the real name authentication transaction!";
+"Realnameauthentication" = "Real Name Authentication";
+"Uploaded" = "Uploaded";
+"Notuploaded" = "Not uploaded";
+"payTypeTips" = "Please set up your payment method and make sure you use my real account number.";
+
+//币竞猜
+"Period" = "Period";
+"Number" = "Number";
+"TotalNumber" = "TotalNumber";
+"OpeningTime" = "OpeningTime";
+"Detailsoftheaward" = "Detailsoftheaward";
+
+"MerchantCertification" = "Merchant Certification";
+"CandyBox" = "Candy Box";
+
+"Currentlevel" = "Level";
+"CoinFee" = "Coin Fee";
+"Legalcurrency" = "Legal Currency Fee";
+"Dailywithdrawalquota" = "Daily withdrawal quota(USDT)";
+"Numberofpenswithdrawnperday" = "Number of pens withdrawn per day";
+"FeeLevel" = "Fee Level";
+"Hierarchicalprivilege" = "Hierarchical privilege";
+
+"Ordinaryusers" = "Ordinary users";
+"Realnameuser" = "Realname user";
+"Certifiedmerchant" = "Certified merchant";
+
+"Activityname" = "Activity name";
+"Quantityofdonation" = "Quantity of donation";
+"Pleaseauthenticatethevideofirst" = "Please authenticate the video first";
+
+"pleaseenterTrigger" = "Please Enter Trigger Price";
+"TriggerPricezero" = "Trigger Price zero";
+
+"waitingTrigger" = "WaitingTrigger";
+"Timeout" = "Timeout";
+"Recordvideo" = "Record a video of yourself reading the following numbers";
+"StartRecording" = "Click Start Recording";
+
+"Nonrealname" = "Non real name";
+"Videoaudit" = "Video audit";
+"Realnameauditfailed" = "Realname audit failed";
+"Videoauditfailed" = "Video audit failed";
+"Realnamesuccess" = "Realname success";
+"Tobeexaminedbyrealname" = "To be examined by realname";
+"WaitingforVideoAudit" = "Waiting for Video Audit";
+
+"Authentication" = "Authentication";
+"Myreward" = "My reward";
+
+"inputRaiseAmount" = "inputRaiseAmount";
+"inputSaleAmount" = "inputSaleAmount";
+"saleMode" = "SaleMode";
+"projectDetail" = "ProjectDetail";
+"ConfirmSubscription" = "Confirm";
+"Detail" = "Detail";
+"AssetsCoin" = "Coin";
+"AssetsCurrency" = "Currency";
+"TurnOut" = "TurnOut";
+
+"From" = "From";
+"To" = "To";
+"Currency" = "Currency";
+"TransferNumber" = "TransferNumber";
+"inputTransferNumber" = "input Transfer Number";
+
+"AccountCoin" = "AccountCoin";
+"AccountCurrency" = "AccountCurrency";
+"Open" = "Open";
+"Close" = "Close";
+"AccountSelecte" = "AccountSelecte";
+"Transfer" = "Transfer";
+"Borrowed" = "Borrowed";
+"BorrowMoney" = "BorrowMoney";
+"moneyRate" = "moneyRate";
+"maxlimit" = "maxLimit";
+"Mayborrow" = "MayBorrow";
+"BorrowRecords" = "BorrowRecords";
+"ApplyTime" = "ApplyTime";
+"Unpaidinterest" = "Unpaid interest";
+"UnreturnedQuantity" = "UnreturnedQuantity";
+"return" = "return";
+"Returned" = "Returned";
+"shouldbereturned" = "should be returned";
+"Quantityofloans" = "Quantity of loans";
+"Interest" = "Interest";
+"returnedQuantity" = "returnedQuantity";
+"inputReturnNumber" = "inputReturnNumber";
+
+//资产流水type值
+"PaymentofBusinessMargin" = "Payment of Business Margin";
+"ReturnedofBusinessMargin" = "Returned of Business Margin";
+"Currencyexchange" = "Currency exchange";
+"Channelpromotion" = "Channel promotion";
+"Walletairdrop" = "Wallet airdrop";
+"LockPosition" = "Lock Position";
+"Unlock" = "Unlock";
+"ThirdPartyTransfer" = "Third Transfer";
+"Thirdpartyoutgoing" = "Third outgoing";
+"CoinToCurrency" = "Coin To Currency";
+"CurrencyToCoin" = "Currency To Coin";
+"BorrowingTurnover" = "Borrowing Turnover";
+"Repaymentflow" = "Repayment flow";
+
+"Burstprice" = "Burst price";
+"Riskrate" = "Risk rate";
+
+"Descriptionofexplosion" = "Description of explosion";
+"Contentofexplosion1" = "When the risk rate reaches ";
+"Contentofexplosion2" = ", the system will force the recovery of all borrowed assets in your current account.";
+"Gotit" = "Got it";
+
+"Recommended friends" = "Recommended friends";
+"Come to" = "Come to";
+"AppName" = "ztuo";
+"Registered transactions" = "Registered transactions";
+"There is a new version, please go download and upgrade!" = "There is a new version, please go download and upgrade!";
+"Remember password" = "Remember password";
+"Submitsuccessfully" = "Submit successfully";
+"Pleaseenterthewechat" = "Please enter the wechat";
+"PleaseentertheQQ" = "Please enter the QQ";
+"uploadpersonaldigital" = "Please upload personal digital asset certificate";
+"uploadpersonaltransaction" = "Please upload the certificate of digital transaction assets.";
+"Examplepictures" = "Example pictures";
+"saveYourPhoto" = "Your photo has not been uploaded. Are you sure to save it?";
+"enterGoogleCode" = "Please enter your Google Verification Code";
+"skip" = "skip";
+"updateIDCard" = "Take and upload photos of your second generation ID card";
+"complaintbelodged" = "Only half an hour after payment can a complaint be lodged.";
+"ztuoEmail" = "ztuoEmail";
+"Searchadvertising" = "Search advertising";
+"Searchuse" = "Search user";
+"reason" = "Reason";
+"nothing" = "nothing";
+"Articledetails" = "Article details";
+"assetmanagement" = "asset management";
+"transactiondetails" = "transaction details";
+"newVersion" = "There is a new version, please go download and upgrade!";
+"sellLimit" = "sell Limit";
+"ztuoExchange" = "ztuoExchange";

@@ -16,4 +16,7 @@ target 'Utbk_iOS' do
     pod 'IQKeyboardManager'
     pod 'Toast', '2.0.0'
     pod 'CocoaAsyncSocket'
+    pod 'VTMagic'
+    pod 'YBPopupMenu', '~> 1.1.2'
+    pod 'PGDatePicker'
 end

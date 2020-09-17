@@ -7,6 +7,10 @@ ${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework
 ${BUILT_PRODUCTS_DIR}/MSCycleScrollView/MSCycleScrollView.framework
 ${BUILT_PRODUCTS_DIR}/MSPageControl/MSPageControl.framework
 ${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework
+${BUILT_PRODUCTS_DIR}/PGDatePicker/PGDatePicker.framework
+${BUILT_PRODUCTS_DIR}/PGPickerView/PGPickerView.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework
 ${BUILT_PRODUCTS_DIR}/Toast/Toast.framework
+${BUILT_PRODUCTS_DIR}/VTMagic/VTMagic.framework
+${BUILT_PRODUCTS_DIR}/YBPopupMenu/YBPopupMenu.framework

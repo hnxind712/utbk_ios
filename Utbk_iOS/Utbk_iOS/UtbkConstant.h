@@ -12,12 +12,15 @@
 
 #endif /* UtbkConstant_h */
 
+#define USERINFO @"USERINFO"
 //自定义block
 typedef void(^ResultBlock)(id resultObject,int isSuccessed);
-
+#define MESSAGE @"message"
 #define LocalLanguageKey         @"LocalLanguageKey" //选择语言（0代表简体中文，1代表繁体中文，2代表英文）
-#define LocalizationKey(key)     [NSBundle.mainBundle localizedStringForKey:(key) value:@"" table:nil]
-//[[ChangeLanguage bundle] localizedStringForKey:key value:nil table:@"English"]
+#define LanguageChange           @"LanguageChange" //切换语言
+#define LocalizationKey(key)     [[ChangeLanguage bundle] localizedStringForKey:key value:nil table:@"English"]
+//[NSBundle.mainBundle localizedStringForKey:(key) value:@"" table:nil]
+#define INT2STRING(intValue) [NSString stringWithFormat:@"%d", intValue]
 //图片
 #define BTUIIMAGE(name) [UIImage imageNamed:name]
 #define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
@@ -37,8 +40,11 @@ typedef void(^ResultBlock)(id resultObject,int isSuccessed);
 #define AppTextColor_999999  RGBOF(0x999999)
 #define AppTextColor_666666  RGBOF(0x666666)
 #define AppTextColor_E6E6E6  RGBOF(0xE6E6E6)
+#define RedColor   RGBOF(0xF15057)   //红跌
+#define GreenColor RGBOF(0x00B275)  //绿涨
 //通过RGB设置颜色
 #define kRGBColor(R,G,B)        [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1.0]
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(1.f)]
 /** 色值 RGB **/
 #define HEXCOLOR(color)     [UIColor colorWithHexColorString:color]
 
@@ -74,6 +80,57 @@ alpha:1.0]
 #define SCREEN_RESOLUTION (SCREEN_WIDTH * SCREEN_HEIGHT * ([UIScreen mainScreen].scale))
 
 #define  C_WIDTH(WIDTH) WIDTH * [UIScreen mainScreen].bounds.size.width/375.0
+#define kWindowHOne    [UIScreen mainScreen].bounds.size.height / 667 //应用程序的屏幕单位高度
+#define kWindowWHOne    [UIScreen mainScreen].bounds.size.width / 375 //应用程序的屏幕单位宽度
+
+//移除iOS7之后，cell默认左侧的分割线边距
+#define kRemoveCellSeparator \
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{\
+cell.separatorInset = UIEdgeInsetsZero;\
+cell.layoutMargins = UIEdgeInsetsZero; \
+cell.preservesSuperviewLayoutMargins = NO; \
+}\
+// 第一个参数是当下的控制器适配iOS11 一下的，第二个参数表示scrollview或子类
+#define AdjustsScrollViewInsetNever(controller,view) if(@available(iOS 11.0, *)) {view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;} else if([controller isKindOfClass:[UIViewController class]]) {controller.automaticallyAdjustsScrollViewInsets = false;}
 
 #define ToastHideDelay 1.f
 #define ToastPosition @"center"
+
+#define SOCKETTERMINAL           @"1002";  //安卓:1001,苹果:1002,WEB:1003,PC:1004
+#define SHOWCNY                  @"isShowCNY"//显示为人民币
+#define CURRENTSELECTED_SYMBOL  @"CURRENTSELECTED_SYMBOL"//当前选择的交易对
+
+#define SUBSCRIBE_SYMBOL  @"SUBSCRIBE_SYMBOL_THUMB"
+#define SUBSCRIBE_KLINE  @"SUBSCRIBE_SYMBOL_KLINE"
+#define SUBSCRIBE_EXCHANGE  @"SUBSCRIBE_EXCHANGE_TRADE"
+#define HIDEMONEY   @"HIDEMONEY" //是否隐藏总金额
+#define BIGGER   @"BIGGER" //放大K线视图(全屏)
+#define SMALL   @"SMALL" //缩小K线视图(非全屏)
+static  int    COMMANDS_VERSION = 1;
+static  short  SUBSCRIBE_SYMBOL_THUMB = 20001; //订阅缩略行情
+static  short  UNSUBSCRIBE_SYMBOL_THUMB = 20002;//取消订阅
+static  short  PUSH_SYMBOL_THUMB = 20003;
+// static  short  SUBSCRIBE_SYMBOL_KLINE = 20011; //订阅K线
+// static  short  UNSUBSCRIBE_SYMBOL_KLINE = 20012;
+// static  short  PUSH_SYMBOL_KLINE = 20013;
+static  short  SUBSCRIBE_EXCHANGE_TRADE = 20021; //订阅盘口信息
+static  short  UNSUBSCRIBE_EXCHANGE_TRADE = 20022;
+static  short  PUSH_EXCHANGE_TRADE = 20023;//成交记录
+static  short  PUSH_EXCHANGE_PLATE = 20024;
+static  short  PUSH_EXCHANGE_KLINE = 20025;//k线
+static  short  PUSH_EXCHANGE_ORDER_COMPLETED = 20026;//当前委托完成
+static  short  PUSH_EXCHANGE_ORDER_CANCELED = 20027;//当前委托取消
+static  short  PUSH_EXCHANGE_ORDER_TRADE = 20028;//当前委托变化
+static  short  SUBSCRIBE_CHAT = 20031;//订阅聊天
+static  short  UNSUBSCRIBE_CHAT = 20032;
+static  short  PUSH_CHAT = 20033;
+static  short  SEND_CHAT = 20034;//发送聊天
+static  short  SUBSCRIBE_GROUP_CHAT = 20035; //订阅组聊天
+static  short  UNSUBSCRIBE_GROUP_CHAT = 20036; //取消订阅组聊天
+static  short  SUBSCRIBE_APNS = 20037; //订阅APNS
+static  short  UNSUBSCRIBE_APNS = 20038;
+static  short  PUSH_GROUP_CHAT = 20039;
+static  short  PUSH_EXCHANGE_DEPTH = 20029;//深度图
+static  short  HEARTBEAT = 11004; //心跳包指令
+static  int    SOCKETREQUEST_LENGTH = 26;//消息头固定字节长度
+static  int    SOCKETRESPONSE_LENGTH = 22;//响应头固定字节长度

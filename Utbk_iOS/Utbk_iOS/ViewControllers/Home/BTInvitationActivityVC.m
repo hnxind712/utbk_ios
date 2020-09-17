@@ -7,8 +7,9 @@
 //
 
 #import "BTInvitationActivityVC.h"
+#import "STQRCodeController.h"
 
-@interface BTInvitationActivityVC ()
+@interface BTInvitationActivityVC ()<STQRCodeControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *coinAddress;
 @property (weak, nonatomic) IBOutlet UILabel *feeTipsLabel;
@@ -25,7 +26,7 @@
 }
 - (void)addRightNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:BTUIIMAGE(@"icon_transferRecord") forState:UIControlStateNormal];
+    [btn setImage:BTUIIMAGE(@"icon_transferRecordR") forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(transferRecordAction) forControlEvents:UIControlEventTouchUpInside];
     [btn sizeToFit];
@@ -34,8 +35,14 @@
 - (void)transferRecordAction{
     
 }
+- (void)qrcodeController:(STQRCodeController *)qrcodeController readerScanResult:(NSString *)readerScanResult type:(STQRCodeResultType)resultType{
+    
+}
 //扫描
 - (IBAction)scanCoinAddrssAction:(UIButton *)sender {
+    STQRCodeController *qrcode = [[STQRCodeController alloc]init];
+    qrcode.delegate = self;
+    [self.navigationController pushViewController:qrcode animated:YES];
 }
 //确认
 - (IBAction)comfirmAction:(UIButton *)sender {

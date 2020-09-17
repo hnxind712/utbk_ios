@@ -25,7 +25,7 @@
 }
 - (void)addRightNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:BTUIIMAGE(@"icon_transferRecord") forState:UIControlStateNormal];
+    [btn setImage:BTUIIMAGE(@"icon_transferRecordR") forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(transferRecordAction) forControlEvents:UIControlEventTouchUpInside];
     [btn sizeToFit];

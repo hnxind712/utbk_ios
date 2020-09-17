@@ -8,8 +8,10 @@
 
 #import "BTAssetsWithdrawVC.h"
 #import "BTWithdrawRecordVC.h"
+#import "STQRCodeController.h"
 
-@interface BTAssetsWithdrawVC ()
+@interface BTAssetsWithdrawVC ()<STQRCodeControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UIButton *chainsERC;
 @property (weak, nonatomic) IBOutlet UIButton *chainsTRC;
 @property (weak, nonatomic) IBOutlet UITextField *addressInput;
@@ -42,6 +44,12 @@
 }
 //扫描
 - (IBAction)scanCoinAddrssAction:(UIButton *)sender {
+    STQRCodeController *qrcode = [[STQRCodeController alloc]init];
+    qrcode.delegate = self;
+    [self.navigationController pushViewController:qrcode animated:YES];
+}
+- (void)qrcodeController:(STQRCodeController *)qrcodeController readerScanResult:(NSString *)readerScanResult type:(STQRCodeResultType)resultType{
+    
 }
 //全部输入
 - (IBAction)inputAllCoinAccountAction:(UIButton *)sender {

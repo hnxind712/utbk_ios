@@ -47,7 +47,7 @@
 }
 - (void)addRightNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:BTUIIMAGE(@"icon_transferRecord") forState:UIControlStateNormal];
+    [btn setImage:BTUIIMAGE(@"icon_transferRecordR") forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(transferRecordAction) forControlEvents:UIControlEventTouchUpInside];
     [btn sizeToFit];
@@ -76,26 +76,6 @@
     [self addSegment];
 }
 - (void)addSegment{
-    NSArray *segmentedArray = [NSArray arrayWithObjects:@"共享挖矿",@"持币空投",nil];
-
-    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:segmentedArray];
-
-    segmentedControl.frame = CGRectMake(0, 0, 200, 32);
-
-    segmentedControl.selectedSegmentIndex = 0;
-
-    segmentedControl.tintColor = RGBOF(0xD1A870);
-    segmentedControl.backgroundColor = [UIColor clearColor];
-    segmentedControl.layer.cornerRadius = 16.f;
-    segmentedControl.layer.borderWidth = 0.5;
-    segmentedControl.layer.borderColor = RGBOF(0xD1A870).CGColor;
-
-//    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-
-    [segmentedControl addTarget:self  action:@selector(indexDidChangeForSegmentedControl:)
-
-    forControlEvents:UIControlEventValueChanged];
-
     //方法1
     [self.navigationItem setTitleView:self.multipleSwitch];
 }

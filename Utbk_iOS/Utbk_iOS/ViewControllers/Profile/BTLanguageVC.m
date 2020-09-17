@@ -32,19 +32,16 @@
         case 100:
             self.traditionalChineseBtn.selected = NO;
             self.englishBtn.selected = NO;
+            [ChangeLanguage setUserlanguage:@"zh-Hans"];
             break;
         case 101:
             self.simplifiedChineseBtn.selected = NO;
-            self.englishBtn.selected = NO;
-            break;
-        case 102:
-            self.simplifiedChineseBtn.selected = NO;
             self.traditionalChineseBtn.selected = NO;
+            [ChangeLanguage setUserlanguage:@"en"];
             break;
         default:
             break;
     }
-    [[NSUserDefaults standardUserDefaults]setInteger:sender.tag - 100 forKey:LocalLanguageKey];
 }
 
 /*

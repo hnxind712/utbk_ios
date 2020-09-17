@@ -13,8 +13,12 @@ typedef void (^CommonVoidBlock)(void);
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+//交易类目中需要
+@property(nonatomic,strong)NSDecimalNumber* CNYRate;
+@property (nonatomic, assign) BOOL isEable;
 
 + (instancetype)sharedAppDelegate;
-
+- (void)presentViewController:(UIViewController *)vc animated:(BOOL)animated completion:(void (^)(void))completion;
+- (void)dismissViewController:(UIViewController *)vc animated:(BOOL)animated completion:(void (^)(void))completion;
 @end
 

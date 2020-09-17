@@ -36,19 +36,11 @@
     }
 }
 - (void)viewWillAppear:(BOOL)animated{
-    NSInteger index = [[NSUserDefaults standardUserDefaults]integerForKey:LocalLanguageKey];
-    switch (index) {
-        case 0:
-            _language.text = LocalizationKey(@"简体中文");
-            break;
-        case 1:
-            _language.text = LocalizationKey(@"繁体中文");
-            break;
-        case 2:
-            _language.text = LocalizationKey(@"Englishi");
-            break;
-        default:
-            break;
+    NSString *language = [ChangeLanguage userLanguage];
+    if ([language isEqualToString:@"en"]) {
+        _language.text = LocalizationKey(@"Englishi");
+    }else if ([language isEqualToString:@"zh-Hans"]){
+        _language.text = LocalizationKey(@"简体中文");
     }
 }
 //设置语言

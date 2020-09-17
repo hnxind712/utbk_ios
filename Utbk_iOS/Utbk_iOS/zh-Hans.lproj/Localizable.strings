@@ -10,3 +10,252 @@
 //我的
 "钱包管理" = "钱包管理";
 "复制成功" = "复制成功";
+//我的订单
+"unPaying" = "未付款";
+"paid" = "已付款";
+"completed" = "已完成";
+"cancelled" = "已取消";
+"complaint" = "申诉中";
+"buy" = "购买";
+"sell" = "出售";
+"unPayingTip" = "暂无未付款的订单";
+"paidTip" = "暂无已付款的订单";
+"completedTip" = "暂无已完成的订单";
+"cancelledTip" = "暂无已取消的订单";
+"complaintTip" = "暂无申诉中的订单";
+"Status" = "状态";
+//订单详情
+"orderID" = "订单ID";
+"orderDetail" = "订单详情";
+"orderStatus" = "订单状态";
+"orderInformation" = "订单信息";
+"tradingObject" = "交易对象";
+"orderNo" = "订单编号";
+"tradingPrice" = "交易价格";
+"tradingNumber" = "交易数量";
+"tradingCash" = "交易金额";
+"createTime" = "创建时间";
+"payInfo" = "支付信息";
+"alipayAccount" = "支付宝账号";
+"WeChatAccount" = "微信账号";
+"bankCardAccount" = "银行卡账号";
+"alipayAccountTip" = "用户暂未添加支付宝账户";
+"WeChatAccountTip" = "用户暂未添加微信账户";
+"bankCardAccountTip" = "用户暂未添加银行卡账户";
+"payment" = "付款";
+"cancelOrder" = "取消订单";
+"orderComplaint" = "订单申诉";
+"putCoin" = "放币";
+"contactMe" = "和我联系";
+"Contactus" = "联系我们";
+"orderDetailTip1" = "和";
+"orderDetailTip2" = "的交易";
+"cancelOrderTip" = "是否确认取消订单";
+"noAlipayQRImage" = "暂无支付宝二维码图片";
+"noWeChatQRImage" = "暂无微信二维码图片";
+"alipayQR" = "支付宝二维码";
+"weChatQR" = "微信二维码";
+"orderComplaintReason" = "点击输入投诉原因···";
+"noOrderComplaintTip" = "投诉原因不能为空";
+"certainPayTip" = "是否确认付款";
+"complaints" = "投诉";
+"Companyprofile" = "公司简介";
+
+//K线图
+"highest" = "高";
+"minimumest" = "低";
+"nowopen" = "开";
+"closingprice" = "收";
+"24H" = "24H";
+"index" = "指标";
+"line" = "分时";
+"min" = "1分";
+"fivemin" = "5分";
+"thirtymin" = "30分";
+"hours" = "1时";
+"days" = "1天";
+"day" = "天";
+"Coinguessing" = "币竞猜";
+
+"weeks" = "1周";
+"closemunu" = "关闭";
+"addFavo" = "添加自选";
+"deleteFavo" = "删除自选";
+"increase" = "涨幅";
+"traded" = "成交";
+"openplate" = "开盘价";
+"closeplate" = "收盘价";
+"hightplate" = "最高价";
+"lowplate" = "最低价";
+"confirmoperation" = "您是否确认以上操作？";
+//补充增加K线
+"morekline" = "更多";
+"mainKline" = "主图";
+"subKline" = "副图";
+"hideKline" = "隐藏";
+"fivethmin" = "15分";
+"monthkline" = "1月";
+//增加深度图
+"depth" = "深度";
+"marketTrades" = "成交";
+"buyplate" = "买盘";
+"sellplate" = "卖盘";
+"depthtime" = "时间";
+"depthDirection" = "方向";
+//后期添加功能增加的国际化
+"justTime" = "刚刚";
+"GestureMessage" = "系统升级维护中，升级进度详见PC官网";
+"helpMore" = "更多";
+"Noviceguide" = "新手指南";
+"Commonproblem" = "常见问题";
+"rescinded" = "已撤销";
+"Startandstoptime" = "起止时间";
+"Reset" = "重置";
+"PleaseEnterTheTransactionPair" = "请输入交易对";
+"PleaseEnterTheType" = "请输入类型";
+"PleaseEnterTheDirection" = "请输入方向";
+"startAndEndTime" = "起止时间为手续费生成时间";
+"LockTime" = "锁仓时间";
+"EnterYouWantChooseTime" = "请输入你要选择的时间";
+"project" = "项目";
+"UnitPrice" = "单价";
+"securitySetting" = "安全设置";
+"accountSecurity" = "账户安全";
+"securityTiXing" = "为保障您的账户安全，请完成实名认证后方可交易操作！";
+"Realnameauthentication" = "实名认证";
+"Uploaded" = "已上传";
+"Notuploaded" = "未上传";
+"payTypeTips" = "请设置您的收款方式，请务必使用本人的实名账号";
+
+//币竞猜
+"Period" = "期次";
+"Number" = "每注个数";
+"TotalNumber" = "投注总数";
+"OpeningTime" = "开奖时间";
+"Detailsoftheaward" = "开奖详情";
+
+"MerchantCertification" = "商家认证";
+"CandyBox" = "糖果盒";
+
+
+"Currentlevel" = "当前等级";
+"CoinFee" = "币币手续费";
+"Legalcurrency" = "法币手续费";
+"Dailywithdrawalquota" = "每日提现额度(USDT)";
+"Numberofpenswithdrawnperday" = "每日提币笔数";
+"FeeLevel" = "手续费等级";
+"Hierarchicalprivilege" = "等级特权";
+
+"Ordinaryusers" = "普通用户";
+"Realnameuser" = "实名用户";
+"Certifiedmerchant" = "认证商家";
+
+"Activityname" = "活动名称";
+"Quantityofdonation" = "赠送数量";
+"Please authenticate the video first" = "请先进行视频认证";
+
+"pleaseenterTrigger" = "请输入触发价格";
+"TriggerPricezero" = "触发价格要大于0";
+
+"waitingTrigger" = "等待触发";
+"Timeout" = "已超时";
+
+"Recordvideo" = "录制一段自己朗读如下数字的视频";
+"StartRecording" = "点击开始录制";
+//0-未实名、1-视频审核,2-实名审核失败、3-视频审核失败,4-实名成功,5-待实名审核 ,6-待视频审核
+"Nonrealname" = "未实名";
+"Videoaudit" = "视频审核";
+"Realnameauditfailed" = "实名审核失败";
+"Videoauditfailed" = "视频审核失败";
+"Realnamesuccess" = "实名成功";
+"Tobeexaminedbyrealname" = "待实名审核";
+"WaitingforVideoAudit" = "待视频审核";
+
+"Authentication" = "认证";
+"Myreward" = "我的奖励";
+
+"inputRaiseAmount" = "请输入募集币种数量";
+"inputSaleAmount" = "请输入发售币种数量";
+"saleMode" = "售卖方式";
+"projectDetail" = "项目详情";
+"ConfirmSubscription" = "确认认购";
+"Detail" = "详情";
+"AssetsCoin" = "币币";
+"AssetsCurrency" = "法币";
+"TurnOut" = "转出";
+
+"From" = "从";
+"To" = "到";
+"Currency" = "币种";
+"TransferNumber" = "划转数量";
+"inputTransferNumber" = "请输入划转数量";
+
+"AccountCoin" = "币币账户";
+"AccountCurrency" = "法币账户";
+"Open" = "展开";
+"Close" = "收起";
+"AccountSelecte" = "选择账户";
+"Transfer" = "划转";
+"Borrowed" = "已借";
+"BorrowMoney" = "借币";
+"moneyRate" = "利率";
+"maxlimit" = "最大额度";
+"Mayborrow" = "可借";
+"BorrowRecords" = "借币记录";
+"ApplyTime" = "申请时间";
+"Unpaidinterest" = "未还利息";
+"UnreturnedQuantity" = "未归还数量";
+"return" = "归还";
+"Returned" = "已归还";
+"shouldbereturned" = "应还数量";
+"Quantityofloans" = "借贷数量";
+"Interest" = "利息";
+"returnedQuantity" = "归还数量";
+"inputReturnNumber" = "请输入归还数量";
+
+//资产流水type值
+"PaymentofBusinessMargin" = "缴纳商家保证金";
+"ReturnedofBusinessMargin" = "归还商家保证金";
+"Currencyexchange" = "币币兑换";
+"Channelpromotion" = "渠道推广";
+"Walletairdrop" = "钱包空投";
+"LockPosition" = "锁仓";
+"Unlock" = "解锁";
+"ThirdPartyTransfer" = "第三方转入";
+"Thirdpartyoutgoing" = "第三方转出";
+"CoinToCurrency" = "币币转入法币";
+"CurrencyToCoin" = "法币转入币币";
+"BorrowingTurnover" = "借贷流水";
+"Repaymentflow" = "还款流水";
+
+"Burstprice" = "爆仓价";
+"Riskrate" = "风险率";
+
+"Descriptionofexplosion" = "爆仓说明";
+"Contentofexplosion1" = "当风险率达到";
+
+"Contentofexplosion2" = "，系统将强制回收您当前帐户内的所有借贷资产。";
+"Gotit" = "知道了";
+
+"Submitsuccessfully" = "提交成功";
+"Pleaseenterthewechat" = "请输入微信号";
+"PleaseentertheQQ" = "请输入QQ号";
+"uploadpersonaldigital" = "请上传个人数字资产证明";
+"uploadpersonaltransaction" = "请上传数字交易资产证明";
+"Examplepictures" = "示例图片";
+"saveYourPhoto" = "您的照片没上传完，确定保存吗？";
+"enterGoogleCode" = "请输入您的谷歌验证码";
+"skip" = "跳过";
+"updateIDCard" = "拍摄上传您的二代身份证照片";
+"complaintbelodged" = "付款后半个小时，才可以申诉";
+"ztuoEmail" = "正拓邮箱";
+"Searchadvertising" = "搜索广告";
+"Searchuse" = "搜索用户";
+"reason" = "原因";
+"nothing" = "无";
+"Articledetails" = "文章详情";
+"assetmanagement" = "资产管理";
+"transactiondetails" = "交易详情";
+"newVersion" = "当前有新的版本，请前往下载升级！";
+"sellLimit" = "限价卖出";
+"ztuoExchange" = "正拓交易所";

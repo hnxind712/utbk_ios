@@ -19,6 +19,7 @@
 #import "BTHomeNoticeVC.h"//消息列表
 #import "BTPoolViewController.h"//矿池
 #import "BTOnCurrencyVC.h"//上币
+#import "BTWalletManagerVC.h"
 
 #define KBottomTopHeight 40.f //主板区标签对应的高度间隔
 #define KRiseFallCellHeight 60.f
@@ -34,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *mainBtn;//主板区
 @property (weak, nonatomic) IBOutlet UIButton *riseFallBtn;//涨幅榜
 @property (strong, nonatomic) UIButton *selectedBtn;//记录选中的按钮（主板区或涨幅榜，避免点击多次重复请求）
+@property (strong, nonatomic) UIButton *walletBtn;//钱包按钮
 @property (strong, nonatomic) NSArray *datasource;
 @property (strong, nonatomic) MSCycleScrollView *cycleScrollView;
 @property (strong, nonatomic) BTPayPasswordPopView *payPasswordPopView;
@@ -130,10 +132,12 @@
     [btn addTarget:self action:@selector(walletAction) forControlEvents:UIControlEventTouchUpInside];
     [btn sizeToFit];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    _walletBtn = btn;
 }
 #pragma mark 导航事件 钱包 转换
 - (void)walletAction{
-    NSLog(@"点击了钱包");
+    BTWalletManagerVC *wallet = [[BTWalletManagerVC alloc]init];
+    [self.navigationController pushViewController:wallet animated:YES];
 }
 - (void)transferAction{
     NSLog(@"点击了转换");
@@ -172,6 +176,12 @@
         {
             BTPoolViewController *pool = [[BTPoolViewController alloc]init];
             [self.navigationController pushViewController:pool animated:YES];
+        }
+            break;
+            case 105://夺宝
+            case 106://商城
+        {
+            [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
         }
             break;
             case 107://邀请激活

@@ -7,6 +7,7 @@
 //
 
 #import "BTCreateSuccessVC.h"
+#import "BTBackupMnemonicsVC.h"
 
 @interface BTCreateSuccessVC ()
 
@@ -20,9 +21,12 @@
 }
 //马上备份
 - (IBAction)copyImmediately:(UIButton *)sender {
+    BTBackupMnemonicsVC *backup = [[BTBackupMnemonicsVC alloc]init];
+    [self.navigationController pushViewController:backup animated:YES];
 }
 //稍后备份
 - (IBAction)copyLater:(UIButton *)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 /*

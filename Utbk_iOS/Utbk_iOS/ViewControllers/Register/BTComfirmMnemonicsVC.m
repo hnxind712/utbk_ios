@@ -9,6 +9,7 @@
 #import "BTComfirmMnemonicsVC.h"
 #import "BTMnemonisConfirmCell.h"
 #import "BTMnemonisModel.h"
+#import "BTBackupSuccessVC.h"
 
 #define KItemWidth 70.f
 #define KItemHeight 40.f
@@ -119,6 +120,10 @@
         }
         self.showHeight.constant = self.showCollection.contentSize.height;
     }
+}
+- (IBAction)completedAction:(UIButton *)sender {
+    BTBackupSuccessVC *success = [[BTBackupSuccessVC alloc]init];
+    [self.navigationController pushViewController:success animated:YES];
 }
 /*
 #pragma mark - Navigation

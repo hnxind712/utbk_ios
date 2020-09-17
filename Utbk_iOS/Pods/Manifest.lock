@@ -23,11 +23,18 @@ PODS:
     - MSPageControl
     - SDWebImage
   - MSPageControl (0.0.3)
+  - PGDatePicker (2.6.9):
+    - PGPickerView
+  - PGPickerView (1.3.8)
   - SDWebImage (5.9.1):
     - SDWebImage/Core (= 5.9.1)
   - SDWebImage/Core (5.9.1)
   - Toast (2.0)
   - TZImagePickerController (3.3.1)
+  - VTMagic (1.2.4):
+    - VTMagic/Core (= 1.2.4)
+  - VTMagic/Core (1.2.4)
+  - YBPopupMenu (1.1.5)
 
 DEPENDENCIES:
   - AFNetworking
@@ -37,9 +44,12 @@ DEPENDENCIES:
   - MJExtension (~> 3.0.10)
   - MJRefresh (~> 3.1.0)
   - MSCycleScrollView
+  - PGDatePicker
   - SDWebImage
   - Toast (= 2.0.0)
   - TZImagePickerController (= 3.3.1)
+  - VTMagic
+  - YBPopupMenu (~> 1.1.2)
 
 SPEC REPOS:
   trunk:
@@ -51,9 +61,13 @@ SPEC REPOS:
     - MJRefresh
     - MSCycleScrollView
     - MSPageControl
+    - PGDatePicker
+    - PGPickerView
     - SDWebImage
     - Toast
     - TZImagePickerController
+    - VTMagic
+    - YBPopupMenu
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -64,10 +78,14 @@ SPEC CHECKSUMS:
   MJRefresh: ee5b68f639775462faba4db0fd243baf4d42c2cf
   MSCycleScrollView: 2129e810011c74432ea363119d4a26e0e3070d0b
   MSPageControl: d1b695ec3641f75baa74a29ed7dbc28a0aabfb61
+  PGDatePicker: 88960f3760edac96219c10320f25536ad31d0f44
+  PGPickerView: 037acfb132a4c8054fb43aaa59a5ff50c7f747f5
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   Toast: 5cc02678e496690856164aa49c834d05e4fb314f
   TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
+  VTMagic: b49e5f456dbcbfd9a3588ba92417233a105bc193
+  YBPopupMenu: 12452dec37bdd9b33df25ae89050dfbd695ebdd0
 
-PODFILE CHECKSUM: 4e975dc1282eec222dddacc00390a0b5f8e13b4e
+PODFILE CHECKSUM: 38b1adb3248f6dde895cb740f4a0687dd3f4d188
 
 COCOAPODS: 1.9.3

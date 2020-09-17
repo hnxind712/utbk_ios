@@ -7,8 +7,11 @@
 //
 
 #import "BTAssetsTransiferVC.h"
+#import "BTCurrencyViewController.h"
+#import "STQRCodeController.h"
 
-@interface BTAssetsTransiferVC ()
+@interface BTAssetsTransiferVC ()<STQRCodeControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UIButton *selectCoinTypeBtn;
 @property (weak, nonatomic) IBOutlet UITextField *coinAddress;
 @property (weak, nonatomic) IBOutlet UITextField *coinCountInput;
@@ -25,9 +28,17 @@
 }
 //选择币种
 - (IBAction)selectCoinAction:(UIButton *)sender {
+    BTCurrencyViewController *currency = [[BTCurrencyViewController alloc]init];
+    [self.navigationController pushViewController:currency animated:YES];
 }
 //扫描
 - (IBAction)scanCoinAddrssAction:(UIButton *)sender {
+    STQRCodeController *qrcode = [[STQRCodeController alloc]init];
+    qrcode.delegate = self;
+    [self.navigationController pushViewController:qrcode animated:YES];
+}
+- (void)qrcodeController:(STQRCodeController *)qrcodeController readerScanResult:(NSString *)readerScanResult type:(STQRCodeResultType)resultType{
+    
 }
 //全部输入
 - (IBAction)inputAllCoinAccountAction:(UIButton *)sender {

@@ -7,8 +7,10 @@
 //
 
 #import "BTHomeTransiferCoinVC.h"
+#import "STQRCodeController.h"
 
-@interface BTHomeTransiferCoinVC ()
+@interface BTHomeTransiferCoinVC ()<STQRCodeControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *addressInput;
 @property (weak, nonatomic) IBOutlet UITextField *coinCountInput;
 @property (weak, nonatomic) IBOutlet UITextField *tradePasswordInput;
@@ -27,7 +29,7 @@
 }
 - (void)addRightNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:BTUIIMAGE(@"icon_transferRecord") forState:UIControlStateNormal];
+    [btn setImage:BTUIIMAGE(@"icon_transferRecordR") forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(transferRecordAction) forControlEvents:UIControlEventTouchUpInside];
     [btn sizeToFit];
@@ -38,6 +40,12 @@
 }
 //扫描
 - (IBAction)scanCoinAddrssAction:(UIButton *)sender {
+    STQRCodeController *qrcode = [[STQRCodeController alloc]init];
+    qrcode.delegate = self;
+    [self.navigationController pushViewController:qrcode animated:YES];
+}
+- (void)qrcodeController:(STQRCodeController *)qrcodeController readerScanResult:(NSString *)readerScanResult type:(STQRCodeResultType)resultType{
+    NSLog(@"打印一下结果 = %@",readerScanResult);
 }
 //全部输入
 - (IBAction)inputAllCoinAccountAction:(UIButton *)sender {

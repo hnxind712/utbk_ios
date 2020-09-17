@@ -7,6 +7,7 @@
 //
 
 #import "BTCreateWalletVC.h"
+#import "BTCreateSuccessVC.h"
 
 @interface BTCreateWalletVC ()<UITextFieldDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *createBtn;
@@ -44,10 +45,10 @@
         self.createBtn.userInteractionEnabled = YES;
         self.createBtn.backgroundColor = RGBOF(0xDAC49D);
     }else{
-        self.createBtn.userInteractionEnabled = YES;
+        self.createBtn.userInteractionEnabled = NO;
         self.createBtn.backgroundColor = RGBOF(0xcccccc);
     }
-    return YES;
+    return checkStr.length <= 25;
 }
 
 - (IBAction)showPasswordAction:(UIButton *)sender {
@@ -56,7 +57,7 @@
         case 103:
             self.password.secureTextEntry = sender.selected;
             break;
-            case 104:
+        case 104:
             self.passwordSecond.secureTextEntry = sender.selected;
             break;
         default:
@@ -66,6 +67,8 @@
 
 //确认创建
 - (IBAction)createAction:(UIButton *)sender {
+    BTCreateSuccessVC *createSuccess = [[BTCreateSuccessVC alloc]init];
+    [self.navigationController pushViewController:createSuccess animated:YES];
 }
 
 /*
