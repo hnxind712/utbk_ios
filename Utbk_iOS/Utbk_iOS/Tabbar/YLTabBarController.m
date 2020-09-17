@@ -9,7 +9,8 @@
 #import "YLTabBarController.h"
 #import "YLNavigationController.h"
 #import "BTHomeViewController.h"
-#import "TransactionViewController.h"
+#import "TransactionViewController.h"//目前只需要币币交易
+#import "TradeViewController.h"//币币交易
 #import "BTAssetsViewController.h"
 #import "BTProfileViewController.h"
 
@@ -83,7 +84,7 @@
 
 -(void)initTabbar{
     BTHomeViewController   *Section1VC = [[BTHomeViewController alloc] init];
-    TransactionViewController *Section2VC = [[TransactionViewController alloc] init];
+    TradeViewController *Section2VC = [[TradeViewController alloc] init];
     BTAssetsViewController  *Section3VC = [[BTAssetsViewController alloc] init];
     BTProfileViewController *Section4VC = [[BTProfileViewController alloc] init];
     Section1VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"首页") image:[[UIImage imageNamed:@"icon_tabHomePage"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabHomePageSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];

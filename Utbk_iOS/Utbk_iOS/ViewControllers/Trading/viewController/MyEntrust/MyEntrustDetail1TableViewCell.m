@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.leftLabelTitleWidth.constant = (SCREEN_WIDTH - 20)/3;
-    self.dealDetailLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"dealDetail" value:nil table:@"English"];
+    self.dealDetailLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"dealDetail" value:nil table:@"Localizable"];
     // Initialization code
 }
 

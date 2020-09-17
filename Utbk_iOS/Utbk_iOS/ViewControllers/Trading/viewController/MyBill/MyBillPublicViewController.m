@@ -37,7 +37,7 @@
     }
     [self.tableView registerNib:[UINib nibWithNibName:@"MyBillTableViewCell" bundle:nil] forCellReuseIdentifier:NSStringFromClass([MyBillTableViewCell class])];
 //    self.bottomViewHeight.constant = SafeAreaBottomHeight;
-    self.tipStringArr = @[[[ChangeLanguage bundle] localizedStringForKey:@"unPayingTip" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"paidTip" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"completedTip" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"cancelledTip" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"complaintTip" value:nil table:@"English"]];
+    self.tipStringArr = @[[[ChangeLanguage bundle] localizedStringForKey:@"unPayingTip" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"paidTip" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"completedTip" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"cancelledTip" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"complaintTip" value:nil table:@"Localizable"]];
     [self headRefreshWithScrollerView:self.tableView];
     [self footRefreshWithScrollerView:self.tableView];
     LYEmptyView *emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:self.tipStringArr[_index]];
@@ -61,7 +61,7 @@
     [self loadData];
 }
 -(void)loadData{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     NSString *pageNoStr = [[NSString alloc] initWithFormat:@"%ld",(long)_pageNo];
     [MineNetManager myBillInfoForStatus:self.billStatus withPageNo:pageNoStr withPageSize:@"20" CompleteHandle:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
@@ -81,7 +81,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
     
@@ -106,10 +106,10 @@
     cell.userName.text = model.name;
     if ([model.type isEqualToString:@"0"]) {
         //买入
-        self.status = [[ChangeLanguage bundle] localizedStringForKey:@"buy" value:nil table:@"English"];
+        self.status = [[ChangeLanguage bundle] localizedStringForKey:@"buy" value:nil table:@"Localizable"];
         cell.billStatus.backgroundColor=GreenColor;
     }else{
-        self.status = [[ChangeLanguage bundle] localizedStringForKey:@"sell" value:nil table:@"English"];
+        self.status = [[ChangeLanguage bundle] localizedStringForKey:@"sell" value:nil table:@"Localizable"];
         cell.billStatus.backgroundColor=RedColor;
     }
     cell.billStatus.text = [NSString stringWithFormat:@"%@%@",self.status,model.unit];

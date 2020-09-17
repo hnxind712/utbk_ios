@@ -35,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [[ChangeLanguage bundle] localizedStringForKey:@"myEntrust" value:nil table:@"English"];
+    self.title = [[ChangeLanguage bundle] localizedStringForKey:@"myEntrust" value:nil table:@"Localizable"];
     [self.view addSubview:[self tableView]];
     self.tradCoinArr = [[NSMutableArray alloc] init];
     self.dataArr = [[NSMutableArray alloc] init];
@@ -47,7 +47,7 @@
 }
 //MARK:--获取交易对数据
 -(void)getTradCoinData{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     [MineNetManager getTradCoinForCompleteHandle:^(id resPonseObj, int code) {
         NSLog(@"--%@",resPonseObj);
         if ([resPonseObj isKindOfClass:[NSArray class]]) {
@@ -61,7 +61,7 @@
                 [self getData];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
@@ -96,7 +96,7 @@
 }
 //MARK:--获取数据
 -(void)getData{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     NSString *pageNoStr = [[NSString alloc] initWithFormat:@"%ld",(long)_pageNo];
     
     [TradeNetManager historyEntrustForParam:@{@"pageNo":pageNoStr, @"pageSize":@"10", @"symbol":[self.tradCoinArr objectAtIndex:self.indexPathRow]} CompleteHandle:^(id resPonseObj, int code) {
@@ -124,7 +124,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }

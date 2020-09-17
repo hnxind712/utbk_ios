@@ -34,7 +34,7 @@
 
 - (LYEmptyView *)emptyView{
     if (!_emptyView) {
-        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:[[ChangeLanguage bundle] localizedStringForKey:@"noBuyCoinTip" value:nil table:@"English"]];
+        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:[[ChangeLanguage bundle] localizedStringForKey:@"noBuyCoinTip" value:nil table:@"Localizable"]];
     }
     return _emptyView;
 }
@@ -51,7 +51,7 @@
 }
 //MARK:--国际化通知处理事件
 - (void)languageSetting{
-    LYEmptyView *emptyView=[LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:[[ChangeLanguage bundle] localizedStringForKey:@"noBuyCoinTip" value:nil table:@"English"]];
+    LYEmptyView *emptyView=[LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:[[ChangeLanguage bundle] localizedStringForKey:@"noBuyCoinTip" value:nil table:@"Localizable"]];
     self.tableView.ly_emptyView = emptyView;
 }
 -(void)dealloc{
@@ -76,7 +76,7 @@
 }
 //MARK:--获取广告的数据
 -(void)getData{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     NSString *pageNoStr = [[NSString alloc] initWithFormat:@"%ld",(long)_pageNo];
     [C2CNetManager advertisingQueryForPageNo:pageNoStr withPageSize:@"20" withAdvertiseType:@"SELL" withAdvertiseId:self.model.ID CompleteHandle:^(id resPonseObj, int code) {
         NSLog(@"法币交易买入 --- %@", resPonseObj);
@@ -98,7 +98,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
@@ -166,7 +166,7 @@
     }
     CoinUserInfoModel *model = _coinTypeArr[indexPath.row];
     cell.coinUserInfoModel = model;
-    [cell.buyBtn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"buy" value:nil table:@"English"] forState:UIControlStateNormal];
+    [cell.buyBtn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"buy" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     [cell.buyBtn setBackgroundColor:RGBOF(0xF0A70A)];
     __weak typeof(self)weakself = self;
     cell.block = ^{

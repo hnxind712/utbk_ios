@@ -43,12 +43,12 @@
     
     if (self.flagindex == 1) {
         //对我而言出售
-        self.title = [NSString stringWithFormat:@"%@%@",[[ChangeLanguage bundle] localizedStringForKey:@"sell" value:nil table:@"English"],self.unit];
-        [self.buyButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"sell" value:nil table:@"English"] forState:UIControlStateNormal];
+        self.title = [NSString stringWithFormat:@"%@%@",[[ChangeLanguage bundle] localizedStringForKey:@"sell" value:nil table:@"Localizable"],self.unit];
+        [self.buyButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"sell" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     }else{
         //对我而言购买
-        self.title = [NSString stringWithFormat:@"%@%@",[[ChangeLanguage bundle] localizedStringForKey:@"buy" value:nil table:@"English"],self.unit];
-        [self.buyButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"buy" value:nil table:@"English"] forState:UIControlStateNormal];
+        self.title = [NSString stringWithFormat:@"%@%@",[[ChangeLanguage bundle] localizedStringForKey:@"buy" value:nil table:@"Localizable"],self.unit];
+        [self.buyButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"buy" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     }
     //[self setNavBarUI];
     [self.view addSubview:self.tableView];
@@ -60,7 +60,7 @@
 }
 //MARK:--获取购买的广告信息
 -(void)getBuyAdvertiseInfo{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     [C2CNetManager buyOrSelladvertiseInfoForid:_advertisingId CompleteHandle:^(id resPonseObj, int code) {
         NSLog(@"获取购买的广告信息 --- %@",resPonseObj);
         [EasyShowLodingView hidenLoding];
@@ -78,7 +78,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
@@ -89,9 +89,9 @@
     if ([self.coinType1Num isEqualToString:@""] ||[self.coinType2Num isEqualToString:@""]) {
         if (self.flagindex == 1) {
             //对我而言出售
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"inputSellNum" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"inputSellNum" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }else{
-          [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"inputBuyNum" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+          [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"inputBuyNum" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
         return;
     }
@@ -110,18 +110,18 @@
     
     if (self.flagindex == 1) {
         //对我而言出售
-        _orderComfirmAlterView.titleLabel1.text=[[ChangeLanguage bundle] localizedStringForKey:@"sellPrice" value:nil table:@"English"];
-        _orderComfirmAlterView.titleLabel2.text=[[ChangeLanguage bundle] localizedStringForKey:@"sellNum" value:nil table:@"English"];
-        _orderComfirmAlterView.titleLabel3.text=[[ChangeLanguage bundle] localizedStringForKey:@"sellTotalPrice" value:nil table:@"English"];
+        _orderComfirmAlterView.titleLabel1.text=[[ChangeLanguage bundle] localizedStringForKey:@"sellPrice" value:nil table:@"Localizable"];
+        _orderComfirmAlterView.titleLabel2.text=[[ChangeLanguage bundle] localizedStringForKey:@"sellNum" value:nil table:@"Localizable"];
+        _orderComfirmAlterView.titleLabel3.text=[[ChangeLanguage bundle] localizedStringForKey:@"sellTotalPrice" value:nil table:@"Localizable"];
     }else{
-        _orderComfirmAlterView.titleLabel1.text=[[ChangeLanguage bundle] localizedStringForKey:@"buyPrice" value:nil table:@"English"];
-        _orderComfirmAlterView.titleLabel2.text=[[ChangeLanguage bundle] localizedStringForKey:@"buyNum" value:nil table:@"English"];
-        _orderComfirmAlterView.titleLabel3.text=[[ChangeLanguage bundle] localizedStringForKey:@"buyTotalPrice" value:nil table:@"English"];
+        _orderComfirmAlterView.titleLabel1.text=[[ChangeLanguage bundle] localizedStringForKey:@"buyPrice" value:nil table:@"Localizable"];
+        _orderComfirmAlterView.titleLabel2.text=[[ChangeLanguage bundle] localizedStringForKey:@"buyNum" value:nil table:@"Localizable"];
+        _orderComfirmAlterView.titleLabel3.text=[[ChangeLanguage bundle] localizedStringForKey:@"buyTotalPrice" value:nil table:@"Localizable"];
     }
     _orderComfirmAlterView.buyPrice.text = [NSString stringWithFormat:@"%@CNY",self.model.price];
     _orderComfirmAlterView.buyNum.text = [NSString stringWithFormat:@"%@%@",self.coinType2Num,self.model.unit];
     _orderComfirmAlterView.buyTotal.text = [NSString stringWithFormat:@"%@CNY",self.coinType1Num];
-    _orderComfirmAlterView.remindContent.text = [NSString stringWithFormat:@"%@%@%@",[[ChangeLanguage bundle] localizedStringForKey:@"placeOrderTip1" value:nil table:@"English"],self.model.unit,[[ChangeLanguage bundle] localizedStringForKey:@"placeOrderTip2" value:nil table:@"English"]];
+    _orderComfirmAlterView.remindContent.text = [NSString stringWithFormat:@"%@%@%@",[[ChangeLanguage bundle] localizedStringForKey:@"placeOrderTip1" value:nil table:@"Localizable"],self.model.unit,[[ChangeLanguage bundle] localizedStringForKey:@"placeOrderTip2" value:nil table:@"Localizable"]];
     CGAffineTransform translates = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, 0);
     _orderComfirmAlterView.boardView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity,0,_orderComfirmAlterView.boardView.height);
     [UIView animateWithDuration:0.3 delay:0.1 usingSpringWithDamping:1 initialSpringVelocity:10 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -146,7 +146,7 @@
 }
 //MARK:--下单确认提交
 -(void)certainBillAndSubmit{
-   [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+   [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     NSString *urlStr = @"";
     if (self.flagindex == 1) {
         //对我来说出售
@@ -183,7 +183,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
@@ -250,29 +250,29 @@
         //交易次数
         cell.tradingNum.text = self.model.transactions;
         //限额
-        cell.limitNum.text = [NSString stringWithFormat:@"%@ %@-%@ CNY   ",[[ChangeLanguage bundle] localizedStringForKey:@"limit" value:nil table:@"English"],self.model.minLimit,self.model.maxLimit];
+        cell.limitNum.text = [NSString stringWithFormat:@"%@ %@-%@ CNY   ",[[ChangeLanguage bundle] localizedStringForKey:@"limit" value:nil table:@"Localizable"],self.model.minLimit,self.model.maxLimit];
         //单价
         
         NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:self.model.price];
         NSLog(@"%@", [decNumber stringValue]);
         cell.coinNum.text = [NSString stringWithFormat:@"%@CNY",[decNumber stringValue]];
         
-        cell.message.text = [NSString stringWithFormat:@"%@：%@",[[ChangeLanguage bundle] localizedStringForKey:@"advertisingMessage" value:nil table:@"English"],self.model.remark];
+        cell.message.text = [NSString stringWithFormat:@"%@：%@",[[ChangeLanguage bundle] localizedStringForKey:@"advertisingMessage" value:nil table:@"Localizable"],self.model.remark];
         //剩余数量
-        cell.remainAmountLabel.text=[NSString stringWithFormat:@"%@:%@   ",[[ChangeLanguage bundle] localizedStringForKey:@"amonut" value:nil table:@"English"],[ToolUtil judgeStringForDecimalPlaces:self.model.maxTradableAmount]];
+        cell.remainAmountLabel.text=[NSString stringWithFormat:@"%@:%@   ",[[ChangeLanguage bundle] localizedStringForKey:@"amonut" value:nil table:@"Localizable"],[ToolUtil judgeStringForDecimalPlaces:self.model.maxTradableAmount]];
         [cell configLabelWithArray:self.payArray];
         return cell;
     }else {
         BuyCoinsDetail2TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BuyCoinsDetail2TableViewCell class]) forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.contentLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"tradingRemindTip" value:nil table:@"English"];
+        cell.contentLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"tradingRemindTip" value:nil table:@"Localizable"];
         cell.delegate = self;
         if (self.flagindex == 1) {
             //买币 对我而言就是出售
-            cell.tipstring.text = [[ChangeLanguage bundle] localizedStringForKey:@"sellNumTip" value:nil table:@"English"];
+            cell.tipstring.text = [[ChangeLanguage bundle] localizedStringForKey:@"sellNumTip" value:nil table:@"Localizable"];
         }else {
              //卖币 对我而言就是购买
-            cell.tipstring.text = [[ChangeLanguage bundle] localizedStringForKey:@"buyNumTip" value:nil table:@"English"];
+            cell.tipstring.text = [[ChangeLanguage bundle] localizedStringForKey:@"buyNumTip" value:nil table:@"Localizable"];
         }
         cell.tradTipLabel.text = LocalizationKey(@"tradingRemind");
         cell.coinType1.text = @"CNY";

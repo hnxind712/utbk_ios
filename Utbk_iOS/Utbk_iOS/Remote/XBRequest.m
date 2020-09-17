@@ -46,7 +46,19 @@ static XBRequest *_sharedInstance = nil;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"application/x-www-form-urlencoded", nil];
 
     NSString *str = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
+    [sessionManager POST:str parameters:param headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([self showResponseCode:task.response] == 200) {
+            id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+            if ([result isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *resultDic = (NSDictionary *)result;
+                responseObjects(resultDic);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSDictionary *temDic = @{@"resError":error};
+        responseObjects(temDic);
+        [EasyShowLodingView hidenLoding];
+    }];
 //    [sessionManager POST:str parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
 //
 //    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -86,7 +98,18 @@ static XBRequest *_sharedInstance = nil;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"application/x-www-form-urlencoded", nil];
     
     NSString *str = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
+    [sessionManager POST:str parameters:param headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([self showResponseCode:task.response] == 200) {
+            id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+            if ([result isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *resultDic = (NSDictionary *)result;
+                responseObjects(resultDic);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSDictionary *temDic = @{@"resError":error};
+        responseObjects(temDic);
+    }];
 //    [sessionManager POST:str parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
 //
 //    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -124,7 +147,18 @@ static XBRequest *_sharedInstance = nil;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"text/plain",@"image/png",@"application/x-www-form-urlencoded", nil];
     
     NSString *str = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
+    [sessionManager GET:str parameters:param headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([self showResponseCode:task.response] == 200) {
+            id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+            if ([result isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *resultDic = (NSDictionary *)result;
+                responseObjects(resultDic);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSDictionary *temDic = @{@"resError":error};
+        responseObjects(temDic);
+    }];
 //    [sessionManager GET:str parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
 //
 //    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -163,7 +197,18 @@ static XBRequest *_sharedInstance = nil;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"text/plain",@"image/png",@"application/x-www-form-urlencoded", nil];
     
     NSString *str = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
+    [sessionManager GET:str parameters:param headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([self showResponseCode:task.response] == 200) {
+            id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+            if ([result isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *resultDic = (NSDictionary *)result;
+                responseObjects(resultDic);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSDictionary *temDic = @{@"resError":error};
+        responseObjects(temDic);
+    }];
 //    [sessionManager GET:str parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
 //
 //    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -192,6 +237,16 @@ static XBRequest *_sharedInstance = nil;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript", nil];
     
     NSString *str = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [sessionManager PUT:str parameters:param headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        if ([result isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *resultDic = (NSDictionary *)result;
+            responseObjects(resultDic);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSDictionary *temDic = @{@"resError":error};
+        responseObjects(temDic);
+    }];
 //    [sessionManager PUT:str parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
 //        if ([result isKindOfClass:[NSDictionary class]]) {
@@ -214,6 +269,16 @@ static XBRequest *_sharedInstance = nil;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript", nil];
     
     NSString *str = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [sessionManager DELETE:str parameters:param headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        if ([result isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *resultDic = (NSDictionary *)result;
+            responseObjects(resultDic);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSDictionary *temDic = @{@"resError":error};
+        responseObjects(temDic);
+    }];
 //    [sessionManager DELETE:str parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
 //        if ([result isKindOfClass:[NSDictionary class]]) {

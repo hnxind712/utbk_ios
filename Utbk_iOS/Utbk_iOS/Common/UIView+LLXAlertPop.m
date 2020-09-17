@@ -127,7 +127,7 @@ static NSString *keyOfMethod; //关联者的索引key-用于获取block
 //    [bottomView addSubview:line];
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(line.frame), APPSIZE.width, 50)];
     btn.tag = 6;
-    [btn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"cancel" value:nil table:@"English"] forState:UIControlStateNormal];
+    [btn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"cancel" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     [btn setTitleColor:RGBOF(0x333333) forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:16];
     [bottomView addSubview:btn];

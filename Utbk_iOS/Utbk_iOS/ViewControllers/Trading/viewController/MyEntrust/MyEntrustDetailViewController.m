@@ -44,16 +44,16 @@
         MyEntrustDetail1TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyEntrustDetail1TableViewCell class]) forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if ([_model.direction isEqualToString:@"BUY"]) {
-            cell.payStatus.text = [[ChangeLanguage bundle] localizedStringForKey:@"Buy" value:nil table:@"English"];
+            cell.payStatus.text = [[ChangeLanguage bundle] localizedStringForKey:@"Buy" value:nil table:@"Localizable"];
             cell.payStatus.textColor = GreenColor;
         }else{
-            cell.payStatus.text = [[ChangeLanguage bundle] localizedStringForKey:@"Sell" value:nil table:@"English"];
+            cell.payStatus.text = [[ChangeLanguage bundle] localizedStringForKey:@"Sell" value:nil table:@"Localizable"];
             cell.payStatus.textColor = RedColor;
         }
         cell.coinType.text = _model.symbol;
-        cell.dealNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"dealTotal" value:nil table:@"English"],_model.baseSymbol];
+        cell.dealNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"dealTotal" value:nil table:@"Localizable"],_model.baseSymbol];
         cell.dealNumData.text = _model.turnover;
-        cell.dealPerPriceTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"dealPerPrice" value:nil table:@"English"],_model.baseSymbol];
+        cell.dealPerPriceTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"dealPerPrice" value:nil table:@"Localizable"],_model.baseSymbol];
         if ([_model.tradedAmount floatValue] <= 0) {
             cell.dealPerPriceData.text = [NSString stringWithFormat:@"0.00"];
         }else{
@@ -62,7 +62,7 @@
             cell.dealPerPriceData.text= [NSString stringWithFormat:@"%.8f",[[turnover decimalNumberByDividingBy:tradedAmount] floatValue]];
         }
         
-        cell.dealTotalNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"dealNum" value:nil table:@"English"],_model.coinSymbol];
+        cell.dealTotalNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"dealNum" value:nil table:@"Localizable"],_model.coinSymbol];
         cell.dealTotalNumData.text = _model.tradedAmount;
         return cell;
     }else{

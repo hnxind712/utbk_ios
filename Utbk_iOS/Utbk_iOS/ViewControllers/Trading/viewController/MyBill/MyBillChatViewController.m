@@ -36,11 +36,11 @@
     self.view.backgroundColor = MainBackColor;
     if (self.clickIndex == 1) {
         self.title = self.groupModel.nameFrom;
-        [self rightBarItemWithTitle:[[ChangeLanguage bundle] localizedStringForKey:@"orderDetail" value:nil table:@"English"]];
+        [self rightBarItemWithTitle:[[ChangeLanguage bundle] localizedStringForKey:@"orderDetail" value:nil table:@"Localizable"]];
     }else{
       self.title = self.model.otherSide;
     }
-    [self.sendButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"send" value:nil table:@"English"] forState:UIControlStateNormal];
+    [self.sendButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"send" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     
     self.bottomViewHeight.constant = TabbarSafeBottomMargin;
     [self.tableView registerClass:[ChatTableViewCell class] forCellReuseIdentifier:NSStringFromClass([ChatTableViewCell class])];
@@ -49,7 +49,7 @@
     self.sendTextView.layer.borderWidth = 1;
     self.sendTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.sendTextView.layer.cornerRadius = 6;
-    self.sendTextView.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"inputSendContent" value:nil table:@"English"];
+    self.sendTextView.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"inputSendContent" value:nil table:@"Localizable"];
     [self getChatRecord];
   
 }//MARK:--首页聊天组进入导航右边的订单详情
@@ -144,7 +144,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
         
     }];

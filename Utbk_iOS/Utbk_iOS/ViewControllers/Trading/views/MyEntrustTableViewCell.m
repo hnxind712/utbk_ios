@@ -22,13 +22,13 @@
 
 - (void)setInfomodel:(MyEntrustInfoModel *)infomodel{
     _infomodel = infomodel;
-    self.timeTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"time" value:nil table:@"English"];
-    self.entrustPriceTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"type" value:nil table:@"English"];
-    self.entrustNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"price" value:nil table:@"English"],_infomodel.baseSymbol];
-    self.dealTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"amonut" value:nil table:@"English"],_infomodel.coinSymbol];
-    self.dealPerPriceTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"tradeDeal" value:nil table:@"English"];
-    self.dealNumTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"Triggerprice" value:nil table:@"English"];
-    self.lastLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"Entrustmentamount" value:nil table:@"English"];
+    self.timeTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"time" value:nil table:@"Localizable"];
+    self.entrustPriceTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"type" value:nil table:@"Localizable"];
+    self.entrustNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"price" value:nil table:@"Localizable"],_infomodel.baseSymbol];
+    self.dealTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"amonut" value:nil table:@"Localizable"],_infomodel.coinSymbol];
+    self.dealPerPriceTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"tradeDeal" value:nil table:@"Localizable"];
+    self.dealNumTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"Triggerprice" value:nil table:@"Localizable"];
+    self.lastLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"Entrustmentamount" value:nil table:@"Localizable"];
     
     self.symbolLabel.text = _infomodel.symbol;
     //时间
@@ -43,11 +43,11 @@
     self.timeData.text = [NSString stringWithFormat:@"%@:%@ %@/%@", times[3], times[4], times[1], times[2]];
     
     if ([_infomodel.type isEqualToString:@"LIMIT_PRICE"]) {
-        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"limitPrice" value:nil table:@"English"];
+        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"limitPrice" value:nil table:@"Localizable"];
     }else if ([_infomodel.type isEqualToString:@"CHECK_FULL_STOP"]){
-        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"Stoploss" value:nil table:@"English"];
+        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"Stoploss" value:nil table:@"Localizable"];
     }else{
-        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"marketPrice" value:nil table:@"English"];
+        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"marketPrice" value:nil table:@"Localizable"];
     }
     
     //价格
@@ -88,28 +88,28 @@
     
     [self.statusButton setTitleColor:RGBOF(0x666666) forState:UIControlStateNormal];
     if ([_infomodel.status isEqualToString:@"COMPLETED"]) {
-        [self.statusButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"completed" value:nil table:@"English"] forState:UIControlStateNormal];
+        [self.statusButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"completed" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     }else if ([_infomodel.status isEqualToString:@"WAITING_TRIGGER"]){
-        [self.statusButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"waitingTrigger" value:nil table:@"English"] forState:UIControlStateNormal];
+        [self.statusButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"waitingTrigger" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     }else if ([_infomodel.status isEqualToString:@"TRADING"]){
-        [self.statusButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"trading" value:nil table:@"English"] forState:UIControlStateNormal];
+        [self.statusButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"trading" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     }else if ([_infomodel.status isEqualToString:@"CANCELED"]){
-        [self.statusButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"cancelled" value:nil table:@"English"] forState:UIControlStateNormal];
+        [self.statusButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"cancelled" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     }else{
-        [self.statusButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"Timeout" value:nil table:@"English"] forState:UIControlStateNormal];
+        [self.statusButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"Timeout" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     }
     
 }
 
 - (void)setModel:(commissionModel *)model{
     _model = model;
-    self.timeTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"time" value:nil table:@"English"];
-    self.entrustPriceTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"type" value:nil table:@"English"];
-    self.entrustNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"price" value:nil table:@"English"],model.baseSymbol];
-    self.dealTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"amonut" value:nil table:@"English"],model.coinSymbol];
-    self.dealPerPriceTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"tradeDeal" value:nil table:@"English"];
-    self.dealNumTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"Triggerprice" value:nil table:@"English"];
-    self.lastLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"Entrustmentamount" value:nil table:@"English"];
+    self.timeTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"time" value:nil table:@"Localizable"];
+    self.entrustPriceTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"type" value:nil table:@"Localizable"];
+    self.entrustNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"price" value:nil table:@"Localizable"],model.baseSymbol];
+    self.dealTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"amonut" value:nil table:@"Localizable"],model.coinSymbol];
+    self.dealPerPriceTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"tradeDeal" value:nil table:@"Localizable"];
+    self.dealNumTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"Triggerprice" value:nil table:@"Localizable"];
+    self.lastLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"Entrustmentamount" value:nil table:@"Localizable"];
     
     self.symbolLabel.text = model.symbol;
     //时间
@@ -123,11 +123,11 @@
     self.timeData.text = [NSString stringWithFormat:@"%@:%@ %@/%@", times[3], times[4], times[1], times[2]];
     
     if ([model.type isEqualToString:@"LIMIT_PRICE"]) {
-        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"limitPrice" value:nil table:@"English"];
+        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"limitPrice" value:nil table:@"Localizable"];
     }else if ([model.type isEqualToString:@"CHECK_FULL_STOP"]){
-        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"Stoploss" value:nil table:@"English"];
+        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"Stoploss" value:nil table:@"Localizable"];
     }else{
-        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"marketPrice" value:nil table:@"English"];
+        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"marketPrice" value:nil table:@"Localizable"];
     }
     
     //价格
@@ -159,7 +159,7 @@
         self.payStatus.textColor = RGBOF(0xF15057);
     }
     
-    [self.statusButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"Revoke" value:nil table:@"English"] forState:UIControlStateNormal];
+    [self.statusButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"Revoke" value:nil table:@"Localizable"] forState:UIControlStateNormal];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

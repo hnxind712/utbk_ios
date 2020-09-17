@@ -37,8 +37,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [[ChangeLanguage bundle] localizedStringForKey:@"postPurchaseAdvertising" value:nil table:@"English"];
-    [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"release" value:nil table:@"English"] forState:UIControlStateNormal];
+    self.title = [[ChangeLanguage bundle] localizedStringForKey:@"postPurchaseAdvertising" value:nil table:@"Localizable"];
+    [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"release" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self backBtnNoNavBar:NO normalBack:YES];
 //  [self RightsetupNavgationItemWithpictureName:@"helpImage"];
@@ -54,9 +54,9 @@
     _actualPrice=@"";
     
     if (_index == 1) {
-        [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"modifiedRelease" value:nil table:@"English"] forState:UIControlStateNormal];
+        [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"modifiedRelease" value:nil table:@"Localizable"] forState:UIControlStateNormal];
         if (!_contentArr) {
-            _contentArr = [NSMutableArray arrayWithArray:@[[[ChangeLanguage bundle] localizedStringForKey:@"select" value:nil table:@"English"],LocalizationKey(@"china"),@"RMB",@"",@"MUTATIVE",@"",@"",@"",@"",@"",[[ChangeLanguage bundle] localizedStringForKey:@"select" value:nil table:@"English"],@"",@"",@"0",@"",@""]];
+            _contentArr = [NSMutableArray arrayWithArray:@[[[ChangeLanguage bundle] localizedStringForKey:@"select" value:nil table:@"Localizable"],LocalizationKey(@"china"),@"RMB",@"",@"MUTATIVE",@"",@"",@"",@"",@"",[[ChangeLanguage bundle] localizedStringForKey:@"select" value:nil table:@"Localizable"],@"",@"",@"0",@"",@""]];
              [self editorInfo];
         }
     }
@@ -148,7 +148,7 @@
         cell.index = indexPath;
         if(indexPath.row == 14){
             //是否自动回复
-            cell.leftLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"replyContent" value:nil table:@"English"];
+            cell.leftLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"replyContent" value:nil table:@"Localizable"];
             if ([_contentArr[13] isEqualToString:@"0"]) {
                 //否，不需要回复
                 cell.textView.editable = NO;
@@ -156,7 +156,7 @@
                 cell.textView.editable = YES;
             }
         }else{
-           cell.leftLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"messageContent" value:nil table:@"English"];
+           cell.leftLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"messageContent" value:nil table:@"Localizable"];
             cell.textView.editable = YES;
         }
         
@@ -178,12 +178,12 @@
             [cell.rightButton setImage:[UIImage imageNamed:@"selectedImage"] forState:UIControlStateNormal];
         }
         if (indexPath.row == 4) {
-            [cell.leftButton setTitle:[NSString stringWithFormat:@"  %@",[[ChangeLanguage bundle] localizedStringForKey:@"Real-timePrice" value:nil table:@"English"]] forState:UIControlStateNormal];
-            [cell.rightButton setTitle:[NSString stringWithFormat:@"  %@",[[ChangeLanguage bundle] localizedStringForKey:@"fixedPrice" value:nil table:@"English"]] forState:UIControlStateNormal];
+            [cell.leftButton setTitle:[NSString stringWithFormat:@"  %@",[[ChangeLanguage bundle] localizedStringForKey:@"Real-timePrice" value:nil table:@"Localizable"]] forState:UIControlStateNormal];
+            [cell.rightButton setTitle:[NSString stringWithFormat:@"  %@",[[ChangeLanguage bundle] localizedStringForKey:@"fixedPrice" value:nil table:@"Localizable"]] forState:UIControlStateNormal];
            
         }else{
-            [cell.leftButton setTitle:[NSString stringWithFormat:@"  %@",[[ChangeLanguage bundle] localizedStringForKey:@"no" value:nil table:@"English"]] forState:UIControlStateNormal];
-            [cell.rightButton setTitle:[NSString stringWithFormat:@"  %@",[[ChangeLanguage bundle] localizedStringForKey:@"yes" value:nil table:@"English"]] forState:UIControlStateNormal];
+            [cell.leftButton setTitle:[NSString stringWithFormat:@"  %@",[[ChangeLanguage bundle] localizedStringForKey:@"no" value:nil table:@"Localizable"]] forState:UIControlStateNormal];
+            [cell.rightButton setTitle:[NSString stringWithFormat:@"  %@",[[ChangeLanguage bundle] localizedStringForKey:@"yes" value:nil table:@"Localizable"]] forState:UIControlStateNormal];
         }
         cell.delegate = self;
         return cell;
@@ -203,21 +203,21 @@
                 //溢价处理
                 if ([_contentArr[4] isEqualToString:@"REGULAR"] ||[_contentArr[4] isEqualToString:@"0"]) {
                     cell.centerTextFileld.enabled = NO;
-                     cell.centerTextFileld.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"inputFixedPriceNoPremium" value:nil table:@"English"];
+                     cell.centerTextFileld.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"inputFixedPriceNoPremium" value:nil table:@"Localizable"];
 
                 }else{
                     cell.centerTextFileld.enabled = YES;
-                    cell.centerTextFileld.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"inputMarketPricePremium" value:nil table:@"English"];
+                    cell.centerTextFileld.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"inputMarketPricePremium" value:nil table:@"Localizable"];
                 }
             }else if (indexPath.row == 6){
                 //溢价处理
                 cell.centerTextFileld.keyboardType = UIKeyboardTypeDecimalPad;
                 if ([_contentArr[4] isEqualToString:@"REGULAR"] ||[_contentArr[4] isEqualToString:@"0"]) {
                     cell.centerTextFileld.enabled = YES;
-                    cell.centerTextFileld.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"inputTradPrice" value:nil table:@"English"];
+                    cell.centerTextFileld.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"inputTradPrice" value:nil table:@"Localizable"];
                 }else{
                     cell.centerTextFileld.enabled = NO;
-                    cell.centerTextFileld.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"inputAutomaticCalculation" value:nil table:@"English"];
+                    cell.centerTextFileld.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"inputAutomaticCalculation" value:nil table:@"Localizable"];
                 }
             }
         }else if (indexPath.row == 11){
@@ -284,7 +284,7 @@
         //选择币种
         if (_index == 1) {
             //修改不让点击
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"inputModifyAdsNoCoinType" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"inputModifyAdsNoCoinType" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }else{
             self.enterWays = 1;
             [self selectCoinTypeData];
@@ -307,7 +307,7 @@
 }
 //MARK:--选择币种的请求数据
 -(void)selectCoinTypeData{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     [C2CNetManager selectCoinTypeForCompleteHandle:^(id resPonseObj, int code) {
         NSLog(@"选择币种的请求数据 --- %@",resPonseObj);
         [EasyShowLodingView hidenLoding];
@@ -324,7 +324,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
@@ -417,20 +417,20 @@
     [_contentArr replaceObjectAtIndex:index.row withObject:textString];
 }
 -(NSArray *)getNameArr{
-    NSArray * nameArr = @[[[ChangeLanguage bundle] localizedStringForKey:@"selectCoinType" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"home" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"currencyType" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"Real-timePrice" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"priceType" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"premium" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"tradingPrice" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"minimum" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"maximum" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"buyNumber" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"payMethods" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"payTerm" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"moneyPassword" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"isAutoReply" value:nil table:@"English"],@"",@""];
+    NSArray * nameArr = @[[[ChangeLanguage bundle] localizedStringForKey:@"selectCoinType" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"home" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"currencyType" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"Real-timePrice" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"priceType" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"premium" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"tradingPrice" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"minimum" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"maximum" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"buyNumber" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"payMethods" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"payTerm" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"moneyPassword" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"isAutoReply" value:nil table:@"Localizable"],@"",@""];
     return nameArr;
 }
 -(NSArray *)getPlaceHoldArr2{
-    NSArray * nameArr = @[@"",@"",@"",[[ChangeLanguage bundle] localizedStringForKey:@"inputReal-timePrice" value:nil table:@"English"],@"",[[ChangeLanguage bundle] localizedStringForKey:@"inputMarketPricePremium" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputTradPrice" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputTradMin" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputTradMax" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputBuyAmount" value:nil table:@"English"],@"",[[ChangeLanguage bundle] localizedStringForKey:@"inputPayTerm" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputMoneyPassword" value:nil table:@"English"],@"",@"",@""];
+    NSArray * nameArr = @[@"",@"",@"",[[ChangeLanguage bundle] localizedStringForKey:@"inputReal-timePrice" value:nil table:@"Localizable"],@"",[[ChangeLanguage bundle] localizedStringForKey:@"inputMarketPricePremium" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputTradPrice" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputTradMin" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputTradMax" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputBuyAmount" value:nil table:@"Localizable"],@"",[[ChangeLanguage bundle] localizedStringForKey:@"inputPayTerm" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputMoneyPassword" value:nil table:@"Localizable"],@"",@"",@""];
     return nameArr;
 }
 -(NSArray *)getAttributeArr2{
-    NSArray * nameArr = @[@"",@"",@"",@"CNY",@"",@"  %",@"  CNY",@"  CNY",@"  CNY",@"",@"",[[ChangeLanguage bundle] localizedStringForKey:@"minutes" value:nil table:@"English"],@"",@"",@"",@""];
+    NSArray * nameArr = @[@"",@"",@"",@"CNY",@"",@"  %",@"  CNY",@"  CNY",@"  CNY",@"",@"",[[ChangeLanguage bundle] localizedStringForKey:@"minutes" value:nil table:@"Localizable"],@"",@"",@"",@""];
     return nameArr;
 }
 -(NSMutableArray *)getContentArr2{
     if (!_contentArr) {
-         _contentArr = [NSMutableArray arrayWithArray:@[[[ChangeLanguage bundle] localizedStringForKey:@"select" value:nil table:@"English"],LocalizationKey(@"china"),@"RMB",@"",@"MUTATIVE",@"",@"",@"",@"",@"",[[ChangeLanguage bundle] localizedStringForKey:@"select" value:nil table:@"English"],@"",@"",@"0",@"",@""]];
+         _contentArr = [NSMutableArray arrayWithArray:@[[[ChangeLanguage bundle] localizedStringForKey:@"select" value:nil table:@"Localizable"],LocalizationKey(@"china"),@"RMB",@"",@"MUTATIVE",@"",@"",@"",@"",@"",[[ChangeLanguage bundle] localizedStringForKey:@"select" value:nil table:@"Localizable"],@"",@"",@"0",@"",@""]];
     }
     return _contentArr;
 }
@@ -439,7 +439,7 @@
 
 }
 -(NSArray *)judgePlaceHoldArr{
-    NSArray * nameArr = @[[[ChangeLanguage bundle] localizedStringForKey:@"inputSelectCoinType" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputSelectHome" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputSelectCurrencyType" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputReal-timePrice" value:nil table:@"English"],@"",[[ChangeLanguage bundle] localizedStringForKey:@"inputMarketPricePremium" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputTradPrice" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputTradMin" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputTradMax" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputBuyAmount" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputPayWays" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputPayTerm" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"inputMoneyPassword" value:nil table:@"English"],@"",[[ChangeLanguage bundle] localizedStringForKey:@"inputAutoReply" value:nil table:@"English"],@""];
+    NSArray * nameArr = @[[[ChangeLanguage bundle] localizedStringForKey:@"inputSelectCoinType" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputSelectHome" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputSelectCurrencyType" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputReal-timePrice" value:nil table:@"Localizable"],@"",[[ChangeLanguage bundle] localizedStringForKey:@"inputMarketPricePremium" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputTradPrice" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputTradMin" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputTradMax" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputBuyAmount" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputPayWays" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputPayTerm" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"inputMoneyPassword" value:nil table:@"Localizable"],@"",[[ChangeLanguage bundle] localizedStringForKey:@"inputAutoReply" value:nil table:@"Localizable"],@""];
     return nameArr;
 }
 //MARK:--发布购买广告点击事件
@@ -479,14 +479,14 @@
                 }
             }
         }else{
-            if ([contentStr isEqualToString:@""] || [contentStr isEqualToString:[[ChangeLanguage bundle] localizedStringForKey:@"select" value:nil table:@"English"]]) {
+            if ([contentStr isEqualToString:@""] || [contentStr isEqualToString:[[ChangeLanguage bundle] localizedStringForKey:@"select" value:nil table:@"Localizable"]]) {
                 [self.view makeToast:[self judgePlaceHoldArr][i] duration:1.5 position:ToastPosition];
                 return;
             }
         }
     }
     
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     if (_index == 1) {
         //修改发布
         [C2CNetManager changeAdvertisingForBuyOrSellWithAdvertisingId:_detailModel.ID WithPrice:_contentArr[6] withAdvertiseType:@"BUY" withCoinId:self.coinId withMinLimit:_contentArr[7] withMaxLimit:_contentArr[8] withTimeLimit:_contentArr[11] withCountry:_contentArr[1] withPriceType:_contentArr[4] withPremiseRate:_contentArr[5] withRemark:_contentArr[15] withNumber:_contentArr[9] withPayways:self.payWays withJyPassword:_contentArr[12] withAuto:_contentArr[13] withAutoWord:_contentArr[14] CompleteHandle:^(id resPonseObj, int code) {
@@ -510,7 +510,7 @@
                     [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
                 }
             }else{
-                [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+                [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
             }
         }];
         
@@ -547,7 +547,7 @@
                     [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
                 }
             }else{
-                [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+                [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
             }
         }];
     }

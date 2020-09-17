@@ -59,7 +59,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.businessBtnTitle = [[ChangeLanguage bundle] localizedStringForKey:@"ICanBuy" value:nil table:@"English"];
+    self.businessBtnTitle = [[ChangeLanguage bundle] localizedStringForKey:@"ICanBuy" value:nil table:@"Localizable"];
     [self.view addSubview:self.headerView];
     [self.view addSubview:self.mainScrollView];
     [self setChildViewControllers];
@@ -120,7 +120,7 @@
                 [weakself.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [weakself.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [weakself.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
@@ -179,31 +179,31 @@
     .LeeHeaderColor([UIColor whiteColor])
     .LeeAddAction(^(LEEAction *action) {
         action.type = LEEActionTypeDestructive;
-        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"ICanBuy" value:nil table:@"English"];
+        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"ICanBuy" value:nil table:@"Localizable"];
         action.backgroundColor = [UIColor whiteColor];
         action.titleColor = RGBOF(0x333333);
         action.borderColor = BackColor;
         action.backgroundHighlightColor = [UIColor whiteColor];
         action.clickBlock = ^{
             weakself.businessBtnTitle = LocalizationKey(@"ICanBuy");
-            [weakself.businessBtn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"ICanBuy" value:nil table:@"English"] forState:UIControlStateNormal];
+            [weakself.businessBtn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"ICanBuy" value:nil table:@"Localizable"] forState:UIControlStateNormal];
             [weakself typeClick:0];
         };
     }).LeeAddAction(^(LEEAction *action){
         action.type = LEEActionTypeDestructive;
-        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"ICanSell" value:nil table:@"English"];
+        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"ICanSell" value:nil table:@"Localizable"];
         action.backgroundColor = [UIColor whiteColor];
         action.titleColor = RGBOF(0x333333);
         action.borderColor = BackColor;
         action.backgroundHighlightColor = [UIColor whiteColor];
         action.clickBlock = ^{
             weakself.businessBtnTitle = LocalizationKey(@"ICanSell");
-            [weakself.businessBtn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"ICanSell" value:nil table:@"English"] forState:UIControlStateNormal];
+            [weakself.businessBtn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"ICanSell" value:nil table:@"Localizable"] forState:UIControlStateNormal];
             [weakself typeClick:1];
         };
     }).LeeAddAction(^(LEEAction *action){
         action.type = LEEActionTypeCancel;
-        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"cancel" value:nil table:@"English"];
+        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"cancel" value:nil table:@"Localizable"];
         action.titleColor = RGBOF(0x333333);
         action.backgroundColor = [UIColor whiteColor];
         action.backgroundHighlightColor = [UIColor whiteColor];
@@ -227,10 +227,10 @@
 #pragma mark - YBPopupMenuDelegate
 - (void)ybPopupMenu:(YBPopupMenu *)ybPopupMenu didSelectedAtIndex:(NSInteger)index
 {
-    if(![YLUserInfo isLogIn]){
-        [self showLoginViewController];
-        return;
-    }
+//    if(![YLUserInfo isLogIn]){
+//        [self showLoginViewController];
+//        return;
+//    }
     
     if (index == 3) {
         //我的订单
@@ -302,7 +302,7 @@
         [_headerView addSubview:btn];
         [btn addTarget:self action:@selector(businessAction:) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitleColor:AppTextColor_666666 forState:UIControlStateNormal];
-        [btn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"ICanBuy" value:nil table:@"English"] forState:UIControlStateNormal];
+        [btn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"ICanBuy" value:nil table:@"Localizable"] forState:UIControlStateNormal];
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(_headerView).with.offset(15);
             make.top.mas_equalTo(_headerView).with.offset(5);

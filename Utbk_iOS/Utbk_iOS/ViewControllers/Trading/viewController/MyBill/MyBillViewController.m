@@ -22,8 +22,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self backBtnNoNavBar:NO normalBack:YES];
-    self.title = [[ChangeLanguage bundle] localizedStringForKey:@"myBill" value:nil table:@"English"];
-    self.menuList = @[[[ChangeLanguage bundle] localizedStringForKey:@"unPaying" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"paid" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"completed" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"cancelled" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"complaint" value:nil table:@"English"]];
+    self.title = [[ChangeLanguage bundle] localizedStringForKey:@"myBill" value:nil table:@"Localizable"];
+    self.menuList = @[[[ChangeLanguage bundle] localizedStringForKey:@"unPaying" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"paid" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"completed" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"cancelled" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"complaint" value:nil table:@"Localizable"]];
     self.billStatusArr = @[@"NONPAYMENT",@"PAID",@"COMPLETED",@"CANCELLED",@"APPEAL"];
     self.delegate = self;
     self.dataSource = self;

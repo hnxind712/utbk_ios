@@ -14,7 +14,7 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     self.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:0.4];
-    [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"ok" value:nil table:@"English"] forState:UIControlStateNormal];
+    [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"ok" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"SelectCoinTypeTableViewCell" bundle:nil] forCellReuseIdentifier:NSStringFromClass([SelectCoinTypeTableViewCell class])];

@@ -13,10 +13,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.leftLabelTitleWidth.constant = (SCREEN_WIDTH-20)/4;
-    self.timeLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"time" value:nil table:@"English"];
-    self.dealPriceLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"dealPrice" value:nil table:@"English"];
-    self.dealNum.text = [[ChangeLanguage bundle] localizedStringForKey:@"dealNum" value:nil table:@"English"];
-    self.feeLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"poundage" value:nil table:@"English"];
+    self.timeLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"time" value:nil table:@"Localizable"];
+    self.dealPriceLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"dealPrice" value:nil table:@"Localizable"];
+    self.dealNum.text = [[ChangeLanguage bundle] localizedStringForKey:@"dealNum" value:nil table:@"Localizable"];
+    self.feeLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"poundage" value:nil table:@"Localizable"];
     // Initialization code
 }
 

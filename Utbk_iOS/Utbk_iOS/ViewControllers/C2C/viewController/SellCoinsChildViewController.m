@@ -34,7 +34,7 @@
 }
 //MARK:--获取全部货币种类
 -(void)getCoinTypeData{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     [C2CNetManager selectCoinTypeForCompleteHandle:^(id resPonseObj, int code) {
         NSLog(@"获取全部货币种类 --- %@",resPonseObj);
         [EasyShowLodingView hidenLoding];
@@ -50,7 +50,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }

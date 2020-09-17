@@ -18,7 +18,7 @@ typedef void(^ResultBlock)(id resultObject,int isSuccessed);
 #define MESSAGE @"message"
 #define LocalLanguageKey         @"LocalLanguageKey" //选择语言（0代表简体中文，1代表繁体中文，2代表英文）
 #define LanguageChange           @"LanguageChange" //切换语言
-#define LocalizationKey(key)     [[ChangeLanguage bundle] localizedStringForKey:key value:nil table:@"English"]
+#define LocalizationKey(key)     [[ChangeLanguage bundle] localizedStringForKey:key value:nil table:@"Localizable"]
 //[NSBundle.mainBundle localizedStringForKey:(key) value:@"" table:nil]
 #define INT2STRING(intValue) [NSString stringWithFormat:@"%d", intValue]
 //图片

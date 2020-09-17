@@ -73,7 +73,7 @@ static char *BackBtnKey = "backBtnKey";
     //self.navigationItem.hidesBackButton = YES;
     //返回按钮
     UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0,0,ww, hh)];
-    [backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"icon_navLeft"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backNav:) forControlEvents:UIControlEventTouchUpInside];
     backBtn.tag = normalBack;
     backBtn.backgroundColor = [UIColor clearColor];
@@ -82,7 +82,7 @@ static char *BackBtnKey = "backBtnKey";
         [self.view addSubview:backBtn];
         self.backBtn = backBtn;
     }else{
-        UIImage *img = [UIImage imageNamed:@"back"];
+        UIImage *img = [UIImage imageNamed:@"icon_navLeft"];
         UIBarButtonItem *baritem = [[UIBarButtonItem alloc]init];
         baritem.image = [img imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [baritem setTarget:self];

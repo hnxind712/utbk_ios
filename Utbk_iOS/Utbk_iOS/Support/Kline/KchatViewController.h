@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BTBaseViewController.h"
 
-@interface KchatViewController : BTBaseViewController
+@interface KchatViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic,copy)NSString*symbol;//交易对

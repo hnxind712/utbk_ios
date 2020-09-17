@@ -1684,24 +1684,24 @@
 		D79D72B125134A8200DE7DF7 /* viewController */ = {
 			isa = PBXGroup;
 			children = (
-				D79D72B225134A8200DE7DF7 /* BuyCoinsDetailViewController.h */,
-				D79D72B325134A8200DE7DF7 /* SellCoinsViewController.m */,
+				D79D72D825134A8200DE7DF7 /* Advertising */,
+				D79D72CB25134A8200DE7DF7 /* Search */,
+				D79D72B825134A8200DE7DF7 /* Business */,
+				D79D72D425134A8200DE7DF7 /* FrenchCurrencyViewController.h */,
 				D79D72B425134A8200DE7DF7 /* FrenchCurrencyViewController.m */,
+				D79D72E225134A8200DE7DF7 /* BuyCoinsViewController.h */,
+				D79D72CA25134A8200DE7DF7 /* BuyCoinsViewController.m */,
 				D79D72B525134A8200DE7DF7 /* BuyCoinsViewController.xib */,
+				D79D72D525134A8200DE7DF7 /* SellCoinsViewController.h */,
+				D79D72B325134A8200DE7DF7 /* SellCoinsViewController.m */,
+				D79D72E125134A8200DE7DF7 /* SellCoinsViewController.xib */,
+				D79D72E025134A8200DE7DF7 /* SellCoinsChildViewController.h */,
 				D79D72B625134A8200DE7DF7 /* SellCoinsChildViewController.m */,
 				D79D72B725134A8200DE7DF7 /* BuyCoinsChildViewController.h */,
-				D79D72B825134A8200DE7DF7 /* Business */,
-				D79D72CA25134A8200DE7DF7 /* BuyCoinsViewController.m */,
-				D79D72CB25134A8200DE7DF7 /* Search */,
-				D79D72D425134A8200DE7DF7 /* FrenchCurrencyViewController.h */,
-				D79D72D525134A8200DE7DF7 /* SellCoinsViewController.h */,
+				D79D72DF25134A8200DE7DF7 /* BuyCoinsChildViewController.m */,
+				D79D72B225134A8200DE7DF7 /* BuyCoinsDetailViewController.h */,
 				D79D72D625134A8200DE7DF7 /* BuyCoinsDetailViewController.m */,
 				D79D72D725134A8200DE7DF7 /* BuyCoinsDetailViewController.xib */,
-				D79D72D825134A8200DE7DF7 /* Advertising */,
-				D79D72DF25134A8200DE7DF7 /* BuyCoinsChildViewController.m */,
-				D79D72E025134A8200DE7DF7 /* SellCoinsChildViewController.h */,
-				D79D72E125134A8200DE7DF7 /* SellCoinsViewController.xib */,
-				D79D72E225134A8200DE7DF7 /* BuyCoinsViewController.h */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -1931,22 +1931,22 @@
 		D79D738C25134DE400DE7DF7 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
-				D79D738D25134DE400DE7DF7 /* BaseNetManager.m */,
 				D79D738E25134DE400DE7DF7 /* XBRequest.h */,
+				D79D739825134DE400DE7DF7 /* XBRequest.m */,
+				D79D739525134DE400DE7DF7 /* BaseNetManager.h */,
+				D79D738D25134DE400DE7DF7 /* BaseNetManager.m */,
+				D79D739725134DE400DE7DF7 /* TradeNetManager.h */,
 				D79D738F25134DE400DE7DF7 /* TradeNetManager.m */,
+				D79D739625134DE400DE7DF7 /* HomeNetManager.h */,
 				D79D739025134DE400DE7DF7 /* HomeNetManager.m */,
+				D79D739A25134DE400DE7DF7 /* LoginNetManager.h */,
 				D79D739125134DE400DE7DF7 /* LoginNetManager.m */,
+				D79D739B25134DE400DE7DF7 /* MineNetManager.h */,
 				D79D739225134DE400DE7DF7 /* MineNetManager.m */,
 				D79D739325134DE400DE7DF7 /* MarketNetManager.h */,
-				D79D739425134DE400DE7DF7 /* C2CNetManager.m */,
-				D79D739525134DE400DE7DF7 /* BaseNetManager.h */,
-				D79D739625134DE400DE7DF7 /* HomeNetManager.h */,
-				D79D739725134DE400DE7DF7 /* TradeNetManager.h */,
-				D79D739825134DE400DE7DF7 /* XBRequest.m */,
 				D79D739925134DE400DE7DF7 /* MarketNetManager.m */,
-				D79D739A25134DE400DE7DF7 /* LoginNetManager.h */,
-				D79D739B25134DE400DE7DF7 /* MineNetManager.h */,
 				D79D739C25134DE400DE7DF7 /* C2CNetManager.h */,
+				D79D739425134DE400DE7DF7 /* C2CNetManager.m */,
 			);
 			path = Remote;
 			sourceTree = "<group>";

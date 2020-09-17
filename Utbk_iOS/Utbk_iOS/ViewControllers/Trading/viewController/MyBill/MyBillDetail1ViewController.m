@@ -50,7 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = [[ChangeLanguage bundle] localizedStringForKey:@"orderDetail" value:nil table:@"English"];
+    self.title = [[ChangeLanguage bundle] localizedStringForKey:@"orderDetail" value:nil table:@"Localizable"];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.section1Arr = [[NSMutableArray alloc] init];
     self.section2Arr = [[NSMutableArray alloc]init];
@@ -87,7 +87,7 @@
 }
 //MARK:--获取数据
 -(void)getData{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     [MineNetManager myBillDetailForId:self.orderId CompleteHandle:^(id resPonseObj, int code) {
         NSLog(@"resPonseObj --- %@",resPonseObj);
         [EasyShowLodingView hidenLoding];
@@ -104,13 +104,13 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
 //MARK:--整理数据
 -(void)arrangeData{
-    [self.section1Arr addObject:[NSString stringWithFormat:@"%@ %@ %@",[[ChangeLanguage bundle] localizedStringForKey:@"orderDetailTip1" value:nil table:@"English"],_detailModel.otherSide,[[ChangeLanguage bundle] localizedStringForKey:@"orderDetailTip2" value:nil table:@"English"]]];
+    [self.section1Arr addObject:[NSString stringWithFormat:@"%@ %@ %@",[[ChangeLanguage bundle] localizedStringForKey:@"orderDetailTip1" value:nil table:@"Localizable"],_detailModel.otherSide,[[ChangeLanguage bundle] localizedStringForKey:@"orderDetailTip2" value:nil table:@"Localizable"]]];
     [self.section1Arr addObject:_detailModel.orderSn];
     [self.section1Arr addObject:[NSString stringWithFormat:@"%@CNY",_detailModel.price]];
     [self.section1Arr addObject:[NSString stringWithFormat:@"%@%@",_detailModel.amount,_detailModel.unit]];
@@ -124,21 +124,21 @@
             
         }else{
             [self.section2Arr addObject:_detailModel.payInfo.alipay.aliNo];
-            [self.section2LeftArr addObject:[[ChangeLanguage bundle] localizedStringForKey:@"alipayAccount" value:nil table:@"English"]];
+            [self.section2LeftArr addObject:[[ChangeLanguage bundle] localizedStringForKey:@"alipayAccount" value:nil table:@"Localizable"]];
             [self.section2ImageArr addObject:@"zhifubaoImage"];
         }
         if (_detailModel.payInfo.wechatPay == nil) {
 
         }else{
             [self.section2Arr addObject:_detailModel.payInfo.wechatPay.wechat];
-            [self.section2LeftArr addObject:[[ChangeLanguage bundle] localizedStringForKey:@"WeChatAccount" value:nil table:@"English"]];
+            [self.section2LeftArr addObject:[[ChangeLanguage bundle] localizedStringForKey:@"WeChatAccount" value:nil table:@"Localizable"]];
              [self.section2ImageArr addObject:@"wechatImage"];
         }
         if (_detailModel.payInfo.bankInfo == nil) {
 
         }else{
             [self.section2Arr addObject:_detailModel.payInfo.bankInfo.cardNo];
-            [self.section2LeftArr addObject:[[ChangeLanguage bundle] localizedStringForKey:@"bankCardAccount" value:nil table:@"English"]];
+            [self.section2LeftArr addObject:[[ChangeLanguage bundle] localizedStringForKey:@"bankCardAccount" value:nil table:@"Localizable"]];
             [self.section2ImageArr addObject:@"yinlianImage"];
         }
     }else{
@@ -149,8 +149,8 @@
         //未付款
         if ([_detailModel.type isEqualToString:@"0"]) {
             //买入
-            [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"payment" value:nil table:@"English"] forState:UIControlStateNormal];
-            [self.cancelButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"cancelOrder" value:nil table:@"English"] forState:UIControlStateNormal];
+            [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"payment" value:nil table:@"Localizable"] forState:UIControlStateNormal];
+            [self.cancelButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"cancelOrder" value:nil table:@"Localizable"] forState:UIControlStateNormal];
             self.leftButtonWidth.constant = SCREEN_WIDTH/2;
             self.leftButtonHeight.constant = 50;
             self.tableBottomHeight = 50;
@@ -164,7 +164,7 @@
     }else if ([_detailModel.status isEqualToString:@"2"]){
         if ([_detailModel.type isEqualToString:@"0"]) {
             //买入
-            [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"orderComplaint" value:nil table:@"English"] forState:UIControlStateNormal];
+            [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"orderComplaint" value:nil table:@"Localizable"] forState:UIControlStateNormal];
             self.leftButtonWidth.constant = SCREEN_WIDTH;
             self.leftButtonHeight.constant = 50;
             self.tableBottomHeight = 50;
@@ -172,8 +172,8 @@
             self.cancelButton.hidden = NO;
             self.btnIndex = 5;
         }else{
-            [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"orderComplaint" value:nil table:@"English"] forState:UIControlStateNormal];
-            [self.cancelButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"putCoin" value:nil table:@"English"] forState:UIControlStateNormal];
+            [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"orderComplaint" value:nil table:@"Localizable"] forState:UIControlStateNormal];
+            [self.cancelButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"putCoin" value:nil table:@"Localizable"] forState:UIControlStateNormal];
             self.leftButtonWidth.constant = SCREEN_WIDTH/2;
             self.leftButtonHeight.constant = 50;
             self.tableBottomHeight = 50;
@@ -194,7 +194,7 @@
     
     if (self.flagIndex == 1) {
     }else{
-        [self rightBarItemWithTitle:[[ChangeLanguage bundle] localizedStringForKey:@"contactMe" value:nil table:@"English"]];
+        [self rightBarItemWithTitle:[[ChangeLanguage bundle] localizedStringForKey:@"contactMe" value:nil table:@"Localizable"]];
     }
     
     if ([_detailModel.status isEqualToString:@"1"]) {
@@ -263,7 +263,7 @@
 
     if (_btnIndex == 1) {
         //付款
-        [self certainOrCancelCoinAlterView:[[ChangeLanguage bundle] localizedStringForKey:@"certainPayTip" value:nil table:@"English"] withIndex:_btnIndex];
+        [self certainOrCancelCoinAlterView:[[ChangeLanguage bundle] localizedStringForKey:@"certainPayTip" value:nil table:@"Localizable"] withIndex:_btnIndex];
     }else if(_btnIndex == 4 || _btnIndex == 5){
         //申诉
         [self complaintsTextField];
@@ -275,14 +275,14 @@
     .LeeHeaderColor([UIColor whiteColor])
     .LeeAddTitle(^(UILabel *label) {
         label.textColor = RGBOF(0x333333);
-        label.text = [[ChangeLanguage bundle] localizedStringForKey:@"warmPrompt" value:nil table:@"English"];
+        label.text = [[ChangeLanguage bundle] localizedStringForKey:@"warmPrompt" value:nil table:@"Localizable"];
     })
     .LeeAddContent(^(UILabel *label) {
         label.textColor = RGBOF(0x333333);
         label.text = titleString;
     })
     .LeeAddAction(^(LEEAction *action) {
-        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"ok" value:nil table:@"English"];
+        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"ok" value:nil table:@"Localizable"];
         action.titleColor = RGBOF(0x333333);
         action.borderColor = BackColor;
         action.clickBlock = ^{
@@ -293,7 +293,7 @@
             }else if (index == 2){
                 urlStr = @"otc/order/cancel";
             }
-            [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+            [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
             [MineNetManager myBillDetailTipForUrlString:urlStr withOrderSn:self.detailModel.orderSn CompleteHandle:^(id resPonseObj, int code) {
                 [EasyShowLodingView hidenLoding];
                 if (code) {
@@ -313,7 +313,7 @@
                         [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
                     }
                 }else{
-                    [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+                    [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
                 }
             }];
         };
@@ -322,7 +322,7 @@
     .LeeAddAction(^(LEEAction *action) {
         action.titleColor = RGBOF(0x333333);
         action.borderColor = BackColor;
-        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"cancel" value:nil table:@"English"];
+        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"cancel" value:nil table:@"Localizable"];
     })
     .LeeShow();
     
@@ -335,7 +335,7 @@
 - (IBAction)cancelBtnClick:(id)sender {
     if (_btnIndex == 1) {
         //取消订单
-        [self certainOrCancelCoinAlterView:[[ChangeLanguage bundle] localizedStringForKey:@"cancelOrderTip" value:nil table:@"English"] withIndex:2];
+        [self certainOrCancelCoinAlterView:[[ChangeLanguage bundle] localizedStringForKey:@"cancelOrderTip" value:nil table:@"Localizable"] withIndex:2];
     }else if (_btnIndex == 4 ){
         //放币
         [self fangKuanAlterView];
@@ -372,17 +372,17 @@
         if (indexPath.row == 0) {
             //订单状态
             cell.rightLabel.textColor = kRGBColor(42, 124, 246);
-            cell.leftLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"orderStatus" value:nil table:@"English"];
+            cell.leftLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"orderStatus" value:nil table:@"Localizable"];
             if ([_detailModel.status isEqualToString:@"0"]) {
-                cell.rightLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"cancelled" value:nil table:@"English"];
+                cell.rightLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"cancelled" value:nil table:@"Localizable"];
             }else if ([_detailModel.status isEqualToString:@"1"]){
-                cell.rightLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"unPaying" value:nil table:@"English"];
+                cell.rightLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"unPaying" value:nil table:@"Localizable"];
             }else if ([_detailModel.status isEqualToString:@"2"]){
-                cell.rightLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"paid" value:nil table:@"English"];
+                cell.rightLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"paid" value:nil table:@"Localizable"];
             }else if ([_detailModel.status isEqualToString:@"3"]){
-                cell.rightLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"completed" value:nil table:@"English"];
+                cell.rightLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"completed" value:nil table:@"Localizable"];
             }else if ([_detailModel.status isEqualToString:@"4"]){
-                cell.rightLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"complaint" value:nil table:@"English"];
+                cell.rightLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"complaint" value:nil table:@"Localizable"];
             }
         }
         
@@ -454,14 +454,14 @@
         if (_detailModel.payInfo.alipay.qrCodeUrl.length > 0 ) {
             [self qRView:1];
         }else{
-           [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noAlipayQRImage" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+           [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noAlipayQRImage" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }else if (button.tag == 1){
         //微信
         if (_detailModel.payInfo.wechatPay.qrWeCodeUrl.length > 0) {
             [self qRView:2];
         }else{
-           [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noWeChatQRImage" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+           [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noWeChatQRImage" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }
 }
@@ -485,11 +485,11 @@
     if (index == 1) {
         //支付宝
         QRCodeUrl = [NSURL URLWithString:_detailModel.payInfo.alipay.qrCodeUrl];
-        _QRView.titleLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"alipayQR" value:nil table:@"English"];
+        _QRView.titleLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"alipayQR" value:nil table:@"Localizable"];
     }else{
         //微信
         QRCodeUrl = [NSURL URLWithString:_detailModel.payInfo.wechatPay.qrWeCodeUrl];
-        _QRView.titleLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"weChatQR" value:nil table:@"English"];
+        _QRView.titleLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"weChatQR" value:nil table:@"Localizable"];
     }
     [_QRView.QRCodeImage sd_setImageWithURL:QRCodeUrl];
     ///需要处理
@@ -511,11 +511,11 @@
     .LeeHeaderColor([UIColor whiteColor])
     .LeeAddContent(^(UILabel *label) {
         label.textColor = RGBOF(0x333333);
-        label.text = [[ChangeLanguage bundle] localizedStringForKey:@"moneyPassword" value:nil table:@"English"];
+        label.text = [[ChangeLanguage bundle] localizedStringForKey:@"moneyPassword" value:nil table:@"Localizable"];
         
     })
     .LeeAddTextField(^(UITextField *textField){
-        textField.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"inputMoneyPassword" value:nil table:@"English"];
+        textField.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"inputMoneyPassword" value:nil table:@"Localizable"];
         textField.secureTextEntry = YES;
         textField.backgroundColor = [UIColor whiteColor];
         textField.layer.borderColor = BackColor.CGColor;
@@ -544,7 +544,7 @@
 }
 //MARK:--放款提交信息
 -(void)fangKuan:(NSString *)fangKuan{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     [MineNetManager myBillDetailTipForOrderSn:self.detailModel.orderSn withJyPassword:fangKuan CompleteHandle:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
         if (code) {
@@ -559,7 +559,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
@@ -573,7 +573,7 @@
         .LeeHeaderColor([UIColor whiteColor])
         .LeeAddTitle(^(UILabel *label) {
             label.textColor = RGBOF(0x333333);
-            label.text = [[ChangeLanguage bundle] localizedStringForKey:@"warmPrompt" value:nil table:@"English"];
+            label.text = [[ChangeLanguage bundle] localizedStringForKey:@"warmPrompt" value:nil table:@"Localizable"];
         })
         .LeeAddContent(^(UILabel *label) {
             label.textColor = RGBOF(0x333333);
@@ -591,8 +591,8 @@
         __weak typeof(self) weakSelf = self;
 //        ZYInputAlertView *alertView = [ZYInputAlertView alertView];
 //        alertView.confirmBgColor = NavColor;
-//        [alertView.confirmBtn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"complaints" value:nil table:@"English"] forState:UIControlStateNormal];
-//        alertView.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"orderComplaintReason" value:nil table:@"English"];
+//        [alertView.confirmBtn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"complaints" value:nil table:@"Localizable"] forState:UIControlStateNormal];
+//        alertView.placeholder = [[ChangeLanguage bundle] localizedStringForKey:@"orderComplaintReason" value:nil table:@"Localizable"];
 //        [alertView confirmBtnClickBlock:^(NSString *inputString) {
 //            [weakSelf orderAppeal:inputString];
 //        }];
@@ -603,10 +603,10 @@
 //MARK--订单投诉事件
 -(void)orderAppeal:(NSString *)appealStr{
     if ([appealStr isEqualToString:@""]) {
-        [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noOrderComplaintTip" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+        [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noOrderComplaintTip" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         return;
     }
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     [MineNetManager myBillDetailComplaintsForRemark:appealStr withOrderSn:self.detailModel.orderSn CompleteHandle:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
         if (code) {
@@ -621,13 +621,13 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
 //MARK:--取消订单点击事件
 -(void)cancelBtnClick{
- [self certainOrCancelCoinAlterView:[[ChangeLanguage bundle] localizedStringForKey:@"cancelOrderTip" value:nil table:@"English"] withIndex:2];
+ [self certainOrCancelCoinAlterView:[[ChangeLanguage bundle] localizedStringForKey:@"cancelOrderTip" value:nil table:@"Localizable"] withIndex:2];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0){
@@ -672,17 +672,17 @@
     leftLabel.textColor = AppTextColor_333333;
     [headView addSubview:leftLabel];
     if (section == 1) {
-        leftLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"orderInformation" value:nil table:@"English"];
+        leftLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"orderInformation" value:nil table:@"Localizable"];
     }else if (section == 2){
         if (self.section2Arr.count < 1) {
         }else{
-            leftLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"payInfo" value:nil table:@"English"];
+            leftLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"payInfo" value:nil table:@"Localizable"];
         }
     }
     return  headView;
 }
 -(NSArray *)getSection1LeftArr{
-    NSArray * section1LeftArr = @[[[ChangeLanguage bundle] localizedStringForKey:@"tradingObject" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"orderNo" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"tradingPrice" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"tradingNumber" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"tradingCash" value:nil table:@"English"],[[ChangeLanguage bundle] localizedStringForKey:@"createTime" value:nil table:@"English"]];
+    NSArray * section1LeftArr = @[[[ChangeLanguage bundle] localizedStringForKey:@"tradingObject" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"orderNo" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"tradingPrice" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"tradingNumber" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"tradingCash" value:nil table:@"Localizable"],[[ChangeLanguage bundle] localizedStringForKey:@"createTime" value:nil table:@"Localizable"]];
     return section1LeftArr;
 }
 - (void)didReceiveMemoryWarning {

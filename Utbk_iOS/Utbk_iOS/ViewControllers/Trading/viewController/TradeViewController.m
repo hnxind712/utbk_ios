@@ -28,6 +28,7 @@
 #import "HistoryTransactionEntrustViewController.h"
 #import "EntrustmentRecordViewController.h"//委托记录
 #import "AccountSettingInfoModel.h"
+#import "XBRequest.h"
 
 #import "MineNetManager.h"
 #define Handicap 5  //买入卖出显示数量
@@ -136,10 +137,35 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     return _hisdataArr;
 }
 
-
+#pragma mark - 获取默认交易对(新增)
+- (void)getDefaultSymbol{
+    __weak typeof(self)weakself = self;
+    NSString *url = [NSString stringWithFormat:@"%@%@",HOST, @"market/default/symbol"];
+    [[XBRequest sharedInstance] getDataWithUrl:url Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+        NSLog(@"获取默认交易对 ---- %@",responseResult);
+        if ([responseResult objectForKey:@"resError"]) {
+            NSError *error = responseResult[@"resError"];
+            [weakself.view makeToast:error.localizedDescription];
+        }else{
+            if ([responseResult[@"code"] integerValue] == 0) {
+                if (responseResult[@"data"] && [responseResult[@"data"] isKindOfClass:[NSDictionary class]]) {
+                    NSDictionary *data = responseResult[@"data"];
+                    if (![marketManager shareInstance].symbol) {
+                        [marketManager shareInstance].symbol = data[@"app"];//默认第一个
+                        self.title = data[@"app"];
+                        [self.symbolBtn setTitle:[marketManager shareInstance].symbol forState:UIControlStateNormal];
+                        [self getData:[marketManager shareInstance].symbol];
+                    }
+                }
+            }else{
+                [weakself.view makeToast:responseResult[@"message"]];
+            }
+        }
+    }];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.symbolBtn setTitle:[marketManager shareInstance].symbol forState:UIControlStateNormal];
+    [self getDefaultSymbol];
     self.priceType = PriceType_Fixed;//默认限价
     self.Myscrollview.delegate = self;
     self.Myscrollview.showsVerticalScrollIndicator =NO;
@@ -164,7 +190,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     
     [self getUSDTToCNYRate];
     self.topDistance.constant=0;
-    [self LeftsetupNavgationItemWithpictureName:@"tradeLeft"];
+//    [self LeftsetupNavgationItemWithpictureName:@"tradeLeft"];
     self.isHistory = NO;
     self.viewheights.constant = [self getviewheightspce];
     
@@ -209,7 +235,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     UITapGestureRecognizer *tapRecognizerNowPrice=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nowPriceTapClick)];
     self.nowPrice.userInteractionEnabled=YES;
     [self.nowPrice addGestureRecognizer:tapRecognizerNowPrice];
-    [self getData:[marketManager shareInstance].symbol];
     [self getPersonAllCollection];
 }
 
@@ -384,7 +409,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
@@ -499,7 +524,8 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 - (IBAction)kLineAction:(UIButton *)sender {
     KchatViewController*klineVC=[[KchatViewController alloc]init];
     klineVC.symbol=[marketManager shareInstance].symbol;
-    [self.navigationController pushViewController:klineVC animated:YES];
+//    [self.navigationController pushViewController:klineVC animated:YES];
+    [self.navigationController pushViewController:klineVC withBackTitle:[marketManager shareInstance].symbol animated:YES];
 //    [[AppDelegate sharedAppDelegate] pushViewController:klineVC withBackTitle:[marketManager shareInstance].symbol];
 }
 #pragma mark-头部右侧的收藏按钮点击事件
@@ -1507,7 +1533,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }

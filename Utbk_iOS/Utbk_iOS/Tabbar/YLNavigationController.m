@@ -154,13 +154,13 @@
         btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         btn.backgroundColor = [UIColor clearColor];
         [btn setTitle:[NSString stringWithFormat:@" %@",backTitle] forState:UIControlStateNormal];
-        [btn setTitleColor:RGBOF(0xe6e6e6) forState:UIControlStateNormal];
+        [btn setTitleColor:RGBOF(0x333333) forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
-        [btn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"icon_navLeft"] forState:UIControlStateNormal];
         
         viewController.navigationItem.hidesBackButton = YES;
         UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-//        backItem.title = backTitle;
+        backItem.title = backTitle;
         viewController.navigationItem.leftBarButtonItem = backItem;
     }
     // 只有在导航控制器里面有子控制器的时候才需要截图

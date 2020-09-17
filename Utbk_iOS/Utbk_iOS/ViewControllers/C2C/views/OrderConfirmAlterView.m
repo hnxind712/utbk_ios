@@ -19,9 +19,9 @@
     self.buyBGView.layer.borderColor = [UIColor grayColor].CGColor;
     self.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:0.4];
     
-    self.certainPlaceOrderLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"orderConfirmation" value:nil table:@"English"];
-    [self.cancelButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"cancel" value:nil table:@"English"] forState:UIControlStateNormal];
-    [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"ok" value:nil table:@"English"] forState:UIControlStateNormal];
+    self.certainPlaceOrderLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"orderConfirmation" value:nil table:@"Localizable"];
+    [self.cancelButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"cancel" value:nil table:@"Localizable"] forState:UIControlStateNormal];
+    [self.certainButton setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"ok" value:nil table:@"Localizable"] forState:UIControlStateNormal];
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     

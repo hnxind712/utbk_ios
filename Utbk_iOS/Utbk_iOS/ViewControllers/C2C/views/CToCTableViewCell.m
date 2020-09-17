@@ -33,7 +33,7 @@
     }
     self.nicknameLabel.text = [NSString stringWithFormat:@"%@**",[_coinUserInfoModel.memberName substringToIndex:1]];
     self.tradeNum.text = [NSString stringWithFormat:@"%@",_coinUserInfoModel.transactions];
-    self.limitNum.text = [NSString stringWithFormat:@"%@ %@-%@CNY",[[ChangeLanguage bundle] localizedStringForKey:@"limit" value:nil table:@"English"],_coinUserInfoModel.minLimit,_coinUserInfoModel.maxLimit];
+    self.limitNum.text = [NSString stringWithFormat:@"%@ %@-%@CNY",[[ChangeLanguage bundle] localizedStringForKey:@"limit" value:nil table:@"Localizable"],_coinUserInfoModel.minLimit,_coinUserInfoModel.maxLimit];
 
     NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:_coinUserInfoModel.price];
     NSLog(@"%@", [decNumber stringValue]);

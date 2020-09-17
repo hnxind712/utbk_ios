@@ -32,14 +32,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [[ChangeLanguage bundle] localizedStringForKey:@"myAdvertising" value:nil table:@"English"];
+    self.title = [[ChangeLanguage bundle] localizedStringForKey:@"myAdvertising" value:nil table:@"Localizable"];
     [self backBtnNoNavBar:NO normalBack:YES];
     self.bottomViewHeight.constant = TabbarSafeBottomMargin;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"MyAdvertisingTableViewCell" bundle:nil] forCellReuseIdentifier:NSStringFromClass([MyAdvertisingTableViewCell class])];
     self.userName = [YLUserInfo shareUserInfo].username;
-    LYEmptyView *emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:[[ChangeLanguage bundle] localizedStringForKey:@"noAdvertisingTip" value:nil table:@"English"]];
+    LYEmptyView *emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:[[ChangeLanguage bundle] localizedStringForKey:@"noAdvertisingTip" value:nil table:@"Localizable"]];
     self.tableView.ly_emptyView = emptyView;
     
     [self RightsetupNavgationItemWithpictureName:@"zicanliushui"];
@@ -87,7 +87,7 @@
 }
 //MARK:--获取广告数据信息
 -(void)getData{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     [MineNetManager getMyAdvertisingForCompleteHandle:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
         [_myAdvertisingArr removeAllObjects];
@@ -100,7 +100,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
@@ -138,16 +138,16 @@
     cell.userName.text = self.userName;
     if ([model.advertiseType isEqualToString:@"0"]) {
         //购买
-        cell.advertisingType.text = [[ChangeLanguage bundle] localizedStringForKey:@"buy" value:nil table:@"English"];
+        cell.advertisingType.text = [[ChangeLanguage bundle] localizedStringForKey:@"buy" value:nil table:@"Localizable"];
     }else{
-        cell.advertisingType.text = [[ChangeLanguage bundle] localizedStringForKey:@"sell" value:nil table:@"English"];
+        cell.advertisingType.text = [[ChangeLanguage bundle] localizedStringForKey:@"sell" value:nil table:@"Localizable"];
     }
     if ([model.status isEqualToString:@"0"]) {
-        cell.statusLabel.text=[[ChangeLanguage bundle] localizedStringForKey:@"grounding" value:nil table:@"English"];
+        cell.statusLabel.text=[[ChangeLanguage bundle] localizedStringForKey:@"grounding" value:nil table:@"Localizable"];
     }else{
-        cell.statusLabel.text=[[ChangeLanguage bundle] localizedStringForKey:@"shelved" value:nil table:@"English"];
+        cell.statusLabel.text=[[ChangeLanguage bundle] localizedStringForKey:@"shelved" value:nil table:@"Localizable"];
     }
-    cell.limitNum.text = [NSString stringWithFormat:@"%@ %@-%@CNY",[[ChangeLanguage bundle] localizedStringForKey:@"limit" value:nil table:@"English"],model.minLimit,model.maxLimit];
+    cell.limitNum.text = [NSString stringWithFormat:@"%@ %@-%@CNY",[[ChangeLanguage bundle] localizedStringForKey:@"limit" value:nil table:@"Localizable"],model.minLimit,model.maxLimit];
     cell.coinNum.text = [NSString stringWithFormat:@"%@ %@%@",LocalizationKey(@"amonut"),[ToolUtil judgeStringForDecimalPlaces:model.remainAmount],model.coin.unit];
     NSString *numstr = [NSString stringWithFormat:@"%f",([model.number doubleValue]-[model.remainAmount doubleValue])];
     cell.Surplusnum.text = [NSString stringWithFormat:@"%@%@", [ToolUtil judgeStringForDecimalPlaces:numstr],model.coin.unit];
@@ -187,7 +187,7 @@
 
 //MARK:--删除广告接口
 -(void)deleteAdvertiseInfo:(NSString *)advertiseId{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     [MineNetManager deleteAdvertiseForAdvertiseId:advertiseId CompleteHandle:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
         if (code) {
@@ -203,7 +203,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
@@ -230,11 +230,11 @@
     }];
     if ([self.infoModel.status isEqualToString:@"0"]) {
         //上架广告，可以下架
-        _myAdvertisingAlterView.backOnlabel.text =[[ChangeLanguage bundle] localizedStringForKey:@"shelves" value:nil table:@"English"]  ;
+        _myAdvertisingAlterView.backOnlabel.text =[[ChangeLanguage bundle] localizedStringForKey:@"shelves" value:nil table:@"Localizable"]  ;
          [_myAdvertisingAlterView.backOnButton setImage:[UIImage imageNamed:@"gg_xiaji"] forState:UIControlStateNormal];
     }else{
    
-        _myAdvertisingAlterView.backOnlabel.text =[[ChangeLanguage bundle] localizedStringForKey:@"Added" value:nil table:@"English"]  ;
+        _myAdvertisingAlterView.backOnlabel.text =[[ChangeLanguage bundle] localizedStringForKey:@"Added" value:nil table:@"Localizable"]  ;
 
         [_myAdvertisingAlterView.backOnButton setImage:[UIImage imageNamed:@"gg_shangjia"] forState:UIControlStateNormal];
 
@@ -253,7 +253,7 @@
         //修改
         if ([self.infoModel.status isEqualToString:@"0"]) {
             //上架
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"shelvesTip" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"shelvesTip" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
             return ;
         }else{
             //修改
@@ -280,7 +280,7 @@
 }
 //MARK:--修改广告
 -(void)changeAdvertising{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     [MineNetManager getMyAdvertisingDetailInfoForAdvertisingId:self.infoModel.ID CompleteHandle:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
         if (code) {
@@ -306,18 +306,18 @@
                 [UIApplication.sharedApplication.keyWindow makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [UIApplication.sharedApplication.keyWindow makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [UIApplication.sharedApplication.keyWindow makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
 //MARK:--上架广告
 -(void)upAdvertising{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"AddingAdvertiseTip" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"AddingAdvertiseTip" value:nil table:@"Localizable"]];
     [MineNetManager upMyAdvertisingForAdvertisingId:self.infoModel.ID CompleteHandle:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
         if (code) {
             if ([resPonseObj[@"code"] integerValue] == 0) {
-                [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"addAdvertiseSuccessTip" value:nil table:@"English"] duration:1.0 position:ToastPosition];
+                [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"addAdvertiseSuccessTip" value:nil table:@"Localizable"] duration:1.0 position:ToastPosition];
                 [_myAdvertisingAlterView removeFromSuperview];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -329,18 +329,18 @@
                 [UIApplication.sharedApplication.keyWindow makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [UIApplication.sharedApplication.keyWindow makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [UIApplication.sharedApplication.keyWindow makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
 //MARK:--下架广告
 -(void)downAdvertising{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"shelvesAdvertiseTip" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"shelvesAdvertiseTip" value:nil table:@"Localizable"]];
     [MineNetManager downMyAdvertisingForAdvertisingId:self.infoModel.ID CompleteHandle:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
         if (code) {
             if ([resPonseObj[@"code"] integerValue] == 0) {
-                [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"shelvesAdvertiseSuccessTip" value:nil table:@"English"] duration:1.0 position:ToastPosition];
+                [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"shelvesAdvertiseSuccessTip" value:nil table:@"Localizable"] duration:1.0 position:ToastPosition];
                 [_myAdvertisingAlterView removeFromSuperview];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -351,7 +351,7 @@
                 [UIApplication.sharedApplication.keyWindow makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [UIApplication.sharedApplication.keyWindow makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [UIApplication.sharedApplication.keyWindow makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }

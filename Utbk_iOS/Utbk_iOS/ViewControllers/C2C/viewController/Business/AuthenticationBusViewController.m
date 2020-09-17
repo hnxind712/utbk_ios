@@ -68,7 +68,7 @@
 
 //获取抵押币种列表
 -(void)approvebusinesslist{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     [MineNetManager approvebusinessauthdepositlist:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
         if (code) {
@@ -88,7 +88,7 @@
                 [UIApplication.sharedApplication.keyWindow makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [UIApplication.sharedApplication.keyWindow makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [UIApplication.sharedApplication.keyWindow makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
@@ -140,7 +140,7 @@
     .LeeHeaderColor([UIColor whiteColor])
     .LeeAddAction(^(LEEAction *action) {
         action.type = LEEActionTypeDestructive;
-        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"takingPictures" value:nil table:@"English"];
+        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"takingPictures" value:nil table:@"Localizable"];
         action.backgroundColor = [UIColor whiteColor];
         action.titleColor = RGBOF(0x333333);
         action.borderColor = BackColor;
@@ -149,7 +149,7 @@
             if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
                 AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
                 if (authStatus == ALAuthorizationStatusDenied||authStatus == ALAuthorizationStatusRestricted) {
-                    [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"cameraPermissionsTips" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+                    [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"cameraPermissionsTips" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
                     return ;
                 }
             }
@@ -157,15 +157,15 @@
             if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
                 [self chooseImage:sourceType];
             }else{
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:[[ChangeLanguage bundle] localizedStringForKey:@"tips" value:nil table:@"English"] message:[[ChangeLanguage bundle] localizedStringForKey:@"unSupportTakePhoto" value:nil table:@"English"] preferredStyle:UIAlertControllerStyleAlert];
-                [alert addAction:[UIAlertAction actionWithTitle:[[ChangeLanguage bundle] localizedStringForKey:@"ok" value:nil table:@"English"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:[[ChangeLanguage bundle] localizedStringForKey:@"tips" value:nil table:@"Localizable"] message:[[ChangeLanguage bundle] localizedStringForKey:@"unSupportTakePhoto" value:nil table:@"Localizable"] preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:[[ChangeLanguage bundle] localizedStringForKey:@"ok" value:nil table:@"Localizable"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 }]];
                 [self presentViewController:alert animated:YES completion:nil];
             }
         };
     }).LeeAddAction(^(LEEAction *action){
         action.type = LEEActionTypeDestructive;
-        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"photoAlbumSelect" value:nil table:@"English"];
+        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"photoAlbumSelect" value:nil table:@"Localizable"];
         action.backgroundColor = [UIColor whiteColor];
         action.titleColor = RGBOF(0x333333);
         action.borderColor = BackColor;
@@ -175,7 +175,7 @@
                 
                 ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
                 if (authStatus == ALAuthorizationStatusDenied) {
-                    [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"cameraPermissionsTips" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+                    [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"cameraPermissionsTips" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
                     return;
                 }
             }
@@ -184,7 +184,7 @@
         };
     }).LeeAddAction(^(LEEAction *action){
         action.type = LEEActionTypeCancel;
-        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"cancel" value:nil table:@"English"];
+        action.title = [[ChangeLanguage bundle] localizedStringForKey:@"cancel" value:nil table:@"Localizable"];
         action.titleColor = RGBOF(0x333333);
         action.backgroundColor = [UIColor whiteColor];
     })
@@ -211,7 +211,7 @@
     UIImage *headImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
     NSData *imageData = UIImageJPEGRepresentation(headImage, 0.5);
     //将图片上传到服务器
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"upLoadingHeadPhoto" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"upLoadingHeadPhoto" value:nil table:@"Localizable"]];
     NSString *str=@"uc/upload/oss/image";
     NSString *urlString=[HOST stringByAppendingString:str];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -261,7 +261,7 @@
 //    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 //        [EasyShowLodingView hidenLoding];
 //        //上传失败
-//        [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"upLoadPictureFailure" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+//        [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"upLoadPictureFailure" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
 //    }];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -303,7 +303,7 @@
     [bodydic setValue:self.transactionurl forKey:@"tradeData"];
     
     NSDictionary *jsondic = @{@"json" : [self dictionaryToJson:bodydic],@"businessAuthDepositId" : self.BusModel.ID};
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     [MineNetManager approvecertifiedbusinessParam:jsondic CompleteHandle:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
         if (code) {
@@ -322,7 +322,7 @@
               
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }

@@ -34,7 +34,7 @@
 
 - (LYEmptyView *)emptyView{
     if (!_emptyView) {
-        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:[[ChangeLanguage bundle] localizedStringForKey:@"noSellCoinTip" value:nil table:@"English"]];
+        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:[[ChangeLanguage bundle] localizedStringForKey:@"noSellCoinTip" value:nil table:@"Localizable"]];
     }
     return _emptyView;
 }
@@ -48,14 +48,14 @@
     [self headRefreshWithScrollerView:self.tableView];
     [self footRefreshWithScrollerView:self.tableView];
     
-    LYEmptyView *emptyView=[LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:[[ChangeLanguage bundle] localizedStringForKey:@"noSellCoinTip" value:nil table:@"English"]];
+    LYEmptyView *emptyView=[LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:[[ChangeLanguage bundle] localizedStringForKey:@"noSellCoinTip" value:nil table:@"Localizable"]];
     self.tableView.ly_emptyView = emptyView;
     //language
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(languageSetting)name:LanguageChange object:nil];
 }
 //MARK:--国际化通知处理事件
 - (void)languageSetting{
-    LYEmptyView *emptyView=[LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:[[ChangeLanguage bundle] localizedStringForKey:@"noSellCoinTip" value:nil table:@"English"]];
+    LYEmptyView *emptyView=[LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:[[ChangeLanguage bundle] localizedStringForKey:@"noSellCoinTip" value:nil table:@"Localizable"]];
     self.tableView.ly_emptyView = emptyView;
 }
 -(void)dealloc{
@@ -80,7 +80,7 @@
 }
 //MARK:--获取广告的数据
 -(void)getData{
-    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"English"]];
+    [EasyShowLodingView showLodingText:[[ChangeLanguage bundle] localizedStringForKey:@"loading" value:nil table:@"Localizable"]];
     NSString *pageNoStr = [[NSString alloc] initWithFormat:@"%ld",(long)_pageNo];
     [C2CNetManager advertisingQueryForPageNo:pageNoStr withPageSize:@"20" withAdvertiseType:@"BUY" withAdvertiseId:self.model.ID CompleteHandle:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
@@ -100,7 +100,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
         }else{
-            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:ToastPosition];
+            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"Localizable"] duration:1.5 position:ToastPosition];
         }
     }];
 }
@@ -166,7 +166,7 @@
     }
     CoinUserInfoModel *model = _coinTypeArr[indexPath.row];
     cell.coinUserInfoModel = model;
-    [cell.buyBtn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"sell" value:nil table:@"English"] forState:UIControlStateNormal];
+    [cell.buyBtn setTitle:[[ChangeLanguage bundle] localizedStringForKey:@"sell" value:nil table:@"Localizable"] forState:UIControlStateNormal];
     [cell.buyBtn setBackgroundColor:RGBOF(0xD0B387)];
     __weak typeof(self)weakself = self;
     cell.block = ^{
