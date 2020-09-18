@@ -137,33 +137,6 @@
 		D7707D812510633A009EF151 /* BTContributionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7707D7F2510633A009EF151 /* BTContributionVC.xib */; };
 		D7707D8525107028009EF151 /* BTHomeNoticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7707D8325107028009EF151 /* BTHomeNoticeVC.m */; };
 		D7707D8625107028009EF151 /* BTHomeNoticeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7707D8425107028009EF151 /* BTHomeNoticeVC.xib */; };
-		D79D72062512F86800DE7DF7 /* MainChartRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71D42512F86800DE7DF7 /* MainChartRenderer.m */; };
-		D79D72072512F86800DE7DF7 /* SecondaryChartRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71D52512F86800DE7DF7 /* SecondaryChartRenderer.m */; };
-		D79D72082512F86800DE7DF7 /* BaseChartRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71DA2512F86800DE7DF7 /* BaseChartRenderer.m */; };
-		D79D72092512F86800DE7DF7 /* VolChartRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71DB2512F86800DE7DF7 /* VolChartRenderer.m */; };
-		D79D720A2512F86800DE7DF7 /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71E02512F86800DE7DF7 /* DataUtil.m */; };
-		D79D720B2512F86800DE7DF7 /* NSString+Rect.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71E12512F86800DE7DF7 /* NSString+Rect.m */; };
-		D79D720C2512F86800DE7DF7 /* UIColor+RGB.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71E22512F86800DE7DF7 /* UIColor+RGB.m */; };
-		D79D720D2512F86800DE7DF7 /* KLineStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71E52512F86800DE7DF7 /* KLineStateManager.m */; };
-		D79D720E2512F86800DE7DF7 /* KLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71EA2512F86800DE7DF7 /* KLineModel.m */; };
-		D79D720F2512F86800DE7DF7 /* KLineState.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71EB2512F86800DE7DF7 /* KLineState.m */; };
-		D79D72102512F86800DE7DF7 /* Market3.json in Resources */ = {isa = PBXBuildFile; fileRef = D79D71F02512F86800DE7DF7 /* Market3.json */; };
-		D79D72112512F86800DE7DF7 /* Market2.json in Resources */ = {isa = PBXBuildFile; fileRef = D79D71F12512F86800DE7DF7 /* Market2.json */; };
-		D79D72122512F86800DE7DF7 /* Market4.json in Resources */ = {isa = PBXBuildFile; fileRef = D79D71F22512F86800DE7DF7 /* Market4.json */; };
-		D79D72132512F86800DE7DF7 /* Market1.json in Resources */ = {isa = PBXBuildFile; fileRef = D79D71F32512F86800DE7DF7 /* Market1.json */; };
-		D79D72142512F86800DE7DF7 /* CHKLineChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D71F42512F86800DE7DF7 /* CHKLineChartStyle.swift */; };
-		D79D72152512F86800DE7DF7 /* CHDepthChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D71F52512F86800DE7DF7 /* CHDepthChartView.swift */; };
-		D79D72162512F86800DE7DF7 /* CHShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D71F62512F86800DE7DF7 /* CHShapeLayer.swift */; };
-		D79D72172512F86800DE7DF7 /* KLinePeriodView.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71F92512F86800DE7DF7 /* KLinePeriodView.m */; };
-		D79D72182512F86800DE7DF7 /* KLinePeriodView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D79D71FA2512F86800DE7DF7 /* KLinePeriodView.xib */; };
-		D79D72192512F86800DE7DF7 /* KLineIndicatorsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71FB2512F86800DE7DF7 /* KLineIndicatorsView.m */; };
-		D79D721A2512F86800DE7DF7 /* KLineIndicatorsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D79D71FD2512F86800DE7DF7 /* KLineIndicatorsView.xib */; };
-		D79D721B2512F86800DE7DF7 /* KLineVerticalIndicatorsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D71FE2512F86800DE7DF7 /* KLineVerticalIndicatorsView.m */; };
-		D79D721C2512F86800DE7DF7 /* KLineInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D72002512F86800DE7DF7 /* KLineInfoView.m */; };
-		D79D721D2512F86800DE7DF7 /* KLineVerticalIndicatorsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D79D72012512F86800DE7DF7 /* KLineVerticalIndicatorsView.xib */; };
-		D79D721E2512F86800DE7DF7 /* KLineInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D79D72032512F86800DE7DF7 /* KLineInfoView.xib */; };
-		D79D721F2512F86800DE7DF7 /* KLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D72042512F86800DE7DF7 /* KLineChartView.m */; };
-		D79D72202512F86800DE7DF7 /* KLinePainterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D72052512F86800DE7DF7 /* KLinePainterView.m */; };
 		D79D7240251312E300DE7DF7 /* NSBundle+STQRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D7234251312E300DE7DF7 /* NSBundle+STQRCodeController.m */; };
 		D79D7241251312E300DE7DF7 /* STQRCodeAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D7235251312E300DE7DF7 /* STQRCodeAlert.m */; };
 		D79D7242251312E300DE7DF7 /* STQRCodeConst.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D7236251312E300DE7DF7 /* STQRCodeConst.m */; };
@@ -385,6 +358,7 @@
 		D79D751D251366E700DE7DF7 /* LEEAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D751B251366E700DE7DF7 /* LEEAlert.m */; };
 		D79D75202513676900DE7DF7 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D751F2513676900DE7DF7 /* ChatModel.m */; };
 		D79D75232513678E00DE7DF7 /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D75212513678E00DE7DF7 /* ChatTableViewCell.m */; };
+		D7BCF32325145338007DD18D /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BCF32225145338007DD18D /* UIImage+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -602,50 +576,6 @@
 		D7707D8225107028009EF151 /* BTHomeNoticeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTHomeNoticeVC.h; sourceTree = "<group>"; };
 		D7707D8325107028009EF151 /* BTHomeNoticeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTHomeNoticeVC.m; sourceTree = "<group>"; };
 		D7707D8425107028009EF151 /* BTHomeNoticeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTHomeNoticeVC.xib; sourceTree = "<group>"; };
-		D79D71D42512F86800DE7DF7 /* MainChartRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainChartRenderer.m; sourceTree = "<group>"; };
-		D79D71D52512F86800DE7DF7 /* SecondaryChartRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondaryChartRenderer.m; sourceTree = "<group>"; };
-		D79D71D62512F86800DE7DF7 /* BaseChartRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseChartRenderer.h; sourceTree = "<group>"; };
-		D79D71D72512F86800DE7DF7 /* VolChartRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolChartRenderer.h; sourceTree = "<group>"; };
-		D79D71D82512F86800DE7DF7 /* MainChartRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainChartRenderer.h; sourceTree = "<group>"; };
-		D79D71D92512F86800DE7DF7 /* SecondaryChartRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondaryChartRenderer.h; sourceTree = "<group>"; };
-		D79D71DA2512F86800DE7DF7 /* BaseChartRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseChartRenderer.m; sourceTree = "<group>"; };
-		D79D71DB2512F86800DE7DF7 /* VolChartRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolChartRenderer.m; sourceTree = "<group>"; };
-		D79D71DC2512F86800DE7DF7 /* KLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineChartView.h; sourceTree = "<group>"; };
-		D79D71DE2512F86800DE7DF7 /* UIColor+RGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGB.h"; sourceTree = "<group>"; };
-		D79D71DF2512F86800DE7DF7 /* KLineStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineStateManager.h; sourceTree = "<group>"; };
-		D79D71E02512F86800DE7DF7 /* DataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUtil.m; sourceTree = "<group>"; };
-		D79D71E12512F86800DE7DF7 /* NSString+Rect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Rect.m"; sourceTree = "<group>"; };
-		D79D71E22512F86800DE7DF7 /* UIColor+RGB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGB.m"; sourceTree = "<group>"; };
-		D79D71E32512F86800DE7DF7 /* NSString+Rect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Rect.h"; sourceTree = "<group>"; };
-		D79D71E42512F86800DE7DF7 /* DataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataUtil.h; sourceTree = "<group>"; };
-		D79D71E52512F86800DE7DF7 /* KLineStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineStateManager.m; sourceTree = "<group>"; };
-		D79D71E62512F86800DE7DF7 /* KLinePainterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLinePainterView.h; sourceTree = "<group>"; };
-		D79D71E82512F86800DE7DF7 /* ChartStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartStyle.h; sourceTree = "<group>"; };
-		D79D71EA2512F86800DE7DF7 /* KLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineModel.m; sourceTree = "<group>"; };
-		D79D71EB2512F86800DE7DF7 /* KLineState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineState.m; sourceTree = "<group>"; };
-		D79D71EC2512F86800DE7DF7 /* KLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineModel.h; sourceTree = "<group>"; };
-		D79D71ED2512F86800DE7DF7 /* KLineState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineState.h; sourceTree = "<group>"; };
-		D79D71F02512F86800DE7DF7 /* Market3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Market3.json; sourceTree = "<group>"; };
-		D79D71F12512F86800DE7DF7 /* Market2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Market2.json; sourceTree = "<group>"; };
-		D79D71F22512F86800DE7DF7 /* Market4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Market4.json; sourceTree = "<group>"; };
-		D79D71F32512F86800DE7DF7 /* Market1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Market1.json; sourceTree = "<group>"; };
-		D79D71F42512F86800DE7DF7 /* CHKLineChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHKLineChartStyle.swift; sourceTree = "<group>"; };
-		D79D71F52512F86800DE7DF7 /* CHDepthChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHDepthChartView.swift; sourceTree = "<group>"; };
-		D79D71F62512F86800DE7DF7 /* CHShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHShapeLayer.swift; sourceTree = "<group>"; };
-		D79D71F82512F86800DE7DF7 /* KLineVerticalIndicatorsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineVerticalIndicatorsView.h; sourceTree = "<group>"; };
-		D79D71F92512F86800DE7DF7 /* KLinePeriodView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLinePeriodView.m; sourceTree = "<group>"; };
-		D79D71FA2512F86800DE7DF7 /* KLinePeriodView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLinePeriodView.xib; sourceTree = "<group>"; };
-		D79D71FB2512F86800DE7DF7 /* KLineIndicatorsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineIndicatorsView.m; sourceTree = "<group>"; };
-		D79D71FC2512F86800DE7DF7 /* KLineInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineInfoView.h; sourceTree = "<group>"; };
-		D79D71FD2512F86800DE7DF7 /* KLineIndicatorsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLineIndicatorsView.xib; sourceTree = "<group>"; };
-		D79D71FE2512F86800DE7DF7 /* KLineVerticalIndicatorsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineVerticalIndicatorsView.m; sourceTree = "<group>"; };
-		D79D71FF2512F86800DE7DF7 /* KLinePeriodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLinePeriodView.h; sourceTree = "<group>"; };
-		D79D72002512F86800DE7DF7 /* KLineInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineInfoView.m; sourceTree = "<group>"; };
-		D79D72012512F86800DE7DF7 /* KLineVerticalIndicatorsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLineVerticalIndicatorsView.xib; sourceTree = "<group>"; };
-		D79D72022512F86800DE7DF7 /* KLineIndicatorsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineIndicatorsView.h; sourceTree = "<group>"; };
-		D79D72032512F86800DE7DF7 /* KLineInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLineInfoView.xib; sourceTree = "<group>"; };
-		D79D72042512F86800DE7DF7 /* KLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineChartView.m; sourceTree = "<group>"; };
-		D79D72052512F86800DE7DF7 /* KLinePainterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLinePainterView.m; sourceTree = "<group>"; };
 		D79D7234251312E300DE7DF7 /* NSBundle+STQRCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+STQRCodeController.m"; sourceTree = "<group>"; };
 		D79D7235251312E300DE7DF7 /* STQRCodeAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STQRCodeAlert.m; sourceTree = "<group>"; };
 		D79D7236251312E300DE7DF7 /* STQRCodeConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STQRCodeConst.m; sourceTree = "<group>"; };
@@ -1027,6 +957,8 @@
 		D79D751F2513676900DE7DF7 /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
 		D79D75212513678E00DE7DF7 /* ChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewCell.m; sourceTree = "<group>"; };
 		D79D75222513678E00DE7DF7 /* ChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewCell.h; sourceTree = "<group>"; };
+		D7BCF32125145337007DD18D /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		D7BCF32225145338007DD18D /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1164,6 +1096,8 @@
 		3C63D421250DAD99001CEC7D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D7BCF32125145337007DD18D /* UIImage+Extension.h */,
+				D7BCF32225145338007DD18D /* UIImage+Extension.m */,
 				D79D750C2513659300DE7DF7 /* ChatSocketManager.h */,
 				D79D750D2513659300DE7DF7 /* ChatSocketManager.m */,
 				D79D74AA25135E5B00DE7DF7 /* UIViewController+LeftSlide.h */,
@@ -1528,116 +1462,8 @@
 				D79D73AA25134E2900DE7DF7 /* StepSlider */,
 				D79D7488251356E000DE7DF7 /* PST_MenuView */,
 				D79D7233251312E300DE7DF7 /* STQRCodeController */,
-				D79D71D22512F86800DE7DF7 /* KLineChart */,
 			);
 			path = Support;
-			sourceTree = "<group>";
-		};
-		D79D71D22512F86800DE7DF7 /* KLineChart */ = {
-			isa = PBXGroup;
-			children = (
-				D79D71DC2512F86800DE7DF7 /* KLineChartView.h */,
-				D79D72042512F86800DE7DF7 /* KLineChartView.m */,
-				D79D71E62512F86800DE7DF7 /* KLinePainterView.h */,
-				D79D72052512F86800DE7DF7 /* KLinePainterView.m */,
-				D79D71D32512F86800DE7DF7 /* Renderer */,
-				D79D71DD2512F86800DE7DF7 /* Util */,
-				D79D71E72512F86800DE7DF7 /* Style */,
-				D79D71E92512F86800DE7DF7 /* Model */,
-				D79D71EE2512F86800DE7DF7 /* DepthChartView */,
-				D79D71F72512F86800DE7DF7 /* View */,
-			);
-			path = KLineChart;
-			sourceTree = "<group>";
-		};
-		D79D71D32512F86800DE7DF7 /* Renderer */ = {
-			isa = PBXGroup;
-			children = (
-				D79D71D42512F86800DE7DF7 /* MainChartRenderer.m */,
-				D79D71D52512F86800DE7DF7 /* SecondaryChartRenderer.m */,
-				D79D71D62512F86800DE7DF7 /* BaseChartRenderer.h */,
-				D79D71D72512F86800DE7DF7 /* VolChartRenderer.h */,
-				D79D71D82512F86800DE7DF7 /* MainChartRenderer.h */,
-				D79D71D92512F86800DE7DF7 /* SecondaryChartRenderer.h */,
-				D79D71DA2512F86800DE7DF7 /* BaseChartRenderer.m */,
-				D79D71DB2512F86800DE7DF7 /* VolChartRenderer.m */,
-			);
-			path = Renderer;
-			sourceTree = "<group>";
-		};
-		D79D71DD2512F86800DE7DF7 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				D79D71DE2512F86800DE7DF7 /* UIColor+RGB.h */,
-				D79D71DF2512F86800DE7DF7 /* KLineStateManager.h */,
-				D79D71E02512F86800DE7DF7 /* DataUtil.m */,
-				D79D71E12512F86800DE7DF7 /* NSString+Rect.m */,
-				D79D71E22512F86800DE7DF7 /* UIColor+RGB.m */,
-				D79D71E32512F86800DE7DF7 /* NSString+Rect.h */,
-				D79D71E42512F86800DE7DF7 /* DataUtil.h */,
-				D79D71E52512F86800DE7DF7 /* KLineStateManager.m */,
-			);
-			path = Util;
-			sourceTree = "<group>";
-		};
-		D79D71E72512F86800DE7DF7 /* Style */ = {
-			isa = PBXGroup;
-			children = (
-				D79D71E82512F86800DE7DF7 /* ChartStyle.h */,
-			);
-			path = Style;
-			sourceTree = "<group>";
-		};
-		D79D71E92512F86800DE7DF7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D79D71EA2512F86800DE7DF7 /* KLineModel.m */,
-				D79D71EB2512F86800DE7DF7 /* KLineState.m */,
-				D79D71EC2512F86800DE7DF7 /* KLineModel.h */,
-				D79D71ED2512F86800DE7DF7 /* KLineState.h */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		D79D71EE2512F86800DE7DF7 /* DepthChartView */ = {
-			isa = PBXGroup;
-			children = (
-				D79D71EF2512F86800DE7DF7 /* testJson */,
-				D79D71F42512F86800DE7DF7 /* CHKLineChartStyle.swift */,
-				D79D71F52512F86800DE7DF7 /* CHDepthChartView.swift */,
-				D79D71F62512F86800DE7DF7 /* CHShapeLayer.swift */,
-			);
-			path = DepthChartView;
-			sourceTree = "<group>";
-		};
-		D79D71EF2512F86800DE7DF7 /* testJson */ = {
-			isa = PBXGroup;
-			children = (
-				D79D71F02512F86800DE7DF7 /* Market3.json */,
-				D79D71F12512F86800DE7DF7 /* Market2.json */,
-				D79D71F22512F86800DE7DF7 /* Market4.json */,
-				D79D71F32512F86800DE7DF7 /* Market1.json */,
-			);
-			path = testJson;
-			sourceTree = "<group>";
-		};
-		D79D71F72512F86800DE7DF7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D79D71F82512F86800DE7DF7 /* KLineVerticalIndicatorsView.h */,
-				D79D71F92512F86800DE7DF7 /* KLinePeriodView.m */,
-				D79D71FA2512F86800DE7DF7 /* KLinePeriodView.xib */,
-				D79D71FB2512F86800DE7DF7 /* KLineIndicatorsView.m */,
-				D79D71FC2512F86800DE7DF7 /* KLineInfoView.h */,
-				D79D71FD2512F86800DE7DF7 /* KLineIndicatorsView.xib */,
-				D79D71FE2512F86800DE7DF7 /* KLineVerticalIndicatorsView.m */,
-				D79D71FF2512F86800DE7DF7 /* KLinePeriodView.h */,
-				D79D72002512F86800DE7DF7 /* KLineInfoView.m */,
-				D79D72012512F86800DE7DF7 /* KLineVerticalIndicatorsView.xib */,
-				D79D72022512F86800DE7DF7 /* KLineIndicatorsView.h */,
-				D79D72032512F86800DE7DF7 /* KLineInfoView.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		D79D7233251312E300DE7DF7 /* STQRCodeController */ = {
@@ -2478,7 +2304,6 @@
 				D79D737C25134A8200DE7DF7 /* commissionViewController.xib in Resources */,
 				D7055452250F677C005E367E /* BTBackupMnemonicsVC.xib in Resources */,
 				D79D735C25134A8200DE7DF7 /* OrderConfirmAlterView.xib in Resources */,
-				D79D72102512F86800DE7DF7 /* Market3.json in Resources */,
 				D79D736525134A8200DE7DF7 /* CoinTableViewCell.xib in Resources */,
 				D7074E9B25109487000EC935 /* BTOrePoolViewController.xib in Resources */,
 				D79D74BB25135FA000DE7DF7 /* MyAdvertisingTableViewCell.xib in Resources */,
@@ -2491,7 +2316,6 @@
 				D79D734A25134A8200DE7DF7 /* SearchUserViewController.xib in Resources */,
 				D79D734825134A8200DE7DF7 /* BeingauditedBusViewController.xib in Resources */,
 				D79D74F72513625800DE7DF7 /* MyBillTableViewCell.xib in Resources */,
-				D79D72112512F86800DE7DF7 /* Market2.json in Resources */,
 				D79D74D7251361BC00DE7DF7 /* MyBillDetail1ViewController.xib in Resources */,
 				D7074EA02510A335000EC935 /* BTHistoryViewController.xib in Resources */,
 				D79D735025134A8200DE7DF7 /* BuyCoinsDetailViewController.xib in Resources */,
@@ -2500,18 +2324,14 @@
 				D79D74A325135B0B00DE7DF7 /* MyEntrustDetail1TableViewCell.xib in Resources */,
 				D79D74A225135B0B00DE7DF7 /* MyEntrustDetail2TableViewCell.xib in Resources */,
 				D7707D7C251060A7009EF151 /* BTInvitationActivityVC.xib in Resources */,
-				D79D721E2512F86800DE7DF7 /* KLineInfoView.xib in Resources */,
 				D7451DD72510C38A00BC4548 /* BTLanguageVC.xib in Resources */,
 				D7074E8925108944000EC935 /* BTHomeNoticeCell.xib in Resources */,
 				D79D74862513568E00DE7DF7 /* MyEntrustViewController.xib in Resources */,
 				D71C85D3250F0A5D0067B4C7 /* BTSweepAccountVC.xib in Resources */,
 				D79D74B625135F5A00DE7DF7 /* MyAdvertisingViewController.xib in Resources */,
 				D79D73DA2513503500DE7DF7 /* DepthHeader.xib in Resources */,
-				D79D721A2512F86800DE7DF7 /* KLineIndicatorsView.xib in Resources */,
-				D79D72132512F86800DE7DF7 /* Market1.json in Resources */,
 				D705544D250F6585005E367E /* BTCreateSuccessVC.xib in Resources */,
 				D7429BF225120B60003B04E4 /* BTAssetsDetailVC.xib in Resources */,
-				D79D72122512F86800DE7DF7 /* Market4.json in Resources */,
 				D79D734725134A8200DE7DF7 /* ApplyBusinessViewController.xib in Resources */,
 				D7707D812510633A009EF151 /* BTContributionVC.xib in Resources */,
 				D79D737825134A8200DE7DF7 /* LeftTableViewCell.xib in Resources */,
@@ -2522,7 +2342,6 @@
 				D7707D6F25105177009EF151 /* BTPayPasswordPopView.xib in Resources */,
 				D79D73DF2513503500DE7DF7 /* Y_StockChartViewController.xib in Resources */,
 				3CACD615250E4F7E00B50D9A /* BTTeamAchievementVC.xib in Resources */,
-				D79D721D2512F86800DE7DF7 /* KLineVerticalIndicatorsView.xib in Resources */,
 				D7074EA52510A627000EC935 /* BTHistoryRecordCell.xib in Resources */,
 				D79D73DD2513503500DE7DF7 /* TradeNumCell.xib in Resources */,
 				D79D74F22513623000DE7DF7 /* Section3TableViewCell.xib in Resources */,
@@ -2537,7 +2356,6 @@
 				3C63D413250DA73C001CEC7D /* Main.storyboard in Resources */,
 				3CAF5E71250E3A69002482C1 /* BTWalletManageDetailVC.xib in Resources */,
 				D7055459250F69A8005E367E /* BTBackupMnemonicsCell.xib in Resources */,
-				D79D72182512F86800DE7DF7 /* KLinePeriodView.xib in Resources */,
 				3C10CDD82510F2CE00517422 /* BTShareWalletVC.xib in Resources */,
 				D7074EBA2510B6A8000EC935 /* BTWithdrawRecordDetailVC.xib in Resources */,
 				D7055463250F73BF005E367E /* BTHomeTransiferCoinVC.xib in Resources */,
@@ -2621,7 +2439,6 @@
 			files = (
 				D79D733925134A8200DE7DF7 /* BuyOrSellCoinInfo.m in Sources */,
 				D7707D802510633A009EF151 /* BTContributionVC.m in Sources */,
-				D79D721F2512F86800DE7DF7 /* KLineChartView.m in Sources */,
 				D79D737F25134A8200DE7DF7 /* EntrustCell.m in Sources */,
 				D79D737125134A8200DE7DF7 /* plateModel.m in Sources */,
 				D79D74EB2513623000DE7DF7 /* Section3TableViewCell.m in Sources */,
@@ -2649,7 +2466,6 @@
 				D79D7518251365D900DE7DF7 /* UITextView+Placeholder.m in Sources */,
 				D7074EB92510B6A8000EC935 /* BTWithdrawRecordDetailVC.m in Sources */,
 				D7074EA42510A627000EC935 /* BTHistoryRecordCell.m in Sources */,
-				D79D72082512F86800DE7DF7 /* BaseChartRenderer.m in Sources */,
 				D79D74AB25135E5B00DE7DF7 /* UIViewController+LeftSlide.m in Sources */,
 				D79D742E2513513A00DE7DF7 /* Y_StockChartRightYView.m in Sources */,
 				D79D74B525135F5A00DE7DF7 /* MyAdvertisingViewController.m in Sources */,
@@ -2686,17 +2502,14 @@
 				D79D737D25134A8200DE7DF7 /* HistoryTransactionEntrustViewController.m in Sources */,
 				D79D735425134A8200DE7DF7 /* AdvertisingBuyViewController.m in Sources */,
 				D705545D250F71B3005E367E /* BTBackupSuccessVC.m in Sources */,
-				D79D720D2512F86800DE7DF7 /* KLineStateManager.m in Sources */,
 				D7055451250F677C005E367E /* BTBackupMnemonicsVC.m in Sources */,
 				3C138497250E107000866D69 /* BTWalletManagerModel.m in Sources */,
 				D79D742B2513513A00DE7DF7 /* Y_StockChartView.m in Sources */,
-				D79D72192512F86800DE7DF7 /* KLineIndicatorsView.m in Sources */,
 				D79D74852513568E00DE7DF7 /* MyEntrustDetailViewController.m in Sources */,
 				D79D74E92513623000DE7DF7 /* Section2TableViewCell.m in Sources */,
 				D79D73E22513503500DE7DF7 /* KlineHeaderCell.m in Sources */,
 				D705544C250F6585005E367E /* BTCreateSuccessVC.m in Sources */,
 				D71C85D7250F0E0C0067B4C7 /* BTAssetsRechargeVC.m in Sources */,
-				D79D72062512F86800DE7DF7 /* MainChartRenderer.m in Sources */,
 				3C63D431250DADBF001CEC7D /* NSString+URLEncode.m in Sources */,
 				D79D735725134A8200DE7DF7 /* CToCTableViewCell.m in Sources */,
 				D79D743A2513513A00DE7DF7 /* Y_MALine.m in Sources */,
@@ -2707,10 +2520,8 @@
 				D79D735E25134A8200DE7DF7 /* SelectCoinTypeView.m in Sources */,
 				D79D74702513536000DE7DF7 /* EasyShowAlertView.m in Sources */,
 				D79D7452251352A400DE7DF7 /* UIView+LYExtension.m in Sources */,
-				D79D72172512F86800DE7DF7 /* KLinePeriodView.m in Sources */,
 				3C63D457250DD4E0001CEC7D /* BTAssetsViewController.m in Sources */,
 				D79D739F25134DE400DE7DF7 /* HomeNetManager.m in Sources */,
-				D79D720E2512F86800DE7DF7 /* KLineModel.m in Sources */,
 				D79D737225134A8200DE7DF7 /* commissionModel.m in Sources */,
 				D79D73A125134DE400DE7DF7 /* MineNetManager.m in Sources */,
 				D7429BDC2511C3EC003B04E4 /* BTMnemonisConfirmCell.m in Sources */,
@@ -2729,8 +2540,8 @@
 				D79D737525134A8200DE7DF7 /* commissionViewController.m in Sources */,
 				D79D7492251358DE00DE7DF7 /* XLBasePageController.m in Sources */,
 				D79D73BD25134FCD00DE7DF7 /* NSString+LCJudgeNumber.m in Sources */,
+				D7BCF32325145338007DD18D /* UIImage+Extension.m in Sources */,
 				D79D74382513513A00DE7DF7 /* Y_KLineVolume.m in Sources */,
-				D79D72152512F86800DE7DF7 /* CHDepthChartView.swift in Sources */,
 				D79D7244251312E300DE7DF7 /* STQRCodeController.m in Sources */,
 				D79D74792513560300DE7DF7 /* MyAdvertisingDetailModel.m in Sources */,
 				D79D735525134A8200DE7DF7 /* BuyCoinsChildViewController.m in Sources */,
@@ -2746,12 +2557,9 @@
 				D79D74392513513A00DE7DF7 /* Y_KLineMainView.m in Sources */,
 				D79D7442251351D200DE7DF7 /* SocketManager.m in Sources */,
 				D79D74D2251361BC00DE7DF7 /* MyBillChatViewController.m in Sources */,
-				D79D720A2512F86800DE7DF7 /* DataUtil.m in Sources */,
 				D79D734B25134A8200DE7DF7 /* SearchViewController.m in Sources */,
 				D79D750E2513659300DE7DF7 /* ChatSocketManager.m in Sources */,
 				D79D74312513513A00DE7DF7 /* Y_KLineAccessory.m in Sources */,
-				D79D720B2512F86800DE7DF7 /* NSString+Rect.m in Sources */,
-				D79D72202512F86800DE7DF7 /* KLinePainterView.m in Sources */,
 				D79D742F2513513A00DE7DF7 /* Y_VolumeMAView.m in Sources */,
 				D7707D6725104D5C009EF151 /* BTPayPasswordVC.m in Sources */,
 				D7055462250F73BF005E367E /* BTHomeTransiferCoinVC.m in Sources */,
@@ -2809,12 +2617,10 @@
 				D7429BE42511F873003B04E4 /* BTCurrencyViewController.m in Sources */,
 				D79D736125134A8200DE7DF7 /* BuyCoinsDetail1TableViewCell.m in Sources */,
 				D79D734C25134A8200DE7DF7 /* SearchAdvertisingViewController.m in Sources */,
-				D79D720C2512F86800DE7DF7 /* UIColor+RGB.m in Sources */,
 				D79D74372513513A00DE7DF7 /* Y_KLineVolumeView.m in Sources */,
 				D79D74BE25135FD700DE7DF7 /* MyAdvertisingModel.m in Sources */,
 				D79D74962513599600DE7DF7 /* AccountSettingTableViewCell.m in Sources */,
 				D79D7240251312E300DE7DF7 /* NSBundle+STQRCodeController.m in Sources */,
-				D79D72072512F86800DE7DF7 /* SecondaryChartRenderer.m in Sources */,
 				3C63D41B250DA73E001CEC7D /* main.m in Sources */,
 				D79D74D3251361BC00DE7DF7 /* MyBillPublicViewController.m in Sources */,
 				3C10CDD72510F2CE00517422 /* BTShareWalletVC.m in Sources */,
@@ -2834,7 +2640,6 @@
 				D79D736B25134A8200DE7DF7 /* Advertising1TableViewCell.m in Sources */,
 				D79D74872513568E00DE7DF7 /* MyEntrustViewController.m in Sources */,
 				D79D7241251312E300DE7DF7 /* STQRCodeAlert.m in Sources */,
-				D79D72142512F86800DE7DF7 /* CHKLineChartStyle.swift in Sources */,
 				D79D746C2513536000DE7DF7 /* UIView+EasyShowExt.m in Sources */,
 				D79D736325134A8200DE7DF7 /* BuyCoinsDetail2TableViewCell.m in Sources */,
 				3CAF5E70250E3A69002482C1 /* BTWalletManageDetailVC.m in Sources */,
@@ -2843,8 +2648,6 @@
 				D79D7450251352A400DE7DF7 /* LYEmptyBaseView.m in Sources */,
 				D79D74A825135D0600DE7DF7 /* YLUserInfo.m in Sources */,
 				D79D747C2513563000DE7DF7 /* countryModel.m in Sources */,
-				D79D72092512F86800DE7DF7 /* VolChartRenderer.m in Sources */,
-				D79D720F2512F86800DE7DF7 /* KLineState.m in Sources */,
 				D79D736C25134A8200DE7DF7 /* Adversiting2TableViewCell.m in Sources */,
 				D79D733725134A8200DE7DF7 /* SelectCoinTypeModel.m in Sources */,
 				D79D746E2513536000DE7DF7 /* EasyShowTextBgView.m in Sources */,
@@ -2853,12 +2656,10 @@
 				D79D733E25134A8200DE7DF7 /* SuccessBusViewController.m in Sources */,
 				D79D74FC2513628900DE7DF7 /* MyBillDetailInfoModel.m in Sources */,
 				3C63D45C250DD4F2001CEC7D /* BTProfileViewController.m in Sources */,
-				D79D721B2512F86800DE7DF7 /* KLineVerticalIndicatorsView.m in Sources */,
 				D7451DD12510C12D00BC4548 /* BTSettingViewController.m in Sources */,
 				D7074E8C25108BC3000EC935 /* BTNoticeModel.m in Sources */,
 				D7429BF525120F42003B04E4 /* BTAssetsModel.m in Sources */,
 				D79D75202513676900DE7DF7 /* ChatModel.m in Sources */,
-				D79D721C2512F86800DE7DF7 /* KLineInfoView.m in Sources */,
 				D79D73A025134DE400DE7DF7 /* LoginNetManager.m in Sources */,
 				D79D737A25134A8200DE7DF7 /* TransactionViewController.m in Sources */,
 				D79D74692513536000DE7DF7 /* EasyShowUtils.m in Sources */,
@@ -2867,7 +2668,6 @@
 				3C138492250E0B3400866D69 /* BTWalletManagerCell.m in Sources */,
 				D71C85D2250F0A5D0067B4C7 /* BTSweepAccountVC.m in Sources */,
 				D79D737B25134A8200DE7DF7 /* TradeViewController.m in Sources */,
-				D79D72162512F86800DE7DF7 /* CHShapeLayer.swift in Sources */,
 				3C63D44E250DC023001CEC7D /* ChangeLanguage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

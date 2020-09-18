@@ -117,8 +117,8 @@
     if ([YLUserInfo isLogIn]) {
         [self getPersonAllCollection];
     }
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:mainColor] forBarMetrics:UIBarMetricsDefault];//去除导航栏黑线
-//    [self.navigationController.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:mainColor] forBarMetrics:UIBarMetricsDefault];//去除导航栏黑线
+    [self.navigationController.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
 }
 
 
@@ -153,10 +153,10 @@
 }
 
 - (void)chatRightCollection{
-    if (![YLUserInfo isLogIn]) {//未登录
-        [self showLoginViewController];
-        return;
-    }
+//    if (![YLUserInfo isLogIn]) {//未登录
+//        [self showLoginViewController];
+//        return;
+//    }
     if (self.isCollect) {
         [self deleteCollectionWithsymbol:self.symbol];
     }else{
@@ -173,8 +173,8 @@
     stockChartVC.baseCoinScale = self.baseCoinScale;
     stockChartVC.coinScale = self.coinScale;
     stockChartVC.delegate = self;
-    self.modalTransitionStyle = UIModalPresentationFullScreen;
-    self.modalPresentationStyle = UIModalPresentationNone;
+//    stockChartVC.modalPresentationStyle = UIModalPresentationFullScreen;
+//    stockChartVC.modalPresentationStyle = UIModalPresentationNone;
     [self presentViewController:stockChartVC animated:YES completion:nil];
 }
 
@@ -890,8 +890,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:NavColor] forBarMetrics:UIBarMetricsDefault];//去除导航栏黑线
-//    [self.navigationController.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:NavColor] forBarMetrics:UIBarMetricsDefault];//去除导航栏黑线
+    [self.navigationController.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
     //    symbol nil处理
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:0];
     [dic setValue:self.symbol forKey:@"symbol"];

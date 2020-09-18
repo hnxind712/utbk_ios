@@ -106,6 +106,12 @@ cell.preservesSuperviewLayoutMargins = NO; \
 #define HIDEMONEY   @"HIDEMONEY" //是否隐藏总金额
 #define BIGGER   @"BIGGER" //放大K线视图(全屏)
 #define SMALL   @"SMALL" //缩小K线视图(非全屏)
+
+#define KfirstLogin @"__firstLogin__"
+
+
+
+
 static  int    COMMANDS_VERSION = 1;
 static  short  SUBSCRIBE_SYMBOL_THUMB = 20001; //订阅缩略行情
 static  short  UNSUBSCRIBE_SYMBOL_THUMB = 20002;//取消订阅

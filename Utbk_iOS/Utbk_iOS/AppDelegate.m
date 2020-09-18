@@ -32,11 +32,13 @@
     self.window.backgroundColor=[UIColor blackColor];
     YLTabBarController *SectionTabbar = [[YLTabBarController alloc] init];
     self.window.rootViewController = SectionTabbar;
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self PresentGestureLockViewController];
-//    });
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(createTabbar) name:KfirstLogin object:nil];//第一次创建钱包备份完或者稍后备份的时候需要创建首页
     [self.window makeKeyAndVisible];
     return YES;
+}
+#pragma mark createTabbar
+- (void)createTabbar{
+    
 }
 - (void)configure{
     self.CNYRate = [NSDecimalNumber decimalNumberWithString:@"0.00"];

@@ -524,9 +524,8 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 - (IBAction)kLineAction:(UIButton *)sender {
     KchatViewController*klineVC=[[KchatViewController alloc]init];
     klineVC.symbol=[marketManager shareInstance].symbol;
-//    [self.navigationController pushViewController:klineVC animated:YES];
+    klineVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:klineVC withBackTitle:[marketManager shareInstance].symbol animated:YES];
-//    [[AppDelegate sharedAppDelegate] pushViewController:klineVC withBackTitle:[marketManager shareInstance].symbol];
 }
 #pragma mark-头部右侧的收藏按钮点击事件
 - (IBAction)moreAction:(UIButton *)sender {

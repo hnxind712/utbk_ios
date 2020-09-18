@@ -43,4 +43,6 @@
 #    import "YLUserInfo.h"
 #    import "LEEAlert.h"
 #    import "AFNetworking.h"
+#    import "UIImage+Extension.h"
+
 #endif

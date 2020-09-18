@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -58,21 +55,22 @@
                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J12-I6-JBI">
-                            <rect key="frame" x="0.0" y="0.0" width="70" height="67"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J12-I6-JBI">
+                            <rect key="frame" x="0.0" y="4" width="70" height="59"/>
                             <connections>
                                 <action selector="collect:" destination="-1" eventType="touchUpInside" id="P3c-hO-V3G"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.070588235294117646" green="0.086274509803921567" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="eMG-bH-ah7" firstAttribute="centerX" secondItem="fzd-ej-qfy" secondAttribute="centerX" id="0ba-vx-1gx"/>
+                        <constraint firstItem="J12-I6-JBI" firstAttribute="leading" secondItem="fzd-ej-qfy" secondAttribute="leading" id="10s-Ko-TaD"/>
                         <constraint firstItem="ZLC-nm-qJu" firstAttribute="centerY" secondItem="fzd-ej-qfy" secondAttribute="centerY" constant="-8" id="12Z-u8-E6y"/>
                         <constraint firstAttribute="bottom" secondItem="eMG-bH-ah7" secondAttribute="bottom" constant="10" id="A4g-M0-BwA"/>
                         <constraint firstAttribute="width" constant="70" id="DDa-OY-1Il"/>
                         <constraint firstAttribute="height" constant="67" id="Owq-U4-KmO"/>
+                        <constraint firstAttribute="trailing" secondItem="J12-I6-JBI" secondAttribute="trailing" id="cDF-cT-JQJ"/>
                         <constraint firstItem="ZLC-nm-qJu" firstAttribute="centerX" secondItem="fzd-ej-qfy" secondAttribute="centerX" id="d0e-Hf-oWk"/>
                     </constraints>
                 </view>
@@ -101,6 +99,7 @@
             </subviews>
             <color key="backgroundColor" red="0.070588235294117646" green="0.086274509803921567" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="J12-I6-JBI" firstAttribute="centerY" secondItem="fwC-wW-Le9" secondAttribute="centerY" id="2fs-dN-ioq"/>
                 <constraint firstItem="lr0-hf-der" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8f1-Lc-ZuV"/>
                 <constraint firstItem="fzd-ej-qfy" firstAttribute="bottom" secondItem="fwC-wW-Le9" secondAttribute="bottom" constant="10" id="BN5-pt-Xgs"/>
                 <constraint firstAttribute="trailing" secondItem="mW5-10-quz" secondAttribute="trailing" id="BZD-iz-dsx"/>
@@ -118,8 +117,9 @@
                 <constraint firstItem="fwC-wW-Le9" firstAttribute="bottom" secondItem="Yn9-3m-rGv" secondAttribute="bottom" id="kuR-FT-4IE"/>
                 <constraint firstItem="fwC-wW-Le9" firstAttribute="width" secondItem="Yn9-3m-rGv" secondAttribute="width" id="oMa-vW-EhZ"/>
                 <constraint firstItem="Yn9-3m-rGv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="ssg-4D-hxK"/>
+                <constraint firstItem="J12-I6-JBI" firstAttribute="height" secondItem="fwC-wW-Le9" secondAttribute="height" multiplier="1.25532" id="yBw-hg-awn"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <point key="canvasLocation" x="32.799999999999997" y="52.623688155922046"/>
         </view>
     </objects>
     <resources>
