@@ -20,6 +20,7 @@
 #import "BTPoolViewController.h"//矿池
 #import "BTOnCurrencyVC.h"//上币
 #import "BTWalletManagerVC.h"
+#import "BTTeamHoldViewController.h"
 
 #define KBottomTopHeight 40.f //主板区标签对应的高度间隔
 #define KRiseFallCellHeight 60.f
@@ -151,44 +152,66 @@
 #pragma mark buttonAction
 - (IBAction)buttonClickAction:(UIButton *)sender {
     switch (sender.tag) {
-        case 100:
+        case 100://收币
             
             break;
-            case 101://转账
+        case 101://转账
         {
             BTHomeTransiferCoinVC *transifer = [[BTHomeTransiferCoinVC alloc]init];
             [self.navigationController pushViewController:transifer animated:YES];
         }
             break;
-            case 102://划转
+        case 102://划转
         {
             BTSweepAccountVC *transifer = [[BTSweepAccountVC alloc]init];
             [self.navigationController pushViewController:transifer animated:YES];
         }
             break;
-            case 103://上币
+        case 103://上币
         {
             BTOnCurrencyVC *onCurrency = [[BTOnCurrencyVC alloc]init];
             [self.navigationController pushViewController:onCurrency animated:YES];
         }
             break;
-            case 104://矿池
+        case 104://矿池
         {
             BTPoolViewController *pool = [[BTPoolViewController alloc]init];
             [self.navigationController pushViewController:pool animated:YES];
         }
             break;
-            case 105://夺宝
-            case 106://商城
+        case 105://团队
         {
-            [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
+            BTTeamHoldViewController *team = [[BTTeamHoldViewController alloc]init];
+            [self.navigationController pushViewController:team animated:YES];
         }
             break;
-            case 107://邀请激活
+        case 106://社区
+        {
+            
+        }
+            break;
+        case 107://邀请激活
         {
             BTInvitationActivityVC *invitation = [[BTInvitationActivityVC alloc]init];
             [self.navigationController pushViewController:invitation animated:YES];
         }
+            break;
+        case 108://夺宝
+        case 109://商城
+        {
+            [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
+        }
+            break;
+        case 110://游戏
+        {
+            
+        }
+            break;
+        case 111://DeFi专区
+        {
+            
+        }
+            break;
         default:
             break;
     }

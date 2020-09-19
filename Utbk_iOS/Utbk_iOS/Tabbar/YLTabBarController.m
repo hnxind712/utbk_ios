@@ -9,6 +9,7 @@
 #import "YLTabBarController.h"
 #import "YLNavigationController.h"
 #import "BTHomeViewController.h"
+#import "BTMarketViewController.h"
 #import "TransactionViewController.h"//目前只需要币币交易
 #import "TradeViewController.h"//币币交易
 #import "BTAssetsViewController.h"
@@ -83,19 +84,22 @@
 }
 
 -(void)initTabbar{
-    BTHomeViewController   *Section1VC = [[BTHomeViewController alloc] init];
-    TradeViewController *Section2VC = [[TradeViewController alloc] init];
-    BTAssetsViewController  *Section3VC = [[BTAssetsViewController alloc] init];
-    BTProfileViewController *Section4VC = [[BTProfileViewController alloc] init];
-    Section1VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"首页") image:[[UIImage imageNamed:@"icon_tabHomePage"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabHomePageSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    Section2VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"交易") image:[[UIImage imageNamed:@"icon_tabTrading"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabTradingSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    Section3VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"资产") image:[[UIImage imageNamed:@"icon_tabAssets"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabAssetsSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    Section4VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"我的") image:[[UIImage imageNamed:@"icon_tabProfile"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabProfileSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    YLNavigationController *Section1Navi = [[YLNavigationController alloc] initWithRootViewController:Section1VC];
-    YLNavigationController *Section2Navi = [[YLNavigationController alloc] initWithRootViewController:Section2VC];
-    YLNavigationController *Section3Navi = [[YLNavigationController alloc] initWithRootViewController:Section3VC];
-    YLNavigationController *Section4Navi = [[YLNavigationController alloc] initWithRootViewController:Section4VC];
-    self.viewControllers = @[Section1Navi,Section2Navi,Section3Navi,Section4Navi];
+    BTHomeViewController   *section1VC = [[BTHomeViewController alloc] init];
+    BTMarketViewController *section2VC = [[BTMarketViewController alloc]init];
+    TradeViewController *section3VC = [[TradeViewController alloc] init];
+    BTAssetsViewController  *section4VC = [[BTAssetsViewController alloc] init];
+    BTProfileViewController *section5VC = [[BTProfileViewController alloc] init];
+    section1VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"首页") image:[[UIImage imageNamed:@"icon_tabHomePage"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabHomePageSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    section2VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"行情") image:[[UIImage imageNamed:@"icon_tabbarMarket"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabbarMarketSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    section3VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"交易") image:[[UIImage imageNamed:@"icon_tabTrading"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabTradingSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    section4VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"资产") image:[[UIImage imageNamed:@"icon_tabAssets"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabAssetsSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    section5VC.tabBarItem = [[UITabBarItem alloc] initWithTitle:LocalizationKey(@"我的") image:[[UIImage imageNamed:@"icon_tabProfile"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"icon_tabProfileSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    YLNavigationController *section1Navi = [[YLNavigationController alloc] initWithRootViewController:section1VC];
+    YLNavigationController *section2Navi = [[YLNavigationController alloc]initWithRootViewController:section2VC];
+    YLNavigationController *section3Navi = [[YLNavigationController alloc] initWithRootViewController:section3VC];
+    YLNavigationController *section4Navi = [[YLNavigationController alloc] initWithRootViewController:section4VC];
+    YLNavigationController *section5Navi = [[YLNavigationController alloc] initWithRootViewController:section5VC];
+    self.viewControllers = @[section1Navi,section2Navi,section3Navi,section4Navi,section5Navi];
     
 }
 

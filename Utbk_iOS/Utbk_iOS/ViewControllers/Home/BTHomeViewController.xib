@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -128,7 +128,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLm-YB-Mn8">
-                            <rect key="frame" x="12" y="250" width="390" height="163"/>
+                            <rect key="frame" x="12" y="250" width="390" height="239.5"/>
                             <subviews>
                                 <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4O-vv-jGr">
                                     <rect key="frame" x="20" y="15" width="58" height="60"/>
@@ -226,7 +226,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <inset key="titleEdgeInsets" minX="-45" minY="50" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="7" minY="-16" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="夺宝" image="icon_snatchTreasure">
+                                    <state key="normal" title="团队" image="icon_team">
                                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
@@ -245,7 +245,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <inset key="titleEdgeInsets" minX="-45" minY="50" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="7" minY="-16" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="商城" image="icon_store">
+                                    <state key="normal" title="社区" image="icon_community">
                                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
@@ -275,6 +275,66 @@
                                         <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="xd2-fL-Btl"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e11-wS-L3a">
+                                    <rect key="frame" x="312" y="164.5" width="58" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="p98-E5-h5n"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <inset key="titleEdgeInsets" minX="-44" minY="50" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="7" minY="-16" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="DeFi专区" image="icon_zone">
+                                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="fH9-FX-fwe"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="109" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gx-Xf-Zgj">
+                                    <rect key="frame" x="117.5" y="164.5" width="58" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="VcX-Og-XqZ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <inset key="titleEdgeInsets" minX="-45" minY="50" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="7" minY="-16" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="商城" image="icon_store">
+                                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="7A0-af-4Ir"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="110" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPS-xC-Ume">
+                                    <rect key="frame" x="214.5" y="164.5" width="58" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="5W4-R8-c3E"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <inset key="titleEdgeInsets" minX="-45" minY="50" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="7" minY="-16" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="游戏" image="icon_game">
+                                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="eAB-Mm-Nl1"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mlq-kW-a9D">
+                                    <rect key="frame" x="20" y="164.5" width="58" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="Ard-A9-WBO"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <inset key="titleEdgeInsets" minX="-45" minY="50" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="7" minY="-16" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="夺宝" image="icon_snatchTreasure">
+                                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="5BO-oE-8tR"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
@@ -285,42 +345,54 @@
                                 <constraint firstItem="Zel-Fe-2DL" firstAttribute="leading" secondItem="Wm5-yz-GVt" secondAttribute="trailing" id="5B6-8Q-iF1"/>
                                 <constraint firstItem="yNt-az-x69" firstAttribute="width" secondItem="l4O-vv-jGr" secondAttribute="width" id="6fd-YF-8uG"/>
                                 <constraint firstItem="Qwo-Pe-2Jj" firstAttribute="centerY" secondItem="IJ4-nQ-nlW" secondAttribute="centerY" id="8uR-S6-iyy"/>
+                                <constraint firstItem="BPS-xC-Ume" firstAttribute="centerY" secondItem="Mlq-kW-a9D" secondAttribute="centerY" id="8zN-Hy-5bt"/>
                                 <constraint firstItem="gmY-bl-Loa" firstAttribute="leading" secondItem="f8v-q4-gqe" secondAttribute="trailing" id="951-99-gfo"/>
                                 <constraint firstItem="S38-R6-9Ko" firstAttribute="width" secondItem="l4O-vv-jGr" secondAttribute="width" id="9cQ-bD-gHk"/>
                                 <constraint firstItem="f8v-q4-gqe" firstAttribute="leading" secondItem="l4O-vv-jGr" secondAttribute="leading" id="G7u-TV-Ydk"/>
                                 <constraint firstItem="Rvk-Qb-WWJ" firstAttribute="width" secondItem="l4O-vv-jGr" secondAttribute="width" id="GoM-DB-H8b"/>
                                 <constraint firstItem="Zel-Fe-2DL" firstAttribute="centerY" secondItem="l4O-vv-jGr" secondAttribute="centerY" id="HYO-N2-asb"/>
+                                <constraint firstItem="3gx-Xf-Zgj" firstAttribute="width" secondItem="Mlq-kW-a9D" secondAttribute="width" id="Hum-Uh-mrH"/>
                                 <constraint firstItem="lCB-t5-6dU" firstAttribute="leading" secondItem="IJ4-nQ-nlW" secondAttribute="trailing" id="IjW-L4-VCl"/>
                                 <constraint firstItem="2UZ-CA-qab" firstAttribute="centerY" secondItem="gmY-bl-Loa" secondAttribute="centerY" id="JHW-gZ-eqr"/>
-                                <constraint firstAttribute="bottom" secondItem="f8v-q4-gqe" secondAttribute="bottom" constant="15" id="JOt-JM-uJG"/>
                                 <constraint firstItem="8gv-zP-tj6" firstAttribute="width" secondItem="gmY-bl-Loa" secondAttribute="width" id="N3v-47-j11"/>
                                 <constraint firstItem="IJ4-nQ-nlW" firstAttribute="height" secondItem="l4O-vv-jGr" secondAttribute="height" multiplier="1.11667" id="Nlh-Bf-97g"/>
                                 <constraint firstItem="Wm5-yz-GVt" firstAttribute="height" secondItem="IJ4-nQ-nlW" secondAttribute="height" id="P31-by-sEU"/>
                                 <constraint firstItem="lCB-t5-6dU" firstAttribute="width" secondItem="l4O-vv-jGr" secondAttribute="width" id="QmJ-6C-SGg"/>
+                                <constraint firstItem="BPS-xC-Ume" firstAttribute="width" secondItem="Mlq-kW-a9D" secondAttribute="width" id="SIe-tu-pqu"/>
                                 <constraint firstItem="yNt-az-x69" firstAttribute="centerY" secondItem="f8v-q4-gqe" secondAttribute="centerY" id="YOs-Z6-hji"/>
                                 <constraint firstItem="Qwo-Pe-2Jj" firstAttribute="height" secondItem="IJ4-nQ-nlW" secondAttribute="height" id="Yfz-je-JNf"/>
                                 <constraint firstItem="IJ4-nQ-nlW" firstAttribute="leading" secondItem="l4O-vv-jGr" secondAttribute="trailing" id="abU-0H-cB6"/>
+                                <constraint firstItem="e11-wS-L3a" firstAttribute="width" secondItem="Mlq-kW-a9D" secondAttribute="width" id="ahx-4U-hov"/>
                                 <constraint firstItem="S38-R6-9Ko" firstAttribute="trailing" secondItem="Rvk-Qb-WWJ" secondAttribute="trailing" id="asO-px-F2e"/>
                                 <constraint firstItem="yNt-az-x69" firstAttribute="leading" secondItem="gmY-bl-Loa" secondAttribute="trailing" id="cJI-j3-aTx"/>
                                 <constraint firstItem="S38-R6-9Ko" firstAttribute="leading" secondItem="8gv-zP-tj6" secondAttribute="trailing" id="dKJ-fi-Mth"/>
                                 <constraint firstItem="kpp-Xs-u1E" firstAttribute="leading" secondItem="2UZ-CA-qab" secondAttribute="trailing" id="dQ4-9m-ESe"/>
                                 <constraint firstItem="l4O-vv-jGr" firstAttribute="top" secondItem="tLm-YB-Mn8" secondAttribute="top" constant="15" id="dWa-oz-p4P"/>
+                                <constraint firstAttribute="bottom" secondItem="Mlq-kW-a9D" secondAttribute="bottom" constant="15" id="dcc-9g-Fdn"/>
                                 <constraint firstItem="2UZ-CA-qab" firstAttribute="height" secondItem="gmY-bl-Loa" secondAttribute="height" id="eG0-GE-LmG"/>
                                 <constraint firstItem="l4O-vv-jGr" firstAttribute="leading" secondItem="tLm-YB-Mn8" secondAttribute="leading" constant="20" id="eHK-zo-Dfv"/>
+                                <constraint firstItem="BPS-xC-Ume" firstAttribute="centerX" secondItem="kpp-Xs-u1E" secondAttribute="centerX" id="hdQ-pC-DsG"/>
                                 <constraint firstItem="Wm5-yz-GVt" firstAttribute="leading" secondItem="lCB-t5-6dU" secondAttribute="trailing" id="iVT-G6-d91"/>
                                 <constraint firstItem="Zel-Fe-2DL" firstAttribute="width" secondItem="l4O-vv-jGr" secondAttribute="width" id="ibR-Vl-PIm"/>
+                                <constraint firstItem="Mlq-kW-a9D" firstAttribute="top" secondItem="gmY-bl-Loa" secondAttribute="bottom" constant="13" id="jaK-PA-AYK"/>
+                                <constraint firstItem="3gx-Xf-Zgj" firstAttribute="centerY" secondItem="Mlq-kW-a9D" secondAttribute="centerY" id="jez-Mw-kH4"/>
+                                <constraint firstItem="e11-wS-L3a" firstAttribute="centerY" secondItem="Mlq-kW-a9D" secondAttribute="centerY" id="jlN-sy-EGG"/>
                                 <constraint firstItem="IJ4-nQ-nlW" firstAttribute="centerY" secondItem="l4O-vv-jGr" secondAttribute="centerY" id="jqP-eM-wsI"/>
                                 <constraint firstItem="kpp-Xs-u1E" firstAttribute="width" secondItem="l4O-vv-jGr" secondAttribute="width" id="kiX-7o-Lbl"/>
                                 <constraint firstItem="Qwo-Pe-2Jj" firstAttribute="width" secondItem="IJ4-nQ-nlW" secondAttribute="width" id="mOJ-FJ-yCg"/>
                                 <constraint firstItem="Wm5-yz-GVt" firstAttribute="centerY" secondItem="IJ4-nQ-nlW" secondAttribute="centerY" id="n7T-6O-nAd"/>
+                                <constraint firstItem="e11-wS-L3a" firstAttribute="trailing" secondItem="S38-R6-9Ko" secondAttribute="trailing" id="oKN-oS-yfD"/>
                                 <constraint firstItem="kpp-Xs-u1E" firstAttribute="centerY" secondItem="f8v-q4-gqe" secondAttribute="centerY" id="pdA-Ao-Sbw"/>
                                 <constraint firstItem="gmY-bl-Loa" firstAttribute="centerY" secondItem="f8v-q4-gqe" secondAttribute="centerY" id="phu-aA-Vwh"/>
                                 <constraint firstItem="2UZ-CA-qab" firstAttribute="leading" secondItem="yNt-az-x69" secondAttribute="trailing" id="q88-fq-XKB"/>
+                                <constraint firstItem="Mlq-kW-a9D" firstAttribute="centerX" secondItem="f8v-q4-gqe" secondAttribute="centerX" id="rxu-Dv-JBJ"/>
                                 <constraint firstItem="gmY-bl-Loa" firstAttribute="height" secondItem="f8v-q4-gqe" secondAttribute="height" multiplier="1.11667" id="stn-jf-5bc"/>
                                 <constraint firstItem="Wm5-yz-GVt" firstAttribute="width" secondItem="IJ4-nQ-nlW" secondAttribute="width" id="uN9-1O-dco"/>
                                 <constraint firstItem="f8v-q4-gqe" firstAttribute="width" secondItem="l4O-vv-jGr" secondAttribute="width" id="uoH-dP-2x8"/>
                                 <constraint firstItem="Rvk-Qb-WWJ" firstAttribute="leading" secondItem="Qwo-Pe-2Jj" secondAttribute="trailing" id="vIP-jx-3TN"/>
+                                <constraint firstItem="e11-wS-L3a" firstAttribute="centerX" secondItem="S38-R6-9Ko" secondAttribute="centerX" id="vhK-uq-ADu"/>
                                 <constraint firstItem="8gv-zP-tj6" firstAttribute="leading" secondItem="kpp-Xs-u1E" secondAttribute="trailing" id="xAm-kA-VHm"/>
+                                <constraint firstItem="3gx-Xf-Zgj" firstAttribute="centerX" secondItem="yNt-az-x69" secondAttribute="centerX" id="xh6-jd-j9A"/>
                                 <constraint firstItem="8gv-zP-tj6" firstAttribute="centerY" secondItem="gmY-bl-Loa" secondAttribute="centerY" id="xxI-Rc-6V1"/>
                                 <constraint firstItem="S38-R6-9Ko" firstAttribute="centerY" secondItem="f8v-q4-gqe" secondAttribute="centerY" id="y8m-yw-yxv"/>
                                 <constraint firstItem="f8v-q4-gqe" firstAttribute="top" secondItem="l4O-vv-jGr" secondAttribute="bottom" constant="13" id="yDc-FN-ykt"/>
@@ -334,7 +406,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_adBg" translatesAutoresizingMaskIntoConstraints="NO" id="az4-Mj-agN">
-                            <rect key="frame" x="12" y="418" width="390" height="70"/>
+                            <rect key="frame" x="12" y="494.5" width="390" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="70" id="bpK-GF-QHn"/>
                             </constraints>
@@ -345,7 +417,7 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bni-o0-WM0">
-                            <rect key="frame" x="12" y="493" width="390" height="314"/>
+                            <rect key="frame" x="12" y="569.5" width="390" height="314"/>
                             <subviews>
                                 <button opaque="NO" tag="108" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfO-OB-ah1">
                                     <rect key="frame" x="12" y="12" width="49" height="16"/>
@@ -439,12 +511,16 @@
     <resources>
         <image name="icon_adBg" width="351" height="70"/>
         <image name="icon_collectCoins" width="44" height="44"/>
+        <image name="icon_community" width="44" height="44"/>
+        <image name="icon_game" width="44" height="44"/>
         <image name="icon_indexbj" width="220" height="70.5"/>
         <image name="icon_onCurrency" width="44" height="44"/>
         <image name="icon_pool" width="44" height="44"/>
         <image name="icon_snatchTreasure" width="44" height="44"/>
         <image name="icon_store" width="44" height="44"/>
+        <image name="icon_team" width="44" height="44"/>
         <image name="icon_transfer" width="44" height="44"/>
         <image name="icon_transferAccounts" width="44" height="44"/>
+        <image name="icon_zone" width="44" height="44"/>
     </resources>
 </document>
