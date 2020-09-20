@@ -24,6 +24,16 @@
 		3C1D2FF325123ABE002AE5AA /* BTSharePoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D2FF125123ABE002AE5AA /* BTSharePoolVC.m */; };
 		3C1D2FF425123ABE002AE5AA /* BTSharePoolVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1D2FF225123ABE002AE5AA /* BTSharePoolVC.xib */; };
 		3C1D2FF825123ED1002AE5AA /* SPMultipleSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D2FF625123ED1002AE5AA /* SPMultipleSwitch.m */; };
+		3C1DF0EF2516F61C00E547B0 /* BTHoldCoinsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DF0ED2516F61C00E547B0 /* BTHoldCoinsViewController.m */; };
+		3C1DF0F02516F61C00E547B0 /* BTHoldCoinsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1DF0EE2516F61C00E547B0 /* BTHoldCoinsViewController.xib */; };
+		3C1DF0F42516F6A500E547B0 /* BTHoldCoinsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DF0F22516F6A500E547B0 /* BTHoldCoinsTableViewCell.m */; };
+		3C1DF0F52516F6A500E547B0 /* BTHoldCoinsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1DF0F32516F6A500E547B0 /* BTHoldCoinsTableViewCell.xib */; };
+		3C1DF0F9251707CC00E547B0 /* BTSharePoolTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DF0F7251707CC00E547B0 /* BTSharePoolTableViewCell.m */; };
+		3C1DF0FA251707CC00E547B0 /* BTSharePoolTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1DF0F8251707CC00E547B0 /* BTSharePoolTableViewCell.xib */; };
+		3C1DF0FE251715D300E547B0 /* BTDropRecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DF0FC251715D300E547B0 /* BTDropRecordTableViewCell.m */; };
+		3C1DF0FF251715D300E547B0 /* BTDropRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1DF0FD251715D300E547B0 /* BTDropRecordTableViewCell.xib */; };
+		3C1DF1032517161300E547B0 /* BTDropRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DF1012517161200E547B0 /* BTDropRecordViewController.m */; };
+		3C1DF1042517161300E547B0 /* BTDropRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1DF1022517161300E547B0 /* BTDropRecordViewController.xib */; };
 		3C563C17251617C300DFBA88 /* BTTeamHoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C563C15251617C300DFBA88 /* BTTeamHoldViewController.m */; };
 		3C563C18251617C300DFBA88 /* BTTeamHoldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C563C16251617C300DFBA88 /* BTTeamHoldViewController.xib */; };
 		3C563C1C25161C3200DFBA88 /* BTTeamHoldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C563C1A25161C3200DFBA88 /* BTTeamHoldTableViewCell.m */; };
@@ -403,6 +413,21 @@
 		3C1D2FF225123ABE002AE5AA /* BTSharePoolVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTSharePoolVC.xib; sourceTree = "<group>"; };
 		3C1D2FF625123ED1002AE5AA /* SPMultipleSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMultipleSwitch.m; sourceTree = "<group>"; };
 		3C1D2FF725123ED1002AE5AA /* SPMultipleSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMultipleSwitch.h; sourceTree = "<group>"; };
+		3C1DF0EC2516F61C00E547B0 /* BTHoldCoinsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTHoldCoinsViewController.h; sourceTree = "<group>"; };
+		3C1DF0ED2516F61C00E547B0 /* BTHoldCoinsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTHoldCoinsViewController.m; sourceTree = "<group>"; };
+		3C1DF0EE2516F61C00E547B0 /* BTHoldCoinsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTHoldCoinsViewController.xib; sourceTree = "<group>"; };
+		3C1DF0F12516F6A500E547B0 /* BTHoldCoinsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTHoldCoinsTableViewCell.h; sourceTree = "<group>"; };
+		3C1DF0F22516F6A500E547B0 /* BTHoldCoinsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTHoldCoinsTableViewCell.m; sourceTree = "<group>"; };
+		3C1DF0F32516F6A500E547B0 /* BTHoldCoinsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTHoldCoinsTableViewCell.xib; sourceTree = "<group>"; };
+		3C1DF0F6251707CC00E547B0 /* BTSharePoolTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTSharePoolTableViewCell.h; sourceTree = "<group>"; };
+		3C1DF0F7251707CC00E547B0 /* BTSharePoolTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTSharePoolTableViewCell.m; sourceTree = "<group>"; };
+		3C1DF0F8251707CC00E547B0 /* BTSharePoolTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTSharePoolTableViewCell.xib; sourceTree = "<group>"; };
+		3C1DF0FB251715D300E547B0 /* BTDropRecordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTDropRecordTableViewCell.h; sourceTree = "<group>"; };
+		3C1DF0FC251715D300E547B0 /* BTDropRecordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTDropRecordTableViewCell.m; sourceTree = "<group>"; };
+		3C1DF0FD251715D300E547B0 /* BTDropRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTDropRecordTableViewCell.xib; sourceTree = "<group>"; };
+		3C1DF1002517161200E547B0 /* BTDropRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTDropRecordViewController.h; sourceTree = "<group>"; };
+		3C1DF1012517161200E547B0 /* BTDropRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTDropRecordViewController.m; sourceTree = "<group>"; };
+		3C1DF1022517161300E547B0 /* BTDropRecordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTDropRecordViewController.xib; sourceTree = "<group>"; };
 		3C563C14251617C300DFBA88 /* BTTeamHoldViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTTeamHoldViewController.h; sourceTree = "<group>"; };
 		3C563C15251617C300DFBA88 /* BTTeamHoldViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTTeamHoldViewController.m; sourceTree = "<group>"; };
 		3C563C16251617C300DFBA88 /* BTTeamHoldViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTTeamHoldViewController.xib; sourceTree = "<group>"; };
@@ -1000,8 +1025,8 @@
 			isa = PBXGroup;
 			children = (
 				3C138482250DFEDA00866D69 /* UIView+HJTheme.h */,
-				3C138483250DFEDA00866D69 /* UIView+HJViewStyle.h */,
 				3C138484250DFEDA00866D69 /* UIView+HJTheme.m */,
+				3C138483250DFEDA00866D69 /* UIView+HJViewStyle.h */,
 				3C138485250DFEDA00866D69 /* UIView+HJViewStyle.m */,
 			);
 			path = HJViewStyle;
@@ -1278,6 +1303,12 @@
 				3C1D2FF025123ABE002AE5AA /* BTSharePoolVC.h */,
 				3C1D2FF125123ABE002AE5AA /* BTSharePoolVC.m */,
 				3C1D2FF225123ABE002AE5AA /* BTSharePoolVC.xib */,
+				3C1DF0EC2516F61C00E547B0 /* BTHoldCoinsViewController.h */,
+				3C1DF0ED2516F61C00E547B0 /* BTHoldCoinsViewController.m */,
+				3C1DF0EE2516F61C00E547B0 /* BTHoldCoinsViewController.xib */,
+				3C1DF1002517161200E547B0 /* BTDropRecordViewController.h */,
+				3C1DF1012517161200E547B0 /* BTDropRecordViewController.m */,
+				3C1DF1022517161300E547B0 /* BTDropRecordViewController.xib */,
 				D7074E9725109487000EC935 /* BTOrePoolViewController.h */,
 				D7074E9825109487000EC935 /* BTOrePoolViewController.m */,
 				D7074E9925109487000EC935 /* BTOrePoolViewController.xib */,
@@ -1505,6 +1536,15 @@
 				3C563C1925161C3200DFBA88 /* BTTeamHoldTableViewCell.h */,
 				3C563C1A25161C3200DFBA88 /* BTTeamHoldTableViewCell.m */,
 				3C563C1B25161C3200DFBA88 /* BTTeamHoldTableViewCell.xib */,
+				3C1DF0F12516F6A500E547B0 /* BTHoldCoinsTableViewCell.h */,
+				3C1DF0F22516F6A500E547B0 /* BTHoldCoinsTableViewCell.m */,
+				3C1DF0F32516F6A500E547B0 /* BTHoldCoinsTableViewCell.xib */,
+				3C1DF0F6251707CC00E547B0 /* BTSharePoolTableViewCell.h */,
+				3C1DF0F7251707CC00E547B0 /* BTSharePoolTableViewCell.m */,
+				3C1DF0F8251707CC00E547B0 /* BTSharePoolTableViewCell.xib */,
+				3C1DF0FB251715D300E547B0 /* BTDropRecordTableViewCell.h */,
+				3C1DF0FC251715D300E547B0 /* BTDropRecordTableViewCell.m */,
+				3C1DF0FD251715D300E547B0 /* BTDropRecordTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2353,6 +2393,7 @@
 				D7074EB22510AD32000EC935 /* BTWithdrawRecordCell.xib in Resources */,
 				D79D73D92513503500DE7DF7 /* DepthmapCell.xib in Resources */,
 				D79D74F12513623000DE7DF7 /* QRCodeView.xib in Resources */,
+				3C1DF0F52516F6A500E547B0 /* BTHoldCoinsTableViewCell.xib in Resources */,
 				3C63D45D250DD4F2001CEC7D /* BTProfileViewController.xib in Resources */,
 				3C1D2FF425123ABE002AE5AA /* BTSharePoolVC.xib in Resources */,
 				D79D734625134A8200DE7DF7 /* FailBusinessViewController.xib in Resources */,
@@ -2391,13 +2432,16 @@
 				D7074E8925108944000EC935 /* BTHomeNoticeCell.xib in Resources */,
 				D79D74862513568E00DE7DF7 /* MyEntrustViewController.xib in Resources */,
 				D71C85D3250F0A5D0067B4C7 /* BTSweepAccountVC.xib in Resources */,
+				3C1DF0FF251715D300E547B0 /* BTDropRecordTableViewCell.xib in Resources */,
 				D79D74B625135F5A00DE7DF7 /* MyAdvertisingViewController.xib in Resources */,
 				D79D73DA2513503500DE7DF7 /* DepthHeader.xib in Resources */,
 				D705544D250F6585005E367E /* BTCreateSuccessVC.xib in Resources */,
 				D7429BF225120B60003B04E4 /* BTAssetsDetailVC.xib in Resources */,
 				D79D734725134A8200DE7DF7 /* ApplyBusinessViewController.xib in Resources */,
 				D7707D812510633A009EF151 /* BTContributionVC.xib in Resources */,
+				3C1DF0F02516F61C00E547B0 /* BTHoldCoinsViewController.xib in Resources */,
 				D79D737825134A8200DE7DF7 /* LeftTableViewCell.xib in Resources */,
+				3C1DF0FA251707CC00E547B0 /* BTSharePoolTableViewCell.xib in Resources */,
 				D79D73E02513503500DE7DF7 /* DepthCell.xib in Resources */,
 				D79D736025134A8200DE7DF7 /* Adversiting2TableViewCell.xib in Resources */,
 				D79D735325134A8200DE7DF7 /* AdvertisingSellViewController.xib in Resources */,
@@ -2411,6 +2455,7 @@
 				D79D74F22513623000DE7DF7 /* Section3TableViewCell.xib in Resources */,
 				D79D738725134A8200DE7DF7 /* sectionHeaderView.xib in Resources */,
 				3C563C2625163B3E00DFBA88 /* BTMarketViewController.xib in Resources */,
+				3C1DF1042517161300E547B0 /* BTDropRecordViewController.xib in Resources */,
 				3C13849C250E160000866D69 /* Localizable.strings in Resources */,
 				D79D73BA25134F3D00DE7DF7 /* MyEntrustTableViewCell.xib in Resources */,
 				D79D7243251312E300DE7DF7 /* STQRCodeController.bundle in Resources */,
@@ -2579,6 +2624,7 @@
 				D71C85D7250F0E0C0067B4C7 /* BTAssetsRechargeVC.m in Sources */,
 				3C63D431250DADBF001CEC7D /* NSString+URLEncode.m in Sources */,
 				D79D735725134A8200DE7DF7 /* CToCTableViewCell.m in Sources */,
+				3C1DF0F42516F6A500E547B0 /* BTHoldCoinsTableViewCell.m in Sources */,
 				D79D743A2513513A00DE7DF7 /* Y_MALine.m in Sources */,
 				D79D74452513523300DE7DF7 /* UIViewController+navStyle.m in Sources */,
 				D7055447250F61EA005E367E /* BTRegisterViewController.m in Sources */,
@@ -2591,9 +2637,11 @@
 				D79D739F25134DE400DE7DF7 /* HomeNetManager.m in Sources */,
 				D79D737225134A8200DE7DF7 /* commissionModel.m in Sources */,
 				D79D73A125134DE400DE7DF7 /* MineNetManager.m in Sources */,
+				3C1DF1032517161300E547B0 /* BTDropRecordViewController.m in Sources */,
 				D7429BDC2511C3EC003B04E4 /* BTMnemonisConfirmCell.m in Sources */,
 				D79D74BA25135FA000DE7DF7 /* MyAdvertisingTableViewCell.m in Sources */,
 				D79D74682513536000DE7DF7 /* EasyShowTextView.m in Sources */,
+				3C1DF0EF2516F61C00E547B0 /* BTHoldCoinsViewController.m in Sources */,
 				D7707D7B251060A7009EF151 /* BTInvitationActivityVC.m in Sources */,
 				D79D748B251356E000DE7DF7 /* PST_MenuView.m in Sources */,
 				D79D733D25134A8200DE7DF7 /* SellCoinsChildViewController.m in Sources */,
@@ -2636,6 +2684,7 @@
 				D79D734925134A8200DE7DF7 /* BuyCoinsViewController.m in Sources */,
 				D7429BED2511FA99003B04E4 /* BTCurrencyModel.m in Sources */,
 				3C63D43D250DBB20001CEC7D /* AnimationContoller.m in Sources */,
+				3C1DF0FE251715D300E547B0 /* BTDropRecordTableViewCell.m in Sources */,
 				D79D73A325134DE400DE7DF7 /* XBRequest.m in Sources */,
 				D79D734F25134A8200DE7DF7 /* BuyCoinsDetailViewController.m in Sources */,
 				D79D74F62513625800DE7DF7 /* MyBillTableViewCell.m in Sources */,
@@ -2671,6 +2720,7 @@
 				D79D7517251365D900DE7DF7 /* ZYInputAlertView.m in Sources */,
 				D7055458250F69A8005E367E /* BTBackupMnemonicsCell.m in Sources */,
 				3C63D42F250DADBF001CEC7D /* NSString+Md5.m in Sources */,
+				3C1DF0F9251707CC00E547B0 /* BTSharePoolTableViewCell.m in Sources */,
 				D79D74342513513A00DE7DF7 /* Y_KLineModel.m in Sources */,
 				D79D73E92513503500DE7DF7 /* TradeNumModel.m in Sources */,
 				D79D739E25134DE400DE7DF7 /* TradeNetManager.m in Sources */,

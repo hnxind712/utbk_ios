@@ -9,6 +9,7 @@
 #import "BTOrePoolViewController.h"
 #import "BTHistoryRecordCell.h"
 #import "BTHistoryRecordModel.h"//排行榜
+#import "BTDropRecordViewController.h"
 
 @interface BTOrePoolViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -36,9 +37,23 @@
     [super viewDidLoad];
 //    [self addRightNavigation];
     [self setupLayout];
+    [self addRightNavigation];
+    self.title = LocalizationKey(@"BTKu矿池");
     // Do any additional setup after loading the view from its nib.
 }
-
+- (void)addRightNavigation{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:BTUIIMAGE(@"icon_transferRecordR") forState:UIControlStateNormal];
+    [btn setTitleColor:RGBOF(0x333333) forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:14.f weight:UIFontWeightMedium];
+    [btn addTarget:self action:@selector(transferRecordAction) forControlEvents:UIControlEventTouchUpInside];
+    [btn sizeToFit];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
+- (void)transferRecordAction{
+    BTDropRecordViewController *drop = [[BTDropRecordViewController alloc]init];
+    [self.navigationController pushViewController:drop animated:YES];
+}
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTHistoryRecordCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTHistoryRecordCell class])];
     self.tableView.tableFooterView = [UIView new];

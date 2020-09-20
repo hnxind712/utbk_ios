@@ -7,7 +7,7 @@
 //
 
 #import "BTPoolViewController.h"
-#import "BTOrePoolViewController.h"
+#import "BTHoldCoinsViewController.h"
 #import "BTSharePoolVC.h"
 #import "SPMultipleSwitch.h"
 
@@ -21,7 +21,6 @@
 - (SPMultipleSwitch *)multipleSwitch{
     if (!_multipleSwitch) {
         SPMultipleSwitch *switch1 = [[SPMultipleSwitch alloc] initWithItems:@[@"共享挖矿",@"持币空投"]];
-        
         switch1.frame = CGRectMake(0, 0, 193, 30);
         [switch1 addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside] ;
         
@@ -43,17 +42,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addChildViewController];
+    [self addRightNavigation];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:BTUIIMAGE(@"icon_transferRecordR") forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(transferRecordAction) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitle:LocalizationKey(@"贡献") forState:UIControlStateNormal];
+    [btn setTitleColor:RGBOF(0x333333) forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:14.f weight:UIFontWeightMedium];
+    [btn addTarget:self action:@selector(contributionRecordAction) forControlEvents:UIControlEventTouchUpInside];
     [btn sizeToFit];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
-- (void)transferRecordAction{
+- (void)contributionRecordAction{
     
 }
 - (void)addChildViewController{
@@ -61,13 +62,23 @@
     [self addChildViewController:sharePool];
     [self.scrollView addSubview:sharePool.view];
     sharePool.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.scrollView.bounds.size.height);
-    BTOrePoolViewController *ore = [[BTOrePoolViewController alloc]init];
+    BTHoldCoinsViewController *ore = [[BTHoldCoinsViewController alloc]init];
     [self addChildViewController:ore];
     [self.scrollView addSubview:ore.view];
     ore.view.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, self.scrollView.bounds.size.height);
     self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * 2, self.scrollView.bounds.size.height);
 }
 - (void)switchAction:(SPMultipleSwitch *)multipleSwitch{
+    switch (multipleSwitch.selectedSegmentIndex) {
+         case 0:
+             [self addRightNavigation];
+             break;
+         case 1:
+             self.navigationItem.rightBarButtonItem = nil;
+             break;
+         default:
+             break;
+     }
     [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH * multipleSwitch.selectedSegmentIndex, 0)animated:YES];
 }
 
@@ -79,10 +90,7 @@
     //方法1
     [self.navigationItem setTitleView:self.multipleSwitch];
 }
-#pragma mark 分段控件事件
-- (void)indexDidChangeForSegmentedControl:(UISegmentedControl *)segment{
-    
-}
+
 /*
 #pragma mark - Navigation
 
