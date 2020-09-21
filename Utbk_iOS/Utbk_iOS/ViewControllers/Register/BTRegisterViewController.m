@@ -20,6 +20,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
 - (IBAction)createAccount:(UIButton *)sender {
     BTCreateWalletVC *create = [[BTCreateWalletVC alloc]init];
     [self.navigationController pushViewController:create animated:YES];

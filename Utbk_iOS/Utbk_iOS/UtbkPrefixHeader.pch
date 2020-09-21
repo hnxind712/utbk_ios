@@ -44,5 +44,5 @@
 #    import "LEEAlert.h"
 #    import "AFNetworking.h"
 #    import "UIImage+Extension.h"
-
+#    import "XBRequest.h"
 #endif

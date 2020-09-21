@@ -9,6 +9,27 @@
 #ifndef UtbkRequestUrl_h
 #define UtbkRequestUrl_h
 
+#ifdef DEBUG
+
 #define   HOST     @"http://8.129.19.4:20080/"//正拓测试
+
+#else
+
+#define   HOST     @"http://8.129.19.4:20080/"//正拓测试
+
+#endif
+
+//创建地址
+#define   CreateAddressAPI   @""HOST@"\
+uc/address/createAddress"
+
+//获取助记词
+#define   MnemonicWordsAPI   @""HOST@"\
+uc/address/mnemonicWords"
+
+//校验助记词
+#define   checkMnemonicWordsAPI   @""HOST@"\
+uc/address/checkMnemonicWords"
+
 
 #endif /* UtbkRequestUrl_h */

@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *showCollection;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *showLayout;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *showHeight;
-@property (strong, nonatomic) NSArray *showArray;
 @property (strong, nonatomic) NSMutableArray *selectedArray;
 
 @end
@@ -34,19 +33,7 @@
     }
     return _selectedArray;
 }
-- (NSArray *)showArray{
-    if (!_showArray) {
-        NSMutableArray *datasource = [NSMutableArray array];
-        for (NSInteger i = 0; i < 12; i++) {
-            BTMnemonisModel *model = [[BTMnemonisModel alloc]init];
-            model.mnemonis = @"SEEN";
-            model.selected = NO;
-            [datasource addObject:model];
-        }
-        _showArray = datasource;
-    }
-    return _showArray;
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LocalizationKey(@"备份助记词");
@@ -70,9 +57,15 @@
     _selectedLayout.minimumLineSpacing = 0.f;
     _selectedLayout.minimumInteritemSpacing = floor((SCREEN_WIDTH - selectedLeft * 2 - KItemWidth * 3 - 24.f)/2.f);
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.showCollection reloadData];
+    [self.showCollection layoutIfNeeded];
+    self.showHeight.constant = self.showCollection.contentSize.height;
+}
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (collectionView == self.showCollection) {
-        return self.showArray.count;
+        return self.mnemonisModel.showArray.count;
     }
     return self.selectedArray.count;
 }
@@ -80,7 +73,7 @@
     BTMnemonisConfirmCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([BTMnemonisConfirmCell class]) forIndexPath:indexPath];
     if (collectionView == self.selectedCollection) {
         cell.isSelected = YES;
-        BTMnemonisModel *model = self.selectedArray[indexPath.row];
+        BTMnemonisListModel *model = self.selectedArray[indexPath.row];
         [cell configureCellWithModel:model];
         WeakSelf(weakSelf)
         cell.deleteSelectedMnemonisAction = ^{
@@ -99,13 +92,13 @@
         };
     }else{
         cell.isSelected = NO;
-        [cell configureCellWithModel:self.showArray[indexPath.row]];
+        [cell configureCellWithModel:self.mnemonisModel.showArray[indexPath.row]];
     }
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView == self.showCollection) {
-        BTMnemonisModel *model = self.showArray[indexPath.row];
+        BTMnemonisListModel *model = self.mnemonisModel.showArray[indexPath.row];
         if (model.selected) return;//不能重复处理
         model.selected = YES;
         [self.selectedArray addObject:model];
@@ -122,8 +115,31 @@
     }
 }
 - (IBAction)completedAction:(UIButton *)sender {
-    BTBackupSuccessVC *success = [[BTBackupSuccessVC alloc]init];
-    [self.navigationController pushViewController:success animated:YES];
+    if (self.mnemonisModel.showArray.count != self.selectedArray.count) {
+        [self.view makeToast:LocalizationKey(@"请按照顺序点击助记词，已确认您正确备份。") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    NSMutableString *string = [[NSMutableString alloc]init];
+    [self.selectedArray enumerateObjectsUsingBlock:^(BTMnemonisListModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx == self.selectedArray.count - 1) {
+            [string appendFormat:@"%@",obj.mnemonis];
+        }else{
+            [string appendFormat:@"%@,",obj.mnemonis];
+        }
+    }];
+    WeakSelf(weakSelf)
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"key"] = self.mnemonisModel.key;
+    params[@"mnemonicWords"] = string;
+    params[@"secretKey"] = self.mnemonisModel.secretKey;
+    [[XBRequest sharedInstance]postDataWithUrl:checkMnemonicWordsAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            StrongSelf(strongSelf)
+            BTBackupSuccessVC *success = [[BTBackupSuccessVC alloc]init];
+            [strongSelf.navigationController pushViewController:success animated:YES];
+        }else{
+            ErrorToast
+        }
+    }];
 }
 /*
 #pragma mark - Navigation

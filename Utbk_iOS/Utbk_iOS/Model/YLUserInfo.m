@@ -31,9 +31,9 @@ static YLUserInfo *userInfo = nil;
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"ID" : @"id",
              @"city":@"location.city",
-             @"country":@"location.country",
-             @"district":@"location.district",
-             @"province":@"location.province"
+             @"country":@"country",
+             @"district":@"district",
+             @"province":@"province"
              }; 
 }
 /*  获取用户已登陆的信息 */
@@ -54,7 +54,7 @@ static YLUserInfo *userInfo = nil;
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:USERINFO];
     if (data) {
         userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        if (![NSString stringIsNull:userInfo.username]) {
+        if (![NSString stringIsNull:userInfo.token]) {//通过token来判断是否登录
             return YES;
         }else{
             return NO;
@@ -96,7 +96,9 @@ static YLUserInfo *userInfo = nil;
     [aCoder encodeObject:self.memberGradeId forKey:@"memberGradeId"];
     [aCoder encodeObject:self.googleState forKey:@"googleState"];
     [aCoder encodeObject:self.mobile forKey:@"mobile"];
-
+    [aCoder encodeInteger:self.signInAbility forKey:@"signInAbility"];
+    [aCoder encodeInteger:self.signInActivity forKey:@"signInActivity"];
+    [aCoder encodeBool:self.isSetPw forKey:@"isSetPw"];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super init]) {
@@ -117,7 +119,9 @@ static YLUserInfo *userInfo = nil;
         self.memberGradeId = [aDecoder decodeObjectForKey:@"memberGradeId"];
         self.googleState = [aDecoder decodeObjectForKey:@"googleState"];
         self.mobile = [aDecoder decodeObjectForKey:@"mobile"];
-
+        self.signInAbility = [aDecoder decodeIntegerForKey:@"signInAbility"];
+        self.signInActivity = [aDecoder decodeIntegerForKey:@"signInActivity"];
+        self.isSetPw = [aDecoder decodeBoolForKey:@"isSetPw"];
     }
     return self;
 }

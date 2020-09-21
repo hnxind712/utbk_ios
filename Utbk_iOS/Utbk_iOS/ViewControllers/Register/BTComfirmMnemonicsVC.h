@@ -7,10 +7,13 @@
 //
 
 #import "BTBaseViewController.h"
+#import "BTMnemonisModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BTComfirmMnemonicsVC : BTBaseViewController
+
+@property (strong, nonatomic)BTMnemonisModel *mnemonisModel;
 
 @end
 

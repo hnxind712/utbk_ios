@@ -20,7 +20,7 @@
     [super awakeFromNib];
     // Initialization code
 }
-- (void)configureCellWithModel:(BTMnemonisModel *)model{
+- (void)configureCellWithModel:(BTMnemonisListModel *)model{
     [_mnemonisBtn setTitle:model.mnemonis forState:UIControlStateNormal];
     if (self.isSelected) {
         _deleteBtn.hidden = NO;

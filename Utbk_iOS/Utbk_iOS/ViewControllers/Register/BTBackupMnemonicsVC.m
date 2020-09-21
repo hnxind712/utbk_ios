@@ -9,6 +9,8 @@
 #import "BTBackupMnemonicsVC.h"
 #import "BTBackupMnemonicsCell.h"
 #import "BTComfirmMnemonicsVC.h"
+#import "BTMnemonisModel.h"
+#import "YLTabBarController.h"
 
 #define KItemHeight  40.f
 @interface BTBackupMnemonicsVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -16,22 +18,39 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionHeight;
-@property (strong, nonatomic) NSArray *dataSource;
+@property (strong, nonatomic) BTMnemonisModel *mnemonisModel;
 
 @end
 
 @implementation BTBackupMnemonicsVC
-- (NSArray *)dataSource{
-    if (!_dataSource) {
-        _dataSource = @[@"SEEN",@"WED",@"DOVE",@"ROOF",@"CURB",@"WHEN",@"BARE",@"MARY",@"RIOE",@"BARE",@"MARY",@"RIOE"];
-    }
-    return _dataSource;
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LocalizationKey(@"备份助记词");
     [self setupLayout];
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)backAction{
+    if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+- (void)setupBind{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]postDataWithUrl:MnemonicWordsAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            StrongSelf(strongSelf)
+            strongSelf.mnemonisModel = [BTMnemonisModel mj_objectWithKeyValues:responseResult[@"data"]];
+            [strongSelf.collectionView reloadData];
+            [strongSelf.collectionView layoutIfNeeded];;
+            strongSelf.collectionHeight.constant = self.collectionView.contentSize.height;
+        }else{
+            ErrorToast
+        }
+    }];
 }
 - (void)setupLayout{
     CGFloat itemWidth = (SCREEN_WIDTH - 24)/3;
@@ -43,20 +62,20 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.collectionView layoutIfNeeded];
-    self.collectionHeight.constant = self.collectionView.contentSize.height;
+
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.dataSource.count;
+    return self.mnemonisModel.mnemonicWordsList.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     BTBackupMnemonicsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([BTBackupMnemonicsCell class]) forIndexPath:indexPath];
-    [cell configureCellWithMnemonicsModel:self.dataSource[indexPath.row]];
+    [cell configureCellWithMnemonicsModel:self.mnemonisModel.mnemonicWordsList[indexPath.row]];
     return cell;
 }
 //下一步
 - (IBAction)nextStep:(UIButton *)sender {
     BTComfirmMnemonicsVC *comfirm = [[BTComfirmMnemonicsVC alloc]init];
+    comfirm.mnemonisModel = self.mnemonisModel;
     [self.navigationController pushViewController:comfirm animated:YES];
 }
 

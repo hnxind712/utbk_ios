@@ -13,6 +13,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import <CoreTelephony/CTCellularData.h>
 #import <WebKit/WebKit.h>
+#import "BTRegisterViewController.h"
 
 @interface AppDelegate ()
 
@@ -29,16 +30,24 @@
     [self initKeyboardManager];//初始化键盘
     [self configure];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor=[UIColor blackColor];
-    YLTabBarController *SectionTabbar = [[YLTabBarController alloc] init];
-    self.window.rootViewController = SectionTabbar;
+    self.window.backgroundColor = [UIColor blackColor];
+    if (![YLUserInfo isLogIn]) {
+        BTRegisterViewController *registerVC = [[BTRegisterViewController alloc]init];
+        YLNavigationController *nav = [[YLNavigationController alloc]initWithRootViewController:registerVC];
+        self.window.rootViewController = nav;
+    }else{
+        YLTabBarController *SectionTabbar = [[YLTabBarController alloc] init];
+        self.window.rootViewController = SectionTabbar;
+    }
+
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(createTabbar) name:KfirstLogin object:nil];//第一次创建钱包备份完或者稍后备份的时候需要创建首页
     [self.window makeKeyAndVisible];
     return YES;
 }
 #pragma mark createTabbar
 - (void)createTabbar{
-    
+    YLTabBarController *SectionTabbar = [[YLTabBarController alloc] init];
+    self.window.rootViewController = SectionTabbar;
 }
 - (void)configure{
     self.CNYRate = [NSDecimalNumber decimalNumberWithString:@"0.00"];

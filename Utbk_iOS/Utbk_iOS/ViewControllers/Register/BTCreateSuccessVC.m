@@ -8,6 +8,7 @@
 
 #import "BTCreateSuccessVC.h"
 #import "BTBackupMnemonicsVC.h"
+#import "YLTabBarController.h"
 
 @interface BTCreateSuccessVC ()
 
@@ -26,7 +27,11 @@
 }
 //稍后备份
 - (IBAction)copyLater:(UIButton *)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if ([[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else{
+        [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
+    }
 }
 
 /*

@@ -15,6 +15,14 @@
 #define USERINFO @"USERINFO"
 //自定义block
 typedef void(^ResultBlock)(id resultObject,int isSuccessed);
+//网络成功
+#define NetSuccess [responseResult[@"code"]integerValue] == 0
+#define ErrorToast if ([responseResult.allKeys containsObject:@"resError"]) {\
+    NSError *error = responseResult[@"resError"];\
+    [BTKeyWindow makeToast:error.localizedDescription duration:ToastHideDelay position:ToastPosition];\
+}else{[BTKeyWindow makeToast:responseResult[@"message"] duration:ToastHideDelay position:ToastPosition];\
+}
+
 #define MESSAGE @"message"
 #define LocalLanguageKey         @"LocalLanguageKey" //选择语言（0代表简体中文，1代表繁体中文，2代表英文）
 #define LanguageChange           @"LanguageChange" //切换语言

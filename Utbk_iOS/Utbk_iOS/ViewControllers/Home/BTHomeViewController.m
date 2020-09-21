@@ -126,8 +126,9 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
 - (void)addLeftNavigation{
+    NSString *walletName = [NSString stringWithFormat:@"%@%@",LocalizationKey(@"当前钱包："),[YLUserInfo shareUserInfo].username];
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"当前钱包：Jaylovely" forState:UIControlStateNormal];
+    [btn setTitle:walletName forState:UIControlStateNormal];
     [btn setTitleColor:RGBOF(0x333333) forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:18.f weight:UIFontWeightMedium];
     [btn addTarget:self action:@selector(walletAction) forControlEvents:UIControlEventTouchUpInside];

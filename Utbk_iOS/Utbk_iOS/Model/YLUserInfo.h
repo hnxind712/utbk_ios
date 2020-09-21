@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface YLUserInfo : NSObject<NSCoding>
+@property(nonatomic,strong)NSString *district;//暂时没有
+@property(nonatomic,strong)NSString *province;
 
 @property(nonatomic,strong)NSDictionary *location;
 @property(nonatomic,strong)NSDictionary *country;
-@property(nonatomic,strong)NSString *district;
-@property(nonatomic,strong)NSString *province;
 @property(nonatomic,strong)NSString *memberLevel;
 @property(nonatomic,strong)NSString *realName;
 @property(nonatomic,strong)NSString *token;
@@ -23,6 +23,9 @@
 @property(nonatomic,strong)NSString *promotionPrefix;
 @property(nonatomic,strong)NSString *ID;
 @property(nonatomic,copy)NSString *mobile;
+@property(nonatomic,assign)NSInteger signInAbility;
+@property(nonatomic,assign)NSInteger signInActivity;
+@property(nonatomic,assign) BOOL isSetPw;//是否设置交易密码
 //用户当前积分
 @property(nonatomic,strong)NSString *integration;
 //0-未实名、1-视频审核,2-实名审核失败、3-视频审核失败,4-实名成功,5-待实名审核 ,6-待视频审核

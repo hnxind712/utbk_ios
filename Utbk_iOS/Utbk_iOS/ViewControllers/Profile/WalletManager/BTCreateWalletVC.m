@@ -67,8 +67,22 @@
 
 //确认创建
 - (IBAction)createAction:(UIButton *)sender {
-    BTCreateSuccessVC *createSuccess = [[BTCreateSuccessVC alloc]init];
-    [self.navigationController pushViewController:createSuccess animated:YES];
+    if (![_password.text isEqualToString:_passwordSecond.text]) {
+        [self.view makeToast:LocalizationKey(@"两次输入的密码不一致") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"username"] = _textView.text;
+    params[@"password"] = _password.text;
+    [[XBRequest sharedInstance]postDataWithUrl:CreateAddressAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];//缓存个人数据
+            BTCreateSuccessVC *createSuccess = [[BTCreateSuccessVC alloc]init];
+            [self.navigationController pushViewController:createSuccess animated:YES];
+        }else{
+            ErrorToast
+        }
+    }];
+
 }
 
 /*
