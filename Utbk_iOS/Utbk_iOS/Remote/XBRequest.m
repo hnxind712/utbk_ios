@@ -60,22 +60,6 @@ static XBRequest *_sharedInstance = nil;
         responseObjects(temDic);
         [EasyShowLodingView hidenLoding];
     }];
-//    [sessionManager POST:str parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
-//
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        if ([self showResponseCode:task.response] == 200) {
-//            id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-//            if ([result isKindOfClass:[NSDictionary class]]) {
-//                NSDictionary *resultDic = (NSDictionary *)result;
-//                responseObjects(resultDic);
-//            }
-//        }
-//
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSDictionary *temDic = @{@"resError":error};
-//        responseObjects(temDic);
-//        [EasyShowLodingView hidenLoding];
-//    }];
 }
 #pragma mark - POST
 - (void)postDataWithUrl:(NSString *)url Parameter:(NSDictionary *)param contentType:(NSString *)contentType ResponseObject:(void(^)(NSDictionary *responseResult))responseObjects{

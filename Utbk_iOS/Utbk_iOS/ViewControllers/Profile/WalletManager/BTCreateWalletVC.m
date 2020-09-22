@@ -67,6 +67,12 @@
 
 //确认创建
 - (IBAction)createAction:(UIButton *)sender {
+    if (!_textView.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入用户名") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (!_password.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入密码") duration:ToastHideDelay position:ToastPosition];return;
+    }
     if (![_password.text isEqualToString:_passwordSecond.text]) {
         [self.view makeToast:LocalizationKey(@"两次输入的密码不一致") duration:ToastHideDelay position:ToastPosition];return;
     }
