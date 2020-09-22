@@ -20,6 +20,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+- (void)backAction{
+    if ([[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else{
+        [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
+    }
+}
 //马上备份
 - (IBAction)copyImmediately:(UIButton *)sender {
     BTBackupMnemonicsVC *backup = [[BTBackupMnemonicsVC alloc]init];

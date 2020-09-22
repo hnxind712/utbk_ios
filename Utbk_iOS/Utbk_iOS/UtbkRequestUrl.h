@@ -31,5 +31,20 @@ uc/address/mnemonicWords"
 #define   checkMnemonicWordsAPI   @""HOST@"\
 uc/address/checkMnemonicWords"
 
+//矿池相关配置
+#define   getMinConfigsAPI   @""HOST@"\
+uc/mine/getMinConfigs"
+
+//获取用户空投矿池get  获取空投记录post
+#define   getMineWalletAPI   @""HOST@"\
+uc/mine/getMineWallet"
+
+//资产划转
+#define   transferWalletAPI   @""HOST@"\
+uc/mine/transferWallet"
+
+//获取用户共享矿池
+#define   transferWalletAPI   @""HOST@"\
+uc/mine/transferWallet"
 
 #endif /* UtbkRequestUrl_h */
