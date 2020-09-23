@@ -115,6 +115,7 @@ cell.preservesSuperviewLayoutMargins = NO; \
 #define BIGGER   @"BIGGER" //放大K线视图(全屏)
 #define SMALL   @"SMALL" //缩小K线视图(非全屏)
 
+#define KMnemonicWords  @"__KMnemonicWords__"
 #define KfirstLogin @"__firstLogin__"
 
 

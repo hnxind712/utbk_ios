@@ -37,10 +37,10 @@ static XBRequest *_sharedInstance = nil;
     
     //设置header内容
     [sessionManager.requestSerializer setValue:@"XMLHttpRequest" forHTTPHeaderField:@"X-Requested-With"];
-//    if ([YLUserInfo isLogIn]) {
-//        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"access-auth-token"];
-//        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"x-auth-token"];
-//    }
+    if ([YLUserInfo isLogIn]) {
+        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"access-auth-token"];
+        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"x-auth-token"];
+    }
     
     sessionManager.requestSerializer.timeoutInterval = 30.f;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"application/x-www-form-urlencoded", nil];
@@ -74,10 +74,10 @@ static XBRequest *_sharedInstance = nil;
     [sessionManager.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
     //设置header内容
     [sessionManager.requestSerializer setValue:@"XMLHttpRequest" forHTTPHeaderField:@"X-Requested-With"];
-//    if ([YLUserInfo isLogIn]) {
-//        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"access-auth-token"];
-//        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"x-auth-token"];
-//    }
+    if ([YLUserInfo isLogIn]) {
+        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"access-auth-token"];
+        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"x-auth-token"];
+    }
     
     sessionManager.requestSerializer.timeoutInterval = 30.f;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"application/x-www-form-urlencoded", nil];
@@ -123,10 +123,10 @@ static XBRequest *_sharedInstance = nil;
     sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
     //设置header内容
     [sessionManager.requestSerializer setValue:@"XMLHttpRequest" forHTTPHeaderField:@"X-Requested-With"];
-//    if ([YLUserInfo isLogIn]) {
-//        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"access-auth-token"];
-//        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"x-auth-token"];
-//    }
+    if ([YLUserInfo isLogIn]) {
+        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"access-auth-token"];
+        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"x-auth-token"];
+    }
 
     sessionManager.requestSerializer.timeoutInterval = 30.f;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"text/plain",@"image/png",@"application/x-www-form-urlencoded", nil];
@@ -173,10 +173,10 @@ static XBRequest *_sharedInstance = nil;
 
     //设置header内容
     [sessionManager.requestSerializer setValue:@"XMLHttpRequest" forHTTPHeaderField:@"X-Requested-With"];
-//    if ([YLUserInfo isLogIn]) {
-//        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"access-auth-token"];
-//        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"x-auth-token"];
-//    }
+    if ([YLUserInfo isLogIn]) {
+        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"access-auth-token"];
+        [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"x-auth-token"];
+    }
     
     sessionManager.requestSerializer.timeoutInterval = 30.f;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"text/plain",@"image/png",@"application/x-www-form-urlencoded", nil];

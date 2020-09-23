@@ -47,6 +47,8 @@
             [strongSelf.collectionView reloadData];
             [strongSelf.collectionView layoutIfNeeded];;
             strongSelf.collectionHeight.constant = self.collectionView.contentSize.height;
+            //保存助记词到本地
+            [[NSUserDefaults standardUserDefaults]setObject:[strongSelf.mnemonisModel.mnemonicWordsList componentsJoinedByString:@","] forKey:KMnemonicWords];
         }else{
             ErrorToast
         }

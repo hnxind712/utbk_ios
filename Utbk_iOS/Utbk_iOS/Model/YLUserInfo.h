@@ -26,6 +26,8 @@
 @property(nonatomic,assign)NSInteger signInAbility;
 @property(nonatomic,assign)NSInteger signInActivity;
 @property(nonatomic,assign) BOOL isSetPw;//是否设置交易密码
+@property(nonatomic,copy) NSString *secretKey;//私钥
+
 //用户当前积分
 @property(nonatomic,strong)NSString *integration;
 //0-未实名、1-视频审核,2-实名审核失败、3-视频审核失败,4-实名成功,5-待实名审核 ,6-待视频审核

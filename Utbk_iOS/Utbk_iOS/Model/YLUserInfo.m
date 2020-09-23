@@ -42,7 +42,7 @@ static YLUserInfo *userInfo = nil;
     if (userInfo == nil) {
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:USERINFO];
         if (data) {
-            userInfo =[NSKeyedUnarchiver unarchiveObjectWithData:data];
+            userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
             return userInfo;
         }
     }
@@ -99,6 +99,7 @@ static YLUserInfo *userInfo = nil;
     [aCoder encodeInteger:self.signInAbility forKey:@"signInAbility"];
     [aCoder encodeInteger:self.signInActivity forKey:@"signInActivity"];
     [aCoder encodeBool:self.isSetPw forKey:@"isSetPw"];
+    [aCoder encodeObject:self.secretKey forKey:@"secretKey"];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super init]) {
@@ -122,6 +123,7 @@ static YLUserInfo *userInfo = nil;
         self.signInAbility = [aDecoder decodeIntegerForKey:@"signInAbility"];
         self.signInActivity = [aDecoder decodeIntegerForKey:@"signInActivity"];
         self.isSetPw = [aDecoder decodeBoolForKey:@"isSetPw"];
+        self.secretKey = [aDecoder decodeObjectForKey:@"secretKey"];
     }
     return self;
 }

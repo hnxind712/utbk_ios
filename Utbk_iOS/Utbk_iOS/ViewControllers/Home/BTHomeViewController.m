@@ -93,6 +93,7 @@
     [self setupLayout];
     [self addRightNavigation];
     [self addLeftNavigation];
+    NSLog(@"私钥 = %@",[YLUserInfo shareUserInfo].secretKey);
     // Do any additional setup after loading the view from its nib.
 }
 - (void)setupLayout{

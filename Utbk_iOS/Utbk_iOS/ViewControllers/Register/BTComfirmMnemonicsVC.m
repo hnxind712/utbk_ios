@@ -130,7 +130,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"key"] = self.mnemonisModel.key;
     params[@"mnemonicWords"] = string;
-    params[@"secretKey"] = self.mnemonisModel.secretKey;
+    params[@"secretKey"] = [YLUserInfo shareUserInfo].secretKey;
     [[XBRequest sharedInstance]postDataWithUrl:checkMnemonicWordsAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             StrongSelf(strongSelf)
