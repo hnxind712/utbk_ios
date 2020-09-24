@@ -20,18 +20,26 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (void)backAction{
-    YLTabBarController *tabbar = (YLTabBarController *)[UIApplication sharedApplication].delegate.window.rootViewController;
-    tabbar.selectedIndex = 0;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.navigationController popToRootViewControllerAnimated:NO];
-    });
+    if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
+    }else{
+        YLTabBarController *tabbar = (YLTabBarController *)[UIApplication sharedApplication].delegate.window.rootViewController;
+        tabbar.selectedIndex = 0;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        });
+    }
 }
 - (IBAction)completedAction:(UIButton *)sender {
-    YLTabBarController *tabbar = (YLTabBarController *)[UIApplication sharedApplication].delegate.window.rootViewController;
-    tabbar.selectedIndex = 0;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.navigationController popToRootViewControllerAnimated:NO];
-    });
+    if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
+         [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
+     }else{
+         YLTabBarController *tabbar = (YLTabBarController *)[UIApplication sharedApplication].delegate.window.rootViewController;
+         tabbar.selectedIndex = 0;
+         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+             [self.navigationController popToRootViewControllerAnimated:NO];
+         });
+     }
 }
 
 /*

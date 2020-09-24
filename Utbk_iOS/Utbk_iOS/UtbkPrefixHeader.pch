@@ -45,4 +45,5 @@
 #    import "AFNetworking.h"
 #    import "UIImage+Extension.h"
 #    import "XBRequest.h"
+#    import "BTConfigureModel.h"
 #endif

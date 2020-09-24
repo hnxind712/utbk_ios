@@ -35,7 +35,6 @@
         case 102://复制链接
         {
             if (!_url.length) {
-                //LocalizationKey(@"地址为空")
                 [BTKeyWindow makeToast:LocalizationKey(@"地址为空") duration:ToastHideDelay position:ToastPosition];return;
             }
             UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];

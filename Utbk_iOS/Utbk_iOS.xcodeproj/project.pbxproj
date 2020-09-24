@@ -113,6 +113,10 @@
 		D7074EB52510B58E000EC935 /* BTWithdrawRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7074EB42510B58E000EC935 /* BTWithdrawRecordModel.m */; };
 		D7074EB92510B6A8000EC935 /* BTWithdrawRecordDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7074EB72510B6A8000EC935 /* BTWithdrawRecordDetailVC.m */; };
 		D7074EBA2510B6A8000EC935 /* BTWithdrawRecordDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7074EB82510B6A8000EC935 /* BTWithdrawRecordDetailVC.xib */; };
+		D710E593251C9FDF001986FC /* BTConfigureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D710E592251C9FDF001986FC /* BTConfigureModel.m */; };
+		D710E596251CA0AF001986FC /* BTLinkTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D710E595251CA0AF001986FC /* BTLinkTypeModel.m */; };
+		D710E59A251CA267001986FC /* BTLinkTypeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D710E598251CA267001986FC /* BTLinkTypeCollectionCell.m */; };
+		D710E59B251CA267001986FC /* BTLinkTypeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D710E599251CA267001986FC /* BTLinkTypeCollectionCell.xib */; };
 		D71C85C8250EFCAC0067B4C7 /* BTAssetsTransiferVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D71C85C6250EFCAC0067B4C7 /* BTAssetsTransiferVC.m */; };
 		D71C85C9250EFCAC0067B4C7 /* BTAssetsTransiferVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71C85C7250EFCAC0067B4C7 /* BTAssetsTransiferVC.xib */; };
 		D71C85CD250F05380067B4C7 /* BTAssetsWithdrawVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D71C85CB250F05380067B4C7 /* BTAssetsWithdrawVC.m */; };
@@ -557,6 +561,13 @@
 		D7074EB62510B6A8000EC935 /* BTWithdrawRecordDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTWithdrawRecordDetailVC.h; sourceTree = "<group>"; };
 		D7074EB72510B6A8000EC935 /* BTWithdrawRecordDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTWithdrawRecordDetailVC.m; sourceTree = "<group>"; };
 		D7074EB82510B6A8000EC935 /* BTWithdrawRecordDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTWithdrawRecordDetailVC.xib; sourceTree = "<group>"; };
+		D710E591251C9FDF001986FC /* BTConfigureModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTConfigureModel.h; sourceTree = "<group>"; };
+		D710E592251C9FDF001986FC /* BTConfigureModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTConfigureModel.m; sourceTree = "<group>"; };
+		D710E594251CA0AF001986FC /* BTLinkTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BTLinkTypeModel.h; path = Utbk_iOS/Model/BTLinkTypeModel.h; sourceTree = SOURCE_ROOT; };
+		D710E595251CA0AF001986FC /* BTLinkTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BTLinkTypeModel.m; path = Utbk_iOS/Model/BTLinkTypeModel.m; sourceTree = SOURCE_ROOT; };
+		D710E597251CA267001986FC /* BTLinkTypeCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTLinkTypeCollectionCell.h; sourceTree = "<group>"; };
+		D710E598251CA267001986FC /* BTLinkTypeCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTLinkTypeCollectionCell.m; sourceTree = "<group>"; };
+		D710E599251CA267001986FC /* BTLinkTypeCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTLinkTypeCollectionCell.xib; sourceTree = "<group>"; };
 		D71C85C5250EFCAC0067B4C7 /* BTAssetsTransiferVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTAssetsTransiferVC.h; sourceTree = "<group>"; };
 		D71C85C6250EFCAC0067B4C7 /* BTAssetsTransiferVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTAssetsTransiferVC.m; sourceTree = "<group>"; };
 		D71C85C7250EFCAC0067B4C7 /* BTAssetsTransiferVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTAssetsTransiferVC.xib; sourceTree = "<group>"; };
@@ -1420,6 +1431,8 @@
 				D7074EB42510B58E000EC935 /* BTWithdrawRecordModel.m */,
 				D7429BF325120F42003B04E4 /* BTAssetsModel.h */,
 				D7429BF425120F42003B04E4 /* BTAssetsModel.m */,
+				D710E594251CA0AF001986FC /* BTLinkTypeModel.h */,
+				D710E595251CA0AF001986FC /* BTLinkTypeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1433,6 +1446,9 @@
 				D7074EAE2510AD32000EC935 /* BTWithdrawRecordCell.h */,
 				D7074EAF2510AD32000EC935 /* BTWithdrawRecordCell.m */,
 				D7074EB02510AD32000EC935 /* BTWithdrawRecordCell.xib */,
+				D710E597251CA267001986FC /* BTLinkTypeCollectionCell.h */,
+				D710E598251CA267001986FC /* BTLinkTypeCollectionCell.m */,
+				D710E599251CA267001986FC /* BTLinkTypeCollectionCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2209,6 +2225,8 @@
 			children = (
 				D79D74A625135D0600DE7DF7 /* YLUserInfo.h */,
 				D79D74A725135D0600DE7DF7 /* YLUserInfo.m */,
+				D710E591251C9FDF001986FC /* BTConfigureModel.h */,
+				D710E592251C9FDF001986FC /* BTConfigureModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2468,6 +2486,7 @@
 				D7055459250F69A8005E367E /* BTBackupMnemonicsCell.xib in Resources */,
 				3C10CDD82510F2CE00517422 /* BTShareWalletVC.xib in Resources */,
 				D7074EBA2510B6A8000EC935 /* BTWithdrawRecordDetailVC.xib in Resources */,
+				D710E59B251CA267001986FC /* BTLinkTypeCollectionCell.xib in Resources */,
 				D7055463250F73BF005E367E /* BTHomeTransiferCoinVC.xib in Resources */,
 				D79D74EA2513623000DE7DF7 /* BankcardTableViewCell.xib in Resources */,
 				D79D735625134A8200DE7DF7 /* SellCoinsViewController.xib in Resources */,
@@ -2582,11 +2601,13 @@
 				D79D74B525135F5A00DE7DF7 /* MyAdvertisingViewController.m in Sources */,
 				D79D74332513513A00DE7DF7 /* Y_KLinePositionModel.m in Sources */,
 				D79D738625134A8200DE7DF7 /* tradeCell.m in Sources */,
+				D710E596251CA0AF001986FC /* BTLinkTypeModel.m in Sources */,
 				D79D746A2513536000DE7DF7 /* EasyShowLabel.m in Sources */,
 				D7429BF125120B60003B04E4 /* BTAssetsDetailVC.m in Sources */,
 				3C13848C250E08AE00866D69 /* BTWalletManagerVC.m in Sources */,
 				D79D73DC2513503500DE7DF7 /* DepthmapCell.m in Sources */,
 				3C138487250DFEDA00866D69 /* UIView+HJViewStyle.m in Sources */,
+				D710E593251C9FDF001986FC /* BTConfigureModel.m in Sources */,
 				D79D74D6251361BC00DE7DF7 /* MyBillViewController.m in Sources */,
 				D79D733825134A8200DE7DF7 /* CoinUserInfoModel.m in Sources */,
 				D7451DD62510C38A00BC4548 /* BTLanguageVC.m in Sources */,
@@ -2657,6 +2678,7 @@
 				D79D7492251358DE00DE7DF7 /* XLBasePageController.m in Sources */,
 				D79D73BD25134FCD00DE7DF7 /* NSString+LCJudgeNumber.m in Sources */,
 				D7BCF32325145338007DD18D /* UIImage+Extension.m in Sources */,
+				D710E59A251CA267001986FC /* BTLinkTypeCollectionCell.m in Sources */,
 				D79D74382513513A00DE7DF7 /* Y_KLineVolume.m in Sources */,
 				D79D7244251312E300DE7DF7 /* STQRCodeController.m in Sources */,
 				D79D74792513560300DE7DF7 /* MyAdvertisingDetailModel.m in Sources */,

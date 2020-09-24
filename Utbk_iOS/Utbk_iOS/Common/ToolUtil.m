@@ -317,6 +317,9 @@
      }
 //MARK:--判断字符串后有几位小数，超过八位就省略
 +(NSString *)judgeStringForDecimalPlaces:(NSString *)string{
+    if ([string isKindOfClass:[NSNull class]]) {
+        return @"";
+    }
     NSString *numStr = @"";
     NSArray *array = [string componentsSeparatedByString:@"."];
     if (array.count == 2) {

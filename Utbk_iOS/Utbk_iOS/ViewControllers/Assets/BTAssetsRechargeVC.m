@@ -8,7 +8,10 @@
 
 #import "BTAssetsRechargeVC.h"
 
+
 @interface BTAssetsRechargeVC ()
+@property (weak, nonatomic) IBOutlet UIImageView *addressCode;
+@property (weak, nonatomic) IBOutlet UILabel *address;
 
 @end
 
@@ -17,11 +20,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = RGBOF(0xa78659);
+    self.title = self.isRechage ? LocalizationKey(@"充币") : LocalizationKey(@"收款");
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)setupBind{
+    self.address.text = self.model.address;
+    self.addressCode.image = [BTCommonUtils logoQrCode:nil code:self.model.address];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.title = LocalizationKey(@"收款");
     self.navigationController.navigationBar.barTintColor = RGBOF(0xa78659);
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:RGBOF(0xffffff)}];
 }
@@ -39,6 +47,14 @@
 }
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)copyAction:(UIButton *)sender {
+    if (!self.model.address.length) {
+        [BTKeyWindow makeToast:LocalizationKey(@"地址为空") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.model.address;
+    [self.view makeToast:LocalizationKey(@"复制成功") duration:ToastHideDelay position:ToastPosition];
 }
 /*
 #pragma mark - Navigation

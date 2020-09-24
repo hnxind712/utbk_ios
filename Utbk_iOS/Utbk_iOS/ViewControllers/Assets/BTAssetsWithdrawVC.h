@@ -7,10 +7,13 @@
 //
 
 #import "BTBaseViewController.h"
+#import "BTAssetsModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BTAssetsWithdrawVC : BTBaseViewController
+
+@property (strong, nonatomic) BTAssetsModel *assetModel;
 
 @end
 
