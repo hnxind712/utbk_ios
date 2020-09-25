@@ -381,6 +381,8 @@
 		D79D751D251366E700DE7DF7 /* LEEAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D751B251366E700DE7DF7 /* LEEAlert.m */; };
 		D79D75202513676900DE7DF7 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D751F2513676900DE7DF7 /* ChatModel.m */; };
 		D79D75232513678E00DE7DF7 /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D75212513678E00DE7DF7 /* ChatTableViewCell.m */; };
+		D7BBF69D251D9939007A953F /* BTPoolShareContributionRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BBF69C251D9939007A953F /* BTPoolShareContributionRecordModel.m */; };
+		D7BBF6A0251DBB0C007A953F /* BTPoolHoldCoinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BBF69F251DBB0C007A953F /* BTPoolHoldCoinModel.m */; };
 		D7BCF32325145338007DD18D /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BCF32225145338007DD18D /* UIImage+Extension.m */; };
 /* End PBXBuildFile section */
 
@@ -1016,6 +1018,10 @@
 		D79D751F2513676900DE7DF7 /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
 		D79D75212513678E00DE7DF7 /* ChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewCell.m; sourceTree = "<group>"; };
 		D79D75222513678E00DE7DF7 /* ChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewCell.h; sourceTree = "<group>"; };
+		D7BBF69B251D9939007A953F /* BTPoolShareContributionRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPoolShareContributionRecordModel.h; sourceTree = "<group>"; };
+		D7BBF69C251D9939007A953F /* BTPoolShareContributionRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTPoolShareContributionRecordModel.m; sourceTree = "<group>"; };
+		D7BBF69E251DBB0C007A953F /* BTPoolHoldCoinModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPoolHoldCoinModel.h; sourceTree = "<group>"; };
+		D7BBF69F251DBB0C007A953F /* BTPoolHoldCoinModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTPoolHoldCoinModel.m; sourceTree = "<group>"; };
 		D7BCF32125145337007DD18D /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		D7BCF32225145338007DD18D /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1527,6 +1533,10 @@
 				D7074EA72510A720000EC935 /* BTHistoryRecordModel.m */,
 				3C563C1E2516201100DFBA88 /* BTTeamHoldModel.h */,
 				3C563C1F2516201100DFBA88 /* BTTeamHoldModel.m */,
+				D7BBF69B251D9939007A953F /* BTPoolShareContributionRecordModel.h */,
+				D7BBF69C251D9939007A953F /* BTPoolShareContributionRecordModel.m */,
+				D7BBF69E251DBB0C007A953F /* BTPoolHoldCoinModel.h */,
+				D7BBF69F251DBB0C007A953F /* BTPoolHoldCoinModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2678,6 +2688,7 @@
 				D79D7492251358DE00DE7DF7 /* XLBasePageController.m in Sources */,
 				D79D73BD25134FCD00DE7DF7 /* NSString+LCJudgeNumber.m in Sources */,
 				D7BCF32325145338007DD18D /* UIImage+Extension.m in Sources */,
+				D7BBF6A0251DBB0C007A953F /* BTPoolHoldCoinModel.m in Sources */,
 				D710E59A251CA267001986FC /* BTLinkTypeCollectionCell.m in Sources */,
 				D79D74382513513A00DE7DF7 /* Y_KLineVolume.m in Sources */,
 				D79D7244251312E300DE7DF7 /* STQRCodeController.m in Sources */,
@@ -2782,6 +2793,7 @@
 				D79D736B25134A8200DE7DF7 /* Advertising1TableViewCell.m in Sources */,
 				D79D74872513568E00DE7DF7 /* MyEntrustViewController.m in Sources */,
 				D79D7241251312E300DE7DF7 /* STQRCodeAlert.m in Sources */,
+				D7BBF69D251D9939007A953F /* BTPoolShareContributionRecordModel.m in Sources */,
 				D79D746C2513536000DE7DF7 /* UIView+EasyShowExt.m in Sources */,
 				D79D736325134A8200DE7DF7 /* BuyCoinsDetail2TableViewCell.m in Sources */,
 				3CAF5E70250E3A69002482C1 /* BTWalletManageDetailVC.m in Sources */,

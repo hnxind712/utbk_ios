@@ -7,6 +7,7 @@
 //
 
 #import "BTPayPasswordVC.h"
+#import "MineNetManager.h"
 
 @interface BTPayPasswordVC ()
 @property (weak, nonatomic) IBOutlet UITextField *passwordNew;
@@ -34,6 +35,39 @@
     }
 }
 - (IBAction)completedAction:(UIButton *)sender {
+    if ([self.passwordNew.text isEqualToString:@""]) {
+        [self.view makeToast:LocalizationKey(@"请输入交易密码") duration:ToastHideDelay position:ToastPosition];
+        return;
+    }
+    if ([self.passwordSecond.text isEqualToString:@""]) {
+        [self.view makeToast:LocalizationKey(@"请再次输入交易密码") duration:ToastHideDelay position:ToastPosition];
+        return;
+    }
+    if (![self.passwordSecond.text isEqualToString:self.passwordNew.text]) {
+        [self.view makeToast:LocalizationKey(@"请检查两次输入密码是否一致") duration:ToastHideDelay position:ToastPosition];
+        return;
+    }
+    [MineNetManager moneyPasswordForJyPassword:self.passwordSecond.text CompleteHandle:^(id resPonseObj, int code) {
+        if (code) {
+            if ([resPonseObj[@"code"] integerValue]==0) {
+                //获取数据成功
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    YLUserInfo *info = [YLUserInfo shareUserInfo];
+                    info.isSetPw = YES;
+                    [YLUserInfo saveUser:info];
+                    [self.navigationController popViewControllerAnimated:YES];
+                });
+            }else if ([resPonseObj[@"code"] integerValue] == 3000 ||[resPonseObj[@"code"] integerValue] == 4000 ){
+                //[ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
+                [YLUserInfo logout];
+            }else{
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+            }
+        }else{
+            [self.view makeToast:LocalizationKey(@"网络请求失败") duration:ToastHideDelay position:ToastPosition];
+        }
+    }];
 }
 /*
 #pragma mark - Navigation

@@ -52,7 +52,10 @@
 + (BOOL)matchPassword:(NSString *)password;
  //匹配邮箱帐号
 + (BOOL)matchEmail:(NSString *)email;
+
 +(NSString *)stampFormatterWithStamp:(NSInteger)stamp;
+
++(NSString *)transformForDayTimeString:(NSString *)timeStr;
 //获取当前日期
 + (NSString *)getCurrentTime;
 //当日0点

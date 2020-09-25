@@ -7,6 +7,7 @@
 //
 
 #import "BTHoldCoinsTableViewCell.h"
+#import "BTPoolHoldCoinModel.h"
 
 @interface BTHoldCoinsTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *yesearnings;
@@ -25,7 +26,9 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+- (void)confiureCellWithModel:(BTPoolHoldCoinModel *)model{
+    
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

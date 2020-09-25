@@ -72,7 +72,7 @@
                             <action selector="detailAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pw8-ky-UZm"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="事件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69t-dH-Drv">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69t-dH-Drv">
                         <rect key="frame" x="287" y="53" width="21" height="10"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="10" id="h2I-A0-85F"/>

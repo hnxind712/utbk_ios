@@ -22,6 +22,7 @@
     [super viewDidLoad];
     self.title = LocalizationKey(@"邀请激活");
     [self addRightNavigation];
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -31,6 +32,22 @@
     [btn addTarget:self action:@selector(transferRecordAction) forControlEvents:UIControlEventTouchUpInside];
     [btn sizeToFit];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
+- (void)setupBind{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]getDataWithUrl:getMinConfigsAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+        StrongSelf(strongSelf)
+        if (NetSuccess) {
+            NSArray *dataArray = [BTConfigureModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+            __block BTConfigureModel *linkModel;
+            [dataArray enumerateObjectsUsingBlock:^(BTConfigureModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj.key isEqualToString:@"usdt-link-type"]) {//链类型对应的key
+                    linkModel = obj;*stop = YES;
+                }
+            }];
+        }
+    }];
+    
 }
 - (void)transferRecordAction{
     

@@ -117,7 +117,7 @@
         }
     }
     [UIView animateWithDuration:0.3 animations:^{
-        _indicateView.centerX = btn.centerX;
+       self->_indicateView.centerX = btn.centerX;
     }];
     
     // 1 计算滚动的位置
@@ -176,7 +176,7 @@
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
             btn.frame = CGRectMake(i * 75 + i * 30, 0, 75, 43);
             [btn setTitle:_titles[i] forState:UIControlStateNormal];
-            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+            [btn setTitleColor:RGBOF(0xD1A870) forState:UIControlStateSelected];
             [btn setTitleColor:AppTextColor_333333 forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:16];
             [btn addTarget:self action:@selector(recordAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -190,7 +190,7 @@
         
         
         _indicateView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 70, 1)];
-        _indicateView.backgroundColor = [UIColor whiteColor];
+        _indicateView.backgroundColor = RGBOF(0xD1A870);
         UIButton *btn = self.btnsArr[0];
         _indicateView.center = CGPointMake(btn.centerX, 43);
         [_labelView addSubview:_indicateView];
@@ -201,7 +201,7 @@
 - (UIView *)lineView{
     if (!_lineView) {
         _lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 43, SCREEN_WIDTH, 1)];
-        _lineView.backgroundColor = [UIColor whiteColor];
+        _lineView.backgroundColor = RGBOF(0xD1A870);
 
     }
     return _lineView;

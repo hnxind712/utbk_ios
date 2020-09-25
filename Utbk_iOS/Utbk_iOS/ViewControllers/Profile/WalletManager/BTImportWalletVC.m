@@ -27,6 +27,7 @@
     [super viewDidLoad];
     self.selectedBtn = self.mnemonicWordBtn;
     self.lineLeftConstraint.constant = (SCREEN_WIDTH - 22)/4 - 7.5;
+    self.title = LocalizationKey(@"导入钱包");
     // Do any additional setup after loading the view from its nib.
 }
 #pragma mark textViewDelegate

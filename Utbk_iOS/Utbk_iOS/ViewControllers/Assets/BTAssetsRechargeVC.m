@@ -7,7 +7,7 @@
 //
 
 #import "BTAssetsRechargeVC.h"
-
+#import "BTWithdrawRecordVC.h"
 
 @interface BTAssetsRechargeVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *addressCode;
@@ -21,6 +21,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = RGBOF(0xa78659);
     self.title = self.isRechage ? LocalizationKey(@"充币") : LocalizationKey(@"收款");
+    [self addRightNavigation];
     [self setupBind];
     // Do any additional setup after loading the view from its nib.
 }
@@ -37,6 +38,19 @@
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.barTintColor = NavColor;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:AppTextColor}];
+}
+- (void)addRightNavigation{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:BTUIIMAGE(@"icon_transferRecordR") forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(rechargeRecordAction) forControlEvents:UIControlEventTouchUpInside];
+    [btn sizeToFit];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
+- (void)rechargeRecordAction{
+    BTWithdrawRecordVC *withdrawRecord = [[BTWithdrawRecordVC alloc]init];
+    withdrawRecord.recordType = KRecordTypeRecharge;
+    [self.navigationController pushViewController:withdrawRecord animated:YES];
 }
 - (void)addLeftNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

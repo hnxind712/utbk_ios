@@ -44,7 +44,11 @@ mine/getMineWallet"
 mine/transferWallet"
 
 //获取用户共享矿池
-#define   transferWalletAPI   @""HOST@"\
-mine/transferWallet"
+#define   getMineShareAPI   @""HOST@"\
+mine/getMineShare"
+
+//获取用户共享矿池记录
+#define   getMineShareLogsAPI   @""HOST@"\
+mine/getMineShareLogs"
 
 #endif /* UtbkRequestUrl_h */

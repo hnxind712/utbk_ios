@@ -409,6 +409,16 @@
     NSString *currentDateString = [formatter1 stringFromDate:someDay];
     return currentDateString;
 }
+//MARK:--时间字符串格式化为 MM/dd
++(NSString *)transformForDayTimeString:(NSString *)timeStr{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *someDay = [formatter dateFromString:timeStr];
+    NSDateFormatter *formatter1 = [[NSDateFormatter alloc] init];
+    [formatter1 setDateFormat:@"MM/dd"];
+    NSString *currentDateString = [formatter1 stringFromDate:someDay];
+    return currentDateString;
+}
 //doubleNumber,原数据，decimalNum,保留的小数位数
 +(NSString*)stringFromNumber:(double)doubleNumber withlimit:(int)decimalNum{
     NSNumberFormatter *nFormat = [[NSNumberFormatter alloc] init];

@@ -107,6 +107,7 @@
 }
 - (void)withDrawRecordAction{
     BTWithdrawRecordVC *withdrawRecord = [[BTWithdrawRecordVC alloc]init];
+    withdrawRecord.recordType = KRecordTypeWithdraw;
     [self.navigationController pushViewController:withdrawRecord animated:YES];
 }
 #pragma mark collectionViewDelegate

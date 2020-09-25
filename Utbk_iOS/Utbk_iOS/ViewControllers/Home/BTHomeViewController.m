@@ -147,6 +147,9 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if (![YLUserInfo shareUserInfo].isSetPw) {//如果没有设置交易密码，则必须先设置
+        [self.payPasswordPopView show];
+    }
     [self.tableView layoutIfNeeded];
     self.bottomViewHeight.constant = KRiseFallCellHeight * 10 + KBottomTopHeight;
 }

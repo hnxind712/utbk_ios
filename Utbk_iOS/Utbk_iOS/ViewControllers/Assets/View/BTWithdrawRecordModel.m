@@ -9,5 +9,7 @@
 #import "BTWithdrawRecordModel.h"
 
 @implementation BTWithdrawRecordModel
-
++(NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{@"ID":@"id"};
+}
 @end

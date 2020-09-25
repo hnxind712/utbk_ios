@@ -9,10 +9,12 @@
 #import "BTHoldCoinsViewController.h"
 #import "BTOrePoolViewController.h"
 #import "BTHoldCoinsTableViewCell.h"
+#import "BTPoolHoldCoinModel.h"
 
 @interface BTHoldCoinsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *datasource;
 
 @end
 
@@ -21,14 +23,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLayout];
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTHoldCoinsTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTHoldCoinsTableViewCell class])];
     self.tableView.tableFooterView = [UIView new];
 }
+- (void)setupBind{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]getDataWithUrl:getMineWalletAPI Parameter:@{@"apiKey":KTempSecretKey} ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            StrongSelf(strongSelf)
+            strongSelf.datasource = [BTPoolHoldCoinModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+            [strongSelf.tableView reloadData];
+        }
+    }];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.datasource.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTHoldCoinsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTHoldCoinsTableViewCell class])];

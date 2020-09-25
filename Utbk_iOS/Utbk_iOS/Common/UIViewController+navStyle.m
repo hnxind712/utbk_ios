@@ -10,6 +10,8 @@
 #import <objc/runtime.h>
 #import "ToolUtil.h"
 #import "YLNavigationController.h"
+#import "BTRegisterViewController.h"
+
 @implementation UIViewController (navStyle)
 
 -(void)setNavigationControllerStyle{
@@ -159,9 +161,9 @@ static char *BackBtnKey = "backBtnKey";
 
 #pragma mark -若用户未登录，则显示登录界面
 -(void)showLoginViewController{
-//    LoginViewController*loginVC=[[LoginViewController alloc]init];
+    BTRegisterViewController *loginVC = [[BTRegisterViewController alloc]init];
 //    YLNavigationController *nav = [[YLNavigationController alloc]initWithRootViewController:loginVC];
-//    [self presentViewController:nav animated:YES completion:nil];
+    [self presentViewController:loginVC animated:YES completion:nil];
 }
 
 -(void)hideNavBar{

@@ -9,8 +9,13 @@
 #import "BTBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+typedef NS_ENUM(NSInteger, KRecordType) {
+    KRecordTypeRecharge = 0,
+    KRecordTypeWithdraw
+};
 @interface BTWithdrawRecordVC : BTBaseViewController
+
+@property (assign, nonatomic) KRecordType recordType;
 
 @end
 

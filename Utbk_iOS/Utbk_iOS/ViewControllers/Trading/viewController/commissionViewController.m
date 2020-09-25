@@ -48,7 +48,9 @@
         
         _tableView.estimatedSectionFooterHeight = 0;
         
-        _tableView.estimatedSectionHeaderHeight=0;  _tableView.contentInsetAdjustmentBehavior= UIScrollViewContentInsetAdjustmentNever;
+        _tableView.estimatedSectionHeaderHeight=0;
+        
+        _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         
     }
 }
@@ -127,7 +129,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return UITableViewAutomaticDimension;
+    return 176.f;//暂定
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -473,7 +473,7 @@
                                             <rect key="frame" x="0.0" y="5" width="414" height="30"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pb-CJ-38l">
-                                                    <rect key="frame" x="15" y="-2.3333333333333339" width="123" height="35"/>
+                                                    <rect key="frame" x="15" y="4" width="105" height="22"/>
                                                     <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="ETH/USDT" image="tradeLeft">
                                                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -483,14 +483,14 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Zs-as-uvs">
-                                                    <rect key="frame" x="364" y="-2" width="35" height="34"/>
+                                                    <rect key="frame" x="381.33333333333331" y="4" width="17.666666666666686" height="22"/>
                                                     <state key="normal" image="uncollect"/>
                                                     <connections>
                                                         <action selector="moreAction:" destination="-1" eventType="touchUpInside" id="ODD-rc-225"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzz-jX-Aex">
-                                                    <rect key="frame" x="315" y="-3" width="39" height="36"/>
+                                                    <rect key="frame" x="351.66666666666669" y="4" width="19.666666666666686" height="22"/>
                                                     <state key="normal" image="tradeRight"/>
                                                     <connections>
                                                         <action selector="kLineAction:" destination="-1" eventType="touchUpInside" id="1cX-ZP-jGX"/>

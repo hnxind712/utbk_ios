@@ -104,6 +104,7 @@ cell.preservesSuperviewLayoutMargins = NO; \
 #define ToastHideDelay 1.f
 #define ToastPosition @"center"
 
+#define KPageSize 20
 #define SOCKETTERMINAL           @"1002";  //安卓:1001,苹果:1002,WEB:1003,PC:1004
 #define SHOWCNY                  @"isShowCNY"//显示为人民币
 #define CURRENTSELECTED_SYMBOL  @"CURRENTSELECTED_SYMBOL"//当前选择的交易对
@@ -117,7 +118,7 @@ cell.preservesSuperviewLayoutMargins = NO; \
 
 #define KMnemonicWords  @"__KMnemonicWords__"
 #define KfirstLogin @"__firstLogin__"
-
+#define KTempSecretKey @"asdfawsdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf"//临时作为调试用的秘钥，调试矿池用
 
 
 
