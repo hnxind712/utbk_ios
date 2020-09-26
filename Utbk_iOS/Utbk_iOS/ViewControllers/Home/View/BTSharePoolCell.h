@@ -1,8 +1,8 @@
 //
-//  BTDropRecordTableViewCell.h
+//  BTSharePoolCell.h
 //  Utbk_iOS
 //
-//  Created by heyong on 2020/9/20.
+//  Created by heyong on 2020/9/26.
 //  Copyright © 2020 HY. All rights reserved.
 //
 
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BTDropRecordTableViewCell : UITableViewCell
+@interface BTSharePoolCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIView *contentV;
+@property (strong, nonatomic) NSArray *starArray;
 
 - (void)configureCellWithModel:(id)model;
 

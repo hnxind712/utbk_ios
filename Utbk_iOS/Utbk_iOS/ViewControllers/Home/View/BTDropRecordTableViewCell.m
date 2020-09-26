@@ -7,6 +7,8 @@
 //
 
 #import "BTDropRecordTableViewCell.h"
+#import "BTPoolRecordModel.h"
+
 @interface BTDropRecordTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *earning;
 @property (weak, nonatomic) IBOutlet UILabel *coin;
@@ -19,7 +21,11 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+- (void)configureCellWithModel:(BTPoolRecordModel *)model{
+    self.earning.text = [NSString stringWithFormat:@"+%@",[ToolUtil formartScientificNotationWithString:model.amount]];
+    self.coin.text = model.coinName;
+    self.time.text = model.saveTime;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

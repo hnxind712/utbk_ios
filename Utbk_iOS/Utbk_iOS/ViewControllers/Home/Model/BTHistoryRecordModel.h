@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTHistoryRecordModel : NSObject
 
+@property (nonatomic,copy) NSString *address;
+@property (nonatomic,assign) CGFloat balance;
+@property (nonatomic,assign) NSInteger sort;
+
 @end
 
 NS_ASSUME_NONNULL_END

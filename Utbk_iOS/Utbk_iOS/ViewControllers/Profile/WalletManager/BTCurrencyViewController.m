@@ -9,6 +9,7 @@
 #import "BTCurrencyViewController.h"
 #import "BTCurrencyCell.h"
 #import "BTCurrencyModel.h"
+#import "C2CNetManager.h"
 
 @interface BTCurrencyViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -22,8 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = LocalizationKey(@"钱包管理");
+    self.title = LocalizationKey(@"选择币种");
     [self setupLayout];
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)backAction{
@@ -35,6 +37,23 @@
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTCurrencyCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTCurrencyCell class])];
     self.tableView.tableFooterView = [UIView new];
+}
+- (void)setupBind{
+    [C2CNetManager selectCoinTypeForCompleteHandle:^(id resPonseObj, int code) {
+        NSLog(@"获取全部货币种类 --- %@",resPonseObj);
+        if (code){
+            if ([resPonseObj[@"code"] integerValue]==0) {
+                //获取数据成功
+                NSLog(@"--%@",resPonseObj);
+                self.datasource = [BTCurrencyModel mj_objectArrayWithKeyValuesArray:resPonseObj[@"data"]];
+//                [self switchViewUI];
+            }else{
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+            }
+        }else{
+            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
+        }
+    }];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 10;

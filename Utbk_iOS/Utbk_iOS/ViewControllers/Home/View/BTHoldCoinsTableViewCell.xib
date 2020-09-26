@@ -241,6 +241,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="XNk-Lf-DEO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="DRe-16-4PT"/>
                     <constraint firstAttribute="bottom" secondItem="XNk-Lf-DEO" secondAttribute="bottom" id="UpV-XG-QQM"/>
@@ -248,8 +249,10 @@
                     <constraint firstItem="XNk-Lf-DEO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ck5-I7-vfD"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="coinName" destination="82u-Ef-X6F" id="HWq-2n-Pbq"/>
                 <outlet property="extend" destination="SAf-Uh-Oda" id="oEq-Yd-YOy"/>
                 <outlet property="hold" destination="UlU-iO-7JB" id="A2O-RO-bI4"/>
                 <outlet property="totalearnings" destination="Rf7-2Y-YeX" id="dRJ-YS-qJ3"/>

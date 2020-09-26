@@ -7,6 +7,7 @@
 //
 
 #import "BTImportWalletVC.h"
+#import "YLTabBarController.h"
 
 @interface BTImportWalletVC ()<UITextViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *mnemonicWordBtn;
@@ -72,7 +73,7 @@
             break;
             case 101:
             self.mnemonicWordBtn.selected = NO;
-                plac = LocalizationKey(@"请输入秘钥，可长按粘贴导入钱包地址");
+            plac = LocalizationKey(@"请输入秘钥，可长按粘贴导入钱包地址");
             left = (SCREEN_WIDTH - 22) * 3/4 - 7.5;
         default:
             break;
@@ -101,6 +102,36 @@
 }
 //确认导入
 - (IBAction)importAction:(UIButton *)sender {
+    if (self.selectedBtn == _mnemonicWordBtn && self.textView.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入助记词单词") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (self.selectedBtn == _privateKeyBtn && self.textView.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入私钥") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (!_password.text.length || _passwordSecond.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入钱包密码") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (![_password.text isEqualToString:_passwordSecond.text]) {
+        [self.view makeToast:LocalizationKey(@"请检测两次输入的密码是否一致") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    WeakSelf(weakSelf)
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (self.selectedBtn == self.mnemonicWordBtn) {
+        params[@"remberWords"] = self.textView.text;
+    }else if (self.selectedBtn == self.privateKeyBtn){
+        params[@"primaryKey"] = self.textView.text;
+    }
+    params[@"password"] = self.password.text;
+    [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];
+            if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
+            }else{
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }
+    }];
 }
 
 /*

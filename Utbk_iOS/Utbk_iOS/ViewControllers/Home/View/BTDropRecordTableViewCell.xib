@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-09-16  01:50:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkS-QT-4c4">
-                                <rect key="frame" x="147" y="20" width="137" height="15"/>
+                                <rect key="frame" x="154" y="20" width="130" height="15"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="fkS-QT-4c4" firstAttribute="leading" secondItem="uKR-ck-9mz" secondAttribute="trailing" constant="5" id="B8Q-tA-LO6"/>
+                            <constraint firstItem="fkS-QT-4c4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uKR-ck-9mz" secondAttribute="trailing" constant="5" id="B8Q-tA-LO6"/>
                             <constraint firstItem="fkS-QT-4c4" firstAttribute="centerY" secondItem="swj-mC-8BD" secondAttribute="centerY" id="NH7-Fb-dXr"/>
                             <constraint firstItem="J08-0A-SfD" firstAttribute="leading" secondItem="swj-mC-8BD" secondAttribute="leading" constant="12" id="ORC-xS-WFg"/>
                             <constraint firstItem="J08-0A-SfD" firstAttribute="centerY" secondItem="swj-mC-8BD" secondAttribute="centerY" id="P6Q-RA-JjE"/>

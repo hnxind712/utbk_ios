@@ -825,8 +825,8 @@
     textfield.placeholder = LocalizationKey(@"IEOSubscriptionProjectName");
     [textfield setValue:RGBOF(0x929292) forKeyPath:@"_placeholderLabel.textColor"];
     textfield.layer.cornerRadius = 5;
-//    textfield.layer.borderColor = RGBOF(0x1F2833).CGColor;
-//    textfield.layer.borderWidth = 0.5;
+    textfield.layer.borderColor = RGBOF(0x1F2833).CGColor;
+    textfield.layer.borderWidth = 0.5;
     textfield.backgroundColor = MainBackColor;
     _textFied = textfield;
     [containerView addSubview:textfield];

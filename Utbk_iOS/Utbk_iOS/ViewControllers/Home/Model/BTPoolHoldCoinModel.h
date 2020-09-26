@@ -23,14 +23,19 @@ NS_ASSUME_NONNULL_BEGIN
  yesterdayProfit = 0;
  */
 @property (copy, nonatomic) NSString *balance;
+@property (copy, nonatomic) NSString *big_airdrop_profit;
 @property (copy, nonatomic) NSString *coinId;
 @property (copy, nonatomic) NSString *coinName;
 @property (assign, nonatomic) NSInteger ID;
-@property (assign, nonatomic) CGFloat profitAmount;
+@property (copy, nonatomic) NSString *profitAmount;
 @property (copy, nonatomic) NSString *saveTime;
+@property (copy, nonatomic) NSString *subcoinCoin;
+@property (copy, nonatomic) NSString *subcoinProfitAmount;
+@property (copy, nonatomic) NSString *subcoinYesterdayProfit;
 @property (copy, nonatomic) NSString *updateTime;
 @property (assign, nonatomic) NSInteger userId;
-@property (assign, nonatomic) CGFloat yesterdayProfit;
+@property (copy, nonatomic) NSString *yesterdayProfit;
+@property (copy, nonatomic) NSString *smallTotalBanance;//小区合计
 
 @end
 

@@ -7,12 +7,13 @@
 //
 
 #import "BTBaseViewController.h"
+#import "BTPoolHoldCoinModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BTOrePoolViewController : BTBaseViewController
 
-@property (strong, nonatomic) id model;
+@property (strong, nonatomic) BTPoolHoldCoinModel *model;
 
 @end
 

@@ -90,6 +90,7 @@ static XBRequest *_sharedInstance = nil;
                 NSDictionary *resultDic = (NSDictionary *)result;
                 responseObjects(resultDic);
             }
+            NSLog(@"数据 = %@",result);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSDictionary *temDic = @{@"resError":error};
@@ -140,6 +141,7 @@ static XBRequest *_sharedInstance = nil;
                 NSDictionary *resultDic = (NSDictionary *)result;
                 responseObjects(resultDic);
             }
+            NSLog(@"数据 = %@",result);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSDictionary *temDic = @{@"resError":error};
@@ -191,6 +193,7 @@ static XBRequest *_sharedInstance = nil;
                 NSDictionary *resultDic = (NSDictionary *)result;
                 responseObjects(resultDic);
             }
+            NSLog(@"数据 = %@",result);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSDictionary *temDic = @{@"resError":error};

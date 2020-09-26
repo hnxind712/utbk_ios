@@ -8,7 +8,11 @@
 
 #import "BTHistoryRecordCell.h"
 #import "BTHistoryRecordModel.h"
+@interface BTHistoryRecordCell ()
+@property (weak, nonatomic) IBOutlet UILabel *rankLabel;
+@property (weak, nonatomic) IBOutlet UILabel *address;
 
+@end
 @implementation BTHistoryRecordCell
 
 - (void)awakeFromNib {
@@ -22,6 +26,7 @@
     // Configure the view for the selected state
 }
 - (void)configureCellWithModel:(BTHistoryRecordModel *)model{
-    
+    self.rankLabel.text = [NSString stringWithFormat:@"%d",model.sort];
+    self.address.text = model.address;
 }
 @end

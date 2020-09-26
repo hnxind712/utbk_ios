@@ -10,6 +10,7 @@
 #import "BTPoolHoldCoinModel.h"
 
 @interface BTHoldCoinsTableViewCell ()
+@property (weak, nonatomic) IBOutlet UILabel *coinName;
 @property (weak, nonatomic) IBOutlet UILabel *yesearnings;
 @property (weak, nonatomic) IBOutlet UILabel *yesearningsCoin;
 @property (weak, nonatomic) IBOutlet UILabel *yesearningBTK;
@@ -27,7 +28,13 @@
     // Initialization code
 }
 - (void)confiureCellWithModel:(BTPoolHoldCoinModel *)model{
-    
+    self.coinName.text = model.coinName;
+    self.totalearnings.text = [ToolUtil formartScientificNotationWithString:model.profitAmount];
+    self.yesearningsCoin.text = model.coinName;
+    self.yesearnings.text = [ToolUtil formartScientificNotationWithString:model.yesterdayProfit];
+    self.yesearningBTK.text = [ToolUtil formartScientificNotationWithString:model.subcoinYesterdayProfit];
+    self.yesearningCoinBTK.text = model.subcoinCoin;
+    self.hold.text = self.extend.text = [ToolUtil formartScientificNotationWithString:model.big_airdrop_profit];;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

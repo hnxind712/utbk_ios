@@ -41,6 +41,7 @@ typedef void(^ResultBlock)(id resultObject,int isSuccessed);
 #define NavColor    RGBOF(0xF0F0F0)
 #define AppTextColor_333333   RGBOF(0x333333)
 //#define mainColor  RGBOF(0x3399FF)
+//#define mainColor    RGBOF(0xF0F0F0)
 #define mainColor  RGBOF(0x1F2833)
 #define baseColor  NavColor
 #define ViewBackgroundColor  kRGBColor(18,22,28)
@@ -120,7 +121,8 @@ cell.preservesSuperviewLayoutMargins = NO; \
 #define KfirstLogin @"__firstLogin__"
 #define KTempSecretKey @"asdfawsdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf"//临时作为调试用的秘钥，调试矿池用
 
-
+//对应的贡献值很多地方用到100去处理因此定义出来方便以后扩展
+#define KContributionValue 100
 
 static  int    COMMANDS_VERSION = 1;
 static  short  SUBSCRIBE_SYMBOL_THUMB = 20001; //订阅缩略行情

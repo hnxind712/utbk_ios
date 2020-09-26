@@ -29,6 +29,10 @@
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTHoldCoinsTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTHoldCoinsTableViewCell class])];
     self.tableView.tableFooterView = [UIView new];
+    [self headRefreshWithScrollerView:self.tableView];
+}
+- (void)refreshHeaderAction{
+    [self setupBind];
 }
 - (void)setupBind{
     WeakSelf(weakSelf)
@@ -46,6 +50,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTHoldCoinsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTHoldCoinsTableViewCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell confiureCellWithModel:self.datasource[indexPath.row]];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -54,6 +59,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     BTOrePoolViewController *pool = [[BTOrePoolViewController alloc]init];
+    pool.model = self.datasource[indexPath.row];
     [self.navigationController pushViewController:pool animated:YES];
 }
 /*

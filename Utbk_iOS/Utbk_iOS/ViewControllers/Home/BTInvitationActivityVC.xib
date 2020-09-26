@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BTInvitationActivityVC">
             <connections>
+                <outlet property="balance" destination="Dul-Q4-PTe" id="6vK-4a-ph5"/>
                 <outlet property="coinAddress" destination="1dP-Zs-wBG" id="ALd-2t-Qtc"/>
                 <outlet property="feeTipsLabel" destination="Dnx-iw-Erj" id="F1n-Bn-NC6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -37,7 +38,7 @@
                             </connections>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写收币账户地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1dP-Zs-wBG">
-                            <rect key="frame" x="12" y="33.5" width="326" height="18"/>
+                            <rect key="frame" x="12" y="34.5" width="326" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -57,14 +58,14 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="激活需消耗0.01BTCK原始母币，可用：0.000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dnx-iw-Erj">
-                    <rect key="frame" x="24" y="163" width="270" height="14.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="激活需消耗0.01BTCK原始母币，可用：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dnx-iw-Erj">
+                    <rect key="frame" x="24" y="163" width="214.5" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.94117647058823528" green="0.32549019607843138" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avf-RZ-sE3">
-                    <rect key="frame" x="48" y="227.5" width="318" height="44"/>
+                    <rect key="frame" x="48" y="228" width="318" height="44"/>
                     <color key="backgroundColor" red="0.81960784310000001" green="0.6588235294" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="TJ8-Xb-UnN"/>
@@ -82,15 +83,23 @@
                         <action selector="comfirmAction:" destination="-1" eventType="touchUpInside" id="AXT-SE-KaH"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dul-Q4-PTe">
+                    <rect key="frame" x="238.5" y="163" width="56" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.94117647059999998" green="0.32549019610000002" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="avf-RZ-sE3" firstAttribute="top" secondItem="Dnx-iw-Erj" secondAttribute="bottom" constant="50" id="88z-jv-yee"/>
+                <constraint firstItem="Dul-Q4-PTe" firstAttribute="leading" secondItem="Dnx-iw-Erj" secondAttribute="trailing" id="Du3-qS-JKO"/>
                 <constraint firstItem="Dnx-iw-Erj" firstAttribute="top" secondItem="ClM-X6-Vlz" secondAttribute="bottom" constant="14" id="HIX-IG-NB0"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="ClM-X6-Vlz" secondAttribute="trailing" constant="12" id="IBM-T3-Aic"/>
                 <constraint firstItem="avf-RZ-sE3" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="48" id="QIg-vu-ZUW"/>
                 <constraint firstItem="Dnx-iw-Erj" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="24" id="QUc-aK-mQH"/>
                 <constraint firstItem="ClM-X6-Vlz" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="Vjy-TJ-UMd"/>
+                <constraint firstItem="Dul-Q4-PTe" firstAttribute="centerY" secondItem="Dnx-iw-Erj" secondAttribute="centerY" id="fqU-II-nr6"/>
                 <constraint firstItem="ClM-X6-Vlz" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="12" id="tE6-B9-U2c"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="avf-RZ-sE3" secondAttribute="trailing" constant="48" id="y4x-0M-lou"/>
             </constraints>

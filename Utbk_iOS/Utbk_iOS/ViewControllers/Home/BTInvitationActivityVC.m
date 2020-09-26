@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *coinAddress;
 @property (weak, nonatomic) IBOutlet UILabel *feeTipsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *balance;
 
 @end
 
@@ -35,16 +36,10 @@
 }
 - (void)setupBind{
     WeakSelf(weakSelf)
-    [[XBRequest sharedInstance]getDataWithUrl:getMinConfigsAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+    [[XBRequest sharedInstance]getDataWithUrl:getMotherCoinWalletAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
         StrongSelf(strongSelf)
         if (NetSuccess) {
-            NSArray *dataArray = [BTConfigureModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
-            __block BTConfigureModel *linkModel;
-            [dataArray enumerateObjectsUsingBlock:^(BTConfigureModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                if ([obj.key isEqualToString:@"usdt-link-type"]) {//链类型对应的key
-                    linkModel = obj;*stop = YES;
-                }
-            }];
+            strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%@",responseResult[@"data"][@"balance"]]];
         }
     }];
     
@@ -63,6 +58,20 @@
 }
 //确认
 - (IBAction)comfirmAction:(UIButton *)sender {
+    if (!_coinAddress.text.length) {
+        [self.view makeToast:LocalizationKey(@"请填写对方账户地址") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]postDataWithUrl:activeOneAPI Parameter:@{@"toAddr":self.coinAddress.text} ResponseObject:^(NSDictionary *responseResult) {
+        StrongSelf(strongSelf)
+        if (NetSuccess) {
+            [strongSelf.view makeToast:responseResult[@"message"] duration:ToastHideDelay position:ToastPosition];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [strongSelf.navigationController popViewControllerAnimated:YES];
+            });
+        }else
+            ErrorToast
+    }];
 }
 /*
 #pragma mark - Navigation

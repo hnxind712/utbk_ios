@@ -12,7 +12,7 @@
 
 //选择币种
 +(void)selectCoinTypeForCompleteHandle:(void(^)(id resPonseObj,int code))completeHandle{
-    NSString *path = @"otc/coin/all";
+    NSString *path = @"/mine/getCoinRelation";
     NSMutableDictionary *dic = [NSMutableDictionary new];
     [self ylNonTokenRequestWithGET:path parameters:dic successBlock:^(id resultObject, int isSuccessed) {
         completeHandle(resultObject,isSuccessed);

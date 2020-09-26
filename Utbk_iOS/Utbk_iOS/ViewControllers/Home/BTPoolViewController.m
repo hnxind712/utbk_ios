@@ -10,6 +10,7 @@
 #import "BTHoldCoinsViewController.h"
 #import "BTSharePoolVC.h"
 #import "SPMultipleSwitch.h"
+#import "BTContributionVC.h"
 
 @interface BTPoolViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -20,7 +21,7 @@
 @implementation BTPoolViewController
 - (SPMultipleSwitch *)multipleSwitch{
     if (!_multipleSwitch) {
-        SPMultipleSwitch *switch1 = [[SPMultipleSwitch alloc] initWithItems:@[@"共享挖矿",@"持币空投"]];
+        SPMultipleSwitch *switch1 = [[SPMultipleSwitch alloc] initWithItems:@[LocalizationKey(@"共享挖矿"),LocalizationKey(@"持币空投")]];
         switch1.frame = CGRectMake(0, 0, 193, 30);
         [switch1 addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside] ;
         
@@ -50,12 +51,13 @@
     [btn setTitle:LocalizationKey(@"贡献") forState:UIControlStateNormal];
     [btn setTitleColor:RGBOF(0x333333) forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:14.f weight:UIFontWeightMedium];
-    [btn addTarget:self action:@selector(contributionRecordAction) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(contributionAction) forControlEvents:UIControlEventTouchUpInside];
     [btn sizeToFit];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
-- (void)contributionRecordAction{
-    
+- (void)contributionAction{
+    BTContributionVC *contribution = [[BTContributionVC alloc]init];
+    [self.navigationController pushViewController:contribution animated:YES];
 }
 - (void)addChildViewController{
     BTSharePoolVC *sharePool = [[BTSharePoolVC alloc]init];
