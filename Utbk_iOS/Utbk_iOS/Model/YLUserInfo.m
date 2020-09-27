@@ -100,6 +100,7 @@ static YLUserInfo *userInfo = nil;
     [aCoder encodeInteger:self.signInActivity forKey:@"signInActivity"];
     [aCoder encodeBool:self.isSetPw forKey:@"isSetPw"];
     [aCoder encodeObject:self.secretKey forKey:@"secretKey"];
+    [aCoder encodeObject:self.address forKey:@"address"];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super init]) {
@@ -124,6 +125,7 @@ static YLUserInfo *userInfo = nil;
         self.signInActivity = [aDecoder decodeIntegerForKey:@"signInActivity"];
         self.isSetPw = [aDecoder decodeBoolForKey:@"isSetPw"];
         self.secretKey = [aDecoder decodeObjectForKey:@"secretKey"];
+        self.address = [aDecoder decodeObjectForKey:@"address"];
     }
     return self;
 }

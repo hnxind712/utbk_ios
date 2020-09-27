@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BTWalletManagerModel : NSObject
 
 @property (copy, nonatomic) NSString *address;
-@property (assign, nonatomic) BOOL isCurrent;//当前的
+
 @property (assign, nonatomic) BOOL isActive;//是否激活
 
 @end

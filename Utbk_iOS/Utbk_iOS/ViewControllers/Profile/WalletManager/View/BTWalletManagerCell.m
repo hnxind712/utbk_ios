@@ -26,12 +26,12 @@
     [super awakeFromNib];
     // Initialization code
 }
-- (void)configureWithModel:(BTWalletManagerModel *)model{
-    self.selectedBtn.selected = model.isCurrent;
-    self.currentLabel.textColor = model.isCurrent ? RGBOF(0x333333) : RGBOF(0xcccccc);
+- (void)configureWithModel:(YLUserInfo *)model{
+    self.selectedBtn.selected = [[YLUserInfo shareUserInfo].username isEqualToString:model.username];
+    self.currentLabel.textColor = [[YLUserInfo shareUserInfo].username isEqualToString:model.username] ? RGBOF(0x333333) : RGBOF(0xcccccc);
     //下面两个暂定
-    self.activityView.backgroundColor = model.isActive ? RGBOF(0xDAC49D) : RGBOF(0xcccccc);
-    self.activityLabel.textColor = model.isActive ? RGBOF(0x786236) : RGBOF(0x333333);
+    //self.activityView.backgroundColor = model.isActive ? RGBOF(0xDAC49D) : RGBOF(0xcccccc);
+    //self.activityLabel.textColor = model.isActive ? RGBOF(0x786236) : RGBOF(0x333333);
 }
 - (IBAction)copyAddressAction:(UIButton *)sender {
     if (!_address.length) {

@@ -8,6 +8,8 @@
 
 #import "BTImportWalletVC.h"
 #import "YLTabBarController.h"
+#import "MineNetManager.h"
+#import "BTAssetsModel.h"
 
 @interface BTImportWalletVC ()<UITextViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *mnemonicWordBtn;
@@ -126,12 +128,36 @@
     params[@"password"] = self.password.text;
     [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
-            [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];
-            if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
-                [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
-            }else{
-                [weakSelf.navigationController popViewControllerAnimated:YES];
-            }
+            YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];
+            [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
+                if (NetSuccess) {
+                    NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                    for (BTAssetsModel *walletModel in dataArr) {
+                        if ([walletModel.coin.unit isEqualToString:@"BTCK"]) {//个人中心显示BTCK的地址
+                            info.address = walletModel.address;break;
+                        }
+                    }
+                    [YLUserInfo saveUser:info];
+                    NSMutableArray *array = [NSMutableArray array];
+                    //取出
+                    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                    NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
+                    NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+                    [array addObjectsFromArray:list];
+                    [array insertObject:info atIndex:0];
+                    //存
+                    NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
+                    [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
+                        [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
+                    }else{
+                        [weakSelf.navigationController popViewControllerAnimated:YES];
+                    }
+                }else{
+                    ErrorToast
+                }
+            }];
         }
     }];
 }

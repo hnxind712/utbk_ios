@@ -13,12 +13,11 @@
 #import "BTWalletManageDetailVC.h"
 #import "BTCurrencyViewController.h"
 #import "BTCurrencyModel.h"
-#import "BTWalletManagerModel.h"
 
 @interface BTWalletManagerVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *datasource;
-@property (strong, nonatomic) BTWalletManagerModel *currentModel;
+@property (strong, nonatomic) YLUserInfo *currentInfo;
 
 @end
 
@@ -29,6 +28,10 @@
     self.title = LocalizationKey(@"钱包管理");
     [self setupLayout];
     [self addRightNavigation];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setupBind];
 }
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTWalletManagerCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTWalletManagerCell class])];
@@ -46,6 +49,12 @@
     [btn sizeToFit];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
+- (void)setupBind{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
+    self.datasource = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+    [self.tableView reloadData];
+}
 - (void)transferAction{
     BTCurrencyViewController *currency = [[BTCurrencyViewController alloc]init];
     currency.selectedCurrency = ^(BTCurrencyModel *model) {
@@ -55,13 +64,12 @@
 }
 #pragma mark tableViewDelegate datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
-    //self.datasource.count;
+    return self.datasource.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTWalletManagerCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTWalletManagerCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    [cell configureWithModel:self.datasource[indexPath.row]];
+    [cell configureWithModel:self.datasource[indexPath.row]];
     WeakSelf(weakSelf)
     cell.walletDetailAction = ^{
         BTWalletManageDetailVC *walletDetail = [[BTWalletManageDetailVC alloc]init];
@@ -74,11 +82,10 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    BTWalletManagerModel *model = self.datasource[indexPath.row];
-    if (model == self.currentModel) return;
-    model.isCurrent = YES;
-    self.currentModel.isCurrent = NO;
-    self.currentModel = model;
+    YLUserInfo *model = self.datasource[indexPath.row];
+    if (model == self.currentInfo) return;
+    self.currentInfo = model;
+    [YLUserInfo saveUser:self.currentInfo];
     [tableView reloadData];
 }
 #pragma mark actions
