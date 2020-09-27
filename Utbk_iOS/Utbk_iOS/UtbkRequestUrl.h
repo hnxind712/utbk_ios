@@ -33,7 +33,7 @@ uc/address/checkMnemonicWords"
 
 //导入助记词
 #define   importMnemonicAPI   @""HOST@"\
-uc/import/address"
+uc/address/importAddress"
 
 
 //矿池相关配置
@@ -78,5 +78,9 @@ mine/getAirdropTop"
 //币种汇率转换
 #define   exchangeRateAPI   @""HOST@"\
 market/exchange-rate"
+
+//关联相关币种
+#define   getCoinRelationAPI   @""HOST@"\
+/mine/getCoinRelation"
 
 #endif /* UtbkRequestUrl_h */

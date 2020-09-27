@@ -20,7 +20,12 @@
 @end
 
 @implementation BTCurrencyViewController
-
+- (id)init{
+    if (self = [super init]) {
+        self.curreny = @"BTCK";
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LocalizationKey(@"选择币种");
@@ -39,29 +44,34 @@
     self.tableView.tableFooterView = [UIView new];
 }
 - (void)setupBind{
-    [C2CNetManager selectCoinTypeForCompleteHandle:^(id resPonseObj, int code) {
-        NSLog(@"获取全部货币种类 --- %@",resPonseObj);
-        if (code){
-            if ([resPonseObj[@"code"] integerValue]==0) {
-                //获取数据成功
-                NSLog(@"--%@",resPonseObj);
-                self.datasource = [BTCurrencyModel mj_objectArrayWithKeyValuesArray:resPonseObj[@"data"]];
-//                [self switchViewUI];
-            }else{
-                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
-            }
-        }else{
-            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
+    [[XBRequest sharedInstance]postDataWithUrl:getCoinRelationAPI Parameter:@{@"coin":self.curreny} ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            NSLog(@"打印币种 = %@",responseResult);
         }
     }];
+//    [C2CNetManager selectCoinTypeForCompleteHandle:^(id resPonseObj, int code) {
+//        NSLog(@"获取全部货币种类 --- %@",resPonseObj);
+//        if (code){
+//            if ([resPonseObj[@"code"] integerValue]==0) {
+//                //获取数据成功
+//                NSLog(@"--%@",resPonseObj);
+//                self.datasource = [BTCurrencyModel mj_objectArrayWithKeyValuesArray:resPonseObj[@"data"]];
+////                [self switchViewUI];
+//            }else{
+//                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+//            }
+//        }else{
+//            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
+//        }
+//    }];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.datasource.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTCurrencyCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTCurrencyCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    [cell configureCellWithModel:self.datasource[indexPath.row]];
+    [cell configureCellWithModel:self.datasource[indexPath.row]];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

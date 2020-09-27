@@ -68,7 +68,7 @@
     switch (sender.tag) {
         case 100:
             self.privateKeyBtn.selected = NO;
-            plac = LocalizationKey(@"请输入助记词单词，并使用空格分隔");
+            plac = LocalizationKey(@"请输入助记词单词，并使用逗号分隔");
             left = (SCREEN_WIDTH - 22)/4 - 7.5;
             break;
             case 101:
@@ -102,13 +102,13 @@
 }
 //确认导入
 - (IBAction)importAction:(UIButton *)sender {
-    if (self.selectedBtn == _mnemonicWordBtn && self.textView.text.length) {
+    if (self.selectedBtn == _mnemonicWordBtn && !self.textView.text.length) {
         [self.view makeToast:LocalizationKey(@"请输入助记词单词") duration:ToastHideDelay position:ToastPosition];return;
     }
-    if (self.selectedBtn == _privateKeyBtn && self.textView.text.length) {
+    if (self.selectedBtn == _privateKeyBtn && !self.textView.text.length) {
         [self.view makeToast:LocalizationKey(@"请输入私钥") duration:ToastHideDelay position:ToastPosition];return;
     }
-    if (!_password.text.length || _passwordSecond.text.length) {
+    if (!_password.text.length || !_passwordSecond.text.length) {
         [self.view makeToast:LocalizationKey(@"请输入钱包密码") duration:ToastHideDelay position:ToastPosition];return;
     }
     if (![_password.text isEqualToString:_passwordSecond.text]) {
@@ -118,7 +118,9 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     if (self.selectedBtn == self.mnemonicWordBtn) {
         params[@"remberWords"] = self.textView.text;
+        params[@"primaryKey"] = @"";
     }else if (self.selectedBtn == self.privateKeyBtn){
+        params[@"remberWords"] = @"";
         params[@"primaryKey"] = self.textView.text;
     }
     params[@"password"] = self.password.text;
@@ -128,7 +130,7 @@
             if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
                 [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
             }else{
-                [self.navigationController popViewControllerAnimated:YES];
+                [weakSelf.navigationController popViewControllerAnimated:YES];
             }
         }
     }];

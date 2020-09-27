@@ -21,12 +21,14 @@
 #import "BTOnCurrencyVC.h"//上币
 #import "BTWalletManagerVC.h"
 #import "BTTeamHoldViewController.h"
+#import "MineNetManager.h"
+#import "HomeNetManager.h"
 
 #define KBottomTopHeight 40.f //主板区标签对应的高度间隔
 #define KRiseFallCellHeight 60.f
 
 @interface BTHomeViewController ()<UITableViewDelegate,UITableViewDataSource,MSCycleScrollViewDelegate>
-
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UIView *bannerSuperView;
 @property (weak, nonatomic) IBOutlet UIImageView *adImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -93,7 +95,114 @@
     [self setupLayout];
     [self addRightNavigation];
     [self addLeftNavigation];
+    [self headRefreshWithScrollerView:self.mainScrollView];
+    NSLog(@"助记词 = %@",[[NSUserDefaults standardUserDefaults]objectForKey:KMnemonicWords]);
+    NSLog(@"私钥 = %@",[YLUserInfo shareUserInfo].ID);
+    [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:SUBSCRIBE_SYMBOL_THUMB withVersion:COMMANDS_VERSION withRequestId: 0 withbody:nil];
+    [SocketManager share].delegate=self;
     // Do any additional setup after loading the view from its nib.
+}
+#pragma mark-下拉刷新数据
+- (void)refreshHeaderAction{
+    [self getBannerData];
+//    [self getData];
+//    [self getDefaultSymbol];
+}
+#pragma mark-获取平台消息
+-(void)getNotice{
+    [MineNetManager getPlatformMessageForCompleteHandleWithPageNo:@"1" withPageSize:@"20" CompleteHandle:^(id resPonseObj, int code) {
+        [EasyShowLodingView hidenLoding];
+        if (code) {
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+//                [self.platformMessageArr removeAllObjects];
+//                NSArray *arr = resPonseObj[@"data"][@"content"];
+//                NSMutableArray *muArr = [NSMutableArray arrayWithCapacity:0];
+//                for (NSDictionary *dic in arr) {
+//                    if ([[ChangeLanguage userLanguage] isEqualToString:@"en"]) {
+//                        if (![self hasChinese:dic[@"title"]]) {
+//                            [muArr addObject:dic];
+//                        }
+//                    }else{
+//                        if ([self hasChinese:dic[@"title"]]) {
+//                            [muArr addObject:dic];
+//                        }
+//                    }
+//                }
+//                NSArray *dataArr = [PlatformMessageModel mj_objectArrayWithKeyValuesArray:muArr];
+//                [self.platformMessageArr addObjectsFromArray:dataArr];
+//                [self.tableView reloadData];
+            }else{
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+            }
+        }else{
+            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
+        }
+    }];
+    
+}
+#pragma mark 获取banner
+- (void)getBannerData{
+
+    [HomeNetManager advertiseBannerCompleteHandle:^(id resPonseObj, int code) {
+        NSLog(@"首页轮播图 --- %@",resPonseObj);
+        if (code) {
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+//                [self.bannerArr removeAllObjects];
+//                [self.bannerArr addObjectsFromArray:[bannerModel mj_objectArrayWithKeyValuesArray:resPonseObj[@"data"]]];
+//                if (self.bannerArr.count>0) {
+//                    [self configUrlArrayWithModelArray:self.bannerArr];
+//                }
+//            }else{
+//                [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:CSToastPositionCenter];
+//            }
+            }
+        }else{
+            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:1.5 position:ToastPosition];
+        }
+    }];
+}
+#pragma mark - SocketDelegate Delegate
+- (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
+
+    NSData *endData = [data subdataWithRange:NSMakeRange(SOCKETRESPONSE_LENGTH, data.length -SOCKETRESPONSE_LENGTH)];
+    NSString *endStr= [[NSString alloc] initWithData:endData encoding:NSUTF8StringEncoding];
+    NSData *cmdData = [data subdataWithRange:NSMakeRange(12,2)];
+    uint16_t cmd=[SocketUtils uint16FromBytes:cmdData];
+    //缩略行情
+    if (cmd==PUSH_SYMBOL_THUMB) {
+
+        NSDictionary*dic=[SocketUtils dictionaryWithJsonString:endStr];
+//        symbolModel*model = [symbolModel mj_objectWithKeyValues:dic];
+        //推荐
+//        if (self.contentArr.count>0) {
+//            NSMutableArray*recommendArr=(NSMutableArray*)self.contentArr[0];
+//            [recommendArr enumerateObjectsUsingBlock:^(symbolModel*  obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//                if ([obj.symbol isEqualToString:model.symbol]) {
+//                    [recommendArr  replaceObjectAtIndex:idx withObject:model];
+//                    *stop = YES;
+//
+//                    [self.tableView reloadData];
+//                }
+//            }];
+//            //涨幅榜
+//            if (self.contentArr.count < 1) {
+//                return;
+//            } NSMutableArray*changeRankArr=(NSMutableArray*)self.contentArr[1];
+//            [changeRankArr enumerateObjectsUsingBlock:^(symbolModel*  obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//                if ([obj.symbol isEqualToString:model.symbol]) {
+//                    [changeRankArr  replaceObjectAtIndex:idx withObject:model];
+//                    *stop = YES;
+//                    [self.tableView reloadData];
+//                }
+//            }];
+//        }
+    }else if (cmd==UNSUBSCRIBE_SYMBOL_THUMB){
+        NSLog(@"取消订阅首页消息");
+        
+    }else{
+        
+    }
+    //    NSLog(@"首页消息-%@--%d",endStr,cmd);
 }
 - (void)setupLayout{
     self.selectedBtn = self.mainBtn;

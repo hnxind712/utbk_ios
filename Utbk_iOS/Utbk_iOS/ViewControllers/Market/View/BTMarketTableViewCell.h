@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *currenctLabel;//当前价
 @property (weak, nonatomic) IBOutlet UILabel *convertLabel;//折合价
 @property (weak, nonatomic) IBOutlet UILabel *riseFall;//涨跌幅
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leading;
 - (void)configureCellWithModel:(id)model;
 
 @end

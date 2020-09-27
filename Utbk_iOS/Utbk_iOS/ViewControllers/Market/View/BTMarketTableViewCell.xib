@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,9 +73,9 @@
                     <constraint firstItem="ld0-B1-KBD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AIc-Ig-lKK"/>
                     <constraint firstItem="Qkw-mF-919" firstAttribute="centerY" secondItem="YqG-vm-faZ" secondAttribute="centerY" id="Dbp-84-EGW"/>
                     <constraint firstItem="CSL-TG-Wus" firstAttribute="top" secondItem="Qkw-mF-919" secondAttribute="bottom" constant="10" id="E1M-hG-4iv"/>
+                    <constraint firstItem="Qkw-mF-919" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="124.5" id="G6G-LC-kuQ"/>
                     <constraint firstItem="YqG-vm-faZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="IXA-qC-p0c"/>
                     <constraint firstAttribute="trailing" secondItem="ld0-B1-KBD" secondAttribute="trailing" constant="12" id="MK9-j6-ktN"/>
-                    <constraint firstItem="Qkw-mF-919" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="QuP-Fp-lvo"/>
                     <constraint firstItem="Ksl-3b-gun" firstAttribute="top" secondItem="YqG-vm-faZ" secondAttribute="bottom" constant="10" id="VAe-sg-KEP"/>
                     <constraint firstItem="CSL-TG-Wus" firstAttribute="leading" secondItem="Qkw-mF-919" secondAttribute="leading" id="lfb-Qo-rlH"/>
                     <constraint firstItem="Ksl-3b-gun" firstAttribute="leading" secondItem="YqG-vm-faZ" secondAttribute="leading" id="n3B-Xj-Nsy"/>
@@ -84,9 +84,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
-                <outlet property="coin" destination="Ksl-3b-gun" id="1Lv-sY-63A"/>
+                <outlet property="coin" destination="YqG-vm-faZ" id="rio-1I-j7I"/>
                 <outlet property="convertLabel" destination="CSL-TG-Wus" id="luv-x6-Yzg"/>
                 <outlet property="currenctLabel" destination="Qkw-mF-919" id="F6h-fU-5dA"/>
+                <outlet property="leading" destination="G6G-LC-kuQ" id="k74-2m-j5m"/>
                 <outlet property="lineLabel" destination="Ksl-3b-gun" id="T5w-73-VU8"/>
                 <outlet property="riseFall" destination="ld0-B1-KBD" id="yTL-fT-5z8"/>
             </connections>

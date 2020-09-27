@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BTMarketViewController">
             <connections>
+                <outlet property="heightContraint" destination="R3W-bq-Xx1" id="kWX-0j-32O"/>
                 <outlet property="tableView" destination="xGv-SH-cPj" id="veq-Yi-sBW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,10 +31,11 @@
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新价格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xi-JC-u0I">
-                            <rect key="frame" x="166.5" y="17" width="57.5" height="12"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新价格" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xi-JC-u0I">
+                            <rect key="frame" x="165" y="17" width="60" height="12"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="12" id="RBz-27-9Ao"/>
+                                <constraint firstAttribute="width" constant="60" id="ttD-De-nDe"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,6 +53,9 @@
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xGv-SH-cPj">
                             <rect key="frame" x="0.0" y="46" width="390" height="119"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="119" id="R3W-bq-Xx1"/>
+                            </constraints>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="QJg-EL-QCQ"/>
                                 <outlet property="delegate" destination="-1" id="0ga-0X-YV7"/>
@@ -68,7 +73,6 @@
                         <constraint firstItem="xGv-SH-cPj" firstAttribute="top" secondItem="hwt-x5-BSL" secondAttribute="bottom" constant="17" id="b0U-ae-xNI"/>
                         <constraint firstItem="0Xi-JC-u0I" firstAttribute="centerY" secondItem="hwt-x5-BSL" secondAttribute="centerY" id="i4Q-Hy-Ive"/>
                         <constraint firstAttribute="bottom" secondItem="xGv-SH-cPj" secondAttribute="bottom" id="iGj-EA-0bc"/>
-                        <constraint firstAttribute="height" constant="165" id="mf9-Sv-mDg"/>
                         <constraint firstItem="2oq-95-Trv" firstAttribute="centerY" secondItem="0Xi-JC-u0I" secondAttribute="centerY" id="phV-e9-k7O"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>

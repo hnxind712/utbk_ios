@@ -67,7 +67,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuG-PF-Jyc">
-                    <rect key="frame" x="12" y="174" width="390" height="173"/>
+                    <rect key="frame" x="12" y="174" width="390" height="170"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设置密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBE-e5-h2Z">
                             <rect key="frame" x="11" y="21" width="57.5" height="17"/>
@@ -76,15 +76,15 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="设置密码（6-20个字符）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z3P-te-aoD">
-                            <rect key="frame" x="11" y="48" width="318" height="17.5"/>
+                            <rect key="frame" x="11" y="48" width="318" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="hzh-lu-dsd"/>
                             </connections>
                         </textField>
                         <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOZ-X7-0B6">
-                            <rect key="frame" x="360" y="50" width="19" height="14"/>
+                            <rect key="frame" x="360" y="49" width="19" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="19" id="G77-Fz-CsJ"/>
                                 <constraint firstAttribute="height" constant="14" id="VpO-AW-n9F"/>
@@ -96,7 +96,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bm4-sj-IGO">
-                            <rect key="frame" x="344" y="50" width="1" height="13.5"/>
+                            <rect key="frame" x="344" y="49.5" width="1" height="13.5"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="1" id="G0N-ri-QMS"/>
@@ -104,22 +104,22 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYS-TM-lCR">
-                            <rect key="frame" x="11" y="75.5" width="368" height="1"/>
+                            <rect key="frame" x="11" y="74" width="368" height="1"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="01B-FW-Rk6"/>
                             </constraints>
                         </view>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请再次输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AnP-ya-MA9">
-                            <rect key="frame" x="11" y="124.5" width="318" height="17.5"/>
+                            <rect key="frame" x="11" y="123" width="318" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="RRg-QJ-1uP"/>
                             </connections>
                         </textField>
                         <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1c9-0v-kvc">
-                            <rect key="frame" x="360" y="126.5" width="19" height="14"/>
+                            <rect key="frame" x="360" y="124" width="19" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="19" id="jrz-it-PaE"/>
                                 <constraint firstAttribute="height" constant="14" id="y1z-Sc-8cJ"/>
@@ -131,13 +131,13 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请再次输入密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pa5-SN-fLZ">
-                            <rect key="frame" x="11" y="97.5" width="100" height="17"/>
+                            <rect key="frame" x="11" y="96" width="100" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.20392156859999999" green="0.20392156859999999" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOr-yl-Bmp">
-                            <rect key="frame" x="344" y="126.5" width="1" height="13.5"/>
+                            <rect key="frame" x="344" y="124.5" width="1" height="13.5"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="13.5" id="Kf6-4I-7iz"/>
@@ -177,7 +177,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAE-L6-Zpp">
-                    <rect key="frame" x="39" y="436" width="336" height="44"/>
+                    <rect key="frame" x="39" y="433" width="336" height="44"/>
                     <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="YrF-l3-k52"/>
@@ -194,7 +194,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcT-sN-oNm">
-                    <rect key="frame" x="24" y="357" width="366" height="29"/>
+                    <rect key="frame" x="24" y="354" width="366" height="29"/>
                     <string key="text">密码属于保护私钥以及交易授权，强度非常重要；平台不存储
 密码。也不帮您找回，请务必保管好。</string>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>

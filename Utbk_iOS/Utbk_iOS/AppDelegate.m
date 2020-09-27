@@ -14,6 +14,7 @@
 #import <CoreTelephony/CTCellularData.h>
 #import <WebKit/WebKit.h>
 #import "BTRegisterViewController.h"
+#import "MarketNetManager.h"
 
 @interface AppDelegate ()
 
@@ -31,14 +32,14 @@
     [self configure];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor blackColor];
-//    if (![YLUserInfo isLogIn]) {
-//        BTRegisterViewController *registerVC = [[BTRegisterViewController alloc]init];
-//        YLNavigationController *nav = [[YLNavigationController alloc]initWithRootViewController:registerVC];
-//        self.window.rootViewController = nav;
-//    }else{
+    if (![YLUserInfo isLogIn]) {
+        BTRegisterViewController *registerVC = [[BTRegisterViewController alloc]init];
+        YLNavigationController *nav = [[YLNavigationController alloc]initWithRootViewController:registerVC];
+        self.window.rootViewController = nav;
+    }else{
         YLTabBarController *SectionTabbar = [[YLTabBarController alloc] init];
         self.window.rootViewController = SectionTabbar;
-//    }
+    }
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(createTabbar) name:KfirstLogin object:nil];//第一次创建钱包备份完或者稍后备份的时候需要创建首页
     [self.window makeKeyAndVisible];
@@ -53,6 +54,8 @@
     self.CNYRate = [NSDecimalNumber decimalNumberWithString:@"0.00"];
     [ChangeLanguage setUserlanguage:@"zh-Hans"];
     [ChangeLanguage initUserLanguage];//初始化语言
+    BOOL connect = [[SocketManager share] connect];//连接行情socket
+    NSLog(@"socket是否连接成功 = %d",connect);
 }
 -(void)initKeyboardManager
 {
@@ -65,6 +68,16 @@
     keyboardManager.shouldShowToolbarPlaceholder = YES;// 是否显示占位文字
     keyboardManager.placeholderFont = [UIFont boldSystemFontOfSize:17]; // 设置占位文字的字体
     keyboardManager.keyboardDistanceFromTextField = 10.0f;
+}
+#pragma mark-获取USDT对CNY汇率
+-(void)getUSDTToCNYRate{
+    [MarketNetManager getusdTocnyRateCompleteHandle:^(id resPonseObj, int code) {
+        if (code) {
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+                self.CNYRate = [NSDecimalNumber decimalNumberWithString:[resPonseObj[@"data"] stringValue]];
+            }
+        }
+    }];
 }
 #pragma mark 注册推送
 - (void)registNotification

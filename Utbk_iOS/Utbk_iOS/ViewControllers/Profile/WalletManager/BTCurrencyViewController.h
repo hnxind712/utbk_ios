@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (copy, nonatomic) void(^selectedCurrency)(id model);//将选中的model回调过去
 
-@property (copy, nonatomic) NSString *currenyId;//暂定
+@property (copy, nonatomic) NSString *curreny;//暂定
 
 @end
 

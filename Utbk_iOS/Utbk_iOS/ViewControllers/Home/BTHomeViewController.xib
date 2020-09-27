@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +15,7 @@
                 <outlet property="coinCount" destination="Y9A-BB-TQ6" id="OAm-6F-ut0"/>
                 <outlet property="convertCount" destination="iq4-dX-W4D" id="4eQ-we-hfn"/>
                 <outlet property="mainBtn" destination="AfO-OB-ah1" id="jT5-Af-l2a"/>
+                <outlet property="mainScrollView" destination="6qo-Bw-NiS" id="85W-wA-P6a"/>
                 <outlet property="riseFallBtn" destination="Lbn-Gz-cpt" id="DaL-ZC-iT2"/>
                 <outlet property="tableView" destination="6h6-OE-sSD" id="0Bd-zP-vsa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
