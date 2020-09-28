@@ -103,15 +103,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "24F31CB9-0ACF-4C19-88C9-3418AD3042E0"
+            uuid = "C1D42E66-E9E1-48E8-9B92-19E08008B5C4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Utbk_iOS/ViewControllers/Market/BTMarketViewController.m"
+            filePath = "Utbk_iOS/ViewControllers/Assets/BTAssetsWithdrawVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "-setupBind"
             landmarkType = "7">
          </BreakpointContent>

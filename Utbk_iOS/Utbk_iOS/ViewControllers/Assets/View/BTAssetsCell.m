@@ -41,7 +41,7 @@
         [self.transiferBtn setTitle:LocalizationKey(@"提币") forState:UIControlStateNormal];
         [self.sTransferBtn setTitle:LocalizationKey(@"转币") forState:UIControlStateNormal];
     }else{
-        [self.receiveBtn setTitle:LocalizationKey(@"提币") forState:UIControlStateNormal];
+        [self.receiveBtn setTitle:LocalizationKey(@"收币") forState:UIControlStateNormal];
         [self.transiferBtn setTitle:LocalizationKey(@"转账") forState:UIControlStateNormal];
         [self.sTransferBtn setTitle:LocalizationKey(@"划转") forState:UIControlStateNormal];
     }
