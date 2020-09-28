@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionHeight;
+@property (weak, nonatomic) IBOutlet UIButton *nextStepBtn;
 @property (strong, nonatomic) BTMnemonisModel *mnemonisModel;
 
 @end
@@ -40,19 +41,26 @@
 }
 - (void)setupBind{
     WeakSelf(weakSelf)
-    [[XBRequest sharedInstance]postDataWithUrl:MnemonicWordsAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
-        if (NetSuccess) {
-            StrongSelf(strongSelf)
-            strongSelf.mnemonisModel = [BTMnemonisModel mj_objectWithKeyValues:responseResult[@"data"]];
-            [strongSelf.collectionView reloadData];
-            [strongSelf.collectionView layoutIfNeeded];;
-            strongSelf.collectionHeight.constant = self.collectionView.contentSize.height;
-            //保存助记词到本地
-            [[NSUserDefaults standardUserDefaults]setObject:[strongSelf.mnemonisModel.mnemonicWordsList componentsJoinedByString:@","] forKey:KMnemonicWords];
-        }else{
-            ErrorToast
-        }
-    }];
+    if (self.userInfo) {//本地取
+        self.nextStepBtn.hidden = YES;
+        self.mnemonisModel = [[BTMnemonisModel alloc]init];
+        self.mnemonisModel.mnemonicWordsList = [self.userInfo.mnemonicWords componentsSeparatedByString:@","];
+        [self.collectionView reloadData];
+        [self.collectionView layoutIfNeeded];;
+        self.collectionHeight.constant = self.collectionView.contentSize.height;
+    }else{
+        [[XBRequest sharedInstance]postDataWithUrl:MnemonicWordsAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+            if (NetSuccess) {
+                StrongSelf(strongSelf)
+                strongSelf.mnemonisModel = [BTMnemonisModel mj_objectWithKeyValues:responseResult[@"data"]];
+                [strongSelf.collectionView reloadData];
+                [strongSelf.collectionView layoutIfNeeded];;
+                strongSelf.collectionHeight.constant = self.collectionView.contentSize.height;
+            }else{
+                ErrorToast
+            }
+        }];
+    }
 }
 - (void)setupLayout{
     CGFloat itemWidth = (SCREEN_WIDTH - 24)/3;

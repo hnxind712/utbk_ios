@@ -44,6 +44,10 @@
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTAssetsCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTAssetsCell class])];
     self.tableView.tableFooterView = [UIView new];
+    [self headRefreshWithScrollerView:self.tableView];
+}
+- (void)refreshHeaderAction{
+    [self setupBind];
 }
 - (void)setupBind{
     //获取我的钱包
@@ -64,9 +68,7 @@
                 ass2 = [ass2 decimalNumberByAdding:[balance decimalNumberByMultiplyingBy:cnyRate withBehavior:handle] withBehavior:handle];
             }
             self.totalAccount.text = [ass1 stringValue];
-//            self.assetCNY = [ass2 stringValue];
             [self.tableView reloadData];
-//            [self initHeaderData];
         }else{
             ErrorToast
         }

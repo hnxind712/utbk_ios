@@ -45,7 +45,6 @@
             strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%@",responseResult[@"data"][@"balance"]]];
         }
     }];
-    
 }
 - (void)transferRecordAction{
     

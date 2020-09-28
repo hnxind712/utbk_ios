@@ -7,6 +7,14 @@
 //
 
 #import "BTHomeNoticeView.h"
+#import "BTNoticeModel.h"
+
+@interface BTHomeNoticeView ()
+
+@property (weak, nonatomic) IBOutlet UILabel *message;
+@property (strong, nonatomic) BTNoticeModel *noticeModel;
+
+@end
 
 @implementation BTHomeNoticeView
 
@@ -17,12 +25,18 @@
     // Drawing code
 }
 */
-- (void)configureNoticeViewWithModel:(id)model{
-    
+- (void)configureNoticeViewWithModel:(BTNoticeModel *)model{
+    _noticeModel = model;
+    self.message.text = [NSString stringWithFormat:@"%@：%@",LocalizationKey(@"公告"),model.title];
 }
 - (IBAction)moreAction:(UIButton *)sender {
     if (self.noticeMoreAction) {
         self.noticeMoreAction();
+    }
+}
+- (IBAction)detailAction:(UITapGestureRecognizer *)sender {
+    if (self.noticeDetailAction) {
+        self.noticeDetailAction(self.noticeModel);
     }
 }
 @end

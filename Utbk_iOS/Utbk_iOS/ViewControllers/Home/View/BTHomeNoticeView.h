@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@class BTNoticeModel;
 
 @interface BTHomeNoticeView : UIView
 
 @property (copy, nonatomic) void(^noticeMoreAction)(void);
+
+@property (copy, nonatomic) void(^noticeDetailAction)(BTNoticeModel *model);
 
 - (void)configureNoticeViewWithModel:(id)model;
 

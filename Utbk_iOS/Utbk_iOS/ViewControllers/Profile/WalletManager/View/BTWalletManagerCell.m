@@ -29,9 +29,10 @@
 - (void)configureWithModel:(YLUserInfo *)model{
     self.selectedBtn.selected = [[YLUserInfo shareUserInfo].username isEqualToString:model.username];
     self.currentLabel.textColor = [[YLUserInfo shareUserInfo].username isEqualToString:model.username] ? RGBOF(0x333333) : RGBOF(0xcccccc);
-    //下面两个暂定
-    //self.activityView.backgroundColor = model.isActive ? RGBOF(0xDAC49D) : RGBOF(0xcccccc);
-    //self.activityLabel.textColor = model.isActive ? RGBOF(0x786236) : RGBOF(0x333333);
+    self.nickName.text = model.username;
+    self.addressLabel.text = model.address;
+    self.activityView.backgroundColor = (model.activeStatus == 1 || model.activeStatus == 2)  ? RGBOF(0xDAC49D) : RGBOF(0xcccccc);
+    self.activityLabel.textColor = (model.activeStatus == 1 || model.activeStatus == 2) ? RGBOF(0x786236) : RGBOF(0x333333);
 }
 - (IBAction)copyAddressAction:(UIButton *)sender {
     if (!_address.length) {
@@ -45,6 +46,11 @@
 - (IBAction)walletDetail:(UIButton *)sender {
     if (self.walletDetailAction) {
         self.walletDetailAction();
+    }
+}
+- (IBAction)SwitchAccountAction:(UIButton *)sender {
+    if (self.switchAccountAction) {
+        self.switchAccountAction();
     }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

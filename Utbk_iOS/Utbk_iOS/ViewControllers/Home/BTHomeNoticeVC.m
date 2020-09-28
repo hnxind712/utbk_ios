@@ -10,6 +10,7 @@
 #import "BTNoticeModel.h"
 #import "BTHomeNoticeCell.h"
 #import "BTNoticeDetailVC.h"
+#import "MineNetManager.h"
 
 @interface BTHomeNoticeVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -36,13 +37,48 @@
     self.tableView.separatorColor = RGBOF(0xe8e8e8);
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 40, 0, 0);
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
-    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+//    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 }
 - (void)loadData{
     
 }
 - (void)loadMoreData{
     
+}
+- (void)setupBind{
+    WeakSelf(weakSelf)
+    [MineNetManager getPlatformMessageForCompleteHandleWithPageNo:@"1" withPageSize:@"20" CompleteHandle:^(id resPonseObj, int code) {
+        if (code) {
+            LYEmptyView*emptyView=[LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"暂无数据")];
+            self.tableView.ly_emptyView = emptyView;
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+                StrongSelf(strongSelf)
+                [strongSelf.datasource removeAllObjects];
+                NSArray *arr = resPonseObj[@"data"][@"content"];
+                NSArray *dataArr = [BTNoticeModel mj_objectArrayWithKeyValuesArray:arr];
+                [strongSelf.datasource addObjectsFromArray:dataArr];
+                //                NSMutableArray *muArr = [NSMutableArray arrayWithCapacity:0];
+                //                for (NSDictionary *dic in arr) {
+                //                    if ([[ChangeLanguage userLanguage] isEqualToString:@"en"]) {
+                //                        if (![self hasChinese:dic[@"title"]]) {
+                //                            [muArr addObject:dic];
+                //                        }
+                //                    }else{
+                //                        if ([self hasChinese:dic[@"title"]]) {
+                //                            [muArr addObject:dic];
+                //                        }
+                //                    }
+                //                }
+                //                NSArray *dataArr = [PlatformMessageModel mj_objectArrayWithKeyValuesArray:muArr];
+                //                [self.platformMessageArr addObjectsFromArray:dataArr];
+                [strongSelf.tableView reloadData];
+            }else{
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+            }
+        }else{
+            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
+        }
+    }];
 }
 #pragma mark tableViewDelegate datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

@@ -7,6 +7,7 @@
 //
 
 #import "BTModifyTradePasswordVC.h"
+#import "MineNetManager.h"
 
 @interface BTModifyTradePasswordVC ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *passwordOld;
@@ -50,7 +51,7 @@
         case 103:
             self.passwordNew.secureTextEntry = sender.selected;
             break;
-         case 104:
+        case 104:
             self.passwordSecond.secureTextEntry = sender.selected;
             break;
         default:
@@ -58,6 +59,43 @@
     }
 }
 - (IBAction)completedAction:(UIButton *)sender {
+    if ([self.passwordOld.text isEqualToString:@""]) {
+        [self.view makeToast:LocalizationKey(@"请输入旧密码") duration:ToastHideDelay position:ToastPosition];
+        return;
+    }
+    if ([self.passwordNew.text isEqualToString:@""]) {
+        [self.view makeToast:LocalizationKey(@"请输入新密码") duration:ToastHideDelay position:ToastPosition];
+        return;
+    }
+    if ([self.passwordSecond.text isEqualToString:@""]) {
+        [self.view makeToast:LocalizationKey(@"请再次输入新密码") duration:ToastHideDelay position:ToastPosition];
+        return;
+    }
+    if (![self.passwordSecond.text isEqualToString:self.passwordNew.text]) {
+        [self.view makeToast:LocalizationKey(@"请检查两次输入密码是否一致") duration:ToastHideDelay position:ToastPosition];
+        return;
+    }
+    WeakSelf(weakSelf)
+    [MineNetManager resetMoneyPasswordForOldPassword:self.passwordOld.text withLatestPassword:self.passwordNew.text code:@"" googleCode:nil CompleteHandle:^(id resPonseObj, int code) {
+        StrongSelf(strongSelf)
+        if (code) {
+            if ([resPonseObj[@"code"] integerValue]==0) {
+                
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [strongSelf.navigationController popViewControllerAnimated:YES];
+                });
+                
+            }else if ([resPonseObj[@"code"] integerValue] == 3000 ||[resPonseObj[@"code"] integerValue] == 4000 ){
+               // [ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
+                [YLUserInfo logout];
+            }else{
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+            }
+        }else{
+            [self.view makeToast:LocalizationKey(@"noNetworkStatus") duration:ToastHideDelay position:ToastPosition];
+        }
+    }];
 }
 
 /*

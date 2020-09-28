@@ -10,8 +10,7 @@
 #import <MSCycleScrollView.h>
 #import "BTPayPasswordPopView.h"
 #import "BTPayPasswordVC.h"
-#import "BTHomeRiseFallModel.h"
-#import "BTHomeRiseFallCell.h"
+#import "BTMarketTableViewCell.h"
 #import "BTHomeTransiferCoinVC.h"//转账
 #import "BTSweepAccountVC.h"//划转
 #import "BTInvitationActivityVC.h"//邀请激活
@@ -23,6 +22,12 @@
 #import "BTTeamHoldViewController.h"
 #import "MineNetManager.h"
 #import "HomeNetManager.h"
+#import "symbolModel.h"
+#import "BTBannerModel.h"
+#import "BTNoticeModel.h"
+#import "LSAppBrowserViewController.h"
+#import "BTNoticeDetailVC.h"
+#import "BTAssetsModel.h"
 
 #define KBottomTopHeight 40.f //主板区标签对应的高度间隔
 #define KRiseFallCellHeight 60.f
@@ -39,22 +44,49 @@
 @property (weak, nonatomic) IBOutlet UIButton *riseFallBtn;//涨幅榜
 @property (strong, nonatomic) UIButton *selectedBtn;//记录选中的按钮（主板区或涨幅榜，避免点击多次重复请求）
 @property (strong, nonatomic) UIButton *walletBtn;//钱包按钮
-@property (strong, nonatomic) NSArray *datasource;
+@property (strong, nonatomic) NSMutableArray *responceData;//主板区以及涨幅榜存储的数据
+@property (strong, nonatomic) NSArray *datasource;//主板区以及涨幅榜对应的数据
+@property (strong, nonatomic) NSMutableArray *bannerArr;
 @property (strong, nonatomic) MSCycleScrollView *cycleScrollView;
 @property (strong, nonatomic) BTPayPasswordPopView *payPasswordPopView;
 @property (strong, nonatomic) BTHomeNoticeView *noticeView;
+@property (strong, nonatomic) LYEmptyView *emptyView;
 
 @end
 
 @implementation BTHomeViewController
+- (NSMutableArray *)bannerArr{
+    if (!_bannerArr) {
+        _bannerArr = [NSMutableArray array];
+    }
+    return _bannerArr;
+}
+- (LYEmptyView *)emptyView{
+    if (!_emptyView) {
+        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"暂无数据")];
+    }
+    return _emptyView;
+}
+- (NSMutableArray *)responceData{
+    if (!_responceData) {
+        _responceData = [NSMutableArray array];
+    }
+    return _responceData;
+}
 - (BTHomeNoticeView *)noticeView{
     if (!_noticeView) {
         WeakSelf(weakSelf)
         _noticeView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([BTHomeNoticeView class]) owner:nil options:nil].firstObject;
         _noticeView.noticeMoreAction = ^{
             StrongSelf(strongSelf)
-            BTHomeNoticeVC *payPassword = [[BTHomeNoticeVC alloc]init];
-            [strongSelf.navigationController pushViewController:payPassword animated:YES];
+            BTHomeNoticeVC *notice = [[BTHomeNoticeVC alloc]init];
+            [strongSelf.navigationController pushViewController:notice animated:YES];
+        };
+        _noticeView.noticeDetailAction = ^(BTNoticeModel * _Nonnull model) {
+            StrongSelf(strongSelf)
+            BTNoticeDetailVC *detail = [[BTNoticeDetailVC alloc]init];
+            detail.noticeModel = model;
+            [strongSelf.navigationController pushViewController:detail animated:YES];
         };
     }
     return _noticeView;
@@ -92,30 +124,87 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.selectedBtn = self.mainBtn;
     [self setupLayout];
     [self addRightNavigation];
     [self addLeftNavigation];
     [self headRefreshWithScrollerView:self.mainScrollView];
-    NSLog(@"助记词 = %@",[[NSUserDefaults standardUserDefaults]objectForKey:KMnemonicWords]);
-    NSLog(@"私钥 = %@",[YLUserInfo shareUserInfo].ID);
-    [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:SUBSCRIBE_SYMBOL_THUMB withVersion:COMMANDS_VERSION withRequestId: 0 withbody:nil];
-    [SocketManager share].delegate=self;
+    [self refreshHeaderAction];//直接拉取数据
+    NSLog(@"私钥 = %@",[YLUserInfo shareUserInfo].secretKey);
     // Do any additional setup after loading the view from its nib.
 }
 #pragma mark-下拉刷新数据
 - (void)refreshHeaderAction{
     [self getBannerData];
-//    [self getData];
+    [self getNotice];
+    [self getData];
+    [self setupBind];
 //    [self getDefaultSymbol];
+}
+- (void)setupBind{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]getDataWithUrl:getMotherCoinWalletAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+        StrongSelf(strongSelf)
+        if (NetSuccess) {
+            if ([responseResult[@"data"]isKindOfClass:[NSNull class]]) {
+                strongSelf.coinCount.text = @"0";
+            }else
+                strongSelf.coinCount.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%@",responseResult[@"data"][@"balance"]]];
+        }
+    }];
+    [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
+        if (NetSuccess) {
+            NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+            NSDecimalNumber *ass1 = [[NSDecimalNumber alloc] initWithString:@"0"];
+            for (BTAssetsModel *walletModel in dataArr) {
+                //计算总资产
+                if ([walletModel.coin.unit isEqualToString:@"BTCK"]) {
+                    NSDecimalNumberHandler *handle = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:8 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+                    NSDecimalNumber *balance = [[NSDecimalNumber alloc] initWithString:walletModel.balance];
+                    NSDecimalNumber *usdRate = [[NSDecimalNumber alloc] initWithString:walletModel.coin.usdRate];
+                    
+                    ass1 = [balance decimalNumberByMultiplyingBy:usdRate withBehavior:handle];break;
+                }
+            }
+            self.convertCount.text = [ass1 stringValue];
+        }
+    }];
+}
+#pragma mark-获取首页推荐信息
+-(void)getData{
+    WeakSelf(weakSelf)
+    [HomeNetManager HomeDataCompleteHandle:^(id resPonseObj, int code) {
+        NSLog(@"获取首页推荐信息 --- %@",resPonseObj);
+        StrongSelf(strongSelf)
+        [strongSelf.responceData removeAllObjects];
+        if ([resPonseObj isKindOfClass:[NSDictionary class]]) {
+            NSArray *recommendArr = [symbolModel mj_objectArrayWithKeyValuesArray:resPonseObj[@"recommend"]];
+            NSArray *changeRankArr = [symbolModel mj_objectArrayWithKeyValuesArray:resPonseObj[@"changeRank"]];
+            if (changeRankArr&&recommendArr) {
+                [strongSelf.responceData addObject:recommendArr];//推荐
+                [strongSelf.responceData addObject:changeRankArr];//涨幅榜
+                strongSelf.datasource = recommendArr;//默认给推荐的
+                strongSelf.tableView.ly_emptyView = self.emptyView;
+                [strongSelf.tableView reloadData];
+                [strongSelf.tableView layoutIfNeeded];
+                strongSelf.bottomViewHeight.constant = KRiseFallCellHeight * recommendArr.count + KBottomTopHeight;
+            }
+        }
+    }];
 }
 #pragma mark-获取平台消息
 -(void)getNotice{
+    WeakSelf(weakSelf)
     [MineNetManager getPlatformMessageForCompleteHandleWithPageNo:@"1" withPageSize:@"20" CompleteHandle:^(id resPonseObj, int code) {
-        [EasyShowLodingView hidenLoding];
         if (code) {
             if ([resPonseObj[@"code"] integerValue] == 0) {
-//                [self.platformMessageArr removeAllObjects];
-//                NSArray *arr = resPonseObj[@"data"][@"content"];
+                StrongSelf(strongSelf)
+                NSArray *arr = resPonseObj[@"data"][@"content"];
+                NSArray *dataArr = [BTNoticeModel mj_objectArrayWithKeyValuesArray:arr];
+                if (dataArr) {
+                    BTNoticeModel *model = dataArr.firstObject;//暂时取第一条
+                    [strongSelf.noticeView configureNoticeViewWithModel:model];
+                }
 //                NSMutableArray *muArr = [NSMutableArray arrayWithCapacity:0];
 //                for (NSDictionary *dic in arr) {
 //                    if ([[ChangeLanguage userLanguage] isEqualToString:@"en"]) {
@@ -142,71 +231,41 @@
 }
 #pragma mark 获取banner
 - (void)getBannerData{
-
     [HomeNetManager advertiseBannerCompleteHandle:^(id resPonseObj, int code) {
         NSLog(@"首页轮播图 --- %@",resPonseObj);
         if (code) {
             if ([resPonseObj[@"code"] integerValue] == 0) {
-//                [self.bannerArr removeAllObjects];
-//                [self.bannerArr addObjectsFromArray:[bannerModel mj_objectArrayWithKeyValuesArray:resPonseObj[@"data"]]];
-//                if (self.bannerArr.count>0) {
-//                    [self configUrlArrayWithModelArray:self.bannerArr];
-//                }
-//            }else{
-//                [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:CSToastPositionCenter];
-//            }
+                [self.bannerArr removeAllObjects];
+                [self.bannerArr addObjectsFromArray:[BTBannerModel mj_objectArrayWithKeyValuesArray:resPonseObj[@"data"]]];
+                if (self.bannerArr.count>0) {
+                    [self configUrlArrayWithModelArray:self.bannerArr];
+                }
+            }else{
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
             }
         }else{
-            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:1.5 position:ToastPosition];
+            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
         }
     }];
 }
-#pragma mark - SocketDelegate Delegate
-- (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
-
-    NSData *endData = [data subdataWithRange:NSMakeRange(SOCKETRESPONSE_LENGTH, data.length -SOCKETRESPONSE_LENGTH)];
-    NSString *endStr= [[NSString alloc] initWithData:endData encoding:NSUTF8StringEncoding];
-    NSData *cmdData = [data subdataWithRange:NSMakeRange(12,2)];
-    uint16_t cmd=[SocketUtils uint16FromBytes:cmdData];
-    //缩略行情
-    if (cmd==PUSH_SYMBOL_THUMB) {
-
-        NSDictionary*dic=[SocketUtils dictionaryWithJsonString:endStr];
-//        symbolModel*model = [symbolModel mj_objectWithKeyValues:dic];
-        //推荐
-//        if (self.contentArr.count>0) {
-//            NSMutableArray*recommendArr=(NSMutableArray*)self.contentArr[0];
-//            [recommendArr enumerateObjectsUsingBlock:^(symbolModel*  obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//                if ([obj.symbol isEqualToString:model.symbol]) {
-//                    [recommendArr  replaceObjectAtIndex:idx withObject:model];
-//                    *stop = YES;
-//
-//                    [self.tableView reloadData];
-//                }
-//            }];
-//            //涨幅榜
-//            if (self.contentArr.count < 1) {
-//                return;
-//            } NSMutableArray*changeRankArr=(NSMutableArray*)self.contentArr[1];
-//            [changeRankArr enumerateObjectsUsingBlock:^(symbolModel*  obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//                if ([obj.symbol isEqualToString:model.symbol]) {
-//                    [changeRankArr  replaceObjectAtIndex:idx withObject:model];
-//                    *stop = YES;
-//                    [self.tableView reloadData];
-//                }
-//            }];
-//        }
-    }else if (cmd==UNSUBSCRIBE_SYMBOL_THUMB){
-        NSLog(@"取消订阅首页消息");
-        
-    }else{
-        
+-(void)configUrlArrayWithModelArray:(NSMutableArray*)array{
+    NSMutableArray *urlArray=[NSMutableArray arrayWithCapacity:0];
+    for (int i=0; i<array.count; i++) {
+        BTBannerModel *model = array[i];
+        [urlArray addObject:model.url];
     }
-    //    NSLog(@"首页消息-%@--%d",endStr,cmd);
+    self.cycleScrollView.imageUrls = urlArray;
+}
+#pragma mark 轮播回调
+- (void)cycleScrollView:(MSCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    BTBannerModel *model = self.bannerArr[index];
+    LSAppBrowserViewController *browser = [[LSAppBrowserViewController alloc]init];
+    browser.urlString = model.linkUrl;
+    [self.navigationController pushViewController:browser animated:YES];
 }
 - (void)setupLayout{
     self.selectedBtn = self.mainBtn;
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTHomeRiseFallCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTHomeRiseFallCell class])];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTMarketTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTMarketTableViewCell class])];
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorColor = RGBOF(0xE8E8E8);
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 12, 0, 0);
@@ -251,15 +310,14 @@
     [self.navigationController pushViewController:wallet animated:YES];
 }
 - (void)transferAction{
-    NSLog(@"点击了转换");
+    BTWalletManagerVC *wallet = [[BTWalletManagerVC alloc]init];
+    [self.navigationController pushViewController:wallet animated:YES];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    if (![YLUserInfo shareUserInfo].isSetPw) {//如果没有设置交易密码，则必须先设置
-//        [self.payPasswordPopView show];
-//    }
-    [self.tableView layoutIfNeeded];
-    self.bottomViewHeight.constant = KRiseFallCellHeight * 10 + KBottomTopHeight;
+    if (![YLUserInfo shareUserInfo].isSetPw) {//如果没有设置交易密码，则必须先设置
+        [self.payPasswordPopView show];
+    }
 }
 
 #pragma mark buttonAction
@@ -339,28 +397,36 @@
         case 108://主板区
             [self.riseFallBtn setTitleColor:RGBOF(0x323232) forState:UIControlStateNormal];
             self.riseFallBtn.selected = NO;
+            self.datasource = self.responceData.firstObject;
             break;
        case 109:
             [self.mainBtn setTitleColor:RGBOF(0x323232) forState:UIControlStateNormal];
             self.mainBtn.selected = NO;
+            self.datasource = self.responceData.lastObject;
             break;
         default:
             break;
     }
+    self.tableView.ly_emptyView = self.emptyView;
+    [self.tableView reloadData];
+    [self.tableView layoutIfNeeded];
+    self.bottomViewHeight.constant = KRiseFallCellHeight * self.datasource.count + KBottomTopHeight;
+    
 }
 #pragma mark tableDelegate  datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.datasource.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    BTHomeRiseFallCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTHomeRiseFallCell class])];
-    [cell configureCellWithRiseFallModel:self.datasource[indexPath.row]];
+    BTMarketTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTMarketTableViewCell class])];
+    [cell configureCellWithModel:self.datasource[indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return KRiseFallCellHeight;
 }
+
 /*
 #pragma mark - Navigation
 

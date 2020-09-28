@@ -12,6 +12,7 @@
                 <outlet property="collectionHeight" destination="Q8E-7q-hNf" id="bT2-6j-hF9"/>
                 <outlet property="collectionView" destination="AdC-q6-cNx" id="pyM-Gb-lcC"/>
                 <outlet property="layout" destination="RvT-P2-hHW" id="pfL-c5-c6I"/>
+                <outlet property="nextStepBtn" destination="rHx-Sj-LZF" id="aBp-Sh-R1r"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

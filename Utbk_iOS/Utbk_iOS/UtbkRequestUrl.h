@@ -83,4 +83,8 @@ market/exchange-rate"
 #define   getCoinRelationAPI   @""HOST@"\
 /mine/getCoinRelation"
 
+//获取用户激活状态
+#define   getMemberStatusAPI   @""HOST@"\
+uc/member/getMemberStatus"
+
 #endif /* UtbkRequestUrl_h */

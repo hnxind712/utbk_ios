@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTBackupMnemonicsVC : BTBaseViewController
 
+@property (strong, nonatomic) YLUserInfo *userInfo;
+
 @end
 
 NS_ASSUME_NONNULL_END

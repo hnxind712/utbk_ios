@@ -20,11 +20,15 @@
                         <constraint firstAttribute="width" secondItem="cKn-LH-s0g" secondAttribute="height" multiplier="1:1" id="zJQ-eg-rur"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公告：系统升级完成公告" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GY1-g9-Sqb">
-                    <rect key="frame" x="30" y="6" width="135" height="15"/>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GY1-g9-Sqb">
+                    <rect key="frame" x="30" y="13.5" width="0.0" height="0.0"/>
+                    <gestureRecognizers/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="z1o-Rf-XIh" appends="YES" id="n48-kI-fvQ"/>
+                    </connections>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEv-QJ-lsX">
                     <rect key="frame" x="368" y="1.5" width="34" height="24"/>
@@ -40,6 +44,7 @@
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="GY1-g9-Sqb" firstAttribute="leading" secondItem="cKn-LH-s0g" secondAttribute="trailing" constant="5" id="2KQ-T2-RhB"/>
+                <constraint firstItem="HEv-QJ-lsX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GY1-g9-Sqb" secondAttribute="trailing" constant="15" id="Dae-vi-3CA"/>
                 <constraint firstAttribute="trailing" secondItem="HEv-QJ-lsX" secondAttribute="trailing" constant="12" id="JrH-ME-PJx"/>
                 <constraint firstItem="GY1-g9-Sqb" firstAttribute="centerY" secondItem="cKn-LH-s0g" secondAttribute="centerY" id="KPD-Ui-EqE"/>
                 <constraint firstItem="cKn-LH-s0g" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="joU-Ja-SPu"/>
@@ -48,8 +53,16 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="message" destination="GY1-g9-Sqb" id="m1e-FP-N8L"/>
+            </connections>
             <point key="canvasLocation" x="133" y="154"/>
         </view>
+        <tapGestureRecognizer id="z1o-Rf-XIh">
+            <connections>
+                <action selector="detailAction:" destination="iN0-l3-epB" id="sn9-WG-xEB"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="icon_announcement" width="13" height="13"/>

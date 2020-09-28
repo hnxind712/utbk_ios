@@ -7,10 +7,13 @@
 //
 
 #import "BTBaseViewController.h"
+#import "YLUserInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BTWalletManageDetailVC : BTBaseViewController
+
+@property (strong, nonatomic) YLUserInfo *userInfo;
 
 @end
 

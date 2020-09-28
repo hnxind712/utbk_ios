@@ -7,10 +7,13 @@
 //
 
 #import "BTBaseViewController.h"
+#import "BTNoticeModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BTNoticeDetailVC : BTBaseViewController
+
+@property (strong, nonatomic) BTNoticeModel *noticeModel;
 
 @end
 

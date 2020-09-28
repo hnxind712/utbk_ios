@@ -16,18 +16,24 @@
 
 @interface BTWalletManagerVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *datasource;
+@property (strong, nonatomic) NSMutableArray *datasource;
 @property (strong, nonatomic) YLUserInfo *currentInfo;
 
 @end
 
 @implementation BTWalletManagerVC
 
+- (NSMutableArray *)datasource{
+    if (!_datasource) {
+        _datasource = [NSMutableArray array];
+    }
+    return _datasource;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LocalizationKey(@"钱包管理");
     [self setupLayout];
-    [self addRightNavigation];
+//    [self addRightNavigation];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -50,9 +56,16 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
 - (void)setupBind{
+    [self.datasource removeAllObjects];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
-    self.datasource = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+    NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+    [self.datasource addObjectsFromArray:arr];;
+    for (YLUserInfo *info in self.datasource) {
+        if ([info.username isEqualToString:[YLUserInfo shareUserInfo].username]) {
+            self.currentInfo = info;break;
+        }
+    }
     [self.tableView reloadData];
 }
 - (void)transferAction{
@@ -69,11 +82,33 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTWalletManagerCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTWalletManagerCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    YLUserInfo *model = self.datasource[indexPath.row];
     [cell configureWithModel:self.datasource[indexPath.row]];
     WeakSelf(weakSelf)
     cell.walletDetailAction = ^{
         BTWalletManageDetailVC *walletDetail = [[BTWalletManageDetailVC alloc]init];
+        walletDetail.userInfo = model;
         [weakSelf.navigationController pushViewController:walletDetail animated:YES];
+    };
+    cell.switchAccountAction = ^{
+        if (model == self.currentInfo) return;
+        if (model.secretKey.length) {
+            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey} ResponseObject:^(NSDictionary *responseResult) {
+                StrongSelf(strongSelf)
+                if (NetSuccess) {
+                    YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];
+                    info.address = model.address;
+                    [strongSelf.datasource replaceObjectAtIndex:indexPath.row withObject:info];
+                    strongSelf.currentInfo = info;
+                    [YLUserInfo saveUser:self.currentInfo];
+                    NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:strongSelf.datasource];
+                    [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    [strongSelf.navigationController popViewControllerAnimated:YES];
+                }else
+                    ErrorToast
+                    }];
+        }
     };
     return cell;
 }
@@ -83,10 +118,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     YLUserInfo *model = self.datasource[indexPath.row];
-    if (model == self.currentInfo) return;
-    self.currentInfo = model;
-    [YLUserInfo saveUser:self.currentInfo];
-    [tableView reloadData];
+    BTWalletManageDetailVC *walletDetail = [[BTWalletManageDetailVC alloc]init];
+    walletDetail.userInfo = model;
+    [self.navigationController pushViewController:walletDetail animated:YES];
 }
 #pragma mark actions
 - (IBAction)createAccountAction:(UIButton *)sender {

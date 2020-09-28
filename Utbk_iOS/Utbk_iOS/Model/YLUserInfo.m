@@ -101,6 +101,8 @@ static YLUserInfo *userInfo = nil;
     [aCoder encodeBool:self.isSetPw forKey:@"isSetPw"];
     [aCoder encodeObject:self.secretKey forKey:@"secretKey"];
     [aCoder encodeObject:self.address forKey:@"address"];
+    [aCoder encodeObject:self.mnemonicWords forKey:@"mnemonicWords"];
+    [aCoder encodeInteger:self.activeStatus forKey:@"activeStatus"];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super init]) {
@@ -126,6 +128,8 @@ static YLUserInfo *userInfo = nil;
         self.isSetPw = [aDecoder decodeBoolForKey:@"isSetPw"];
         self.secretKey = [aDecoder decodeObjectForKey:@"secretKey"];
         self.address = [aDecoder decodeObjectForKey:@"address"];
+        self.mnemonicWords = [aDecoder decodeObjectForKey:@"mnemonicWords"];
+        self.activeStatus = [aDecoder decodeIntegerForKey:@"activeStatus"];
     }
     return self;
 }

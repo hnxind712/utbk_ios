@@ -42,7 +42,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YT5-2t-dAl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YT5-2t-dAl">
                                 <rect key="frame" x="10" y="47.5" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="YT5-2t-dAl" secondAttribute="height" multiplier="1:1" id="jsU-1j-sdS"/>
@@ -50,9 +50,12 @@
                                 </constraints>
                                 <state key="normal" image="icon_walletnoSelected"/>
                                 <state key="selected" image="icon_walletSelected"/>
+                                <connections>
+                                    <action selector="SwitchAccountAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fh7-Rx-ATp"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jaylovely" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tg-eV-3iq">
-                                <rect key="frame" x="41" y="32" width="69" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tg-eV-3iq">
+                                <rect key="frame" x="41" y="32" width="0.0" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="FRe-7n-Bei"/>
                                 </constraints>
@@ -61,19 +64,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（当前钱包地址）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezP-vX-CMs">
-                                <rect key="frame" x="115" y="31.5" width="99" height="15"/>
+                                <rect key="frame" x="46" y="31.5" width="99" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rPdjskc732ncsoievnc8f7d9uP7sdjh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1v-98-nYP">
-                                <rect key="frame" x="41" y="66.5" width="183.5" height="13.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1v-98-nYP">
+                                <rect key="frame" x="41" y="66.5" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muh-g8-SJ2">
-                                <rect key="frame" x="229.5" y="58.5" width="22" height="30"/>
+                                <rect key="frame" x="46" y="51.5" width="22" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="KFs-Qj-kGz"/>
                                     <constraint firstAttribute="width" constant="22" id="g0A-Fo-vbX"/>

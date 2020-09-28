@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LSAppBrowserViewController">
+            <connections>
+                <outlet property="rorateImage" destination="4Xw-2B-COI" id="NSt-Vv-BHD"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qWg-gM-59o">
+                    <rect key="frame" x="162" y="257" width="90" height="90"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="dgf-i7-cli">
+                            <rect key="frame" x="40" y="0.0" width="50" height="90"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="90" id="7cl-Bc-Oyk"/>
+                                <constraint firstAttribute="width" constant="50" id="xfs-Lo-O6S"/>
+                            </constraints>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rotate" translatesAutoresizingMaskIntoConstraints="NO" id="4Xw-2B-COI" customClass="LoadingImage">
+                            <rect key="frame" x="24" y="24" width="42" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="42" id="8J4-aw-Uiu"/>
+                                <constraint firstAttribute="height" constant="42" id="Et7-71-snQ"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="90" id="1IP-0M-SlL"/>
+                        <constraint firstItem="4Xw-2B-COI" firstAttribute="centerY" secondItem="qWg-gM-59o" secondAttribute="centerY" id="2Fk-eJ-bvj"/>
+                        <constraint firstAttribute="width" constant="90" id="6eH-IV-JSQ"/>
+                        <constraint firstAttribute="trailing" secondItem="dgf-i7-cli" secondAttribute="trailing" id="GlR-cf-Snx"/>
+                        <constraint firstItem="dgf-i7-cli" firstAttribute="top" secondItem="qWg-gM-59o" secondAttribute="top" id="PzQ-WV-BM9"/>
+                        <constraint firstItem="4Xw-2B-COI" firstAttribute="centerX" secondItem="qWg-gM-59o" secondAttribute="centerX" id="skc-qL-vgP"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="qWg-gM-59o" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" multiplier="2/3" id="HBG-F1-xVg"/>
+                <constraint firstItem="qWg-gM-59o" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="roE-rJ-I6z"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="loading" width="49.5" height="88"/>
+        <image name="rotate" width="41.5" height="41.5"/>
+    </resources>
+</document>

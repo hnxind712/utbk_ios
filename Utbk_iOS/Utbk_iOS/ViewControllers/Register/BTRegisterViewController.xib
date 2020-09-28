@@ -76,9 +76,31 @@
                         <action selector="createAccount:" destination="-1" eventType="touchUpInside" id="d7Y-4e-xc4"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTs-Lp-Gt4">
+                    <rect key="frame" x="74" y="792" width="12" height="22"/>
+                    <state key="normal" image="icon_checkPro"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我已仔细阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz4-Ra-r3p">
+                    <rect key="frame" x="94" y="795.5" width="111" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHh-Vn-0kO">
+                    <rect key="frame" x="205" y="789.5" width="106" height="27"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="《BTCK用户协议》">
+                        <color key="titleColor" red="0.65490196079999996" green="0.52549019610000003" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="checkUserProtocol:" destination="-1" eventType="touchUpInside" id="4H1-PG-jEu"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="rTs-Lp-Gt4" firstAttribute="top" secondItem="o84-fz-wTS" secondAttribute="bottom" constant="30" id="0DQ-bf-P6D"/>
+                <constraint firstItem="iHh-Vn-0kO" firstAttribute="centerY" secondItem="rTs-Lp-Gt4" secondAttribute="centerY" id="3Uc-GV-zYI"/>
                 <constraint firstItem="F4N-zA-YxJ" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="D9v-LV-J4l"/>
                 <constraint firstItem="XXz-Ke-rv0" firstAttribute="trailing" secondItem="o84-fz-wTS" secondAttribute="trailing" id="EWH-2k-1Zy"/>
                 <constraint firstItem="K7g-kf-mcZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ekg-9G-qYv"/>
@@ -86,12 +108,16 @@
                 <constraint firstItem="YiR-90-QY4" firstAttribute="top" secondItem="K7g-kf-mcZ" secondAttribute="bottom" constant="20" id="NQE-g5-gge"/>
                 <constraint firstItem="F4N-zA-YxJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Plb-D1-S3i"/>
                 <constraint firstItem="F4N-zA-YxJ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="QFm-p8-Y4P"/>
+                <constraint firstItem="kz4-Ra-r3p" firstAttribute="centerY" secondItem="rTs-Lp-Gt4" secondAttribute="centerY" id="XYk-7n-B4m"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="o84-fz-wTS" secondAttribute="trailing" constant="48" id="eNH-up-5i3"/>
+                <constraint firstItem="rTs-Lp-Gt4" firstAttribute="leading" secondItem="o84-fz-wTS" secondAttribute="leading" constant="26" id="egw-mo-q4C"/>
                 <constraint firstItem="K7g-kf-mcZ" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="100" id="ii4-1x-aQK"/>
                 <constraint firstItem="YiR-90-QY4" firstAttribute="centerX" secondItem="K7g-kf-mcZ" secondAttribute="centerX" id="kI5-S8-Doe"/>
                 <constraint firstItem="o84-fz-wTS" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="48" id="mJx-0h-rLV"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="o84-fz-wTS" secondAttribute="bottom" constant="100" id="plx-pD-kOU"/>
+                <constraint firstItem="kz4-Ra-r3p" firstAttribute="leading" secondItem="rTs-Lp-Gt4" secondAttribute="trailing" constant="8" id="qyz-BW-gIt"/>
                 <constraint firstAttribute="bottom" secondItem="F4N-zA-YxJ" secondAttribute="bottom" id="rXf-rR-Xgs"/>
+                <constraint firstItem="iHh-Vn-0kO" firstAttribute="leading" secondItem="kz4-Ra-r3p" secondAttribute="trailing" id="uUn-7C-yfv"/>
                 <constraint firstItem="XXz-Ke-rv0" firstAttribute="leading" secondItem="o84-fz-wTS" secondAttribute="leading" id="vN0-WZ-PXp"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
@@ -99,6 +125,7 @@
         </view>
     </objects>
     <resources>
+        <image name="icon_checkPro" width="12" height="12"/>
         <image name="icon_registerBg" width="375" height="667"/>
         <image name="icon_registerLogo" width="54" height="54"/>
     </resources>

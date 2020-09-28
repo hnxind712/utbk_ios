@@ -129,6 +129,13 @@
     [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];
+            [YLUserInfo saveUser:info];
+            NSMutableArray *array = [NSMutableArray array];
+            //取出
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
+            NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+            [array addObjectsFromArray:list];
             [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
                 if (NetSuccess) {
                     NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
@@ -137,15 +144,38 @@
                             info.address = walletModel.address;break;
                         }
                     }
-                    [YLUserInfo saveUser:info];
-                    NSMutableArray *array = [NSMutableArray array];
-                    //取出
-                    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                    NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
-                    NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
-                    [array addObjectsFromArray:list];
-                    [array insertObject:info atIndex:0];
+                    [YLUserInfo saveUser:info];//拿到资产之后再保存一次，避免两个接口请求失败了没有将用户信息保存在本地
+                    //获取激活状态
+                    [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":info.ID} ResponseObject:^(NSDictionary *responseResult) {
+                        if (NetSuccess) {
+                            info.activeStatus = [responseResult[@"data"][@"status"] isKindOfClass:[NSNull class]] ? 0 : [responseResult[@"data"][@"status"] integerValue];
+                            [array insertObject:info atIndex:0];
+                            //存
+                            NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
+                            [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
+                            [[NSUserDefaults standardUserDefaults] synchronize];
+                            if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
+                                [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
+                            }else{
+                                [weakSelf.navigationController popViewControllerAnimated:YES];
+                            }
+                        }else{
+                            //存
+                            [array insertObject:info atIndex:0];
+                            NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
+                            [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
+                            [[NSUserDefaults standardUserDefaults] synchronize];
+                            if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
+                                [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
+                            }else{
+                                [weakSelf.navigationController popViewControllerAnimated:YES];
+                            }
+                        }
+                    }];
+                }else{
+                    ErrorToast
                     //存
+                    [array insertObject:info atIndex:0];
                     NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
                     [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
                     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -154,11 +184,10 @@
                     }else{
                         [weakSelf.navigationController popViewControllerAnimated:YES];
                     }
-                }else{
-                    ErrorToast
                 }
             }];
-        }
+        }else
+            ErrorToast
     }];
 }
 

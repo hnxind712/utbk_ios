@@ -20,11 +20,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = self.userInfo.username;
     // Do any additional setup after loading the view from its nib.
 }
 #pragma mark actions
 //修改钱包名称
 - (IBAction)modifyWalletName:(UITapGestureRecognizer *)sender {
+    if (![self.userInfo.username isEqualToString:[YLUserInfo shareUserInfo].username]) {
+        [self.view makeToast:LocalizationKey(@"请切换到当前用户再进行修改") duration:ToastHideDelay position:ToastPosition];return;
+    }
     [self.walletPopView show:KWalletTypeModifyWalletName];
 }
 //备份助记词
@@ -37,10 +41,32 @@
 }
 //修改密码
 - (IBAction)modifyWalletPassword:(UITapGestureRecognizer *)sender {
+    if (![self.userInfo.username isEqualToString:[YLUserInfo shareUserInfo].username]) {
+        [self.view makeToast:LocalizationKey(@"请切换到当前用户再进行修改") duration:ToastHideDelay position:ToastPosition];return;
+    }
     BTModifyTradePasswordVC *modify = [[BTModifyTradePasswordVC alloc]init];
     [self.navigationController pushViewController:modify animated:YES];
 }
 - (IBAction)deleteWallet:(UIButton *)sender {
+    if ([self.userInfo.username isEqualToString:[YLUserInfo shareUserInfo].username]) {
+        [self.view makeToast:LocalizationKey(@"不能删除当前钱包") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
+    NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+    NSMutableArray *datasource = [NSMutableArray arrayWithArray:arr];
+    for (YLUserInfo *info in arr) {
+        if ([info.username isEqualToString:self.userInfo.username]) {
+            [datasource removeObject:info];break;
+        }
+    }
+    NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:datasource];
+    [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.view makeToast:LocalizationKey(@"删除成功") duration:ToastHideDelay position:ToastPosition];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.navigationController popViewControllerAnimated:YES];
+    });
 }
 #pragma mark getter
 - (BTWalletPopView *)walletPopView{

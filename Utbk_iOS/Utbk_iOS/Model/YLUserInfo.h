@@ -35,6 +35,8 @@
 @property(nonatomic,strong)NSString *memberGradeId;//用户等级ID(1-6对应等级主键)
 @property(nonatomic,strong)NSString *googleState;//谷歌认证状态
 @property(nonatomic,copy)NSString *address;//BTCK地址，钱包管理界面需要用到
+@property(nonatomic,copy)NSString *mnemonicWords;//助记词
+@property(nonatomic,assign)NSInteger activeStatus;//激活状态
 
 /*  通过初始化userIfo并保存在本地(单利模式)   */
 +(instancetype)getuserInfoWithDic:(NSDictionary *)dic;

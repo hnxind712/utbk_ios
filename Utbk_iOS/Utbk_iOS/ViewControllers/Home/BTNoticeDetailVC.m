@@ -21,7 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LocalizationKey(@"公告");
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)setupBind{
+    self.noticeTitle.text = self.noticeModel.title;
+    self.noticeTime.text = self.noticeModel.createTime;
+    [self.webView loadHTMLString:[self HTML:self.noticeModel.content] baseURL:nil];
 }
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     NSString *js=@"var script = document.createElement('script');"
@@ -44,7 +50,27 @@
     [webView evaluateJavaScript:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#333333'" completionHandler:nil];
 
 }
+- (NSString *)HTML:(NSString *)html{
+    
+    NSScanner *theScaner = [NSScanner scannerWithString:html];
 
+    NSDictionary *dict = @{@"&amp;":@"&", @"&lt;":@"<", @"&gt;":@">", @"&nbsp;":@"", @"&quot;":@"\"", @"width":@"wid"};
+
+    while ([theScaner isAtEnd] == NO) {
+
+        for (int i = 0; i <[dict allKeys].count; i ++) {
+
+            [theScaner scanUpToString:[dict allKeys][i] intoString:NULL];
+
+            html = [html stringByReplacingOccurrencesOfString:[dict allKeys][i] withString:[dict allValues][i]];
+
+        }
+
+    }
+
+    return html;
+
+}
 /*
 #pragma mark - Navigation
 

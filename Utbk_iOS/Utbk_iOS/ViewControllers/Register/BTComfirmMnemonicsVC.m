@@ -134,6 +134,23 @@
     [[XBRequest sharedInstance]postDataWithUrl:checkMnemonicWordsAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             StrongSelf(strongSelf)
+            YLUserInfo *info = [YLUserInfo shareUserInfo];
+            info.mnemonicWords = [strongSelf.mnemonisModel.mnemonicWordsList componentsJoinedByString:@","];
+            [YLUserInfo saveUser:info];
+            //取出
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
+            NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+            NSMutableArray *array = [NSMutableArray arrayWithArray:list];;
+            [array enumerateObjectsUsingBlock:^(YLUserInfo *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj.username isEqualToString:info.username]) {
+                    obj.mnemonicWords = info.mnemonicWords;*stop = YES;
+                }
+            }];
+            //存
+            NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
+            [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             BTBackupSuccessVC *success = [[BTBackupSuccessVC alloc]init];
             [strongSelf.navigationController pushViewController:success animated:YES];
         }else{

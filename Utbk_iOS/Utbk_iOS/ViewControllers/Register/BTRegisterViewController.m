@@ -18,7 +18,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)setupBind{
+    
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -35,6 +39,9 @@
 - (IBAction)inpotAddress:(UIButton *)sender {
     BTImportWalletVC *import = [[BTImportWalletVC alloc]init];
     [self.navigationController pushViewController:import animated:YES];
+}
+- (IBAction)checkUserProtocol:(UIButton *)sender {
+    
 }
 
 /*

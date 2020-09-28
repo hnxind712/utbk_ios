@@ -8,6 +8,8 @@
 
 #import "BTCreateWalletVC.h"
 #import "BTCreateSuccessVC.h"
+#import "MineNetManager.h"
+#import "BTAssetsModel.h"
 
 @interface BTCreateWalletVC ()<UITextFieldDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *createBtn;
@@ -81,9 +83,32 @@
     params[@"password"] = _password.text;
     [[XBRequest sharedInstance]postDataWithUrl:CreateAddressAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
-            [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];//缓存个人数据
-            BTCreateSuccessVC *createSuccess = [[BTCreateSuccessVC alloc]init];
-            [self.navigationController pushViewController:createSuccess animated:YES];
+            YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];//缓存个人数据
+            [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {//获取个人BTCK地址
+                if (NetSuccess) {
+                    NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                    for (BTAssetsModel *walletModel in dataArr) {
+                        if ([walletModel.coin.unit isEqualToString:@"BTCK"]) {//个人中心显示BTCK的地址
+                            info.address = walletModel.address;break;
+                        }
+                    }
+                    [YLUserInfo saveUser:info];
+                    NSMutableArray *array = [NSMutableArray array];
+                    //取出
+                    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                    NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
+                    NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+                    [array addObjectsFromArray:list];
+                    [array insertObject:info atIndex:0];
+                    //存
+                    NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
+                    [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    BTCreateSuccessVC *createSuccess = [[BTCreateSuccessVC alloc]init];
+                    [self.navigationController pushViewController:createSuccess animated:YES];
+                }
+            }];
+            
         }else{
             ErrorToast
         }

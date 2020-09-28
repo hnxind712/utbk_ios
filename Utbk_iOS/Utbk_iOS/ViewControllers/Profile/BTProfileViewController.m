@@ -61,25 +61,30 @@
 - (IBAction)copyAction:(UIButton *)sender {
 }
 - (void)setupBind{
-    WeakSelf(weakSelf)
-    [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
-        if (NetSuccess) {
-            NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
-            for (BTAssetsModel *walletModel in dataArr) {
-                if ([walletModel.coin.unit isEqualToString:@"BTCK"]) {//个人中心显示BTCK的地址
-                    StrongSelf(strongSelf)
-                    YLUserInfo *info = [YLUserInfo shareUserInfo];
-                    if (!info.address.length) {
-                        info.address = walletModel.address;
-                        [YLUserInfo saveUser:info];
+    self.walletName.text = [YLUserInfo shareUserInfo].username;
+    if (![YLUserInfo shareUserInfo].address) {
+        WeakSelf(weakSelf)
+        [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
+            if (NetSuccess) {
+                NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                for (BTAssetsModel *walletModel in dataArr) {
+                    if ([walletModel.coin.unit isEqualToString:@"BTCK"]) {//个人中心显示BTCK的地址
+                        StrongSelf(strongSelf)
+                        YLUserInfo *info = [YLUserInfo shareUserInfo];
+                        if (!info.address.length) {
+                            info.address = walletModel.address;
+                            [YLUserInfo saveUser:info];
+                        }
+                        strongSelf.address.text = walletModel.address;break;
                     }
-                    strongSelf.address.text = walletModel.address;break;
                 }
+            }else{
+                ErrorToast
             }
-        }else{
-            ErrorToast
-        }
-    }];
+        }];
+    }else{
+        self.address.text = [YLUserInfo shareUserInfo].address;
+    }
 }
 - (void)selectImageWithTZImagePickerController{
     TZImagePickerController *imagePicker = [[TZImagePickerController alloc]initWithMaxImagesCount:1 delegate:self];
