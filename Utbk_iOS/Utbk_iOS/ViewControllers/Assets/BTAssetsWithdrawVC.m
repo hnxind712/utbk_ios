@@ -13,6 +13,7 @@
 #import "BTLinkTypeModel.h"
 #import "BTLinkTypeCollectionCell.h"
 #import "BTConfigureModel.h"
+#import "MentionCoinInfoModel.h"
 
 @interface BTAssetsWithdrawVC ()<STQRCodeControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
@@ -25,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *tips;
 @property (strong, nonatomic) NSArray *datasource;
 @property (strong, nonatomic) BTLinkTypeModel *selectedModel;//选中的model
+@property (strong, nonatomic) MentionCoinInfoModel *model;
+@property (strong, nonatomic) NSArray *mentionDatasource;
 
 @end
 
@@ -36,6 +39,7 @@
     [self addRightNavigation];
     [self setupLayout];
     [self setupBind];
+//    [self.coinCountInput addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -47,12 +51,14 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
 - (void)setupLayout{
+    self.coinCountInput.keyboardType = UIKeyboardTypeDecimalPad;
     self.layout.itemSize = CGSizeMake(70.f, 25.f);
     self.layout.minimumLineSpacing = 20.f;
     self.layout.minimumInteritemSpacing = 20.f;
     self.layout.sectionInset = UIEdgeInsetsMake(14, 8, 14, 8);
     [self.linkTypeCollection registerNib:[UINib nibWithNibName:NSStringFromClass([BTLinkTypeCollectionCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([BTLinkTypeCollectionCell class])];
 }
+
 - (void)setupBind{
     WeakSelf(weakSelf)
     [[XBRequest sharedInstance]getDataWithUrl:getMinConfigsAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
@@ -81,28 +87,31 @@
                 strongSelf.datasource = list;
                 [strongSelf.linkTypeCollection reloadData];
             }
-            
+
         }
     }];
     [MineNetManager mentionCoinInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
         NSLog(@"获取提币信息 ---- %@",responseResult);
-//        [EasyShowLodingView hidenLoding];
-//        if (code) {
-//            if ([resPonseObj[@"code"] integerValue] == 0) {
-//                //[self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:CSToastPositionCenter];
-//                NSArray *dataArr = [MentionCoinInfoModel mj_objectArrayWithKeyValuesArray:resPonseObj[@"data"]];
-//                [self.mentionCoinArr addObjectsFromArray:dataArr];
-//
-//                [self arrageData];
-//            }else if ([resPonseObj[@"code"] integerValue] == 3000 ||[resPonseObj[@"code"] integerValue] == 4000 ){
-//               // [ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
-//                [YLUserInfo logout];
-//            }else{
-//                [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:CSToastPositionCenter];
-//            }
-//        }else{
-//            [self.view makeToast:[[ChangeLanguage bundle] localizedStringForKey:@"noNetworkStatus" value:nil table:@"English"] duration:1.5 position:CSToastPositionCenter];
-//        }
+        StrongSelf(strongSelf)
+        if (code) {
+            if ([responseResult[@"code"] integerValue] == 0) {
+                NSArray *dataArr = [MentionCoinInfoModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                self.mentionDatasource = dataArr;
+                [dataArr enumerateObjectsUsingBlock:^(MentionCoinInfoModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if ([obj.unit isEqualToString:self.unit]) {
+                        strongSelf.model = obj;*stop = YES;
+                    }
+                }];
+                strongSelf.fee.text = strongSelf.model.maxTxFee;
+            }else if ([responseResult[@"code"] integerValue] == 3000 ||[responseResult[@"code"] integerValue] == 4000 ){
+               // [ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
+                [YLUserInfo logout];
+            }else{
+                [strongSelf.view makeToast:responseResult[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+            }
+        }else{
+            [strongSelf.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
+        }
     }];
 }
 - (void)withDrawRecordAction{
@@ -127,6 +136,22 @@
     self.selectedModel.selected = NO;
     self.selectedModel = model;
     [collectionView reloadData];
+    if ([model.linkType isEqualToString:@"ERC20"]) {
+        for (MentionCoinInfoModel *mentionModel in self.mentionDatasource) {
+            if ([mentionModel.unit isEqualToString:@"USDT"]) {
+                self.model = mentionModel;
+                self.unit = mentionModel.unit;break;;
+            }
+        }
+    }else if ([model.linkType isEqualToString:@"TRC20"]){
+        for (MentionCoinInfoModel *mentionModel in self.mentionDatasource) {
+            if ([mentionModel.unit containsString:@"TRC20"]) {
+                self.model = mentionModel;
+                self.unit = mentionModel.unit;break;;
+            }
+        }
+    }
+    self.fee.text = self.model.maxTxFee;
 }
 //扫描
 - (IBAction)scanCoinAddrssAction:(UIButton *)sender {
@@ -150,6 +175,37 @@
     _tradePasswordInput.secureTextEntry = sender.selected;
 }
 - (IBAction)confirmAction:(UIButton *)sender {
+    if (![self.addressInput.text length]) {
+        [self.view makeToast:LocalizationKey(@"请输入地址") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (![self.coinCountInput.text length]) {
+        [self.view makeToast:LocalizationKey(@"请输入数量") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (![self.tradePasswordInput.text length]) {
+        [self.view makeToast:LocalizationKey(@"请输入交易密码") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    NSString *remark = @"";
+     for (AddressInfo *address in self.model.addresses) {
+         if ([self.addressInput.text isEqualToString:address.address]) {
+             remark = address.remark;
+         }
+     }
+    WeakSelf(weakSelf)
+    [MineNetManager mentionCoinApplyForUnit:self.unit withAddress:self.addressInput.text withAmount:self.coinCountInput.text withFee:self.model.maxTxFee withRemark:remark withJyPassword:self.tradePasswordInput.text mobilecode:nil googleCode:nil CompleteHandle:^(id resPonseObj, int code) {
+        StrongSelf(strongSelf)
+       if (code) {
+              if ([resPonseObj[@"code"] integerValue] == 0) {
+                  [strongSelf.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+                  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                      [strongSelf.navigationController popViewControllerAnimated:YES];
+                  });
+              }else{
+                  [strongSelf.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+              }
+          }else{
+              [strongSelf.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
+          }
+    }];
 }
 /*
 #pragma mark - Navigation

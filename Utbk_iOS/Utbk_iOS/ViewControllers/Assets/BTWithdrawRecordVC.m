@@ -90,7 +90,7 @@
         if (code) {
             if ([resPonseObj[@"code"] integerValue]==0) {
                 //获取数据成功
-                if (weakSelf.currentPage == 0) {
+                if (weakSelf.currentPage == 1) {
                     [weakSelf.datasource removeAllObjects];
                 }
                 
@@ -148,6 +148,7 @@
     cell.recordDetailAction = ^{
         StrongSelf(strongSelf)
         BTWithdrawRecordDetailVC *detail = [[BTWithdrawRecordDetailVC alloc]init];
+        detail.index = self.recordType;
         detail.recordModel = model;
         [strongSelf.navigationController pushViewController:detail animated:YES];
     };

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTAssetsWithdrawVC : BTBaseViewController
 
-@property (strong, nonatomic) BTAssetsModel *assetModel;
+@property (copy, nonatomic) NSString *unit;//对应为币种
 
 @end
 

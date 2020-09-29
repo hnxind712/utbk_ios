@@ -15,7 +15,6 @@
                 <outlet property="layout" destination="qzU-dx-WGx" id="2rT-oo-rsV"/>
                 <outlet property="linkHeight" destination="Yrp-pz-R1Z" id="qaS-57-E30"/>
                 <outlet property="linkTypeCollection" destination="rTe-jo-JuW" id="iEa-WX-Zhh"/>
-                <outlet property="tips" destination="P4O-dR-NK7" id="ToC-Ta-30b"/>
                 <outlet property="tradePasswordInput" destination="eNL-9c-ANW" id="73M-tC-0b7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -228,7 +227,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEZ-VL-Heh">
-                            <rect key="frame" x="48" y="502" width="318" height="44"/>
+                            <rect key="frame" x="48" y="452" width="318" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="Fku-7F-qMN"/>
                             </constraints>
@@ -238,50 +237,29 @@
                                 <action selector="confirmAction:" destination="-1" eventType="touchUpInside" id="Bvr-KE-o8H"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示：仅支持erc20钱包地址，地址出错将无法找回请认真核对" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4O-dR-NK7">
-                            <rect key="frame" x="50" y="412" width="352" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="5aG-PS-rpx"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".AppleSimplifiedChineseFont" pointSize="13"/>
-                            <color key="textColor" red="0.65490196078431373" green="0.52549019607843139" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tips" translatesAutoresizingMaskIntoConstraints="NO" id="Bo8-n3-fYb">
-                            <rect key="frame" x="24" y="412" width="15" height="15"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="15" id="DvS-ZD-gXx"/>
-                                <constraint firstAttribute="width" constant="15" id="GUo-Jc-YmF"/>
-                            </constraints>
-                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="2lb-LC-hdg" firstAttribute="leading" secondItem="G6C-06-hq5" secondAttribute="trailing" id="56N-ip-TU1"/>
                         <constraint firstItem="Mcq-d6-exu" firstAttribute="centerX" secondItem="7wZ-t5-wYu" secondAttribute="centerX" id="5Ol-8S-eVA"/>
                         <constraint firstItem="kn2-mo-gN5" firstAttribute="leading" secondItem="7wZ-t5-wYu" secondAttribute="leading" constant="26" id="5Pr-PH-oNx"/>
+                        <constraint firstItem="xEZ-VL-Heh" firstAttribute="top" secondItem="JNE-Ft-dlp" secondAttribute="bottom" constant="50" id="9ov-m6-mR6"/>
                         <constraint firstAttribute="bottom" secondItem="xEZ-VL-Heh" secondAttribute="bottom" constant="30" id="Anx-aL-u3x"/>
                         <constraint firstItem="sbY-QH-632" firstAttribute="top" secondItem="6Mf-Nr-Ea6" secondAttribute="bottom" constant="10" id="E0X-Qv-agS"/>
                         <constraint firstItem="sbY-QH-632" firstAttribute="trailing" secondItem="Mcq-d6-exu" secondAttribute="trailing" id="IKk-W2-vYw"/>
                         <constraint firstItem="kn2-mo-gN5" firstAttribute="top" secondItem="sbY-QH-632" secondAttribute="bottom" constant="13" id="IT2-h7-qXV"/>
                         <constraint firstItem="Mcq-d6-exu" firstAttribute="top" secondItem="7wZ-t5-wYu" secondAttribute="top" constant="20" id="JOL-JQ-atr"/>
-                        <constraint firstItem="Bo8-n3-fYb" firstAttribute="top" secondItem="JNE-Ft-dlp" secondAttribute="bottom" constant="10" id="JmH-7W-DOV"/>
                         <constraint firstItem="6Mf-Nr-Ea6" firstAttribute="top" secondItem="Mcq-d6-exu" secondAttribute="bottom" constant="10" id="Kt6-J8-xh8"/>
                         <constraint firstItem="JNE-Ft-dlp" firstAttribute="top" secondItem="kn2-mo-gN5" secondAttribute="bottom" constant="25" id="SFP-ew-js6"/>
                         <constraint firstAttribute="trailing" secondItem="Mcq-d6-exu" secondAttribute="trailing" constant="12" id="TB8-mu-AuA"/>
                         <constraint firstItem="2lb-LC-hdg" firstAttribute="centerY" secondItem="kn2-mo-gN5" secondAttribute="centerY" id="Thh-xg-30Q"/>
                         <constraint firstItem="6Mf-Nr-Ea6" firstAttribute="leading" secondItem="Mcq-d6-exu" secondAttribute="leading" id="U0R-rU-6ac"/>
-                        <constraint firstItem="P4O-dR-NK7" firstAttribute="leading" secondItem="Bo8-n3-fYb" secondAttribute="trailing" constant="11" id="Wzh-VA-rgH"/>
                         <constraint firstItem="Mcq-d6-exu" firstAttribute="leading" secondItem="7wZ-t5-wYu" secondAttribute="leading" constant="12" id="Zqx-tk-HgQ"/>
                         <constraint firstItem="6Mf-Nr-Ea6" firstAttribute="trailing" secondItem="Mcq-d6-exu" secondAttribute="trailing" id="cPK-Un-oof"/>
                         <constraint firstItem="sbY-QH-632" firstAttribute="leading" secondItem="Mcq-d6-exu" secondAttribute="leading" id="dd2-C9-clc"/>
                         <constraint firstItem="G6C-06-hq5" firstAttribute="leading" secondItem="kn2-mo-gN5" secondAttribute="trailing" constant="2" id="gnG-Gb-pg7"/>
                         <constraint firstItem="xEZ-VL-Heh" firstAttribute="leading" secondItem="7wZ-t5-wYu" secondAttribute="leading" constant="48" id="jfc-0j-R3Z"/>
                         <constraint firstItem="JNE-Ft-dlp" firstAttribute="trailing" secondItem="Mcq-d6-exu" secondAttribute="trailing" id="lkS-46-EiI"/>
-                        <constraint firstItem="xEZ-VL-Heh" firstAttribute="top" secondItem="P4O-dR-NK7" secondAttribute="bottom" constant="50" id="nIy-0T-nb0"/>
-                        <constraint firstAttribute="trailing" secondItem="P4O-dR-NK7" secondAttribute="trailing" constant="12" id="sWb-mH-eNi"/>
-                        <constraint firstItem="Bo8-n3-fYb" firstAttribute="leading" secondItem="7wZ-t5-wYu" secondAttribute="leading" constant="24" id="sd4-WJ-BRs"/>
-                        <constraint firstItem="P4O-dR-NK7" firstAttribute="top" secondItem="Bo8-n3-fYb" secondAttribute="top" id="vUl-fz-m31"/>
                         <constraint firstItem="xEZ-VL-Heh" firstAttribute="centerX" secondItem="7wZ-t5-wYu" secondAttribute="centerX" id="xZo-7n-HK6"/>
                         <constraint firstItem="JNE-Ft-dlp" firstAttribute="leading" secondItem="Mcq-d6-exu" secondAttribute="leading" id="xge-r1-epf"/>
                         <constraint firstItem="G6C-06-hq5" firstAttribute="centerY" secondItem="kn2-mo-gN5" secondAttribute="centerY" id="zvj-c6-vfA"/>
@@ -304,6 +282,5 @@
         <image name="icon_scan" width="20" height="20"/>
         <image name="icon_showPassword" width="20" height="20"/>
         <image name="icon_showPasswordSelected" width="20" height="20"/>
-        <image name="icon_tips" width="15" height="15"/>
     </resources>
 </document>

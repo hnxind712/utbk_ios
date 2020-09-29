@@ -31,7 +31,7 @@
 - (id)init{
     if (self = [super init]) {
         self.count = 1;
-        self.coinName = @"BTCK";
+        self.coinName = KOriginalCoin;
     }
     return self;
 }

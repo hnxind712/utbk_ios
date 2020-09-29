@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *balance;
 @property (weak, nonatomic) IBOutlet UILabel *fee;
 @property (weak, nonatomic) IBOutlet UILabel *tips;
+
 @end
 
 @implementation BTHomeTransiferCoinVC
@@ -25,6 +26,7 @@
     [super viewDidLoad];
     self.title = LocalizationKey(@"转币");
     [self addRightNavigation];
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -37,6 +39,19 @@
 }
 - (void)transferRecordAction{
     
+}
+- (void)setupBind{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]getDataWithUrl:getMotherCoinWalletAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+        StrongSelf(strongSelf)
+        if (NetSuccess) {
+            if ([responseResult[@"data"]isKindOfClass:[NSNull class]]) {
+                [strongSelf.view makeToast:LocalizationKey(@"当前没有母币，无法激活") duration:ToastHideDelay position:ToastPosition];return;
+            }
+            strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%@",responseResult[@"data"][@"balance"]]];
+        }
+    }];
+
 }
 //扫描
 - (IBAction)scanCoinAddrssAction:(UIButton *)sender {

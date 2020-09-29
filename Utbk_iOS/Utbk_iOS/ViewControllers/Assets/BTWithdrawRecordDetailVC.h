@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTWithdrawRecordDetailVC : BTBaseViewController
 
+@property (assign, nonatomic) NSInteger index;//
+
 @property (strong, nonatomic) BTWithdrawRecordModel *recordModel;
 
 @end

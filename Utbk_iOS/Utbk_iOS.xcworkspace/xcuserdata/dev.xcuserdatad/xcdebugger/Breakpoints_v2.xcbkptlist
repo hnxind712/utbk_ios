@@ -39,80 +39,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0E1C8AE4-B30A-4CAE-A502-82A1F542C75F"
+            uuid = "24E447B5-F621-40D2-A6DD-386F05A8E791"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Utbk_iOS/ViewControllers/Profile/WalletManager/BTImportWalletVC.m"
+            filePath = "Utbk_iOS/ViewControllers/Assets/BTWithdrawRecordVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "-importAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F0B66779-0823-48D3-9C9C-DA0619D32E81"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Utbk_iOS/ViewControllers/Profile/WalletManager/BTImportWalletVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "-importAction:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F0B66779-0823-48D3-9C9C-DA0619D32E81 - 331914f6f6b2ae90"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__33-[BTImportWalletVC importAction:]_block_invoke"
-                  moduleName = "BTCK"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dev/Desktop/Utbk_iOS/utbk_ios/Utbk_iOS/Utbk_iOS/ViewControllers/Profile/WalletManager/BTImportWalletVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "190"
-                  endingLineNumber = "190"
-                  offsetFromSymbolStart = "835">
-               </Location>
-               <Location
-                  uuid = "F0B66779-0823-48D3-9C9C-DA0619D32E81 - 331914f6f6b2ae90"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__33-[BTImportWalletVC importAction:]_block_invoke"
-                  moduleName = "BTCK"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dev/Desktop/Utbk_iOS/utbk_ios/Utbk_iOS/Utbk_iOS/ViewControllers/Profile/WalletManager/BTImportWalletVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "190"
-                  endingLineNumber = "190"
-                  offsetFromSymbolStart = "947">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C1D42E66-E9E1-48E8-9B92-19E08008B5C4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Utbk_iOS/ViewControllers/Assets/BTAssetsWithdrawVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "-setupBind"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-withdrawData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

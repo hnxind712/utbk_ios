@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BTWalletManageDetailVC">
             <connections>
+                <outlet property="mnemonicHeight" destination="w7Q-NU-lIl" id="fZ5-dp-86A"/>
+                <outlet property="mnemonicView" destination="ieZ-YJ-STB" id="l12-PO-jHM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

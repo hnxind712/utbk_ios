@@ -21,10 +21,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = LocalizationKey(@"历史记录");
+    self.title = LocalizationKey(@"详情");
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
 }
+- (void)setupBind{
+//    self.title.text = model.coin.name;
+    self.withdrawCount.text = [NSString stringWithFormat:@"+%@ %@",[ToolUtil judgeStringForDecimalPlaces:self.recordModel.totalAmount],self.recordModel.coin.unit];
+    self.time.text = [ToolUtil transformForTimeString:self.recordModel.createTime];
+    self.address.text = self.recordModel.address;
+    if (self.recordModel.status == 0) {
+         self.status.text = LocalizationKey(@"auditing");
+     }else if (self.recordModel.status == 1){
+         self.status.text = LocalizationKey(@"Assetstoreleased");
 
+     }else if (self.recordModel.status == 2){
+         self.status.text = LocalizationKey(@"failure");
+     }else if(self.recordModel.status == 3){
+         self.status.text = LocalizationKey(@"Success");
+     }
+}
 /*
 #pragma mark - Navigation
 

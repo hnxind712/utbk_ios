@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTAssetsTransiferVC : BTBaseViewController
 
+@property (copy, nonatomic) NSString *unit;
+
 @end
 
 NS_ASSUME_NONNULL_END

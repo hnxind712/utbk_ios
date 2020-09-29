@@ -13,3 +13,7 @@
     return @{@"ID":@"id"};
 }
 @end
+
+@implementation Coin
+
+@end

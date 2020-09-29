@@ -140,7 +140,7 @@
                 if (NetSuccess) {
                     NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
                     for (BTAssetsModel *walletModel in dataArr) {
-                        if ([walletModel.coin.unit isEqualToString:@"BTCK"]) {//个人中心显示BTCK的地址
+                        if ([walletModel.coin.unit isEqualToString:KOriginalCoin]) {//个人中心显示BTCK的地址
                             info.address = walletModel.address;break;
                         }
                     }

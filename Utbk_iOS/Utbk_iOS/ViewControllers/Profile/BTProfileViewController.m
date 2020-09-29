@@ -8,7 +8,7 @@
 
 #import "BTProfileViewController.h"
 #import "BTWalletManagerVC.h"//钱包管理列表
-#import "BTTeamAchievementVC.h"//团队业绩
+#import "BTTeamHoldViewController.h"//团队业绩
 #import <TZImagePickerController/TZImagePickerController.h>
 #import "BTSettingViewController.h"//设置
 #import "BTShareWalletVC.h"//分享
@@ -68,7 +68,7 @@
             if (NetSuccess) {
                 NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
                 for (BTAssetsModel *walletModel in dataArr) {
-                    if ([walletModel.coin.unit isEqualToString:@"BTCK"]) {//个人中心显示BTCK的地址
+                    if ([walletModel.coin.unit isEqualToString:KOriginalCoin]) {//个人中心显示BTCK的地址
                         StrongSelf(strongSelf)
                         YLUserInfo *info = [YLUserInfo shareUserInfo];
                         if (!info.address.length) {
@@ -190,7 +190,7 @@
 }
 //团队业绩
 - (IBAction)teamAchievementAction:(UITapGestureRecognizer *)sender {
-    BTTeamAchievementVC *team = [[BTTeamAchievementVC alloc]init];
+    BTTeamHoldViewController *team = [[BTTeamHoldViewController alloc]init];
     [self.navigationController pushViewController:team animated:YES];
 }
 //社区客服

@@ -23,8 +23,20 @@
     [super awakeFromNib];
     // Initialization code
 }
-- (void)configureCellWithRecordModel:(id)model{
-    
+- (void)configureCellWithRecordModel:(BTWithdrawRecordModel *)model{
+    self.title.text = model.coin.name;
+    self.count.text = [ToolUtil judgeStringForDecimalPlaces:model.totalAmount];
+    self.time.text = [ToolUtil transformForTimeString:model.createTime];
+    if (model.status == 0) {
+         self.status.text = LocalizationKey(@"auditing");
+     }else if (model.status == 1){
+         self.status.text = LocalizationKey(@"Assetstoreleased");
+
+     }else if (model.status == 2){
+         self.status.text = LocalizationKey(@"failure");
+     }else if(model.status == 3){
+         self.status.text = LocalizationKey(@"Success");
+     }
 }
 - (IBAction)detailAction:(UIButton *)sender {
     if (self.recordDetailAction) {

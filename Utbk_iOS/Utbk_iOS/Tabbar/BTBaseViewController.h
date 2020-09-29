@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTBaseViewController : UIViewController
 
+- (void)hiddenLeft;//隐藏左按钮
+
 - (void)backAction;
 
 - (void)setupLayout;

@@ -130,7 +130,7 @@
     [self addLeftNavigation];
     [self headRefreshWithScrollerView:self.mainScrollView];
     [self refreshHeaderAction];//直接拉取数据
-    NSLog(@"私钥 = %@",[YLUserInfo shareUserInfo].secretKey);
+    NSLog(@"私钥 = %@",[YLUserInfo shareUserInfo].ID);
     // Do any additional setup after loading the view from its nib.
 }
 #pragma mark-下拉刷新数据
@@ -158,7 +158,7 @@
             NSDecimalNumber *ass1 = [[NSDecimalNumber alloc] initWithString:@"0"];
             for (BTAssetsModel *walletModel in dataArr) {
                 //计算总资产
-                if ([walletModel.coin.unit isEqualToString:@"BTCK"]) {
+                if ([walletModel.coin.unit isEqualToString:KOriginalCoin]) {
                     NSDecimalNumberHandler *handle = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:8 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
                     NSDecimalNumber *balance = [[NSDecimalNumber alloc] initWithString:walletModel.balance];
                     NSDecimalNumber *usdRate = [[NSDecimalNumber alloc] initWithString:walletModel.coin.usdRate];

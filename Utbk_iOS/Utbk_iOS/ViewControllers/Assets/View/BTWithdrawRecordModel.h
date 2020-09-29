@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class Coin;
 @interface BTWithdrawRecordModel : NSObject
 @property (nonatomic,copy)NSString *ID;
 @property (nonatomic,copy)NSString *memberId;
@@ -23,6 +23,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *address;
 @property (nonatomic,copy)NSString *remark;
 @property (nonatomic,assign)NSInteger status;
+@property (nonatomic,strong)Coin *coin;
 @end
 
+@interface Coin : NSObject;
+
+@property (nonatomic,copy)NSString *name;
+@property (nonatomic,copy)NSString *unit;
+
+@end
 NS_ASSUME_NONNULL_END

@@ -22,7 +22,7 @@
 @implementation BTCurrencyViewController
 - (id)init{
     if (self = [super init]) {
-        self.curreny = @"BTCK";
+        self.curreny = KOriginalCoin;
     }
     return self;
 }

@@ -12,6 +12,8 @@
 
 @interface BTWalletManageDetailVC ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mnemonicHeight;//助记词高度
+@property (weak, nonatomic) IBOutlet UIView *mnemonicView;
 @property (strong, nonatomic) BTWalletPopView *walletPopView;
 
 @end
@@ -21,6 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.userInfo.username;
+    if (!self.userInfo.mnemonicWords.length) {
+        self.mnemonicHeight.constant = 0;
+        self.mnemonicView.hidden = YES;
+    }
     // Do any additional setup after loading the view from its nib.
 }
 #pragma mark actions

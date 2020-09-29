@@ -10,6 +10,7 @@
 #import "BTCreateSuccessVC.h"
 #import "MineNetManager.h"
 #import "BTAssetsModel.h"
+#import "BTBackupMnemonicsVC.h"
 
 @interface BTCreateWalletVC ()<UITextFieldDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *createBtn;
@@ -88,7 +89,7 @@
                 if (NetSuccess) {
                     NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
                     for (BTAssetsModel *walletModel in dataArr) {
-                        if ([walletModel.coin.unit isEqualToString:@"BTCK"]) {//个人中心显示BTCK的地址
+                        if ([walletModel.coin.unit isEqualToString:KOriginalCoin]) {//个人中心显示BTCK的地址
                             info.address = walletModel.address;break;
                         }
                     }
@@ -104,8 +105,8 @@
                     NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
                     [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
                     [[NSUserDefaults standardUserDefaults] synchronize];
-                    BTCreateSuccessVC *createSuccess = [[BTCreateSuccessVC alloc]init];
-                    [self.navigationController pushViewController:createSuccess animated:YES];
+                    BTBackupMnemonicsVC *backup = [[BTBackupMnemonicsVC alloc]init];
+                    [self.navigationController pushViewController:backup animated:YES];
                 }
             }];
             

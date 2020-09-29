@@ -15,6 +15,8 @@
 #define USERINFO @"USERINFO"
 //自定义block
 typedef void(^ResultBlock)(id resultObject,int isSuccessed);
+//原始母币
+#define KOriginalCoin @"BTCK"
 //网络成功
 #define NetSuccess [responseResult[@"code"]integerValue] == 0
 #define ErrorToast if ([responseResult.allKeys containsObject:@"resError"]) {\

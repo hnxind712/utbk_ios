@@ -9,6 +9,8 @@
 #import "BTAssetsTransiferVC.h"
 #import "BTCurrencyViewController.h"
 #import "STQRCodeController.h"
+#import "MineNetManager.h"
+#import "MentionCoinInfoModel.h"
 
 @interface BTAssetsTransiferVC ()<STQRCodeControllerDelegate>
 
@@ -17,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *coinCountInput;
 @property (weak, nonatomic) IBOutlet UITextField *tradePasswordInput;
 @property (weak, nonatomic) IBOutlet UILabel *fee;
+@property (strong, nonatomic) NSArray *datasource;//所有币种的配置信息
+@property (strong, nonatomic) MentionCoinInfoModel *model;
+
 @end
 
 @implementation BTAssetsTransiferVC
@@ -24,11 +29,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LocalizationKey(@"转币");
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)setupBind{
+    WeakSelf(weakSelf)
+    [MineNetManager mentionCoinInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
+        NSLog(@"获取提币信息 ---- %@",responseResult);
+        StrongSelf(strongSelf)
+        if (code) {
+            if ([responseResult[@"code"] integerValue] == 0) {
+                NSArray *dataArr = [MentionCoinInfoModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                self.datasource = dataArr;
+                [dataArr enumerateObjectsUsingBlock:^(MentionCoinInfoModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if ([obj.unit isEqualToString:self.unit]) {
+                        strongSelf.model = obj;*stop = YES;
+                    }
+                }];
+                strongSelf.fee.text = strongSelf.model.maxTxFee;
+            }else if ([responseResult[@"code"] integerValue] == 3000 ||[responseResult[@"code"] integerValue] == 4000 ){
+                // [ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
+                [YLUserInfo logout];
+            }else{
+                [strongSelf.view makeToast:responseResult[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+            }
+        }else{
+            [strongSelf.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
+        }
+    }];
 }
 //选择币种
 - (IBAction)selectCoinAction:(UIButton *)sender {
     BTCurrencyViewController *currency = [[BTCurrencyViewController alloc]init];
+    currency.selectedCurrency = ^(id  _Nonnull model) {
+      //拿到对应的币种之后，需要处理对应的手续费以及将对应的unit处理一下
+    };
     [self.navigationController pushViewController:currency animated:YES];
 }
 //扫描
@@ -49,6 +84,40 @@
     _tradePasswordInput.secureTextEntry = sender.selected;
 }
 - (IBAction)confirmAction:(UIButton *)sender {
+    if (![self.coinAddress.text length]) {
+           [self.view makeToast:LocalizationKey(@"请输入地址") duration:ToastHideDelay position:ToastPosition];return;
+       }
+       if (![self.coinCountInput.text length]) {
+           [self.view makeToast:LocalizationKey(@"请输入数量") duration:ToastHideDelay position:ToastPosition];return;
+       }
+       if (![self.tradePasswordInput.text length]) {
+           [self.view makeToast:LocalizationKey(@"请输入交易密码") duration:ToastHideDelay position:ToastPosition];return;
+       }
+       NSString *remark = @"";
+        for (AddressInfo *address in self.model.addresses) {
+            if ([self.coinAddress.text isEqualToString:address.address]) {
+                remark = address.remark;
+            }
+        }
+       WeakSelf(weakSelf)
+       [MineNetManager mentionCoinApplyForUnit:self.unit withAddress:self.coinAddress.text withAmount:self.coinCountInput.text withFee:self.model.maxTxFee withRemark:remark withJyPassword:self.tradePasswordInput.text mobilecode:nil googleCode:nil CompleteHandle:^(id resPonseObj, int code) {
+           StrongSelf(strongSelf)
+          if (code) {
+                 if ([resPonseObj[@"code"] integerValue] == 0) {
+                     [strongSelf.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                         [strongSelf.navigationController popViewControllerAnimated:YES];
+                     });
+                 }else if ([resPonseObj[@"code"] integerValue] == 3000 ||[resPonseObj[@"code"] integerValue] == 4000 ){
+                     //[ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
+                     [YLUserInfo logout];
+                 }else{
+                     [strongSelf.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+                 }
+             }else{
+                 [strongSelf.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
+             }
+       }];
 }
 
 /*

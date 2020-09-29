@@ -391,6 +391,9 @@
 		D7BBF69D251D9939007A953F /* BTPoolShareContributionRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BBF69C251D9939007A953F /* BTPoolShareContributionRecordModel.m */; };
 		D7BBF6A0251DBB0C007A953F /* BTPoolHoldCoinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BBF69F251DBB0C007A953F /* BTPoolHoldCoinModel.m */; };
 		D7BCF32325145338007DD18D /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BCF32225145338007DD18D /* UIImage+Extension.m */; };
+		D7F360862522E178005A1F14 /* MentionCoinInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F360842522E178005A1F14 /* MentionCoinInfoModel.m */; };
+		D7F3608A252322B8005A1F14 /* BTAssetSweepVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F36088252322B8005A1F14 /* BTAssetSweepVC.m */; };
+		D7F3608B252322B8005A1F14 /* BTAssetSweepVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F36089252322B8005A1F14 /* BTAssetSweepVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1043,6 +1046,11 @@
 		D7BBF69F251DBB0C007A953F /* BTPoolHoldCoinModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTPoolHoldCoinModel.m; sourceTree = "<group>"; };
 		D7BCF32125145337007DD18D /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		D7BCF32225145338007DD18D /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		D7F360842522E178005A1F14 /* MentionCoinInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionCoinInfoModel.m; sourceTree = "<group>"; };
+		D7F360852522E178005A1F14 /* MentionCoinInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionCoinInfoModel.h; sourceTree = "<group>"; };
+		D7F36087252322B8005A1F14 /* BTAssetSweepVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTAssetSweepVC.h; sourceTree = "<group>"; };
+		D7F36088252322B8005A1F14 /* BTAssetSweepVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTAssetSweepVC.m; sourceTree = "<group>"; };
+		D7F36089252322B8005A1F14 /* BTAssetSweepVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTAssetSweepVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1409,6 +1417,9 @@
 				D71C85CF250F0A5D0067B4C7 /* BTSweepAccountVC.h */,
 				D71C85D0250F0A5D0067B4C7 /* BTSweepAccountVC.m */,
 				D71C85D1250F0A5D0067B4C7 /* BTSweepAccountVC.xib */,
+				D7F36087252322B8005A1F14 /* BTAssetSweepVC.h */,
+				D7F36088252322B8005A1F14 /* BTAssetSweepVC.m */,
+				D7F36089252322B8005A1F14 /* BTAssetSweepVC.xib */,
 				D71C85D4250F0E0C0067B4C7 /* BTAssetsRechargeVC.h */,
 				D71C85D5250F0E0C0067B4C7 /* BTAssetsRechargeVC.m */,
 				D71C85D6250F0E0C0067B4C7 /* BTAssetsRechargeVC.xib */,
@@ -2292,6 +2303,8 @@
 				D79D74A725135D0600DE7DF7 /* YLUserInfo.m */,
 				D710E591251C9FDF001986FC /* BTConfigureModel.h */,
 				D710E592251C9FDF001986FC /* BTConfigureModel.m */,
+				D7F360852522E178005A1F14 /* MentionCoinInfoModel.h */,
+				D7F360842522E178005A1F14 /* MentionCoinInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2468,6 +2481,7 @@
 				D79D736925134A8200DE7DF7 /* CToCTableViewCell.xib in Resources */,
 				D7429BEA2511F8F7003B04E4 /* BTCurrencyCell.xib in Resources */,
 				D79D7502251362DC00DE7DF7 /* countryViewController.xib in Resources */,
+				D7F3608B252322B8005A1F14 /* BTAssetSweepVC.xib in Resources */,
 				3CACD626250E593300B50D9A /* BTAssetsCell.xib in Resources */,
 				D7707D8625107028009EF151 /* BTHomeNoticeVC.xib in Resources */,
 				D79D74EF2513623000DE7DF7 /* Section1TableViewCell.xib in Resources */,
@@ -2653,6 +2667,7 @@
 				D79D74ED2513623000DE7DF7 /* Section1TableViewCell.m in Sources */,
 				3CACD625250E593300B50D9A /* BTAssetsCell.m in Sources */,
 				3CAF5E66250E3119002482C1 /* BTCreateWalletVC.m in Sources */,
+				D7F360862522E178005A1F14 /* MentionCoinInfoModel.m in Sources */,
 				D7074E95251092FF000EC935 /* BTNoticeDetailVC.m in Sources */,
 				3C563C202516201100DFBA88 /* BTTeamHoldModel.m in Sources */,
 				D71C85C8250EFCAC0067B4C7 /* BTAssetsTransiferVC.m in Sources */,
@@ -2824,6 +2839,7 @@
 				D79D73EC251350EC00DE7DF7 /* ToolUtil.m in Sources */,
 				3C63D40A250DA73C001CEC7D /* AppDelegate.m in Sources */,
 				D79D73B525134F2100DE7DF7 /* MyEntrustInfoModel.m in Sources */,
+				D7F3608A252322B8005A1F14 /* BTAssetSweepVC.m in Sources */,
 				D79D74FD2513628900DE7DF7 /* MyBillInfoModel.m in Sources */,
 				D79D737725134A8200DE7DF7 /* EntrustmentRecordViewController.m in Sources */,
 				D79D74302513513A00DE7DF7 /* Y_KLineAccessoryView.m in Sources */,

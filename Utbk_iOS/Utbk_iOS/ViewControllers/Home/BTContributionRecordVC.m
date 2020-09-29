@@ -53,7 +53,7 @@
 }
 - (void)setupBind{
     //先给死的币种值
-    self.model.coin = @"BTCK";
+    self.model.coin = KOriginalCoin;
     self.coinName.text = [NSString stringWithFormat:@"%@：",self.model.coin];
     self.totalEarning.text = [ToolUtil formartScientificNotationWithString:self.model.totalProduce];
     NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.f",self.model.destroyValue]],self.model.coin]];//销毁总量

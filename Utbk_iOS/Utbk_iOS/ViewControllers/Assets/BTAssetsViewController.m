@@ -15,6 +15,7 @@
 #import "BTAssetsDetailVC.h"
 #import "BTAssetsModel.h"
 #import "MineNetManager.h"
+#import "SPMultipleSwitch.h"
 
 //测试用
 #import "BTAssetsWithdrawVC.h"
@@ -24,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalAccount;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *datasource;
+@property (assign, nonatomic) NSInteger activeStatus;//激活状态
+@property (assign, nonatomic) NSInteger type;
+@property (strong, nonatomic) SPMultipleSwitch *multipleSwitch;
 
 @end
 
@@ -39,7 +43,42 @@
     self.title  = @"资产";
     [self setupLayout];
     [self setupBind];
+    [self.navigationItem setTitleView:self.multipleSwitch];
     // Do any additional setup after loading the view from its nib.
+}
+- (SPMultipleSwitch *)multipleSwitch{
+    if (!_multipleSwitch) {
+        SPMultipleSwitch *switch1 = [[SPMultipleSwitch alloc] initWithItems:@[LocalizationKey(@"币币"),LocalizationKey(@"矿池")]];
+        switch1.frame = CGRectMake(0, 0, 193, 40);
+        [switch1 addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside] ;
+        
+        switch1.selectedTitleColor = RGBOF(0xffffff);
+        switch1.titleColor = RGBOF(0xA78659);
+        switch1.trackerColor = RGBOF(0xDAC49D);
+        switch1.backgroundColor = [UIColor clearColor];
+        self.navigationItem.titleView = switch1;
+        self.multipleSwitch = switch1;
+        switch1.setNeedsCornerRadius = YES;
+        switch1.layer.borderWidth = 0.5;
+        switch1.layer.borderColor = RGBOF(0xD1A870).CGColor;
+        switch1.layer.cornerRadius = 4.f;
+        switch1.setForbidenScroll = YES;
+        _multipleSwitch = switch1;
+    }
+    return _multipleSwitch;
+}
+- (void)switchAction:(SPMultipleSwitch *)multipleSwitch{
+    switch (multipleSwitch.selectedSegmentIndex) {
+         case 0:
+            self.type = 0;
+             break;
+         case 1:
+            self.type = 1;
+             break;
+         default:
+             break;
+     }
+    [self.tableView reloadData];
 }
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTAssetsCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTAssetsCell class])];
@@ -53,6 +92,7 @@
     //获取我的钱包
     [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
         if (NetSuccess) {
+            [self.datasource removeAllObjects];
             NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
             NSDecimalNumber *ass1 = [[NSDecimalNumber alloc] initWithString:@"0"];
             NSDecimalNumber *ass2 = [[NSDecimalNumber alloc] initWithString:@"0"];
@@ -73,6 +113,13 @@
             ErrorToast
         }
     }];
+    [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":[YLUserInfo shareUserInfo].ID} ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            self.activeStatus = [responseResult[@"data"][@"status"] isKindOfClass:[NSNull class]] ? 0 : [responseResult[@"data"][@"status"] integerValue];
+        }else{
+            self.activeStatus = 0;
+        }
+    }];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.datasource.count;
@@ -80,6 +127,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTAssetsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTAssetsCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.cellType = self.type;
+    cell.status = self.activeStatus;
     BTAssetsModel *model = self.datasource[indexPath.row];
     [cell configureCellWithAssetsModel:model];
     WeakSelf(weakSelf)
@@ -88,13 +137,17 @@
         switch (index) {
             case 0://收款/充币,USDT则为充币，其他币种为收款
             {
-                if (!model.coin.canRecharge) {
-                    [self.view makeToast:[model.coin.name isEqualToString:@"USDT"] ? LocalizationKey(@"当前不可充币") : LocalizationKey(@"当前不可收币") duration:ToastHideDelay position:ToastPosition];return;
+                if (self.type == 1) {//矿池划转
+                    
+                }else{
+                    if (!model.coin.canRecharge) {
+                        [self.view makeToast:[model.coin.name isEqualToString:@"USDT"] ? LocalizationKey(@"当前不可充币") : LocalizationKey(@"当前不可收币") duration:ToastHideDelay position:ToastPosition];return;
+                    }
+                    BTAssetsRechargeVC *recharge = [[BTAssetsRechargeVC alloc]init];
+                    recharge.isRechage = [model.coin.name isEqualToString:@"USDT"];
+                    recharge.model = model;
+                    [strongSelf.navigationController pushViewController:recharge animated:YES];
                 }
-                BTAssetsRechargeVC *recharge = [[BTAssetsRechargeVC alloc]init];
-                recharge.isRechage = [model.coin.name isEqualToString:@"USDT"];
-                recharge.model = model;
-                [strongSelf.navigationController pushViewController:recharge animated:YES];
             }
                 break;
             case 1://转账
@@ -104,7 +157,7 @@
                         [self.view makeToast:LocalizationKey(@"当前不可提现") duration:ToastHideDelay position:ToastPosition];return;
                     }
                     BTAssetsWithdrawVC *withdraw = [[BTAssetsWithdrawVC alloc]init];
-                    withdraw.assetModel = model;
+                    withdraw.unit = model.coin.unit;
                     [strongSelf.navigationController pushViewController:withdraw animated:YES];
                 }else{
                     if (!model.coin.canTransfer) {
