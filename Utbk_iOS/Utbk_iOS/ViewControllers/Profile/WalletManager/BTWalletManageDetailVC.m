@@ -9,6 +9,7 @@
 #import "BTWalletManageDetailVC.h"
 #import "BTWalletPopView.h"
 #import "BTModifyTradePasswordVC.h"
+#import "BTBackupMnemonicsVC.h"
 
 @interface BTWalletManageDetailVC ()
 
@@ -28,6 +29,22 @@
         self.mnemonicView.hidden = YES;
     }
     // Do any additional setup after loading the view from its nib.
+}
+- (void)verifyTradepssword:(NSString *)password type:(KWalletType)type{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]postDataWithUrl:verifyTradepsswordAPI Parameter:@{@"jyPassword":password} ResponseObject:^(NSDictionary *responseResult) {
+        StrongSelf(strongSelf)
+        if (NetSuccess) {
+            if (type == KWalletTypeExportPrivateKey) {//导出私钥
+                [strongSelf.walletPopView show:KWalletTypeCopyPrivateKey];
+            }else if(type == KWalletTypeBackUpMnemonicWord){
+                BTBackupMnemonicsVC *mnemonics = [[BTBackupMnemonicsVC alloc]init];
+                mnemonics.userInfo = [YLUserInfo shareUserInfo];
+                [strongSelf.navigationController pushViewController:mnemonics animated:YES];
+            }
+        }else
+            ErrorToast
+    }];
 }
 #pragma mark actions
 //修改钱包名称
@@ -78,8 +95,10 @@
 - (BTWalletPopView *)walletPopView{
     if (!_walletPopView) {
         _walletPopView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([BTWalletPopView class]) owner:nil options:nil].firstObject;
+        WeakSelf(weakSelf)
         _walletPopView.comfirmAction = ^(KWalletType wallteType, NSString * _Nonnull string) {
-            
+            StrongSelf(strongSelf)
+            [strongSelf verifyTradepssword:string type:wallteType];
         };
     }
     return _walletPopView;

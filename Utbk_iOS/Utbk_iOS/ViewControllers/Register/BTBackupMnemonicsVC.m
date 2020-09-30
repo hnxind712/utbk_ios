@@ -88,7 +88,10 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self hiddenLeft];
+    if (self.userInfo == nil) {
+        [self hiddenLeft];
+    }
+    
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.mnemonisModel.mnemonicWordsList.count;

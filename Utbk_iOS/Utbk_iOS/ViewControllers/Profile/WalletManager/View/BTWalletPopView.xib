@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -72,20 +72,30 @@
                                 <action selector="comfirmAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="N06-eg-cOe"/>
                             </connections>
                         </button>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJd-3k-XsN">
+                            <rect key="frame" x="20" y="73" width="290" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="aMA-yE-n8C" secondAttribute="trailing" constant="15" id="4Sl-rp-jtn"/>
+                        <constraint firstItem="CJd-3k-XsN" firstAttribute="trailing" secondItem="RbQ-tt-arE" secondAttribute="trailing" id="Ck3-ke-goZ"/>
                         <constraint firstAttribute="bottom" secondItem="Oan-Fc-jsc" secondAttribute="bottom" constant="13" id="F7k-6e-R7y"/>
                         <constraint firstItem="aMA-yE-n8C" firstAttribute="height" secondItem="Oan-Fc-jsc" secondAttribute="height" id="GHg-F6-BKL"/>
                         <constraint firstItem="RbQ-tt-arE" firstAttribute="top" secondItem="7nj-1Z-jTg" secondAttribute="bottom" constant="32" id="If6-TB-3WV"/>
                         <constraint firstItem="Oan-Fc-jsc" firstAttribute="top" secondItem="xin-X3-jgV" secondAttribute="bottom" constant="13" id="KNo-LS-RPE"/>
                         <constraint firstItem="xin-X3-jgV" firstAttribute="leading" secondItem="3VM-ci-qlh" secondAttribute="leading" id="L2J-bs-CDs"/>
+                        <constraint firstItem="CJd-3k-XsN" firstAttribute="top" secondItem="RbQ-tt-arE" secondAttribute="top" id="Nu0-gA-g3a"/>
                         <constraint firstItem="RbQ-tt-arE" firstAttribute="leading" secondItem="3VM-ci-qlh" secondAttribute="leading" constant="20" id="R1c-OQ-2zw"/>
                         <constraint firstAttribute="trailing" secondItem="RbQ-tt-arE" secondAttribute="trailing" constant="20" id="aqp-0g-qgI"/>
                         <constraint firstItem="aMA-yE-n8C" firstAttribute="leading" secondItem="Oan-Fc-jsc" secondAttribute="trailing" constant="20" id="cqD-R0-bU1"/>
                         <constraint firstItem="aMA-yE-n8C" firstAttribute="centerY" secondItem="Oan-Fc-jsc" secondAttribute="centerY" id="dR0-1h-7dY"/>
+                        <constraint firstItem="xin-X3-jgV" firstAttribute="top" secondItem="CJd-3k-XsN" secondAttribute="bottom" constant="36" id="gvd-H1-YPa"/>
                         <constraint firstAttribute="trailing" secondItem="xin-X3-jgV" secondAttribute="trailing" id="kQC-qb-GzJ"/>
+                        <constraint firstItem="CJd-3k-XsN" firstAttribute="leading" secondItem="RbQ-tt-arE" secondAttribute="leading" id="kqC-nl-Hb6"/>
                         <constraint firstItem="Oan-Fc-jsc" firstAttribute="leading" secondItem="3VM-ci-qlh" secondAttribute="leading" constant="15" id="nnd-tO-QDn"/>
                         <constraint firstItem="7nj-1Z-jTg" firstAttribute="top" secondItem="3VM-ci-qlh" secondAttribute="top" constant="24" id="qxh-du-IC3"/>
                         <constraint firstItem="aMA-yE-n8C" firstAttribute="width" secondItem="Oan-Fc-jsc" secondAttribute="width" id="rkR-H3-EZX"/>
@@ -107,7 +117,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="confirmBtn" destination="aMA-yE-n8C" id="2VR-kz-OXs"/>
                 <outlet property="input" destination="RbQ-tt-arE" id="715-4g-ITY"/>
+                <outlet property="secretWord" destination="CJd-3k-XsN" id="OJ9-i1-shQ"/>
                 <outlet property="title" destination="7nj-1Z-jTg" id="NJd-ac-TPg"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>

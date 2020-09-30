@@ -26,8 +26,7 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (void)setupBind{
-//    self.title.text = model.coin.name;
-    self.withdrawCount.text = [NSString stringWithFormat:@"+%@ %@",[ToolUtil judgeStringForDecimalPlaces:self.recordModel.totalAmount],self.recordModel.coin.unit];
+    self.withdrawCount.text = [NSString stringWithFormat:@"%@%@ %@",self.index ? @"-" : @"+",[ToolUtil judgeStringForDecimalPlaces:self.recordModel.totalAmount],self.recordModel.coin.unit];
     self.time.text = [ToolUtil transformForTimeString:self.recordModel.createTime];
     self.address.text = self.recordModel.address;
     if (self.recordModel.status == 0) {
@@ -40,6 +39,7 @@
      }else if(self.recordModel.status == 3){
          self.status.text = LocalizationKey(@"Success");
      }
+    self.status.text = self.index ? LocalizationKey(@"提币") : LocalizationKey(@"充币");
 }
 /*
 #pragma mark - Navigation

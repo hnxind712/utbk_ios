@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger,KWalletType){
     KWalletTypeModifyWalletName = 0,
     KWalletTypeBackUpMnemonicWord,//备份助记词
-    KWalletTypeExportPrivateKey//导出秘钥
+    KWalletTypeExportPrivateKey,//导出秘钥
+    KWalletTypeCopyPrivateKey//复制秘钥
 };
 @interface BTWalletPopView : UIView
 

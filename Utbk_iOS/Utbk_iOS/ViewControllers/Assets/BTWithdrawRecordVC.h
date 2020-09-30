@@ -11,11 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, KRecordType) {
     KRecordTypeRecharge = 0,
-    KRecordTypeWithdraw
+    KRecordTypeWithdraw,
+    KRecordTypeOther//具体币种的流水记录
 };
 @interface BTWithdrawRecordVC : BTBaseViewController
 
 @property (assign, nonatomic) KRecordType recordType;
+@property (copy, nonatomic) NSString *unit;//币种名
 
 @end
 

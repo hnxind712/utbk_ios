@@ -192,6 +192,7 @@
                 <outlet property="activityView" destination="sab-1W-5qd" id="yOb-qh-z1C"/>
                 <outlet property="coinName" destination="Wed-uH-1iW" id="ZuX-Jd-096"/>
                 <outlet property="convertAccount" destination="bTj-rg-Bhr" id="V4j-Qz-11T"/>
+                <outlet property="freeze" destination="7I2-aR-6yd" id="IRr-5R-MX5"/>
                 <outlet property="receiveBtn" destination="Fe1-4A-qdI" id="ZZ8-C5-oM4"/>
                 <outlet property="sTransferBtn" destination="esD-Bn-T39" id="OoM-VU-Auq"/>
                 <outlet property="totalCoinAccount" destination="hHb-Xa-bwW" id="ntW-G0-cPZ"/>

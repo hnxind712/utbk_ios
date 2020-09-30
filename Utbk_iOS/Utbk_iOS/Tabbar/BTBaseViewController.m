@@ -25,6 +25,7 @@
 }
 - (void)hiddenLeft{
     self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.backBarButtonItem = nil;
 }
 - (void)addLeftNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

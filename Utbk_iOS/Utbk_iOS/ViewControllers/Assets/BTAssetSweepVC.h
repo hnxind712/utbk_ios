@@ -7,10 +7,14 @@
 //
 
 #import "BTBaseViewController.h"
+#import "BTAssetsModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BTAssetSweepVC : BTBaseViewController
+
+@property (assign, nonatomic) NSInteger index;//1为资产转矿池，2为矿池转资产
+@property (strong, nonatomic) BTAssetsModel *assets;
 
 @end
 

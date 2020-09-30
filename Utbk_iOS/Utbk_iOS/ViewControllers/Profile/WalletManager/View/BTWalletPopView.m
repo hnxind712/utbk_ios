@@ -11,6 +11,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UITextField *input;
 @property (assign, nonatomic) KWalletType walletType;
+@property (weak, nonatomic) IBOutlet UILabel *secretWord;//私钥
+@property (weak, nonatomic) IBOutlet UIButton *confirmBtn;//确认
 
 @end
 
@@ -27,19 +29,28 @@
     _walletType = walletType;
     [BTKeyWindow addSubview:self];
     self.frame = BTKeyWindow.bounds;
+    [_confirmBtn setTitle:LocalizationKey(@"确认") forState:UIControlStateNormal];
+    _secretWord.hidden = YES;
+    _input.hidden = NO;
     switch (walletType) {
         case KWalletTypeModifyWalletName:
             _title.text = LocalizationKey(@"钱包名称");
             _input.placeholder = LocalizationKey(@"请输入钱包名称");
             break;
-            case KWalletTypeBackUpMnemonicWord:
+        case KWalletTypeBackUpMnemonicWord:
             _title.text = LocalizationKey(@"备份助记词");
             _input.placeholder = LocalizationKey(@"请输入钱包密码");
             break;
-            case KWalletTypeExportPrivateKey:
+        case KWalletTypeExportPrivateKey:
             _title.text = LocalizationKey(@"导出私钥");
             _input.placeholder = LocalizationKey(@"请输入钱包密码");
             break;
+        case KWalletTypeCopyPrivateKey:
+            _title.text = LocalizationKey(@"复制私钥");
+            _input.hidden = YES;
+            _secretWord.hidden = NO;
+            _secretWord.text = [YLUserInfo shareUserInfo].secretKey;
+            [_confirmBtn setTitle:LocalizationKey(@"复制") forState:UIControlStateNormal];
         default:
             break;
     }
@@ -49,14 +60,13 @@
 }
 - (IBAction)comfirmAction:(UIButton *)sender {
     [self removeFromSuperview];
-    NSString *toast;
+    if (self.walletType == KWalletTypeCopyPrivateKey) {
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = [YLUserInfo shareUserInfo].secretKey;
+        [BTKeyWindow makeToast:LocalizationKey(@"复制成功") duration:ToastHideDelay position:ToastPosition];return;
+    }
     if (!_input.text.length) {
-        if (_walletType == KWalletTypeModifyWalletName) {
-            toast = LocalizationKey(@"请输入钱包名称");
-        }else{
-            toast = LocalizationKey(@"请输入钱包密码");
-        }
-        [BTKeyWindow makeToast:toast duration:ToastHideDelay position:ToastPosition];return;
+        [BTKeyWindow makeToast:LocalizationKey(@"请输入钱包密码") duration:ToastHideDelay position:ToastPosition];return;
     }
     if (self.comfirmAction) {
         self.comfirmAction(_walletType, _input.text);

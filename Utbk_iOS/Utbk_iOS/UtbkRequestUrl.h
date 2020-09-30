@@ -87,4 +87,8 @@ market/exchange-rate"
 #define   getMemberStatusAPI   @""HOST@"\
 uc/member/getMemberStatus"
 
+//验证交易密码
+#define   verifyTradepsswordAPI   @""HOST@"\
+/member/getMnemonicWords"
+
 #endif /* UtbkRequestUrl_h */

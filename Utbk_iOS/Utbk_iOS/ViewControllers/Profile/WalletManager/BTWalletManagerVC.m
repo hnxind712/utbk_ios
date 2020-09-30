@@ -93,7 +93,7 @@
     cell.switchAccountAction = ^{
         if (model == self.currentInfo) return;
         if (model.secretKey.length) {
-            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey} ResponseObject:^(NSDictionary *responseResult) {
+            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":@"",@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
                 StrongSelf(strongSelf)
                 if (NetSuccess) {
                     YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];

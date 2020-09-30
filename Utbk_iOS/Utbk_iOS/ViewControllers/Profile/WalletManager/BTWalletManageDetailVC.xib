@@ -58,9 +58,6 @@
                                 <constraint firstItem="bAD-OH-vrf" firstAttribute="centerY" secondItem="TiS-2I-zBM" secondAttribute="centerY" id="mB9-xe-mUL"/>
                                 <constraint firstAttribute="height" constant="60" id="tIS-UY-n2N"/>
                             </constraints>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="K29-oY-0Jv" appends="YES" id="ybS-51-Sro"/>
-                            </connections>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieZ-YJ-STB">
                             <rect key="frame" x="0.0" y="60" width="390" height="60"/>
@@ -235,11 +232,6 @@
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="139" y="125"/>
         </view>
-        <tapGestureRecognizer id="K29-oY-0Jv">
-            <connections>
-                <action selector="modifyWalletName:" destination="-1" id="kKo-lW-4n6"/>
-            </connections>
-        </tapGestureRecognizer>
         <tapGestureRecognizer id="R6g-Sn-COq">
             <connections>
                 <action selector="backUpMnemonicWord:" destination="-1" id="nRg-sf-EUf"/>

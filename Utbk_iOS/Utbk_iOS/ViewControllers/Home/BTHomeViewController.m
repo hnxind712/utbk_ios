@@ -28,6 +28,7 @@
 #import "LSAppBrowserViewController.h"
 #import "BTNoticeDetailVC.h"
 #import "BTAssetsModel.h"
+#import "BTAssetsRechargeVC.h"
 
 #define KBottomTopHeight 40.f //主板区标签对应的高度间隔
 #define KRiseFallCellHeight 60.f
@@ -51,6 +52,7 @@
 @property (strong, nonatomic) BTPayPasswordPopView *payPasswordPopView;
 @property (strong, nonatomic) BTHomeNoticeView *noticeView;
 @property (strong, nonatomic) LYEmptyView *emptyView;
+@property (strong, nonatomic) BTAssetsModel *assetModel;//母币充币时需要
 
 @end
 
@@ -159,6 +161,7 @@
             for (BTAssetsModel *walletModel in dataArr) {
                 //计算总资产
                 if ([walletModel.coin.unit isEqualToString:KOriginalCoin]) {
+                    self.assetModel = walletModel;
                     NSDecimalNumberHandler *handle = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:8 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
                     NSDecimalNumber *balance = [[NSDecimalNumber alloc] initWithString:walletModel.balance];
                     NSDecimalNumber *usdRate = [[NSDecimalNumber alloc] initWithString:walletModel.coin.usdRate];
@@ -324,7 +327,11 @@
 - (IBAction)buttonClickAction:(UIButton *)sender {
     switch (sender.tag) {
         case 100://收币
-            
+        {
+            BTAssetsRechargeVC *recharge = [[BTAssetsRechargeVC alloc]init];
+            recharge.model = self.assetModel;
+            [self.navigationController pushViewController:recharge animated:YES];
+        }
             break;
         case 101://转账
         {

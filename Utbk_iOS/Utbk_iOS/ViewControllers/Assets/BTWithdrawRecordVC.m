@@ -79,8 +79,10 @@
         [bodydic setValue:@"0" forKey:@"type"];
         [bodydic setValue:[YLUserInfo shareUserInfo].ID forKey:@"memberId"];
         [self rechargeData:bodydic];
-    }else{
+    }else if(self.recordType == KRecordTypeWithdraw){
         [self withdrawData:bodydic];
+    }else{//流水记录
+        
     }
 
 }
@@ -147,6 +149,7 @@
     WeakSelf(weakSelf)
     cell.recordDetailAction = ^{
         StrongSelf(strongSelf)
+        if (strongSelf.recordType == KRecordTypeOther) return;//暂时不需跳转
         BTWithdrawRecordDetailVC *detail = [[BTWithdrawRecordDetailVC alloc]init];
         detail.index = self.recordType;
         detail.recordModel = model;

@@ -16,12 +16,15 @@
 #import "BTAssetsModel.h"
 #import "MineNetManager.h"
 #import "SPMultipleSwitch.h"
+#import "BTAssetSweepVC.h"
+#import "BTPoolHoldCoinModel.h"
 
 //测试用
 #import "BTAssetsWithdrawVC.h"
 
 @interface BTAssetsViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *totalHeight;
 @property (weak, nonatomic) IBOutlet UILabel *totalAccount;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *datasource;
@@ -42,9 +45,12 @@
     [super viewDidLoad];
     self.title  = @"资产";
     [self setupLayout];
-    [self setupBind];
     [self.navigationItem setTitleView:self.multipleSwitch];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self refreshHeaderAction];
 }
 - (SPMultipleSwitch *)multipleSwitch{
     if (!_multipleSwitch) {
@@ -71,14 +77,18 @@
     switch (multipleSwitch.selectedSegmentIndex) {
          case 0:
             self.type = 0;
+            self.headerView.hidden = NO;
+            self.totalHeight.constant = 120.f;
              break;
          case 1:
             self.type = 1;
+            self.headerView.hidden = YES;
+            self.totalHeight.constant = 0.f;
              break;
          default:
              break;
      }
-    [self.tableView reloadData];
+    [self refreshHeaderAction];
 }
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTAssetsCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTAssetsCell class])];
@@ -90,36 +100,60 @@
 }
 - (void)setupBind{
     //获取我的钱包
-    [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
-        if (NetSuccess) {
-            [self.datasource removeAllObjects];
-            NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
-            NSDecimalNumber *ass1 = [[NSDecimalNumber alloc] initWithString:@"0"];
-            NSDecimalNumber *ass2 = [[NSDecimalNumber alloc] initWithString:@"0"];
-            [self.datasource addObjectsFromArray:dataArr];
-            for (BTAssetsModel *walletModel in dataArr) {
-                //计算总资产
-                NSDecimalNumberHandler *handle = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:8 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
-                NSDecimalNumber *balance = [[NSDecimalNumber alloc] initWithString:walletModel.balance];
-                NSDecimalNumber *usdRate = [[NSDecimalNumber alloc] initWithString:walletModel.coin.usdRate];
-                NSDecimalNumber *cnyRate = [[NSDecimalNumber alloc] initWithString:walletModel.coin.cnyRate];
+    WeakSelf(weakSelf)
+    if (self.type == 0) {
+        [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
+            StrongSelf(strongSelf)
+            if (NetSuccess) {
+                [strongSelf.datasource removeAllObjects];
+                NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                NSDecimalNumber *ass1 = [[NSDecimalNumber alloc] initWithString:@"0"];
+                NSDecimalNumber *ass2 = [[NSDecimalNumber alloc] initWithString:@"0"];
+                [self.datasource addObjectsFromArray:dataArr];
+                for (BTAssetsModel *walletModel in dataArr) {
+                    //计算总资产
+                    NSDecimalNumberHandler *handle = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:8 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+                    NSDecimalNumber *balance = [[NSDecimalNumber alloc] initWithString:walletModel.balance];
+                    NSDecimalNumber *usdRate = [[NSDecimalNumber alloc] initWithString:walletModel.coin.usdRate];
+                    NSDecimalNumber *cnyRate = [[NSDecimalNumber alloc] initWithString:walletModel.coin.cnyRate];
 
-                ass1 = [ass1 decimalNumberByAdding:[balance decimalNumberByMultiplyingBy:usdRate withBehavior:handle] withBehavior:handle];
-                ass2 = [ass2 decimalNumberByAdding:[balance decimalNumberByMultiplyingBy:cnyRate withBehavior:handle] withBehavior:handle];
+                    ass1 = [ass1 decimalNumberByAdding:[balance decimalNumberByMultiplyingBy:usdRate withBehavior:handle] withBehavior:handle];
+                    ass2 = [ass2 decimalNumberByAdding:[balance decimalNumberByMultiplyingBy:cnyRate withBehavior:handle] withBehavior:handle];
+                    NSLog(@"打印一下字典 = %@",walletModel.usdtAddress);
+                }
+                strongSelf.totalAccount.text = [ass1 stringValue];
+                [strongSelf.tableView reloadData];
+                
+            }else{
+                ErrorToast
             }
-            self.totalAccount.text = [ass1 stringValue];
-            [self.tableView reloadData];
-        }else{
-            ErrorToast
-        }
-    }];
-    [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":[YLUserInfo shareUserInfo].ID} ResponseObject:^(NSDictionary *responseResult) {
-        if (NetSuccess) {
-            self.activeStatus = [responseResult[@"data"][@"status"] isKindOfClass:[NSNull class]] ? 0 : [responseResult[@"data"][@"status"] integerValue];
-        }else{
-            self.activeStatus = 0;
-        }
-    }];
+        }];
+        [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":[YLUserInfo shareUserInfo].ID} ResponseObject:^(NSDictionary *responseResult) {
+            StrongSelf(strongSelf)
+            if (NetSuccess) {
+                strongSelf.activeStatus = [responseResult[@"data"][@"status"] isKindOfClass:[NSNull class]] ? 0 : [responseResult[@"data"][@"status"] integerValue];
+            }else{
+                strongSelf.activeStatus = 0;
+            }
+        }];
+    }else{
+        [[XBRequest sharedInstance]getDataWithUrl:getMineWalletAPI Parameter:@{@"apiKey":[YLUserInfo shareUserInfo].secretKey} ResponseObject:^(NSDictionary *responseResult) {
+            if (NetSuccess) {
+                StrongSelf(strongSelf)
+                [strongSelf.datasource removeAllObjects];
+                NSArray *list = [BTPoolHoldCoinModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                //转换为BTAssetModel,只需要两个参数，一个balance,一个unit
+                for (BTPoolHoldCoinModel *model in list) {
+                    BTAssetsModel *assetModel = [[BTAssetsModel alloc]init];
+                    assetModel.coin = [[WalletManageCoinInfoModel alloc]init];
+                    assetModel.balance = model.balance;
+                    assetModel.coin.unit = model.coinName;
+                    [strongSelf.datasource addObject:assetModel];
+                }
+                [strongSelf.tableView reloadData];
+            }
+        }];
+    }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.datasource.count;
@@ -137,8 +171,11 @@
         switch (index) {
             case 0://收款/充币,USDT则为充币，其他币种为收款
             {
-                if (self.type == 1) {//矿池划转
-                    
+                if (self.type == 1) {//矿池划转到币币
+                    BTAssetSweepVC *sweep = [[BTAssetSweepVC alloc]init];
+                    sweep.assets = model;
+                    sweep.index = 2;
+                    [strongSelf.navigationController pushViewController:sweep animated:YES];
                 }else{
                     if (!model.coin.canRecharge) {
                         [self.view makeToast:[model.coin.name isEqualToString:@"USDT"] ? LocalizationKey(@"当前不可充币") : LocalizationKey(@"当前不可收币") duration:ToastHideDelay position:ToastPosition];return;
@@ -180,7 +217,9 @@
                     if (!model.coin.canTransfer) {
                         [self.view makeToast:LocalizationKey(@"当前不可划转") duration:ToastHideDelay position:ToastPosition];return;
                     }
-                    BTSweepAccountVC *sweep = [[BTSweepAccountVC alloc]init];
+                    BTAssetSweepVC *sweep = [[BTAssetSweepVC alloc]init];
+                    sweep.assets = model;
+                    sweep.index = 1;
                     [strongSelf.navigationController pushViewController:sweep animated:YES];
                 }
             }
