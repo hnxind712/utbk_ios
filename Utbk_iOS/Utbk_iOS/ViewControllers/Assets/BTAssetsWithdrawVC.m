@@ -14,6 +14,8 @@
 #import "BTLinkTypeCollectionCell.h"
 #import "BTConfigureModel.h"
 #import "MentionCoinInfoModel.h"
+#import "TradeNetManager.h"
+#import "BTAssetsModel.h"
 
 @interface BTAssetsWithdrawVC ()<STQRCodeControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
@@ -23,11 +25,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *coinCountInput;
 @property (weak, nonatomic) IBOutlet UITextField *tradePasswordInput;
 @property (weak, nonatomic) IBOutlet UILabel *fee;
-@property (weak, nonatomic) IBOutlet UILabel *tips;
+@property (weak, nonatomic) IBOutlet UILabel *balance;
+
 @property (strong, nonatomic) NSArray *datasource;
 @property (strong, nonatomic) BTLinkTypeModel *selectedModel;//选中的model
 @property (strong, nonatomic) MentionCoinInfoModel *model;
 @property (strong, nonatomic) NSArray *mentionDatasource;
+@property (strong, nonatomic) BTAssetsModel *assets;
 
 @end
 
@@ -61,6 +65,19 @@
 
 - (void)setupBind{
     WeakSelf(weakSelf)
+    [TradeNetManager getwallettWithcoin:self.unit CompleteHandle:^(id resPonseObj, int code) {
+        if (code) {
+            StrongSelf(strongSelf)
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+                strongSelf.assets = [BTAssetsModel mj_objectWithKeyValues:resPonseObj[@"data"]];
+                strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:self.assets.balance];
+            }else{
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+            }
+        }else{
+            [self.view makeToast:LocalizationKey(@"noNetworkStatus") duration:ToastHideDelay position:ToastPosition];
+        }
+    }];
     [[XBRequest sharedInstance]getDataWithUrl:getMinConfigsAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
         NSLog(@"数据 = %@",responseResult);
         StrongSelf(strongSelf)
@@ -103,9 +120,6 @@
                     }
                 }];
                 strongSelf.fee.text = strongSelf.model.maxTxFee;
-            }else if ([responseResult[@"code"] integerValue] == 3000 ||[responseResult[@"code"] integerValue] == 4000 ){
-               // [ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
-                [YLUserInfo logout];
             }else{
                 [strongSelf.view makeToast:responseResult[MESSAGE] duration:ToastHideDelay position:ToastPosition];
             }
@@ -168,6 +182,9 @@
 }
 //全部输入
 - (IBAction)inputAllCoinAccountAction:(UIButton *)sender {
+    if (self.assets.balance.doubleValue > 0) {
+        self.coinCountInput.text = [ToolUtil formartScientificNotationWithString:self.assets.balance];
+    }
 }
 //显示密码
 - (IBAction)showTradePasswordAction:(UIButton *)sender {

@@ -29,6 +29,9 @@
 #import "BTNoticeDetailVC.h"
 #import "BTAssetsModel.h"
 #import "BTAssetsRechargeVC.h"
+#import "KchatViewController.h"
+#import "BTUpdateVersionView.h"
+#import "VersionUpdateModel.h"
 
 #define KBottomTopHeight 40.f //主板区标签对应的高度间隔
 #define KRiseFallCellHeight 60.f
@@ -53,10 +56,12 @@
 @property (strong, nonatomic) BTHomeNoticeView *noticeView;
 @property (strong, nonatomic) LYEmptyView *emptyView;
 @property (strong, nonatomic) BTAssetsModel *assetModel;//母币充币时需要
+@property (strong, nonatomic) BTUpdateVersionView *versionView;//版本更新
 
 @end
 
 @implementation BTHomeViewController
+
 - (NSMutableArray *)bannerArr{
     if (!_bannerArr) {
         _bannerArr = [NSMutableArray array];
@@ -131,10 +136,12 @@
     [self addRightNavigation];
     [self addLeftNavigation];
     [self headRefreshWithScrollerView:self.mainScrollView];
-    [self refreshHeaderAction];//直接拉取数据
+//    [self refreshHeaderAction];//直接拉取数据
     NSLog(@"私钥 = %@",[YLUserInfo shareUserInfo].ID);
+    [self versionUpdate];//更新
     // Do any additional setup after loading the view from its nib.
 }
+
 #pragma mark-下拉刷新数据
 - (void)refreshHeaderAction{
     [self getBannerData];
@@ -142,6 +149,31 @@
     [self getData];
     [self setupBind];
 //    [self getDefaultSymbol];
+}
+//MARK:--版本更新接口请求
+-(void)versionUpdate{
+    [MineNetManager versionUpdateForId:@"1" CompleteHandle:^(id resPonseObj, int code) {
+        NSLog(@"版本更新接口请求 --- %@",resPonseObj);
+        if (code) {
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+                VersionUpdateModel *versionModel = [VersionUpdateModel mj_objectWithKeyValues:resPonseObj[@"data"]];
+                // app当前版本
+                NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+                NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+                NSLog(@"app_Version ---- %@",app_Version);
+                if ([app_Version compare:versionModel.version] == NSOrderedAscending ){
+                    self.versionView  = [BTUpdateVersionView show];
+                    [self.versionView configureViewWithVersion:versionModel.version content:versionModel.remark];
+                    self.versionView.updateAction = ^{
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:versionModel.downloadUrl]];
+                        });
+                    };
+                }
+            }
+        }
+    }];
+    
 }
 - (void)setupBind{
     WeakSelf(weakSelf)
@@ -318,6 +350,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self refreshHeaderAction];
     if (![YLUserInfo shareUserInfo].isSetPw) {//如果没有设置交易密码，则必须先设置
         [self.payPasswordPopView show];
     }
@@ -433,7 +466,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return KRiseFallCellHeight;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    KchatViewController*klineVC = [[KchatViewController alloc]init];
+    symbolModel *model = self.datasource[indexPath.row];
+    klineVC.symbol = model.symbol;
+    [self.navigationController pushViewController:klineVC withBackTitle:model.symbol animated:YES];
+}
 /*
 #pragma mark - Navigation
 

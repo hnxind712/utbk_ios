@@ -174,7 +174,7 @@
                 if (self.type == 1) {//矿池划转到币币
                     BTAssetSweepVC *sweep = [[BTAssetSweepVC alloc]init];
                     sweep.assets = model;
-                    sweep.index = 2;
+                    sweep.assetIndex = 2;
                     [strongSelf.navigationController pushViewController:sweep animated:YES];
                 }else{
                     if (!model.coin.canRecharge) {
@@ -201,6 +201,7 @@
                         [self.view makeToast:LocalizationKey(@"当前不可转账") duration:ToastHideDelay position:ToastPosition];return;
                     }
                     BTAssetsTransiferVC *transfer = [[BTAssetsTransiferVC alloc]init];
+                    transfer.unit = model.coin.unit;
                     [strongSelf.navigationController pushViewController:transfer animated:YES];
                 }
             }
@@ -212,14 +213,15 @@
                         [self.view makeToast:LocalizationKey(@"当前不可转账") duration:ToastHideDelay position:ToastPosition];return;
                     }
                     BTAssetsTransiferVC *transfer = [[BTAssetsTransiferVC alloc]init];
+                    transfer.unit = model.coin.unit;
                     [strongSelf.navigationController pushViewController:transfer animated:YES];
                 }else{
                     if (!model.coin.canTransfer) {
-                        [self.view makeToast:LocalizationKey(@"当前不可划转") duration:ToastHideDelay position:ToastPosition];return;
+                        [self.view makeToast:LocalizationKey(@"当前不可转账") duration:ToastHideDelay position:ToastPosition];return;
                     }
                     BTAssetSweepVC *sweep = [[BTAssetSweepVC alloc]init];
                     sweep.assets = model;
-                    sweep.index = 1;
+                    sweep.assetIndex = 1;
                     [strongSelf.navigationController pushViewController:sweep animated:YES];
                 }
             }

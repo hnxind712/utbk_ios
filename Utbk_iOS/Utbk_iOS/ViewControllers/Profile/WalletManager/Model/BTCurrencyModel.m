@@ -9,5 +9,9 @@
 #import "BTCurrencyModel.h"
 
 @implementation BTCurrencyModel
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{
+        @"currency":@"parentCoin"
+    };
+}
 @end

@@ -8,6 +8,7 @@
 
 #import "BTAssetSweepVC.h"
 #import "TradeNetManager.h"
+#import "BTPoolHoldCoinModel.h"
 
 @interface BTAssetSweepVC ()
 
@@ -17,16 +18,25 @@
 @property (weak, nonatomic) IBOutlet UITextField *transferCount;//划转数量
 @property (weak, nonatomic) IBOutlet UILabel *balance;
 @property (weak, nonatomic) IBOutlet UIButton *switchBtn;
+@property (strong, nonatomic) NSMutableArray *datasource;//矿池的数据
 
 @end
 
 @implementation BTAssetSweepVC
-
+- (NSMutableArray *)datasource{
+    if (!_datasource) {
+        _datasource = [NSMutableArray array];
+    }
+    return _datasource;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LocalizationKey(@"划转");
-    [self setupBind];
+//    [self setupBind];
+    [self getOreAssets];
+    [self getSingleCoinWallet];
     [self addRightNavigation];
+    self.switchBtn.imageView.transform = CGAffineTransformMakeRotation(M_PI/2);//旋转
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -40,29 +50,58 @@
 - (void)transferRecordAction{
 
 }
-- (void)setupBind{
-    self.balance.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:self.assets.balance],self.assets.coin.unit];
-    self.unit.text = self.assets.coin.unit;
-    self.switchBtn.imageView.transform = CGAffineTransformMakeRotation(M_PI/2);//旋转
+- (void)getOreAssets{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]getDataWithUrl:getMineWalletAPI Parameter:@{@"apiKey":[YLUserInfo shareUserInfo].secretKey} ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            StrongSelf(strongSelf)
+            [strongSelf.datasource removeAllObjects];
+            NSArray *list = [BTPoolHoldCoinModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+            //转换为BTAssetModel,只需要两个参数，一个balance,一个unit
+            for (BTPoolHoldCoinModel *model in list) {
+                BTAssetsModel *assetModel = [[BTAssetsModel alloc]init];
+                assetModel.coin = [[WalletManageCoinInfoModel alloc]init];
+                assetModel.balance = model.balance;
+                assetModel.coin.unit = model.coinName;
+                [strongSelf.datasource addObject:assetModel];
+            }
+        }
+    }];
 }
-- (void)setIndex:(NSInteger)index{
-    _index = index;
-    if (index == 1) {
+- (void)setupBind{
+    if (self.assetIndex == 1) {//需要显示币币资产
+        self.balance.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:self.assets.balance],self.assets.coin.unit];
+        self.unit.text = self.assets.coin.unit;
+    }else{
+        [self.datasource enumerateObjectsUsingBlock:^(BTAssetsModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj.coin.unit isEqualToString:self.assets.coin.unit]) {
+                self.balance.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:obj.balance],obj.coin.unit];
+                self.unit.text = obj.coin.unit;
+            }
+        }];
+    }
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (_assetIndex == 1) {
         self.coinsCoins.text = LocalizationKey(@"币币");
         self.orePool.text = LocalizationKey(@"矿池");
-        [self getSingleCoinWallet];
     }else{
         self.coinsCoins.text = LocalizationKey(@"矿池");
         self.orePool.text = LocalizationKey(@"币币");
+        self.switchBtn.selected = YES;
     }
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self setupBind];
 }
 - (void)getSingleCoinWallet{
     [TradeNetManager getwallettWithcoin:self.assets.coin.unit CompleteHandle:^(id resPonseObj, int code) {
         if (code) {
             if ([resPonseObj[@"code"] integerValue] == 0) {
-                NSDictionary*dict=resPonseObj[@"data"];
-//                self.Useable.text=[NSString stringWithFormat:@"%@%@ %@",LocalizationKey(@"usabelSell"),[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_baseCoinScale],coin];
-//                self.sliderMaxValue.text=[NSString stringWithFormat:@"%@ %@",[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_coinScale],coin];
+                self.assets = [BTAssetsModel mj_objectWithKeyValues:resPonseObj[@"data"]];
+
             }
             else if ([resPonseObj[@"code"] integerValue] ==4000){
                // [ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
@@ -84,10 +123,15 @@
 - (IBAction)exchangeAction:(UIButton *)sender {
     sender.selected = !sender.selected;
     if (sender.selected) {
-        self.index = 2;
+        self.assetIndex = 2;
+        self.coinsCoins.text = LocalizationKey(@"矿池");
+        self.orePool.text = LocalizationKey(@"币币");
     }else{
-        self.index = 1;
+        self.assetIndex = 1;
+        self.coinsCoins.text = LocalizationKey(@"币币");
+        self.orePool.text = LocalizationKey(@"矿池");
     }
+    [self setupBind];
 }
 - (IBAction)comfirmAction:(UIButton *)sender {
     if (!self.transferCount.text.length) {
@@ -97,7 +141,7 @@
         [self.view makeToast:LocalizationKey(@"划转数量不能大于余额") duration:ToastHideDelay position:ToastPosition];return;
     }
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"type"] = @(self.index);
+    params[@"type"] = @(self.assetIndex);
     params[@"apiKey"] = [YLUserInfo shareUserInfo].secretKey;
     params[@"amount"] = self.transferCount.text;
     params[@"coinName"] = self.assets.coin.unit;

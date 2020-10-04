@@ -11,9 +11,11 @@
 #import "STQRCodeController.h"
 #import "MineNetManager.h"
 #import "MentionCoinInfoModel.h"
+#import "BTAssetsModel.h"
+#import "TradeNetManager.h"
 
 @interface BTAssetsTransiferVC ()<STQRCodeControllerDelegate>
-
+@property (weak, nonatomic) IBOutlet UILabel *balance;
 @property (weak, nonatomic) IBOutlet UIButton *selectCoinTypeBtn;
 @property (weak, nonatomic) IBOutlet UITextField *coinAddress;
 @property (weak, nonatomic) IBOutlet UITextField *coinCountInput;
@@ -21,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *fee;
 @property (strong, nonatomic) NSArray *datasource;//所有币种的配置信息
 @property (strong, nonatomic) MentionCoinInfoModel *model;
+@property (strong, nonatomic) BTAssetsModel *assets;
 
 @end
 
@@ -30,10 +33,33 @@
     [super viewDidLoad];
     self.title = LocalizationKey(@"转币");
     [self setupBind];
+    [self getSingleCoinWallet];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)getSingleCoinWallet{
+    WeakSelf(weakSelf)
+    [TradeNetManager getwallettWithcoin:self.unit CompleteHandle:^(id resPonseObj, int code) {
+        if (code) {
+             StrongSelf(strongSelf)
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+                strongSelf.assets = [BTAssetsModel mj_objectWithKeyValues:resPonseObj[@"data"]];
+                strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:self.assets.balance];
+            }
+            else if ([resPonseObj[@"code"] integerValue] ==4000){
+               // [ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
+//                [YLUserInfo logout];
+            }
+            else{
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+            }
+        }else{
+            [self.view makeToast:LocalizationKey(@"noNetworkStatus") duration:ToastHideDelay position:ToastPosition];
+        }
+    }];
 }
 - (void)setupBind{
     WeakSelf(weakSelf)
+    [self.selectCoinTypeBtn setTitle:self.unit forState:UIControlStateNormal];
     [MineNetManager mentionCoinInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
         NSLog(@"获取提币信息 ---- %@",responseResult);
         StrongSelf(strongSelf)
@@ -60,9 +86,18 @@
 }
 //选择币种
 - (IBAction)selectCoinAction:(UIButton *)sender {
+    WeakSelf(weakSelf)
     BTCurrencyViewController *currency = [[BTCurrencyViewController alloc]init];
     currency.selectedCurrency = ^(id  _Nonnull model) {
+        StrongSelf(strongSelf)
       //拿到对应的币种之后，需要处理对应的手续费以及将对应的unit处理一下
+        [self.selectCoinTypeBtn setTitle:self.unit forState:UIControlStateNormal];
+        [self.datasource enumerateObjectsUsingBlock:^(MentionCoinInfoModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj.unit isEqualToString:self.unit]) {
+                strongSelf.model = obj;*stop = YES;
+            }
+        }];
+        strongSelf.fee.text = strongSelf.model.maxTxFee;
     };
     [self.navigationController pushViewController:currency animated:YES];
 }
@@ -73,10 +108,18 @@
     [self.navigationController pushViewController:qrcode animated:YES];
 }
 - (void)qrcodeController:(STQRCodeController *)qrcodeController readerScanResult:(NSString *)readerScanResult type:(STQRCodeResultType)resultType{
+    if (resultType == STQRCodeResultTypeSuccess) {
+        self.coinAddress.text = readerScanResult;
+    }else if (resultType == STQRCodeResultTypeError){
+        [self.view makeToast:LocalizationKey(@"没有扫描到任何结果") duration:ToastHideDelay position:ToastPosition];
+    }
     
 }
 //全部输入
 - (IBAction)inputAllCoinAccountAction:(UIButton *)sender {
+    if (self.assets.balance.doubleValue > 0) {
+        self.balance.text = [ToolUtil formartScientificNotationWithString:self.assets.balance];
+    }
 }
 //显示密码
 - (IBAction)showTradePasswordAction:(UIButton *)sender {

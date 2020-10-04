@@ -106,7 +106,7 @@
     WeakSelf(weakSelf)
     UIImage *image = photos.firstObject;
     NSData *imageData = UIImageJPEGRepresentation(image, 0.8);
-    NSString *str=@"uc/upload/oss/image";
+    NSString *str = @"uc/upload/oss/image";
     NSString *urlString=[HOST stringByAppendingString:str];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSMutableDictionary *dic = [NSMutableDictionary new];
@@ -195,14 +195,15 @@
 }
 //社区客服
 - (IBAction)communityServiceAction:(UITapGestureRecognizer *)sender {
-    BTBackupMnemonicsVC *mnemonics = [[BTBackupMnemonicsVC alloc]init];
-    [self.navigationController pushViewController:mnemonics animated:YES];
+    [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
 }
 //开源地址
 - (IBAction)openSourceAddressAction:(UITapGestureRecognizer *)sender {
+    [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
 }
 //提币地址
 - (IBAction)withdrawAddressAction:(UITapGestureRecognizer *)sender {
+    [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
 }
 //分享APP
 - (IBAction)shareAppAction:(UITapGestureRecognizer *)sender {
@@ -211,9 +212,11 @@
 }
 //帮助中心
 - (IBAction)helpCenterAction:(UITapGestureRecognizer *)sender {
+    [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
 }
 //区块链浏览
 - (IBAction)blockChainsAction:(UITapGestureRecognizer *)sender {
+    [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
 }
 
 /*

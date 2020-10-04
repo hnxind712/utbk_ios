@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,6 @@
                 <outlet property="balance" destination="QQJ-dV-gwI" id="2RO-BX-WPp"/>
                 <outlet property="coinCountInput" destination="RtI-ep-cXm" id="9is-tL-HIC"/>
                 <outlet property="fee" destination="qGv-5R-DDs" id="IdZ-JO-i20"/>
-                <outlet property="tips" destination="cXV-rc-OOw" id="BiI-bF-ex2"/>
                 <outlet property="tradePasswordInput" destination="udh-aD-gId" id="NbM-lB-uPq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,7 +35,7 @@
                             <rect key="frame" x="12" y="125" width="390" height="85"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写转币数量" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RtI-ep-cXm">
-                                    <rect key="frame" x="12" y="34" width="315" height="17.5"/>
+                                    <rect key="frame" x="12" y="34.5" width="315" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -98,7 +97,7 @@
                                     </connections>
                                 </button>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写收币账户地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QuN-2S-eVu">
-                                    <rect key="frame" x="12" y="34" width="326" height="17.5"/>
+                                    <rect key="frame" x="12" y="34.5" width="326" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -173,52 +172,20 @@
                             <color key="textColor" red="0.81960784310000001" green="0.6588235294" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可用：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o34-6J-KE4">
-                            <rect key="frame" x="15" y="223" width="34" height="14"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原始母币：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o34-6J-KE4">
+                            <rect key="frame" x="15" y="223" width="57" height="14"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQJ-dV-gwI">
-                            <rect key="frame" x="51" y="223.5" width="20" height="13.5"/>
+                            <rect key="frame" x="74" y="223.5" width="20" height="13.5"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                             <color key="textColor" red="0.81960784310000001" green="0.6588235294" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qK3-ab-IFE">
-                            <rect key="frame" x="12" y="352" width="390" height="100"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tips" translatesAutoresizingMaskIntoConstraints="NO" id="Wia-cf-OpV">
-                                    <rect key="frame" x="12" y="42.5" width="15" height="15"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="15" id="UMk-3y-XXE"/>
-                                        <constraint firstAttribute="height" constant="15" id="qE0-rH-qok"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示：向新地址转账≥0.001 BTCK可激活目标账户" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXV-rc-OOw">
-                                    <rect key="frame" x="42" y="34.5" width="318" height="31.5"/>
-                                    <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".AppleSimplifiedChineseFont" pointSize="14"/>
-                                    <color key="textColor" red="0.94117647058823528" green="0.32941176470588235" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstItem="cXV-rc-OOw" firstAttribute="centerY" secondItem="Wia-cf-OpV" secondAttribute="centerY" id="4CJ-H3-xAd"/>
-                                <constraint firstItem="Wia-cf-OpV" firstAttribute="centerY" secondItem="qK3-ab-IFE" secondAttribute="centerY" id="MbF-8V-vaU"/>
-                                <constraint firstItem="cXV-rc-OOw" firstAttribute="leading" secondItem="Wia-cf-OpV" secondAttribute="trailing" constant="15" id="eZ6-p3-gXz"/>
-                                <constraint firstAttribute="trailing" secondItem="cXV-rc-OOw" secondAttribute="trailing" constant="30" id="kQx-xc-e13"/>
-                                <constraint firstItem="Wia-cf-OpV" firstAttribute="leading" secondItem="qK3-ab-IFE" secondAttribute="leading" constant="12" id="q8c-k4-LyS"/>
-                                <constraint firstAttribute="height" constant="100" id="vg8-qM-oaf"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="4"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8l-e9-h1v">
-                            <rect key="frame" x="48" y="502" width="318" height="44"/>
+                            <rect key="frame" x="48" y="367" width="318" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="JIY-q6-x4s"/>
                             </constraints>
@@ -239,7 +206,6 @@
                     <constraints>
                         <constraint firstItem="uDE-FD-pHs" firstAttribute="trailing" secondItem="4kz-XE-yFy" secondAttribute="trailing" id="3jy-PW-8qf"/>
                         <constraint firstItem="QQJ-dV-gwI" firstAttribute="centerY" secondItem="o34-6J-KE4" secondAttribute="centerY" id="5w5-GD-lbB"/>
-                        <constraint firstItem="qK3-ab-IFE" firstAttribute="leading" secondItem="4kz-XE-yFy" secondAttribute="leading" id="8zd-Tp-PRR"/>
                         <constraint firstItem="o34-6J-KE4" firstAttribute="centerY" secondItem="nq1-YA-Mat" secondAttribute="centerY" id="90p-34-Ufe"/>
                         <constraint firstItem="4kz-XE-yFy" firstAttribute="top" secondItem="HNW-0W-apT" secondAttribute="top" constant="30" id="ARL-Xv-uYc"/>
                         <constraint firstItem="4kz-XE-yFy" firstAttribute="leading" secondItem="HNW-0W-apT" secondAttribute="leading" constant="12" id="Bjr-6a-61Z"/>
@@ -247,13 +213,11 @@
                         <constraint firstItem="xNB-g8-WWK" firstAttribute="trailing" secondItem="4kz-XE-yFy" secondAttribute="trailing" id="IMd-9I-0nf"/>
                         <constraint firstItem="qGv-5R-DDs" firstAttribute="leading" secondItem="nq1-YA-Mat" secondAttribute="trailing" constant="2" id="IQk-35-igG"/>
                         <constraint firstItem="xNB-g8-WWK" firstAttribute="leading" secondItem="4kz-XE-yFy" secondAttribute="leading" id="O35-ZS-OiD"/>
-                        <constraint firstItem="qK3-ab-IFE" firstAttribute="top" secondItem="xNB-g8-WWK" secondAttribute="bottom" constant="35" id="TGs-Sx-J6r"/>
                         <constraint firstItem="4kz-XE-yFy" firstAttribute="centerX" secondItem="HNW-0W-apT" secondAttribute="centerX" id="XBp-C3-DJ1"/>
                         <constraint firstAttribute="trailing" secondItem="p8l-e9-h1v" secondAttribute="trailing" constant="48" id="bnT-7q-for"/>
-                        <constraint firstItem="qK3-ab-IFE" firstAttribute="trailing" secondItem="4kz-XE-yFy" secondAttribute="trailing" id="c35-gH-hp2"/>
                         <constraint firstItem="xNB-g8-WWK" firstAttribute="top" secondItem="nq1-YA-Mat" secondAttribute="bottom" constant="25" id="cL6-BS-kT4"/>
                         <constraint firstItem="nq1-YA-Mat" firstAttribute="top" secondItem="uDE-FD-pHs" secondAttribute="bottom" constant="13" id="eGq-7r-5oa"/>
-                        <constraint firstItem="p8l-e9-h1v" firstAttribute="top" secondItem="qK3-ab-IFE" secondAttribute="bottom" constant="50" id="fzF-CT-DdN"/>
+                        <constraint firstItem="p8l-e9-h1v" firstAttribute="top" secondItem="xNB-g8-WWK" secondAttribute="bottom" constant="50" id="fya-SG-IMW"/>
                         <constraint firstAttribute="trailing" secondItem="4kz-XE-yFy" secondAttribute="trailing" constant="12" id="gyb-PU-JDd"/>
                         <constraint firstItem="uDE-FD-pHs" firstAttribute="leading" secondItem="4kz-XE-yFy" secondAttribute="leading" id="idz-Qq-7E8"/>
                         <constraint firstAttribute="bottom" secondItem="p8l-e9-h1v" secondAttribute="bottom" constant="50" id="iqW-9C-lri"/>
@@ -281,6 +245,5 @@
         <image name="icon_scan" width="20" height="20"/>
         <image name="icon_showPassword" width="20" height="20"/>
         <image name="icon_showPasswordSelected" width="20" height="20"/>
-        <image name="icon_tips" width="15" height="15"/>
     </resources>
 </document>

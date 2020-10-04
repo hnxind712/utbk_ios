@@ -21,6 +21,7 @@
     [super viewDidLoad];
     self.title = LocalizationKey(@"划转");
     [self addRightNavigation];
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -31,10 +32,33 @@
     [btn sizeToFit];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
+- (void)setupBind{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]getDataWithUrl:getMotherCoinWalletAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+        StrongSelf(strongSelf)
+        if (NetSuccess) {
+            if ([responseResult[@"data"]isKindOfClass:[NSNull class]]) {
+                strongSelf.balance.text = @"0";
+            }else
+                strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%@",responseResult[@"data"][@"balance"]]];
+        }
+    }];
+}
 - (void)transferRecordAction{
     
 }
 - (IBAction)confirmAction:(UIButton *)sender {
+    if (!self.countInput.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入划转数量") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    [[XBRequest sharedInstance]postDataWithUrl:motherCoinWalletTransferAPI Parameter:@{@"amount":self.countInput.text} ResponseObject:^(NSDictionary *responseResult) {
+        [self.view makeToast:responseResult[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+        if (NetSuccess) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        }
+    }];
 }
 
 /*

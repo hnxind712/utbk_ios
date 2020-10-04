@@ -71,6 +71,10 @@ uc/member/activeOne"
 #define   getMotherCoinWalletAPI   @""HOST@"\
 uc/member/getMotherCoinWallet"
 
+//母币划转
+#define   motherCoinWalletTransferAPI   @""HOST@"\
+uc/transfer/huazhuan"
+
 //查询空投排名
 #define   getAirdropTopAPI   @""HOST@"\
 mine/getAirdropTop"

@@ -25,6 +25,9 @@
 		3C13849C250E160000866D69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C13849E250E160000866D69 /* Localizable.strings */; };
 		3C1384A3250E175F00866D69 /* BTImportWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1384A1250E175F00866D69 /* BTImportWalletVC.m */; };
 		3C1384A4250E175F00866D69 /* BTImportWalletVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1384A2250E175F00866D69 /* BTImportWalletVC.xib */; };
+		3C1530B52528A69C00AB8F37 /* BTUpdateVersionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1530B42528A69C00AB8F37 /* BTUpdateVersionView.m */; };
+		3C1530B72528A6A800AB8F37 /* BTUpdateVersionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1530B62528A6A800AB8F37 /* BTUpdateVersionView.xib */; };
+		3C1530BA2528ADA800AB8F37 /* VersionUpdateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1530B82528ADA800AB8F37 /* VersionUpdateModel.m */; };
 		3C1D2FEE251239E7002AE5AA /* BTPoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D2FEC251239E7002AE5AA /* BTPoolViewController.m */; };
 		3C1D2FEF251239E7002AE5AA /* BTPoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1D2FED251239E7002AE5AA /* BTPoolViewController.xib */; };
 		3C1D2FF325123ABE002AE5AA /* BTSharePoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D2FF125123ABE002AE5AA /* BTSharePoolVC.m */; };
@@ -431,6 +434,11 @@
 		3C1384A0250E175F00866D69 /* BTImportWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTImportWalletVC.h; sourceTree = "<group>"; };
 		3C1384A1250E175F00866D69 /* BTImportWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTImportWalletVC.m; sourceTree = "<group>"; };
 		3C1384A2250E175F00866D69 /* BTImportWalletVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTImportWalletVC.xib; sourceTree = "<group>"; };
+		3C1530B32528A69C00AB8F37 /* BTUpdateVersionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTUpdateVersionView.h; sourceTree = "<group>"; };
+		3C1530B42528A69C00AB8F37 /* BTUpdateVersionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTUpdateVersionView.m; sourceTree = "<group>"; };
+		3C1530B62528A6A800AB8F37 /* BTUpdateVersionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTUpdateVersionView.xib; sourceTree = "<group>"; };
+		3C1530B82528ADA800AB8F37 /* VersionUpdateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionUpdateModel.m; sourceTree = "<group>"; };
+		3C1530B92528ADA800AB8F37 /* VersionUpdateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionUpdateModel.h; sourceTree = "<group>"; };
 		3C1D2FEB251239E7002AE5AA /* BTPoolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPoolViewController.h; sourceTree = "<group>"; };
 		3C1D2FEC251239E7002AE5AA /* BTPoolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTPoolViewController.m; sourceTree = "<group>"; };
 		3C1D2FED251239E7002AE5AA /* BTPoolViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTPoolViewController.xib; sourceTree = "<group>"; };
@@ -2305,6 +2313,8 @@
 				D710E592251C9FDF001986FC /* BTConfigureModel.m */,
 				D7F360852522E178005A1F14 /* MentionCoinInfoModel.h */,
 				D7F360842522E178005A1F14 /* MentionCoinInfoModel.m */,
+				3C1530B92528ADA800AB8F37 /* VersionUpdateModel.h */,
+				3C1530B82528ADA800AB8F37 /* VersionUpdateModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2365,9 +2375,12 @@
 		D79D75032513631600DE7DF7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D79D75042513631600DE7DF7 /* SelectCountryTableViewCell.xib */,
 				D79D75052513631600DE7DF7 /* SelectCountryTableViewCell.m */,
 				D79D75062513631600DE7DF7 /* SelectCountryTableViewCell.h */,
+				D79D75042513631600DE7DF7 /* SelectCountryTableViewCell.xib */,
+				3C1530B32528A69C00AB8F37 /* BTUpdateVersionView.h */,
+				3C1530B42528A69C00AB8F37 /* BTUpdateVersionView.m */,
+				3C1530B62528A6A800AB8F37 /* BTUpdateVersionView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2547,6 +2560,7 @@
 				D7707D6F25105177009EF151 /* BTPayPasswordPopView.xib in Resources */,
 				D79D73DF2513503500DE7DF7 /* Y_StockChartViewController.xib in Resources */,
 				3CACD615250E4F7E00B50D9A /* BTTeamAchievementVC.xib in Resources */,
+				3C1530B72528A6A800AB8F37 /* BTUpdateVersionView.xib in Resources */,
 				3C11212D251F2E9F003FC856 /* BTSharePoolCell.xib in Resources */,
 				D7074EA52510A627000EC935 /* BTHistoryRecordCell.xib in Resources */,
 				D79D73DD2513503500DE7DF7 /* TradeNumCell.xib in Resources */,
@@ -2831,6 +2845,7 @@
 				3C63D42F250DADBF001CEC7D /* NSString+Md5.m in Sources */,
 				3C1DF0F9251707CC00E547B0 /* BTSharePoolTableViewCell.m in Sources */,
 				D79D74342513513A00DE7DF7 /* Y_KLineModel.m in Sources */,
+				3C1530B52528A69C00AB8F37 /* BTUpdateVersionView.m in Sources */,
 				D79D73E92513503500DE7DF7 /* TradeNumModel.m in Sources */,
 				D73222742521BA1A00E4FFC1 /* BTBannerModel.m in Sources */,
 				D79D739E25134DE400DE7DF7 /* TradeNetManager.m in Sources */,
@@ -2879,6 +2894,7 @@
 				D79D73E72513503500DE7DF7 /* KchatViewController.m in Sources */,
 				D79D7450251352A400DE7DF7 /* LYEmptyBaseView.m in Sources */,
 				D79D74A825135D0600DE7DF7 /* YLUserInfo.m in Sources */,
+				3C1530BA2528ADA800AB8F37 /* VersionUpdateModel.m in Sources */,
 				D79D747C2513563000DE7DF7 /* countryModel.m in Sources */,
 				D79D736C25134A8200DE7DF7 /* Adversiting2TableViewCell.m in Sources */,
 				D79D733725134A8200DE7DF7 /* SelectCoinTypeModel.m in Sources */,
@@ -3063,6 +3079,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "HY.Utbk-iOS";
 				PRODUCT_NAME = BTCK;
 				SWIFT_VERSION = 5.0;
@@ -3084,6 +3101,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "HY.Utbk-iOS";
 				PRODUCT_NAME = BTCK;
 				SWIFT_VERSION = 5.0;

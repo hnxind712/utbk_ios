@@ -9,8 +9,12 @@
 #import "BTRegisterViewController.h"
 #import "BTCreateWalletVC.h"
 #import "BTImportWalletVC.h"
+#import "MineNetManager.h"
+#import "LSAppBrowserViewController.h"
 
 @interface BTRegisterViewController ()
+
+@property (copy, nonatomic) NSString *contentstr;
 
 @end
 
@@ -22,7 +26,14 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (void)setupBind{
-    
+    [MineNetManager Userprotocol:@{@"id":@"17"} CompleteHandle:^(id resPonseObj, int code) {
+        if (code) {
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+                
+                self.contentstr = resPonseObj[@"data"][@"content"];
+            }
+        }
+    }];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -41,7 +52,9 @@
     [self.navigationController pushViewController:import animated:YES];
 }
 - (IBAction)checkUserProtocol:(UIButton *)sender {
-    
+    LSAppBrowserViewController *browser = [[LSAppBrowserViewController alloc]init];
+    browser.urlString = self.contentstr;
+    [self.navigationController pushViewController:browser animated:YES];
 }
 
 /*

@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (copy, nonatomic) NSString *curreny;//暂定
 
+//由于不同的需求取不同的数据或者请求不同的数据
+@property (assign, nonatomic) NSInteger index;//0代表贡献，1代表团队持仓
+
 @end
 
 NS_ASSUME_NONNULL_END

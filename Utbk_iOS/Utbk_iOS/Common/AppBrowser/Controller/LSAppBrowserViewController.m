@@ -121,21 +121,37 @@
         //        [request addValue:[self readCurrentCookieWithDomain:@"http://www.chinadaily.com.cn"] forHTTPHeaderField:@"Cookie"];
         //        [_webView loadRequest:request];
         
-        
-        NSString *urlString;
-        if ([self.urlString containsString:@"?"]) {
-            urlString = [NSString stringWithFormat:@"%@&source=app",self.urlString];
+        if ([self.urlString containsString:@"http"]) {//说明是网址
+            NSURL *url = [NSURL URLWithString:self.urlString];
+            NSURLRequest *request = [NSURLRequest requestWithURL:url];
+            [self.webView loadRequest:request];
         }else{
-            urlString = [NSString stringWithFormat:@"%@?source=app",self.urlString];
+            [self.webView loadHTMLString:[self HTML:self.urlString] baseURL:nil];
         }
-        NSURL *url = [NSURL URLWithString:urlString];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        [self.webView loadRequest:request];
-        
     }
     return _webView;
 }
+- (NSString *)HTML:(NSString *)html{
+    
+    NSScanner *theScaner = [NSScanner scannerWithString:html];
 
+    NSDictionary *dict = @{@"&amp;":@"&", @"&lt;":@"<", @"&gt;":@">", @"&nbsp;":@"", @"&quot;":@"\"", @"width":@"wid"};
+
+    while ([theScaner isAtEnd] == NO) {
+
+        for (int i = 0; i <[dict allKeys].count; i ++) {
+
+            [theScaner scanUpToString:[dict allKeys][i] intoString:NULL];
+
+            html = [html stringByReplacingOccurrencesOfString:[dict allKeys][i] withString:[dict allValues][i]];
+
+        }
+
+    }
+
+    return html;
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.rorateImage start];

@@ -60,13 +60,25 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
     NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
-    [self.datasource addObjectsFromArray:arr];;
+    [self.datasource addObjectsFromArray:arr];
+    __block NSInteger index = 0;
     for (YLUserInfo *info in self.datasource) {
         if ([info.username isEqualToString:[YLUserInfo shareUserInfo].username]) {
-            self.currentInfo = info;break;
+            self.currentInfo = info;
         }
+        [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":info.ID} ResponseObject:^(NSDictionary *responseResult) {
+            index++;
+            if (NetSuccess) {
+                info.activeStatus = [responseResult[@"data"][@"status"] isKindOfClass:[NSNull class]] ? 0 : [responseResult[@"data"][@"status"] integerValue];
+            }
+            if (index == self.datasource.count) {
+                    //存
+                NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:self.datasource];
+                [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
+                [self.tableView reloadData];
+            }
+        }];
     }
-    [self.tableView reloadData];
 }
 - (void)transferAction{
     BTCurrencyViewController *currency = [[BTCurrencyViewController alloc]init];

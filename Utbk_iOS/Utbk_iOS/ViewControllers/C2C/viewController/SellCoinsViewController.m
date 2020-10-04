@@ -66,7 +66,7 @@
     [super viewWillAppear:animated];
     self.pageNo = 1;
     [self getData];
-    [self accountSettingData];
+//    [self accountSettingData];
 }
 //MARK:--上拉加载
 - (void)refreshFooterAction{

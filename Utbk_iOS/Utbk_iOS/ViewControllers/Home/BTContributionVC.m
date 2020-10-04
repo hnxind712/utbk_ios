@@ -9,6 +9,8 @@
 #import "BTContributionVC.h"
 #import "BTCurrencyViewController.h"
 #import "BTCurrencyModel.h"
+#import "TradeNetManager.h"
+#import "BTAssetsModel.h"
 
 @interface BTContributionVC ()
 
@@ -24,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;//+
 @property (assign, nonatomic) NSInteger count;//记录组数
 @property (copy, nonatomic) NSString *coinName;//默认是BTCK
+@property (strong, nonatomic) NSArray *starAarry;//拿到临界的U点，来处理倍额
+@property (strong, nonatomic) NSArray *doubleArray;//拿到倍额
 
 @end
 
@@ -39,6 +43,7 @@
     [super viewDidLoad];
     self.title = LocalizationKey(@"贡献");
     [self addRightNavigation];
+    [self getWallet];
     [self setupBind];
     [self getCoinExchangeUSDTRate];
     // Do any additional setup after loading the view from its nib.
@@ -54,17 +59,53 @@
 - (void)transferRecordAction{
     
 }
+- (void)getWallet{
+    WeakSelf(weakSelf)
+    [TradeNetManager getwallettWithcoin:self.coinName CompleteHandle:^(id resPonseObj, int code) {
+        if (code) {
+            StrongSelf(strongSelf)
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+                BTAssetsModel *assets = [BTAssetsModel mj_objectWithKeyValues:resPonseObj[@"data"]];
+                strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:assets.balance];
+            }
+            else{
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+            }
+        }else{
+            [self.view makeToast:LocalizationKey(@"网络请求失败") duration:ToastHideDelay position:ToastPosition];
+        }
+    }];
+}
 - (void)setupBind{
     WeakSelf(weakSelf)
-    //KContributionValue
     [[XBRequest sharedInstance]getDataWithUrl:getMinConfigsAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
         StrongSelf(strongSelf)
         if (NetSuccess) {
             NSArray *dataArray = [BTConfigureModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
             NSMutableArray *data = [NSMutableArray array];
+            NSMutableArray *doubleData = [NSMutableArray array];
             [dataArray enumerateObjectsUsingBlock:^(BTConfigureModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-
+                if ([obj.key isEqualToString:@"level_1_contribution"]) {//链类型对应的key
+                    NSString *str = [obj.value substringFromIndex:[obj.value rangeOfString:@"-"].location + 1];
+                    [data addObject:str];
+                }else if ([obj.key isEqualToString:@"level_2_contribution"]){
+                    NSString *str = [obj.value substringFromIndex:[obj.value rangeOfString:@"-"].location + 1];
+                    [data addObject:str];
+                }else if ([obj.key isEqualToString:@"level_3_contribution"]){
+                    NSString *str = [obj.value substringFromIndex:[obj.value rangeOfString:@"-"].location + 1];
+                    [data addObject:str];
+                }else if ([obj.key isEqualToString:@"level_1_bonus"]){
+                    [doubleData addObject: obj.value];
+                }else if ([obj.key isEqualToString:@"level_2_bonus"]){
+                    [doubleData addObject: obj.value];
+                }else if ([obj.key isEqualToString:@"level_3_bonus"]){
+                    [doubleData addObject: obj.value];
+                }
             }];
+            strongSelf.starAarry = data;//保存一下，需要计算用
+            strongSelf.doubleArray = doubleData;
+            NSString *str = strongSelf.doubleArray.firstObject;//默认先取2倍
+            strongSelf.multipleLabel.text = [NSString stringWithFormat:@"%.0f",str.doubleValue * KContributionValue];
         }
     }];
 }
@@ -88,6 +129,12 @@
         [_subtractionBtn setTitleColor:RGBOF(0xA78559) forState:UIControlStateNormal];
     }
     self.groupCount.text = [NSString stringWithFormat:@"%ld",(long)_count];
+    [self.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (self.count * KContributionValue <= critical.integerValue) {
+            NSString *doubleS = self.doubleArray[idx];
+            self.multipleLabel.text = [NSString stringWithFormat:@"%.0f",doubleS.doubleValue * KContributionValue];*stop = YES;
+        }
+    }];
 }
 //减
 - (IBAction)subtractionAction:(UIButton *)sender {
@@ -98,11 +145,18 @@
         [_subtractionBtn setTitleColor:RGBOF(0xE7E7E7) forState:UIControlStateNormal];
     }
     self.groupCount.text = [NSString stringWithFormat:@"%ld",(long)_count];
+    [self.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (self.count * KContributionValue <= critical.integerValue) {
+            NSString *doubleS = self.doubleArray[idx];
+            self.multipleLabel.text = [NSString stringWithFormat:@"%.0f",doubleS.doubleValue * KContributionValue];*stop = YES;
+        }
+    }];
 }
 //选择币种
 - (IBAction)selectCoinAction:(UIButton *)sender {
     WeakSelf(weakSelf)
     BTCurrencyViewController *currency = [[BTCurrencyViewController alloc]init];
+    currency.index = 0;
     currency.selectedCurrency = ^(BTCurrencyModel *model) {
         StrongSelf(strongSelf)
         strongSelf.coinName = model.currency;

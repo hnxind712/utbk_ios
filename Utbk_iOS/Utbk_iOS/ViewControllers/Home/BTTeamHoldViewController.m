@@ -51,6 +51,7 @@
 }
 - (void)teamHoldAction{
     BTCurrencyViewController *currency = [[BTCurrencyViewController alloc]init];
+    currency.index = 1;
     [self.navigationController pushViewController:currency animated:YES];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

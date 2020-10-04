@@ -44,26 +44,43 @@
     self.tableView.tableFooterView = [UIView new];
 }
 - (void)setupBind{
-    [[XBRequest sharedInstance]postDataWithUrl:getCoinRelationAPI Parameter:@{@"coin":self.curreny} ResponseObject:^(NSDictionary *responseResult) {
-        if (NetSuccess) {
-            NSLog(@"打印币种 = %@",responseResult);
-        }
-    }];
-//    [C2CNetManager selectCoinTypeForCompleteHandle:^(id resPonseObj, int code) {
-//        NSLog(@"获取全部货币种类 --- %@",resPonseObj);
-//        if (code){
-//            if ([resPonseObj[@"code"] integerValue]==0) {
-//                //获取数据成功
-//                NSLog(@"--%@",resPonseObj);
-//                self.datasource = [BTCurrencyModel mj_objectArrayWithKeyValuesArray:resPonseObj[@"data"]];
-////                [self switchViewUI];
-//            }else{
-//                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
-//            }
-//        }else{
-//            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
-//        }
-//    }];
+    WeakSelf(weakSelf)
+    if (self.index == 0) {//贡献值
+        [[XBRequest sharedInstance]postDataWithUrl:getCoinRelationAPI Parameter:@{@"coin":self.curreny} ResponseObject:^(NSDictionary *responseResult) {
+            StrongSelf(strongSelf)
+            if (NetSuccess) {
+                strongSelf.datasource = [BTCurrencyModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                [strongSelf.datasource enumerateObjectsUsingBlock:^(BTCurrencyModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if ([self.curreny isEqualToString:obj.currency]) {
+                        obj.isSelected = YES;
+                        self.currencyModel = obj;
+                    }
+                }];
+                [strongSelf.tableView reloadData];
+            }
+        }];
+    }else if(self.index == 1){//团队持仓
+        [[XBRequest sharedInstance]getDataWithUrl:getMinConfigsAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+            StrongSelf(strongSelf)
+            if (NetSuccess) {
+                NSArray *dataArray = [BTConfigureModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                NSMutableArray *data = [NSMutableArray array];
+                [dataArray enumerateObjectsUsingBlock:^(BTConfigureModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if ([obj.key isEqualToString:@"mine_coin"]) {//链类型对应的key
+                        BTCurrencyModel *model = [[BTCurrencyModel alloc]init];
+                        model.currency = obj.value;
+                        if ([self.curreny isEqualToString:obj.value]) {
+                            model.isSelected = YES;
+                            self.currencyModel = model;
+                        }
+                        [data addObject:model];
+                    }
+                }];
+                strongSelf.datasource = data;
+                [strongSelf.tableView reloadData];
+            }
+        }];
+    }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.datasource.count;

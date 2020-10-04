@@ -384,7 +384,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             [self getCommissionData:[marketManager shareInstance].symbol];//当前委托
             [self getHistoryCommissionData];//历史委托
         }
-        [self accountSettingData];//账号信息
+//        [self accountSettingData];//账号信息
         [self getPersonAllCollection];//个人自选
     }
     if ([marketManager shareInstance].symbol) {
