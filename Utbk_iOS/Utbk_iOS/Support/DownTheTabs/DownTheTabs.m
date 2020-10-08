@@ -290,7 +290,7 @@
         headerBtn.tag = i;
         headerBtn.layer.cornerRadius = 20;
         if (i == 0) {
-            [headerBtn setBackgroundColor:NavColor];
+            [headerBtn setBackgroundColor:RGBOF(0xe8e8e8)];
             [headerBtn setTitleColor:RGBOF(0xffffff) forState:UIControlStateNormal];
         }else{
             [headerBtn setBackgroundColor:RGBOF(0x9CCEFF)];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C105D58252F0BED00652331 /* BTMotherCoinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C105D57252F0BED00652331 /* BTMotherCoinModel.m */; };
 		3C10CDD72510F2CE00517422 /* BTShareWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C10CDD52510F2CE00517422 /* BTShareWalletVC.m */; };
 		3C10CDD82510F2CE00517422 /* BTShareWalletVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C10CDD62510F2CE00517422 /* BTShareWalletVC.xib */; };
 		3C112127251F2945003FC856 /* BTContributionRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C112125251F2945003FC856 /* BTContributionRecordVC.m */; };
@@ -402,6 +403,8 @@
 /* Begin PBXFileReference section */
 		0ECA3E851DF9799B3966E954 /* Pods-Utbk_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utbk_iOS.release.xcconfig"; path = "Target Support Files/Pods-Utbk_iOS/Pods-Utbk_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		184416C493E57E1A09CF2792 /* Pods-Utbk_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utbk_iOS.debug.xcconfig"; path = "Target Support Files/Pods-Utbk_iOS/Pods-Utbk_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		3C105D56252F0BED00652331 /* BTMotherCoinModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTMotherCoinModel.h; sourceTree = "<group>"; };
+		3C105D57252F0BED00652331 /* BTMotherCoinModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTMotherCoinModel.m; sourceTree = "<group>"; };
 		3C10CDD42510F2CE00517422 /* BTShareWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTShareWalletVC.h; sourceTree = "<group>"; };
 		3C10CDD52510F2CE00517422 /* BTShareWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTShareWalletVC.m; sourceTree = "<group>"; };
 		3C10CDD62510F2CE00517422 /* BTShareWalletVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTShareWalletVC.xib; sourceTree = "<group>"; };
@@ -1481,6 +1484,8 @@
 				D7429BF425120F42003B04E4 /* BTAssetsModel.m */,
 				D710E594251CA0AF001986FC /* BTLinkTypeModel.h */,
 				D710E595251CA0AF001986FC /* BTLinkTypeModel.m */,
+				3C105D56252F0BED00652331 /* BTMotherCoinModel.h */,
+				3C105D57252F0BED00652331 /* BTMotherCoinModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2034,8 +2039,8 @@
 		D79D73ED2513513A00DE7DF7 /* BTC_K线图 */ = {
 			isa = PBXGroup;
 			children = (
-				D79D73EE2513513A00DE7DF7 /* Y_StockChartView.h */,
 				D79D73EF2513513A00DE7DF7 /* Config */,
+				D79D73EE2513513A00DE7DF7 /* Y_StockChartView.h */,
 				D79D73F82513513A00DE7DF7 /* Y_StockChartView.m */,
 				D79D73F92513513A00DE7DF7 /* KLine */,
 			);
@@ -2750,6 +2755,7 @@
 				D79D735E25134A8200DE7DF7 /* SelectCoinTypeView.m in Sources */,
 				D79D74702513536000DE7DF7 /* EasyShowAlertView.m in Sources */,
 				D79D7452251352A400DE7DF7 /* UIView+LYExtension.m in Sources */,
+				3C105D58252F0BED00652331 /* BTMotherCoinModel.m in Sources */,
 				3C63D457250DD4E0001CEC7D /* BTAssetsViewController.m in Sources */,
 				D79D739F25134DE400DE7DF7 /* HomeNetManager.m in Sources */,
 				D79D737225134A8200DE7DF7 /* commissionModel.m in Sources */,

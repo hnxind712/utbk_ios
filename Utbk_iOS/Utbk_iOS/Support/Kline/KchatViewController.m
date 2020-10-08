@@ -35,25 +35,50 @@
     NSString *_currentResolution;
     NSString *_coin;
 }
+//重新写UI
+@property (weak, nonatomic) IBOutlet UILabel *nowPrice;
+@property (weak, nonatomic) IBOutlet UILabel *CNYLabel;
+@property (weak, nonatomic) IBOutlet UILabel *changeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hightPrice;
+@property (weak, nonatomic) IBOutlet UILabel *LowPrice;
+@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *Hlabel;
+@property (weak, nonatomic) IBOutlet UILabel *Llabel;
+@property (weak, nonatomic) IBOutlet UILabel *Alabel;
+
+@property (weak, nonatomic) IBOutlet UIView *klineheaderTopView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *klineHeight;
+@property (weak, nonatomic) IBOutlet UIView *klineView;
+@property (strong, nonatomic) KlineHeaderCell *header;//头部
+@property (nonatomic, strong) DepthHeader *headerview;//深度、成交
+@property (nonatomic, strong) Y_StockChartView *stockChartView;
+@property (weak, nonatomic) IBOutlet UIView *kTableViewSuper;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableHeight;
+@property (weak, nonatomic) IBOutlet UIView *moreView;
+@property (weak, nonatomic) IBOutlet UIView *indexView;
+@property (strong, nonatomic) KlineCell *klineMenuView;
+@property (strong, nonatomic) UIButton *selectedKlineBtn;//记录当前K线时分图的按钮
+@property (strong, nonatomic) UIButton *selectedIndexBtn;//主图选中
+@property (strong, nonatomic) UIButton *selectedSubBtn;//副图选中
+@property (strong, nonatomic) UIButton *selectedDepthBtn;//成交、深度按钮选中
+
 @property (nonatomic, assign) BOOL isCollect;//是否收藏了
 @property (nonatomic, strong) symbolModel *currentmodel;//获取的当前交易对
 @property (nonatomic, assign) BOOL isDepthMap;//当前显示深度图
-@property (nonatomic, strong) DepthHeader *headerview;
+
 @property (nonatomic, assign) double allDepthbuyAmount;
 @property (nonatomic, assign) double allDepthsellAmount;
 @property (nonatomic, assign) double baseCoinScale;//精确度(小数点后几位)
 @property (nonatomic, assign) double coinScale;
 
 
-@property (nonatomic, strong) Y_StockChartView *stockChartView;
+
 @property (nonatomic, strong) Y_KLineGroupModel *groupModel;
 @property (nonatomic, copy) NSMutableDictionary <NSString*, Y_KLineGroupModel*> *modelsDict;
 @property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, copy) NSString *type;
 @property (weak, nonatomic) IBOutlet UIButton *buyBtn;//买入
 @property (weak, nonatomic) IBOutlet UIButton *sellBtn;//卖出
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomDistance;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDistance;
 @property(nonatomic,strong)NSMutableArray*askContentArray;//卖出
 @property(nonatomic,strong)NSMutableArray*bidContentArray;//买入
 @property(nonatomic,strong)NSMutableArray*tradeNumberArray;//成交记录
@@ -65,7 +90,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupLayout];
+    self.selectedKlineBtn = (UIButton *)[self.view viewWithTag:3];//默认取5分图
+    self.selectedIndexBtn = (UIButton *)[self.view viewWithTag:100];//取MA
+    self.selectedSubBtn = (UIButton *)[self.view viewWithTag:103];//取MACD
+    self.selectedDepthBtn = (UIButton *)[self.view viewWithTag:500];//默认取深度
+    self.tableHeight.constant = (DataRow + 1) * 30;//tableView总高度
     self.collectLabel.text = LocalizationKey(@"addFavo");
+    
     if (self.symbol) {
         _coin = [[self.symbol componentsSeparatedByString:@"/"] firstObject];
         [self.buyBtn setTitle:[NSString stringWithFormat:@"%@%@",LocalizationKey(@"Buy"),_coin] forState:UIControlStateNormal];
@@ -73,12 +105,10 @@
     }
     _currentResolution = @"5";
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    //    self.extendedLayoutIncludesOpaqueBars = YES ;
-    self.isDepthMap=YES;
-//    [self setRightItems];
-    [self RightsetupNavgationItemWithpictureName:@"bigger"];
+    self.isDepthMap = YES;
+    self.title = self.symbol;
+    [self RightsetupNavgationItemWithpictureName:@"icon_zhankai"];
     [self.tableView registerNib:[UINib nibWithNibName:@"KlineCell" bundle:nil] forCellReuseIdentifier:@"KlineCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"KlineHeaderCell" bundle:nil] forCellReuseIdentifier:@"KlineHeaderCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"DepthCell" bundle:nil] forCellReuseIdentifier:@"DepthCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"TradeNumCell" bundle:nil] forCellReuseIdentifier:@"TradeNumCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"DepthmapCell" bundle:nil] forCellReuseIdentifier:@"DepthmapCell"];
@@ -117,11 +147,30 @@
     if ([YLUserInfo isLogIn]) {
         [self getPersonAllCollection];
     }
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:mainColor] forBarMetrics:UIBarMetricsDefault];//去除导航栏黑线
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:NavColor] forBarMetrics:UIBarMetricsDefault];//去除导航栏黑线
     [self.navigationController.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
 }
 
+- (void)configModel:(symbolModel*)model baseCoinScale:(int)baseCoinScale CoinScale:(int)CoinScale{
+    self.nowPrice.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:[model.close doubleValue] withlimit:baseCoinScale]];
 
+    NSDecimalNumber *close = [NSDecimalNumber decimalNumberWithDecimal:[model.close decimalValue]];
+    NSDecimalNumber *baseUsdRate = [NSDecimalNumber decimalNumberWithDecimal:[model.baseUsdRate decimalValue]];
+    self.CNYLabel.text=[NSString stringWithFormat:@"≈%.2f CNY",[[[close decimalNumberByMultiplyingBy:baseUsdRate] decimalNumberByMultiplyingBy:((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate] doubleValue]];
+    self.hightPrice.text= [ToolUtil stringFromNumber:model.high withlimit:baseCoinScale];
+    self.LowPrice.text= [ToolUtil stringFromNumber:model.low withlimit:baseCoinScale];
+    self.numberLabel.text= [ToolUtil stringFromNumber:model.volume withlimit:CoinScale];
+    if (model.change <0) {
+        self.changeLabel.textColor=RedColor;
+        self.nowPrice.textColor=RedColor;
+        self.changeLabel.text= [NSString stringWithFormat:@"%.2f%%", model.chg*100];
+    }else{
+        self.changeLabel.textColor=GreenColor;
+        self.nowPrice.textColor=GreenColor;
+        self.changeLabel.text= [NSString stringWithFormat:@"+%.2f%%",model.chg*100];
+    }
+    
+}
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     //    symbol nil处理
@@ -138,7 +187,7 @@
 }
 
 - (void)setRightItems{
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"bigger"] style:UIBarButtonItemStylePlain target:self action:@selector(RighttouchEvent)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"icon_zhankai"] style:UIBarButtonItemStylePlain target:self action:@selector(RighttouchEvent)];
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     imageView.image = [UIImage imageNamed:@"uncollect"];
@@ -163,6 +212,105 @@
         [self addCollectionWithsymbol:self.symbol];
     }
 }
+- (IBAction)btnClickAction:(UIButton *)sender {
+    if (self.selectedKlineBtn == sender) return;
+    switch (sender.tag) {
+        case 10086:
+            if (self.moreView.hidden) {
+                self.moreView.hidden = NO;
+            }else{
+                self.moreView.hidden = YES;
+            }
+            self.indexView.hidden = YES;
+            return;
+        case 10087:
+            if (self.indexView.hidden) {
+                self.indexView.hidden = NO;
+            }else{
+                self.indexView.hidden = YES;
+            }
+            self.moreView.hidden = YES;
+            return;
+        case 6://15
+        case 7://30
+        case 8://1week
+        case 9://1month
+        {
+            self.moreView.hidden = YES;
+            self.indexView.hidden = YES;
+            UIButton *moreBtn = [self.view viewWithTag:10086];
+            moreBtn.selected = YES;
+            [moreBtn setTitle:sender.currentTitle forState:UIControlStateNormal];
+            break;
+        }
+        default:{
+            UIButton *moreBtn = [self.view viewWithTag:10086];
+            [moreBtn setTitle:LocalizationKey(@"更多") forState:UIControlStateNormal];
+            moreBtn.selected = NO;
+        }
+            break;
+    }
+    sender.selected = YES;
+    self.selectedKlineBtn.selected = NO;
+    self.selectedKlineBtn = sender;
+    NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInteger:sender.tag],@"buttonTag",nil];
+    NSNotification *notification =[NSNotification notificationWithName:@"tongzhi" object:nil userInfo:dict];
+    //通过通知中心发送通知
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+- (IBAction)indexBtn:(UIButton *)sender {
+    if (sender == self.selectedIndexBtn) return;
+     if (sender.tag != 106) {
+         if (sender != self.selectedIndexBtn) {
+             sender.selected = YES;
+             self.selectedIndexBtn.selected =  NO;
+             self.selectedIndexBtn = sender;
+         }
+     }
+//    self.indexBtn.backgroundColor=[UIColor clearColor];
+//    if (sender.tag==106) {//隐藏
+//        [self.mainCurrentBtn setTitleColor:[UIColor mainTextColor] forState:UIControlStateNormal];
+//        [sender setTitleColor:[UIColor mainTextColor] forState:UIControlStateNormal];
+//    }else{
+//        [self.mainCurrentBtn setTitleColor:[UIColor mainTextColor] forState:UIControlStateNormal];
+//        [sender setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
+//        self.mainCurrentBtn=sender;
+//    }
+    self.moreView.hidden = YES;
+    self.indexView.hidden = YES;
+    NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInteger:sender.tag],@"buttonTag",nil];
+    NSNotification *notification =[NSNotification notificationWithName:@"tongzhi" object:nil userInfo:dict];
+    //通过通知中心发送通知
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    
+}
+//副图指标按钮
+- (IBAction)Subgraph:(UIButton *)sender {
+    if (sender == self.selectedSubBtn) return;
+    if (sender.tag != 102) {
+        if (sender != self.selectedSubBtn) {
+            sender.selected = YES;
+            self.selectedSubBtn.selected =  NO;
+            self.selectedSubBtn = sender;
+        }
+    }
+//    self.indexBtn.backgroundColor=[UIColor clearColor];
+//    if (sender.tag==102) {//隐藏
+//        [self.subCurrentBtn setTitleColor:[UIColor mainTextColor] forState:UIControlStateNormal];
+//        [sender setTitleColor:[UIColor mainTextColor] forState:UIControlStateNormal];
+//    }else{
+//        [self.subCurrentBtn setTitleColor:[UIColor mainTextColor] forState:UIControlStateNormal];
+//        [sender setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
+//        self.subCurrentBtn=sender;
+//    }
+    self.moreView.hidden = YES;
+    self.indexView.hidden = YES;
+    NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInteger:sender.tag],@"buttonTag",nil];
+    NSNotification *notification =[NSNotification notificationWithName:@"tongzhi" object:nil userInfo:dict];
+    //通过通知中心发送通知
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    
+}
 
 -(void)RighttouchEvent{
     AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
@@ -173,7 +321,7 @@
     stockChartVC.baseCoinScale = self.baseCoinScale;
     stockChartVC.coinScale = self.coinScale;
     stockChartVC.delegate = self;
-//    stockChartVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    stockChartVC.modalPresentationStyle = UIModalPresentationFullScreen;
 //    stockChartVC.modalPresentationStyle = UIModalPresentationNone;
     [self presentViewController:stockChartVC animated:YES completion:nil];
 }
@@ -207,12 +355,13 @@
 
 //获取成交记录
 -(void)getExchangeNumber{
+    WeakSelf(weakSelf)
     [HomeNetManager latesttradeWithsymbol:self.symbol withSizeSize:20 CompleteHandle:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
         NSLog(@"获取成交记录数据--%@",resPonseObj);
         if ([resPonseObj isKindOfClass:[NSArray class]]) {
-            self.tradeNumberArray = [TradeNumModel mj_objectArrayWithKeyValuesArray:resPonseObj];
-            if (self.tradeNumberArray.count<DataRow) {
+            weakSelf.tradeNumberArray = [TradeNumModel mj_objectArrayWithKeyValuesArray:resPonseObj];
+            if (weakSelf.tradeNumberArray.count<DataRow) {
                 int amount=DataRow-(int)self.tradeNumberArray.count;
                 for (int i=0; i<amount; i++) {
                     TradeNumModel*model=[[TradeNumModel alloc]init];
@@ -220,12 +369,13 @@
                     model.amount=@"-1";
                     model.time=@"-1";
                     model.direction=@"-1";
-                    [self.tradeNumberArray insertObject:model atIndex:self.tradeNumberArray.count];
+                    [weakSelf.tradeNumberArray insertObject:model atIndex:self.tradeNumberArray.count];
                 }
             }else{
-                self.tradeNumberArray = [NSMutableArray arrayWithArray:[self.tradeNumberArray subarrayWithRange:NSMakeRange(0, DataRow)]];
+                weakSelf.tradeNumberArray = [NSMutableArray arrayWithArray:[self.tradeNumberArray subarrayWithRange:NSMakeRange(0, DataRow)]];
             }
-            [self.tableView reloadData];
+            [weakSelf.tableView reloadData];
+            [weakSelf configModel:self.currentmodel baseCoinScale:self.baseCoinScale CoinScale:self.coinScale];
         }
     } ];
 }
@@ -276,7 +426,7 @@
             weakself.bidContentArray = [NSMutableArray arrayWithArray:[weakself.bidContentArray subarrayWithRange:NSMakeRange(0, DataRow)]];
         }
         [weakself.tableView reloadData];
-        
+        [weakself configModel:self.currentmodel baseCoinScale:self.baseCoinScale CoinScale:self.coinScale];
         
     }];
 }
@@ -461,6 +611,30 @@
     long long theTime = [[NSNumber numberWithDouble:nowtime] longLongValue];
     return  [NSString stringWithFormat:@"%llu",theTime];//当前时间的毫秒数
 }
+#pragma mark 重写UI
+- (KlineHeaderCell *)header{
+    if (!_header) {
+        _header = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([KlineHeaderCell class]) owner:nil options:nil].firstObject;
+        _header.backgroundColor = [UIColor redColor];
+    }
+    return _header;
+}
+- (KlineCell *)klineMenuView{
+    if (!_klineMenuView) {
+        _klineMenuView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([KlineCell class]) owner:nil options:nil].firstObject;
+    }
+    return _klineMenuView;
+}
+- (void)setupLayout{
+    [self.klineView addSubview:self.stockChartView];
+    [self.klineView sendSubviewToBack:self.stockChartView];
+    [self.stockChartView mas_makeConstraints:^(MASConstraintMaker *make) {
+        //
+        make.left.right.bottom.offset(0.f);
+        make.top.offset(40.f);
+    }];
+    self.klineHeight.constant = SCREEN_HEIGHT - NavBarHeight - 60 - TabbarSafeBottomMargin - 80;
+}
 - (Y_StockChartView *)stockChartView
 {
     if(!_stockChartView) {
@@ -477,7 +651,7 @@
                                        [Y_StockChartViewItemModel itemModelWithTitle:@"1周" type:Y_StockChartcenterViewTypeKline],
                                        [Y_StockChartViewItemModel itemModelWithTitle:@"1月" type:Y_StockChartcenterViewTypeKline],
                                        ];
-        _stockChartView.backgroundColor = [UIColor orangeColor];
+        _stockChartView.backgroundColor = [UIColor whiteColor];
         _stockChartView.DefalutselectedIndex=3;//默认显示5分钟K线图
         _stockChartView.dataSource = self;
     }
@@ -485,184 +659,96 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section==0) {
-        return 2;
-    }else{
-        return 21;
-    }
+    return 21;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0) {
-        if (indexPath.row==0) {
-            return 80;
-        }else{
-            return SCREEN_HEIGHT - NavBarHeight - 50 - TabbarSafeBottomMargin - 80;
-        }
-    }else{
-        return 30;
-    }
+    return 30;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0) {
+    if (self.isDepthMap) {
         if (indexPath.row==0) {
-            KlineHeaderCell*cell=[tableView dequeueReusableCellWithIdentifier:@"KlineHeaderCell" forIndexPath:indexPath];
-            cell.contentView.backgroundColor=[UIColor backgroundColor];
-            cell.selectionStyle=UITableViewCellSelectionStyleNone;
-            [cell configModel:self.currentmodel baseCoinScale:self.baseCoinScale CoinScale:self.coinScale];
+            NSArray *coinArray = [self.symbol componentsSeparatedByString:@"/"];
+            DepthmapCell*cell=[tableView dequeueReusableCellWithIdentifier:@"DepthmapCell" forIndexPath:indexPath];
+            cell.depthView.hidden=NO;
+            cell.TradeView.hidden=YES;
+            cell.DepthNum.text=[NSString stringWithFormat:@"%@ %@(%@)",LocalizationKey(@"buyplate"),LocalizationKey(@"amount"),[coinArray firstObject]];
+            cell.DepthPrice.text=[NSString stringWithFormat:@"%@(%@)",LocalizationKey(@"price"),[coinArray lastObject]];
+            cell.DepthSellNum.text=[NSString stringWithFormat:@"%@(%@) %@",LocalizationKey(@"amount"),[coinArray firstObject],LocalizationKey(@"sellplate")]; cell.selectionStyle=UITableViewCellSelectionStyleNone;
             return cell;
+            
         }else{
             
-            KlineCell*cell=[tableView dequeueReusableCellWithIdentifier:@"KlineCell" forIndexPath:indexPath];
-            self.stockChartView.frame=CGRectMake(0, 31, SCREEN_WIDTH, cell.frame.size.height-31);
-            cell.contentView.backgroundColor=[UIColor backgroundColor];
-            [cell.contentView addSubview:self.stockChartView];
+            DepthCell*cell=[tableView dequeueReusableCellWithIdentifier:@"DepthCell" forIndexPath:indexPath];
+            cell.BuyIndex.text=[NSString stringWithFormat:@"%ld",indexPath.row];
+            cell.SellIndex.text=[NSString stringWithFormat:@"%ld",indexPath.row];
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
-            [cell.contentView bringSubviewToFront:cell.moreView];
-            [cell.contentView bringSubviewToFront:cell.indView];
-            __weak typeof(self)weakself = self;
-            cell.block = ^(NSInteger tag) {
-                weakself.currentIndex = tag;
-            };
-            return cell;
-        }
-    }else{
-        if (self.isDepthMap) {
-            if (indexPath.row==0) {
-                NSArray *coinArray = [self.symbol componentsSeparatedByString:@"/"];
-                DepthmapCell*cell=[tableView dequeueReusableCellWithIdentifier:@"DepthmapCell" forIndexPath:indexPath];
-                cell.depthView.hidden=NO;
-                cell.TradeView.hidden=YES;
-                cell.DepthNum.text=[NSString stringWithFormat:@"%@ %@(%@)",LocalizationKey(@"buyplate"),LocalizationKey(@"amount"),[coinArray firstObject]];
-                cell.DepthPrice.text=[NSString stringWithFormat:@"%@(%@)",LocalizationKey(@"price"),[coinArray lastObject]];
-                cell.DepthSellNum.text=[NSString stringWithFormat:@"%@(%@) %@",LocalizationKey(@"amount"),[coinArray firstObject],LocalizationKey(@"sellplate")]; cell.selectionStyle=UITableViewCellSelectionStyleNone;
-                return cell;
-                
-            }else{
-                
-                DepthCell*cell=[tableView dequeueReusableCellWithIdentifier:@"DepthCell" forIndexPath:indexPath];
-                cell.BuyIndex.text=[NSString stringWithFormat:@"%ld",indexPath.row];
-                cell.SellIndex.text=[NSString stringWithFormat:@"%ld",indexPath.row];
-                cell.selectionStyle=UITableViewCellSelectionStyleNone;
-                if (self.bidContentArray.count > 0 && self.askContentArray.count > 0) {
-                    plateModel*buymodel=self.bidContentArray[indexPath.row-1];
-                    plateModel*Sellmodel=self.askContentArray[indexPath.row-1];
-                    [cell config:buymodel withmodel:Sellmodel widthcoinScale:self.coinScale baseCoinScale:self.baseCoinScale];
-                    if (buymodel.amount>=0 && self.allDepthbuyAmount>0) {
-                        cell.buyWidth.constant=buymodel.totalAmount/self.allDepthbuyAmount*SCREEN_WIDTH/2;
-                    }else{
-                        cell.buyWidth.constant=0;
-                    }
-                    if (Sellmodel.amount>=0 && self.allDepthsellAmount>0) {
-                        cell.sellWidth.constant=Sellmodel.totalAmount/self.allDepthsellAmount*SCREEN_WIDTH/2;
-                    }else{
-                        cell.sellWidth.constant=0;
-                    }
+            if (self.bidContentArray.count > 0 && self.askContentArray.count > 0) {
+                plateModel*buymodel=self.bidContentArray[indexPath.row-1];
+                plateModel*Sellmodel=self.askContentArray[indexPath.row-1];
+                [cell config:buymodel withmodel:Sellmodel widthcoinScale:self.coinScale baseCoinScale:self.baseCoinScale];
+                if (buymodel.amount>=0 && self.allDepthbuyAmount>0) {
+                    cell.buyWidth.constant=buymodel.totalAmount/self.allDepthbuyAmount*SCREEN_WIDTH/2;
                 }else{
                     cell.buyWidth.constant=0;
+                }
+                if (Sellmodel.amount>=0 && self.allDepthsellAmount>0) {
+                    cell.sellWidth.constant=Sellmodel.totalAmount/self.allDepthsellAmount*SCREEN_WIDTH/2;
+                }else{
                     cell.sellWidth.constant=0;
                 }
-                return cell;
-            }
-            
-        }else{
-            if (indexPath.row==0) {
-                NSArray *coinArray = [self.symbol componentsSeparatedByString:@"/"];
-                DepthmapCell*cell=[tableView dequeueReusableCellWithIdentifier:@"DepthmapCell" forIndexPath:indexPath];
-                cell.depthView.hidden=YES;
-                cell.TradeView.hidden=NO;
-                cell.tradePrice.text=[NSString stringWithFormat:@"%@(%@)",LocalizationKey(@"price"),[coinArray lastObject]];
-                cell.tradeNum.text=[NSString stringWithFormat:@"%@(%@)",LocalizationKey(@"amount"),[coinArray firstObject]];
-                cell.timeLbel.text=LocalizationKey(@"depthtime");
-                cell.directionLabel.text=LocalizationKey(@"depthDirection");
-                
-                return cell;
             }else{
-                TradeNumCell*cell=[tableView dequeueReusableCellWithIdentifier:@"TradeNumCell" forIndexPath:indexPath];
-                if (self.tradeNumberArray.count>0) {
-                    TradeNumModel*model=self.tradeNumberArray[indexPath.row-1];
-                    [cell configmodel:model widthcoinScale:self.coinScale baseCoinScale:self.baseCoinScale];
-                }
-                
-                cell.selectionStyle=UITableViewCellSelectionStyleNone;
-                return cell;
+                cell.buyWidth.constant=0;
+                cell.sellWidth.constant=0;
             }
+            return cell;
         }
-    }
-}
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section==1) {
-        return 0.01;
+        
     }else{
-        return 50;
-    }
-}
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    
-    if (section==1) {
-        UIView *view = [[UIView alloc] init];
-        view.backgroundColor = mainColor;
-        return view;
-    }else{
-        self.headerview=[DepthHeader instancetableHeardViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
-        [self.headerview.deepthBtn addTarget:self action:@selector(TouchEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [self.headerview.tradeBtn addTarget:self action:@selector(TouchEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [self.headerview.deepthBtn setTitle:LocalizationKey(@"depth") forState:UIControlStateNormal];
-        [self.headerview.tradeBtn setTitle:LocalizationKey(@"marketTrades") forState:UIControlStateNormal];
-        self.headerview.backgroundColor=[UIColor backgroundColor];
-        self.headerview.lineView.backgroundColor=[UIColor ma30Color];
-        if (!self.isDepthMap) {
-            [self.headerview.deepthBtn setTitleColor:kRGBColor(102, 102, 102) forState:UIControlStateNormal];
-            [self.headerview.tradeBtn setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
-            self.headerview.lineView.hidden = YES;
-            self.headerview.lineview2.hidden = NO;
+        if (indexPath.row==0) {
+            NSArray *coinArray = [self.symbol componentsSeparatedByString:@"/"];
+            DepthmapCell*cell=[tableView dequeueReusableCellWithIdentifier:@"DepthmapCell" forIndexPath:indexPath];
+            cell.depthView.hidden=YES;
+            cell.TradeView.hidden=NO;
+            cell.tradePrice.text=[NSString stringWithFormat:@"%@(%@)",LocalizationKey(@"price"),[coinArray lastObject]];
+            cell.tradeNum.text=[NSString stringWithFormat:@"%@(%@)",LocalizationKey(@"amount"),[coinArray firstObject]];
+            cell.timeLbel.text=LocalizationKey(@"depthtime");
+            cell.directionLabel.text=LocalizationKey(@"depthDirection");
             
+            return cell;
         }else{
-            [self.headerview.deepthBtn setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
-            [self.headerview.tradeBtn setTitleColor:kRGBColor(102, 102, 102) forState:UIControlStateNormal];
-            self.headerview.lineView.hidden = NO;
-            self.headerview.lineview2.hidden = YES;
+            TradeNumCell*cell=[tableView dequeueReusableCellWithIdentifier:@"TradeNumCell" forIndexPath:indexPath];
+            if (self.tradeNumberArray.count>0) {
+                TradeNumModel*model=self.tradeNumberArray[indexPath.row-1];
+                [cell configmodel:model widthcoinScale:self.coinScale baseCoinScale:self.baseCoinScale];
+            }
+            
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            return cell;
         }
-        return self.headerview;
     }
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    return 0.01;
-}
-
 //点击事件
--(void)TouchEvent:(UIButton*)sender{
-    if (sender.tag==0) {
+- (IBAction)TouchEvent:(UIButton*)sender{
+    if (sender == self.selectedDepthBtn) return;
+    sender.selected = YES;
+    self.selectedDepthBtn.selected = NO;
+    self.selectedDepthBtn = sender;
+    if (sender.tag == 500) {
         //深度图
-        self.isDepthMap=YES;
-        [self.headerview.deepthBtn setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
-        [self.headerview.tradeBtn setTitleColor:kRGBColor(102, 102, 102) forState:UIControlStateNormal];
-        
-        self.headerview.lineView.hidden = NO;
-        self.headerview.lineview2.hidden = YES;
-        [EasyShowLodingView showLodingText:LocalizationKey(@"loading")];
-        
+        self.isDepthMap = YES;
         [self getplatefull];
     }else{
         //成交量
-        self.isDepthMap=NO;
-        [self.headerview.deepthBtn setTitleColor:kRGBColor(102, 102, 102) forState:UIControlStateNormal];
-        [self.headerview.tradeBtn setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
-        self.headerview.lineView.hidden = YES;
-        self.headerview.lineview2.hidden = NO;
-        [EasyShowLodingView showLodingText:LocalizationKey(@"loading")];
+        self.isDepthMap = NO;
         [self getExchangeNumber];
     }
-    
 }
 
 - (IBAction)btnClick:(UIButton *)sender {
@@ -824,7 +910,7 @@
                 NSArray *dataArr = [symbolModel mj_objectArrayWithKeyValuesArray:symbolArray];
                 [dataArr enumerateObjectsUsingBlock:^(symbolModel* obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     if ([obj.symbol isEqualToString:self.symbol]) {
-                        self.collectIamgeV.image = BTUIIMAGE(@"collect");
+                        self.collectIamgeV.image = BTUIIMAGE(@"icon_colletion");
                         self.collectLabel.text=LocalizationKey(@"deleteFavo");
                         _isCollect=YES;
                         *stop = YES;
@@ -848,7 +934,7 @@
     [MarketNetManager addMyCollectionWithsymbol:symbol CompleteHandle:^(id resPonseObj, int code) {
         if (code) {
             if ([resPonseObj[@"code"] integerValue] == 0) {
-                self.collectIamgeV.image = BTUIIMAGE(@"collect");
+                self.collectIamgeV.image = BTUIIMAGE(@"icon_colletion");
                 self.collectLabel.text=LocalizationKey(@"deleteFavo");
                 _isCollect=YES;
             }else{

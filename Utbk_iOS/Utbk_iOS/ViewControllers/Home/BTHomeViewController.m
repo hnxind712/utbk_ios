@@ -32,6 +32,7 @@
 #import "KchatViewController.h"
 #import "BTUpdateVersionView.h"
 #import "VersionUpdateModel.h"
+#import "marketManager.h"
 
 #define KBottomTopHeight 40.f //主板区标签对应的高度间隔
 #define KRiseFallCellHeight 60.f
@@ -57,6 +58,13 @@
 @property (strong, nonatomic) LYEmptyView *emptyView;
 @property (strong, nonatomic) BTAssetsModel *assetModel;//母币充币时需要
 @property (strong, nonatomic) BTUpdateVersionView *versionView;//版本更新
+@property (assign, nonatomic) BOOL isShowAll;//是否全部显示
+@property (weak, nonatomic) IBOutlet UIButton *onCurrencyBtn;//上币
+@property (weak, nonatomic) IBOutlet UIButton *raceBtn;//夺宝
+@property (weak, nonatomic) IBOutlet UIButton *marketBtn;//商城
+@property (weak, nonatomic) IBOutlet UIButton *gameBtn;//游戏
+@property (weak, nonatomic) IBOutlet UIButton *deBtn;//DEFi专区
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuHeight;
 
 @end
 
@@ -136,7 +144,7 @@
     [self addRightNavigation];
     [self addLeftNavigation];
     [self headRefreshWithScrollerView:self.mainScrollView];
-//    [self refreshHeaderAction];//直接拉取数据
+    [self refreshHeaderAction];//直接拉取数据
     NSLog(@"私钥 = %@",[YLUserInfo shareUserInfo].ID);
     [self versionUpdate];//更新
     // Do any additional setup after loading the view from its nib.
@@ -148,7 +156,30 @@
     [self getNotice];
     [self getData];
     [self setupBind];
-//    [self getDefaultSymbol];
+    [self getDefaultSymbol];
+}
+#pragma mark 获取默认交易对
+- (void)getDefaultSymbol{
+    __weak typeof(self)weakself = self;
+    NSString *url = [NSString stringWithFormat:@"%@%@",HOST, @"market/default/symbol"];
+    [[XBRequest sharedInstance] getDataWithUrl:url Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+        NSLog(@"获取默认交易对 ---- %@",responseResult);
+        if ([responseResult objectForKey:@"resError"]) {
+            NSError *error = responseResult[@"resError"];
+            [weakself.view makeToast:error.localizedDescription];
+        }else{
+            if ([responseResult[@"code"] integerValue] == 0) {
+                if (responseResult[@"data"] && [responseResult[@"data"] isKindOfClass:[NSDictionary class]]) {
+                    NSDictionary *data = responseResult[@"data"];
+                    if (![marketManager shareInstance].symbol) {
+                        [marketManager shareInstance].symbol = data[@"app"];//默认第一个
+                    }
+                }
+            }else{
+                [weakself.view makeToast:responseResult[@"message"]];
+            }
+        }
+    }];
 }
 //MARK:--版本更新接口请求
 -(void)versionUpdate{
@@ -354,6 +385,9 @@
     if (![YLUserInfo shareUserInfo].isSetPw) {//如果没有设置交易密码，则必须先设置
         [self.payPasswordPopView show];
     }
+    if (![self.walletBtn.currentTitle containsString:[YLUserInfo shareUserInfo].username]) {//如果是当前账户则不再处理
+        [self.walletBtn setTitle:[NSString stringWithFormat:@"%@%@",LocalizationKey(@"当前钱包："),[YLUserInfo shareUserInfo].username] forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark buttonAction
@@ -378,10 +412,11 @@
             [self.navigationController pushViewController:transifer animated:YES];
         }
             break;
-        case 103://上币
+        case 103://邀请激活
         {
-            BTOnCurrencyVC *onCurrency = [[BTOnCurrencyVC alloc]init];
-            [self.navigationController pushViewController:onCurrency animated:YES];
+            BTInvitationActivityVC *invitation = [[BTInvitationActivityVC alloc]init];
+            [self.navigationController pushViewController:invitation animated:YES];
+
         }
             break;
         case 104://矿池
@@ -398,13 +433,27 @@
             break;
         case 106://社区
         {
-            
+            [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
         }
             break;
-        case 107://邀请激活
+        case 107://上币
         {
-            BTInvitationActivityVC *invitation = [[BTInvitationActivityVC alloc]init];
-            [self.navigationController pushViewController:invitation animated:YES];
+            if (!self.isShowAll) {
+                self.isShowAll = YES;
+                self.menuHeight.constant = 240.f;
+                [sender setTitle:LocalizationKey(@"上币") forState:UIControlStateNormal];
+                [sender setImage:BTUIIMAGE(@"icon_onCurrency") forState:UIControlStateNormal];
+                [UIView animateWithDuration:0.4 animations:^{
+                    [self.view layoutIfNeeded];
+                }];
+                self.deBtn.hidden = NO;
+                self.gameBtn.hidden = NO;
+                self.marketBtn.hidden = NO;
+                self.raceBtn.hidden = NO;
+            }else{
+                BTOnCurrencyVC *onCurrency = [[BTOnCurrencyVC alloc]init];
+                [self.navigationController pushViewController:onCurrency animated:YES];
+            }
         }
             break;
         case 108://夺宝
@@ -415,12 +464,12 @@
             break;
         case 110://游戏
         {
-            
+            [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
         }
             break;
         case 111://DeFi专区
         {
-            
+            [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
         }
             break;
         default:

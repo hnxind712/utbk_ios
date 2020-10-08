@@ -68,7 +68,7 @@
 }
 - (void)setupBind{
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"apiKey"] = KTempSecretKey;
+    params[@"apiKey"] = [YLUserInfo shareUserInfo].secretKey;
     params[@"pageNo"] = @(_pageNo);
     params[@"pageSize"] = @(KPageSize);
     params[@"type"] = @(3);//收益

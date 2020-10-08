@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "symbolModel.h"
-@interface KlineHeaderCell : UITableViewCell
+@interface KlineHeaderCell : UIView
+
 @property (weak, nonatomic) IBOutlet UILabel *nowPrice;
 @property (weak, nonatomic) IBOutlet UILabel *CNYLabel;
 @property (weak, nonatomic) IBOutlet UILabel *changeLabel;

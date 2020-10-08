@@ -41,7 +41,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.rowHeight=55;
     self.tableView.tableFooterView=[UIView new];
-     [_defalutBtn setTitleColor:NavColor forState:UIControlStateNormal];
+     [_defalutBtn setTitleColor:RGBOF(0xA78659) forState:UIControlStateNormal];
     LYEmptyView*emptyView=[LYEmptyView emptyViewWithImageStr:@"no" titleStr:LocalizationKey(@"noDada")];
     self.tableView.ly_emptyView = emptyView;
     // 添加从左划入的功能
@@ -152,7 +152,7 @@
     
     if (sender!=_currentBtn) {
         [_currentBtn setTitleColor:AppTextColor_333333 forState:UIControlStateNormal];
-        [sender setTitleColor:NavColor forState:UIControlStateNormal];
+        [sender setTitleColor:RGBOF(0xA78659) forState:UIControlStateNormal];
         _currentBtn=sender;
         self.viewType=sender.tag;
         [self.tableView reloadData];

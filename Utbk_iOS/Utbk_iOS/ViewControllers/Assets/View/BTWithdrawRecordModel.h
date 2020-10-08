@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @class Coin;
 @interface BTWithdrawRecordModel : NSObject
+
 @property (nonatomic,copy)NSString *ID;
 @property (nonatomic,copy)NSString *memberId;
 @property (nonatomic,copy)NSString *totalAmount;
@@ -24,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *remark;
 @property (nonatomic,assign)NSInteger status;
 @property (nonatomic,strong)Coin *coin;
+
 @end
 
 @interface Coin : NSObject;

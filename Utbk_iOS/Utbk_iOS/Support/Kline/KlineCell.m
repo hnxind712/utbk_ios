@@ -27,15 +27,15 @@
     [self.btn13 setTitle:LocalizationKey(@"thirtymin") forState:UIControlStateNormal];
     [self.moreBtn setTitle:LocalizationKey(@"morekline") forState:UIControlStateNormal];
     [self.indexBtn setTitle:LocalizationKey(@"index") forState:UIControlStateNormal];
-    self.moreView.backgroundColor=mainColor;
-    self.indView.backgroundColor=mainColor;
+    self.moreView.backgroundColor = NavColor;
+    self.indView.backgroundColor = NavColor;
     self.mainCurrentBtn=self.maBtn;
     self.subCurrentBtn=self.macdBtn;
     self.KlineCurrentBtn=self.timeLineBtn;
     [self.maBtn setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
     [self.macdBtn setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
     [self.timeLineBtn setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
-    self.lineView.backgroundColor=mainColor;
+    self.lineView.backgroundColor = NavColor;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.klineView=[[UIView alloc]initWithFrame:CGRectMake(0, 30, self.timeLineBtn.mj_w/2, 1)];
         self.klineView.centerX=self.timeLineBtn.centerX;
@@ -54,11 +54,11 @@
     self.moreBtn.backgroundColor=[UIColor clearColor];
     self.indexBtn.backgroundColor=[UIColor clearColor];
 }
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
-}
+//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+//    [super setSelected:selected animated:animated];
+//
+//    // Configure the view for the selected state
+//}
 
 - (void)setSelIndexBtn:(NSInteger)selIndexBtn{
     _selIndexBtn = selIndexBtn;

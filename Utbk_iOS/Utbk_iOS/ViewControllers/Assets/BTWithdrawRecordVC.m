@@ -9,6 +9,7 @@
 #import "BTWithdrawRecordVC.h"
 #import "BTWithdrawRecordCell.h"
 #import "BTWithdrawRecordModel.h"
+#import "BTMotherCoinModel.h"
 #import "BTWithdrawRecordDetailVC.h"
 #import "MineNetManager.h"
 #import "LYEmptyView.h"
@@ -81,8 +82,12 @@
         [self rechargeData:bodydic];
     }else if(self.recordType == KRecordTypeWithdraw){
         [self withdrawData:bodydic];
-    }else{//流水记录
+    }else if(self.recordType == KRecordTypeOther){//流水记录
         
+    }else if (self.recordType == KRecordTypeMotherCoinTransfer){
+        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+        [bodydic removeObjectForKey:@"page"];
+        [self getMotherTransferRecord:bodydic];
     }
 
 }
@@ -137,6 +142,20 @@
         }
     }];
 }
+- (void)getMotherTransferRecord:(NSDictionary *)params{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]postDataWithUrl:pageMotherCoinLogsAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            if (weakSelf.currentPage == 0) {
+                [weakSelf.datasource removeAllObjects];
+            }
+            NSArray *dataArr = [BTMotherCoinModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"][@"content"]];
+            [weakSelf.datasource addObjectsFromArray:dataArr];
+            weakSelf.tableView.ly_emptyView = self.emptyView;
+            [weakSelf.tableView reloadData];
+        }
+    }];
+}
 #pragma mark tableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.datasource.count;
@@ -144,17 +163,34 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTWithdrawRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTWithdrawRecordCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    BTWithdrawRecordModel *model = self.datasource[indexPath.row];
-    [cell configureCellWithRecordModel:model];
-    WeakSelf(weakSelf)
-    cell.recordDetailAction = ^{
-        StrongSelf(strongSelf)
-        if (strongSelf.recordType == KRecordTypeOther) return;//暂时不需跳转
-        BTWithdrawRecordDetailVC *detail = [[BTWithdrawRecordDetailVC alloc]init];
-        detail.index = self.recordType;
-        detail.recordModel = model;
-        [strongSelf.navigationController pushViewController:detail animated:YES];
-    };
+    if (self.recordType == KRecordTypeWithdraw) {
+            BTWithdrawRecordModel *model = self.datasource[indexPath.row];
+        [cell configureCellWithRecordModel:model];
+        WeakSelf(weakSelf)
+        cell.recordDetailAction = ^{
+            StrongSelf(strongSelf)
+            if (strongSelf.recordType == KRecordTypeWithdraw) {//暂时不需跳转
+                BTWithdrawRecordDetailVC *detail = [[BTWithdrawRecordDetailVC alloc]init];
+                detail.index = self.recordType;
+                detail.recordModel = model;
+                [strongSelf.navigationController pushViewController:detail animated:YES];
+            }
+        };
+    }else if (self.recordType == KRecordTypeMotherCoinTransfer){//原始母币转账
+        BTMotherCoinModel *model = self.datasource[indexPath.row];
+        [cell configureCellWithMotherTransferRecordModel:model];
+        WeakSelf(weakSelf)
+//        cell.recordDetailAction = ^{
+//            StrongSelf(strongSelf)
+//            if (strongSelf.recordType == KRecordTypeWithdraw) {//暂时不需跳转
+//                BTWithdrawRecordDetailVC *detail = [[BTWithdrawRecordDetailVC alloc]init];
+//                detail.index = self.recordType;
+//                detail.recordModel = model;
+//                [strongSelf.navigationController pushViewController:detail animated:YES];
+//            }
+//        };
+    }
+
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

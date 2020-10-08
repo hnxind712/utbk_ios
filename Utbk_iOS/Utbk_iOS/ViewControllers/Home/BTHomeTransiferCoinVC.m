@@ -8,8 +8,9 @@
 
 #import "BTHomeTransiferCoinVC.h"
 #import "STQRCodeController.h"
+#import "BTWithdrawRecordVC.h"
 
-@interface BTHomeTransiferCoinVC ()<STQRCodeControllerDelegate>
+@interface BTHomeTransiferCoinVC ()<STQRCodeControllerDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *addressInput;
 @property (weak, nonatomic) IBOutlet UITextField *coinCountInput;
@@ -17,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *balance;
 @property (weak, nonatomic) IBOutlet UILabel *fee;
 @property (weak, nonatomic) IBOutlet UILabel *tips;
+@property (assign, nonatomic) CGFloat feeRate;//旷工费
 
 @end
 
@@ -27,6 +29,8 @@
     self.title = LocalizationKey(@"转币");
     [self addRightNavigation];
     [self setupBind];
+    self.coinCountInput.keyboardType = UIKeyboardTypeDecimalPad;
+    [self.coinCountInput addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -38,7 +42,17 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
 - (void)transferRecordAction{
-    
+    BTWithdrawRecordVC *withdraw = [[BTWithdrawRecordVC alloc]init];
+    withdraw.recordType = KRecordTypeMotherCoinTransfer;
+    [self.navigationController pushViewController:withdraw animated:YES];
+}
+
+-(void)textFieldDidChange :(UITextField *)textField{
+    if (!textField.text.length) {
+        self.fee.text = @"0";
+    }else{
+        self.fee.text = [NSString stringWithFormat:@"%.2f",self.feeRate * textField.text.doubleValue];
+    }
 }
 - (void)setupBind{
     WeakSelf(weakSelf)
@@ -47,8 +61,11 @@
         if (NetSuccess) {
             if ([responseResult[@"data"]isKindOfClass:[NSNull class]]) {
                 strongSelf.balance.text = @"0.00";
-            }else
+                strongSelf.fee.text = @"0";
+            }else{
                 strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%@",responseResult[@"data"][@"balance"]]];
+                strongSelf.feeRate = [responseResult[@"data"][@"rate"]doubleValue];
+            }
         }
     }];
 }
@@ -63,6 +80,9 @@
 }
 //全部输入
 - (IBAction)inputAllCoinAccountAction:(UIButton *)sender {
+    if (self.balance.text.doubleValue) {
+        self.coinCountInput.text = self.balance.text;
+    }
 }
 //显示密码
 - (IBAction)showTradePasswordAction:(UIButton *)sender {
@@ -70,6 +90,27 @@
     _tradePasswordInput.secureTextEntry = sender.selected;
 }
 - (IBAction)confirmAction:(UIButton *)sender {
+    if (!_addressInput.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入收币账户地址") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (!_coinCountInput.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入转币数量") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    if (!_tradePasswordInput.text.length) {
+        [self.view makeToast:LocalizationKey(@"请输入交易密码") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"address"] = self.addressInput.text;
+    params[@"amount"] = self.coinCountInput.text;
+    params[@"jyPassword"] = self.tradePasswordInput.text;
+    [[XBRequest sharedInstance]postDataWithUrl:mothertransferAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
+        [self.view makeToast:responseResult[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+        if (NetSuccess) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        }
+    }];
 }
 /*
 #pragma mark - Navigation

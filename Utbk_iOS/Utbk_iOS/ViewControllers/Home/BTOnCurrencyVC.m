@@ -71,6 +71,28 @@
     if (!_markingBudget.text.length) {
         [self.view makeToast:LocalizationKey(@"请输入营销预算") duration:ToastHideDelay position:ToastPosition];return;
     }
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"contentName"] = self.name.text;
+    params[@"contentPhone"] = self.phoneNum.text;
+    params[@"coinCnName"] = self.chineseName.text;
+    params[@"coinEnName"] = self.englishName.text;
+    params[@"total"] = self.circulation.text;
+    params[@"marketFlow"] = self.discharge.text;
+    params[@"projectIntroduce"] = self.subjectDescription.text;
+    params[@"communityPeople"] = self.userCount.text;
+    params[@"markBudget"] = self.markingBudget.text;
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]postDataWithUrl:saveUpCoinApplyAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
+        StrongSelf(strongSelf)
+        [strongSelf.view makeToast:responseResult[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+        if (NetSuccess) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [strongSelf.navigationController popViewControllerAnimated:YES];
+            });
+        }else{
+            ErrorToast
+        }
+    }];
 }
 /*
 #pragma mark - Navigation

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,8 +14,14 @@
                 <outlet property="bottomViewHeight" destination="vnN-7m-Jt4" id="58m-Nz-7qg"/>
                 <outlet property="coinCount" destination="Y9A-BB-TQ6" id="OAm-6F-ut0"/>
                 <outlet property="convertCount" destination="iq4-dX-W4D" id="4eQ-we-hfn"/>
+                <outlet property="deBtn" destination="e11-wS-L3a" id="Dbq-UP-B7B"/>
+                <outlet property="gameBtn" destination="BPS-xC-Ume" id="czY-r4-zJo"/>
                 <outlet property="mainBtn" destination="AfO-OB-ah1" id="jT5-Af-l2a"/>
                 <outlet property="mainScrollView" destination="6qo-Bw-NiS" id="85W-wA-P6a"/>
+                <outlet property="marketBtn" destination="3gx-Xf-Zgj" id="ubA-gP-ZjK"/>
+                <outlet property="menuHeight" destination="2aN-n2-EP5" id="giy-cB-NNF"/>
+                <outlet property="onCurrencyBtn" destination="S38-R6-9Ko" id="xEA-Ro-hUH"/>
+                <outlet property="raceBtn" destination="Mlq-kW-a9D" id="eiM-cx-1j7"/>
                 <outlet property="riseFallBtn" destination="Lbn-Gz-cpt" id="DaL-ZC-iT2"/>
                 <outlet property="tableView" destination="6h6-OE-sSD" id="0Bd-zP-vsa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -129,7 +135,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLm-YB-Mn8">
-                            <rect key="frame" x="12" y="250" width="390" height="239.5"/>
+                            <rect key="frame" x="12" y="250" width="390" height="160"/>
                             <subviews>
                                 <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4O-vv-jGr">
                                     <rect key="frame" x="20" y="15" width="58" height="60"/>
@@ -185,7 +191,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <inset key="titleEdgeInsets" minX="-45" minY="50" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="7" minY="-16" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="上币" image="icon_onCurrency">
+                                    <state key="normal" title="邀请激活" image="icon_collectCoins">
                                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
@@ -212,7 +218,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <inset key="titleEdgeInsets" minX="-44" minY="50" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="7" minY="-16" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="邀请激活" image="icon_collectCoins">
+                                    <state key="normal" title="更多" image="icon_hMore">
                                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
@@ -276,7 +282,7 @@
                                         <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="xd2-fL-Btl"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e11-wS-L3a">
+                                <button hidden="YES" opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e11-wS-L3a">
                                     <rect key="frame" x="312" y="164.5" width="58" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="60" id="p98-E5-h5n"/>
@@ -291,7 +297,7 @@
                                         <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="fH9-FX-fwe"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="109" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gx-Xf-Zgj">
+                                <button hidden="YES" opaque="NO" tag="109" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gx-Xf-Zgj">
                                     <rect key="frame" x="117.5" y="164.5" width="58" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="60" id="VcX-Og-XqZ"/>
@@ -306,7 +312,7 @@
                                         <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="7A0-af-4Ir"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="110" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPS-xC-Ume">
+                                <button hidden="YES" opaque="NO" tag="110" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPS-xC-Ume">
                                     <rect key="frame" x="214.5" y="164.5" width="58" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="60" id="5W4-R8-c3E"/>
@@ -321,7 +327,7 @@
                                         <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="eAB-Mm-Nl1"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mlq-kW-a9D">
+                                <button hidden="YES" opaque="NO" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mlq-kW-a9D">
                                     <rect key="frame" x="20" y="164.5" width="58" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="60" id="Ard-A9-WBO"/>
@@ -341,6 +347,7 @@
                             <constraints>
                                 <constraint firstItem="lCB-t5-6dU" firstAttribute="centerY" secondItem="l4O-vv-jGr" secondAttribute="centerY" id="1Mp-fN-B1L"/>
                                 <constraint firstItem="Rvk-Qb-WWJ" firstAttribute="centerY" secondItem="l4O-vv-jGr" secondAttribute="centerY" id="1YY-g0-WK7"/>
+                                <constraint firstAttribute="height" constant="160" id="2aN-n2-EP5"/>
                                 <constraint firstItem="8gv-zP-tj6" firstAttribute="height" secondItem="gmY-bl-Loa" secondAttribute="height" id="3mL-tI-Lqo"/>
                                 <constraint firstItem="Qwo-Pe-2Jj" firstAttribute="leading" secondItem="Zel-Fe-2DL" secondAttribute="trailing" id="4ay-eQ-Hfo"/>
                                 <constraint firstItem="Zel-Fe-2DL" firstAttribute="leading" secondItem="Wm5-yz-GVt" secondAttribute="trailing" id="5B6-8Q-iF1"/>
@@ -369,7 +376,6 @@
                                 <constraint firstItem="S38-R6-9Ko" firstAttribute="leading" secondItem="8gv-zP-tj6" secondAttribute="trailing" id="dKJ-fi-Mth"/>
                                 <constraint firstItem="kpp-Xs-u1E" firstAttribute="leading" secondItem="2UZ-CA-qab" secondAttribute="trailing" id="dQ4-9m-ESe"/>
                                 <constraint firstItem="l4O-vv-jGr" firstAttribute="top" secondItem="tLm-YB-Mn8" secondAttribute="top" constant="15" id="dWa-oz-p4P"/>
-                                <constraint firstAttribute="bottom" secondItem="Mlq-kW-a9D" secondAttribute="bottom" constant="15" id="dcc-9g-Fdn"/>
                                 <constraint firstItem="2UZ-CA-qab" firstAttribute="height" secondItem="gmY-bl-Loa" secondAttribute="height" id="eG0-GE-LmG"/>
                                 <constraint firstItem="l4O-vv-jGr" firstAttribute="leading" secondItem="tLm-YB-Mn8" secondAttribute="leading" constant="20" id="eHK-zo-Dfv"/>
                                 <constraint firstItem="BPS-xC-Ume" firstAttribute="centerX" secondItem="kpp-Xs-u1E" secondAttribute="centerX" id="hdQ-pC-DsG"/>
@@ -407,7 +413,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_adBg" translatesAutoresizingMaskIntoConstraints="NO" id="az4-Mj-agN">
-                            <rect key="frame" x="12" y="494.5" width="390" height="70"/>
+                            <rect key="frame" x="12" y="415" width="390" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="70" id="bpK-GF-QHn"/>
                             </constraints>
@@ -418,7 +424,7 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bni-o0-WM0">
-                            <rect key="frame" x="12" y="569.5" width="390" height="314"/>
+                            <rect key="frame" x="12" y="490" width="390" height="314"/>
                             <subviews>
                                 <button opaque="NO" tag="108" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfO-OB-ah1">
                                     <rect key="frame" x="12" y="12" width="49" height="16"/>
@@ -514,8 +520,8 @@
         <image name="icon_collectCoins" width="44" height="44"/>
         <image name="icon_community" width="44" height="44"/>
         <image name="icon_game" width="44" height="44"/>
+        <image name="icon_hMore" width="44" height="44"/>
         <image name="icon_indexbj" width="220" height="70.5"/>
-        <image name="icon_onCurrency" width="44" height="44"/>
         <image name="icon_pool" width="44" height="44"/>
         <image name="icon_snatchTreasure" width="44" height="44"/>
         <image name="icon_store" width="44" height="44"/>

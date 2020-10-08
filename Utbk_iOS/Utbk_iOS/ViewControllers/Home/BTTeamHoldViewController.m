@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *regionHold;//大区总持
 @property (weak, nonatomic) IBOutlet UILabel *communityHold;//小区总持
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) UITableView *datasource;
+@property (strong, nonatomic) NSArray *datasource;
 
 @end
 
@@ -31,6 +31,7 @@
     self.title = LocalizationKey(@"团队持仓");
     [self addRightNavigation];
     [self setupLayout];
+    [self setupBind];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)setupLayout{
@@ -49,17 +50,39 @@
     [btn sizeToFit];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
+- (void)setupBind{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]postDataWithUrl:getTeamInfoAllAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            StrongSelf(strongSelf)
+            strongSelf.myHold.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"myBTCK"]];
+            strongSelf.totalAddressCount.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"allAddress"]];
+            strongSelf.totalDeviceCount.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"allDevices"]];
+            strongSelf.teamHold.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"allChicang"]];
+            strongSelf.regionHold.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"daChicang"]];
+            strongSelf.communityHold.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"xiaoquChicang"]];
+        }
+    }];
+    [[XBRequest sharedInstance]postDataWithUrl:getTeamMembersAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            StrongSelf(strongSelf)
+            strongSelf.datasource = [BTTeamHoldModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+            [strongSelf.tableView reloadData];
+        }
+    }];
+}
 - (void)teamHoldAction{
     BTCurrencyViewController *currency = [[BTCurrencyViewController alloc]init];
     currency.index = 1;
     [self.navigationController pushViewController:currency animated:YES];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.datasource.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTTeamHoldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTTeamHoldTableViewCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell configureCellWithModel:self.datasource[indexPath.row]];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -105,7 +105,9 @@
     cell.switchAccountAction = ^{
         if (model == self.currentInfo) return;
         if (model.secretKey.length) {
+            [EasyShowLodingView showLodingText:LocalizationKey(@"正在切换钱包")];
             [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":@"",@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
+                [EasyShowLodingView hidenLoding];
                 StrongSelf(strongSelf)
                 if (NetSuccess) {
                     YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];

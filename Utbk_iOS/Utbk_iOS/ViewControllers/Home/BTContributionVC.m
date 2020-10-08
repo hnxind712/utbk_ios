@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *subtractionBtn;//-
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;//+
+@property (assign, nonatomic) CGFloat convert;//折合的l比例
 @property (assign, nonatomic) NSInteger count;//记录组数
 @property (copy, nonatomic) NSString *coinName;//默认是BTCK
 @property (strong, nonatomic) NSArray *starAarry;//拿到临界的U点，来处理倍额
@@ -116,6 +117,7 @@
     [[XBRequest sharedInstance]postDataWithUrl:url Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             StrongSelf(strongSelf)
+            strongSelf.convert = [responseResult[@"data"]doubleValue];
             strongSelf.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%f",[responseResult[@"data"]doubleValue] * 100]],self.coinName];
         }
     }];
@@ -129,6 +131,8 @@
         [_subtractionBtn setTitleColor:RGBOF(0xA78559) forState:UIControlStateNormal];
     }
     self.groupCount.text = [NSString stringWithFormat:@"%ld",(long)_count];
+    self.countInput.text = [NSString stringWithFormat:@"%ld",KContributionValue * _count];
+    self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%f",self.convert * 100 * _count]],self.coinName];
     [self.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
         if (self.count * KContributionValue <= critical.integerValue) {
             NSString *doubleS = self.doubleArray[idx];
@@ -145,6 +149,8 @@
         [_subtractionBtn setTitleColor:RGBOF(0xE7E7E7) forState:UIControlStateNormal];
     }
     self.groupCount.text = [NSString stringWithFormat:@"%ld",(long)_count];
+    self.countInput.text = [NSString stringWithFormat:@"%ld",KContributionValue * _count];
+    self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%f",self.convert * 100 * _count]],self.coinName];
     [self.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
         if (self.count * KContributionValue <= critical.integerValue) {
             NSString *doubleS = self.doubleArray[idx];
@@ -174,7 +180,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"groupQty"] = @(self.count);
     params[@"coinName"] = self.coinName;
-    params[@"apiKey"] = KTempSecretKey;
+    params[@"apiKey"] = [YLUserInfo shareUserInfo].secretKey;
     WeakSelf(weakSelf)
     [[XBRequest sharedInstance]postDataWithUrl:addMineShareAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
         StrongSelf(strongSelf)

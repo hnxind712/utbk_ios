@@ -30,20 +30,17 @@
     [super viewDidLoad];
     self.title = LocalizationKey(@"通知公告");
     [self setupLayout];
+    [self setupBind];
 }
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTHomeNoticeCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTHomeNoticeCell class])];
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorColor = RGBOF(0xe8e8e8);
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 40, 0, 0);
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
-//    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    [self footRefreshWithScrollerView:self.tableView];
 }
-- (void)loadData{
-    
-}
-- (void)loadMoreData{
-    
+- (void)refreshHeaderAction{
+    [self setupBind];
 }
 - (void)setupBind{
     WeakSelf(weakSelf)
@@ -82,11 +79,11 @@
 }
 #pragma mark tableViewDelegate datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.datasource.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTHomeNoticeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTHomeNoticeCell class])];
-//    [cell configureCellWithNoticeModel:self.datasource[indexPath.row]];
+    [cell configureCellWithNoticeModel:self.datasource[indexPath.row]];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -95,6 +92,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     BTNoticeDetailVC *detail = [[BTNoticeDetailVC alloc]init];
+    detail.noticeModel = self.datasource[indexPath.row];
     [self.navigationController pushViewController:detail animated:YES];
 }
 /*

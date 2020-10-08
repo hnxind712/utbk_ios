@@ -38,7 +38,7 @@
         self.changeLabel.backgroundColor=GreenColor;
     }
     if (model.isCollect) {
-        [self.collectBtn setBackgroundImage:BTUIIMAGE(@"collect") forState:UIControlStateNormal];
+        [self.collectBtn setBackgroundImage:BTUIIMAGE(@"icon_colletion") forState:UIControlStateNormal];
     }else{
         [self.collectBtn setBackgroundImage:BTUIIMAGE(@"uncollect") forState:UIControlStateNormal];
     }

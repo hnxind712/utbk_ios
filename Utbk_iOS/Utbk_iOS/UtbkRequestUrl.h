@@ -63,6 +63,14 @@ mine/getMineShareLogs"
 //贡献值转入
 #define   addMineShareAPI   @""HOST@"\
 mine/addMineShare"
+
+//团队持仓
+#define   getTeamInfoAllAPI   @""HOST@"\
+uc/mine/getTeamInfoAll"
+
+#define   getTeamMembersAPI   @""HOST@"\
+uc/mine/getTeamMembers"
+
 //激活第一步
 #define   activeOneAPI   @""HOST@"\
 uc/member/activeOne"
@@ -74,6 +82,18 @@ uc/member/getMotherCoinWallet"
 //母币划转
 #define   motherCoinWalletTransferAPI   @""HOST@"\
 uc/transfer/huazhuan"
+
+//母币转账
+#define   mothertransferAPI   @""HOST@"\
+uc/transfer/mothertransfer"
+
+//母币转账记录
+#define   pageMotherCoinLogsAPI   @""HOST@"\
+uc/transfer/pageMotherCoinLogs"
+
+//上币
+#define   saveUpCoinApplyAPI   @""HOST@"\
+uc/transfer/saveUpCoinApply"
 
 //查询空投排名
 #define   getAirdropTopAPI   @""HOST@"\

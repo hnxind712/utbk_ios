@@ -458,7 +458,7 @@
 - (IBAction)KbtnClick:(UIButton *)sender {
     self.DefalutselectedIndex = sender.tag;
     [_KlineCurrentBtn setTitleColor:[UIColor mainTextColor] forState:UIControlStateNormal];
-    [sender setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
+    [sender setTitleColor:RGBOF(0xA78659) forState:UIControlStateNormal];
     _KlineCurrentBtn=sender;
     [UIView animateWithDuration:0.2 animations:^{
         self.klineView.centerX=sender.centerX;
@@ -487,7 +487,7 @@
         case 6:
         {
             [self.moreBtn setTitle:LocalizationKey(@"fivethmin") forState:UIControlStateNormal];
-            [self.moreBtn setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
+            [self.moreBtn setTitleColor:RGBOF(0xA78659) forState:UIControlStateNormal];
             [UIView animateWithDuration:0.2 animations:^{
                 self.klineView.centerX=self.moreBtn.centerX;
             }];
@@ -496,7 +496,7 @@
         case 7:
         {
             [self.moreBtn setTitle:LocalizationKey(@"thirtymin") forState:UIControlStateNormal];
-            [self.moreBtn setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
+            [self.moreBtn setTitleColor:RGBOF(0xA78659) forState:UIControlStateNormal];
             [UIView animateWithDuration:0.2 animations:^{
                 self.klineView.centerX=self.moreBtn.centerX;
             }];
@@ -532,7 +532,7 @@
         [sender setTitleColor:[UIColor mainTextColor] forState:UIControlStateNormal];
     }else{
         [_mainCurrentBtn setTitleColor:[UIColor mainTextColor] forState:UIControlStateNormal];
-        [sender setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
+        [sender setTitleColor:RGBOF(0xA78659) forState:UIControlStateNormal];
         _mainCurrentBtn=sender;
     }
     NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInteger:sender.tag],@"buttonTag",nil];
@@ -547,7 +547,7 @@
         [sender setTitleColor:[UIColor mainTextColor] forState:UIControlStateNormal];
     }else{
         [_subCurrentBtn setTitleColor:[UIColor mainTextColor] forState:UIControlStateNormal];
-        [sender setTitleColor:[UIColor ma30Color] forState:UIControlStateNormal];
+        [sender setTitleColor:RGBOF(0xA78659) forState:UIControlStateNormal];
         _subCurrentBtn=sender;
     }
     NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInteger:sender.tag],@"buttonTag",nil];

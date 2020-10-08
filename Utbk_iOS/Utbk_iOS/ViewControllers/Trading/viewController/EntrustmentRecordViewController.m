@@ -11,6 +11,8 @@
 #import "HistoryTransactionEntrustViewController.h"
 #import "DownTheTabs.h"
 #import "HomeNetManager.h"
+
+#define KEViewWidth (SCREEN_WIDTH - 24)
 @interface EntrustmentRecordViewController ()<UIScrollViewDelegate>
 {
     NSArray *_titles;
@@ -18,6 +20,8 @@
     NSInteger _currentIndex;
     DownTheTabs *_tabs;
 }
+@property (nonatomic, strong) UIView *bgView;
+
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @property (nonatomic, strong) UIView *labelView;
@@ -34,77 +38,73 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar addSubview:self.labelView];
+//    [self.navigationController.navigationBar addSubview:self.labelView];
 //    [self.navigationController.navigationBar addSubview:self.lineView];
     [self getData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.labelView removeFromSuperview];
-    [self.lineView removeFromSuperview];
+//    [self.labelView removeFromSuperview];
+//    [self.lineView removeFromSuperview];
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _titles = @[LocalizationKey(@"Current"), LocalizationKey(@"HistoricalCurrent")];
-    if (@available(iOS 11.0, *)) {
-        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    } else {
-        // Fallback on earlier versions
-    }
-    [self.view addSubview:self.scrollView];
+    self.title = LocalizationKey(@"全部");
+    [self setupLayout];
     [self setChildController];
     [self RightsetupNavgationItemWithpictureName:@"图层 601"];
 }
-
+- (void)setupLayout{
+    [self.view addSubview:self.bgView];
+    [self.bgView addSubview:self.labelView];
+    [self.bgView addSubview:self.scrollView];
+    
+}
 - (void)RighttouchEvent{
-    if (_tabs) {
-        [_tabs removeFromSuperview];
-        _tabs = nil;
-        return;
-    }
     if (self.symbols.count == 0) {
         [self getData];
         return;
     }
-
-//    self.navigationItem.rightBarButtonItem.enabled = NO;
-
-    DownTheTabs *tabs = [[DownTheTabs alloc] initEntrustTabsWithContainerView:self.view Symbols:self.symbols];
-    _tabs = tabs;
-    tabs.dismissBlock = ^{
-//        self.navigationItem.rightBarButtonItem.enabled = YES;
-    };
-    tabs.entrustBlock = ^(NSString *symbol, NSString *type, NSString *direction, NSString *startTime, NSString *endTime) {
-        if (_currentIndex == 1) {
-            NSDictionary *param = @{@"symbol":symbol, @"type":type, @"direction":direction, @"startTime":startTime, @"endTime":endTime, @"pageNo":@"1", @"pageSize":@"10"};
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"historyEntrust" object:param];
-        }else{
-            NSDictionary *param = @{@"symbol":symbol, @"type":type, @"direction":direction, @"startTime":startTime, @"endTime":endTime, @"pageNo":@"1", @"pageSize":@"10"};
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"Querythecurrent" object:param];
-
-        }
-//        self.navigationItem.rightBarButtonItem.enabled = YES;
-    };
-
+    if (_tabs.superview) {
+        [_tabs removeFromSuperview];
+    }else{
+        DownTheTabs *tabs = [[DownTheTabs alloc] initEntrustTabsWithContainerView:self.view Symbols:self.symbols];
+        _tabs = tabs;
+        tabs.dismissBlock = ^{
+            //        self.navigationItem.rightBarButtonItem.enabled = YES;
+        };
+        tabs.entrustBlock = ^(NSString *symbol, NSString *type, NSString *direction, NSString *startTime, NSString *endTime) {
+            if (_currentIndex == 1) {
+                NSDictionary *param = @{@"symbol":symbol, @"type":type, @"direction":direction, @"startTime":startTime, @"endTime":endTime, @"pageNo":@"1", @"pageSize":@"10"};
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"historyEntrust" object:param];
+            }else{
+                NSDictionary *param = @{@"symbol":symbol, @"type":type, @"direction":direction, @"startTime":startTime, @"endTime":endTime, @"pageNo":@"1", @"pageSize":@"10"};
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"Querythecurrent" object:param];
+                
+            }
+        };
+    }
 }
 
 - (void)setChildController
 {
     //添加子控制器
     commissionViewController *comVC = [[commissionViewController alloc] init];
-    comVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.scrollView.frame.size.height);
+    comVC.view.frame = CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     comVC.symbol = self.symbol;
     [self addChildViewController:comVC];
     [self.scrollView addSubview:comVC.view];
 
     HistoryTransactionEntrustViewController *histiroVC = [[HistoryTransactionEntrustViewController alloc] init];
-    histiroVC.view.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, self.scrollView.frame.size.height);
+    histiroVC.view.frame = CGRectMake(self.scrollView.frame.size.width, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     histiroVC.symbol = self.symbol;
     [self addChildViewController:histiroVC];
     [self.scrollView addSubview:histiroVC.view];
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 2, self.scrollView.frame.size.height);
 }
 
 - (void)recordAction:(UIButton *)sender{
@@ -116,13 +116,9 @@
             btn.selected = NO;
         }
     }
-    [UIView animateWithDuration:0.3 animations:^{
-       self->_indicateView.centerX = btn.centerX;
-    }];
-    
     // 1 计算滚动的位置
-    CGFloat offsetX = btn.tag * self.view.frame.size.width;
-    self.scrollView.contentOffset = CGPointMake(offsetX, 0);
+    CGFloat offsetX = btn.tag * self.scrollView.frame.size.width;
+    [self.scrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
     
     // 2.给对应位置添加对应子控制器
     [self showVc:btn.tag];
@@ -131,12 +127,14 @@
 #pragma mark - UIScrollViewDelegate
 - (void)showVc:(NSInteger)index {
     _currentIndex = index;
-    CGFloat offsetX = index * self.view.frame.size.width;
+    CGFloat offsetX = index * self.scrollView.bounds.size.width;
     UIViewController *vc = self.childViewControllers[index];
     // 判断控制器的view有没有加载过,如果已经加载过,就不需要加载
+
     if (vc.isViewLoaded) return;
     [self.scrollView addSubview:vc.view];
-    vc.view.frame = CGRectMake(offsetX, 0, self.view.frame.size.width, self.scrollView.frame.size.height);
+    vc.view.frame = CGRectMake(offsetX, 0, self.scrollView.bounds.size.width, self.scrollView.frame.size.height);
+
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -166,19 +164,27 @@
         }
     }];
 }
-
+- (UIView *)bgView{
+    if (!_bgView) {
+        _bgView = [[UIView alloc]initWithFrame:CGRectMake(12, 10, KEViewWidth, self.view.height - 10 - TabbarSafeBottomMargin)];
+        _bgView.backgroundColor = [UIColor whiteColor];
+        _bgView.layer.cornerRadius = 4.f;
+        _bgView.layer.masksToBounds = YES;
+    }
+    return _bgView;
+    
+}
 - (UIView *)labelView{
     if (!_labelView) {
-        _labelView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 180, 44)];
-        _labelView.center = CGPointMake(SCREEN_WIDTH / 2, 43 / 2);
-        
-        for (int i = 0; i < 2; i++) {
+        _labelView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KEViewWidth, 44)];
+        CGFloat width = KEViewWidth/2;
+        for (int i = 0; i < _titles.count; i++) {
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            btn.frame = CGRectMake(i * 75 + i * 30, 0, 75, 43);
+            btn.frame = CGRectMake(i * width, 0, width, 43);
             [btn setTitle:_titles[i] forState:UIControlStateNormal];
-            [btn setTitleColor:RGBOF(0xD1A870) forState:UIControlStateSelected];
+            [btn setTitleColor:RGBOF(0xA78659) forState:UIControlStateSelected];
             [btn setTitleColor:AppTextColor_333333 forState:UIControlStateNormal];
-            btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:16];
+            btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
             [btn addTarget:self action:@selector(recordAction:) forControlEvents:UIControlEventTouchUpInside];
             btn.tag = i;
             if (i == 0) {
@@ -189,10 +195,8 @@
         }
         
         
-        _indicateView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 70, 1)];
-        _indicateView.backgroundColor = RGBOF(0xD1A870);
-        UIButton *btn = self.btnsArr[0];
-        _indicateView.center = CGPointMake(btn.centerX, 43);
+        _indicateView = [[UIView alloc] initWithFrame:CGRectMake(0, 43, SCREEN_WIDTH - 24.f, 1)];
+        _indicateView.backgroundColor = RGBOF(0xE8E8E8);
         [_labelView addSubview:_indicateView];
     }
     return _labelView;
@@ -211,8 +215,7 @@
 {
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] init];
-        _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * _titles.count, SCREEN_HEIGHT - NavBarHeight);
-        _scrollView.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NavBarHeight);
+        _scrollView.frame = CGRectMake(0, 44, self.bgView.frame.size.width, self.bgView.frame.size.height - 44.f);
         _scrollView.scrollsToTop = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.showsHorizontalScrollIndicator = NO;

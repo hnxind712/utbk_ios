@@ -121,7 +121,6 @@ cell.preservesSuperviewLayoutMargins = NO; \
 
 #define KMnemonicWords  @"__KMnemonicWords__"
 #define KfirstLogin @"__firstLogin__"
-#define KTempSecretKey @"asdfawsdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf"//临时作为调试用的秘钥，调试矿池用
 
 //对应的贡献值很多地方用到100去处理因此定义出来方便以后扩展
 #define KContributionValue 100

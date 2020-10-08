@@ -80,7 +80,7 @@
 - (void)loadData{
     WeakSelf(weakSelf)
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"apiKey"] = KTempSecretKey;
+    params[@"apiKey"] = [YLUserInfo shareUserInfo].secretKey;
     params[@"pageNo"] = @(self.currentPage);
     params[@"pageSize"] = @(KPageSize);
     params[@"type"] = @(self.type);

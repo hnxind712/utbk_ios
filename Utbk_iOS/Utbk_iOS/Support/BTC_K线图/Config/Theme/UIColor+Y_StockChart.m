@@ -25,7 +25,7 @@
 +(UIColor *)backgroundColor
 {
 //    return [UIColor colorWithRGBHex:0x181c20];
-    return mainColor;
+    return [UIColor whiteColor];
 }
 
 #pragma mark 辅助背景色

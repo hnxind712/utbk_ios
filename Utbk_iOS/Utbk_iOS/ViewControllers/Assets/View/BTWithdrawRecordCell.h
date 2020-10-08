@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)configureCellWithRecordModel:(id)model;
 
+- (void)configureCellWithMotherTransferRecordModel:(id)model;//原始母币转账
 @end
 
 NS_ASSUME_NONNULL_END

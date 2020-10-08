@@ -279,7 +279,7 @@
 {
     if (self.selected) {
         CGFloat lineWidth = 5.0;
-        CGColorRef color = mainColor.CGColor;
+        CGColorRef color = NavColor.CGColor;
         CGContextRef ctx = UIGraphicsGetCurrentContext();
         CGContextSetStrokeColorWithColor(ctx, color);
         CGContextSetLineWidth(ctx, lineWidth);

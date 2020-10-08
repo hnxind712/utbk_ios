@@ -10,7 +10,7 @@
 typedef void(^SelBtnTagBlock)(NSInteger tag);
 
 
-@interface KlineCell : UITableViewCell
+@interface KlineCell : UIView
 @property (weak, nonatomic) IBOutlet UIView *moreView;
 @property (weak, nonatomic) IBOutlet UIView *indView;
 @property (strong, nonatomic)  UIButton *KlineCurrentBtn;//选中的K线种类

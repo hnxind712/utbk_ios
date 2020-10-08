@@ -72,7 +72,7 @@
 
 - (void)loadData{
     WeakSelf(weakSelf)
-    [[XBRequest sharedInstance]postDataWithUrl:getMineShareAPI Parameter:@{@"apiKey":KTempSecretKey} ResponseObject:^(NSDictionary *responseResult) {
+    [[XBRequest sharedInstance]postDataWithUrl:getMineShareAPI Parameter:@{@"apiKey":[YLUserInfo shareUserInfo].secretKey} ResponseObject:^(NSDictionary *responseResult) {
             StrongSelf(strongSelf)
             if (NetSuccess) {
                 self.datasource = [BTSharePoolModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];

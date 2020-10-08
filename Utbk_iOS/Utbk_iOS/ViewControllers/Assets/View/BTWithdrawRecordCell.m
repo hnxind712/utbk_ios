@@ -8,6 +8,7 @@
 
 #import "BTWithdrawRecordCell.h"
 #import "BTWithdrawRecordModel.h"
+#import "BTMotherCoinModel.h"
 
 @interface BTWithdrawRecordCell ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
@@ -26,6 +27,21 @@
 - (void)configureCellWithRecordModel:(BTWithdrawRecordModel *)model{
     self.title.text = model.coin.name;
     self.count.text = [ToolUtil judgeStringForDecimalPlaces:model.totalAmount];
+    self.time.text = [ToolUtil transformForTimeString:model.createTime];
+    if (model.status == 0) {
+         self.status.text = LocalizationKey(@"auditing");
+     }else if (model.status == 1){
+         self.status.text = LocalizationKey(@"Assetstoreleased");
+
+     }else if (model.status == 2){
+         self.status.text = LocalizationKey(@"failure");
+     }else if(model.status == 3){
+         self.status.text = LocalizationKey(@"Success");
+     }
+}
+- (void)configureCellWithMotherTransferRecordModel:(BTMotherCoinModel *)model{
+    self.title.text = model.coinId;
+    self.count.text = [ToolUtil judgeStringForDecimalPlaces:model.beforeBalance];
     self.time.text = [ToolUtil transformForTimeString:model.createTime];
     if (model.status == 0) {
          self.status.text = LocalizationKey(@"auditing");

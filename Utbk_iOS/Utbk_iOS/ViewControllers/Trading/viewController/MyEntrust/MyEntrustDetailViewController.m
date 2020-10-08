@@ -99,13 +99,13 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
-    headView.backgroundColor = mainColor;
+    headView.backgroundColor = NavColor;
     return headView;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *headView = [[UIView alloc] init];
-    headView.backgroundColor = mainColor;
+    headView.backgroundColor = NavColor;
     return headView;
 }
 

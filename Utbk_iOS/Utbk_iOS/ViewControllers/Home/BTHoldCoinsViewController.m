@@ -36,7 +36,7 @@
 }
 - (void)setupBind{
     WeakSelf(weakSelf)
-    [[XBRequest sharedInstance]getDataWithUrl:getMineWalletAPI Parameter:@{@"apiKey":KTempSecretKey} ResponseObject:^(NSDictionary *responseResult) {
+    [[XBRequest sharedInstance]getDataWithUrl:getMineWalletAPI Parameter:@{@"apiKey":[YLUserInfo shareUserInfo].secretKey} ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             StrongSelf(strongSelf)
             strongSelf.datasource = [BTPoolHoldCoinModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];

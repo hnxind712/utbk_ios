@@ -37,17 +37,17 @@
          self.convertLabel.text = @"≈￥0.00 CNY";
      }
     self.leading.constant = (SCREEN_WIDTH - 24)/2 - 30;
-    self.currenctLabel.text = [NSString stringWithFormat:@"%@",[ToolUtil judgeStringForDecimalPlaces:[close stringValue]]];
-    self.lineLabel.text = [NSString stringWithFormat:@"24H %.2f",model.volume];
+    self.currenctLabel.text = [NSString stringWithFormat:@"%.4f",model.close.doubleValue];
+    self.lineLabel.text = [NSString stringWithFormat:@"24H %.4f",model.volume];
     if (model.change <0) {
         self.currenctLabel.textColor = RedColor;
         self.riseFall.backgroundColor=RedColor;
-        self.riseFall.text = [NSString stringWithFormat:@"%.2f%%", model.chg*100];
+        self.riseFall.text = [NSString stringWithFormat:@"%.4f%%", model.chg*100];
 
     }else{
         self.currenctLabel.textColor = GreenColor;
         self.riseFall.backgroundColor = GreenColor;
-        self.riseFall.text = [NSString stringWithFormat:@"+%.2f%%", model.chg*100];
+        self.riseFall.text = [NSString stringWithFormat:@"+%.4f%%", model.chg*100];
 
     }
 }
