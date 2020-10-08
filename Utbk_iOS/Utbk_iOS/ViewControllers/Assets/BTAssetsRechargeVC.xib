@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="address" destination="OFe-ng-ToD" id="Pgz-Zk-Di5"/>
                 <outlet property="addressCode" destination="S1W-yT-KtM" id="ei2-Ra-f33"/>
+                <outlet property="coinTitle" destination="yId-75-MGC" id="LQ8-2y-tDm"/>
                 <outlet property="layout" destination="mui-J0-e3B" id="oTy-fA-74v"/>
                 <outlet property="linkTypeCollection" destination="6Oc-yx-IVE" id="Nch-CU-C6o"/>
                 <outlet property="linkView" destination="Lmi-LW-1fe" id="Kdl-Yq-1Q9"/>
@@ -114,12 +115,20 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原始母币BTCK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yId-75-MGC">
+                    <rect key="frame" x="150.5" y="283" width="113" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.65490196078431373" green="0.52549019607843139" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="OFe-ng-ToD" firstAttribute="leading" secondItem="lzF-bc-uiz" secondAttribute="leading" constant="34" id="3bn-0g-J5l"/>
                 <constraint firstItem="Lmi-LW-1fe" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="10" id="41m-j7-Dcj"/>
+                <constraint firstItem="yId-75-MGC" firstAttribute="top" secondItem="lzF-bc-uiz" secondAttribute="top" constant="50" id="7nE-G7-xtI"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="ewt-B9-jJU" secondAttribute="trailing" constant="50" id="BmH-nC-KrV"/>
+                <constraint firstItem="yId-75-MGC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="BwN-Yw-VB9"/>
                 <constraint firstItem="GPI-Va-k74" firstAttribute="top" secondItem="OFe-ng-ToD" secondAttribute="bottom" constant="2" id="Fhr-34-A4d"/>
                 <constraint firstItem="S1W-yT-KtM" firstAttribute="top" secondItem="lzF-bc-uiz" secondAttribute="top" constant="110" id="J7c-kb-RdM"/>
                 <constraint firstItem="OFe-ng-ToD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JAM-g7-3uS"/>

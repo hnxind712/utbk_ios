@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *destructionFee;
 @property (nonatomic,copy) NSString *createTime;
 @property (nonatomic,assign) NSInteger status;
+@property (nonatomic,assign) NSInteger type;
+@property (nonatomic,copy) NSString *amount;
+@property (nonatomic,copy) NSString *address;
 
 @end
 

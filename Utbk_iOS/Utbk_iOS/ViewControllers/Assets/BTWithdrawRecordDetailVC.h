@@ -8,6 +8,7 @@
 
 #import "BTBaseViewController.h"
 #import "BTWithdrawRecordModel.h"
+#import "BTMotherCoinModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) NSInteger index;//
 
 @property (strong, nonatomic) BTWithdrawRecordModel *recordModel;
+@property (strong, nonatomic) BTMotherCoinModel *model;
 
 @end
 

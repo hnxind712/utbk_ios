@@ -65,6 +65,9 @@
 
 - (void)refreshHeaderAction{
     _currentPage = 1;
+    if (self.recordType == KRecordTypeMotherCoinTransfer) {
+        _currentPage = 0;
+    }
     [self setupBind];
 }
 - (void)refreshFooterAction{
@@ -87,6 +90,17 @@
     }else if (self.recordType == KRecordTypeMotherCoinTransfer){
         [bodydic setValue:pageNoStr forKey:@"pageNo"];
         [bodydic removeObjectForKey:@"page"];
+        [bodydic setValue:@"0" forKey:@"type"];
+        [self getMotherTransferRecord:bodydic];
+    }else if (self.recordType == KRecordTypeMotherCoinSweep){
+        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+        [bodydic removeObjectForKey:@"page"];
+        [bodydic setValue:@"2" forKey:@"type"];
+        [self getMotherTransferRecord:bodydic];
+    }else if (self.recordType == KRecordTypeMotherCoinRecharge){
+        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+        [bodydic removeObjectForKey:@"page"];
+        [bodydic setValue:@"1" forKey:@"type"];
         [self getMotherTransferRecord:bodydic];
     }
 
@@ -169,26 +183,24 @@
         WeakSelf(weakSelf)
         cell.recordDetailAction = ^{
             StrongSelf(strongSelf)
-            if (strongSelf.recordType == KRecordTypeWithdraw) {//暂时不需跳转
+//            if (strongSelf.recordType == KRecordTypeWithdraw) {//暂时不需跳转
                 BTWithdrawRecordDetailVC *detail = [[BTWithdrawRecordDetailVC alloc]init];
                 detail.index = self.recordType;
                 detail.recordModel = model;
                 [strongSelf.navigationController pushViewController:detail animated:YES];
-            }
+//            }
         };
-    }else if (self.recordType == KRecordTypeMotherCoinTransfer){//原始母币转账
+    }else if (self.recordType == KRecordTypeMotherCoinTransfer || self.recordType == KRecordTypeMotherCoinSweep || self.recordType == KRecordTypeMotherCoinRecharge){//原始母币转账
         BTMotherCoinModel *model = self.datasource[indexPath.row];
         [cell configureCellWithMotherTransferRecordModel:model];
         WeakSelf(weakSelf)
-//        cell.recordDetailAction = ^{
-//            StrongSelf(strongSelf)
-//            if (strongSelf.recordType == KRecordTypeWithdraw) {//暂时不需跳转
-//                BTWithdrawRecordDetailVC *detail = [[BTWithdrawRecordDetailVC alloc]init];
-//                detail.index = self.recordType;
-//                detail.recordModel = model;
-//                [strongSelf.navigationController pushViewController:detail animated:YES];
-//            }
-//        };
+        cell.recordDetailAction = ^{
+            StrongSelf(strongSelf)
+            BTWithdrawRecordDetailVC *detail = [[BTWithdrawRecordDetailVC alloc]init];
+            detail.index = self.recordType;
+            detail.model = model;
+            [strongSelf.navigationController pushViewController:detail animated:YES];
+        };
     }
 
     return cell;

@@ -7,6 +7,7 @@
 //
 
 #import "BTSweepAccountVC.h"
+#import "BTWithdrawRecordVC.h"
 
 @interface BTSweepAccountVC ()
 @property (weak, nonatomic) IBOutlet UITextField *countInput;
@@ -45,7 +46,9 @@
     }];
 }
 - (void)transferRecordAction{
-    
+    BTWithdrawRecordVC *withdrawRecord = [[BTWithdrawRecordVC alloc]init];
+    withdrawRecord.recordType = KRecordTypeMotherCoinSweep;
+    [self.navigationController pushViewController:withdrawRecord animated:YES];
 }
 - (IBAction)confirmAction:(UIButton *)sender {
     if (!self.countInput.text.length) {

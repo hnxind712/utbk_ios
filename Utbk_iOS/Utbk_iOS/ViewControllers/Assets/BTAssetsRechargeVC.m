@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *linkView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
 @property (weak, nonatomic) IBOutlet UICollectionView *linkTypeCollection;
+@property (weak, nonatomic) IBOutlet UILabel *coinTitle;
 @property (strong, nonatomic) NSArray *datasource;
 @property (strong, nonatomic) BTLinkTypeModel *selectedModel;//选中的model
 
@@ -34,9 +35,10 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (void)setupBind{
+    self.coinTitle.hidden = !self.isMotherCoin;
     self.address.text = self.model.address;
     self.addressCode.image = [BTCommonUtils logoQrCode:nil code:self.model.address];
-//    if (self.model.usdtAddress.count >= 2 && [self.model.coin.unit isEqualToString:@"USDT"]) {//只有USDT并且链地址大于1的时候
+    if (self.model.usdtAddress.count >= 2 && [self.model.coin.unit isEqualToString:@"USDT"]) {//只有USDT并且链地址大于1的时候
         self.linkView.hidden = NO;
         NSMutableArray *datasource = [NSMutableArray array];
         for (NSString *key in self.model.usdtAddress.allKeys) {
@@ -55,7 +57,7 @@
         }
         self.datasource = datasource;
         [self.linkTypeCollection reloadData];
-//    }
+    }
 }
 - (void)setupLayout{
     self.layout.itemSize = CGSizeMake(70.f, 25.f);
@@ -84,7 +86,10 @@
 }
 - (void)rechargeRecordAction{
     BTWithdrawRecordVC *withdrawRecord = [[BTWithdrawRecordVC alloc]init];
-    withdrawRecord.recordType = KRecordTypeRecharge;
+    if (self.isMotherCoin) {
+        withdrawRecord.recordType = KRecordTypeMotherCoinRecharge;
+    }else
+        withdrawRecord.recordType = KRecordTypeRecharge;
     withdrawRecord.unit = self.model.coin.unit;
     [self.navigationController pushViewController:withdrawRecord animated:YES];
 }

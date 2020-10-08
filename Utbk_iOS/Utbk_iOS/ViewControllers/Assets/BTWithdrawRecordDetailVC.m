@@ -26,20 +26,47 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (void)setupBind{
-    self.withdrawCount.text = [NSString stringWithFormat:@"%@%@ %@",self.index ? @"-" : @"+",[ToolUtil judgeStringForDecimalPlaces:self.recordModel.totalAmount],self.recordModel.coin.unit];
-    self.time.text = [ToolUtil transformForTimeString:self.recordModel.createTime];
-    self.address.text = self.recordModel.address;
-    if (self.recordModel.status == 0) {
-         self.status.text = LocalizationKey(@"auditing");
-     }else if (self.recordModel.status == 1){
-         self.status.text = LocalizationKey(@"Assetstoreleased");
+    if (self.model) {
+        self.withdrawCount.text = [NSString stringWithFormat:@"%@%@ %@",self.model.type == 0 ? @"-" : @"+",[ToolUtil judgeStringForDecimalPlaces:self.model.amount],self.model.coinId];
+        self.time.text = [ToolUtil transformForTimeString:self.model.createTime];
+        self.address.text = self.model.address;
+        if (self.model.status == 0) {
+             self.status.text = LocalizationKey(@"auditing");
+         }else if (self. model.status == 1){
+             self.status.text = LocalizationKey(@"Assetstoreleased");
 
-     }else if (self.recordModel.status == 2){
-         self.status.text = LocalizationKey(@"failure");
-     }else if(self.recordModel.status == 3){
-         self.status.text = LocalizationKey(@"Success");
-     }
-    self.status.text = self.index ? LocalizationKey(@"提币") : LocalizationKey(@"充币");
+         }else if (self.model.status == 2){
+             self.status.text = LocalizationKey(@"failure");
+         }else if(self.model.status == 3){
+             self.status.text = LocalizationKey(@"Success");
+         }
+    }else{
+        self.withdrawCount.text = [NSString stringWithFormat:@"%@%@ %@",self.index ? @"-" : @"+",[ToolUtil judgeStringForDecimalPlaces:self.recordModel.totalAmount],self.recordModel.coin.unit];
+        self.time.text = [ToolUtil transformForTimeString:self.recordModel.createTime];
+        self.address.text = self.recordModel.address;
+        if (self.recordModel.status == 0) {
+            self.status.text = LocalizationKey(@"auditing");
+        }else if (self.recordModel.status == 1){
+            self.status.text = LocalizationKey(@"Assetstoreleased");
+            
+        }else if (self.recordModel.status == 2){
+            self.status.text = LocalizationKey(@"failure");
+        }else if(self.recordModel.status == 3){
+            self.status.text = LocalizationKey(@"Success");
+        }
+    }
+    self.type.text = [self typeString];
+}
+- (NSString *)typeString{
+    NSDictionary *dic = @{
+        @(0):LocalizationKey(@"充币"),
+        @(1):LocalizationKey(@"提币"),
+        @(2):LocalizationKey(@"充币"),
+        @(3):LocalizationKey(@"母币转账"),
+        @(4):LocalizationKey(@"母币划转"),
+        @(5):LocalizationKey(@"母币收款"),
+    };
+    return dic[@(self.index)];
 }
 /*
 #pragma mark - Navigation

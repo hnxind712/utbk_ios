@@ -397,6 +397,7 @@
         {
             BTAssetsRechargeVC *recharge = [[BTAssetsRechargeVC alloc]init];
             recharge.model = self.assetModel;
+            recharge.isMotherCoin = YES;
             [self.navigationController pushViewController:recharge animated:YES];
         }
             break;

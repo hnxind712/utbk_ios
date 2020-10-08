@@ -41,7 +41,7 @@
 }
 - (void)configureCellWithMotherTransferRecordModel:(BTMotherCoinModel *)model{
     self.title.text = model.coinId;
-    self.count.text = [ToolUtil judgeStringForDecimalPlaces:model.beforeBalance];
+    self.count.text = [ToolUtil judgeStringForDecimalPlaces:model.amount];
     self.time.text = [ToolUtil transformForTimeString:model.createTime];
     if (model.status == 0) {
          self.status.text = LocalizationKey(@"auditing");

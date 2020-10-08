@@ -9,6 +9,7 @@
 #import "BTAssetSweepVC.h"
 #import "TradeNetManager.h"
 #import "BTPoolHoldCoinModel.h"
+#import "BTWithdrawRecordVC.h"
 
 @interface BTAssetSweepVC ()
 
@@ -48,7 +49,9 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
 - (void)transferRecordAction{
-
+    BTWithdrawRecordVC *withdrawRecord = [[BTWithdrawRecordVC alloc]init];
+    withdrawRecord.recordType = KRecordTypeMotherCoinSweep;
+    [self.navigationController pushViewController:withdrawRecord animated:YES];
 }
 - (void)getOreAssets{
     WeakSelf(weakSelf)

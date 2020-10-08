@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) BTAssetsModel *model;//直接将model给传过来
 @property (assign, nonatomic) BOOL isRechage;//1代表充币，0代表收款，只需改title
+@property (assign, nonatomic) BOOL isMotherCoin;
 
 @end
 
