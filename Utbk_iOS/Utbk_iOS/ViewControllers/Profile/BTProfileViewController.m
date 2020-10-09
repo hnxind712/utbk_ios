@@ -15,9 +15,11 @@
 #import "MineNetManager.h"
 #import "BTAssetsModel.h"
 #import "BTBackupMnemonicsVC.h"
+#import <SDWebImage/UIButton+WebCache.h>
 
 @interface BTProfileViewController ()<TZImagePickerControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *headerBtn;
 @property (strong, nonatomic) UIImageView *navgationBg;
 @property (weak, nonatomic) IBOutlet UILabel *walletName;
 @property (weak, nonatomic) IBOutlet UIButton *activeBtn;
@@ -149,8 +151,8 @@
         if (code) {
             if ([resPonseObj[@"code"] integerValue] == 0) {
                 //设置头像成功
-                 [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
-
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+                [self.headerBtn sd_setImageWithURL:[NSURL URLWithString:urlString] forState:UIControlStateNormal];
             }else{
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
