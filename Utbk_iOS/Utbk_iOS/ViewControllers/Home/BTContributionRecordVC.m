@@ -9,6 +9,7 @@
 #import "BTContributionRecordVC.h"
 #import "BTSharePoolTableViewCell.h"
 #import "BTPoolShareContributionRecordModel.h"
+#import "LYEmptyView.h"
 
 @interface BTContributionRecordVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -25,6 +26,7 @@
 @property (assign, nonatomic) NSInteger type;//1 转入记录 2收益记录 0 为全部
 @property (strong, nonatomic) NSMutableArray *datasource;
 @property (strong, nonatomic) NSArray *starAarry;//拿到星级的数据
+@property (strong, nonatomic) LYEmptyView *emptyView;
 
 @end
 
@@ -41,6 +43,12 @@
         self.type = 1;//默认进来为转入记录
     }
     return self;
+}
+- (LYEmptyView *)emptyView{
+    if (!_emptyView) {
+        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"暂无数据")];
+    }
+    return _emptyView;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -91,10 +99,8 @@
                 [strongSelf.datasource removeAllObjects];
             }
             [strongSelf.datasource addObjectsFromArray:[BTPoolShareContributionRecordModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]]];
+            strongSelf.tableView.ly_emptyView = strongSelf.emptyView;
             [strongSelf.tableView reloadData];
-            if (strongSelf.datasource.count == 0) {//添加无数据页面
-                
-            }
         }else
             ErrorToast
     }];

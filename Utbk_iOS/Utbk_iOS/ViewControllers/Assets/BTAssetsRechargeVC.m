@@ -38,7 +38,7 @@
     self.coinTitle.hidden = !self.isMotherCoin;
     self.address.text = self.model.address;
     self.addressCode.image = [BTCommonUtils logoQrCode:nil code:self.model.address];
-    if (self.model.usdtAddress.count >= 2 && [self.model.coin.unit isEqualToString:@"USDT"]) {//只有USDT并且链地址大于1的时候
+    if ([self.model.coin.unit isEqualToString:@"USDT"]) {//只有USDT并且链地址大于1的时候self.model.usdtAddress.count >= 2 &&
         self.linkView.hidden = NO;
         NSMutableArray *datasource = [NSMutableArray array];
         for (NSString *key in self.model.usdtAddress.allKeys) {

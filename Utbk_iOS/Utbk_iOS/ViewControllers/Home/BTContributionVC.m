@@ -11,6 +11,7 @@
 #import "BTCurrencyModel.h"
 #import "TradeNetManager.h"
 #import "BTAssetsModel.h"
+#import "BTWithdrawRecordVC.h"
 
 @interface BTContributionVC ()
 
@@ -58,7 +59,9 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
 - (void)transferRecordAction{
-    
+    BTWithdrawRecordVC *record = [[BTWithdrawRecordVC alloc]init];
+    record.recordType = KRecordTypeContributionRecord;
+    [self.navigationController pushViewController:record animated:YES];
 }
 - (void)getWallet{
     WeakSelf(weakSelf)

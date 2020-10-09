@@ -46,6 +46,9 @@
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
+    if (self.userInfo == nil) {
+        [self hiddenLeft];
+    }
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -54,6 +57,7 @@
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     }
+    self.navigationController.navigationBar.hidden = NO;
 }  
 - (void)setupBind{
     WeakSelf(weakSelf)
@@ -85,13 +89,6 @@
     self.layout.minimumInteritemSpacing = 0;
     self.layout.sectionInset = UIEdgeInsetsZero;
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([BTBackupMnemonicsCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([BTBackupMnemonicsCell class])];
-}
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    if (self.userInfo == nil) {
-        [self hiddenLeft];
-    }
-    
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.mnemonisModel.mnemonicWordsList.count;

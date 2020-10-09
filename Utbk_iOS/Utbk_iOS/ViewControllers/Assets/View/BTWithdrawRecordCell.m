@@ -9,6 +9,7 @@
 #import "BTWithdrawRecordCell.h"
 #import "BTWithdrawRecordModel.h"
 #import "BTMotherCoinModel.h"
+#import "BTPoolShareContributionRecordModel.h"
 
 @interface BTWithdrawRecordCell ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
@@ -47,12 +48,17 @@
          self.status.text = LocalizationKey(@"auditing");
      }else if (model.status == 1){
          self.status.text = LocalizationKey(@"Assetstoreleased");
-
      }else if (model.status == 2){
          self.status.text = LocalizationKey(@"failure");
      }else if(model.status == 3){
          self.status.text = LocalizationKey(@"Success");
      }
+}
+- (void)configureCellWithContributionRecordModel:(BTPoolShareContributionRecordModel *)model{
+    self.title.text = model.remarks;
+    self.count.text = [ToolUtil judgeStringForDecimalPlaces:[NSString stringWithFormat:@"%.2f",model.amount]];
+    self.time.text = [ToolUtil transformForTimeString:model.saveTime];
+    self.status.text = LocalizationKey(@"已完成");
 }
 - (IBAction)detailAction:(UIButton *)sender {
     if (self.recordDetailAction) {

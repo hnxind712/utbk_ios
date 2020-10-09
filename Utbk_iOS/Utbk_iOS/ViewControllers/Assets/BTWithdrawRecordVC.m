@@ -13,6 +13,7 @@
 #import "BTWithdrawRecordDetailVC.h"
 #import "MineNetManager.h"
 #import "LYEmptyView.h"
+#import "BTPoolShareContributionRecordModel.h"
 
 @interface BTWithdrawRecordVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -65,7 +66,7 @@
 
 - (void)refreshHeaderAction{
     _currentPage = 1;
-    if (self.recordType == KRecordTypeMotherCoinTransfer) {
+    if (self.recordType == KRecordTypeMotherCoinTransfer || self.recordType == KRecordTypeContributionRecord) {
         _currentPage = 0;
     }
     [self setupBind];
@@ -102,6 +103,12 @@
         [bodydic removeObjectForKey:@"page"];
         [bodydic setValue:@"1" forKey:@"type"];
         [self getMotherTransferRecord:bodydic];
+    }else if (self.recordType == KRecordTypeContributionRecord){//贡献记录
+        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+        [bodydic removeObjectForKey:@"page"];
+        [bodydic setValue:@"1" forKey:@"type"];
+        [bodydic setValue:[YLUserInfo shareUserInfo].secretKey forKey:@"apiKey"];
+        [self getContributionRecord:bodydic];
     }
 
 }
@@ -170,6 +177,21 @@
         }
     }];
 }
+- (void)getContributionRecord:(NSDictionary *)params{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]postDataWithUrl:getMineShareLogsAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
+        StrongSelf(strongSelf)
+        if (NetSuccess) {
+            if (strongSelf.currentPage == 0) {
+                [strongSelf.datasource removeAllObjects];
+            }
+            [strongSelf.datasource addObjectsFromArray:[BTPoolShareContributionRecordModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]]];
+            strongSelf.tableView.ly_emptyView = self.emptyView;
+            [strongSelf.tableView reloadData];
+        }else
+            ErrorToast
+            }];
+}
 #pragma mark tableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.datasource.count;
@@ -201,6 +223,9 @@
             detail.model = model;
             [strongSelf.navigationController pushViewController:detail animated:YES];
         };
+    }else if (self.recordType == KRecordTypeContributionRecord){
+        BTPoolShareContributionRecordModel *model = self.datasource[indexPath.row];
+        [cell configureCellWithContributionRecordModel:model];
     }
 
     return cell;

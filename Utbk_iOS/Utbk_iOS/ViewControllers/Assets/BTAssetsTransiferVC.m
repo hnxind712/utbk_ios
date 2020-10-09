@@ -25,6 +25,7 @@
 @property (strong, nonatomic) MentionCoinInfoModel *model;
 @property (strong, nonatomic) BTAssetsModel *assets;
 
+
 @end
 
 @implementation BTAssetsTransiferVC

@@ -15,7 +15,8 @@ typedef NS_ENUM(NSInteger, KRecordType) {
     KRecordTypeOther,//具体币种的流水记录
     KRecordTypeMotherCoinTransfer,//原始母币转账
     KRecordTypeMotherCoinSweep,//原始母币划转
-    KRecordTypeMotherCoinRecharge//原始母币收款
+    KRecordTypeMotherCoinRecharge,//原始母币收款
+    KRecordTypeContributionRecord//贡献记录
 };
 @interface BTWithdrawRecordVC : BTBaseViewController
 

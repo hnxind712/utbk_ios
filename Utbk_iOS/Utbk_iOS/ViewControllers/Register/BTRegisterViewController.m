@@ -28,7 +28,7 @@
 - (void)setupBind{
     [MineNetManager Userprotocol:@{@"id":@"17"} CompleteHandle:^(id resPonseObj, int code) {
         if (code) {
-            if ([resPonseObj[@"code"] integerValue] == 0) {
+            if ([resPonseObj[@"code"] integerValue] == 0 && ![resPonseObj[@"data"]isKindOfClass:[NSNull class]]) {
                 
                 self.contentstr = resPonseObj[@"data"][@"content"];
             }
@@ -37,11 +37,11 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.navigationController.navigationBar.hidden = YES;
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 - (IBAction)createAccount:(UIButton *)sender {
     BTCreateWalletVC *create = [[BTCreateWalletVC alloc]init];

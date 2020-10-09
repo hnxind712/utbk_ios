@@ -52,7 +52,9 @@
 - (IBAction)cleanCacheAction:(UITapGestureRecognizer *)sender {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [[SDImageCache sharedImageCache] clearDiskOnCompletion:nil];
-        self->_caches.text = @"0.00KB";
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self->_caches.text = @"0.00KB";
+        });
     });
 }
 //关于我们

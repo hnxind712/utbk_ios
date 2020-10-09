@@ -21,7 +21,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LocalizationKey(@"设置");
-    self.selectedBtn = self.simplifiedChineseBtn;
+    NSString *language = [ChangeLanguage userLanguage];
+    if ([language isEqualToString:@"en"]) {
+        self.englishBtn.selected = YES;
+        self.simplifiedChineseBtn.selected = NO;
+        self.selectedBtn = self.englishBtn;
+    }else if ([language isEqualToString:@"zh-Hans"]){
+        self.englishBtn.selected = NO;
+        self.simplifiedChineseBtn.selected = YES;
+        self.selectedBtn = self.simplifiedChineseBtn;
+    }
+    
     // Do any additional setup after loading the view from its nib.
 }
 - (IBAction)changeLanguageAction:(UIButton *)sender {

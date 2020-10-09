@@ -42,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) NSInteger type;
 @property (assign, nonatomic) NSInteger userId;
 @property (assign, nonatomic) CGFloat multiple;//倍数
+@property (assign, nonatomic) NSInteger star;//星级
 
 @end
 

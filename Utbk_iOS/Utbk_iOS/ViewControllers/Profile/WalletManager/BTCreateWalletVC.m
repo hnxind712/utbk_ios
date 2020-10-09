@@ -24,7 +24,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = LocalizationKey(@"创建钱包");
     // Do any additional setup after loading the view from its nib.
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
 }
 #pragma mark textViewDelegate
 - (void)textViewDidChange:(UITextView *)textView{

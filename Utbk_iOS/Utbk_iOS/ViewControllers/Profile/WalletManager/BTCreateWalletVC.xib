@@ -193,10 +193,8 @@
                         <action selector="createAction:" destination="-1" eventType="touchUpInside" id="mf7-h1-OdP"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcT-sN-oNm">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码属于保护私钥以及交易授权，强度非常重要；平台不存储密码。也不帮您找回，请务必保管好。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcT-sN-oNm">
                     <rect key="frame" x="24" y="354" width="366" height="29"/>
-                    <string key="text">密码属于保护私钥以及交易授权，强度非常重要；平台不存储
-密码。也不帮您找回，请务必保管好。</string>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.65490196079999996" green="0.52549019610000003" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>

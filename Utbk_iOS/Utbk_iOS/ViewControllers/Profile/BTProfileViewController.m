@@ -31,7 +31,7 @@
     [super viewDidLoad];
     [self addRightNavigation];
     [self setupBind];
-//    self.navigationItem.title = LocalizationKey(@"个人中心");
+    self.navigationItem.title = LocalizationKey(@"个人中心");
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{

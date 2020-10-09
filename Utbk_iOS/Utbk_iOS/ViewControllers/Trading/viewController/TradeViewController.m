@@ -568,7 +568,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     if ([tableView isEqual:self.asktableView]) {
         tradeCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        cell.backview.backgroundColor = [RGBOF(0x47AC36)colorWithAlphaComponent:0.1];
+        cell.backview.backgroundColor = [RGBOF(0xF05330)colorWithAlphaComponent:0.1];
 //        cell.backview.alpha = 0.1;
         if (self.askcontentArr.count>0 ) {
             plateModel*bidplatemodel=[[self.askcontentArr reverseObjectEnumerator] allObjects][indexPath.row];
@@ -600,7 +600,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     }else if ([tableView isEqual:self.bidtableView]){
         tradeCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        cell.backview.backgroundColor = [RGBOF(0xF05330)colorWithAlphaComponent:0.1];
+        cell.backview.backgroundColor = [RGBOF(0x47AC36)colorWithAlphaComponent:0.1];
 //        cell.backview.alpha = 0.1;
         plateModel*askplatemodel=self.bidcontentArr[indexPath.row];
         cell.kindName.text=[NSString stringWithFormat:@"%ld",indexPath.row+1];
