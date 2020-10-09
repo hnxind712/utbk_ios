@@ -27,7 +27,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;//+
 @property (assign, nonatomic) CGFloat convert;//折合的l比例
 @property (assign, nonatomic) NSInteger count;//记录组数
-@property (copy, nonatomic) NSString *coinName;//默认是BTCK
 @property (strong, nonatomic) NSArray *starAarry;//拿到临界的U点，来处理倍额
 @property (strong, nonatomic) NSArray *doubleArray;//拿到倍额
 
@@ -71,6 +70,7 @@
             if ([resPonseObj[@"code"] integerValue] == 0) {
                 BTAssetsModel *assets = [BTAssetsModel mj_objectWithKeyValues:resPonseObj[@"data"]];
                 strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:assets.balance];
+                strongSelf.avaliableLabel.text = [NSString stringWithFormat:@"%@%@：",LocalizationKey(@"可用"),self.coinName];
             }
             else{
                 [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
@@ -166,15 +166,18 @@
     WeakSelf(weakSelf)
     BTCurrencyViewController *currency = [[BTCurrencyViewController alloc]init];
     currency.index = 0;
+    currency.curreny = self.motherCoin;
     currency.selectedCurrency = ^(BTCurrencyModel *model) {
         StrongSelf(strongSelf)
         strongSelf.coinName = model.currency;
+        [strongSelf getWallet];
         [strongSelf getCoinExchangeUSDTRate];
         strongSelf.count = 1;
         strongSelf.groupCount.text = [NSString stringWithFormat:@"%ld",(long)strongSelf.count];
         strongSelf.subtractionBtn.enabled = NO;
         strongSelf.subtractionBtn.layer.borderColor = RGBOF(0xE7E7E7).CGColor;
         [strongSelf.subtractionBtn setTitleColor:RGBOF(0xE7E7E7) forState:UIControlStateNormal];
+        [strongSelf.coinBtn setTitle:model.currency forState:UIControlStateNormal];
     };
     [self.navigationController pushViewController:currency animated:YES];
 }

@@ -278,6 +278,7 @@
                 <outlet property="destroyTotal" destination="trH-M1-RgD" id="jQ3-fw-PvU"/>
                 <outlet property="levelBtn" destination="uAC-y0-ROZ" id="SyC-zS-Egm"/>
                 <outlet property="sections" destination="9SW-1v-4je" id="mbx-vV-14Z"/>
+                <outlet property="starView" destination="NDi-Xa-Rx2" id="WXR-lL-MRA"/>
                 <outlet property="totalOutput" destination="hNA-4l-dzC" id="OGe-2H-qK3"/>
                 <outlet property="yesEarnings" destination="flW-io-lc6" id="OkU-Se-fYb"/>
             </connections>

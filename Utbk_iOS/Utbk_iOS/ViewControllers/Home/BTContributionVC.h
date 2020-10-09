@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTContributionVC : BTBaseViewController
 
+@property (copy, nonatomic) NSString *coinName;//显示的币种
+@property (copy, nonatomic) NSString *motherCoin;//母币币种，选择币种时需要传递的参数，作为关联参数用
+
 @end
 
 NS_ASSUME_NONNULL_END

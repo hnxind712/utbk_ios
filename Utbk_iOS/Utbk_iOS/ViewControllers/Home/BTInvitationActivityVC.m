@@ -8,6 +8,7 @@
 
 #import "BTInvitationActivityVC.h"
 #import "STQRCodeController.h"
+#import "BTWithdrawRecordVC.h"
 
 @interface BTInvitationActivityVC ()<STQRCodeControllerDelegate>
 
@@ -47,7 +48,9 @@
     }];
 }
 - (void)transferRecordAction{
-    
+    BTWithdrawRecordVC *record = [[BTWithdrawRecordVC alloc]init];
+    record.recordType = KRecordTypeInvitationRecord;
+    [self.navigationController pushViewController:record animated:YES];
 }
 - (void)qrcodeController:(STQRCodeController *)qrcodeController readerScanResult:(NSString *)readerScanResult type:(STQRCodeResultType)resultType{
     

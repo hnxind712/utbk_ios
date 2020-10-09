@@ -64,6 +64,8 @@
 }
 - (void)setupBind{
     self.walletName.text = [YLUserInfo shareUserInfo].username;
+    [self.headerBtn sd_setImageWithURL:[NSURL URLWithString:[YLUserInfo shareUserInfo].avatar] forState:UIControlStateNormal placeholderImage:BTUIIMAGE(@"icon_profileUser")];
+//    [self.headerBtn sd_setImageWithURL:[NSURL URLWithString:[YLUserInfo shareUserInfo].avatar] forState:UIControlStateNormal];
     if (![YLUserInfo shareUserInfo].address) {
         WeakSelf(weakSelf)
         [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
@@ -153,6 +155,24 @@
                 //设置头像成功
                 [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
                 [self.headerBtn sd_setImageWithURL:[NSURL URLWithString:urlString] forState:UIControlStateNormal];
+                YLUserInfo *info = [YLUserInfo shareUserInfo];
+                info.avatar = urlString;
+                [YLUserInfo saveUser:info];
+                NSMutableArray *array = [NSMutableArray array];
+                //取出
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
+                NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+                [array addObjectsFromArray:list];
+                [array enumerateObjectsUsingBlock:^(YLUserInfo *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if ([obj.username isEqualToString:info.username]) {
+                        obj.avatar = urlString;*stop = YES;
+                    }
+                }];
+                //存
+                NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
+                [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
+                [[NSUserDefaults standardUserDefaults] synchronize];
             }else{
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }

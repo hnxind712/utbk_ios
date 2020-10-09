@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *contributionValue;
 @property (weak, nonatomic) IBOutlet UIButton *levelBtn;
 @property (weak, nonatomic) IBOutlet UILabel *sections;
+@property (weak, nonatomic) IBOutlet UIView *starView;
 
 @end
 @implementation BTSharePoolCell
@@ -28,15 +29,19 @@
     self.yesEarnings.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%f",model.yesterdayProduce]];//昨日收益
     self.totalOutput.text = [ToolUtil formartScientificNotationWithString:model.totalProduce];//累计产出
     if (model.groupsQty * KContributionValue > KContributionValue * 200) {//说明是矿主200组以上就是矿主
+        self.starView.hidden = NO;
         [self.levelBtn setTitle:LocalizationKey(@"矿主") forState:UIControlStateNormal];
     }else{
-        [self.starArray enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            double value = obj.doubleValue;
-            if (model.groupsQty * KContributionValue < value) {
-                [self.levelBtn setTitle:[NSString stringWithFormat:@"%ld",idx + 1] forState:UIControlStateNormal];*stop = YES;
-            }
-        }];
+        self.starView.hidden = YES;
     }
+//    else{
+//        [self.starArray enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            double value = obj.doubleValue;
+//            if (model.groupsQty * KContributionValue < value) {
+//                [self.levelBtn setTitle:[NSString stringWithFormat:@"%ld",idx + 1] forState:UIControlStateNormal];*stop = YES;
+//            }
+//        }];
+//    }
     self.contributionValue.text = [ToolUtil formartScientificNotationWithString:model.contributionValue];//贡献值
     self.sections.text = [NSString stringWithFormat:@"%d",model.groupsQty];//组数
 }

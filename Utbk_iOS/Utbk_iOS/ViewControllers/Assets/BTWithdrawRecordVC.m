@@ -66,7 +66,7 @@
 
 - (void)refreshHeaderAction{
     _currentPage = 1;
-    if (self.recordType == KRecordTypeMotherCoinTransfer || self.recordType == KRecordTypeContributionRecord) {
+    if (self.recordType == KRecordTypeMotherCoinTransfer || self.recordType == KRecordTypeContributionRecord || self.recordType == KRecordTypeInvitationRecord || self.recordType == KRecordTypeMotherCoinSweep || self.recordType == KRecordTypeMotherCoinRecharge) {
         _currentPage = 0;
     }
     [self setupBind];
@@ -82,6 +82,8 @@
     [bodydic setValue:@"10" forKey:@"pageSize"];
     if (self.recordType == KRecordTypeRecharge) {
         [bodydic setValue:@"0" forKey:@"type"];
+        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+        [bodydic removeObjectForKey:@"page"];
         [bodydic setValue:[YLUserInfo shareUserInfo].ID forKey:@"memberId"];
         [self rechargeData:bodydic];
     }else if(self.recordType == KRecordTypeWithdraw){
@@ -102,6 +104,11 @@
         [bodydic setValue:pageNoStr forKey:@"pageNo"];
         [bodydic removeObjectForKey:@"page"];
         [bodydic setValue:@"1" forKey:@"type"];
+        [self getMotherTransferRecord:bodydic];
+    }else if (self.recordType == KRecordTypeInvitationRecord){
+        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+        [bodydic removeObjectForKey:@"page"];
+        [bodydic setValue:@"3" forKey:@"type"];
         [self getMotherTransferRecord:bodydic];
     }else if (self.recordType == KRecordTypeContributionRecord){//贡献记录
         [bodydic setValue:pageNoStr forKey:@"pageNo"];
@@ -212,7 +219,7 @@
                 [strongSelf.navigationController pushViewController:detail animated:YES];
 //            }
         };
-    }else if (self.recordType == KRecordTypeMotherCoinTransfer || self.recordType == KRecordTypeMotherCoinSweep || self.recordType == KRecordTypeMotherCoinRecharge){//原始母币转账
+    }else if (self.recordType == KRecordTypeMotherCoinTransfer || self.recordType == KRecordTypeMotherCoinSweep || self.recordType == KRecordTypeMotherCoinRecharge || self.recordType == KRecordTypeInvitationRecord){//原始母币转账
         BTMotherCoinModel *model = self.datasource[indexPath.row];
         [cell configureCellWithMotherTransferRecordModel:model];
         WeakSelf(weakSelf)

@@ -32,8 +32,11 @@
     [self setupLayout];
     [self setupBind];
     [self refreshHeaderAction];
+   
     // Do any additional setup after loading the view from its nib.
 }
+
+
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTSharePoolCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTSharePoolCell class])];
     self.tableView.tableFooterView = [UIView new];

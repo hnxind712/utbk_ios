@@ -47,12 +47,10 @@
                 linkModel.selected = YES;
                 linkModel.linkType = [key substringFromIndex:4];
                 [datasource addObject:linkModel];
-            }else if ([key isEqualToString:@"USDTERC20"]){
-                if ([key containsString:@"USDTTRC20"]) {
-                    BTLinkTypeModel *linkModel = [[BTLinkTypeModel alloc]init];
-                    linkModel.linkType = [key substringFromIndex:4];
-                    [datasource addObject:linkModel];
-                }
+            }else if ([key isEqualToString:@"USDTTRC20"]){
+                BTLinkTypeModel *linkModel = [[BTLinkTypeModel alloc]init];
+                linkModel.linkType = [key substringFromIndex:4];
+                [datasource addObject:linkModel];
             }
         }
         self.datasource = datasource;

@@ -49,14 +49,28 @@
         [[XBRequest sharedInstance]postDataWithUrl:getCoinRelationAPI Parameter:@{@"coin":self.curreny} ResponseObject:^(NSDictionary *responseResult) {
             StrongSelf(strongSelf)
             if (NetSuccess) {
-                strongSelf.datasource = [BTCurrencyModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
-                [strongSelf.datasource enumerateObjectsUsingBlock:^(BTCurrencyModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    if ([self.curreny isEqualToString:obj.currency]) {
-                        obj.isSelected = YES;
-                        self.currencyModel = obj;
+                //取字母对
+                if ([responseResult[@"data"] isKindOfClass:[NSDictionary class]]) {
+                    NSDictionary *dic = responseResult[@"data"];
+                    NSMutableArray *array = [NSMutableArray array];
+                    BTCurrencyModel *motherModel = [[BTCurrencyModel alloc]init];
+                    motherModel.currency = dic[@"parentCoin"];
+                    motherModel.isSelected = [dic[@"parentCoin"] isEqualToString:self.curreny];
+                    [array addObject:motherModel];
+                    if ([dic[@"parentCoin"] isEqualToString:self.curreny]) {
+                        strongSelf.currencyModel = motherModel;
                     }
-                }];
-                [strongSelf.tableView reloadData];
+                    BTCurrencyModel *subModel = [[BTCurrencyModel alloc]init];
+                    subModel.currency = dic[@"subcoin"];
+                    subModel.isSelected = [dic[@"subcoin"] isEqualToString:self.curreny];
+                    [array addObject:subModel];
+                    if ([dic[@"subcoin"] isEqualToString:self.curreny]) {
+                        strongSelf.currencyModel = subModel;
+                    }
+                    strongSelf.datasource = array;
+                    [strongSelf.tableView reloadData];
+                }
+                
             }
         }];
     }else if(self.index == 1){//团队持仓
@@ -67,13 +81,19 @@
                 NSMutableArray *data = [NSMutableArray array];
                 [dataArray enumerateObjectsUsingBlock:^(BTConfigureModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     if ([obj.key isEqualToString:@"mine_coin"]) {//链类型对应的key
-                        BTCurrencyModel *model = [[BTCurrencyModel alloc]init];
-                        model.currency = obj.value;
-                        if ([self.curreny isEqualToString:obj.value]) {
-                            model.isSelected = YES;
-                            self.currencyModel = model;
-                        }
-                        [data addObject:model];
+                        NSString *value = obj.value;
+                        NSArray *valueList = [value componentsSeparatedByString:@","];
+                        [valueList enumerateObjectsUsingBlock:^(NSString *currency, NSUInteger idx, BOOL * _Nonnull stop) {
+                            if (currency.length) {
+                                BTCurrencyModel *model = [[BTCurrencyModel alloc]init];
+                                model.currency = currency;
+                                if ([self.curreny isEqualToString:currency]) {
+                                    model.isSelected = YES;
+                                    self.currencyModel = model;
+                                }
+                                [data addObject:model];
+                            }
+                        }];
                     }
                 }];
                 strongSelf.datasource = data;
@@ -101,6 +121,10 @@
     model.isSelected = YES;
     self.currencyModel = model;
     [tableView reloadData];
+    if (self.selectedCurrency) {
+        self.selectedCurrency(model);
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 /*
 #pragma mark - Navigation

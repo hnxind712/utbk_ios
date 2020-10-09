@@ -10,6 +10,7 @@
 #import "BTSharePoolTableViewCell.h"
 #import "BTPoolShareContributionRecordModel.h"
 #import "LYEmptyView.h"
+#import "BTContributionVC.h"
 
 @interface BTContributionRecordVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -57,16 +58,32 @@
     [self setupLayout];
     [self refreshHeaderAction];
     [self setupBind];
+     [self addRightNavigation];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)addRightNavigation{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:LocalizationKey(@"贡献") forState:UIControlStateNormal];
+    [btn setTitleColor:RGBOF(0x333333) forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:14.f weight:UIFontWeightMedium];
+    [btn addTarget:self action:@selector(contributionAction) forControlEvents:UIControlEventTouchUpInside];
+    [btn sizeToFit];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
+- (void)contributionAction{
+    BTContributionVC *contribution = [[BTContributionVC alloc]init];
+    contribution.coinName = self.model.coinName.length ? self.model.coinName : KOriginalCoin;
+    contribution.motherCoin = self.model.coinName.length ? self.model.coinName : KOriginalCoin;;
+    [self.navigationController pushViewController:contribution animated:YES];
 }
 - (void)setupBind{
     //先给死的币种值
-    self.model.coin = KOriginalCoin;
-    self.coinName.text = [NSString stringWithFormat:@"%@：",self.model.coin];
+    self.coinName.text = [NSString stringWithFormat:@"%@：",self.model.coinName];
     self.totalEarning.text = [ToolUtil formartScientificNotationWithString:self.model.totalProduce];
-    NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.f",self.model.destroyValue]],self.model.coin]];//销毁总量
+    NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.f",self.model.destroyQty]],self.model.coinName]];//销毁总量
     [attribute addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20.f weight:UIFontWeightBold],NSForegroundColorAttributeName:RGBOF(0xA78659)} range:NSMakeRange(0, attribute.string.length)];
-    [attribute addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.f],NSForegroundColorAttributeName:RGBOF(0xA78659)} range:[attribute.string rangeOfString:self.model.coin]];
+    [attribute addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.f],NSForegroundColorAttributeName:RGBOF(0xA78659)} range:[attribute.string rangeOfString:self.model.coinName]];
     self.destroyValue.attributedText = attribute;
 }
 - (void)setupLayout{

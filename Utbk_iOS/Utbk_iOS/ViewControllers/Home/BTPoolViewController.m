@@ -43,22 +43,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addChildViewController];
-    [self addRightNavigation];
+    
     // Do any additional setup after loading the view from its nib.
 }
-- (void)addRightNavigation{
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:LocalizationKey(@"贡献") forState:UIControlStateNormal];
-    [btn setTitleColor:RGBOF(0x333333) forState:UIControlStateNormal];
-    btn.titleLabel.font = [UIFont systemFontOfSize:14.f weight:UIFontWeightMedium];
-    [btn addTarget:self action:@selector(contributionAction) forControlEvents:UIControlEventTouchUpInside];
-    [btn sizeToFit];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
-}
-- (void)contributionAction{
-    BTContributionVC *contribution = [[BTContributionVC alloc]init];
-    [self.navigationController pushViewController:contribution animated:YES];
-}
+
+
 - (void)addChildViewController{
     BTSharePoolVC *sharePool = [[BTSharePoolVC alloc]init];
     [self addChildViewController:sharePool];
@@ -71,16 +60,6 @@
     self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * 2, self.scrollView.bounds.size.height);
 }
 - (void)switchAction:(SPMultipleSwitch *)multipleSwitch{
-    switch (multipleSwitch.selectedSegmentIndex) {
-         case 0:
-             [self addRightNavigation];
-             break;
-         case 1:
-             self.navigationItem.rightBarButtonItem = nil;
-             break;
-         default:
-             break;
-     }
     [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH * multipleSwitch.selectedSegmentIndex, 0)animated:YES];
 }
 
