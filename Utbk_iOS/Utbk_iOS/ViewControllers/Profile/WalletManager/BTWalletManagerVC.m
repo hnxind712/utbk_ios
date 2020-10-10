@@ -104,6 +104,7 @@
     };
     cell.switchAccountAction = ^{
         if (model == self.currentInfo) return;
+//        model.secretKey = @"1c54a1e782a45372b63c5389bf5908e30e51fef31c3afd12fc81ba52e8ac3b76";
         if (model.secretKey.length) {
             [EasyShowLodingView showLodingText:LocalizationKey(@"正在切换钱包")];
             [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":@"",@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
@@ -111,8 +112,9 @@
                 StrongSelf(strongSelf)
                 if (NetSuccess) {
                     YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];
+                    info.secretKey = model.secretKey;
                     info.address = model.address;
-                    [strongSelf.datasource replaceObjectAtIndex:indexPath.row withObject:info];
+                    [strongSelf.datasource replaceObjectAtIndex:indexPath.row withObject:info];//已经进行了替换
                     strongSelf.currentInfo = info;
                     [YLUserInfo saveUser:self.currentInfo];
                     NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:strongSelf.datasource];

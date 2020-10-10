@@ -10,6 +10,7 @@
 #import "BTWithdrawRecordModel.h"
 #import "BTMotherCoinModel.h"
 #import "BTPoolShareContributionRecordModel.h"
+#import "BTAssetRecordModel.h"
 
 @interface BTWithdrawRecordCell ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
@@ -28,7 +29,7 @@
 }
 //提币记录
 - (void)configureCellWithRecordModel:(BTWithdrawRecordModel *)model{
-    self.title.text = model.coin.name;
+    self.title.text = [self typeString];
     self.count.text = [ToolUtil judgeStringForDecimalPlaces:model.totalAmount];
     self.time.text = [ToolUtil transformForTimeString:model.createTime];
     if (model.status == 0) {
@@ -43,12 +44,25 @@
      }
 }
 //流水记录
-- (void)configureCellWithStreamRecordModel:(BTWithdrawRecordModel *)model{
-    
+- (void)configureCellWithStreamRecordModel:(BTAssetRecordModel *)model{
+    self.title.text = [self typeStringWithType:model.type];
+    self.count.text = [ToolUtil judgeStringForDecimalPlaces:model.amount];
+    self.time.text = [ToolUtil transformForTimeString:model.createTime];
+    self.status.text = LocalizationKey(@"Success");
+//    if (model.status == 0) {
+//         self.status.text = LocalizationKey(@"auditing");
+//     }else if (model.status == 1){
+//         self.status.text = LocalizationKey(@"Assetstoreleased");
+//
+//     }else if (model.status == 2){
+//         self.status.text = LocalizationKey(@"failure");
+//     }else if(model.status == 3){
+//         self.status.text = LocalizationKey(@"Success");
+//     }
 }
 
 - (void)configureCellWithMotherTransferRecordModel:(BTMotherCoinModel *)model{
-//    self.title.text = model.coinId;
+    self.title.text = [self typeString];
     self.count.text = [ToolUtil judgeStringForDecimalPlaces:model.amount];
     self.time.text = [ToolUtil transformForTimeString:model.createTime];
     if (model.status == 0) {
@@ -61,7 +75,6 @@
          self.status.text = LocalizationKey(@"Success");
      }
     self.moreBtn.hidden = (self.index != 6) ? NO : YES;
-    self.title.text = [self typeString];
 }
 - (void)configureCellWithContributionRecordModel:(BTPoolShareContributionRecordModel *)model{
     self.title.text = model.remarks;
@@ -80,6 +93,15 @@
         @(8):LocalizationKey(@"邀请记录"),
     };
     return dic[@(self.index)];
+}
+- (NSString *)typeStringWithType:(NSInteger)type{
+    NSDictionary *dic = @{
+        @(0):LocalizationKey(@"充币"),
+        @(2):LocalizationKey(@"转账"),
+        @(17):LocalizationKey(@"划转"),
+        @(18):LocalizationKey(@"划转"),
+    };
+    return dic[@(type)];
 }
 - (IBAction)detailAction:(UIButton *)sender {
     if (self.recordDetailAction) {

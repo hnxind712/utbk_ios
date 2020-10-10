@@ -25,7 +25,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *remark;
 @property (nonatomic,assign)NSInteger status;
 @property (nonatomic,strong)Coin *coin;
-@property (nonatomic,assign) NSInteger type;//对应的类型
 
 @end
 

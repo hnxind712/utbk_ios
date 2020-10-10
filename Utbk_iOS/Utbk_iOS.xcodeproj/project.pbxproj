@@ -74,6 +74,7 @@
 		3C63D458250DD4E0001CEC7D /* BTAssetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C63D456250DD4E0001CEC7D /* BTAssetsViewController.xib */; };
 		3C63D45C250DD4F2001CEC7D /* BTProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C63D45A250DD4F2001CEC7D /* BTProfileViewController.m */; };
 		3C63D45D250DD4F2001CEC7D /* BTProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C63D45B250DD4F2001CEC7D /* BTProfileViewController.xib */; };
+		3CA58E60253206FA00C6340B /* BTAssetRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA58E5F253206FA00C6340B /* BTAssetRecordModel.m */; };
 		3CACD614250E4F7E00B50D9A /* BTTeamAchievementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CACD612250E4F7E00B50D9A /* BTTeamAchievementVC.m */; };
 		3CACD615250E4F7E00B50D9A /* BTTeamAchievementVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CACD613250E4F7E00B50D9A /* BTTeamAchievementVC.xib */; };
 		3CACD61B250E538500B50D9A /* BTTeamAchievementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CACD619250E538500B50D9A /* BTTeamAchievementCell.m */; };
@@ -519,6 +520,8 @@
 		3C63D459250DD4F2001CEC7D /* BTProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTProfileViewController.h; sourceTree = "<group>"; };
 		3C63D45A250DD4F2001CEC7D /* BTProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTProfileViewController.m; sourceTree = "<group>"; };
 		3C63D45B250DD4F2001CEC7D /* BTProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTProfileViewController.xib; sourceTree = "<group>"; };
+		3CA58E5E253206FA00C6340B /* BTAssetRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTAssetRecordModel.h; sourceTree = "<group>"; };
+		3CA58E5F253206FA00C6340B /* BTAssetRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTAssetRecordModel.m; sourceTree = "<group>"; };
 		3CACD611250E4F7E00B50D9A /* BTTeamAchievementVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTTeamAchievementVC.h; sourceTree = "<group>"; };
 		3CACD612250E4F7E00B50D9A /* BTTeamAchievementVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTTeamAchievementVC.m; sourceTree = "<group>"; };
 		3CACD613250E4F7E00B50D9A /* BTTeamAchievementVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTTeamAchievementVC.xib; sourceTree = "<group>"; };
@@ -1480,6 +1483,8 @@
 			children = (
 				D7074EB32510B58E000EC935 /* BTWithdrawRecordModel.h */,
 				D7074EB42510B58E000EC935 /* BTWithdrawRecordModel.m */,
+				3CA58E5E253206FA00C6340B /* BTAssetRecordModel.h */,
+				3CA58E5F253206FA00C6340B /* BTAssetRecordModel.m */,
 				D7429BF325120F42003B04E4 /* BTAssetsModel.h */,
 				D7429BF425120F42003B04E4 /* BTAssetsModel.m */,
 				D710E594251CA0AF001986FC /* BTLinkTypeModel.h */,
@@ -2741,6 +2746,7 @@
 				D79D742B2513513A00DE7DF7 /* Y_StockChartView.m in Sources */,
 				D79D74852513568E00DE7DF7 /* MyEntrustDetailViewController.m in Sources */,
 				D79D74E92513623000DE7DF7 /* Section2TableViewCell.m in Sources */,
+				3CA58E60253206FA00C6340B /* BTAssetRecordModel.m in Sources */,
 				D79D73E22513503500DE7DF7 /* KlineHeaderCell.m in Sources */,
 				D705544C250F6585005E367E /* BTCreateSuccessVC.m in Sources */,
 				D71C85D7250F0E0C0067B4C7 /* BTAssetsRechargeVC.m in Sources */,

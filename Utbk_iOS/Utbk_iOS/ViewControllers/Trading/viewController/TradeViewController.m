@@ -774,7 +774,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     sender.selected = YES;
     sender.backgroundColor = RGBOF(0x47AC36);
     self.selecetBtn = sender;
-    self.AmountTF.text = [NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:[self.sliderMaxValue floatValue]*(sender.tag  + 1)/4 withlimit:_coinScale]];
+    self.AmountTF.text = [NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:[self.sliderMaxValue floatValue]*(sender.tag - 300 + 1)/4 withlimit:_coinScale]];
     self.TradeNumber.text = [NSString stringWithFormat:@"%@ %@%@",LocalizationKey(@"entrustment"),[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName];
 }
 #pragma mark-按钮点击事件

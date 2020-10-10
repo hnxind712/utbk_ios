@@ -29,7 +29,7 @@
 #import "TradeNumModel.h"
 #import "TradeNetManager.h"
 
-#define DataRow 20  //显示的行数
+#define DataRow 100  //显示的行数
 @interface KchatViewController ()<Y_StockChartViewDataSource,SocketDelegate, Y_StockChartViewControllerDelegate>
 {
     NSString *_currentResolution;
@@ -356,7 +356,7 @@
 //获取成交记录
 -(void)getExchangeNumber{
     WeakSelf(weakSelf)
-    [HomeNetManager latesttradeWithsymbol:self.symbol withSizeSize:20 CompleteHandle:^(id resPonseObj, int code) {
+    [HomeNetManager latesttradeWithsymbol:self.symbol withSizeSize:DataRow CompleteHandle:^(id resPonseObj, int code) {
         [EasyShowLodingView hidenLoding];
         NSLog(@"获取成交记录数据--%@",resPonseObj);
         if ([resPonseObj isKindOfClass:[NSArray class]]) {
@@ -663,7 +663,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 21;
+    return DataRow + 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

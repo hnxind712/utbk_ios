@@ -46,7 +46,7 @@
 - (void)setupBind{
     WeakSelf(weakSelf)
     if (self.index == 0) {//贡献值
-        [[XBRequest sharedInstance]postDataWithUrl:getCoinRelationAPI Parameter:@{@"coin":self.curreny} ResponseObject:^(NSDictionary *responseResult) {
+        [[XBRequest sharedInstance]postDataWithUrl:getCoinRelationAPI Parameter:@{@"coin":self.motherCoin} ResponseObject:^(NSDictionary *responseResult) {
             StrongSelf(strongSelf)
             if (NetSuccess) {
                 //取字母对

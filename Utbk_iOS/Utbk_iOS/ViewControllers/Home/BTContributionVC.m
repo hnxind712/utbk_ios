@@ -166,7 +166,8 @@
     WeakSelf(weakSelf)
     BTCurrencyViewController *currency = [[BTCurrencyViewController alloc]init];
     currency.index = 0;
-    currency.curreny = self.motherCoin;
+    currency.curreny = self.coinName;
+    currency.motherCoin = self.motherCoin;
     currency.selectedCurrency = ^(BTCurrencyModel *model) {
         StrongSelf(strongSelf)
         strongSelf.coinName = model.currency;
