@@ -50,7 +50,8 @@
 }
 - (void)transferRecordAction{
     BTWithdrawRecordVC *withdrawRecord = [[BTWithdrawRecordVC alloc]init];
-    withdrawRecord.recordType = KRecordTypeMotherCoinSweep;
+    withdrawRecord.recordType = self.assetIndex == 2 ? KRecordTypeTransterOut : KRecordTypeTransterIn;
+    withdrawRecord.unit = self.assets.coin.unit;
     [self.navigationController pushViewController:withdrawRecord animated:YES];
 }
 - (void)getOreAssets{

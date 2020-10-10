@@ -53,7 +53,11 @@
     [self.navigationController pushViewController:record animated:YES];
 }
 - (void)qrcodeController:(STQRCodeController *)qrcodeController readerScanResult:(NSString *)readerScanResult type:(STQRCodeResultType)resultType{
-    
+    if (resultType == STQRCodeResultTypeSuccess) {
+        self.coinAddress.text = readerScanResult;
+    }else if (resultType == STQRCodeResultTypeError){
+        [self.view makeToast:LocalizationKey(@"没有扫描到任何结果") duration:ToastHideDelay position:ToastPosition];
+    }
 }
 //扫描
 - (IBAction)scanCoinAddrssAction:(UIButton *)sender {

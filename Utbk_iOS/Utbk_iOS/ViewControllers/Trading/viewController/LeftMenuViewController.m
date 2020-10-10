@@ -64,11 +64,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.viewType==ChildViewType_USDT) {
         return [marketManager shareInstance].USDTArray.count;
-    }else if (self.viewType==ChildViewType_BTC){
-        return [marketManager shareInstance].BTCArray.count;
-    }else if (self.viewType==ChildViewType_ETH){
-        return [marketManager shareInstance].ETHArray.count;
-    }else{
+    }
+//    else if (self.viewType==ChildViewType_BTC){
+//        return [marketManager shareInstance].BTCArray.count;
+//    }else if (self.viewType==ChildViewType_ETH){
+//        return [marketManager shareInstance].ETHArray.count;
+//    }
+    else{
         return [marketManager shareInstance].CollectionArray.count;
     }
 }
@@ -79,14 +81,16 @@
     if (self.viewType==ChildViewType_USDT) {
         symbolModel*model=[marketManager shareInstance].USDTArray[indexPath.row];
         [cell configDataWithModel:model withtype:0 withIndex:(int)indexPath.row];
-    }else if (self.viewType==ChildViewType_BTC)
-    {
-        symbolModel*model=[marketManager shareInstance].BTCArray[indexPath.row];
-        [cell configDataWithModel:model withtype:0 withIndex:(int)indexPath.row];
-    }else if (self.viewType==ChildViewType_ETH){
-        symbolModel*model=[marketManager shareInstance].ETHArray[indexPath.row];
-        [cell configDataWithModel:model withtype:0 withIndex: (int)indexPath.row];
-    }else{
+    }
+//    else if (self.viewType==ChildViewType_BTC)
+//    {
+//        symbolModel*model=[marketManager shareInstance].BTCArray[indexPath.row];
+//        [cell configDataWithModel:model withtype:0 withIndex:(int)indexPath.row];
+//    }else if (self.viewType==ChildViewType_ETH){
+//        symbolModel*model=[marketManager shareInstance].ETHArray[indexPath.row];
+//        [cell configDataWithModel:model withtype:0 withIndex: (int)indexPath.row];
+//    }
+    else{
         symbolModel*model=[marketManager shareInstance].CollectionArray[indexPath.row];
         [cell configDataWithModel:model withtype:1 withIndex:(int)indexPath.row];
     }
@@ -198,14 +202,15 @@ kRemoveCellSeparator
                     NSString*baseSymbol=[array lastObject];
                     if ([baseSymbol isEqualToString:@"USDT"]) {
                         [[marketManager shareInstance].USDTArray addObject:model];
-                    }else if ([baseSymbol isEqualToString:@"BTC"])
-                    {
-                        [[marketManager shareInstance].BTCArray addObject:model];
                     }
-                    else if ([baseSymbol isEqualToString:@"ETH"])
-                    {
-                        [[marketManager shareInstance].ETHArray addObject:model];
-                    }
+//                    else if ([baseSymbol isEqualToString:@"BTC"])
+//                    {
+//                        [[marketManager shareInstance].BTCArray addObject:model];
+//                    }
+//                    else if ([baseSymbol isEqualToString:@"ETH"])
+//                    {
+//                        [[marketManager shareInstance].ETHArray addObject:model];
+//                    }
                 }
                 [marketManager shareInstance].AllCoinArray=self.contentArr;
                 if ([YLUserInfo isLogIn]) {
@@ -296,24 +301,24 @@ kRemoveCellSeparator
                     }
                 }];
             }
-            else if (self.viewType==ChildViewType_BTC)
-            {
-                [[marketManager shareInstance].BTCArray enumerateObjectsUsingBlock:^(symbolModel*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    if ([obj.symbol isEqualToString:model.symbol]) {
-                        [[marketManager shareInstance].BTCArray  replaceObjectAtIndex:idx withObject:model];
-                        *stop = YES;
-                        [self.tableView reloadData];
-                    }
-                }];
-            }else if (self.viewType==ChildViewType_ETH){
-                [[marketManager shareInstance].ETHArray enumerateObjectsUsingBlock:^(symbolModel*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    if ([obj.symbol isEqualToString:model.symbol]) {
-                        [[marketManager shareInstance].ETHArray  replaceObjectAtIndex:idx withObject:model];
-                        *stop = YES;
-                        [self.tableView reloadData];
-                    }
-                }];
-            }
+//            else if (self.viewType==ChildViewType_BTC)
+//            {
+//                [[marketManager shareInstance].BTCArray enumerateObjectsUsingBlock:^(symbolModel*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//                    if ([obj.symbol isEqualToString:model.symbol]) {
+//                        [[marketManager shareInstance].BTCArray  replaceObjectAtIndex:idx withObject:model];
+//                        *stop = YES;
+//                        [self.tableView reloadData];
+//                    }
+//                }];
+//            }else if (self.viewType==ChildViewType_ETH){
+//                [[marketManager shareInstance].ETHArray enumerateObjectsUsingBlock:^(symbolModel*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//                    if ([obj.symbol isEqualToString:model.symbol]) {
+//                        [[marketManager shareInstance].ETHArray  replaceObjectAtIndex:idx withObject:model];
+//                        *stop = YES;
+//                        [self.tableView reloadData];
+//                    }
+//                }];
+//            }
             else{
                 [[marketManager shareInstance].CollectionArray enumerateObjectsUsingBlock:^(symbolModel*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     if ([obj.symbol isEqualToString:model.symbol]) {

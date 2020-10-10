@@ -21,7 +21,6 @@
 #import "plateModel.h"
 #import "MarketNetManager.h"
 #import "AppDelegate.h"
-#import "StepSlider.h"
 #import "MyEntrustInfoModel.h"
 #import "MyEntrustTableViewCell.h"
 #import "MyEntrustDetailViewController.h"
@@ -40,7 +39,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     PriceType_Trigger,//止盈止损
 };
 
-@interface TradeViewController ()<UITextFieldDelegate,SocketDelegate,StepSliderDelegate,UIScrollViewDelegate>
+@interface TradeViewController ()<UITextFieldDelegate,SocketDelegate,UIScrollViewDelegate>
 {
 //    BOOL _IsMarketprice;//按市价交易;
     BOOL _IsSell;//卖出;
@@ -87,8 +86,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 @property (weak, nonatomic) IBOutlet UIButton *typeBtn;
 
 //新加
-@property (weak, nonatomic) IBOutlet StepSlider *slider;
-@property (weak, nonatomic) IBOutlet UILabel *sliderMaxValue;
+@property (copy, nonatomic) NSString *sliderMaxValue;
 @property(nonatomic,copy)NSString *priceLimitBuy;//限价买入价格 货币
 //@property(nonatomic,strong)UIButton *shareButton;//导航栏右侧收藏按钮
 
@@ -221,21 +219,12 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     self.CurrentnowBut.selected = YES;
     self.entrustmentHisBut.selected = NO;
 
+    [self getBasewalletwithcoin:_baseCoinName];//查询钱包余额
 //    [_AmountTF setValue:RGBOF(0x999999) forKeyPath:@"_placeholderLabel.textColor"];
 //    [_PriceTF setValue:RGBOF(0x999999) forKeyPath:@"_placeholderLabel.textColor"];
 //    [_triggerTF setValue:RGBOF(0x999999) forKeyPath:@"_placeholderLabel.textColor"];
 
-    //设置sloder属性
-    self.slider.delegate = self;
-    self.slider.trackHeight = 3;
-    self.slider.trackCircleRadius = 6;
-    self.slider.sliderCircleRadius = 6;
-    self.slider.trackColor= RGBOF(0xE6E6E6);
-    self.slider.tintColor = GreenColor;
-    self.slider.sliderCircleImage = [UIImage imageNamed:@"circularGreen"];
-    [self.slider setMaxCount:5];
-    [self.slider setIndex:0 animated:NO];
-    self.slider.backgroundColor = [UIColor whiteColor];
+
     self.mainview.clipsToBounds = YES;
     //现价的手势设置
     UITapGestureRecognizer *tapRecognizerNowPrice=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nowPriceTapClick)];
@@ -317,9 +306,8 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 }
 
 -(void)getSliderValue:(CGFloat)sliderValue{
-    NSArray *array = [self.sliderMaxValue.text componentsSeparatedByString:@" "]; //从字符A中分隔成2个元素的数组
-    NSString *numStr = array[0];
-    self.AmountTF.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:[numStr floatValue]*sliderValue/4 withlimit:_coinScale]];
+    
+    self.AmountTF.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:[self.sliderMaxValue floatValue]*sliderValue/4 withlimit:_coinScale]];
     self.TradeNumber.text=[NSString stringWithFormat:@"%@ %@%@",LocalizationKey(@"entrustment"),[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName];
 
    
@@ -337,9 +325,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                 self.AmountTF.text = [ToolUtil stringFromNumber:0 withlimit:_baseCoinScale];
             }
             //限价
-            NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-            NSString *coinStr = [coinArray firstObject];
-            self.sliderMaxValue.text=[NSString stringWithFormat:@"%@ %@",[ToolUtil stringFromNumber:[self.priceLimitBuy doubleValue]/[textField.text doubleValue] withlimit:_baseCoinScale],coinStr];
+            self.sliderMaxValue = [ToolUtil stringFromNumber:[self.priceLimitBuy doubleValue]/[textField.text doubleValue] withlimit:_baseCoinScale];
             [self textfieldValueChange:self.AmountTF];
 
 //            if ([textField.text floatValue] <= 0) {
@@ -356,17 +342,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     }else if (textField.tag == 2){
         [self ValueChange:self.AmountTF];
         //数量
-        NSArray *array = [self.sliderMaxValue.text componentsSeparatedByString:@" "]; //从字符A中分隔成2个元素的数组
-        NSString *numStr = array[0];
-         if ([textField.text floatValue] <= 0) {
-              [self.slider setIndex:0 animated:NO];
-         }else if ([textField.text floatValue] > [numStr floatValue]){
-             [self.view makeToast:_IsSell?LocalizationKey(@"tradSlideTip2"):LocalizationKey(@"tradSlideTip1") duration:1.5 position:ToastPosition];
-             textField.text = @"";
-             self.TradeNumber.text=[NSString stringWithFormat:@"%@ %@%@",LocalizationKey(@"entrustment"),[ToolUtil stringFromNumber:0.00000000 withlimit:_baseCoinScale],_baseCoinName];
-         }else{
-             [self.slider setIndex:[textField.text floatValue]/[numStr floatValue]*4 animated:NO];
-         }
+        if ([textField.text floatValue] > [self.sliderMaxValue floatValue]){
+            [self.view makeToast:_IsSell?LocalizationKey(@"tradSlideTip2"):LocalizationKey(@"tradSlideTip1") duration:1.5 position:ToastPosition];
+            textField.text = @"";
+            self.TradeNumber.text=[NSString stringWithFormat:@"%@ %@%@",LocalizationKey(@"entrustment"),[ToolUtil stringFromNumber:0.00000000 withlimit:_baseCoinScale],_baseCoinName];
+        }
     }
 }
 -(void)setTablewViewHeard{
@@ -498,7 +478,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     [self getSingleAccuracy:[marketManager shareInstance].symbol];
     _baseCoinName=baseSymbol;
     _ObjectCoinName=changeSymbol;
-    [self.slider setIndex:0 animated:NO];
     self.AmountTF.text=@"";
     self.TradeNumber.text=[NSString stringWithFormat:@"%@--",LocalizationKey(@"entrustment")];
     if (self.priceType == PriceType_Fixed) {
@@ -795,10 +774,8 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     sender.selected = YES;
     sender.backgroundColor = RGBOF(0x47AC36);
     self.selecetBtn = sender;
-    NSArray *array = [self.sliderMaxValue.text componentsSeparatedByString:@" "]; //从字符A中分隔成2个元素的数组
-    NSString *numStr = array[0];
-    self.AmountTF.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:[numStr floatValue]*(sender.tag  + 1)/4 withlimit:_coinScale]];
-    self.TradeNumber.text=[NSString stringWithFormat:@"%@ %@%@",LocalizationKey(@"entrustment"),[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName];
+    self.AmountTF.text = [NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:[self.sliderMaxValue floatValue]*(sender.tag  + 1)/4 withlimit:_coinScale]];
+    self.TradeNumber.text = [NSString stringWithFormat:@"%@ %@%@",LocalizationKey(@"entrustment"),[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName];
 }
 #pragma mark-按钮点击事件
 - (IBAction)touchEvents:(UIButton *)sender {
@@ -811,7 +788,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                 if (!_timer) {
                     self.TradeNumber.text=[NSString stringWithFormat:@"%@--",LocalizationKey(@"entrustment")];
                     self.lineView.backgroundColor=GreenColor;
-                    [self.TradeBtn setTitle:LocalizationKey(@"Buy") forState:UIControlStateNormal];
+                    [self.TradeBtn setTitle:[NSString stringWithFormat:@"%@ %@",LocalizationKey(@"Buy"),_ObjectCoinName] forState:UIControlStateNormal];
                     self.TradeBtn.backgroundColor=GreenColor;
                 }
 
@@ -820,10 +797,8 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                 }];
 
                  NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-//                [self getBasewalletwithcoin:[coinArray lastObject]];
                 if ([YLUserInfo isLogIn]) {
                     [self getBasewalletwithcoin:[coinArray lastObject]];
-
                 }
             }
             if (self.priceType == PriceType_Market) {
@@ -839,9 +814,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                 self.AmountTF.placeholder=LocalizationKey(@"amonut");
                 self.objectCoin.text=_ObjectCoinName;
             }
-            self.slider.sliderCircleImage = [UIImage imageNamed:@"circularGreen"];
-            [self.slider setIndex:0 animated:NO];
-            self.slider.tintColor = GreenColor;
             self.AmountTF.text=@"";
             self.triggerTF.text = @"";
             break;
@@ -852,7 +824,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             self.sellBtn.selected = YES;
             if (!_timer) {
                 self.TradeNumber.text=[NSString stringWithFormat:@"%@--",LocalizationKey(@"entrustment")];
-                [self.TradeBtn setTitle:LocalizationKey(@"Sell") forState:UIControlStateNormal];
+                [self.TradeBtn setTitle:[NSString stringWithFormat:@"%@ %@",LocalizationKey(@"Sell"),_ObjectCoinName] forState:UIControlStateNormal];
                 self.TradeBtn.backgroundColor=RedColor;
                 self.lineView.backgroundColor=RedColor;
             }
@@ -863,7 +835,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             
             
             NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-//            [self getCoinwalletwithcoin:[coinArray firstObject]];
             if ([YLUserInfo isLogIn]) {
                 [self getCoinwalletwithcoin:[coinArray firstObject]];
             }
@@ -881,9 +852,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                 self.objectCoin.text=_ObjectCoinName;
             }
         }
-            self.slider.sliderCircleImage = [UIImage imageNamed:@"circularRed"];
-            [self.slider setIndex:0 animated:NO];
-            self.slider.tintColor = RedColor;
             self.AmountTF.text=@"";
             self.triggerTF.text = @"";
             break;
@@ -895,7 +863,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             UIColor *color = [UIColor blackColor];
             [self.view createAlertViewTitleArray:arrayTitle textColor:color font:[UIFont systemFontOfSize:16] type:0 actionBlock:^(UIButton * _Nullable button, NSInteger didRow) {
                 [sender setTitle:button.currentTitle forState:UIControlStateNormal];
-                [self.slider setIndex:0 animated:NO];
                 if (didRow==0) {
                     //限价
                     self.triggerHeightConstraint.constant = 0;
@@ -916,15 +883,13 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                     self.TradeNumber.text=[NSString stringWithFormat:@"%@--",LocalizationKey(@"entrustment")];
                     if (!_IsSell) {
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-//                        [self getBasewalletwithcoin:[coinArray lastObject]];
                         if ([YLUserInfo isLogIn]) {
                             [self getBasewalletwithcoin:[coinArray lastObject]];
                         }
                     }else{
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-//                        [self getCoinwalletwithcoin:[coinArray firstObject]];
                         if ([YLUserInfo isLogIn]) {
-                            [self getBasewalletwithcoin:[coinArray lastObject]];
+                            [self getCoinwalletwithcoin:[coinArray firstObject]];
                         }
                     }
 
@@ -949,7 +914,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                         self.AmountTF.placeholder=LocalizationKey(@"entrustment");
                         self.objectCoin.text=_baseCoinName;
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-//                        [self getBasewalletwithcoin:[coinArray lastObject]];
                         if ([YLUserInfo isLogIn]) {
                             [self getBasewalletwithcoin:[coinArray lastObject]];
                         }
@@ -958,7 +922,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                         self.AmountTF.placeholder=LocalizationKey(@"amonut");
                         self.objectCoin.text=_ObjectCoinName;
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-//                        [self getBasewalletwithcoin:[coinArray lastObject]];
                         if ([YLUserInfo isLogIn]) {
                             [self getCoinwalletwithcoin:[coinArray firstObject]];
                         }
@@ -984,13 +947,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                     self.TradeNumber.text=[NSString stringWithFormat:@"%@--",LocalizationKey(@"entrustment")];
                     if (!_IsSell) {
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-//                        [self getBasewalletwithcoin:[coinArray lastObject]];
                         if ([YLUserInfo isLogIn]) {
                             [self getBasewalletwithcoin:[coinArray lastObject]];
                         }
                     }else{
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-//                        [self getBasewalletwithcoin:[coinArray lastObject]];
                         if ([YLUserInfo isLogIn]) {
                             [self getCoinwalletwithcoin:[coinArray firstObject]];
                         }
@@ -1117,7 +1078,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                         return;
                     }
                     __weak TradeViewController*weakSelf=self;
-                    EasyShowAlertView *showView =[EasyShowAlertView showActionSheetWithTitle:LocalizationKey(@"commissionbuy") left1message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName] right1message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.AmountTF.text doubleValue] withlimit:_coinScale],_objectCoin.text] left2message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName] right2message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.triggerTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName]];
+                    EasyShowAlertView *showView =[EasyShowAlertView showActionSheetWithTitle:LocalizationKey(@"commissionbuy") left1message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName] right1message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.AmountTF.text doubleValue] withlimit:_coinScale],_ObjectCoinName] left2message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName] right2message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.triggerTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName]];
                     showView.typeStr = LocalizationKey(@"Triggerprice");
                     [showView addItemWithTitle:LocalizationKey(@"confirm") itemType:ShowAlertItemTypeBlack callback:^(EasyShowAlertView *showview) {
                         [weakSelf commitBuyCommission:@"BUY"];
@@ -1455,11 +1416,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                         }else{
                             self.nowPrice.textColor=GreenColor;
                         }
-                        if (!_IsSell) {
-                            [self getBasewalletwithcoin:[coinArray lastObject]];
-                        }else{
-                            [self getCoinwalletwithcoin:[coinArray firstObject]];
-                        }
                         if ([YLUserInfo isLogIn]) {
                             if (!_IsSell) {
                                 [self getBasewalletwithcoin:[coinArray lastObject]];
@@ -1488,20 +1444,19 @@ typedef NS_ENUM(NSUInteger, PriceType) {
    [self getSingleAccuracy:[marketManager shareInstance].symbol];
    _baseCoinName=notif.userInfo[@"base"];
    _ObjectCoinName=notif.userInfo[@"object"];
-     [self.slider setIndex:0 animated:NO];
     self.AmountTF.text=@"";
     self.TradeNumber.text=[NSString stringWithFormat:@"%@--",LocalizationKey(@"entrustment")];
-    if (self.priceType == PriceType_Fixed) {
-        //限价
-         self.objectCoin.text=_ObjectCoinName;
-    }else{
-        //市价
-        if (!_IsSell) {
-            self.objectCoin.text=_baseCoinName;
-        }else{
-            self.objectCoin.text=_ObjectCoinName;
-        }
-    }
+//    if (self.priceType == PriceType_Fixed) {
+//        //限价
+//         self.objectCoin.text=_ObjectCoinName;
+//    }else{
+//        //市价
+//        if (!_IsSell) {
+//            self.objectCoin.text=_baseCoinName;
+//        }else{
+//            self.objectCoin.text=_ObjectCoinName;
+//        }
+//    }
     NSDictionary*dic;
     if ([YLUserInfo isLogIn]) {
         dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",[YLUserInfo shareUserInfo].ID,@"uid",nil];
@@ -1804,19 +1759,14 @@ typedef NS_ENUM(NSUInteger, PriceType) {
         if (code) {
             if ([resPonseObj[@"code"] integerValue] == 0) {
                 NSDictionary*dict=resPonseObj[@"data"];
-                self.Useable.text=[NSString stringWithFormat:@"%@%@ %@",LocalizationKey(@"usabel"),[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_baseCoinScale],coin];
+                self.Useable.text = [NSString stringWithFormat:@"%@%@ %@",LocalizationKey(@"usabel"),[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_baseCoinScale],coin];
                 if (self.priceType == PriceType_Fixed) {
-                    //限价
-                    NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-                    NSString *coinStr = [coinArray firstObject];
-                    self.sliderMaxValue.text=[NSString stringWithFormat:@"%@ %@",[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue]/[self.PriceTF.text doubleValue] withlimit:_coinScale],coinStr];
+                    self.sliderMaxValue = [ToolUtil stringFromNumber:[dict[@"balance"] doubleValue]/[self.PriceTF.text doubleValue] withlimit:_coinScale];
                     self.priceLimitBuy = dict[@"balance"];
                 }else if (self.priceType == PriceType_Market){
-                   self.sliderMaxValue.text=[NSString stringWithFormat:@"%@ %@",[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_coinScale],coin];
+                   self.sliderMaxValue = [ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_coinScale];
                 }else{
-                    NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
-                    NSString *coinStr = [coinArray firstObject];
-                    self.sliderMaxValue.text=[NSString stringWithFormat:@"%@ %@",[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue]/[self.PriceTF.text doubleValue] withlimit:_coinScale],coinStr];
+                    self.sliderMaxValue =[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue]/[self.PriceTF.text doubleValue] withlimit:_coinScale];
                     self.priceLimitBuy = dict[@"balance"];
                 }
             }else{
@@ -1836,7 +1786,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                 if ([resPonseObj[@"data"]isKindOfClass:[NSDictionary class]]) {
                     NSDictionary*dict=resPonseObj[@"data"];
                     self.Useable.text=[NSString stringWithFormat:@"%@%@ %@",LocalizationKey(@"usabelSell"),[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_baseCoinScale],coin];
-                    self.sliderMaxValue.text=[NSString stringWithFormat:@"%@ %@",[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_coinScale],coin];
+                    self.sliderMaxValue = [ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_coinScale];
                 }
             }
             else if ([resPonseObj[@"code"] integerValue] ==4000){

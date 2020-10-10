@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -77,20 +77,20 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Zs-as-uvs">
-                                                    <rect key="frame" x="353" y="1.6666666666666679" width="22" height="26.666666666666668"/>
+                                                    <rect key="frame" x="347.66666666666669" y="1.6666666666666679" width="27.333333333333314" height="26.666666666666668"/>
                                                     <state key="normal" image="icon_kLine"/>
                                                     <connections>
                                                         <action selector="kLineAction:" destination="-1" eventType="touchUpInside" id="Bs7-11-5hF"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzz-jX-Aex">
-                                                    <rect key="frame" x="323.33333333333331" y="4" width="17.666666666666686" height="22"/>
+                                                    <rect key="frame" x="313.66666666666669" y="4" width="22" height="22"/>
                                                     <state key="normal" image="uncollect"/>
                                                     <connections>
                                                         <action selector="moreAction:" destination="-1" eventType="touchUpInside" id="LsW-yp-Sxz"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOG-SG-m1S">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOG-SG-m1S">
                                                     <rect key="frame" x="125" y="5" width="50" height="20"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+2.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIw-dp-Yuy">
@@ -989,7 +989,7 @@
         <image name="icon_sell" width="42" height="18.666666030883789"/>
         <image name="icon_sellNormal" width="42" height="18.666666030883789"/>
         <image name="icon_switch" width="14.666666984558105" height="13.666666984558105"/>
-        <image name="uncollect" width="17.666666030883789" height="17"/>
+        <image name="uncollect" width="22" height="22"/>
         <image name="减" width="12" height="12"/>
     </resources>
 </document>

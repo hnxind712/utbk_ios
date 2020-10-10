@@ -13,8 +13,8 @@ typedef void(^selSymbolBlock)(NSString *baseSymbol, NSString *changeSymbol);
 @interface LeftMenuViewController : BTBaseViewController
 typedef enum : NSUInteger {
     ChildViewType_USDT=0,
-    ChildViewType_BTC,
-    ChildViewType_ETH,
+//    ChildViewType_BTC,
+//    ChildViewType_ETH,
     ChildViewType_Collection
 } ChildViewType;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

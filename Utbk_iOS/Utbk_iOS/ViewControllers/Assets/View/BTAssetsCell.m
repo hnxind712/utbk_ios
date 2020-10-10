@@ -33,7 +33,7 @@
     self.coinName.text = model.coin.unit;
     self.totalCoinAccount.text = [ToolUtil judgeStringForDecimalPlaces:model.balance];
     self.convertAccount.text = [ToolUtil judgeStringForDecimalPlaces:model.frozenBalance];
-    if ([model.coin.name isEqualToString:@"USDT"]) {
+    if ([model.coin.unit containsString:@"USDT"]) {
         [self.receiveBtn setTitle:LocalizationKey(@"充币") forState:UIControlStateNormal];
         [self.transiferBtn setTitle:LocalizationKey(@"提币") forState:UIControlStateNormal];
         [self.sTransferBtn setTitle:LocalizationKey(@"转币") forState:UIControlStateNormal];
@@ -67,7 +67,11 @@
         self.receiveBtn.backgroundColor = RGBOF(0xA7865A);
         [self.receiveBtn setTitleColor:RGBOF(0xffffff) forState:UIControlStateNormal];
     }
-
+    if ([model.coin.unit isEqualToString:@"BTK"]) {//BTK为子币，不支持划转
+        self.sTransferBtn.hidden = YES;
+    }else{
+        self.sTransferBtn.hidden = NO;
+    }
 }
 - (IBAction)assetsDetail:(UIButton *)sender {
     if (self.assetsDetailAction) {

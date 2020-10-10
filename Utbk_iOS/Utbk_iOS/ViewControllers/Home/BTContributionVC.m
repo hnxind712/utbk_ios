@@ -43,7 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LocalizationKey(@"贡献");
-    [self addRightNavigation];
+//    [self addRightNavigation];
     [self getWallet];
     [self setupBind];
     [self getCoinExchangeUSDTRate];

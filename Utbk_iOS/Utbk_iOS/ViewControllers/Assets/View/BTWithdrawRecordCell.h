@@ -12,9 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTWithdrawRecordCell : UITableViewCell
 
+@property (assign, nonatomic) NSInteger index;//当前的记录类型，需要着重处理对应币种流水的情况下是按照model里面的type来处理的
+
 @property (copy, nonatomic) void(^recordDetailAction)(void);
 
-- (void)configureCellWithRecordModel:(id)model;
+- (void)configureCellWithRecordModel:(id)model;//提币记录
+
+- (void)configureCellWithStreamRecordModel:(id)model;//资产流水记录
 
 - (void)configureCellWithMotherTransferRecordModel:(id)model;//原始母币转账
 

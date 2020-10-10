@@ -113,6 +113,7 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="count" destination="T7g-Om-lRp" id="Mo0-9M-mge"/>
+                <outlet property="moreBtn" destination="aR5-Is-GUG" id="qPF-D6-QJP"/>
                 <outlet property="status" destination="POQ-1a-d3e" id="gv7-xy-6Ac"/>
                 <outlet property="time" destination="DC9-Ka-k7q" id="rT2-bL-2Hi"/>
                 <outlet property="title" destination="6qp-Iu-yeE" id="qwP-oX-uVe"/>

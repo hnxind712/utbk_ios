@@ -76,7 +76,11 @@
     [self.navigationController pushViewController:qrcode animated:YES];
 }
 - (void)qrcodeController:(STQRCodeController *)qrcodeController readerScanResult:(NSString *)readerScanResult type:(STQRCodeResultType)resultType{
-    NSLog(@"打印一下结果 = %@",readerScanResult);
+    if (resultType == STQRCodeResultTypeSuccess) {
+         self.addressInput.text = readerScanResult;
+     }else if (resultType == STQRCodeResultTypeError){
+         [self.view makeToast:LocalizationKey(@"没有扫描到任何结果") duration:ToastHideDelay position:ToastPosition];
+     }
 }
 //全部输入
 - (IBAction)inputAllCoinAccountAction:(UIButton *)sender {

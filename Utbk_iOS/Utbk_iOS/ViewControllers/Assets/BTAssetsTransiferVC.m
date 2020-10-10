@@ -13,6 +13,7 @@
 #import "MentionCoinInfoModel.h"
 #import "BTAssetsModel.h"
 #import "TradeNetManager.h"
+#import "BTWithdrawRecordVC.h"
 
 @interface BTAssetsTransiferVC ()<STQRCodeControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *balance;
@@ -35,7 +36,21 @@
     self.title = LocalizationKey(@"转币");
     [self setupBind];
     [self getSingleCoinWallet];
+    [self addRightNavigation];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)addRightNavigation{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:BTUIIMAGE(@"icon_transferRecordR") forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(withDrawRecordAction) forControlEvents:UIControlEventTouchUpInside];
+    [btn sizeToFit];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
+- (void)withDrawRecordAction{
+    BTWithdrawRecordVC *withdrawRecord = [[BTWithdrawRecordVC alloc]init];
+    withdrawRecord.recordType = KRecordTypeTransfer;
+    [self.navigationController pushViewController:withdrawRecord animated:YES];
 }
 - (void)getSingleCoinWallet{
     WeakSelf(weakSelf)

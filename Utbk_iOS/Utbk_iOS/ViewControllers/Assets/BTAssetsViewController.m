@@ -18,9 +18,7 @@
 #import "SPMultipleSwitch.h"
 #import "BTAssetSweepVC.h"
 #import "BTPoolHoldCoinModel.h"
-
-//测试用
-#import "BTAssetsWithdrawVC.h"
+#import "BTWithdrawRecordVC.h"
 
 @interface BTAssetsViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIView *headerView;
@@ -178,7 +176,7 @@
                     [strongSelf.navigationController pushViewController:sweep animated:YES];
                 }else{
                     if (!model.coin.canRecharge) {
-                        [self.view makeToast:[model.coin.name isEqualToString:@"USDT"] ? LocalizationKey(@"当前不可充币") : LocalizationKey(@"当前不可收币") duration:ToastHideDelay position:ToastPosition];return;
+                        [self.view makeToast:[model.coin.unit containsString:@"USDT"] ? LocalizationKey(@"当前不可充币") : LocalizationKey(@"当前不可收币") duration:ToastHideDelay position:ToastPosition];return;
                     }
                     BTAssetsRechargeVC *recharge = [[BTAssetsRechargeVC alloc]init];
                     recharge.isRechage = [model.coin.name isEqualToString:@"USDT"];
@@ -189,7 +187,7 @@
                 break;
             case 1://转账
             {
-                if ([model.coin.name isEqualToString:@"USDT"]) {
+                if ([model.coin.unit containsString:@"USDT"]) {
                     if (!model.coin.canWithdraw) {
                         [self.view makeToast:LocalizationKey(@"当前不可提现") duration:ToastHideDelay position:ToastPosition];return;
                     }
@@ -208,7 +206,7 @@
                 break;
             case 2://划转
             {
-                if ([model.coin.name isEqualToString:@"USDT"]) {
+                if ([model.coin.unit containsString:@"USDT"]) {
                     if (!model.coin.canTransfer) {
                         [self.view makeToast:LocalizationKey(@"当前不可转账") duration:ToastHideDelay position:ToastPosition];return;
                     }
@@ -230,12 +228,13 @@
                 break;
         }
     };
-    cell.assetsDetailAction = ^{
-        StrongSelf(strongSelf)
-        BTAssetsDetailVC *detail = [[BTAssetsDetailVC alloc]init];
-        detail.assetsModel = model;
-        [strongSelf.navigationController pushViewController:detail animated:YES];
-    };
+//    cell.assetsDetailAction = ^{
+//        StrongSelf(strongSelf)
+//        BTWithdrawRecordVC *detail = [[BTWithdrawRecordVC alloc]init];
+//        detail.unit = model.coin.unit;
+//        detail.recordType = KRecordTypeCoinStream;
+//        [strongSelf.navigationController pushViewController:detail animated:YES];
+//    };
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

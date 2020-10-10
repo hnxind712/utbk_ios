@@ -78,45 +78,107 @@
 - (void)setupBind{
     NSString *pageNoStr = [[NSString alloc] initWithFormat:@"%ld",(long)_currentPage];
     NSMutableDictionary *bodydic = [NSMutableDictionary dictionary];
-    [bodydic setValue:pageNoStr forKey:@"page"];
+    [bodydic setValue:pageNoStr forKey:@"pageNo"];
     [bodydic setValue:@"10" forKey:@"pageSize"];
-    if (self.recordType == KRecordTypeRecharge) {
-        [bodydic setValue:@"0" forKey:@"type"];
-        [bodydic setValue:pageNoStr forKey:@"pageNo"];
-        [bodydic removeObjectForKey:@"page"];
-        [bodydic setValue:[YLUserInfo shareUserInfo].ID forKey:@"memberId"];
-        [self rechargeData:bodydic];
-    }else if(self.recordType == KRecordTypeWithdraw){
+    [bodydic setValue:self.unit forKey:@"symbol"];
+    if (self.recordType == KRecordTypeWithdraw) {//提币
+        [bodydic setValue:pageNoStr forKey:@"page"];
+        [bodydic removeObjectForKey:@"pageNo"];
+        [bodydic removeObjectForKey:@"symbol"];
         [self withdrawData:bodydic];
-    }else if(self.recordType == KRecordTypeOther){//流水记录
-        
-    }else if (self.recordType == KRecordTypeMotherCoinTransfer){
-        [bodydic setValue:pageNoStr forKey:@"pageNo"];
-        [bodydic removeObjectForKey:@"page"];
-        [bodydic setValue:@"0" forKey:@"type"];
-        [self getMotherTransferRecord:bodydic];
-    }else if (self.recordType == KRecordTypeMotherCoinSweep){
-        [bodydic setValue:pageNoStr forKey:@"pageNo"];
-        [bodydic removeObjectForKey:@"page"];
-        [bodydic setValue:@"2" forKey:@"type"];
-        [self getMotherTransferRecord:bodydic];
-    }else if (self.recordType == KRecordTypeMotherCoinRecharge){
-        [bodydic setValue:pageNoStr forKey:@"pageNo"];
-        [bodydic removeObjectForKey:@"page"];
-        [bodydic setValue:@"1" forKey:@"type"];
-        [self getMotherTransferRecord:bodydic];
-    }else if (self.recordType == KRecordTypeInvitationRecord){
-        [bodydic setValue:pageNoStr forKey:@"pageNo"];
-        [bodydic removeObjectForKey:@"page"];
-        [bodydic setValue:@"3" forKey:@"type"];
-        [self getMotherTransferRecord:bodydic];
-    }else if (self.recordType == KRecordTypeContributionRecord){//贡献记录
-        [bodydic setValue:pageNoStr forKey:@"pageNo"];
-        [bodydic removeObjectForKey:@"page"];
-        [bodydic setValue:@"1" forKey:@"type"];
-        [bodydic setValue:[YLUserInfo shareUserInfo].secretKey forKey:@"apiKey"];
-        [self getContributionRecord:bodydic];
+    }else{
+        NSString *type;
+        if (self.recordType == KRecordTypeRecharge || self.recordType < 5) {//充币、转账、资产转矿池、矿池转资产
+            switch (self.recordType) {
+                case KRecordTypeRecharge:
+                    type = @"0";
+                    break;
+                case KRecordTypeTransfer://转账
+                    type = @"2";
+                    break;
+                case KRecordTypeTransterIn://资产转矿池
+                    type = @"17";
+                    break;
+                case KRecordTypeTransterOut://资产转矿池
+                    type = @"18";
+                    break;
+                default:
+                    break;
+            }
+            [bodydic setValue:type forKey:@"type"];
+            [self rechargeData:bodydic];
+        }else if (self.recordType >= 5 && self.recordType <= 8){
+            switch (self.recordType) {
+                case KRecordTypeMotherCoinRecharge://母币充值
+                    type = @"1";
+                    break;
+                case KRecordTypeMotherCoinTransfer://母币转账
+                    type = @"0";
+                    break;
+                case KRecordTypeMotherCoinSweep://母币划转
+                    type = @"2";
+                    break;
+                case KRecordTypeInvitationRecord://邀请激活
+                    type = @"3";
+                    break;
+                default:
+                    break;
+            }
+            [bodydic setValue:type forKey:@"type"];
+            [self getMotherTransferRecord:bodydic];
+        }
     }
+    
+//    if (self.recordType == KRecordTypeRecharge) {
+//        [bodydic setValue:@"0" forKey:@"type"];
+//        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+//        [bodydic removeObjectForKey:@"page"];
+//        [bodydic setValue:[YLUserInfo shareUserInfo].ID forKey:@"memberId"];
+//        [bodydic setValue:self.unit forKey:@"symbol"];
+//        [self rechargeData:bodydic];
+//    }else if(self.recordType == KRecordTypeWithdraw){
+//
+//    }else if(self.recordType == KRecordTypeTransfer){//转账
+//        [bodydic setValue:@"2" forKey:@"type"];
+//        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+//        [bodydic removeObjectForKey:@"page"];
+//        [bodydic setValue:self.unit forKey:@"symbol"];
+//        [bodydic setValue:[YLUserInfo shareUserInfo].ID forKey:@"memberId"];
+//        [self rechargeData:bodydic];
+//    }else if (self.recordType == KRecordTypeCoinStream){//对应币种的所有流水
+//        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+//        [bodydic removeObjectForKey:@"page"];
+//        [bodydic setValue:self.unit forKey:@"symbol"];
+//        [bodydic setValue:[YLUserInfo shareUserInfo].ID forKey:@"memberId"];
+//        [self rechargeData:bodydic];
+//    }
+//    else if (self.recordType == KRecordTypeMotherCoinTransfer){
+//        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+//        [bodydic removeObjectForKey:@"page"];
+//        [bodydic setValue:@"0" forKey:@"type"];
+//        [self getMotherTransferRecord:bodydic];
+//    }else if (self.recordType == KRecordTypeMotherCoinSweep){
+//        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+//        [bodydic removeObjectForKey:@"page"];
+//        [bodydic setValue:@"2" forKey:@"type"];
+//        [self getMotherTransferRecord:bodydic];
+//    }else if (self.recordType == KRecordTypeMotherCoinRecharge){
+//        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+//        [bodydic removeObjectForKey:@"page"];
+//        [bodydic setValue:@"1" forKey:@"type"];
+//        [self getMotherTransferRecord:bodydic];
+//    }else if (self.recordType == KRecordTypeInvitationRecord){
+//        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+//        [bodydic removeObjectForKey:@"page"];
+//        [bodydic setValue:@"3" forKey:@"type"];
+//        [self getMotherTransferRecord:bodydic];
+//    }else if (self.recordType == KRecordTypeContributionRecord){//贡献记录
+//        [bodydic setValue:pageNoStr forKey:@"pageNo"];
+//        [bodydic removeObjectForKey:@"page"];
+//        [bodydic setValue:@"1" forKey:@"type"];
+//        [bodydic setValue:[YLUserInfo shareUserInfo].secretKey forKey:@"apiKey"];
+//        [self getContributionRecord:bodydic];
+//    }
 
 }
 - (void)withdrawData:(NSDictionary *)params{
@@ -206,31 +268,45 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTWithdrawRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTWithdrawRecordCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (self.recordType == KRecordTypeWithdraw) {
-            BTWithdrawRecordModel *model = self.datasource[indexPath.row];
+    cell.index = self.recordType;
+    if (self.recordType == KRecordTypeWithdraw) {//USDT提币记录
+        BTWithdrawRecordModel *model = self.datasource[indexPath.row];
         [cell configureCellWithRecordModel:model];
-        WeakSelf(weakSelf)
-        cell.recordDetailAction = ^{
-            StrongSelf(strongSelf)
-//            if (strongSelf.recordType == KRecordTypeWithdraw) {//暂时不需跳转
-                BTWithdrawRecordDetailVC *detail = [[BTWithdrawRecordDetailVC alloc]init];
-                detail.index = self.recordType;
-                detail.recordModel = model;
-                [strongSelf.navigationController pushViewController:detail animated:YES];
-//            }
-        };
-    }else if (self.recordType == KRecordTypeMotherCoinTransfer || self.recordType == KRecordTypeMotherCoinSweep || self.recordType == KRecordTypeMotherCoinRecharge || self.recordType == KRecordTypeInvitationRecord){//原始母币转账
-        BTMotherCoinModel *model = self.datasource[indexPath.row];
-        [cell configureCellWithMotherTransferRecordModel:model];
         WeakSelf(weakSelf)
         cell.recordDetailAction = ^{
             StrongSelf(strongSelf)
             BTWithdrawRecordDetailVC *detail = [[BTWithdrawRecordDetailVC alloc]init];
             detail.index = self.recordType;
-            detail.model = model;
+            detail.recordModel = model;
             [strongSelf.navigationController pushViewController:detail animated:YES];
         };
-    }else if (self.recordType == KRecordTypeContributionRecord){
+    }else if (self.recordType == KRecordTypeRecharge || self.recordType == KRecordTypeTransfer || self.recordType == KRecordTypeTransterIn || self.recordType == KRecordTypeTransterOut){//资产流水相关
+        BTWithdrawRecordModel *model = self.datasource[indexPath.row];
+        [cell configureCellWithStreamRecordModel:model];
+        if (self.recordType == KRecordTypeRecharge || self.recordType == KRecordTypeTransfer) {//充值以及转账可以有详情
+            WeakSelf(weakSelf)
+            cell.recordDetailAction = ^{
+                StrongSelf(strongSelf)
+                BTWithdrawRecordDetailVC *detail = [[BTWithdrawRecordDetailVC alloc]init];
+                detail.index = self.recordType;
+                detail.recordModel = model;
+                [strongSelf.navigationController pushViewController:detail animated:YES];
+            };
+        }
+    }else if (self.recordType == KRecordTypeMotherCoinTransfer || self.recordType == KRecordTypeMotherCoinSweep || self.recordType == KRecordTypeMotherCoinRecharge || self.recordType == KRecordTypeInvitationRecord){//原始母币相关记录
+        BTMotherCoinModel *model = self.datasource[indexPath.row];
+        [cell configureCellWithMotherTransferRecordModel:model];
+        WeakSelf(weakSelf)
+        if (self.recordType != KRecordTypeMotherCoinSweep) {
+            cell.recordDetailAction = ^{
+                StrongSelf(strongSelf)
+                BTWithdrawRecordDetailVC *detail = [[BTWithdrawRecordDetailVC alloc]init];
+                detail.index = self.recordType;
+                detail.model = model;
+                [strongSelf.navigationController pushViewController:detail animated:YES];
+            };
+        }
+    }else if (self.recordType == KRecordTypeContributionRecord){//弃用
         BTPoolShareContributionRecordModel *model = self.datasource[indexPath.row];
         [cell configureCellWithContributionRecordModel:model];
     }
