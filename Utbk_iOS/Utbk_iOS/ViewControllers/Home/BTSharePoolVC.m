@@ -102,7 +102,7 @@
     [self.navigationController pushViewController:contribution animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 173.f;
+    return 180.f;
 }
 /*
 #pragma mark - Navigation

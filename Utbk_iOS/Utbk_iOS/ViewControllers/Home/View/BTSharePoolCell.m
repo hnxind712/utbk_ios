@@ -11,12 +11,19 @@
 
 @interface BTSharePoolCell ()
 @property (weak, nonatomic) IBOutlet UILabel *yesEarnings;
+@property (weak, nonatomic) IBOutlet UILabel *coinName;
+@property (weak, nonatomic) IBOutlet UILabel *subAmount;
+@property (weak, nonatomic) IBOutlet UILabel *subCoin;
+
 @property (weak, nonatomic) IBOutlet UILabel *destroyTotal;
+@property (weak, nonatomic) IBOutlet UILabel *totalCoin;
 @property (weak, nonatomic) IBOutlet UILabel *totalOutput;
 @property (weak, nonatomic) IBOutlet UILabel *contributionValue;
 @property (weak, nonatomic) IBOutlet UIButton *levelBtn;
 @property (weak, nonatomic) IBOutlet UILabel *sections;
 @property (weak, nonatomic) IBOutlet UIView *starView;
+@property (weak, nonatomic) IBOutlet UILabel *subOutput;
+@property (weak, nonatomic) IBOutlet UILabel *subOutputCoin;
 
 @end
 @implementation BTSharePoolCell
@@ -26,8 +33,16 @@
     // Initialization code
 }
 - (void)configureCellWithModel:(BTSharePoolModel *)model{
-    self.yesEarnings.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%f",model.yesterdayProduce]];//昨日收益
-    self.totalOutput.text = [ToolUtil formartScientificNotationWithString:model.totalProduce];//累计产出
+    if (model.subCoin.length) {
+        self.subCoin.text = model.subCoin;
+        self.subAmount.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.subCoinYesterdayProduce]];
+    }
+    self.yesEarnings.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.yesterdayProduce]];
+    self.coinName.text = model.coinName;
+    self.totalOutput.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.totalProduce]];//累计产出
+    self.totalCoin.text = model.coinName;
+    self.subOutput.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.subCoinAmount]];
+    self.subOutputCoin.text = model.subCoin;
     if (model.groupsQty * KContributionValue > KContributionValue * 200) {//说明是矿主200组以上就是矿主
         self.starView.hidden = NO;
         [self.levelBtn setTitle:LocalizationKey(@"矿主") forState:UIControlStateNormal];

@@ -16,7 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *coinName;//币种名
 @property (weak, nonatomic) IBOutlet UILabel *totalEarning;
-@property (weak, nonatomic) IBOutlet UILabel *destroyValue;//销毁量
+@property (weak, nonatomic) IBOutlet UILabel *subCoin;
+@property (weak, nonatomic) IBOutlet UILabel *destroyValue;//子币累计收益
 @property (weak, nonatomic) IBOutlet UIButton *contributionBtn;
 @property (weak, nonatomic) IBOutlet UIButton *earningsBtn;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -80,11 +81,12 @@
 - (void)setupBind{
     //先给死的币种值
     self.coinName.text = [NSString stringWithFormat:@"%@：",self.model.coinName];
-    self.totalEarning.text = [ToolUtil formartScientificNotationWithString:self.model.totalProduce];
-    NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.f",self.model.destroyQty]],self.model.coinName]];//销毁总量
-    [attribute addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20.f weight:UIFontWeightBold],NSForegroundColorAttributeName:RGBOF(0xA78659)} range:NSMakeRange(0, attribute.string.length)];
-    [attribute addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.f],NSForegroundColorAttributeName:RGBOF(0xA78659)} range:[attribute.string rangeOfString:self.model.coinName]];
-    self.destroyValue.attributedText = attribute;
+    self.totalEarning.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",self.model.totalProduce]];
+//    NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.f",self.model.destroyQty]],self.model.coinName]];//销毁总量
+//    [attribute addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20.f weight:UIFontWeightBold],NSForegroundColorAttributeName:RGBOF(0xA78659)} range:NSMakeRange(0, attribute.string.length)];
+//    [attribute addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.f],NSForegroundColorAttributeName:RGBOF(0xA78659)} range:[attribute.string rangeOfString:self.model.coinName]];
+    self.subCoin.text = [NSString stringWithFormat:@"%@：",self.model.subCoin];
+    self.destroyValue.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",self.model.subCoinAmount]];
 }
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTSharePoolTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTSharePoolTableViewCell class])];

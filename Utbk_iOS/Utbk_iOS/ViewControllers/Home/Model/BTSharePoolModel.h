@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *saveTime;
 @property (nonatomic,assign) CGFloat shareContributionValue;
 @property (nonatomic,assign) CGFloat todayContributionValue;
-@property (nonatomic,copy) NSString *totalProduce;//总产出
+@property (nonatomic,assign) CGFloat totalProduce;//总产出
 @property (nonatomic,assign) NSInteger type;//类型 1普通矿工 2矿主 3加权分红席位矿主
 @property (nonatomic,assign) NSInteger userId;
 @property (nonatomic,assign) CGFloat yesterdayProduce;//昨日产出
@@ -39,6 +39,10 @@ NS_ASSUME_NONNULL_BEGIN
 //下面两个后台加
 @property (nonatomic,copy) NSString *coinName;
 @property (nonatomic,assign) CGFloat destroyQty;//销毁总量
+@property (nonatomic,copy) NSString *subCoin;
+@property (nonatomic,assign) CGFloat subCoinAmount;
+@property (nonatomic,assign) CGFloat subCoinYesterdayProduce;
+
 @end
 
 NS_ASSUME_NONNULL_END

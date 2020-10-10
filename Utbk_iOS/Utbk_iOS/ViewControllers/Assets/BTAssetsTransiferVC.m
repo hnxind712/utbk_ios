@@ -50,6 +50,7 @@
 - (void)withDrawRecordAction{
     BTWithdrawRecordVC *withdrawRecord = [[BTWithdrawRecordVC alloc]init];
     withdrawRecord.recordType = KRecordTypeTransfer;
+    withdrawRecord.unit = self.unit;
     [self.navigationController pushViewController:withdrawRecord animated:YES];
 }
 - (void)getSingleCoinWallet{

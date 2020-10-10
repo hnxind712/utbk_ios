@@ -46,8 +46,8 @@
                             <color key="textColor" red="0.6588235294" green="0.52549019610000003" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1596.895878" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0L8-We-Wlk">
-                            <rect key="frame" x="72.5" y="52" width="92.5" height="13"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0L8-We-Wlk">
+                            <rect key="frame" x="72.5" y="52" width="31" height="13"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="13" id="3SX-dK-nJr"/>
                             </constraints>
@@ -64,8 +64,8 @@
                             <color key="textColor" red="0.6588235294" green="0.52549019610000003" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1596.895878" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1S-1T-Ln0">
-                            <rect key="frame" x="62" y="84" width="92.5" height="13"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1S-1T-Ln0">
+                            <rect key="frame" x="62" y="84" width="31" height="13"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="13" id="Rgf-Ht-82N"/>
                             </constraints>
