@@ -287,7 +287,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             }
             else if ([resPonseObj[@"code"] integerValue] == 3000 ||[resPonseObj[@"code"] integerValue] == 4000 ){
                 
-//                [YLUserInfo logout];
+                [YLUserInfo logout];
             }else{
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }
@@ -390,7 +390,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             self.accountInfo = [AccountSettingInfoModel mj_objectWithKeyValues:resPonseObj[@"data"]];
                 
             }else if ([resPonseObj[@"code"] integerValue]==4000){
-//                [YLUserInfo logout];
+                [YLUserInfo logout];
             }else{
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];
             }

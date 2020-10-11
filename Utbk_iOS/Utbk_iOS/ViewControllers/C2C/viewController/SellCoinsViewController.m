@@ -229,7 +229,7 @@
                 self.accountInfo = [AccountSettingInfoModel mj_objectWithKeyValues:resPonseObj[@"data"]];
                 
             }else if ([resPonseObj[@"code"] integerValue]==4000){
-//                [YLUserInfo logout];
+                [YLUserInfo logout];
             }else{
                 
             }

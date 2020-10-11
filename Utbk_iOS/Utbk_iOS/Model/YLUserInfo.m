@@ -68,6 +68,8 @@ static YLUserInfo *userInfo = nil;
 +(instancetype)logout{
     userInfo = nil;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERINFO];
+    [[NSUserDefaults standardUserDefaults] synchronize];//及时存储数据
+    [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];//登录操作
     return userInfo;
 }
 

@@ -136,6 +136,11 @@
             NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
             NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
             [array addObjectsFromArray:list];
+            [list enumerateObjectsUsingBlock:^(YLUserInfo *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj.username isEqualToString:info.username]) {//说明已经存在了，
+                    [array removeObject:obj];//移除掉之前的
+                }
+            }];
             [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
                 if (NetSuccess) {
                     NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];

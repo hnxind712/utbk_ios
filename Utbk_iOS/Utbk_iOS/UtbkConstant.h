@@ -126,6 +126,7 @@ cell.preservesSuperviewLayoutMargins = NO; \
 #define KContributionValue 100
 //将所有注册或者登录过的账号都保存在本地
 #define KWalletManagerKey @"__KWalletManagerKey__"
+#define KLogoutKey @"__KLogoutKey__"
 
 static  int    COMMANDS_VERSION = 1;
 static  short  SUBSCRIBE_SYMBOL_THUMB = 20001; //订阅缩略行情

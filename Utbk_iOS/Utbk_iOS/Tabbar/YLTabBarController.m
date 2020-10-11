@@ -14,6 +14,7 @@
 #import "TradeViewController.h"//币币交易
 #import "BTAssetsViewController.h"
 #import "BTProfileViewController.h"
+#import "BTWalletManagerVC.h"
 
 @interface YLTabBarController ()<UITabBarControllerDelegate, UITabBarDelegate>
 
@@ -63,6 +64,7 @@
                        opacity:0.14];
     //添加子控制器
     [self initTabbar];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showLoginViewController) name:KLogoutKey object:nil];
 }
 
 - (void)dropShadowWithOffset:(CGSize)offset
@@ -121,9 +123,9 @@
 }
 
 -(void)showLoginViewController{
-//    LoginViewController*loginVC=[[LoginViewController alloc]init];
-//    YLNavigationController *nav = [[YLNavigationController alloc]initWithRootViewController:loginVC];
-//    [self presentViewController:nav animated:YES completion:nil];
+    if ([[[AppDelegate sharedAppDelegate]topViewController]isKindOfClass:[BTWalletManagerVC class]]) return;
+    BTWalletManagerVC *loginVC = [[BTWalletManagerVC alloc]init];
+    [self presentViewController:loginVC animated:YES completion:nil];
 }
 //重置tabar标题
 -(void)resettabarItemsTitle{

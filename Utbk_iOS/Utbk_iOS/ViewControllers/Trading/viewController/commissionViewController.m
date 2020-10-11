@@ -112,7 +112,7 @@
                 [self.tableView reloadData];
                 
             }else if ([resPonseObj[@"code"] intValue]==4000){
-//                [YLUserInfo logout];
+                [YLUserInfo logout];
             }
             else{
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];

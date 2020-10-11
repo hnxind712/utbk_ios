@@ -21,11 +21,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *communityHold;//小区总持
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *datasource;
+@property (strong, nonatomic) LYEmptyView *emptyView;
 
 @end
 
 @implementation BTTeamHoldViewController
-
+- (LYEmptyView *)emptyView{
+    if (!_emptyView) {
+        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"暂无数据")];
+    }
+    return _emptyView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LocalizationKey(@"团队持仓");
@@ -67,6 +73,7 @@
         if (NetSuccess) {
             StrongSelf(strongSelf)
             strongSelf.datasource = [BTTeamHoldModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+            strongSelf.tableView.ly_emptyView = strongSelf.emptyView;
             [strongSelf.tableView reloadData];
         }
     }];

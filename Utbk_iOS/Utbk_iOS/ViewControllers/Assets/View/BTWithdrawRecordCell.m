@@ -65,15 +65,7 @@
     self.title.text = [self typeString];
     self.count.text = [ToolUtil judgeStringForDecimalPlaces:model.amount];
     self.time.text = [ToolUtil transformForTimeString:model.createTime];
-    if (model.status == 0) {
-         self.status.text = LocalizationKey(@"auditing");
-     }else if (model.status == 1){
-         self.status.text = LocalizationKey(@"Assetstoreleased");
-     }else if (model.status == 2){
-         self.status.text = LocalizationKey(@"failure");
-     }else if(model.status == 3){
-         self.status.text = LocalizationKey(@"Success");
-     }
+    self.status.text = LocalizationKey(@"Success");
     self.moreBtn.hidden = (self.index != 6) ? NO : YES;
 }
 - (void)configureCellWithContributionRecordModel:(BTPoolShareContributionRecordModel *)model{

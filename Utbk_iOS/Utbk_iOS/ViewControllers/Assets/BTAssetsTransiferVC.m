@@ -64,7 +64,7 @@
             }
             else if ([resPonseObj[@"code"] integerValue] ==4000){
                // [ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
-//                [YLUserInfo logout];
+                [YLUserInfo logout];
             }
             else{
                 [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];

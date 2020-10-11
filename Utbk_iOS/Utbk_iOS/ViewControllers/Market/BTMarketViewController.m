@@ -78,6 +78,10 @@
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTMarketTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTMarketTableViewCell class])];
     self.tableView.tableFooterView = [UITableView new];
+    [self headRefreshWithScrollerView:self.tableView];
+}
+- (void)refreshHeaderAction{
+    [self setupBind];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.datasource.count;

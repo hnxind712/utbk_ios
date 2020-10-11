@@ -29,14 +29,14 @@
 - (void)configureCellWithModel:(BTPoolShareContributionRecordModel *)model{
     if (self.type == 1) {
         self.one.text = [NSString stringWithFormat:@"%.0fv", model.contributionValue];
-        self.two.text = [NSString stringWithFormat:@"%@/%.0f",model.coin,model.amount];//暂定
+        self.two.text = [NSString stringWithFormat:@"%@/%.2f",model.coin,model.amount];//暂定
         self.three.text = [NSString stringWithFormat:@"%ld",(long)model.groupQty];
         self.four.text = [ToolUtil transformForDayTimeString:model.saveTime];
         self.threeLeading.constant = 0.f;
         self.two.hidden = NO;
     }else{
-        self.one.text = [NSString stringWithFormat:@"%.1f", model.multiple];
-        self.three.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%f",model.produce]];
+        self.one.text = [NSString stringWithFormat:@"%@", model.coin];
+        self.three.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.produce]];
         self.four.text = [ToolUtil transformForDayTimeString:model.saveTime];
         //算出第二个的right
         CGFloat width = (SCREEN_WIDTH - 48)/4;

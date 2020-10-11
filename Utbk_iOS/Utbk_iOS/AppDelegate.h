@@ -18,6 +18,7 @@ typedef void (^CommonVoidBlock)(void);
 @property (nonatomic, assign) BOOL isEable;
 
 + (instancetype)sharedAppDelegate;
+- (UIViewController *)topViewController;//获取当前的控制器
 - (void)presentViewController:(UIViewController *)vc animated:(BOOL)animated completion:(void (^)(void))completion;
 - (void)dismissViewController:(UIViewController *)vc animated:(BOOL)animated completion:(void (^)(void))completion;
 @end
