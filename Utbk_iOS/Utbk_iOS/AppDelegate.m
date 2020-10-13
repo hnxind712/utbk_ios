@@ -52,7 +52,7 @@
 }
 - (void)configure{
     self.CNYRate = [NSDecimalNumber decimalNumberWithString:@"0.00"];
-    [ChangeLanguage setUserlanguage:@"zh-Hans"];//暂时设定为中文
+//    [ChangeLanguage setUserlanguage:@"zh-Hans"];//暂时设定为中文
     [ChangeLanguage initUserLanguage];//初始化语言
     BOOL connect = [[SocketManager share] connect];//连接行情socket
     NSLog(@"socket是否连接成功 = %d",connect);

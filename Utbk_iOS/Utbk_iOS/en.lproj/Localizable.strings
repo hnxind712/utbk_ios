@@ -49,6 +49,19 @@
 "选择币种" = "Select the currency";
 "请按照顺序点击助记词，已确认您正确备份。" = "Please click mnemonic in order to confirm that you have backed up correctly.";
 "请输入秘钥，可长按粘贴导入钱包地址" = "Please enter the secret key, long press paste to import the wallet address";
+"最新价格" = "Latest price";
+"24H涨跌" = "24H Rise and fall";
+"币种" = "Currency";
+"钱包管理" = "Wallet managemen";
+"团队业绩" = "Team performance";
+"社区客服" = "Community service";
+"开源地址" = "Mention money address";
+"分享APP" = "Share the APP";
+"帮助中心" = "Help center";
+"区块链浏览" = "Blockchain browsing";
+"多语言" = "Multilingual";
+"清除缓存" = "Clear the cache";
+"关于我们" = "About us";
 //可能通用
 "notice" = "Notice";
 "projectName" = "ztuo";

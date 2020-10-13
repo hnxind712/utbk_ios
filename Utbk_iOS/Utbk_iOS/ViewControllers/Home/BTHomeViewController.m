@@ -145,11 +145,13 @@
     [self addLeftNavigation];
     [self headRefreshWithScrollerView:self.mainScrollView];
     [self refreshHeaderAction];//直接拉取数据
-    NSLog(@"私钥 = %@",[YLUserInfo shareUserInfo].ID);
     [self versionUpdate];//更新
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(resetLocalization) name:LanguageChange object:nil];
     // Do any additional setup after loading the view from its nib.
 }
-
+- (void)resetLocalization{
+    
+}
 #pragma mark-下拉刷新数据
 - (void)refreshHeaderAction{
     [self getBannerData];

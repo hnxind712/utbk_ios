@@ -44,8 +44,10 @@
     self.title  = @"资产";
     [self setupLayout];
     [self.navigationItem setTitleView:self.multipleSwitch];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(resetLocalization) name:LanguageChange object:nil];
     // Do any additional setup after loading the view from its nib.
 }
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self refreshHeaderAction];

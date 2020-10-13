@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BTSettingViewController">
             <connections>
+                <outlet property="aboutUs" destination="TSg-Es-clq" id="AgX-I6-vOt"/>
                 <outlet property="caches" destination="1yf-QW-ORa" id="Ac6-nl-mtu"/>
+                <outlet property="clearCache" destination="Y4B-fp-i7L" id="oq4-a1-3c1"/>
                 <outlet property="language" destination="Sf4-Ia-9fO" id="3aL-fM-dEW"/>
+                <outlet property="languagesL" destination="1DJ-Eq-h38" id="XGL-ye-b5w"/>
                 <outlet property="version" destination="4i8-M9-RCU" id="VB6-sv-jE2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

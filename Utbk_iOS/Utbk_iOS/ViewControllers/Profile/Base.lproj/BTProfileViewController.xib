@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BTProfileViewController">
             <connections>
+                <outlet property="Label1" destination="sLG-5u-hto" id="Wg8-1z-utn"/>
+                <outlet property="Label2" destination="6ay-eF-K0X" id="3wz-H4-wjk"/>
+                <outlet property="Label3" destination="N7P-dP-eHh" id="yuj-vg-97b"/>
+                <outlet property="Label4" destination="G5H-1p-Wc0" id="Thc-xD-TNp"/>
+                <outlet property="Label5" destination="txU-p3-kRc" id="0sx-xx-J6E"/>
+                <outlet property="Label6" destination="7yB-Hx-5Fz" id="8Sm-ht-Jxi"/>
+                <outlet property="Label7" destination="U3K-RR-sGe" id="cVy-uS-ZIc"/>
                 <outlet property="activeBtn" destination="yXj-49-0Zw" id="Z2o-VW-lKJ"/>
                 <outlet property="address" destination="1ct-3a-wa6" id="MAB-1N-Ni5"/>
                 <outlet property="headerBtn" destination="zzt-nQ-KAO" id="0Yr-GW-6eX"/>

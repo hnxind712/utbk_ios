@@ -28,6 +28,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *walletName;
 @property (weak, nonatomic) IBOutlet UIButton *activeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *address;
+//从上到下Label1-Label7,命名只是为了处理多语言
+@property (weak, nonatomic) IBOutlet UILabel *Label1;
+@property (weak, nonatomic) IBOutlet UILabel *Label2;
+@property (weak, nonatomic) IBOutlet UILabel *Label3;
+@property (weak, nonatomic) IBOutlet UILabel *Label4;
+@property (weak, nonatomic) IBOutlet UILabel *Label5;
+@property (weak, nonatomic) IBOutlet UILabel *Label6;
+@property (weak, nonatomic) IBOutlet UILabel *Label7;
 
 @end
 
@@ -38,7 +46,18 @@
     [self addRightNavigation];
     [self setupBind];
     self.navigationItem.title = LocalizationKey(@"个人中心");
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(resetLocalization) name:LanguageChange object:nil];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)resetLocalization{
+    self.Label1.text = LocalizationKey(@"钱包管理");
+    self.Label2.text = LocalizationKey(@"团队业绩");
+    self.Label3.text = LocalizationKey(@"社区客服");
+    self.Label4.text = LocalizationKey(@"开源地址");
+    self.Label5.text = LocalizationKey(@"分享APP");
+    self.Label6.text = LocalizationKey(@"帮助中心");
+    self.Label7.text = LocalizationKey(@"区块链浏览");
+    
 }
 - (void)addRightNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

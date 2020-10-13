@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *caches;
 @property (weak, nonatomic) IBOutlet UILabel *version;
 @property (strong, nonatomic) BTUpdateVersionView *versionView;//版本更新
+@property (weak, nonatomic) IBOutlet UILabel *aboutUs;
+@property (weak, nonatomic) IBOutlet UILabel *clearCache;
+@property (weak, nonatomic) IBOutlet UILabel *languagesL;
 @property (strong, nonatomic) VersionUpdateModel *versionModel;
 
 @end
@@ -26,9 +29,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = LocalizationKey(@"设置");
+    
     [self setupBind];
+    [self resetLocalization];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(resetLocalization) name:LanguageChange object:nil];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)resetLocalization{
+    self.title = LocalizationKey(@"setting");
+    self.languagesL.text = LocalizationKey(@"多语言");
+    self.clearCache.text = LocalizationKey(@"清除缓存");
+    self.aboutUs.text = LocalizationKey(@"关于我们");
 }
 - (void)setupBind{
     NSUInteger bytesCache = [[SDImageCache sharedImageCache] totalDiskSize];

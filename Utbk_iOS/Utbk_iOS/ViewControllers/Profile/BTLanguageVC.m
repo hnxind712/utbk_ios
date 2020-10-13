@@ -53,6 +53,7 @@
         default:
             break;
     }
+    self.title = LocalizationKey(@"setting");
     //创建通知
     NSNotification *notification =[NSNotification notificationWithName:LanguageChange object:nil userInfo:nil];
     //通过通知中心发送通知

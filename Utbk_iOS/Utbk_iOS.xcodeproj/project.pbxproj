@@ -75,6 +75,13 @@
 		3CAF5E6B250E35C0002482C1 /* BTModifyTradePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF5E69250E35C0002482C1 /* BTModifyTradePasswordVC.m */; };
 		3CAF5E70250E3A69002482C1 /* BTWalletManageDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF5E6E250E3A69002482C1 /* BTWalletManageDetailVC.m */; };
 		3CAF5E74250E3CA9002482C1 /* BTWalletPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF5E73250E3CA9002482C1 /* BTWalletPopView.m */; };
+		3CEA9D572535D3900089994E /* NSBundle+DAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA9D562535D3900089994E /* NSBundle+DAUtils.m */; };
+		3CEA9D692535DF1D0089994E /* BTHomeTransiferCoinVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9D6B2535DF1D0089994E /* BTHomeTransiferCoinVC.xib */; };
+		3CEA9D772535E10E0089994E /* BTProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9D752535E10E0089994E /* BTProfileViewController.xib */; };
+		3CEA9D7D2535E1F50089994E /* StoryboardAutoGenStrings.py in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9D7C2535E1F50089994E /* StoryboardAutoGenStrings.py */; };
+		3CEA9D862535E3A00089994E /* BTHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DAB275253585390029A9B3 /* BTHomeViewController.xib */; };
+		3CEA9D8C2535E63A0089994E /* BTCreateSuccessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9D8B2535E6390089994E /* BTCreateSuccessVC.xib */; };
+		3CEA9D902535E74F0089994E /* BTRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9D922535E74F0089994E /* BTRegisterViewController.xib */; };
 		A7CBE052317DF6211B826506 /* Pods_Utbk_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA45A25EE5BCFA354891E2D /* Pods_Utbk_iOS.framework */; };
 		D7055447250F61EA005E367E /* BTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7055445250F61EA005E367E /* BTRegisterViewController.m */; };
 		D705544C250F6585005E367E /* BTCreateSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D705544A250F6585005E367E /* BTCreateSuccessVC.m */; };
@@ -83,7 +90,6 @@
 		D7055459250F69A8005E367E /* BTBackupMnemonicsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7055457250F69A8005E367E /* BTBackupMnemonicsCell.xib */; };
 		D705545D250F71B3005E367E /* BTBackupSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D705545B250F71B3005E367E /* BTBackupSuccessVC.m */; };
 		D7055462250F73BF005E367E /* BTHomeTransiferCoinVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7055460250F73BF005E367E /* BTHomeTransiferCoinVC.m */; };
-		D7055463250F73BF005E367E /* BTHomeTransiferCoinVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7055461250F73BF005E367E /* BTHomeTransiferCoinVC.xib */; };
 		D7074E8825108944000EC935 /* BTHomeNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7074E8625108944000EC935 /* BTHomeNoticeCell.m */; };
 		D7074E8925108944000EC935 /* BTHomeNoticeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7074E8725108944000EC935 /* BTHomeNoticeCell.xib */; };
 		D7074E8C25108BC3000EC935 /* BTNoticeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7074E8B25108BC3000EC935 /* BTNoticeModel.m */; };
@@ -376,9 +382,6 @@
 		D7BBF6A0251DBB0C007A953F /* BTPoolHoldCoinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BBF69F251DBB0C007A953F /* BTPoolHoldCoinModel.m */; };
 		D7BCF32325145338007DD18D /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BCF32225145338007DD18D /* UIImage+Extension.m */; };
 		D7DAB1F9253552BB0029A9B3 /* LSCustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DAB1F7253552BB0029A9B3 /* LSCustomNavigationController.m */; };
-		D7DAB1FA2535576A0029A9B3 /* BTProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DAB1FC2535576A0029A9B3 /* BTProfileViewController.xib */; };
-		D7DAB201253575A00029A9B3 /* BTRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DAB203253575A00029A9B3 /* BTRegisterViewController.xib */; };
-		D7DAB208253575EB0029A9B3 /* BTCreateSuccessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DAB20A253575EB0029A9B3 /* BTCreateSuccessVC.xib */; };
 		D7DAB20F253576320029A9B3 /* BTBackupMnemonicsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DAB211253576320029A9B3 /* BTBackupMnemonicsVC.xib */; };
 		D7DAB216253576890029A9B3 /* BTBackupSuccessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DAB218253576890029A9B3 /* BTBackupSuccessVC.xib */; };
 		D7DAB21D253576BF0029A9B3 /* BTComfirmMnemonicsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DAB21F253576BF0029A9B3 /* BTComfirmMnemonicsVC.xib */; };
@@ -391,7 +394,6 @@
 		D7DAB25725357DAA0029A9B3 /* BTUpdateVersionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DAB25925357DAA0029A9B3 /* BTUpdateVersionView.xib */; };
 		D7DAB26525357EB80029A9B3 /* BTWalletManagerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DAB26725357EB80029A9B3 /* BTWalletManagerCell.xib */; };
 		D7DAB26C25357ED70029A9B3 /* BTWalletPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DAB26E25357ED70029A9B3 /* BTWalletPopView.xib */; };
-		D7DAB273253585390029A9B3 /* BTHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DAB275253585390029A9B3 /* BTHomeViewController.xib */; };
 		D7F360862522E178005A1F14 /* MentionCoinInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F360842522E178005A1F14 /* MentionCoinInfoModel.m */; };
 		D7F3608A252322B8005A1F14 /* BTAssetSweepVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F36088252322B8005A1F14 /* BTAssetSweepVC.m */; };
 		D7F3608B252322B8005A1F14 /* BTAssetSweepVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F36089252322B8005A1F14 /* BTAssetSweepVC.xib */; };
@@ -523,6 +525,20 @@
 		3CAF5E6E250E3A69002482C1 /* BTWalletManageDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTWalletManageDetailVC.m; sourceTree = "<group>"; };
 		3CAF5E72250E3CA9002482C1 /* BTWalletPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTWalletPopView.h; sourceTree = "<group>"; };
 		3CAF5E73250E3CA9002482C1 /* BTWalletPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTWalletPopView.m; sourceTree = "<group>"; };
+		3CEA9D542535D0010089994E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		3CEA9D552535D3900089994E /* NSBundle+DAUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+DAUtils.h"; sourceTree = "<group>"; };
+		3CEA9D562535D3900089994E /* NSBundle+DAUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+DAUtils.m"; sourceTree = "<group>"; };
+		3CEA9D6A2535DF1D0089994E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTHomeTransiferCoinVC.xib; sourceTree = "<group>"; };
+		3CEA9D6D2535DF220089994E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTHomeTransiferCoinVC.strings; sourceTree = "<group>"; };
+		3CEA9D6F2535DF230089994E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTHomeTransiferCoinVC.strings"; sourceTree = "<group>"; };
+		3CEA9D782535E1110089994E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTProfileViewController.xib; sourceTree = "<group>"; };
+		3CEA9D7C2535E1F50089994E /* StoryboardAutoGenStrings.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = StoryboardAutoGenStrings.py; sourceTree = "<group>"; };
+		3CEA9D812535E35E0089994E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTHomeViewController.xib; sourceTree = "<group>"; };
+		3CEA9D8A2535E4A10089994E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTHomeViewController.strings; sourceTree = "<group>"; };
+		3CEA9D8B2535E6390089994E /* BTCreateSuccessVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BTCreateSuccessVC.xib; sourceTree = "<group>"; };
+		3CEA9D912535E74F0089994E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTRegisterViewController.xib; sourceTree = "<group>"; };
+		3CEA9D942535E7550089994E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTRegisterViewController.strings; sourceTree = "<group>"; };
+		3CEA9D952535E75E0089994E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTRegisterViewController.strings"; sourceTree = "<group>"; };
 		6BA45A25EE5BCFA354891E2D /* Pods_Utbk_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Utbk_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7055444250F61EA005E367E /* BTRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTRegisterViewController.h; sourceTree = "<group>"; };
 		D7055445250F61EA005E367E /* BTRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTRegisterViewController.m; sourceTree = "<group>"; };
@@ -537,7 +553,6 @@
 		D705545B250F71B3005E367E /* BTBackupSuccessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTBackupSuccessVC.m; sourceTree = "<group>"; };
 		D705545F250F73BF005E367E /* BTHomeTransiferCoinVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTHomeTransiferCoinVC.h; sourceTree = "<group>"; };
 		D7055460250F73BF005E367E /* BTHomeTransiferCoinVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTHomeTransiferCoinVC.m; sourceTree = "<group>"; };
-		D7055461250F73BF005E367E /* BTHomeTransiferCoinVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTHomeTransiferCoinVC.xib; sourceTree = "<group>"; };
 		D7074E8525108944000EC935 /* BTHomeNoticeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTHomeNoticeCell.h; sourceTree = "<group>"; };
 		D7074E8625108944000EC935 /* BTHomeNoticeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTHomeNoticeCell.m; sourceTree = "<group>"; };
 		D7074E8725108944000EC935 /* BTHomeNoticeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTHomeNoticeCell.xib; sourceTree = "<group>"; };
@@ -1034,14 +1049,6 @@
 		D7BCF32225145338007DD18D /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		D7DAB1F7253552BB0029A9B3 /* LSCustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCustomNavigationController.m; sourceTree = "<group>"; };
 		D7DAB1F8253552BB0029A9B3 /* LSCustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCustomNavigationController.h; sourceTree = "<group>"; };
-		D7DAB1FB2535576A0029A9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTProfileViewController.xib; sourceTree = "<group>"; };
-		D7DAB1FE253557760029A9B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTProfileViewController.strings"; sourceTree = "<group>"; };
-		D7DAB200253557790029A9B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTProfileViewController.strings; sourceTree = "<group>"; };
-		D7DAB202253575A00029A9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTRegisterViewController.xib; sourceTree = "<group>"; };
-		D7DAB207253575A60029A9B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTRegisterViewController.strings"; sourceTree = "<group>"; };
-		D7DAB209253575EB0029A9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTCreateSuccessVC.xib; sourceTree = "<group>"; };
-		D7DAB20C253575F30029A9B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTCreateSuccessVC.strings; sourceTree = "<group>"; };
-		D7DAB20E253575F40029A9B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTCreateSuccessVC.strings"; sourceTree = "<group>"; };
 		D7DAB210253576320029A9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTBackupMnemonicsVC.xib; sourceTree = "<group>"; };
 		D7DAB213253576370029A9B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTBackupMnemonicsVC.strings; sourceTree = "<group>"; };
 		D7DAB215253576380029A9B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTBackupMnemonicsVC.strings"; sourceTree = "<group>"; };
@@ -1051,7 +1058,6 @@
 		D7DAB21E253576BF0029A9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTComfirmMnemonicsVC.xib; sourceTree = "<group>"; };
 		D7DAB221253576C20029A9B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTComfirmMnemonicsVC.strings; sourceTree = "<group>"; };
 		D7DAB223253576C30029A9B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTComfirmMnemonicsVC.strings"; sourceTree = "<group>"; };
-		D7DAB2252535789B0029A9B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTRegisterViewController.strings; sourceTree = "<group>"; };
 		D7DAB2272535793B0029A9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTWalletManagerVC.xib; sourceTree = "<group>"; };
 		D7DAB22A2535793F0029A9B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTWalletManagerVC.strings; sourceTree = "<group>"; };
 		D7DAB22C253579400029A9B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTWalletManagerVC.strings"; sourceTree = "<group>"; };
@@ -1079,9 +1085,6 @@
 		D7DAB26D25357ED70029A9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTWalletPopView.xib; sourceTree = "<group>"; };
 		D7DAB27025357EDA0029A9B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTWalletPopView.strings; sourceTree = "<group>"; };
 		D7DAB27225357EDB0029A9B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTWalletPopView.strings"; sourceTree = "<group>"; };
-		D7DAB274253585390029A9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTHomeViewController.xib; sourceTree = "<group>"; };
-		D7DAB2772535853C0029A9B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTHomeViewController.strings; sourceTree = "<group>"; };
-		D7DAB2792535853E0029A9B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTHomeViewController.strings"; sourceTree = "<group>"; };
 		D7F360842522E178005A1F14 /* MentionCoinInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionCoinInfoModel.m; sourceTree = "<group>"; };
 		D7F360852522E178005A1F14 /* MentionCoinInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionCoinInfoModel.h; sourceTree = "<group>"; };
 		D7F36087252322B8005A1F14 /* BTAssetSweepVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTAssetSweepVC.h; sourceTree = "<group>"; };
@@ -1228,6 +1231,7 @@
 		3C63D407250DA73C001CEC7D /* Utbk_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				3CEA9D7B2535E1F50089994E /* Resources */,
 				3C63D408250DA73C001CEC7D /* AppDelegate.h */,
 				3C63D409250DA73C001CEC7D /* AppDelegate.m */,
 				3C63D434250DBB20001CEC7D /* Tabbar */,
@@ -1275,6 +1279,8 @@
 				3C63D450250DC126001CEC7D /* UINavigationController+Transition.m */,
 				3C63D44D250DC023001CEC7D /* ChangeLanguage.h */,
 				3C63D44C250DC023001CEC7D /* ChangeLanguage.m */,
+				3CEA9D552535D3900089994E /* NSBundle+DAUtils.h */,
+				3CEA9D562535D3900089994E /* NSBundle+DAUtils.m */,
 				D7429BCC25119774003B04E4 /* BTCommonUtils.h */,
 				D7429BCD25119774003B04E4 /* BTCommonUtils.m */,
 				D73222752521C27700E4FFC1 /* AppBrowser */,
@@ -1367,7 +1373,7 @@
 				D7DAB275253585390029A9B3 /* BTHomeViewController.xib */,
 				D705545F250F73BF005E367E /* BTHomeTransiferCoinVC.h */,
 				D7055460250F73BF005E367E /* BTHomeTransiferCoinVC.m */,
-				D7055461250F73BF005E367E /* BTHomeTransiferCoinVC.xib */,
+				3CEA9D6B2535DF1D0089994E /* BTHomeTransiferCoinVC.xib */,
 				D7707D78251060A7009EF151 /* BTInvitationActivityVC.h */,
 				D7707D79251060A7009EF151 /* BTInvitationActivityVC.m */,
 				D7707D7A251060A7009EF151 /* BTInvitationActivityVC.xib */,
@@ -1416,7 +1422,7 @@
 			children = (
 				3C63D459250DD4F2001CEC7D /* BTProfileViewController.h */,
 				3C63D45A250DD4F2001CEC7D /* BTProfileViewController.m */,
-				D7DAB1FC2535576A0029A9B3 /* BTProfileViewController.xib */,
+				3CEA9D752535E10E0089994E /* BTProfileViewController.xib */,
 				D7451DCE2510C12D00BC4548 /* BTSettingViewController.h */,
 				D7451DCF2510C12D00BC4548 /* BTSettingViewController.m */,
 				D7451DD02510C12D00BC4548 /* BTSettingViewController.xib */,
@@ -1503,6 +1509,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3CEA9D7B2535E1F50089994E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3CEA9D7C2535E1F50089994E /* StoryboardAutoGenStrings.py */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		7A0521A7907C178B55B806B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1527,10 +1541,10 @@
 				D7055454250F6992005E367E /* View */,
 				D7055444250F61EA005E367E /* BTRegisterViewController.h */,
 				D7055445250F61EA005E367E /* BTRegisterViewController.m */,
-				D7DAB203253575A00029A9B3 /* BTRegisterViewController.xib */,
+				3CEA9D922535E74F0089994E /* BTRegisterViewController.xib */,
 				D7055449250F6585005E367E /* BTCreateSuccessVC.h */,
 				D705544A250F6585005E367E /* BTCreateSuccessVC.m */,
-				D7DAB20A253575EB0029A9B3 /* BTCreateSuccessVC.xib */,
+				3CEA9D8B2535E6390089994E /* BTCreateSuccessVC.xib */,
 				D705544E250F677C005E367E /* BTBackupMnemonicsVC.h */,
 				D705544F250F677C005E367E /* BTBackupMnemonicsVC.m */,
 				D7DAB211253576320029A9B3 /* BTBackupMnemonicsVC.xib */,
@@ -2429,6 +2443,7 @@
 				3C63D402250DA73C001CEC7D /* Frameworks */,
 				3C63D403250DA73C001CEC7D /* Resources */,
 				6971D1EEA7E29C7CF2A8DB15 /* [CP] Embed Pods Frameworks */,
+				3CEA9D522535C7390089994E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2487,7 +2502,6 @@
 				D7429BD32511ADEA003B04E4 /* BTShareSecondVC.xib in Resources */,
 				D79D734225134A8200DE7DF7 /* AuthenticationBusViewController.xib in Resources */,
 				D79D738025134A8200DE7DF7 /* tradeCell.xib in Resources */,
-				D7DAB201253575A00029A9B3 /* BTRegisterViewController.xib in Resources */,
 				D79D737625134A8200DE7DF7 /* TradeViewController.xib in Resources */,
 				D7DAB26C25357ED70029A9B3 /* BTWalletPopView.xib in Resources */,
 				D7451DD22510C12D00BC4548 /* BTSettingViewController.xib in Resources */,
@@ -2506,13 +2520,13 @@
 				D79D73D92513503500DE7DF7 /* DepthmapCell.xib in Resources */,
 				D79D74F12513623000DE7DF7 /* QRCodeView.xib in Resources */,
 				3C1DF0F52516F6A500E547B0 /* BTHoldCoinsTableViewCell.xib in Resources */,
-				D7DAB1FA2535576A0029A9B3 /* BTProfileViewController.xib in Resources */,
 				3C1D2FF425123ABE002AE5AA /* BTSharePoolVC.xib in Resources */,
 				D79D734625134A8200DE7DF7 /* FailBusinessViewController.xib in Resources */,
 				D79D74F02513623000DE7DF7 /* Section2TableViewCell.xib in Resources */,
 				D79D736425134A8200DE7DF7 /* BuyCoinsDetail2TableViewCell.xib in Resources */,
 				D7DAB2262535793B0029A9B3 /* BTWalletManagerVC.xib in Resources */,
 				D7074EAD2510ABF8000EC935 /* BTWithdrawRecordVC.xib in Resources */,
+				3CEA9D8C2535E63A0089994E /* BTCreateSuccessVC.xib in Resources */,
 				D79D734D25134A8200DE7DF7 /* SearchAdvertisingViewController.xib in Resources */,
 				3C563C2D25163E0200DFBA88 /* BTMarketTableViewCell.xib in Resources */,
 				3C63D418250DA73E001CEC7D /* LaunchScreen.storyboard in Resources */,
@@ -2538,16 +2552,17 @@
 				D79D736725134A8200DE7DF7 /* PayWaysTableViewCell.xib in Resources */,
 				D79D735925134A8200DE7DF7 /* Advertising1TableViewCell.xib in Resources */,
 				D79D74A325135B0B00DE7DF7 /* MyEntrustDetail1TableViewCell.xib in Resources */,
+				3CEA9D862535E3A00089994E /* BTHomeViewController.xib in Resources */,
 				D79D74A225135B0B00DE7DF7 /* MyEntrustDetail2TableViewCell.xib in Resources */,
 				D7707D7C251060A7009EF151 /* BTInvitationActivityVC.xib in Resources */,
 				D7451DD72510C38A00BC4548 /* BTLanguageVC.xib in Resources */,
 				D7074E8925108944000EC935 /* BTHomeNoticeCell.xib in Resources */,
 				D79D74862513568E00DE7DF7 /* MyEntrustViewController.xib in Resources */,
+				3CEA9D7D2535E1F50089994E /* StoryboardAutoGenStrings.py in Resources */,
 				D71C85D3250F0A5D0067B4C7 /* BTSweepAccountVC.xib in Resources */,
 				3C1DF0FF251715D300E547B0 /* BTDropRecordTableViewCell.xib in Resources */,
 				D79D74B625135F5A00DE7DF7 /* MyAdvertisingViewController.xib in Resources */,
 				D79D73DA2513503500DE7DF7 /* DepthHeader.xib in Resources */,
-				D7DAB208253575EB0029A9B3 /* BTCreateSuccessVC.xib in Resources */,
 				D7429BF225120B60003B04E4 /* BTAssetsDetailVC.xib in Resources */,
 				D79D734725134A8200DE7DF7 /* ApplyBusinessViewController.xib in Resources */,
 				D7707D812510633A009EF151 /* BTContributionVC.xib in Resources */,
@@ -2583,8 +2598,9 @@
 				3C10CDD82510F2CE00517422 /* BTShareWalletVC.xib in Resources */,
 				D7074EBA2510B6A8000EC935 /* BTWithdrawRecordDetailVC.xib in Resources */,
 				D710E59B251CA267001986FC /* BTLinkTypeCollectionCell.xib in Resources */,
-				D7055463250F73BF005E367E /* BTHomeTransiferCoinVC.xib in Resources */,
+				3CEA9D692535DF1D0089994E /* BTHomeTransiferCoinVC.xib in Resources */,
 				D79D74EA2513623000DE7DF7 /* BankcardTableViewCell.xib in Resources */,
+				3CEA9D902535E74F0089994E /* BTRegisterViewController.xib in Resources */,
 				D79D735625134A8200DE7DF7 /* SellCoinsViewController.xib in Resources */,
 				D71C85C9250EFCAC0067B4C7 /* BTAssetsTransiferVC.xib in Resources */,
 				D79D736225134A8200DE7DF7 /* BuyCoinsDetail1TableViewCell.xib in Resources */,
@@ -2592,6 +2608,7 @@
 				D79D733C25134A8200DE7DF7 /* BuyCoinsViewController.xib in Resources */,
 				D79D737425134A8200DE7DF7 /* LeftMenuViewController.xib in Resources */,
 				D79D738825134A8200DE7DF7 /* menuCell.xib in Resources */,
+				3CEA9D772535E10E0089994E /* BTProfileViewController.xib in Resources */,
 				D7DAB23425357B170029A9B3 /* BTCreateWalletVC.xib in Resources */,
 				D79D73E42513503500DE7DF7 /* KlineCell.xib in Resources */,
 				D7429BDD2511C3EC003B04E4 /* BTMnemonisConfirmCell.xib in Resources */,
@@ -2608,13 +2625,29 @@
 				D79D737925134A8200DE7DF7 /* HistoryTransactionEntrustViewController.xib in Resources */,
 				D79D736D25134A8200DE7DF7 /* Adversiting4TableViewCell.xib in Resources */,
 				D7DAB21D253576BF0029A9B3 /* BTComfirmMnemonicsVC.xib in Resources */,
-				D7DAB273253585390029A9B3 /* BTHomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3CEA9D522535C7390089994E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "python ${SRCROOT}/${TAEGET_NAME}Utbk_iOS/Resources/StoryboardAutoGenStrings.py ${SRCROOT}/${TAEGET_NAME}Utbk_iOS/\n\n";
+		};
 		6971D1EEA7E29C7CF2A8DB15 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2870,6 +2903,7 @@
 				3C63D41B250DA73E001CEC7D /* main.m in Sources */,
 				D79D74D3251361BC00DE7DF7 /* MyBillPublicViewController.m in Sources */,
 				3C10CDD72510F2CE00517422 /* BTShareWalletVC.m in Sources */,
+				3CEA9D572535D3900089994E /* NSBundle+DAUtils.m in Sources */,
 				D7074E9F2510A335000EC935 /* BTHistoryViewController.m in Sources */,
 				D71C85CD250F05380067B4C7 /* BTAssetsWithdrawVC.m in Sources */,
 				D79D73A225134DE400DE7DF7 /* C2CNetManager.m in Sources */,
@@ -2937,6 +2971,7 @@
 			children = (
 				3C63D412250DA73C001CEC7D /* Base */,
 				3C138479250DF90D00866D69 /* zh-Hans */,
+				3CEA9D542535D0010089994E /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2950,34 +2985,32 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		D7DAB1FC2535576A0029A9B3 /* BTProfileViewController.xib */ = {
+		3CEA9D6B2535DF1D0089994E /* BTHomeTransiferCoinVC.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D7DAB1FB2535576A0029A9B3 /* Base */,
-				D7DAB1FE253557760029A9B3 /* zh-Hans */,
-				D7DAB200253557790029A9B3 /* en */,
+				3CEA9D6A2535DF1D0089994E /* Base */,
+				3CEA9D6D2535DF220089994E /* en */,
+				3CEA9D6F2535DF230089994E /* zh-Hans */,
+			);
+			name = BTHomeTransiferCoinVC.xib;
+			sourceTree = "<group>";
+		};
+		3CEA9D752535E10E0089994E /* BTProfileViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CEA9D782535E1110089994E /* Base */,
 			);
 			name = BTProfileViewController.xib;
 			sourceTree = "<group>";
 		};
-		D7DAB203253575A00029A9B3 /* BTRegisterViewController.xib */ = {
+		3CEA9D922535E74F0089994E /* BTRegisterViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D7DAB202253575A00029A9B3 /* Base */,
-				D7DAB207253575A60029A9B3 /* zh-Hans */,
-				D7DAB2252535789B0029A9B3 /* en */,
+				3CEA9D912535E74F0089994E /* Base */,
+				3CEA9D942535E7550089994E /* en */,
+				3CEA9D952535E75E0089994E /* zh-Hans */,
 			);
 			name = BTRegisterViewController.xib;
-			sourceTree = "<group>";
-		};
-		D7DAB20A253575EB0029A9B3 /* BTCreateSuccessVC.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D7DAB209253575EB0029A9B3 /* Base */,
-				D7DAB20C253575F30029A9B3 /* en */,
-				D7DAB20E253575F40029A9B3 /* zh-Hans */,
-			);
-			name = BTCreateSuccessVC.xib;
 			sourceTree = "<group>";
 		};
 		D7DAB211253576320029A9B3 /* BTBackupMnemonicsVC.xib */ = {
@@ -3103,9 +3136,8 @@
 		D7DAB275253585390029A9B3 /* BTHomeViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D7DAB274253585390029A9B3 /* Base */,
-				D7DAB2772535853C0029A9B3 /* en */,
-				D7DAB2792535853E0029A9B3 /* zh-Hans */,
+				3CEA9D812535E35E0089994E /* Base */,
+				3CEA9D8A2535E4A10089994E /* en */,
 			);
 			name = BTHomeViewController.xib;
 			sourceTree = "<group>";
@@ -3240,7 +3272,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "HY.Utbk-iOS.com";
 				PRODUCT_NAME = BTCK;
 				SWIFT_VERSION = 5.0;

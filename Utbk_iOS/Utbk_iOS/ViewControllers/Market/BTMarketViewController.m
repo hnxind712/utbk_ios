@@ -16,6 +16,9 @@
 #define KTableViewTop 46.f
 
 @interface BTMarketViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UILabel *coinName;
+@property (weak, nonatomic) IBOutlet UILabel *latestPrice;
+@property (weak, nonatomic) IBOutlet UILabel *riseFall;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightContraint;
@@ -27,9 +30,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = LocalizationKey(@"行情");
+    
     [self setupLayout];
+    [self resetLocalization];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(resetLocalization) name:LanguageChange object:nil];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)resetLocalization{
+    self.title = LocalizationKey(@"tabbar2");
+    self.riseFall.text = LocalizationKey(@"24H涨跌");
+    self.latestPrice.text = LocalizationKey(@"最新价格");
+    self.coinName.text = LocalizationKey(@"币种");
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

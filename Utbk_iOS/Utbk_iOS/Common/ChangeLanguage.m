@@ -56,10 +56,11 @@ static NSBundle *bundle = nil;
         return;
     }
     [userDefaults setValue:language forKey:LocalLanguageKey];
+    [userDefaults setValue:@[language] forKey:@"AppleLanguages"];
     [userDefaults synchronize];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj" ];
-    bundle = [NSBundle bundleWithPath:path];
+//    
+//    NSString *path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
+//    bundle = [NSBundle bundleWithPath:path];
 }
 
 @end
