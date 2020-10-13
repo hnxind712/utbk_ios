@@ -13,6 +13,7 @@
 "简体中文" = "Simplified Chinese";
 "保存成功" = "Save success";
 "保存失败" = "Save failed";
+"没有扫描到任何结果" = "No scan to any results";
 //我的
 "钱包管理" = "wallet Manager";
 "复制成功" = "copy success";
@@ -62,6 +63,30 @@
 "多语言" = "Multilingual";
 "清除缓存" = "Clear the cache";
 "关于我们" = "About us";
+//首页
+"当前钱包：" = "current wallet：";
+"原始母币" = "Original mother COINS";
+"折合(USDT)" = "equivalent(USDT)";
+"主板区" = "Main area";
+"涨幅榜" = "performer/24H";
+"收币" = "Collect COINS";
+"转账" = "transfer Currency";
+"划转" = "transfer";
+"邀请激活" = "Invitation activate";
+"矿池" = "Ore pool";
+"团队" = "team";
+"社区" = "community";
+"上币" = "On Currency";
+"更多" = "more";
+"夺宝" = "indiana";
+"商城" = "mall";
+"游戏" = "game";
+"DEFi专区" = "DeFi Zone";
+"请输入转币数量" = "Please enter a currency";
+"请输入收币账户地址" = "Please input currency account address";
+"当前没有母币，无法激活" = "currently there is no mother COINS, cannot activate";
+"贡献" = "Contribution";
+"可用" = "available ";
 //可能通用
 "notice" = "Notice";
 "projectName" = "ztuo";

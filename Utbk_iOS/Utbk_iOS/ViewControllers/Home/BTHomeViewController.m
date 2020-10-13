@@ -59,6 +59,15 @@
 @property (strong, nonatomic) BTAssetsModel *assetModel;//母币充币时需要
 @property (strong, nonatomic) BTUpdateVersionView *versionView;//版本更新
 @property (assign, nonatomic) BOOL isShowAll;//是否全部显示
+@property (weak, nonatomic) IBOutlet UILabel *motherCoin;
+@property (weak, nonatomic) IBOutlet UILabel *equivalent;
+@property (weak, nonatomic) IBOutlet UIButton *receiveCoin;
+@property (weak, nonatomic) IBOutlet UIButton *transferBtn;
+@property (weak, nonatomic) IBOutlet UIButton *sweepBtn;
+@property (weak, nonatomic) IBOutlet UIButton *invitationBtn;
+@property (weak, nonatomic) IBOutlet UIButton *orePoolBtn;
+@property (weak, nonatomic) IBOutlet UIButton *teamBtn;
+@property (weak, nonatomic) IBOutlet UIButton *communityBtn;
 @property (weak, nonatomic) IBOutlet UIButton *onCurrencyBtn;//上币
 @property (weak, nonatomic) IBOutlet UIButton *raceBtn;//夺宝
 @property (weak, nonatomic) IBOutlet UIButton *marketBtn;//商城
@@ -150,7 +159,25 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (void)resetLocalization{
-    
+    [self addRightNavigation];
+    NSString *walletName = [NSString stringWithFormat:@"%@%@",LocalizationKey(@"当前钱包："),[YLUserInfo shareUserInfo].username];;
+    [self.walletBtn setTitle:walletName forState:UIControlStateNormal];
+    self.motherCoin.text = LocalizationKey(@"原始母币");
+    self.equivalent.text = LocalizationKey(@"折合(USDT)");
+    [self.mainBtn setTitle:LocalizationKey(@"主板区") forState:UIControlStateNormal];
+    [self.riseFallBtn setTitle:LocalizationKey(@"涨幅榜") forState:UIControlStateNormal];
+    [self.receiveCoin setTitle:LocalizationKey(@"收币") forState:UIControlStateNormal];
+    [self.transferBtn setTitle:LocalizationKey(@"转账") forState:UIControlStateNormal];
+    [self.sweepBtn setTitle:LocalizationKey(@"划转") forState:UIControlStateNormal];
+    [self.invitationBtn setTitle:LocalizationKey(@"邀请激活") forState:UIControlStateNormal];
+    [self.orePoolBtn setTitle:LocalizationKey(@"矿池") forState:UIControlStateNormal];
+    [self.teamBtn setTitle:LocalizationKey(@"团队") forState:UIControlStateNormal];
+    [self.communityBtn setTitle:LocalizationKey(@"社区") forState:UIControlStateNormal];
+    [self.onCurrencyBtn setTitle:self.isShowAll ? LocalizationKey(@"上币") : LocalizationKey(@"更多") forState:UIControlStateNormal];
+    [self.raceBtn setTitle:LocalizationKey(@"夺宝") forState:UIControlStateNormal];
+    [self.marketBtn setTitle:LocalizationKey(@"商城") forState:UIControlStateNormal];
+    [self.gameBtn setTitle:LocalizationKey(@"游戏") forState:UIControlStateNormal];
+    [self.deBtn setTitle:LocalizationKey(@"DEFi专区") forState:UIControlStateNormal];
 }
 #pragma mark-下拉刷新数据
 - (void)refreshHeaderAction{
@@ -356,8 +383,12 @@
     [btn setTitleColor:RGBOF(0x333333) forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:14.f weight:UIFontWeightMedium];
     [btn addTarget:self action:@selector(transferAction) forControlEvents:UIControlEventTouchUpInside];
-    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
-    [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 0)];
+    CGFloat inset = 30;
+    if ([[ChangeLanguage userLanguage]isEqualToString:@"en"]) {
+        inset = 45;
+    }
+    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, inset, 0, 0)];
+    [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, -inset, 0, 0)];
     [btn sizeToFit];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }

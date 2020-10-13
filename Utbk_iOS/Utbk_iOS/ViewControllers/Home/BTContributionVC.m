@@ -138,7 +138,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
             }
         }else{
-            [self.view makeToast:LocalizationKey(@"网络请求失败") duration:ToastHideDelay position:ToastPosition];
+            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
         }
     }];
 }

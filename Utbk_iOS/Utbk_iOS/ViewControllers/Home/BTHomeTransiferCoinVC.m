@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = LocalizationKey(@"转币");
+    self.title = LocalizationKey(@"转账");
     [self addRightNavigation];
     [self setupBind];
     self.coinCountInput.keyboardType = UIKeyboardTypeDecimalPad;

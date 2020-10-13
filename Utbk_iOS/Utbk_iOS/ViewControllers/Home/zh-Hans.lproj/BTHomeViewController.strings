@@ -1,57 +1,57 @@
 
 /* Class = "UIButton"; normalTitle = "商城"; ObjectID = "3gx-Xf-Zgj"; */
-"3gx-Xf-Zgj.normalTitle" = "mall";
+"3gx-Xf-Zgj.normalTitle" = "商城";
 
 /* Class = "UIButton"; normalTitle = "主板区"; ObjectID = "AfO-OB-ah1"; */
-"AfO-OB-ah1.normalTitle" = "Main area";
+"AfO-OB-ah1.normalTitle" = "主板区";
 
 /* Class = "UIButton"; selectedTitle = "主板区"; ObjectID = "AfO-OB-ah1"; */
-"AfO-OB-ah1.selectedTitle" = "Main area";
+"AfO-OB-ah1.selectedTitle" = "主板区";
 
 /* Class = "UIButton"; normalTitle = "游戏"; ObjectID = "BPS-xC-Ume"; */
-"BPS-xC-Ume.normalTitle" = "game";
+"BPS-xC-Ume.normalTitle" = "游戏";
 
 /* Class = "UILabel"; text = "原始母币"; ObjectID = "Eos-Ww-mUP"; */
-"Eos-Ww-mUP.text" = "Original mother COINS";
+"Eos-Ww-mUP.text" = "原始母币";
 
 /* Class = "UIButton"; normalTitle = "涨幅榜/24H"; ObjectID = "Lbn-Gz-cpt"; */
-"Lbn-Gz-cpt.normalTitle" = "performer/24H";
+"Lbn-Gz-cpt.normalTitle" = "涨幅榜/24H";
 
 /* Class = "UIButton"; normalTitle = "夺宝"; ObjectID = "Mlq-kW-a9D"; */
-"Mlq-kW-a9D.normalTitle" = "indiana";
+"Mlq-kW-a9D.normalTitle" = "夺宝";
 
 /* Class = "UIButton"; normalTitle = "邀请激活"; ObjectID = "Rvk-Qb-WWJ"; */
-"Rvk-Qb-WWJ.normalTitle" = "Invitation activate";
+"Rvk-Qb-WWJ.normalTitle" = "邀请激活";
 
 /* Class = "UIButton"; normalTitle = "更多"; ObjectID = "S38-R6-9Ko"; */
-"S38-R6-9Ko.normalTitle" = "more";
+"S38-R6-9Ko.normalTitle" = "更多";
 
 /* Class = "UILabel"; text = "折合(USDT)"; ObjectID = "UpA-Bl-4q7"; */
-"UpA-Bl-4q7.text" = "equivalent(USDT)";
+"UpA-Bl-4q7.text" = "折合(USDT)";
 
 /* Class = "UILabel"; text = "0.000000"; ObjectID = "Y9A-BB-TQ6"; */
 "Y9A-BB-TQ6.text" = "0.000000";
 
 /* Class = "UIButton"; normalTitle = "划转"; ObjectID = "Zel-Fe-2DL"; */
-"Zel-Fe-2DL.normalTitle" = "transfer";
+"Zel-Fe-2DL.normalTitle" = "划转";
 
 /* Class = "UIButton"; normalTitle = "DeFi专区"; ObjectID = "e11-wS-L3a"; */
-"e11-wS-L3a.normalTitle" = "DeFi Zone";
+"e11-wS-L3a.normalTitle" = "DeFi专区";
 
 /* Class = "UIButton"; normalTitle = "矿池"; ObjectID = "f8v-q4-gqe"; */
-"f8v-q4-gqe.normalTitle" = "Ore pool";
+"f8v-q4-gqe.normalTitle" = "矿池";
 
 /* Class = "UILabel"; text = "0.000000"; ObjectID = "iq4-dX-W4D"; */
 "iq4-dX-W4D.text" = "0.000000";
 
 /* Class = "UIButton"; normalTitle = "社区"; ObjectID = "kpp-Xs-u1E"; */
-"kpp-Xs-u1E.normalTitle" = "community";
+"kpp-Xs-u1E.normalTitle" = "社区";
 
 /* Class = "UIButton"; normalTitle = "收币"; ObjectID = "l4O-vv-jGr"; */
-"l4O-vv-jGr.normalTitle" = "Collect COINS";
+"l4O-vv-jGr.normalTitle" = "收币";
 
 /* Class = "UIButton"; normalTitle = "转账"; ObjectID = "lCB-t5-6dU"; */
-"lCB-t5-6dU.normalTitle" = "transfer Currency";
+"lCB-t5-6dU.normalTitle" = "转账";
 
 /* Class = "UIButton"; normalTitle = "团队"; ObjectID = "yNt-az-x69"; */
-"yNt-az-x69.normalTitle" = "team";
+"yNt-az-x69.normalTitle" = "团队";

@@ -1,0 +1,12 @@
+
+/* Class = "UITextField"; placeholder = "请填写收币账户地址"; ObjectID = "1dP-Zs-wBG"; */
+"1dP-Zs-wBG.placeholder" = "请填写收币账户地址";
+
+/* Class = "UILabel"; text = "激活需消耗0.01BTCK原始母币，可用："; ObjectID = "Dnx-iw-Erj"; */
+"Dnx-iw-Erj.text" = "激活需消耗0.01BTCK原始母币，可用：";
+
+/* Class = "UILabel"; text = "0.000000"; ObjectID = "Dul-Q4-PTe"; */
+"Dul-Q4-PTe.text" = "0.000000";
+
+/* Class = "UIButton"; normalTitle = "确认"; ObjectID = "avf-RZ-sE3"; */
+"avf-RZ-sE3.normalTitle" = "确认";

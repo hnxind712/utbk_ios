@@ -82,6 +82,8 @@
 		3CEA9D862535E3A00089994E /* BTHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DAB275253585390029A9B3 /* BTHomeViewController.xib */; };
 		3CEA9D8C2535E63A0089994E /* BTCreateSuccessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9D8B2535E6390089994E /* BTCreateSuccessVC.xib */; };
 		3CEA9D902535E74F0089994E /* BTRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9D922535E74F0089994E /* BTRegisterViewController.xib */; };
+		3CEA9D982535FBF00089994E /* BTInvitationActivityVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9D9A2535FBF00089994E /* BTInvitationActivityVC.xib */; };
+		3CEA9D9F2535FC830089994E /* BTContributionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9DA12535FC830089994E /* BTContributionVC.xib */; };
 		A7CBE052317DF6211B826506 /* Pods_Utbk_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA45A25EE5BCFA354891E2D /* Pods_Utbk_iOS.framework */; };
 		D7055447250F61EA005E367E /* BTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7055445250F61EA005E367E /* BTRegisterViewController.m */; };
 		D705544C250F6585005E367E /* BTCreateSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D705544A250F6585005E367E /* BTCreateSuccessVC.m */; };
@@ -152,9 +154,7 @@
 		D7707D6D2510516F009EF151 /* BTPayPasswordPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7707D6C2510516F009EF151 /* BTPayPasswordPopView.m */; };
 		D7707D6F25105177009EF151 /* BTPayPasswordPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7707D6E25105177009EF151 /* BTPayPasswordPopView.xib */; };
 		D7707D7B251060A7009EF151 /* BTInvitationActivityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7707D79251060A7009EF151 /* BTInvitationActivityVC.m */; };
-		D7707D7C251060A7009EF151 /* BTInvitationActivityVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7707D7A251060A7009EF151 /* BTInvitationActivityVC.xib */; };
 		D7707D802510633A009EF151 /* BTContributionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7707D7E2510633A009EF151 /* BTContributionVC.m */; };
-		D7707D812510633A009EF151 /* BTContributionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7707D7F2510633A009EF151 /* BTContributionVC.xib */; };
 		D7707D8525107028009EF151 /* BTHomeNoticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7707D8325107028009EF151 /* BTHomeNoticeVC.m */; };
 		D7707D8625107028009EF151 /* BTHomeNoticeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7707D8425107028009EF151 /* BTHomeNoticeVC.xib */; };
 		D79D7240251312E300DE7DF7 /* NSBundle+STQRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D7234251312E300DE7DF7 /* NSBundle+STQRCodeController.m */; };
@@ -539,6 +539,13 @@
 		3CEA9D912535E74F0089994E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTRegisterViewController.xib; sourceTree = "<group>"; };
 		3CEA9D942535E7550089994E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTRegisterViewController.strings; sourceTree = "<group>"; };
 		3CEA9D952535E75E0089994E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTRegisterViewController.strings"; sourceTree = "<group>"; };
+		3CEA9D972535F7C20089994E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTHomeViewController.strings"; sourceTree = "<group>"; };
+		3CEA9D992535FBF00089994E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTInvitationActivityVC.xib; sourceTree = "<group>"; };
+		3CEA9D9C2535FBF20089994E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTInvitationActivityVC.strings; sourceTree = "<group>"; };
+		3CEA9D9E2535FBF40089994E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTInvitationActivityVC.strings"; sourceTree = "<group>"; };
+		3CEA9DA02535FC830089994E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTContributionVC.xib; sourceTree = "<group>"; };
+		3CEA9DA32535FC870089994E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTContributionVC.strings; sourceTree = "<group>"; };
+		3CEA9DA52535FC890089994E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTContributionVC.strings"; sourceTree = "<group>"; };
 		6BA45A25EE5BCFA354891E2D /* Pods_Utbk_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Utbk_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7055444250F61EA005E367E /* BTRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTRegisterViewController.h; sourceTree = "<group>"; };
 		D7055445250F61EA005E367E /* BTRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTRegisterViewController.m; sourceTree = "<group>"; };
@@ -653,10 +660,8 @@
 		D7707D6E25105177009EF151 /* BTPayPasswordPopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTPayPasswordPopView.xib; sourceTree = "<group>"; };
 		D7707D78251060A7009EF151 /* BTInvitationActivityVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTInvitationActivityVC.h; sourceTree = "<group>"; };
 		D7707D79251060A7009EF151 /* BTInvitationActivityVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTInvitationActivityVC.m; sourceTree = "<group>"; };
-		D7707D7A251060A7009EF151 /* BTInvitationActivityVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTInvitationActivityVC.xib; sourceTree = "<group>"; };
 		D7707D7D2510633A009EF151 /* BTContributionVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTContributionVC.h; sourceTree = "<group>"; };
 		D7707D7E2510633A009EF151 /* BTContributionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTContributionVC.m; sourceTree = "<group>"; };
-		D7707D7F2510633A009EF151 /* BTContributionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTContributionVC.xib; sourceTree = "<group>"; };
 		D7707D8225107028009EF151 /* BTHomeNoticeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTHomeNoticeVC.h; sourceTree = "<group>"; };
 		D7707D8325107028009EF151 /* BTHomeNoticeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTHomeNoticeVC.m; sourceTree = "<group>"; };
 		D7707D8425107028009EF151 /* BTHomeNoticeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTHomeNoticeVC.xib; sourceTree = "<group>"; };
@@ -1376,10 +1381,10 @@
 				3CEA9D6B2535DF1D0089994E /* BTHomeTransiferCoinVC.xib */,
 				D7707D78251060A7009EF151 /* BTInvitationActivityVC.h */,
 				D7707D79251060A7009EF151 /* BTInvitationActivityVC.m */,
-				D7707D7A251060A7009EF151 /* BTInvitationActivityVC.xib */,
+				3CEA9D9A2535FBF00089994E /* BTInvitationActivityVC.xib */,
 				D7707D7D2510633A009EF151 /* BTContributionVC.h */,
 				D7707D7E2510633A009EF151 /* BTContributionVC.m */,
-				D7707D7F2510633A009EF151 /* BTContributionVC.xib */,
+				3CEA9DA12535FC830089994E /* BTContributionVC.xib */,
 				3C112124251F2945003FC856 /* BTContributionRecordVC.h */,
 				3C112125251F2945003FC856 /* BTContributionRecordVC.m */,
 				3C112126251F2945003FC856 /* BTContributionRecordVC.xib */,
@@ -2554,7 +2559,7 @@
 				D79D74A325135B0B00DE7DF7 /* MyEntrustDetail1TableViewCell.xib in Resources */,
 				3CEA9D862535E3A00089994E /* BTHomeViewController.xib in Resources */,
 				D79D74A225135B0B00DE7DF7 /* MyEntrustDetail2TableViewCell.xib in Resources */,
-				D7707D7C251060A7009EF151 /* BTInvitationActivityVC.xib in Resources */,
+				3CEA9D982535FBF00089994E /* BTInvitationActivityVC.xib in Resources */,
 				D7451DD72510C38A00BC4548 /* BTLanguageVC.xib in Resources */,
 				D7074E8925108944000EC935 /* BTHomeNoticeCell.xib in Resources */,
 				D79D74862513568E00DE7DF7 /* MyEntrustViewController.xib in Resources */,
@@ -2565,7 +2570,7 @@
 				D79D73DA2513503500DE7DF7 /* DepthHeader.xib in Resources */,
 				D7429BF225120B60003B04E4 /* BTAssetsDetailVC.xib in Resources */,
 				D79D734725134A8200DE7DF7 /* ApplyBusinessViewController.xib in Resources */,
-				D7707D812510633A009EF151 /* BTContributionVC.xib in Resources */,
+				3CEA9D9F2535FC830089994E /* BTContributionVC.xib in Resources */,
 				3C1DF0F02516F61C00E547B0 /* BTHoldCoinsViewController.xib in Resources */,
 				D79D737825134A8200DE7DF7 /* LeftTableViewCell.xib in Resources */,
 				3C1DF0FA251707CC00E547B0 /* BTSharePoolTableViewCell.xib in Resources */,
@@ -3013,6 +3018,26 @@
 			name = BTRegisterViewController.xib;
 			sourceTree = "<group>";
 		};
+		3CEA9D9A2535FBF00089994E /* BTInvitationActivityVC.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CEA9D992535FBF00089994E /* Base */,
+				3CEA9D9C2535FBF20089994E /* en */,
+				3CEA9D9E2535FBF40089994E /* zh-Hans */,
+			);
+			name = BTInvitationActivityVC.xib;
+			sourceTree = "<group>";
+		};
+		3CEA9DA12535FC830089994E /* BTContributionVC.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CEA9DA02535FC830089994E /* Base */,
+				3CEA9DA32535FC870089994E /* en */,
+				3CEA9DA52535FC890089994E /* zh-Hans */,
+			);
+			name = BTContributionVC.xib;
+			sourceTree = "<group>";
+		};
 		D7DAB211253576320029A9B3 /* BTBackupMnemonicsVC.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3138,6 +3163,7 @@
 			children = (
 				3CEA9D812535E35E0089994E /* Base */,
 				3CEA9D8A2535E4A10089994E /* en */,
+				3CEA9D972535F7C20089994E /* zh-Hans */,
 			);
 			name = BTHomeViewController.xib;
 			sourceTree = "<group>";

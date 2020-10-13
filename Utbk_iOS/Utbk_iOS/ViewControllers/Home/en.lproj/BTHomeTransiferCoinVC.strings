@@ -1,27 +1,27 @@
 
 /* Class = "UIButton"; normalTitle = "全部"; ObjectID = "PUj-YU-aXj"; */
-"PUj-YU-aXj.normalTitle" = "全部";
+"PUj-YU-aXj.normalTitle" = "all";
 
 /* Class = "UILabel"; text = "100"; ObjectID = "QQJ-dV-gwI"; */
 "QQJ-dV-gwI.text" = "100";
 
 /* Class = "UITextField"; placeholder = "请填写收币账户地址"; ObjectID = "QuN-2S-eVu"; */
-"QuN-2S-eVu.placeholder" = "请填写收币账户地址";
+"QuN-2S-eVu.placeholder" = "Please fill in the currency account address";
 
 /* Class = "UITextField"; placeholder = "请填写转币数量"; ObjectID = "RtI-ep-cXm"; */
-"RtI-ep-cXm.placeholder" = "请填写转币数量";
+"RtI-ep-cXm.placeholder" = "Please fill in the currency";
 
 /* Class = "UILabel"; text = "矿工费："; ObjectID = "nq1-YA-Mat"; */
-"nq1-YA-Mat.text" = "fee：";
+"nq1-YA-Mat.text" = "Miners fee：";
 
 /* Class = "UILabel"; text = "原始母币："; ObjectID = "o34-6J-KE4"; */
-"o34-6J-KE4.text" = "原始母币：";
+"o34-6J-KE4.text" = "Original mother COINS:";
 
 /* Class = "UIButton"; normalTitle = "完成"; ObjectID = "p8l-e9-h1v"; */
-"p8l-e9-h1v.normalTitle" = "完成";
+"p8l-e9-h1v.normalTitle" = "Complete";
 
 /* Class = "UILabel"; text = "0"; ObjectID = "qGv-5R-DDs"; */
 "qGv-5R-DDs.text" = "0";
 
 /* Class = "UITextField"; placeholder = "请输入交易密码"; ObjectID = "udh-aD-gId"; */
-"udh-aD-gId.placeholder" = "请输入交易密码";
+"udh-aD-gId.placeholder" = "Please enter trading password";

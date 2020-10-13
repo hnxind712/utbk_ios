@@ -1,0 +1,54 @@
+
+/* Class = "UILabel"; text = "币种"; ObjectID = "2Na-Wo-oB8"; */
+"2Na-Wo-oB8.text" = "Currency";
+
+/* Class = "UILabel"; text = "可用BTCK："; ObjectID = "7EK-zh-Ude"; */
+"7EK-zh-Ude.text" = "available BTCK：";
+
+/* Class = "UILabel"; text = "USDT"; ObjectID = "7cZ-oO-ap6"; */
+"7cZ-oO-ap6.text" = "USDT";
+
+/* Class = "UILabel"; text = "获得倍数"; ObjectID = "7xi-xl-smA"; */
+"7xi-xl-smA.text" = "Obtain multiple";
+
+/* Class = "UITextField"; placeholder = "输入投入数量"; ObjectID = "AZc-Sa-kdy"; */
+"AZc-Sa-kdy.placeholder" = "Number of input into";
+
+/* Class = "UITextField"; text = "100"; ObjectID = "AZc-Sa-kdy"; */
+"AZc-Sa-kdy.text" = "100";
+
+/* Class = "UILabel"; text = "数量（组）"; ObjectID = "GTq-T5-q9m"; */
+"GTq-T5-q9m.text" = "The number (group)";
+
+/* Class = "UIButton"; normalTitle = "BTCK"; ObjectID = "OXW-Ja-5uV"; */
+"OXW-Ja-5uV.normalTitle" = "BTCK";
+
+/* Class = "UIButton"; normalTitle = "确认"; ObjectID = "PsP-d7-6jJ"; */
+"PsP-d7-6jJ.normalTitle" = "Confirm";
+
+/* Class = "UILabel"; text = "200"; ObjectID = "R5V-5k-0Dh"; */
+"R5V-5k-0Dh.text" = "200";
+
+/* Class = "UILabel"; text = "投入金额"; ObjectID = "Rmk-RS-OTZ"; */
+"Rmk-RS-OTZ.text" = "Investment amount";
+
+/* Class = "UILabel"; text = "备注：根据贡献的数量获得相应的倍额产出。\n投入等价于相应USDT的BTCK或BTK作为贡献。\n一星贡献 100-1900U 2倍产量\n二星贡献 2000-2900U 2.5倍产量\n三星贡献 3000-5000U 3倍产量"; ObjectID = "aDk-yG-ZEG"; */
+"aDk-yG-ZEG.text" = "Note: according to the number of contributions to get the corresponding times the amount of output.\n input equivalent to the corresponding USDT BTCK or BTK as a contribution.\n contribution 100-1900 - u 2 times a week production \n 2 star contribution to 2000-2900 - u 2.5 times production \n samsung contribution output of 3000-5000 - u 3 times";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "b9U-Qv-6fa"; */
+"b9U-Qv-6fa.normalTitle" = "-";
+
+/* Class = "UILabel"; text = "折合"; ObjectID = "bIv-r7-w0N"; */
+"bIv-r7-w0N.text" = "equivalent";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "bvi-ez-r0L"; */
+"bvi-ez-r0L.normalTitle" = "+";
+
+/* Class = "UILabel"; text = "0.000000"; ObjectID = "iAm-kJ-A7e"; */
+"iAm-kJ-A7e.text" = "0.000000";
+
+/* Class = "UITextField"; text = "1"; ObjectID = "l6q-iS-R7j"; */
+"l6q-iS-R7j.text" = "1";
+
+/* Class = "UILabel"; text = "0.00 BTCK"; ObjectID = "qpO-f8-Pgy"; */
+"qpO-f8-Pgy.text" = "0.00 BTCK";

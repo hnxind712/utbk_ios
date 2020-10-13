@@ -13,17 +13,26 @@
                 <outlet property="bannerSuperView" destination="fxV-GE-LCE" id="mq1-eP-gwQ"/>
                 <outlet property="bottomViewHeight" destination="vnN-7m-Jt4" id="58m-Nz-7qg"/>
                 <outlet property="coinCount" destination="Y9A-BB-TQ6" id="OAm-6F-ut0"/>
+                <outlet property="communityBtn" destination="kpp-Xs-u1E" id="Lvf-KA-Tl4"/>
                 <outlet property="convertCount" destination="iq4-dX-W4D" id="4eQ-we-hfn"/>
                 <outlet property="deBtn" destination="e11-wS-L3a" id="Dbq-UP-B7B"/>
+                <outlet property="equivalent" destination="UpA-Bl-4q7" id="LPx-Te-XZA"/>
                 <outlet property="gameBtn" destination="BPS-xC-Ume" id="czY-r4-zJo"/>
+                <outlet property="invitationBtn" destination="Rvk-Qb-WWJ" id="fDW-qD-P30"/>
                 <outlet property="mainBtn" destination="AfO-OB-ah1" id="jT5-Af-l2a"/>
                 <outlet property="mainScrollView" destination="6qo-Bw-NiS" id="85W-wA-P6a"/>
                 <outlet property="marketBtn" destination="3gx-Xf-Zgj" id="ubA-gP-ZjK"/>
                 <outlet property="menuHeight" destination="2aN-n2-EP5" id="giy-cB-NNF"/>
+                <outlet property="motherCoin" destination="Eos-Ww-mUP" id="QHa-bf-F8E"/>
                 <outlet property="onCurrencyBtn" destination="S38-R6-9Ko" id="xEA-Ro-hUH"/>
+                <outlet property="orePoolBtn" destination="f8v-q4-gqe" id="Bva-Tw-6wN"/>
                 <outlet property="raceBtn" destination="Mlq-kW-a9D" id="eiM-cx-1j7"/>
+                <outlet property="receiveCoin" destination="l4O-vv-jGr" id="CPb-eQ-Lnm"/>
                 <outlet property="riseFallBtn" destination="Lbn-Gz-cpt" id="DaL-ZC-iT2"/>
+                <outlet property="sweepBtn" destination="Zel-Fe-2DL" id="tJ9-OT-i8H"/>
                 <outlet property="tableView" destination="6h6-OE-sSD" id="0Bd-zP-vsa"/>
+                <outlet property="teamBtn" destination="yNt-az-x69" id="00P-fJ-GRL"/>
+                <outlet property="transferBtn" destination="lCB-t5-6dU" id="WvR-Gp-yes"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
