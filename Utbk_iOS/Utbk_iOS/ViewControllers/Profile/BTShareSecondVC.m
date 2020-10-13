@@ -8,6 +8,8 @@
 
 #import "BTShareSecondVC.h"
 #import <Photos/Photos.h>
+#import <Social/Social.h>
+#import <UIKit/UIKit.h>
 
 @interface BTShareSecondVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *qrcodeImageView;
@@ -28,9 +30,20 @@
 - (IBAction)shareAction:(UIButton *)sender {
     switch (sender.tag) {
         case 100://微信
+        case 101:
+        {
+            UIImage *image = [BTCommonUtils screenShot:self.shareView];
+             UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[image]
+                                                    
+                                                                                    applicationActivities:nil];
             
-            break;
-        case 101://微信盆友圈
+            //不出现在活动项目
+            activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,
+                                                 
+                                                 UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
+            
+            [self presentViewController:activityVC animated:TRUE completion:nil];
+        }
             break;
         case 102://复制链接
         {

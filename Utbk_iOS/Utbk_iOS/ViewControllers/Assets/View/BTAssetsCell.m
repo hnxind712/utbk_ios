@@ -58,6 +58,11 @@
         [self.receiveBtn setTitleColor:RGBOF(0x343434) forState:UIControlStateNormal];
         self.freeze.hidden = NO;
         self.convertAccount.hidden = NO;
+        if ([model.coin.unit isEqualToString:@"BTK"]) {//BTK为子币，不支持划转
+            self.sTransferBtn.hidden = YES;
+        }else{
+            self.sTransferBtn.hidden = NO;
+        }
     }else{
         [self.receiveBtn setTitle:LocalizationKey(@"划转") forState:UIControlStateNormal];
         self.freeze.hidden = YES;
@@ -66,11 +71,6 @@
         self.sTransferBtn.hidden = YES;
         self.receiveBtn.backgroundColor = RGBOF(0xA7865A);
         [self.receiveBtn setTitleColor:RGBOF(0xffffff) forState:UIControlStateNormal];
-    }
-    if ([model.coin.unit isEqualToString:@"BTK"]) {//BTK为子币，不支持划转
-        self.sTransferBtn.hidden = YES;
-    }else{
-        self.sTransferBtn.hidden = NO;
     }
 }
 - (IBAction)assetsDetail:(UIButton *)sender {

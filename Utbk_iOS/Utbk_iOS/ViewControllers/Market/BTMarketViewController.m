@@ -79,6 +79,8 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTMarketTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTMarketTableViewCell class])];
     self.tableView.tableFooterView = [UITableView new];
     [self headRefreshWithScrollerView:self.tableView];
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 12, 0, 12);
+    self.tableView.separatorColor = RGBOF(0xe8e8e8);
 }
 - (void)refreshHeaderAction{
     [self setupBind];

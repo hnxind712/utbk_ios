@@ -72,7 +72,7 @@
         return;
     }
     if (![self.passwordSecond.text isEqualToString:self.passwordNew.text]) {
-        [self.view makeToast:LocalizationKey(@"请检查两次输入密码是否一致") duration:ToastHideDelay position:ToastPosition];
+        [self.view makeToast:LocalizationKey(@"两次输入的密码不一致") duration:ToastHideDelay position:ToastPosition];
         return;
     }
     WeakSelf(weakSelf)
@@ -93,7 +93,7 @@
                 [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
             }
         }else{
-            [self.view makeToast:LocalizationKey(@"noNetworkStatus") duration:ToastHideDelay position:ToastPosition];
+            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
         }
     }];
 }

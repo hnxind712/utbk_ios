@@ -36,7 +36,7 @@
 }
 - (void)setupBind{
     WeakSelf(weakSelf)
-    [[XBRequest sharedInstance]getDataWithUrl:getMineWalletAPI Parameter:@{@"apiKey":[YLUserInfo shareUserInfo].secretKey} ResponseObject:^(NSDictionary *responseResult) {
+    [[XBRequest sharedInstance]getDataWithUrl:getMineWalletAPI Parameter:@{@"apiKey":_BTS([YLUserInfo shareUserInfo].secretKey)} ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             StrongSelf(strongSelf)
             strongSelf.datasource = [BTPoolHoldCoinModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
@@ -54,7 +54,7 @@
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 185.f;
+    return 175.f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -29,7 +29,7 @@
     _walletType = walletType;
     [BTKeyWindow addSubview:self];
     self.frame = BTKeyWindow.bounds;
-    [_confirmBtn setTitle:LocalizationKey(@"确认") forState:UIControlStateNormal];
+    [_confirmBtn setTitle:LocalizationKey(@"confirm") forState:UIControlStateNormal];
     _secretWord.hidden = YES;
     _input.hidden = NO;
     switch (walletType) {

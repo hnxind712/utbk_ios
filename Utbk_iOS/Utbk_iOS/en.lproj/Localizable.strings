@@ -7,10 +7,48 @@
 */
 //
 "取消" = "Cancle";
+"网络连接失败" = "Network connection failure";
+"地址为空" = "The address is empty";
+"暂未开放" = "Temporarily not opened";
+"简体中文" = "Simplified Chinese";
+"保存成功" = "Save success";
+"保存失败" = "Save failed";
 //我的
 "钱包管理" = "wallet Manager";
 "复制成功" = "copy success";
-
+"个人中心" = "Profile";
+"请输入助记词单词，并使用逗号分隔" = "Enter mnemonic words separated by commas";
+"请输入助记词单词" = "Please enter mnemonic words";
+"请输入私钥" = "Please enter your private key";
+"已激活" = "activated";
+"未激活" = "inactive";
+"钱包名称" = "Name of the wallet";
+"请输入钱包名称" = "Please enter the name of the wallet";
+"请输入钱包密码" = "Please enter your wallet password";
+"备份助记词" = "Backup mnemonics";
+"导出私钥" = "Export the private key";
+"复制私钥" = "Copy the private key";
+"复制" = "Copy";
+"拍照" = "Taking pictures";
+"从相册中选择" = "Select from the album";
+"切换" = "switch";
+"导入钱包" = "Import the wallet";
+"钱包管理" = "Wallet Management";
+"创建钱包" = "Create a wallet";
+"请输入用户名" = "Please enter the user name";
+"请输入密码" = "Please enter your password";
+"两次输入的密码不一致" = "The two passwords do not match";
+"请输入旧密码" = "Please enter your old password";
+"请输入新密码" = "Please enter a new password";
+"请再次输入新密码" = "Please enter your new password again";
+"请切换到当前用户再进行修改" = "Please switch to the current user before making changes";
+"不能删除当前钱包" = "The current wallet cannot be deleted";
+"删除成功" = "Delete the success";
+"请输入交易密码" = "Please enter the transaction password";
+"请再次输入交易密码" = "Please enter the transaction password again";
+"选择币种" = "Select the currency";
+"请按照顺序点击助记词，已确认您正确备份。" = "Please click mnemonic in order to confirm that you have backed up correctly.";
+"请输入秘钥，可长按粘贴导入钱包地址" = "Please enter the secret key, long press paste to import the wallet address";
 //可能通用
 "notice" = "Notice";
 "projectName" = "ztuo";

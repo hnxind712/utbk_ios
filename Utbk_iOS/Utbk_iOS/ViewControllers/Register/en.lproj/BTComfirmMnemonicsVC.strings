@@ -1,0 +1,6 @@
+
+/* Class = "UILabel"; text = "请按照顺序点击助记词，已确认您正确备份。"; ObjectID = "Qu8-Ss-XM3"; */
+"Qu8-Ss-XM3.text" = "Please click mnemonic in order to confirm that you have backed up correctly.";
+
+/* Class = "UIButton"; normalTitle = "完成"; ObjectID = "b0o-zH-l57"; */
+"b0o-zH-l57.normalTitle" = "Complete";

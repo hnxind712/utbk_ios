@@ -23,7 +23,6 @@
                             <constraint firstAttribute="width" constant="60" id="gd6-bD-wtD"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <state key="normal" title="UHYE"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="6"/>

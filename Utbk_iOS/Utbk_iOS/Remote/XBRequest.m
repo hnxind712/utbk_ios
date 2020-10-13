@@ -50,8 +50,12 @@ static XBRequest *_sharedInstance = nil;
         if ([self showResponseCode:task.response] == 200) {
             id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             if ([result isKindOfClass:[NSDictionary class]]) {
-                NSDictionary *resultDic = (NSDictionary *)result;
-                responseObjects(resultDic);
+                if ([result[@"code"]intValue] == 4000) {
+                    [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];
+                }else{
+                    NSDictionary *resultDic = (NSDictionary *)result;
+                    responseObjects(resultDic);
+                }
             }
             NSLog(@"数据 = %@",result);
         }
@@ -87,8 +91,12 @@ static XBRequest *_sharedInstance = nil;
         if ([self showResponseCode:task.response] == 200) {
             id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             if ([result isKindOfClass:[NSDictionary class]]) {
-                NSDictionary *resultDic = (NSDictionary *)result;
-                responseObjects(resultDic);
+                if ([result[@"code"]intValue] == 4000) {
+                    [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];
+                }else{
+                    NSDictionary *resultDic = (NSDictionary *)result;
+                    responseObjects(resultDic);
+                }
             }
             NSLog(@"数据 = %@",result);
         }
@@ -138,8 +146,12 @@ static XBRequest *_sharedInstance = nil;
         if ([self showResponseCode:task.response] == 200) {
             id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             if ([result isKindOfClass:[NSDictionary class]]) {
-                NSDictionary *resultDic = (NSDictionary *)result;
-                responseObjects(resultDic);
+                if ([result[@"code"]intValue] == 4000) {
+                    [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];
+                }else{
+                    NSDictionary *resultDic = (NSDictionary *)result;
+                    responseObjects(resultDic);
+                }
             }
             NSLog(@"数据 = %@",result);
         }
@@ -190,8 +202,12 @@ static XBRequest *_sharedInstance = nil;
         if ([self showResponseCode:task.response] == 200) {
             id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             if ([result isKindOfClass:[NSDictionary class]]) {
-                NSDictionary *resultDic = (NSDictionary *)result;
-                responseObjects(resultDic);
+                if ([result[@"code"]intValue] == 4000) {
+                    [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];
+                }else{
+                    NSDictionary *resultDic = (NSDictionary *)result;
+                    responseObjects(resultDic);
+                }
             }
             NSLog(@"数据 = %@",result);
         }
@@ -231,8 +247,12 @@ static XBRequest *_sharedInstance = nil;
     [sessionManager PUT:str parameters:param headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         if ([result isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *resultDic = (NSDictionary *)result;
-            responseObjects(resultDic);
+            if ([result[@"code"]intValue] == 4000) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];
+            }else{
+                NSDictionary *resultDic = (NSDictionary *)result;
+                responseObjects(resultDic);
+            }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSDictionary *temDic = @{@"resError":error};
@@ -263,8 +283,12 @@ static XBRequest *_sharedInstance = nil;
     [sessionManager DELETE:str parameters:param headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         if ([result isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *resultDic = (NSDictionary *)result;
-            responseObjects(resultDic);
+            if ([result[@"code"]intValue] == 4000) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];
+            }else{
+                NSDictionary *resultDic = (NSDictionary *)result;
+                responseObjects(resultDic);
+            }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSDictionary *temDic = @{@"resError":error};

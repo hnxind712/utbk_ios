@@ -114,7 +114,7 @@
         [self.view makeToast:LocalizationKey(@"请输入钱包密码") duration:ToastHideDelay position:ToastPosition];return;
     }
     if (![_password.text isEqualToString:_passwordSecond.text]) {
-        [self.view makeToast:LocalizationKey(@"请检测两次输入的密码是否一致") duration:ToastHideDelay position:ToastPosition];return;
+        [self.view makeToast:LocalizationKey(@"两次输入的密码不一致") duration:ToastHideDelay position:ToastPosition];return;
     }
     WeakSelf(weakSelf)
     NSMutableDictionary *params = [NSMutableDictionary dictionary];

@@ -9,10 +9,16 @@
 #import "BTSettingViewController.h"
 #import "BTLanguageVC.h"
 #import <SDWebImage/SDImageCache.h>
+#import "MineNetManager.h"
+#import "VersionUpdateModel.h"
+#import "BTUpdateVersionView.h"
 
 @interface BTSettingViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *language;
 @property (weak, nonatomic) IBOutlet UILabel *caches;
+@property (weak, nonatomic) IBOutlet UILabel *version;
+@property (strong, nonatomic) BTUpdateVersionView *versionView;//版本更新
+@property (strong, nonatomic) VersionUpdateModel *versionModel;
 
 @end
 
@@ -34,6 +40,7 @@
     }else{
         _caches.text = [NSString stringWithFormat:@"%.2fMB",MBCache];
     }
+    [self versionUpdate];
 }
 - (void)viewWillAppear:(BOOL)animated{
     NSString *language = [ChangeLanguage userLanguage];
@@ -59,8 +66,37 @@
 }
 //关于我们
 - (IBAction)aboutUsAction:(UITapGestureRecognizer *)sender {
+    // app当前版本
+    if (self.versionModel) {
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+        NSLog(@"app_Version ---- %@",app_Version);
+        if ([app_Version compare:self.versionModel.version] == NSOrderedAscending ){
+            self.versionView  = [BTUpdateVersionView show];
+            [self.versionView configureViewWithVersion:self.versionModel.version content:self.versionModel.remark];
+            self.versionView.updateAction = ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:self.versionModel.downloadUrl]];
+                });
+            };
+        }
+    }
 }
-
+//MARK:--版本更新接口请求
+-(void)versionUpdate{
+    WeakSelf(weakSelf)
+    [MineNetManager versionUpdateForId:@"1" CompleteHandle:^(id resPonseObj, int code) {
+        NSLog(@"版本更新接口请求 --- %@",resPonseObj);
+        if (code) {
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+                VersionUpdateModel *versionModel = [VersionUpdateModel mj_objectWithKeyValues:resPonseObj[@"data"]];
+                weakSelf.versionModel = versionModel;
+                weakSelf.version.text = [NSString stringWithFormat:@"V%@",versionModel.version];
+            }
+        }
+    }];
+    
+}
 /*
 #pragma mark - Navigation
 

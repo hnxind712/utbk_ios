@@ -39,22 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4AA6F12B-32FC-45A0-A17C-51DD90777AC7"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Utbk_iOS/Tabbar/YLNavigationController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "-pushViewController:withBackTitle:action:animated:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F0F5B0F0-72DA-427A-98C8-0C2813189FFC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -97,6 +81,22 @@
             startingLineNumber = "838"
             endingLineNumber = "838"
             landmarkName = "-touchEvents:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "369D3ED7-4EFD-4872-BD17-6DF5FE2F7E6C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Utbk_iOS/Common/AppBrowser/Controller/LSAppBrowserViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "-webView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -23,11 +23,14 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.navigationController.navigationBar.hidden = YES;
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.navigationController.navigationBar.hidden = NO;
+}
+- (void)viewDidDisappear:(BOOL)animated{
+    
 }
 - (void)setupBind{
     self.codeImageView.image = [BTCommonUtils createQRCodeWithUrl:@"测试" image:BTUIIMAGE(@"icon_registerLogo") size:self.codeImageView.bounds.size.width];

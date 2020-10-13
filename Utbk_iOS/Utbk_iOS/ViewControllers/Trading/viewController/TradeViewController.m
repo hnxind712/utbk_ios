@@ -168,7 +168,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     [super viewDidLoad];
     [self getDefaultSymbol];
     [self getData:[marketManager shareInstance].symbol];
-    self.title = LocalizationKey(@"交易中心");
+    self.title = LocalizationKey(@"交易");
     self.priceType = PriceType_Fixed;//默认限价
     self.Myscrollview.delegate = self;
     self.Myscrollview.showsVerticalScrollIndicator =NO;

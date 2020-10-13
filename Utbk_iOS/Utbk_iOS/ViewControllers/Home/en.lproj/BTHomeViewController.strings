@@ -1,0 +1,57 @@
+
+/* Class = "UIButton"; normalTitle = "商城"; ObjectID = "3gx-Xf-Zgj"; */
+"3gx-Xf-Zgj.normalTitle" = "mall";
+
+/* Class = "UIButton"; normalTitle = "主板区"; ObjectID = "AfO-OB-ah1"; */
+"AfO-OB-ah1.normalTitle" = "Main area";
+
+/* Class = "UIButton"; selectedTitle = "主板区"; ObjectID = "AfO-OB-ah1"; */
+"AfO-OB-ah1.selectedTitle" = "Main area";
+
+/* Class = "UIButton"; normalTitle = "游戏"; ObjectID = "BPS-xC-Ume"; */
+"BPS-xC-Ume.normalTitle" = "game";
+
+/* Class = "UILabel"; text = "原始母币"; ObjectID = "Eos-Ww-mUP"; */
+"Eos-Ww-mUP.text" = "Original mother COINS";
+
+/* Class = "UIButton"; normalTitle = "涨幅榜/24H"; ObjectID = "Lbn-Gz-cpt"; */
+"Lbn-Gz-cpt.normalTitle" = "performer/24H";
+
+/* Class = "UIButton"; normalTitle = "夺宝"; ObjectID = "Mlq-kW-a9D"; */
+"Mlq-kW-a9D.normalTitle" = "indiana";
+
+/* Class = "UIButton"; normalTitle = "邀请激活"; ObjectID = "Rvk-Qb-WWJ"; */
+"Rvk-Qb-WWJ.normalTitle" = "Invitation Activate";
+
+/* Class = "UIButton"; normalTitle = "更多"; ObjectID = "S38-R6-9Ko"; */
+"S38-R6-9Ko.normalTitle" = "more";
+
+/* Class = "UILabel"; text = "折合(USDT)"; ObjectID = "UpA-Bl-4q7"; */
+"UpA-Bl-4q7.text" = "equivalent(USDT)";
+
+/* Class = "UILabel"; text = "0.000000"; ObjectID = "Y9A-BB-TQ6"; */
+"Y9A-BB-TQ6.text" = "0.000000";
+
+/* Class = "UIButton"; normalTitle = "划转"; ObjectID = "Zel-Fe-2DL"; */
+"Zel-Fe-2DL.normalTitle" = "transfer";
+
+/* Class = "UIButton"; normalTitle = "DeFi专区"; ObjectID = "e11-wS-L3a"; */
+"e11-wS-L3a.normalTitle" = "DeFiZone";
+
+/* Class = "UIButton"; normalTitle = "矿池"; ObjectID = "f8v-q4-gqe"; */
+"f8v-q4-gqe.normalTitle" = "Ore pool";
+
+/* Class = "UILabel"; text = "0.000000"; ObjectID = "iq4-dX-W4D"; */
+"iq4-dX-W4D.text" = "0.000000";
+
+/* Class = "UIButton"; normalTitle = "社区"; ObjectID = "kpp-Xs-u1E"; */
+"kpp-Xs-u1E.normalTitle" = "community";
+
+/* Class = "UIButton"; normalTitle = "收币"; ObjectID = "l4O-vv-jGr"; */
+"l4O-vv-jGr.normalTitle" = "Collect COINS";
+
+/* Class = "UIButton"; normalTitle = "转账"; ObjectID = "lCB-t5-6dU"; */
+"lCB-t5-6dU.normalTitle" = "transfer";
+
+/* Class = "UIButton"; normalTitle = "团队"; ObjectID = "yNt-az-x69"; */
+"yNt-az-x69.normalTitle" = "team";

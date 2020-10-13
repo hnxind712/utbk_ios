@@ -52,12 +52,24 @@
     BTSharePoolVC *sharePool = [[BTSharePoolVC alloc]init];
     [self addChildViewController:sharePool];
     [self.scrollView addSubview:sharePool.view];
-    sharePool.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.scrollView.bounds.size.height);
+    [sharePool.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        //
+        make.left.top.bottom.offset(0.f);
+        make.width.offset(SCREEN_WIDTH);
+    }];
+//    sharePool.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.scrollView.bounds.size.height);
     BTHoldCoinsViewController *ore = [[BTHoldCoinsViewController alloc]init];
     [self addChildViewController:ore];
     [self.scrollView addSubview:ore.view];
-    ore.view.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, self.scrollView.bounds.size.height);
-    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * 2, self.scrollView.bounds.size.height);
+    [ore.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        //
+        make.left.equalTo(sharePool.view.mas_right);
+        make.top.bottom.right.offset(0.f);
+        make.width.offset(SCREEN_WIDTH);
+        make.height.equalTo(self.scrollView);
+    }];
+//    ore.view.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, self.scrollView.bounds.size.height);
+//    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * 2, self.scrollView.bounds.size.height);
 }
 - (void)switchAction:(SPMultipleSwitch *)multipleSwitch{
     [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH * multipleSwitch.selectedSegmentIndex, 0)animated:YES];

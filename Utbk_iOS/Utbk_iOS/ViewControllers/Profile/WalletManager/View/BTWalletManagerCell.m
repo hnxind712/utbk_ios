@@ -42,7 +42,6 @@
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = _address;
     [self makeToast:LocalizationKey(@"复制成功") duration:ToastHideDelay position:ToastPosition];
-//    [MBProgressHUD bwm_showTitle:NSLocalizedString(@"复制成功",nil) toView:[UIApplication sharedApplication].keyWindow hideAfter:2.f];
 }
 - (IBAction)walletDetail:(UIButton *)sender {
     if (self.walletDetailAction) {

@@ -13,6 +13,9 @@
 #endif /* UtbkConstant_h */
 
 #define USERINFO @"USERINFO"
+#ifndef _BTS
+#define _BTS(__string_) (__string_?:@"")
+#endif
 //自定义block
 typedef void(^ResultBlock)(id resultObject,int isSuccessed);
 //原始母币

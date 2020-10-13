@@ -13,10 +13,12 @@
 #import "BTAssetsModel.h"
 #import "BTWithdrawRecordVC.h"
 
-@interface BTContributionVC ()
-
+@interface BTContributionVC ()<UITextFieldDelegate>
+{
+    BOOL isNotice;//最大只能输入50组
+}
 @property (weak, nonatomic) IBOutlet UIButton *coinBtn;
-@property (weak, nonatomic) IBOutlet UILabel *groupCount;//组数
+@property (weak, nonatomic) IBOutlet UITextField *groupCount;//组数
 @property (weak, nonatomic) IBOutlet UITextField *countInput;
 @property (weak, nonatomic) IBOutlet UILabel *equivalentLabel;//折合
 @property (weak, nonatomic) IBOutlet UILabel *multipleLabel;//倍数
@@ -47,6 +49,7 @@
     [self getWallet];
     [self setupBind];
     [self getCoinExchangeUSDTRate];
+    [self.groupCount addTarget:self action:@selector(textFieldDidchange:) forControlEvents:UIControlEventEditingChanged];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -57,6 +60,65 @@
     [btn sizeToFit];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
+- (void)textFieldDidchange:(UITextField *)textfield{
+    if (textfield.text.doubleValue > 1) {
+        _subtractionBtn.enabled = YES;
+        _subtractionBtn.layer.borderColor = RGBOF(0xA78559).CGColor;
+        [_subtractionBtn setTitleColor:RGBOF(0xA78559) forState:UIControlStateNormal];
+    }else{
+        _subtractionBtn.enabled = NO;
+        _subtractionBtn.layer.borderColor = RGBOF(0xE7E7E7).CGColor;
+        [_subtractionBtn setTitleColor:RGBOF(0xE7E7E7) forState:UIControlStateNormal];
+    }
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    //如果是限制只能输入数字的文本框
+    if (!textField.text.length && [string isEqualToString:@"0"]) {
+        return NO;//第一个字符不能为数字0
+    }
+    if (_groupCount == textField && [self validateNumber:string]) {
+        
+        //返回的是改变过后的新str，即textfield的新的文本内容
+        NSString *checkStr = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        return checkStr.doubleValue <= 50;
+        
+    }
+    return NO;
+    
+    
+}
+
+- (BOOL)validateNumber:(NSString*)number {
+    
+    BOOL res = YES;
+    
+    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    
+    int i = 0;
+    
+    while (i < number.length) {
+        
+        NSString * string = [number substringWithRange:NSMakeRange(i, 1)];
+        
+        NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+        
+        if (range.length == 0) {
+            
+            res = NO;
+            
+            break;
+            
+        }
+        
+        i++;
+        
+    }
+    
+    return res;
+    
+}
+
 - (void)transferRecordAction{
     BTWithdrawRecordVC *record = [[BTWithdrawRecordVC alloc]init];
     record.recordType = KRecordTypeContributionRecord;
@@ -133,6 +195,11 @@
         _subtractionBtn.layer.borderColor = RGBOF(0xA78559).CGColor;
         [_subtractionBtn setTitleColor:RGBOF(0xA78559) forState:UIControlStateNormal];
     }
+    if (_count == 50) {
+        sender.enabled = NO;
+        sender.layer.borderColor = RGBOF(0xE7E7E7).CGColor;
+        [sender setTitleColor:RGBOF(0xE7E7E7) forState:UIControlStateNormal];
+    }
     self.groupCount.text = [NSString stringWithFormat:@"%ld",(long)_count];
     self.countInput.text = [NSString stringWithFormat:@"%ld",KContributionValue * _count];
     self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%f",self.convert * 100 * _count]],self.coinName];
@@ -151,6 +218,9 @@
         _subtractionBtn.layer.borderColor = RGBOF(0xE7E7E7).CGColor;
         [_subtractionBtn setTitleColor:RGBOF(0xE7E7E7) forState:UIControlStateNormal];
     }
+    self.addBtn.enabled = YES;
+    self.addBtn.layer.borderColor = RGBOF(0xA78559).CGColor;
+    [self.addBtn setTitleColor:RGBOF(0xA78559) forState:UIControlStateNormal];
     self.groupCount.text = [NSString stringWithFormat:@"%ld",(long)_count];
     self.countInput.text = [NSString stringWithFormat:@"%ld",KContributionValue * _count];
     self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%f",self.convert * 100 * _count]],self.coinName];

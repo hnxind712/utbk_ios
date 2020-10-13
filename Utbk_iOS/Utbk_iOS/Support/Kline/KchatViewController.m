@@ -107,7 +107,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.isDepthMap = YES;
     self.title = self.symbol;
-    [self RightsetupNavgationItemWithpictureName:@"icon_zhankai"];
+//    [self RightsetupNavgationItemWithpictureName:@"icon_zhankai"];
     [self.tableView registerNib:[UINib nibWithNibName:@"KlineCell" bundle:nil] forCellReuseIdentifier:@"KlineCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"DepthCell" bundle:nil] forCellReuseIdentifier:@"DepthCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"TradeNumCell" bundle:nil] forCellReuseIdentifier:@"TradeNumCell"];

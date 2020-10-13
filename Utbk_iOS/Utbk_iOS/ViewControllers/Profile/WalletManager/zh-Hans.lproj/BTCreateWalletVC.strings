@@ -1,0 +1,30 @@
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "1c9-0v-kvc"; */
+"1c9-0v-kvc.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "钱包名称"; ObjectID = "6Qo-No-3Rc"; */
+"6Qo-No-3Rc.text" = "钱包名称";
+
+/* Class = "UITextField"; placeholder = "请再次输入密码"; ObjectID = "AnP-ya-MA9"; */
+"AnP-ya-MA9.placeholder" = "请再次输入密码";
+
+/* Class = "UILabel"; text = "设置密码"; ObjectID = "FBE-e5-h2Z"; */
+"FBE-e5-h2Z.text" = "设置密码";
+
+/* Class = "UILabel"; text = "密码属于保护私钥以及交易授权，强度非常重要；平台不存储密码。也不帮您找回，请务必保管好。"; ObjectID = "PcT-sN-oNm"; */
+"PcT-sN-oNm.text" = "密码属于保护私钥以及交易授权，强度非常重要；平台不存储密码。也不帮您找回，请务必保管好。";
+
+/* Class = "UITextField"; placeholder = "设置密码（6-20个字符）"; ObjectID = "Z3P-te-aoD"; */
+"Z3P-te-aoD.placeholder" = "设置密码（6-20个字符）";
+
+/* Class = "UILabel"; text = "钱包名称（不超过25个字）"; ObjectID = "brK-in-F0l"; */
+"brK-in-F0l.text" = "钱包名称（不超过25个字）";
+
+/* Class = "UIButton"; normalTitle = "创建钱包"; ObjectID = "eAE-L6-Zpp"; */
+"eAE-L6-Zpp.normalTitle" = "创建钱包";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "hOZ-X7-0B6"; */
+"hOZ-X7-0B6.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "请再次输入密码"; ObjectID = "pa5-SN-fLZ"; */
+"pa5-SN-fLZ.text" = "请再次输入密码";

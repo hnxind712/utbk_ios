@@ -75,7 +75,7 @@
 
 - (void)loadData{
     WeakSelf(weakSelf)
-    [[XBRequest sharedInstance]postDataWithUrl:getMineShareAPI Parameter:@{@"apiKey":[YLUserInfo shareUserInfo].secretKey} ResponseObject:^(NSDictionary *responseResult) {
+    [[XBRequest sharedInstance]postDataWithUrl:getMineShareAPI Parameter:@{@"apiKey":_BTS([YLUserInfo shareUserInfo].secretKey)} ResponseObject:^(NSDictionary *responseResult) {
             StrongSelf(strongSelf)
             if (NetSuccess) {
                 self.datasource = [BTSharePoolModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
@@ -102,7 +102,7 @@
     [self.navigationController pushViewController:contribution animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 180.f;
+    return 185.f;
 }
 /*
 #pragma mark - Navigation

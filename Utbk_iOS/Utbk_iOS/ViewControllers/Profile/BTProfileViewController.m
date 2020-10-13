@@ -16,6 +16,10 @@
 #import "BTAssetsModel.h"
 #import "BTBackupMnemonicsVC.h"
 #import <SDWebImage/UIButton+WebCache.h>
+#import "LSAppBrowserViewController.h"
+
+
+#define KBlockScanURL @"https://tronscan.io/"
 
 @interface BTProfileViewController ()<TZImagePickerControllerDelegate>
 
@@ -50,22 +54,30 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:BTUIIMAGE(@"icon_profileTopbg") forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:[UIColor blackColor]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:RGBOF(0xffffff)}];
     [self setupBind];
 }
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
 - (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
         [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:AppTextColor}];
     
 }
 - (IBAction)copyAction:(UIButton *)sender {
+    if (!self.address.text.length) {
+        [BTKeyWindow makeToast:LocalizationKey(@"地址为空") duration:ToastHideDelay position:ToastPosition];return;
+    }
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.address.text;
+    [self.view makeToast:LocalizationKey(@"复制成功") duration:ToastHideDelay position:ToastPosition];
 }
 - (void)setupBind{
     self.walletName.text = [YLUserInfo shareUserInfo].username;
     [self.headerBtn sd_setImageWithURL:[NSURL URLWithString:[YLUserInfo shareUserInfo].avatar] forState:UIControlStateNormal placeholderImage:BTUIIMAGE(@"icon_profileUser")];
-//    [self.headerBtn sd_setImageWithURL:[NSURL URLWithString:[YLUserInfo shareUserInfo].avatar] forState:UIControlStateNormal];
     if (![YLUserInfo shareUserInfo].address) {
         WeakSelf(weakSelf)
         [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
@@ -89,6 +101,16 @@
     }else{
         self.address.text = [YLUserInfo shareUserInfo].address;
     }
+    [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":[YLUserInfo shareUserInfo].ID} ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            YLUserInfo *info = [YLUserInfo shareUserInfo];
+            info.activeStatus = [responseResult[@"data"][@"status"] isKindOfClass:[NSNull class]] ? 0 : [responseResult[@"data"][@"status"] integerValue];
+            [YLUserInfo saveUser:info];
+            self.activeBtn.backgroundColor = (info.activeStatus == 1 || info.activeStatus == 2)  ? RGBOF(0xDAC49D) : RGBOF(0xcccccc);
+            [self.activeBtn setTitle:(info.activeStatus == 1 || info.activeStatus == 2) ? LocalizationKey(@"已激活") : LocalizationKey(@"未激活") forState:UIControlStateNormal];
+            [self.activeBtn setTitleColor:(info.activeStatus == 1 || info.activeStatus == 2) ? RGBOF(0x786236) : RGBOF(0x333333) forState:UIControlStateNormal];
+        }
+    }];
 }
 - (void)selectImageWithTZImagePickerController{
     TZImagePickerController *imagePicker = [[TZImagePickerController alloc]initWithMaxImagesCount:1 delegate:self];
@@ -187,16 +209,16 @@
     WeakSelf(weakSelf)
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     //LocalizationKey(@"取消")
-    UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:LocalizationKey(@"取消") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 
     }];
     //LocalizationKey(@"拍照")
-    UIAlertAction *shootAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *shootAction = [UIAlertAction actionWithTitle:LocalizationKey(@"拍照") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         StrongSelf(strongSelf)
         [strongSelf pushTZImagePickerController];
     }];
-    //LocalizationKey(@"从相册中选择")
-    UIAlertAction *selectAction = [UIAlertAction actionWithTitle:@"从相册中选择" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    //
+    UIAlertAction *selectAction = [UIAlertAction actionWithTitle:LocalizationKey(@"从相册中选择") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         StrongSelf(strongSelf)
         [strongSelf selectImageWithTZImagePickerController];
     }];
@@ -238,7 +260,9 @@
 }
 //区块链浏览
 - (IBAction)blockChainsAction:(UITapGestureRecognizer *)sender {
-    [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
+    LSAppBrowserViewController *browser = [[LSAppBrowserViewController alloc]init];
+    browser.urlString = KBlockScanURL;
+    [self.navigationController pushViewController:browser animated:YES];
 }
 
 /*

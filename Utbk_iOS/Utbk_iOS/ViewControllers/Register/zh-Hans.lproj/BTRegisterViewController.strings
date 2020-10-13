@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "创建账号"; ObjectID = "XXz-Ke-rv0"; */
+"XXz-Ke-rv0.normalTitle" = "创建账号";
+
+/* Class = "UILabel"; text = "BTCK  开启挖矿财富"; ObjectID = "YiR-90-QY4"; */
+"YiR-90-QY4.text" = "BTCK  开启挖矿财富";
+
+/* Class = "UIButton"; normalTitle = "《BTCK用户协议》"; ObjectID = "iHh-Vn-0kO"; */
+"iHh-Vn-0kO.normalTitle" = "《BTCK用户协议》";
+
+/* Class = "UILabel"; text = "我已仔细阅读并同意"; ObjectID = "kz4-Ra-r3p"; */
+"kz4-Ra-r3p.text" = "我已仔细阅读并同意";
+
+/* Class = "UIButton"; normalTitle = "导入地址"; ObjectID = "o84-fz-wTS"; */
+"o84-fz-wTS.normalTitle" = "导入地址";

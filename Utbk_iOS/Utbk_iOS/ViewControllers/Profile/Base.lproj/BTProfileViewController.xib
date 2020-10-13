@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8t-Vt-mxP">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_profileTopbg" translatesAutoresizingMaskIntoConstraints="NO" id="0Xo-HN-SBj">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
@@ -137,7 +137,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qaH-Ym-Oad">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_walletEnter" translatesAutoresizingMaskIntoConstraints="NO" id="qaH-Ym-Oad">
                                             <rect key="frame" x="370" y="23" width="8" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="8" id="Ggu-3B-ZSC"/>
@@ -186,7 +186,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LFE-VN-zNC">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_walletEnter" translatesAutoresizingMaskIntoConstraints="NO" id="LFE-VN-zNC">
                                             <rect key="frame" x="370" y="23" width="8" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="8" id="Pxa-tE-hzc"/>
@@ -235,7 +235,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UKH-XO-4uZ">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_walletEnter" translatesAutoresizingMaskIntoConstraints="NO" id="UKH-XO-4uZ">
                                             <rect key="frame" x="370" y="23" width="8" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="8" id="GGM-dA-QHY"/>
@@ -289,7 +289,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N0u-wl-35W">
-                            <rect key="frame" x="12" y="336" width="390" height="120"/>
+                            <rect key="frame" x="12" y="331" width="390" height="60"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fam-3C-Wy0">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
@@ -307,7 +307,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-eT-4Ey">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_walletEnter" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-eT-4Ey">
                                             <rect key="frame" x="370" y="23" width="8" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="BIl-sD-h6l"/>
@@ -340,31 +340,31 @@
                                         <outletCollection property="gestureRecognizers" destination="nJT-6f-F0D" appends="YES" id="baW-Of-w4s"/>
                                     </connections>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRW-hf-MjR">
-                                    <rect key="frame" x="0.0" y="60" width="390" height="60"/>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRW-hf-MjR">
+                                    <rect key="frame" x="0.0" y="60" width="390" height="0.0"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_profileWithdraw" translatesAutoresizingMaskIntoConstraints="NO" id="R2e-5s-1ih">
-                                            <rect key="frame" x="13" y="19" width="22" height="22"/>
+                                            <rect key="frame" x="13" y="-11" width="22" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="22" id="6Fe-7F-fPB"/>
                                                 <constraint firstAttribute="width" secondItem="R2e-5s-1ih" secondAttribute="height" multiplier="1:1" id="Ap5-G4-nQv"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提币地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErG-et-HT5">
-                                            <rect key="frame" x="51" y="20.5" width="65.5" height="19.5"/>
+                                            <rect key="frame" x="51" y="-9.5" width="65.5" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lKR-iG-5tT">
-                                            <rect key="frame" x="370" y="23" width="8" height="14"/>
+                                            <rect key="frame" x="370" y="-7" width="8" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="8" id="GdD-Q8-h3X"/>
                                                 <constraint firstAttribute="height" constant="14" id="MiH-Dg-Ttx"/>
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4W-Fa-YXo">
-                                            <rect key="frame" x="0.0" y="59" width="390" height="1"/>
+                                            <rect key="frame" x="0.0" y="-1" width="390" height="1"/>
                                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="naz-BR-OcS"/>
@@ -377,7 +377,7 @@
                                         <constraint firstItem="ErG-et-HT5" firstAttribute="leading" secondItem="R2e-5s-1ih" secondAttribute="trailing" constant="16" id="42K-mz-s6j"/>
                                         <constraint firstItem="R2e-5s-1ih" firstAttribute="leading" secondItem="JRW-hf-MjR" secondAttribute="leading" constant="13" id="4La-ea-ZAC"/>
                                         <constraint firstItem="c4W-Fa-YXo" firstAttribute="leading" secondItem="JRW-hf-MjR" secondAttribute="leading" id="7gF-D4-jjf"/>
-                                        <constraint firstAttribute="height" constant="60" id="HEj-sH-fc3"/>
+                                        <constraint firstAttribute="height" id="HEj-sH-fc3"/>
                                         <constraint firstItem="ErG-et-HT5" firstAttribute="centerY" secondItem="R2e-5s-1ih" secondAttribute="centerY" id="QXW-mm-Enh"/>
                                         <constraint firstItem="lKR-iG-5tT" firstAttribute="centerY" secondItem="R2e-5s-1ih" secondAttribute="centerY" id="S0X-Vr-fNf"/>
                                         <constraint firstAttribute="trailing" secondItem="lKR-iG-5tT" secondAttribute="trailing" constant="12" id="jxi-Ad-PZ7"/>
@@ -407,7 +407,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04P-Zy-UXp">
-                            <rect key="frame" x="12" y="466" width="390" height="180"/>
+                            <rect key="frame" x="12" y="396" width="390" height="180"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEG-Ru-AuN">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
@@ -425,7 +425,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wjw-wG-9mD">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_walletEnter" translatesAutoresizingMaskIntoConstraints="NO" id="Wjw-wG-9mD">
                                             <rect key="frame" x="370" y="23" width="8" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="8" id="Vr5-oh-H1X"/>
@@ -474,7 +474,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ldb-3W-oyC">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_walletEnter" translatesAutoresizingMaskIntoConstraints="NO" id="Ldb-3W-oyC">
                                             <rect key="frame" x="370" y="23" width="8" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="ORX-hm-LrZ"/>
@@ -523,7 +523,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9tf-RN-JJH">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_walletEnter" translatesAutoresizingMaskIntoConstraints="NO" id="9tf-RN-JJH">
                                             <rect key="frame" x="370" y="23" width="8" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="8" id="B7v-IA-KaQ"/>
@@ -579,12 +579,12 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="r5d-T6-BvE" firstAttribute="leading" secondItem="y8t-Vt-mxP" secondAttribute="leading" constant="12" id="0lE-vt-hI5"/>
-                        <constraint firstItem="04P-Zy-UXp" firstAttribute="top" secondItem="N0u-wl-35W" secondAttribute="bottom" constant="10" id="9iV-fu-3Dd"/>
+                        <constraint firstItem="04P-Zy-UXp" firstAttribute="top" secondItem="N0u-wl-35W" secondAttribute="bottom" constant="5" id="9iV-fu-3Dd"/>
                         <constraint firstItem="r5d-T6-BvE" firstAttribute="centerX" secondItem="y8t-Vt-mxP" secondAttribute="centerX" id="AvE-rR-Jih"/>
                         <constraint firstItem="N0u-wl-35W" firstAttribute="trailing" secondItem="r5d-T6-BvE" secondAttribute="trailing" id="GXk-Ow-p8B"/>
                         <constraint firstAttribute="bottom" secondItem="04P-Zy-UXp" secondAttribute="bottom" constant="20" id="ILM-Wq-0d5"/>
                         <constraint firstItem="0Xo-HN-SBj" firstAttribute="top" secondItem="y8t-Vt-mxP" secondAttribute="top" id="K8H-w4-Wzq"/>
-                        <constraint firstItem="N0u-wl-35W" firstAttribute="top" secondItem="rcD-Aq-Nme" secondAttribute="bottom" constant="10" id="KHX-YB-s1d"/>
+                        <constraint firstItem="N0u-wl-35W" firstAttribute="top" secondItem="rcD-Aq-Nme" secondAttribute="bottom" constant="5" id="KHX-YB-s1d"/>
                         <constraint firstItem="0Xo-HN-SBj" firstAttribute="leading" secondItem="y8t-Vt-mxP" secondAttribute="leading" id="Shx-aH-rF4"/>
                         <constraint firstAttribute="trailing" secondItem="r5d-T6-BvE" secondAttribute="trailing" constant="12" id="TN5-nN-CPo"/>
                         <constraint firstItem="04P-Zy-UXp" firstAttribute="trailing" secondItem="r5d-T6-BvE" secondAttribute="trailing" id="Tlk-uW-fkm"/>
@@ -602,7 +602,7 @@
             <constraints>
                 <constraint firstItem="y8t-Vt-mxP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="39r-PA-qf6"/>
                 <constraint firstItem="y8t-Vt-mxP" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="8y3-Je-RGu"/>
-                <constraint firstItem="y8t-Vt-mxP" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="ShN-4i-f3e"/>
+                <constraint firstItem="y8t-Vt-mxP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JnV-bm-bH3"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="y8t-Vt-mxP" secondAttribute="bottom" id="cvk-em-YQ5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
@@ -661,5 +661,6 @@
         <image name="icon_profileUser" width="65" height="65"/>
         <image name="icon_profileWallet" width="22" height="22"/>
         <image name="icon_profileWithdraw" width="22" height="22"/>
+        <image name="icon_walletEnter" width="12" height="12"/>
     </resources>
 </document>

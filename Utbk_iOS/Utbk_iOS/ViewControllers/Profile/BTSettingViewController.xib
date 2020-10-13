@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="caches" destination="1yf-QW-ORa" id="Ac6-nl-mtu"/>
                 <outlet property="language" destination="Sf4-Ia-9fO" id="3aL-fM-dEW"/>
+                <outlet property="version" destination="4i8-M9-RCU" id="VB6-sv-jE2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -129,6 +130,12 @@
                                         <constraint firstAttribute="height" constant="0.5" id="Bwd-Do-Kzv"/>
                                     </constraints>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i8-M9-RCU">
+                                    <rect key="frame" x="316" y="21.5" width="40" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <gestureRecognizers/>
@@ -140,6 +147,7 @@
                                 <constraint firstItem="KM0-2l-Jo2" firstAttribute="leading" secondItem="0yG-n6-trr" secondAttribute="leading" constant="12" id="WDj-rL-GbQ"/>
                                 <constraint firstAttribute="trailing" secondItem="5xT-Qb-Gl9" secondAttribute="trailing" constant="12" id="iq4-tB-PjV"/>
                                 <constraint firstAttribute="bottom" secondItem="KM0-2l-Jo2" secondAttribute="bottom" id="rVK-Yi-iRI"/>
+                                <constraint firstItem="4i8-M9-RCU" firstAttribute="centerY" secondItem="TSg-Es-clq" secondAttribute="centerY" id="s22-hS-N2M"/>
                                 <constraint firstItem="TSg-Es-clq" firstAttribute="centerY" secondItem="0yG-n6-trr" secondAttribute="centerY" id="tLp-he-yPR"/>
                             </constraints>
                             <connections>
@@ -157,6 +165,7 @@
                         <constraint firstAttribute="trailing" secondItem="v3j-3d-lZo" secondAttribute="trailing" id="Npe-9R-jfa"/>
                         <constraint firstItem="0yG-n6-trr" firstAttribute="leading" secondItem="W3P-2m-qpg" secondAttribute="leading" id="PMD-5u-HIt"/>
                         <constraint firstItem="v3j-3d-lZo" firstAttribute="top" secondItem="u6p-kQ-58E" secondAttribute="bottom" id="Xmr-iD-2Ze"/>
+                        <constraint firstItem="4i8-M9-RCU" firstAttribute="trailing" secondItem="1yf-QW-ORa" secondAttribute="trailing" id="ah3-1p-hwk"/>
                         <constraint firstItem="u6p-kQ-58E" firstAttribute="leading" secondItem="W3P-2m-qpg" secondAttribute="leading" id="bB1-Jv-3TJ"/>
                         <constraint firstItem="u6p-kQ-58E" firstAttribute="top" secondItem="W3P-2m-qpg" secondAttribute="top" id="hs3-CV-mcF"/>
                     </constraints>

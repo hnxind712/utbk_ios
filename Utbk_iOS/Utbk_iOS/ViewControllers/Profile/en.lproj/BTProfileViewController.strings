@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "团队业绩"; ObjectID = "6ay-eF-K0X"; */
+"6ay-eF-K0X.text" = "Team performance";
+
+/* Class = "UILabel"; text = "帮助中心"; ObjectID = "7yB-Hx-5Fz"; */
+"7yB-Hx-5Fz.text" = "Help center";
+
+/* Class = "UILabel"; text = "提币地址"; ObjectID = "ErG-et-HT5"; */
+"ErG-et-HT5.text" = "提币地址";
+
+/* Class = "UILabel"; text = "开源地址"; ObjectID = "G5H-1p-Wc0"; */
+"G5H-1p-Wc0.text" = "Mention money address";
+
+/* Class = "UILabel"; text = "社区客服"; ObjectID = "N7P-dP-eHh"; */
+"N7P-dP-eHh.text" = "Community service";
+
+/* Class = "UILabel"; text = "区块链浏览"; ObjectID = "U3K-RR-sGe"; */
+"U3K-RR-sGe.text" = "Blockchain browsing";
+
+/* Class = "UILabel"; text = "钱包管理"; ObjectID = "sLG-5u-hto"; */
+"sLG-5u-hto.text" = "Wallet management";
+
+/* Class = "UILabel"; text = "分享APP"; ObjectID = "txU-p3-kRc"; */
+"txU-p3-kRc.text" = "Share the APP";
+
+/* Class = "UIButton"; normalTitle = "未激活"; ObjectID = "yXj-49-0Zw"; */
+"yXj-49-0Zw.normalTitle" = "Inactive";

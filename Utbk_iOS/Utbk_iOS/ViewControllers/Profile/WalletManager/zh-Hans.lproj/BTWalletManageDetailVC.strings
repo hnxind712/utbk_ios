@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "备份助记词"; ObjectID = "3Hh-Pt-f5B"; */
+"3Hh-Pt-f5B.text" = "备份助记词";
+
+/* Class = "UIButton"; normalTitle = "删除钱包"; ObjectID = "9u7-vq-30Q"; */
+"9u7-vq-30Q.normalTitle" = "删除钱包";
+
+/* Class = "UILabel"; text = "修改交易密码"; ObjectID = "EnB-r5-Uly"; */
+"EnB-r5-Uly.text" = "修改交易密码";
+
+/* Class = "UILabel"; text = "导出私钥"; ObjectID = "PBJ-ry-243"; */
+"PBJ-ry-243.text" = "导出私钥";
+
+/* Class = "UILabel"; text = "钱包名称"; ObjectID = "TiS-2I-zBM"; */
+"TiS-2I-zBM.text" = "钱包名称";

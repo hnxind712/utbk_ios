@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "稍后备份"; ObjectID = "7Gm-lh-NK7"; */
+"7Gm-lh-NK7.normalTitle" = "Backup Later";
+
+/* Class = "UILabel"; text = "为了您的资产安全，请及时备份助记词"; ObjectID = "Nhn-kx-MU8"; */
+"Nhn-kx-MU8.text" = "For the safety of your assets, please backup mnemonics in time";
+
+/* Class = "UIButton"; normalTitle = "马上备份"; ObjectID = "mZU-MT-YSQ"; */
+"mZU-MT-YSQ.normalTitle" = "Backup immediately";
+
+/* Class = "UILabel"; text = "创建成功"; ObjectID = "nuK-HF-dHq"; */
+"nuK-HF-dHq.text" = "Creating successful";

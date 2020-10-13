@@ -46,7 +46,7 @@
 - (void)addRightNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setImage:BTUIIMAGE(@"icon_switch") forState:UIControlStateNormal];
-    [btn setTitle:@"切换" forState:UIControlStateNormal];
+    [btn setTitle:LocalizationKey(@"切换") forState:UIControlStateNormal];
     [btn setTitleColor:RGBOF(0x333333) forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:14.f weight:UIFontWeightMedium];
     [btn addTarget:self action:@selector(transferAction) forControlEvents:UIControlEventTouchUpInside];

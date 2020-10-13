@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "钱包名称"; ObjectID = "7nj-1Z-jTg"; */
+"7nj-1Z-jTg.text" = "钱包名称";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "Oan-Fc-jsc"; */
+"Oan-Fc-jsc.normalTitle" = "取消";
+
+/* Class = "UITextField"; placeholder = "请输入钱包名称"; ObjectID = "RbQ-tt-arE"; */
+"RbQ-tt-arE.placeholder" = "请输入钱包名称";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "aMA-yE-n8C"; */
+"aMA-yE-n8C.normalTitle" = "确定";

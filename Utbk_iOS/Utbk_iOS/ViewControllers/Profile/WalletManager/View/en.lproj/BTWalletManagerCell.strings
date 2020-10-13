@@ -1,0 +1,6 @@
+
+/* Class = "UILabel"; text = "（当前钱包地址）"; ObjectID = "ezP-vX-CMs"; */
+"ezP-vX-CMs.text" = "（Current wallet address）";
+
+/* Class = "UILabel"; text = "已激活"; ObjectID = "w2I-EI-tLS"; */
+"w2I-EI-tLS.text" = "activated";

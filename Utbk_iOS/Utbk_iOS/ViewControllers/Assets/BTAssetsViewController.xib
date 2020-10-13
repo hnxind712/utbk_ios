@@ -68,10 +68,15 @@
                         <constraint firstItem="UL3-le-aN8" firstAttribute="top" secondItem="5il-vG-aTH" secondAttribute="top" constant="32" id="rlX-Hs-gVI"/>
                         <constraint firstItem="vwh-z1-4cd" firstAttribute="top" secondItem="UL3-le-aN8" secondAttribute="bottom" constant="19" id="siC-Jr-PeR"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mTL-LB-J8e">
-                    <rect key="frame" x="12" y="194" width="390" height="668"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mTL-LB-J8e">
+                    <rect key="frame" x="0.0" y="194" width="414" height="668"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="W1B-tx-zmK"/>
                         <outlet property="delegate" destination="-1" id="zM5-Lq-BqH"/>
@@ -80,9 +85,9 @@
             </subviews>
             <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="mTL-LB-J8e" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="12" id="0dg-fd-wLo"/>
+                <constraint firstItem="mTL-LB-J8e" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="0dg-fd-wLo"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="5il-vG-aTH" secondAttribute="trailing" constant="12" id="WiY-gZ-eU9"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="mTL-LB-J8e" secondAttribute="trailing" constant="12" id="Zb3-Og-GzB"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="mTL-LB-J8e" secondAttribute="trailing" id="Zb3-Og-GzB"/>
                 <constraint firstItem="mTL-LB-J8e" firstAttribute="top" secondItem="5il-vG-aTH" secondAttribute="bottom" constant="10" id="fJW-aj-Thf"/>
                 <constraint firstItem="5il-vG-aTH" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="jOy-1x-H7q"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="mTL-LB-J8e" secondAttribute="bottom" id="mDo-le-w5G"/>

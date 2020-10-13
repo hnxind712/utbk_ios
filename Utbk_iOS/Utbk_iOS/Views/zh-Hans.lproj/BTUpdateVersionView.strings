@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "发现新版本"; ObjectID = "6b2-WK-via"; */
+"6b2-WK-via.text" = "发现新版本";
+
+/* Class = "UIButton"; normalTitle = "残忍拒绝"; ObjectID = "Aq4-Ei-U2O"; */
+"Aq4-Ei-U2O.normalTitle" = "残忍拒绝";
+
+/* Class = "UILabel"; text = "V1.1.0"; ObjectID = "NZ8-oi-Wse"; */
+"NZ8-oi-Wse.text" = "V1.1.0";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "tCZ-Sl-ZNb"; */
+"tCZ-Sl-ZNb.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "立即升级"; ObjectID = "wOz-fm-DFj"; */
+"wOz-fm-DFj.normalTitle" = "立即升级";

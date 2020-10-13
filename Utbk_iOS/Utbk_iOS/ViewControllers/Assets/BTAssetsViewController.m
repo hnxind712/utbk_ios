@@ -135,7 +135,7 @@
             }
         }];
     }else{
-        [[XBRequest sharedInstance]getDataWithUrl:getMineWalletAPI Parameter:@{@"apiKey":[YLUserInfo shareUserInfo].secretKey} ResponseObject:^(NSDictionary *responseResult) {
+        [[XBRequest sharedInstance]getDataWithUrl:getMineWalletAPI Parameter:@{@"apiKey":_BTS([YLUserInfo shareUserInfo].secretKey)} ResponseObject:^(NSDictionary *responseResult) {
             if (NetSuccess) {
                 StrongSelf(strongSelf)
                 [strongSelf.datasource removeAllObjects];

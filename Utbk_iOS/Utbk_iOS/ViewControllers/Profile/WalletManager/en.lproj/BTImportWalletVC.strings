@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "设置密码"; ObjectID = "3GB-Jy-oJ8"; */
+"3GB-Jy-oJ8.text" = "Set the password";
+
+/* Class = "UIButton"; normalTitle = "点击导入钱包表示我已仔细阅读并同意《服务于隐私政策》"; ObjectID = "63h-HP-Ye6"; */
+"63h-HP-Ye6.normalTitle" = "Clicking import wallet indicates that I have read it carefully and agree《Serve the privacy policy》";
+
+/* Class = "UILabel"; text = "请再次输入密码"; ObjectID = "83r-sR-jmh"; */
+"83r-sR-jmh.text" = "Please enter your password again";
+
+/* Class = "UILabel"; text = "请输入助记词单词，并使用逗号分隔"; ObjectID = "9zO-mC-O82"; */
+"9zO-mC-O82.text" = "Enter mnemonic words separated by commas";
+
+/* Class = "UIButton"; normalTitle = "助记词"; ObjectID = "AdU-jd-8Ci"; */
+"AdU-jd-8Ci.normalTitle" = "Mnemonic word";
+
+/* Class = "UIButton"; selectedTitle = "助记词"; ObjectID = "AdU-jd-8Ci"; */
+"AdU-jd-8Ci.selectedTitle" = "Mnemonic word";
+
+/* Class = "UITextField"; placeholder = "设置密码（6-20个字符）"; ObjectID = "Czh-MS-iNF"; */
+"Czh-MS-iNF.placeholder" = "Set the password（6 to 20 characters）";
+
+/* Class = "UIButton"; normalTitle = "确认导入"; ObjectID = "LDS-vO-yqD"; */
+"LDS-vO-yqD.normalTitle" = "Confirm the import";
+
+/* Class = "UITextField"; placeholder = "请再次输入密码"; ObjectID = "c5K-tE-oY2"; */
+"c5K-tE-oY2.placeholder" = "Please enter your password again";
+
+/* Class = "UIButton"; normalTitle = "私钥"; ObjectID = "cdC-KO-NSw"; */
+"cdC-KO-NSw.normalTitle" = "Private key";
+
+/* Class = "UIButton"; selectedTitle = "私钥"; ObjectID = "cdC-KO-NSw"; */
+"cdC-KO-NSw.selectedTitle" = "Private key";

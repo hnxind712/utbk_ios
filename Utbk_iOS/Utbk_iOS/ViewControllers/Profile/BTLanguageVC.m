@@ -7,6 +7,7 @@
 //
 
 #import "BTLanguageVC.h"
+#import "YLTabBarController.h"
 
 @interface BTLanguageVC ()
 @property (weak, nonatomic) IBOutlet UIButton *simplifiedChineseBtn;
@@ -20,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = LocalizationKey(@"设置");
+    self.title = LocalizationKey(@"setting");
     NSString *language = [ChangeLanguage userLanguage];
     if ([language isEqualToString:@"en"]) {
         self.englishBtn.selected = YES;
@@ -52,6 +53,12 @@
         default:
             break;
     }
+    //创建通知
+    NSNotification *notification =[NSNotification notificationWithName:LanguageChange object:nil userInfo:nil];
+    //通过通知中心发送通知
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    YLTabBarController *tabBarController = (YLTabBarController*)[AppDelegate sharedAppDelegate].window.rootViewController;
+    [tabBarController resettabarItemsTitle];
 }
 
 /*

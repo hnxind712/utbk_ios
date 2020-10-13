@@ -8,6 +8,7 @@
 
 #import "BTUpdateVersionView.h"
 @interface BTUpdateVersionView ()
+
 @property (weak, nonatomic) IBOutlet UILabel *version;
 @property (weak, nonatomic) IBOutlet UILabel *versionContent;
 
