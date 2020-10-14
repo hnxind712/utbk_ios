@@ -46,12 +46,28 @@
     withdraw.recordType = KRecordTypeMotherCoinTransfer;
     [self.navigationController pushViewController:withdraw animated:YES];
 }
-
--(void)textFieldDidChange :(UITextField *)textField{
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSMutableString * futureString = [NSMutableString stringWithString:textField.text];
+    [futureString  insertString:string atIndex:range.location];
+    NSInteger flag = 0;
+    const NSInteger limited = KLimitAssetInputDigits;//小数点后需要限制的个数4
+    for (int i = (int)(futureString.length - 1); i>=0; i--) {
+        if ([futureString characterAtIndex:i] == '.') {
+            if (flag > limited) {
+                return NO;
+            }
+            break;
+        }
+        flag++;
+    }
+    return YES;
+}
+-(void)textFieldDidChange:(UITextField *)textField{
     if (!textField.text.length) {
-        self.fee.text = @"0";
+        self.fee.text = @"0.0000";
     }else{
-        self.fee.text = [NSString stringWithFormat:@"%.2f",self.feeRate * textField.text.doubleValue];
+        self.fee.text = [NSString stringWithFormat:@"%.4f",self.feeRate * textField.text.doubleValue];
     }
 }
 - (void)setupBind{
@@ -60,10 +76,10 @@
         StrongSelf(strongSelf)
         if (NetSuccess) {
             if ([responseResult[@"data"]isKindOfClass:[NSNull class]]) {
-                strongSelf.balance.text = @"0.00";
-                strongSelf.fee.text = @"0";
+                strongSelf.balance.text = @"0.0000";
+                strongSelf.fee.text = @"0.0000";
             }else{
-                strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%@",responseResult[@"data"][@"balance"]]];
+                strongSelf.balance.text = [ToolUtil stringFromNumber:[responseResult[@"data"][@"balance"]doubleValue] withlimit:KLimitAssetInputDigits];
                 strongSelf.feeRate = [responseResult[@"data"][@"rate"]doubleValue];
             }
         }

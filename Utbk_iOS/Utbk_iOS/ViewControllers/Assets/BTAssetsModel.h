@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *sort;
 @property(nonatomic,copy)NSString *status;
 @property(nonatomic,copy)NSString *unit;
-@property(nonatomic,copy)NSString *usdRate;
+@property(nonatomic,strong)id usdRate;
 @property(nonatomic,copy)NSString *withdrawThreshold;
 
 @end

@@ -105,6 +105,9 @@
                                     <rect key="frame" x="12" y="34" width="315" height="17.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="SHK-e6-y55"/>
+                                    </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wkk-hh-IeJ">
                                     <rect key="frame" x="348" y="27.5" width="30" height="30"/>

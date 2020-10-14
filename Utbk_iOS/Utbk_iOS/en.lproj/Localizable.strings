@@ -120,6 +120,8 @@
 "母币划转" = "Mother coin transfer";
 "母币收款" = "Mother coin collection";
 "总额" = "Total amount";
+"买" = "Buy";
+"卖" = "Sell";
 //可能通用
 "notice" = "Notice";
 "projectName" = "ztuo";

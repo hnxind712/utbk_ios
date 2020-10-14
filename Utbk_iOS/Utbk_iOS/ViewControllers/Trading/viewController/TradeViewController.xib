@@ -501,7 +501,7 @@
                                                 <constraint firstAttribute="height" constant="18" id="FCf-Cz-HI5"/>
                                                 <constraint firstAttribute="width" constant="18" id="spx-tW-2c9"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <color key="textColor" red="0.2784313725" green="0.67450980390000004" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
@@ -541,7 +541,7 @@
                                                 <constraint firstAttribute="width" constant="18" id="Ty8-yP-Fll"/>
                                                 <constraint firstAttribute="height" constant="18" id="dYu-Re-wS0"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <color key="textColor" red="0.94117647058823528" green="0.32549019607843138" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>

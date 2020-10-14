@@ -244,7 +244,7 @@
             if ([responseResult[@"data"]isKindOfClass:[NSNull class]]) {
                 strongSelf.coinCount.text = @"0";
             }else
-                strongSelf.coinCount.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%@",responseResult[@"data"][@"balance"]]];
+                strongSelf.coinCount.text = [ToolUtil stringFromNumber:[responseResult[@"data"][@"balance"]doubleValue] withlimit:KLimitAssetInputDigits];
         }
     }];
     [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
@@ -255,9 +255,9 @@
                 //计算总资产
                 if ([walletModel.coin.unit isEqualToString:KOriginalCoin]) {
                     self.assetModel = walletModel;
-                    NSDecimalNumberHandler *handle = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:8 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+                    NSDecimalNumberHandler *handle = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:4 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
                     NSDecimalNumber *balance = [[NSDecimalNumber alloc] initWithString:walletModel.balance];
-                    NSDecimalNumber *usdRate = [[NSDecimalNumber alloc] initWithString:walletModel.coin.usdRate];
+                    NSDecimalNumber *usdRate = [[NSDecimalNumber alloc] initWithString:[NSString stringWithFormat:@"%@",walletModel.coin.usdRate]];
                     
                     ass1 = [balance decimalNumberByMultiplyingBy:usdRate withBehavior:handle];break;
                 }

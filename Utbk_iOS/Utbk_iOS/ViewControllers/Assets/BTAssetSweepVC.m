@@ -38,6 +38,7 @@
     [self getSingleCoinWallet];
     [self addRightNavigation];
     self.switchBtn.imageView.transform = CGAffineTransformMakeRotation(M_PI/2);//旋转
+    self.transferCount.keyboardType = UIKeyboardTypeDecimalPad;
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -74,12 +75,12 @@
 }
 - (void)setupBind{
     if (self.assetIndex == 1) {//需要显示币币资产
-        self.balance.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:self.assets.balance],self.assets.coin.unit];
+        self.balance.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil stringFromNumber:self.assets.balance.doubleValue withlimit:4],self.assets.coin.unit];
         self.unit.text = self.assets.coin.unit;
     }else{
         [self.datasource enumerateObjectsUsingBlock:^(BTAssetsModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj.coin.unit isEqualToString:self.assets.coin.unit]) {
-                self.balance.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:obj.balance],obj.coin.unit];
+                self.balance.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil stringFromNumber:obj.balance.doubleValue withlimit:4],obj.coin.unit];
                 self.unit.text = obj.coin.unit;
             }
         }];
@@ -105,7 +106,6 @@
         if (code) {
             if ([resPonseObj[@"code"] integerValue] == 0) {
                 self.assets = [BTAssetsModel mj_objectWithKeyValues:resPonseObj[@"data"]];
-
             }
             else if ([resPonseObj[@"code"] integerValue] ==4000){
                // [ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
@@ -118,6 +118,22 @@
             [self.view makeToast:LocalizationKey(@"noNetworkStatus") duration:ToastHideDelay position:ToastPosition];
         }
     }];
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSMutableString * futureString = [NSMutableString stringWithString:textField.text];
+    [futureString  insertString:string atIndex:range.location];
+    NSInteger flag=0;
+    const NSInteger limited = KLimitAssetInputDigits;//小数点后需要限制的个数
+    for (int i = (int)(futureString.length - 1); i>=0; i--) {
+        if ([futureString characterAtIndex:i] == '.') {
+            if (flag > limited) {
+                return NO;
+            }
+            break;
+        }
+        flag++;
+    }
+    return YES;
 }
 - (IBAction)allAction:(UIButton *)sender {
     if (self.assets.balance.doubleValue > 0) {

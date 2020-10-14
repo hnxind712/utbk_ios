@@ -62,7 +62,22 @@
     self.layout.sectionInset = UIEdgeInsetsMake(14, 8, 14, 8);
     [self.linkTypeCollection registerNib:[UINib nibWithNibName:NSStringFromClass([BTLinkTypeCollectionCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([BTLinkTypeCollectionCell class])];
 }
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSMutableString * futureString = [NSMutableString stringWithString:textField.text];
+    [futureString  insertString:string atIndex:range.location];
+    NSInteger flag=0;
+    const NSInteger limited = KLimitAssetInputDigits;//小数点后需要限制的个数
+    for (int i = (int)(futureString.length - 1); i>=0; i--) {
+        if ([futureString characterAtIndex:i] == '.') {
+            if (flag > limited) {
+                return NO;
+            }
+            break;
+        }
+        flag++;
+    }
+    return YES;
+}
 - (void)setupBind{
     WeakSelf(weakSelf)
     [TradeNetManager getwallettWithcoin:self.unit CompleteHandle:^(id resPonseObj, int code) {
@@ -70,7 +85,7 @@
             StrongSelf(strongSelf)
             if ([resPonseObj[@"code"] integerValue] == 0) {
                 strongSelf.assets = [BTAssetsModel mj_objectWithKeyValues:resPonseObj[@"data"]];
-                strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:self.assets.balance];
+                strongSelf.balance.text = [ToolUtil stringFromNumber:self.assets.balance.doubleValue withlimit:KLimitAssetInputDigits];
             }else{
                 [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
             }
@@ -183,7 +198,7 @@
 //全部输入
 - (IBAction)inputAllCoinAccountAction:(UIButton *)sender {
     if (self.assets.balance.doubleValue > 0) {
-        self.coinCountInput.text = [ToolUtil formartScientificNotationWithString:self.assets.balance];
+        self.coinCountInput.text = [ToolUtil stringFromNumber:self.assets.balance.doubleValue withlimit:KLimitAssetInputDigits];
     }
 }
 //显示密码

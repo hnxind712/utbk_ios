@@ -43,7 +43,7 @@
             if ([responseResult[@"data"]isKindOfClass:[NSNull class]]) {
                 [strongSelf.view makeToast:LocalizationKey(@"当前没有母币，无法激活") duration:ToastHideDelay position:ToastPosition];return;
             }
-            strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%@",responseResult[@"data"][@"balance"]]];
+            strongSelf.balance.text = [ToolUtil stringFromNumber:[responseResult[@"data"][@"balance"]doubleValue] withlimit:KLimitAssetInputDigits];
         }
     }];
 }

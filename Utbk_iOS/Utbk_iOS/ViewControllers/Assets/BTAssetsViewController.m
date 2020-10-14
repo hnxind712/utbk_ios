@@ -29,10 +29,17 @@
 @property (assign, nonatomic) NSInteger activeStatus;//激活状态
 @property (assign, nonatomic) NSInteger type;
 @property (strong, nonatomic) SPMultipleSwitch *multipleSwitch;
+@property (strong, nonatomic) LYEmptyView *emptyView;
 
 @end
 
 @implementation BTAssetsViewController
+- (LYEmptyView *)emptyView{
+    if (!_emptyView) {
+        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"noDada")];
+    }
+    return _emptyView;
+}
 - (NSMutableArray *)datasource{
     if (!_datasource) {
         _datasource = [NSMutableArray array];
@@ -120,19 +127,24 @@
                 [self.datasource addObjectsFromArray:dataArr];
                 for (BTAssetsModel *walletModel in dataArr) {
                     //计算总资产
-                    NSDecimalNumberHandler *handle = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:8 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
-                    NSDecimalNumber *balance = [[NSDecimalNumber alloc] initWithString:walletModel.balance];
-                    NSDecimalNumber *usdRate = [[NSDecimalNumber alloc] initWithString:walletModel.coin.usdRate];
-                    NSDecimalNumber *cnyRate = [[NSDecimalNumber alloc] initWithString:walletModel.coin.cnyRate];
+                    if (walletModel.coin.usdRate != nil) {
+                        NSDecimalNumberHandler *handle = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:4 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+                        NSDecimalNumber *balance = [[NSDecimalNumber alloc] initWithString:walletModel.balance];
+                        NSDecimalNumber *usdRate = [[NSDecimalNumber alloc] initWithString:[NSString stringWithFormat:@"%@",walletModel.coin.usdRate]];
+                        NSDecimalNumber *cnyRate = [[NSDecimalNumber alloc] initWithString:walletModel.coin.cnyRate];
 
-                    ass1 = [ass1 decimalNumberByAdding:[balance decimalNumberByMultiplyingBy:usdRate withBehavior:handle] withBehavior:handle];
-                    ass2 = [ass2 decimalNumberByAdding:[balance decimalNumberByMultiplyingBy:cnyRate withBehavior:handle] withBehavior:handle];
+                        ass1 = [ass1 decimalNumberByAdding:[balance decimalNumberByMultiplyingBy:usdRate withBehavior:handle] withBehavior:handle];
+                        ass2 = [ass2 decimalNumberByAdding:[balance decimalNumberByMultiplyingBy:cnyRate withBehavior:handle] withBehavior:handle];
+                    }
+                    
                     NSLog(@"打印一下字典 = %@",walletModel.usdtAddress);
                 }
                 strongSelf.totalAccount.text = [ass1 stringValue];
+                strongSelf.tableView.ly_emptyView = strongSelf.emptyView;
                 [strongSelf.tableView reloadData];
                 
             }else{
+                strongSelf.tableView.ly_emptyView = strongSelf.emptyView;
                 ErrorToast
             }
         }];
@@ -146,8 +158,8 @@
         }];
     }else{
         [[XBRequest sharedInstance]getDataWithUrl:getMineWalletAPI Parameter:@{@"apiKey":_BTS([YLUserInfo shareUserInfo].secretKey)} ResponseObject:^(NSDictionary *responseResult) {
+            StrongSelf(strongSelf)
             if (NetSuccess) {
-                StrongSelf(strongSelf)
                 [strongSelf.datasource removeAllObjects];
                 NSArray *list = [BTPoolHoldCoinModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
                 //转换为BTAssetModel,只需要两个参数，一个balance,一个unit
@@ -158,7 +170,10 @@
                     assetModel.coin.unit = model.coinName;
                     [strongSelf.datasource addObject:assetModel];
                 }
+                strongSelf.tableView.ly_emptyView = strongSelf.emptyView;
                 [strongSelf.tableView reloadData];
+            }else{
+                strongSelf.tableView.ly_emptyView = strongSelf.emptyView;
             }
         }];
     }

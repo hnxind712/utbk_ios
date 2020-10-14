@@ -31,6 +31,7 @@
 @property (assign, nonatomic) NSInteger count;//记录组数
 @property (strong, nonatomic) NSArray *starAarry;//拿到临界的U点，来处理倍额
 @property (strong, nonatomic) NSArray *doubleArray;//拿到倍额
+@property (assign, nonatomic) BOOL isRemind;//是否提醒了
 
 @end
 
@@ -81,14 +82,37 @@
         
         //返回的是改变过后的新str，即textfield的新的文本内容
         NSString *checkStr = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        if (checkStr.doubleValue > 50 && !self.isRemind) {
+            [self.view makeToast:LocalizationKey(@"最多贡献50组") duration:ToastHideDelay position:ToastPosition];
+            self.isRemind = YES;
+        }
         return checkStr.doubleValue <= 50;
         
+    }else if (_countInput == textField){//可不用，已取消
+        NSMutableString * futureString = [NSMutableString stringWithString:textField.text];
+        [futureString  insertString:string atIndex:range.location];
+        NSInteger flag = 0;
+        const NSInteger limited = KLimitAssetInputDigits;//小数点后需要限制的个数4
+        for (int i = (int)(futureString.length - 1); i>=0; i--) {
+            if ([futureString characterAtIndex:i] == '.') {
+                if (flag > limited) {
+                    return NO;
+                }
+                break;
+            }
+            flag++;
+        }
+        return YES;
     }
     return NO;
-    
-    
 }
-
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if (_groupCount == textField) {
+        if (!textField.text.length) {
+            textField.text = @"1";
+        }
+    }
+}
 - (BOOL)validateNumber:(NSString*)number {
     
     BOOL res = YES;

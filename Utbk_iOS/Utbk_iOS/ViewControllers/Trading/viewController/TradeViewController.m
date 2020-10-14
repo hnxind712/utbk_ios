@@ -170,7 +170,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     [super viewDidLoad];
     [self getDefaultSymbol];
     [self getData:[marketManager shareInstance].symbol];
-    self.title = LocalizationKey(@"tabbar3");
     self.priceType = PriceType_Fixed;//默认限价
     self.Myscrollview.delegate = self;
     self.Myscrollview.showsVerticalScrollIndicator =NO;
@@ -405,6 +404,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 
 //MARK:--国际化通知处理事件
 - (void)languageSetting{
+    self.title = LocalizationKey(@"tabbar3");
     [self.buyBtn setTitle:LocalizationKey(@"Buy") forState:UIControlStateNormal];
     [self.sellBtn setTitle:LocalizationKey(@"Sell") forState:UIControlStateNormal];
     [self.allBtn setTitle:[NSString stringWithFormat:@"%@",LocalizationKey(@"total")] forState:UIControlStateNormal];
@@ -420,8 +420,8 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     }else{
         self.limitLabel.text = LocalizationKey(@"Stoploss");
     }
-    self.sellLabel.text = LocalizationKey(@"sellplate");
-    self.buyLabel.text = LocalizationKey(@"buyplate");
+    self.sellLabel.text = LocalizationKey(@"卖");
+    self.buyLabel.text = LocalizationKey(@"买");
     self.PriceTF.placeholder=LocalizationKey(@"enterPrice");
     self.AmountTF.placeholder=LocalizationKey(@"commissionamount");
     self.Useable.text=[NSString stringWithFormat:@"%@--",LocalizationKey(@"usabel")];

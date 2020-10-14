@@ -124,7 +124,8 @@ cell.preservesSuperviewLayoutMargins = NO; \
 
 #define KMnemonicWords  @"__KMnemonicWords__"
 #define KfirstLogin @"__firstLogin__"
-
+//资产方面对应的小数位
+#define KLimitAssetInputDigits 4
 //对应的贡献值很多地方用到100去处理因此定义出来方便以后扩展
 #define KContributionValue 100
 //将所有注册或者登录过的账号都保存在本地

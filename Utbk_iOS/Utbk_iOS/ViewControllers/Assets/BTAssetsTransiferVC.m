@@ -37,6 +37,7 @@
     [self setupBind];
     [self getSingleCoinWallet];
     [self addRightNavigation];
+    self.coinCountInput.keyboardType = UIKeyboardTypeDecimalPad;
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -60,7 +61,7 @@
              StrongSelf(strongSelf)
             if ([resPonseObj[@"code"] integerValue] == 0) {
                 strongSelf.assets = [BTAssetsModel mj_objectWithKeyValues:resPonseObj[@"data"]];
-                strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:self.assets.balance];
+                strongSelf.balance.text = [ToolUtil stringFromNumber:self.assets.balance.doubleValue withlimit:KLimitAssetInputDigits];
             }
             else if ([resPonseObj[@"code"] integerValue] ==4000){
                // [ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
@@ -73,6 +74,23 @@
             [self.view makeToast:LocalizationKey(@"noNetworkStatus") duration:ToastHideDelay position:ToastPosition];
         }
     }];
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSMutableString * futureString = [NSMutableString stringWithString:textField.text];
+    [futureString  insertString:string atIndex:range.location];
+    NSInteger flag = 0;
+    const NSInteger limited = KLimitAssetInputDigits;//小数点后需要限制的个数4
+    for (int i = (int)(futureString.length - 1); i>=0; i--) {
+        if ([futureString characterAtIndex:i] == '.') {
+            if (flag > limited) {
+                return NO;
+            }
+            break;
+        }
+        flag++;
+    }
+    return YES;
 }
 - (void)setupBind{
     WeakSelf(weakSelf)
@@ -135,7 +153,7 @@
 //全部输入
 - (IBAction)inputAllCoinAccountAction:(UIButton *)sender {
     if (self.assets.balance.doubleValue > 0) {
-        self.balance.text = [ToolUtil formartScientificNotationWithString:self.assets.balance];
+        self.balance.text = [ToolUtil stringFromNumber:self.assets.balance.doubleValue withlimit:KLimitAssetInputDigits];
     }
 }
 //显示密码

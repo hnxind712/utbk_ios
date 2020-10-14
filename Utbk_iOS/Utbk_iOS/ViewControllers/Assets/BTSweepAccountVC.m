@@ -24,6 +24,7 @@
     [self addRightNavigation];
     [self setupBind];
     self.tips.text = LocalizationKey(@"温馨提示：只能划转一次，最多划转300到BTCK,超出部分自动销毁");
+    self.countInput.keyboardType = UIKeyboardTypeDecimalPad;
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -42,9 +43,25 @@
             if ([responseResult[@"data"]isKindOfClass:[NSNull class]]) {
                 strongSelf.balance.text = @"0";
             }else
-                strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%@",responseResult[@"data"][@"balance"]]];
+                strongSelf.balance.text = [ToolUtil stringFromNumber:[responseResult[@"data"][@"balance"]doubleValue] withlimit:4];
         }
     }];
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSMutableString * futureString = [NSMutableString stringWithString:textField.text];
+    [futureString  insertString:string atIndex:range.location];
+    NSInteger flag=0;
+    const NSInteger limited = KLimitAssetInputDigits;//小数点后需要限制的个数
+    for (int i = (int)(futureString.length - 1); i>=0; i--) {
+        if ([futureString characterAtIndex:i] == '.') {
+            if (flag > limited) {
+                return NO;
+            }
+            break;
+        }
+        flag++;
+    }
+    return YES;
 }
 - (void)transferRecordAction{
     BTWithdrawRecordVC *withdrawRecord = [[BTWithdrawRecordVC alloc]init];
