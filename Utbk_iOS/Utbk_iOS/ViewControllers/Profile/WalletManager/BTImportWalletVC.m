@@ -185,7 +185,11 @@
                             if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
                                 [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
                             }else{
-                                [weakSelf.navigationController popViewControllerAnimated:YES];
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    YLTabBarController *tabbar = (YLTabBarController *)[AppDelegate sharedAppDelegate].window.rootViewController;
+                                    tabbar.selectedIndex = 0;
+                                    [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+                                });
                             }
                         }else{
                             //存
@@ -196,7 +200,11 @@
                             if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
                                 [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
                             }else{
-                                [weakSelf.navigationController popViewControllerAnimated:YES];
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    YLTabBarController *tabbar = (YLTabBarController *)[AppDelegate sharedAppDelegate].window.rootViewController;
+                                    tabbar.selectedIndex = 0;
+                                    [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+                                });
                             }
                         }
                     }];
@@ -210,7 +218,11 @@
                     if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
                         [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
                     }else{
-                        [weakSelf.navigationController popViewControllerAnimated:YES];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            YLTabBarController *tabbar = (YLTabBarController *)[AppDelegate sharedAppDelegate].window.rootViewController;
+                            tabbar.selectedIndex = 0;
+                            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+                        });
                     }
                 }
             }];
