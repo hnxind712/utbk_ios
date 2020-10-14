@@ -12,6 +12,7 @@
 #import "MineNetManager.h"
 #import "symbolModel.h"
 #import "HomeNetManager.h"
+#import "MarketNetManager.h"
 
 #define KTableViewTop 46.f
 
@@ -34,8 +35,24 @@
     [self setupLayout];
     [self resetLocalization];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(resetLocalization) name:LanguageChange object:nil];
+    [self getUSDTToCNYRate];
     // Do any additional setup after loading the view from its nib.
 }
+#pragma mark-获取USDT对CNY汇率
+-(void)getUSDTToCNYRate{
+    [MarketNetManager getusdTocnyRateCompleteHandle:^(id resPonseObj, int code) {
+        if (code) {
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+                ((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate=[NSDecimalNumber decimalNumberWithString:[resPonseObj[@"data"] stringValue]];
+            }else{
+                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+            }
+        }else{
+            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
+        }
+    }];
+}
+
 - (void)resetLocalization{
     self.title = LocalizationKey(@"tabbar2");
     self.riseFall.text = LocalizationKey(@"24H涨跌");

@@ -28,6 +28,7 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self getUSDTToCNYRate];
     [self initKeyboardManager];//初始化键盘
     [self configure];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

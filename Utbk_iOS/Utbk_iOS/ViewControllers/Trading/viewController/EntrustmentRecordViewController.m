@@ -166,7 +166,7 @@
 }
 - (UIView *)bgView{
     if (!_bgView) {
-        _bgView = [[UIView alloc]initWithFrame:CGRectMake(12, 10, KEViewWidth, self.view.height - 10 - TabbarSafeBottomMargin)];
+        _bgView = [[UIView alloc]initWithFrame:CGRectMake(12, 10, KEViewWidth, self.view.height - 10 - TabbarSafeBottomMargin - NavBarHeight)];
         _bgView.backgroundColor = [UIColor whiteColor];
         _bgView.layer.cornerRadius = 4.f;
         _bgView.layer.masksToBounds = YES;

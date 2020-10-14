@@ -34,8 +34,8 @@
     self.freeze.text = LocalizationKey(@"freezeCoin");
     self.totalLabel.text = LocalizationKey(@"总额");
     self.coinName.text = model.coin.unit;
-    self.totalCoinAccount.text = [ToolUtil judgeStringForDecimalPlaces:model.balance];
-    self.convertAccount.text = [ToolUtil judgeStringForDecimalPlaces:model.frozenBalance];
+    self.totalCoinAccount.text = [ToolUtil stringFromNumber:model.balance.doubleValue withlimit:KLimitAssetInputDigits];
+    self.convertAccount.text = [ToolUtil stringFromNumber:model.frozenBalance.doubleValue withlimit:KLimitAssetInputDigits];
     if ([model.coin.unit containsString:@"USDT"]) {
         [self.receiveBtn setTitle:LocalizationKey(@"chargeMoney") forState:UIControlStateNormal];
         [self.transiferBtn setTitle:LocalizationKey(@"mentionMoney") forState:UIControlStateNormal];

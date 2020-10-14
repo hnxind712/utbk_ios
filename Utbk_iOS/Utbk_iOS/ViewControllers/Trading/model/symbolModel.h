@@ -25,5 +25,6 @@
 @property(nonatomic,assign)double usdRate;
 @property(nonatomic,assign)double usdMoney;
 @property(nonatomic,strong)NSNumber *baseUsdRate;
+@property(nonatomic,copy) NSString *cnyPrice;
 
 @end

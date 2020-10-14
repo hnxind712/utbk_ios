@@ -32,6 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) NSInteger ID;
 @property (nonatomic,copy) NSString *symbol;
 @property (nonatomic,assign)NSInteger type;
+//以下为空投矿池记录新增
+@property (copy, nonatomic) NSString *remarks;
+@property (copy, nonatomic) NSString *saveTime;
 
 @end
 

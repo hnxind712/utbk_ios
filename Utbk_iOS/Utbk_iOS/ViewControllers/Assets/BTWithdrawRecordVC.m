@@ -67,7 +67,7 @@
 
 - (void)refreshHeaderAction{
     _currentPage = 1;
-    if (self.recordType == KRecordTypeMotherCoinTransfer || self.recordType == KRecordTypeContributionRecord || self.recordType == KRecordTypeInvitationRecord || self.recordType == KRecordTypeMotherCoinSweep || self.recordType == KRecordTypeMotherCoinRecharge) {
+    if (self.recordType == KRecordTypeMotherCoinTransfer || self.recordType == KRecordTypeContributionRecord || self.recordType == KRecordTypeInvitationRecord || self.recordType == KRecordTypeMotherCoinSweep || self.recordType == KRecordTypeMotherCoinRecharge || self.recordType == KRecordTypeTransterIn|| self.recordType == KRecordTypeTransterOut) {
         _currentPage = 0;
     }
     [self setupBind];
@@ -89,7 +89,7 @@
         [self withdrawData:bodydic];
     }else{
         NSString *type;
-        if (self.recordType == KRecordTypeRecharge || self.recordType < 5) {//充币、转账、资产转矿池、矿池转资产
+        if (self.recordType == KRecordTypeRecharge || self.recordType == KRecordTypeTransfer) {//充币、转账、资产转矿池、矿池转资产
             switch (self.recordType) {
                 case KRecordTypeRecharge:
                     type = @"0";
@@ -97,17 +97,16 @@
                 case KRecordTypeTransfer://转账
                     type = @"2";
                     break;
-                case KRecordTypeTransterIn://资产转矿池
-                    type = @"17";
-                    break;
-                case KRecordTypeTransterOut://资产转矿池
-                    type = @"18";
-                    break;
                 default:
                     break;
             }
             [bodydic setValue:type forKey:@"type"];
             [self rechargeData:bodydic];
+        }else if (self.recordType == KRecordTypeTransterIn || self.recordType == KRecordTypeTransterOut){
+            [bodydic setValue:_BTS([YLUserInfo shareUserInfo].secretKey) forKey:@"apiKey"];
+            [bodydic setValue:@"1" forKey:@"type"];
+            [bodydic removeObjectForKey:@"symbol"];
+            [self getMineLogs:bodydic];
         }else if (self.recordType >= 5 && self.recordType <= 8){
             switch (self.recordType) {
                 case KRecordTypeMotherCoinRecharge://母币充值
@@ -193,6 +192,23 @@
             weakSelf.tableView.ly_emptyView = self.emptyView;
             [weakSelf.tableView reloadData];
         }
+    }];
+}
+- (void)getMineLogs:(NSDictionary *)params{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]postDataWithUrl:getMineLogsAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+                            //获取数据成功
+            if (weakSelf.currentPage == 1) {
+                [weakSelf.datasource removeAllObjects];
+            }
+            
+            NSArray *dataArr = [BTAssetRecordModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+            [weakSelf.datasource addObjectsFromArray:dataArr];
+            weakSelf.tableView.ly_emptyView = self.emptyView;
+            [weakSelf.tableView reloadData];
+        }else
+            ErrorToast
     }];
 }
 - (void)getContributionRecord:(NSDictionary *)params{

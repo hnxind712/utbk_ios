@@ -22,9 +22,11 @@
 #import "SocketManager.h"
 #import "SocketUtils.h"
 
-static  NSString * s_host = @"192.168.31.61";
+static  NSString * s_host = @"8.129.59.185";
+//@"192.168.31.61";
 
 static const uint16_t s_port = 28901;
+//28901;
 #define kMaxReconnection_time 5//异常中断时，重连次数
 /*
  socket断开连接后，为了不给服务器造成连接压力，必须控制重新连接的频率。否则一旦服务器出现异常，而客户端又不断向服务器发送连接请求，势必会给服务器雪上加霜，甚至出现崩溃的情况！所以限制重连次数

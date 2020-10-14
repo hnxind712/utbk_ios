@@ -45,20 +45,11 @@
 }
 //流水记录
 - (void)configureCellWithStreamRecordModel:(BTAssetRecordModel *)model{
-    self.title.text = [self typeStringWithType:model.type];
+    self.title.text = (self.index == 3 || self.index == 4) ? model.remarks : [self typeStringWithType:model.type];
     self.count.text = [ToolUtil judgeStringForDecimalPlaces:model.amount];
-    self.time.text = [ToolUtil transformForTimeString:model.createTime];
+    self.time.text = [ToolUtil transformForTimeString:(self.index == 3 || self.index == 4) ? model.saveTime : model.createTime];
     self.status.text = LocalizationKey(@"Success");
-//    if (model.status == 0) {
-//         self.status.text = LocalizationKey(@"auditing");
-//     }else if (model.status == 1){
-//         self.status.text = LocalizationKey(@"Assetstoreleased");
-//
-//     }else if (model.status == 2){
-//         self.status.text = LocalizationKey(@"failure");
-//     }else if(model.status == 3){
-//         self.status.text = LocalizationKey(@"Success");
-//     }
+    self.moreBtn.hidden = (self.index == 3 || self.index == 4);
 }
 
 - (void)configureCellWithMotherTransferRecordModel:(BTMotherCoinModel *)model{

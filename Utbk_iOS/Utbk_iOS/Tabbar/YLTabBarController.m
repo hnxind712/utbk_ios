@@ -125,8 +125,10 @@
 
 -(void)showLoginViewController{
     if ([[[AppDelegate sharedAppDelegate]topViewController]isKindOfClass:[BTWalletManagerVC class]]) return;
-    BTWalletManagerVC *loginVC = [[BTWalletManagerVC alloc]init];
-    [self.navigationController pushViewController:loginVC animated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        BTWalletManagerVC *loginVC = [[BTWalletManagerVC alloc]init];
+        [self.navigationController pushViewController:loginVC animated:YES];
+    });
 }
 //重置tabar标题
 -(void)resettabarItemsTitle{

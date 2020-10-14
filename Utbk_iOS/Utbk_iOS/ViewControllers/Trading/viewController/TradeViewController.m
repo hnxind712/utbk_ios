@@ -343,10 +343,30 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     }else if (textField.tag == 2){
         [self ValueChange:self.AmountTF];
         //数量
-        if ([textField.text floatValue] > [self.sliderMaxValue floatValue]){
+        if ([textField.text floatValue] <= 0) {
+            self.selecetBtn.selected = NO;
+            self.selecetBtn.backgroundColor = [UIColor whiteColor];
+        }else if ([textField.text floatValue] > [self.sliderMaxValue floatValue]){
             [self.view makeToast:_IsSell?LocalizationKey(@"tradSlideTip2"):LocalizationKey(@"tradSlideTip1") duration:1.5 position:ToastPosition];
             textField.text = @"";
+            self.selecetBtn.selected = NO;
+            self.selecetBtn.backgroundColor = [UIColor whiteColor];
             self.TradeNumber.text=[NSString stringWithFormat:@"%@ %@%@",LocalizationKey(@"entrustment"),[ToolUtil stringFromNumber:0.00000000 withlimit:_baseCoinScale],_baseCoinName];
+        }else{
+            self.selecetBtn.selected = NO;
+            self.selecetBtn.backgroundColor = [UIColor whiteColor];
+            CGFloat value = [textField.text floatValue]/[self.sliderMaxValue floatValue];//得到百分比
+            if (value <= 0.25) {
+                self.selecetBtn = (UIButton *)[self.view viewWithTag:300];
+            }else if (value > 0.25 && value <=0.5){
+                self.selecetBtn = (UIButton *)[self.view viewWithTag:301];
+            }else if (value > 0.5 && value <=0.75){
+                self.selecetBtn = (UIButton *)[self.view viewWithTag:302];
+            }else if (value > 0.75 && value <= 1){
+                self.selecetBtn = (UIButton *)[self.view viewWithTag:303];
+            }
+            self.selecetBtn.selected = YES;
+            self.selecetBtn.backgroundColor = RGBOF(0x47AC36);
         }
     }
 }
@@ -483,18 +503,20 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     self.TradeNumber.text=[NSString stringWithFormat:@"%@--",LocalizationKey(@"entrustment")];
     if (self.priceType == PriceType_Fixed) {
         //限价
-        self.objectCoin.text=_ObjectCoinName;
+//        self.objectCoin.text=_ObjectCoinName;
     }else{
         //市价
         if (!_IsSell) {
-            self.objectCoin.text=_baseCoinName;
+//            self.objectCoin.text=_baseCoinName;
             [self.TradeBtn setTitle:[NSString stringWithFormat:@"%@ %@",LocalizationKey(@"Sell"),_ObjectCoinName] forState:UIControlStateNormal];
         }else{
-            self.objectCoin.text=_ObjectCoinName;
+//            self.objectCoin.text=_ObjectCoinName;
             [self.TradeBtn setTitle:[NSString stringWithFormat:@"%@ %@",LocalizationKey(@"Buy"),_ObjectCoinName] forState:UIControlStateNormal];
         }
     }
-    
+    self.selecetBtn.selected = NO;
+    self.selecetBtn.backgroundColor = [UIColor whiteColor];
+    self.selecetBtn = nil;
     NSDictionary*dic;
     if ([YLUserInfo isLogIn]) {
         dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",[YLUserInfo shareUserInfo].ID,@"uid",nil];
@@ -802,18 +824,19 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                     [self getBasewalletwithcoin:[coinArray lastObject]];
                 }
             }
+            self.selecetBtn.selected = NO;
+            self.selecetBtn.backgroundColor = [UIColor whiteColor];
+            self.selecetBtn = nil;
             if (self.priceType == PriceType_Market) {
                 self.heightConstant.constant=0;
                 self.PriceTF.text=LocalizationKey(@"Optimal");
                 self.PriceTF.enabled=NO;
                 self.AmountTF.placeholder=LocalizationKey(@"entrustment");
-                self.objectCoin.text=_baseCoinName;
             }else{
                 self.heightConstant.constant=35;
                 self.PriceTF.text=self.nowPrice.text;
                 self.PriceTF.enabled=YES;
                 self.AmountTF.placeholder=LocalizationKey(@"amonut");
-                self.objectCoin.text=_ObjectCoinName;
             }
             self.AmountTF.text=@"";
             self.triggerTF.text = @"";
@@ -823,6 +846,9 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             _IsSell=YES;
             self.buyBtn.selected = NO;
             self.sellBtn.selected = YES;
+            self.selecetBtn.selected = NO;
+            self.selecetBtn.backgroundColor = [UIColor whiteColor];
+            self.selecetBtn = nil;
             if (!_timer) {
                 self.TradeNumber.text=[NSString stringWithFormat:@"%@--",LocalizationKey(@"entrustment")];
                 [self.TradeBtn setTitle:[NSString stringWithFormat:@"%@ %@",LocalizationKey(@"Sell"),_ObjectCoinName] forState:UIControlStateNormal];
@@ -844,13 +870,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                 self.PriceTF.text=LocalizationKey(@"Optimal");
                 self.PriceTF.enabled=NO;
                 self.AmountTF.placeholder=LocalizationKey(@"amonut");
-                self.objectCoin.text=_ObjectCoinName;
             }else{
                 self.heightConstant.constant=35;
                 self.PriceTF.text=self.nowPrice.text;
                 self.PriceTF.enabled=YES;
                 self.AmountTF.placeholder=LocalizationKey(@"amonut");
-                self.objectCoin.text=_ObjectCoinName;
             }
         }
             self.AmountTF.text=@"";
@@ -864,6 +888,9 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             UIColor *color = [UIColor blackColor];
             [self.view createAlertViewTitleArray:arrayTitle textColor:color font:[UIFont systemFontOfSize:16] type:0 actionBlock:^(UIButton * _Nullable button, NSInteger didRow) {
                 [sender setTitle:button.currentTitle forState:UIControlStateNormal];
+                self.selecetBtn.selected = NO;
+                self.selecetBtn.backgroundColor = [UIColor whiteColor];
+                self.selecetBtn = nil;
                 if (didRow==0) {
                     //限价
                     self.triggerHeightConstraint.constant = 0;
@@ -913,7 +940,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                     if (!_IsSell) {
                         //买入
                         self.AmountTF.placeholder=LocalizationKey(@"entrustment");
-                        self.objectCoin.text=_baseCoinName;
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
                         if ([YLUserInfo isLogIn]) {
                             [self getBasewalletwithcoin:[coinArray lastObject]];
@@ -921,7 +947,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                     }else{
                         //卖出
                         self.AmountTF.placeholder=LocalizationKey(@"amonut");
-                        self.objectCoin.text=_ObjectCoinName;
                         NSArray *coinArray = [[marketManager shareInstance].symbol componentsSeparatedByString:@"/"];
                         if ([YLUserInfo isLogIn]) {
                             [self getCoinwalletwithcoin:[coinArray firstObject]];
@@ -1452,6 +1477,9 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 //            self.objectCoin.text=_ObjectCoinName;
 //        }
 //    }
+    self.selecetBtn.selected = NO;
+    self.selecetBtn.backgroundColor = [UIColor whiteColor];
+    self.selecetBtn = nil;
     NSDictionary*dic;
     if ([YLUserInfo isLogIn]) {
         dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",[YLUserInfo shareUserInfo].ID,@"uid",nil];
@@ -1921,7 +1949,7 @@ kRemoveCellSeparator
         
         
     }
-//    NSLog(@"交易消息-%@--%d",endStr,cmd);
+    NSLog(@"交易消息-%@--%d",endStr,cmd);
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
