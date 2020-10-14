@@ -87,22 +87,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B96CCB05-C5A8-4A9C-9384-F8F406D96591"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Utbk_iOS/Model/YLUserInfo.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "+logout"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "0B83020D-8576-419F-A76A-1D97AEBBC7C4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -119,16 +103,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "691367D1-B91D-40E8-801B-2241D675DE18"
+            uuid = "77E348FE-0C68-4A69-9111-683507F79F44"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Utbk_iOS/Remote/MineNetManager.m"
+            filePath = "Utbk_iOS/ViewControllers/Market/BTMarketViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "+getMyWalletInfoForCompleteHandle:"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-delegateSocket:didReadData:withTag:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

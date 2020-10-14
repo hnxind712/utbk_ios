@@ -86,7 +86,7 @@
     NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (data && [BaseNetManager showResponseCode:response] == 200) {
             id result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-            if ([result[@"code"]intValue] == 4000) {//登录态实效
+            if ([result isKindOfClass:[NSDictionary class]] && [result[@"code"]intValue] == 4000) {//登录态实效
                  [YLUserInfo logout];
              }else{
                  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -152,7 +152,7 @@
     NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (data && [BaseNetManager showResponseCode:response] == 200) {
             id result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-            if ([result[@"code"]intValue] == 4000) {//登录态实效
+            if ([result isKindOfClass:[NSDictionary class]] && [result[@"code"]intValue] == 4000) {//登录态实效
                  [YLUserInfo logout];
              }else{
                  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -226,7 +226,7 @@
         
         if (data && [BaseNetManager showResponseCode:response] == 200) {
             id result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-            if ([result[@"code"]intValue] == 4000) {//登录态实效
+            if ([result isKindOfClass:[NSDictionary class]] && [result[@"code"]intValue] == 4000) {//登录态实效
                  [YLUserInfo logout];
              }else{
                  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -303,7 +303,7 @@
         if (data && [BaseNetManager showResponseCode:response] == 200) {
             id result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
             NSLog(@"URL=%@\n参数=%@\njson=%@",urlStr,para,result);
-            if ([result[@"code"]intValue] == 4000) {//登录态实效
+            if ([result isKindOfClass:[NSDictionary class]] && [result[@"code"]intValue] == 4000) {//登录态实效
                 [YLUserInfo logout];
             }else{
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{

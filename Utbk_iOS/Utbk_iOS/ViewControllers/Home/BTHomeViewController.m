@@ -74,6 +74,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *gameBtn;//游戏
 @property (weak, nonatomic) IBOutlet UIButton *deBtn;//DEFi专区
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuHeight;
+@property (weak, nonatomic) IBOutlet UIButton *packupBtn;//收起
 
 @end
 
@@ -165,7 +166,9 @@
     self.motherCoin.text = LocalizationKey(@"原始母币");
     self.equivalent.text = LocalizationKey(@"折合(USDT)");
     [self.mainBtn setTitle:LocalizationKey(@"主板区") forState:UIControlStateNormal];
+    [self.mainBtn setTitle:LocalizationKey(@"主板区") forState:UIControlStateSelected];
     [self.riseFallBtn setTitle:LocalizationKey(@"涨幅榜") forState:UIControlStateNormal];
+    [self.riseFallBtn setTitle:LocalizationKey(@"涨幅榜") forState:UIControlStateSelected];
     [self.receiveCoin setTitle:LocalizationKey(@"收币") forState:UIControlStateNormal];
     [self.transferBtn setTitle:LocalizationKey(@"转账") forState:UIControlStateNormal];
     [self.sweepBtn setTitle:LocalizationKey(@"划转") forState:UIControlStateNormal];
@@ -424,6 +427,21 @@
     }
 }
 
+- (IBAction)packupAction:(UIButton *)sender {
+    self.isShowAll = NO;
+    self.menuHeight.constant = 160.f;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL finished) {
+        [self.onCurrencyBtn setTitle:LocalizationKey(@"更多") forState:UIControlStateNormal];
+        [self.onCurrencyBtn setImage:BTUIIMAGE(@"icon_hMore") forState:UIControlStateNormal];
+    }];
+    self.deBtn.hidden = YES;
+    self.gameBtn.hidden = YES;
+    self.marketBtn.hidden = YES;
+    self.raceBtn.hidden = YES;
+    sender.hidden = YES;
+}
 #pragma mark buttonAction
 - (IBAction)buttonClickAction:(UIButton *)sender {
     switch (sender.tag) {
@@ -475,11 +493,13 @@
         {
             if (!self.isShowAll) {
                 self.isShowAll = YES;
-                self.menuHeight.constant = 240.f;
+                self.menuHeight.constant = 260.f;
                 [sender setTitle:LocalizationKey(@"上币") forState:UIControlStateNormal];
                 [sender setImage:BTUIIMAGE(@"icon_onCurrency") forState:UIControlStateNormal];
-                [UIView animateWithDuration:0.4 animations:^{
+                [UIView animateWithDuration:0.3 animations:^{
                     [self.view layoutIfNeeded];
+                }completion:^(BOOL finished) {
+                   self.packupBtn.hidden = NO;
                 }];
                 self.deBtn.hidden = NO;
                 self.gameBtn.hidden = NO;

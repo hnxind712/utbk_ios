@@ -26,6 +26,7 @@
                 <outlet property="motherCoin" destination="Eos-Ww-mUP" id="QHa-bf-F8E"/>
                 <outlet property="onCurrencyBtn" destination="S38-R6-9Ko" id="xEA-Ro-hUH"/>
                 <outlet property="orePoolBtn" destination="f8v-q4-gqe" id="Bva-Tw-6wN"/>
+                <outlet property="packupBtn" destination="EPu-wk-da7" id="Mzg-qe-FgO"/>
                 <outlet property="raceBtn" destination="Mlq-kW-a9D" id="eiM-cx-1j7"/>
                 <outlet property="receiveCoin" destination="l4O-vv-jGr" id="CPb-eQ-Lnm"/>
                 <outlet property="riseFallBtn" destination="Lbn-Gz-cpt" id="DaL-ZC-iT2"/>
@@ -351,6 +352,19 @@
                                         <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="5BO-oE-8tR"/>
                                     </connections>
                                 </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPu-wk-da7">
+                                    <rect key="frame" x="172.5" y="135" width="45" height="15"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="15" id="Knf-DP-gpE"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <state key="normal" title="收起" image="icon_zhankai">
+                                        <color key="titleColor" red="0.81960784310000001" green="0.6588235294" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="packupAction:" destination="-1" eventType="touchUpInside" id="CsJ-LA-Oas"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
@@ -360,6 +374,7 @@
                                 <constraint firstItem="8gv-zP-tj6" firstAttribute="height" secondItem="gmY-bl-Loa" secondAttribute="height" id="3mL-tI-Lqo"/>
                                 <constraint firstItem="Qwo-Pe-2Jj" firstAttribute="leading" secondItem="Zel-Fe-2DL" secondAttribute="trailing" id="4ay-eQ-Hfo"/>
                                 <constraint firstItem="Zel-Fe-2DL" firstAttribute="leading" secondItem="Wm5-yz-GVt" secondAttribute="trailing" id="5B6-8Q-iF1"/>
+                                <constraint firstItem="EPu-wk-da7" firstAttribute="centerX" secondItem="tLm-YB-Mn8" secondAttribute="centerX" id="5qp-1h-PSd"/>
                                 <constraint firstItem="yNt-az-x69" firstAttribute="width" secondItem="l4O-vv-jGr" secondAttribute="width" id="6fd-YF-8uG"/>
                                 <constraint firstItem="Qwo-Pe-2Jj" firstAttribute="centerY" secondItem="IJ4-nQ-nlW" secondAttribute="centerY" id="8uR-S6-iyy"/>
                                 <constraint firstItem="BPS-xC-Ume" firstAttribute="centerY" secondItem="Mlq-kW-a9D" secondAttribute="centerY" id="8zN-Hy-5bt"/>
@@ -405,6 +420,7 @@
                                 <constraint firstItem="gmY-bl-Loa" firstAttribute="height" secondItem="f8v-q4-gqe" secondAttribute="height" multiplier="1.11667" id="stn-jf-5bc"/>
                                 <constraint firstItem="Wm5-yz-GVt" firstAttribute="width" secondItem="IJ4-nQ-nlW" secondAttribute="width" id="uN9-1O-dco"/>
                                 <constraint firstItem="f8v-q4-gqe" firstAttribute="width" secondItem="l4O-vv-jGr" secondAttribute="width" id="uoH-dP-2x8"/>
+                                <constraint firstAttribute="bottom" secondItem="EPu-wk-da7" secondAttribute="bottom" constant="10" id="v24-v0-iTB"/>
                                 <constraint firstItem="Rvk-Qb-WWJ" firstAttribute="leading" secondItem="Qwo-Pe-2Jj" secondAttribute="trailing" id="vIP-jx-3TN"/>
                                 <constraint firstItem="e11-wS-L3a" firstAttribute="centerX" secondItem="S38-R6-9Ko" secondAttribute="centerX" id="vhK-uq-ADu"/>
                                 <constraint firstItem="8gv-zP-tj6" firstAttribute="leading" secondItem="kpp-Xs-u1E" secondAttribute="trailing" id="xAm-kA-VHm"/>
@@ -537,6 +553,7 @@
         <image name="icon_team" width="44" height="44"/>
         <image name="icon_transfer" width="44" height="44"/>
         <image name="icon_transferAccounts" width="44" height="44"/>
+        <image name="icon_zhankai" width="20" height="20"/>
         <image name="icon_zone" width="44" height="44"/>
     </resources>
 </document>
