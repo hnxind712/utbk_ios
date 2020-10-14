@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *passwordSecond;
 @property (weak, nonatomic) IBOutlet UIButton *importBtn;
+@property (assign, nonatomic) BOOL lastSpace;//记录前一个是不是空格
 
 @end
 
@@ -43,6 +44,22 @@
         self.importBtn.userInteractionEnabled = YES;
         self.importBtn.backgroundColor = RGBOF(0xcccccc);
     }
+}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([[[textView textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textView textInputMode] primaryLanguage]) {
+        return NO;
+    }
+
+    if ([text isEqualToString:@" "] && self.lastSpace) {//如果前一个已经是空格则不允许再次输入
+        return NO;
+    }
+    self.lastSpace = NO;
+    if (self.selectedBtn == self.mnemonicWordBtn) {//如果是助记词
+        if ([text isEqualToString:@" "]) {//如果是空格
+            self.lastSpace = YES;
+        }
+    }
+    return YES;
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     if ([[[textField textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textField textInputMode] primaryLanguage]) {
@@ -82,9 +99,11 @@
     }
     self.textViewPlaceh.text = plac;
     self.lineLeftConstraint.constant = left;
+    self.textView.text = @"";
     [UIView animateWithDuration:0.3 animations:^{
         [self.view layoutIfNeeded];
     }];
+    
 }
 - (IBAction)showPasswordAction:(UIButton *)sender {
     sender.selected = !sender.selected;
@@ -119,7 +138,11 @@
     WeakSelf(weakSelf)
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     if (self.selectedBtn == self.mnemonicWordBtn) {
-        params[@"remberWords"] = self.textView.text;
+        NSString *str = [self.textView.text stringByReplacingOccurrencesOfString:@" " withString:@","];//将空格替换成逗号
+        if ([str hasSuffix:@","]) {//如果是逗号结尾，则移除最后一个逗号
+            str = [str substringToIndex:str.length - 1];
+        }
+        params[@"remberWords"] = str;
         params[@"primaryKey"] = @"";
     }else if (self.selectedBtn == self.privateKeyBtn){
         params[@"remberWords"] = @"";

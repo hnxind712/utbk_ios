@@ -196,6 +196,7 @@
                 <outlet property="receiveBtn" destination="Fe1-4A-qdI" id="ZZ8-C5-oM4"/>
                 <outlet property="sTransferBtn" destination="esD-Bn-T39" id="OoM-VU-Auq"/>
                 <outlet property="totalCoinAccount" destination="hHb-Xa-bwW" id="ntW-G0-cPZ"/>
+                <outlet property="totalLabel" destination="Hnl-DT-P3H" id="fXZ-1r-seh"/>
                 <outlet property="transiferBtn" destination="LLP-hH-Hdc" id="RPM-aQ-UqU"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>

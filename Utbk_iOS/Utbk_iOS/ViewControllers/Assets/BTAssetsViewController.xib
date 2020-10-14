@@ -12,6 +12,7 @@
                 <outlet property="headerView" destination="5il-vG-aTH" id="vQK-pC-Upf"/>
                 <outlet property="tableView" destination="mTL-LB-J8e" id="rPx-pD-PFs"/>
                 <outlet property="totalAccount" destination="vwh-z1-4cd" id="I6R-3a-HxG"/>
+                <outlet property="totalAssets" destination="UL3-le-aN8" id="C6Z-cD-HvV"/>
                 <outlet property="totalHeight" destination="1ID-pN-7eb" id="GUc-9z-XsS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

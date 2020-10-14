@@ -15,7 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithItems:(NSArray *)items;
 
 @property(nonatomic) NSInteger selectedSegmentIndex;
-
+@property (nonatomic, strong) NSMutableArray *labels;//所有的label
+@property (nonatomic, strong) NSMutableArray *selectedLabels;//选中的
 @property (nonatomic, strong) UIColor  *titleColor;
 @property (nonatomic, strong) UIColor  *selectedTitleColor;
 

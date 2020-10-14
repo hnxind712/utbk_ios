@@ -89,10 +89,12 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 @property (copy, nonatomic) NSString *sliderMaxValue;
 @property(nonatomic,copy)NSString *priceLimitBuy;//限价买入价格 货币
 //@property(nonatomic,strong)UIButton *shareButton;//导航栏右侧收藏按钮
+@property (weak, nonatomic) IBOutlet UILabel *buyLabel;//买
+@property (weak, nonatomic) IBOutlet UILabel *sellLabel;//卖
 
 @property (weak, nonatomic) IBOutlet UIButton *CurrentnowBut;//当前委托
 @property (weak, nonatomic) IBOutlet UIButton *entrustmentHisBut;//历史委托
-@property (weak, nonatomic) IBOutlet UILabel *linelabel;
+@property (weak, nonatomic) IBOutlet UILabel *limitLabel;//限价委托
 
 @property(nonatomic,strong)NSMutableArray *hisdataArr;
 @property (nonatomic,assign)BOOL isHistory;
@@ -168,7 +170,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     [super viewDidLoad];
     [self getDefaultSymbol];
     [self getData:[marketManager shareInstance].symbol];
-    self.title = LocalizationKey(@"交易");
+    self.title = LocalizationKey(@"tabbar3");
     self.priceType = PriceType_Fixed;//默认限价
     self.Myscrollview.delegate = self;
     self.Myscrollview.showsVerticalScrollIndicator =NO;
@@ -412,20 +414,19 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     self.amountlabel.text=LocalizationKey(@"amonut");
     self.noDataLabel.text=LocalizationKey(@"noDada");
     if (self.priceType == PriceType_Market) {
-        [self.typeBtn setTitle:LocalizationKey(@"marketPrice") forState:UIControlStateNormal];
+        self.limitLabel.text = LocalizationKey(@"marketPrice");
     }else if (self.priceType == PriceType_Fixed){
-        [self.typeBtn setTitle:LocalizationKey(@"limitPrice") forState:UIControlStateNormal];
+        self.limitLabel.text = LocalizationKey(@"limitPrice");
     }else{
-        [self.typeBtn setTitle:LocalizationKey(@"Stoploss") forState:UIControlStateNormal];
+        self.limitLabel.text = LocalizationKey(@"Stoploss");
     }
-
+    self.sellLabel.text = LocalizationKey(@"sellplate");
+    self.buyLabel.text = LocalizationKey(@"buyplate");
     self.PriceTF.placeholder=LocalizationKey(@"enterPrice");
     self.AmountTF.placeholder=LocalizationKey(@"commissionamount");
     self.Useable.text=[NSString stringWithFormat:@"%@--",LocalizationKey(@"usabel")];
     self.TradeNumber.text=[NSString stringWithFormat:@"%@ %@%@",LocalizationKey(@"entrustment"),[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName];
-//    [self.TradeBtn setTitle:LocalizationKey(@"Buy")forState:UIControlStateNormal];
     [self.TradeBtn setTitle:[NSString stringWithFormat:@"%@ %@",LocalizationKey(@"Buy"),_ObjectCoinName] forState:UIControlStateNormal];
-    
      [self.CurrentnowBut setTitle:LocalizationKey(@"Current")forState:UIControlStateNormal];
      [self.entrustmentHisBut setTitle:LocalizationKey(@"HistoricalCurrent")forState:UIControlStateNormal];
 }
@@ -1244,9 +1245,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     [self getCommissionData:[marketManager shareInstance].symbol];
     self.CurrentnowBut.selected = YES;
     self.entrustmentHisBut.selected = NO;
-    [UIView animateWithDuration:0.3 animations:^{
-        self.linelabel.centerX=self.CurrentnowBut.centerX;
-    }];
     self.isHistory = NO;
 
     if (self.contentArr.count > 0) {
@@ -1280,9 +1278,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     [self getHistoryCommissionData];
     self.CurrentnowBut.selected = NO;
     self.entrustmentHisBut.selected = YES;
-    [UIView animateWithDuration:0.3 animations:^{
-        self.linelabel.centerX=self.entrustmentHisBut.centerX;
-    }];
     self.isHistory = YES;
 
     if (self.hisdataArr.count > 0) {

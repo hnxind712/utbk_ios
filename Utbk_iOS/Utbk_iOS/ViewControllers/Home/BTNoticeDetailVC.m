@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = LocalizationKey(@"公告");
+    self.title = LocalizationKey(@"通知公告");
     [self setupBind];
     // Do any additional setup after loading the view from its nib.
 }

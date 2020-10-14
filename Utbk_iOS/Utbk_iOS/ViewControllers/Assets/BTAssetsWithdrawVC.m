@@ -177,7 +177,7 @@
     if (resultType == STQRCodeResultTypeSuccess) {
         _addressInput.text = readerScanResult;
     }else if (resultType == STQRCodeResultTypeNoInfo){
-        [self.view makeToast:LocalizationKey(@"无法识别二维码") duration:ToastHideDelay position:ToastPosition];
+        [self.view makeToast:LocalizationKey(@"没有扫描到任何结果") duration:ToastHideDelay position:ToastPosition];
     }
 }
 //全部输入

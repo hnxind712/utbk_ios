@@ -29,8 +29,8 @@
                                     <constraint firstAttribute="height" constant="22" id="a9g-vK-zSx"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTCK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNU-oh-dNF">
-                                <rect key="frame" x="50" y="15.5" width="41" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNU-oh-dNF">
+                                <rect key="frame" x="50" y="15.5" width="0.0" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="HeU-le-zRY"/>
                                 </constraints>
@@ -56,8 +56,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTCK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeA-Yx-Ia7">
-                                <rect key="frame" x="71" y="69" width="29.5" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeA-Yx-Ia7">
+                                <rect key="frame" x="71" y="69" width="0.0" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="5mR-i6-D6i"/>
                                 </constraints>
@@ -74,8 +74,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zly-EQ-q5D">
-                                <rect key="frame" x="32" y="89" width="22" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zly-EQ-q5D">
+                                <rect key="frame" x="32" y="89" width="0.0" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="YS3-Ba-70f"/>
                                 </constraints>
@@ -101,8 +101,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTCK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bt-s8-Hby">
-                                <rect key="frame" x="178.5" y="69" width="29.5" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bt-s8-Hby">
+                                <rect key="frame" x="178.5" y="69" width="0.0" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="5ur-Hz-kdC"/>
                                 </constraints>
@@ -119,8 +119,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhc-3E-sGx">
-                                <rect key="frame" x="139.5" y="89" width="22" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhc-3E-sGx">
+                                <rect key="frame" x="139.5" y="89" width="0.0" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="Kao-lh-CCd"/>
                                 </constraints>
@@ -183,8 +183,8 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3O-6m-Bcf">
-                                                <rect key="frame" x="37" y="35" width="26.5" height="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3O-6m-Bcf">
+                                                <rect key="frame" x="43.5" y="35" width="13.5" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="Dob-5e-efd"/>
                                                 </constraints>
@@ -353,7 +353,7 @@
                 <outlet property="totalOutput" destination="hNA-4l-dzC" id="OGe-2H-qK3"/>
                 <outlet property="yesEarnings" destination="flW-io-lc6" id="OkU-Se-fYb"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="123.88392857142857"/>
+            <point key="canvasLocation" x="137.68115942028987" y="123.54910714285714"/>
         </tableViewCell>
     </objects>
     <resources>

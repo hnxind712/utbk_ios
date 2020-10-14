@@ -1,0 +1,36 @@
+
+/* Class = "UIButton"; normalTitle = "确认"; ObjectID = "7GX-jW-Rlc"; */
+"7GX-jW-Rlc.normalTitle" = "确认";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "FDm-vm-Fk9"; */
+"FDm-vm-Fk9.text" = "100";
+
+/* Class = "UITextField"; placeholder = "请输入交易密码"; ObjectID = "FTn-3n-QTa"; */
+"FTn-3n-QTa.placeholder" = "请输入交易密码";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "JKq-JS-uuB"; */
+"JKq-JS-uuB.text" = "0";
+
+/* Class = "UITextField"; placeholder = "请填写转币数量"; ObjectID = "K1A-rH-DhN"; */
+"K1A-rH-DhN.placeholder" = "请填写转币数量";
+
+/* Class = "UILabel"; text = "个"; ObjectID = "UYV-s1-0j0"; */
+"UYV-s1-0j0.text" = "个";
+
+/* Class = "UIButton"; normalTitle = "全部"; ObjectID = "Wkk-hh-IeJ"; */
+"Wkk-hh-IeJ.normalTitle" = "全部";
+
+/* Class = "UITextField"; placeholder = "请填写收币账户地址"; ObjectID = "cDi-AQ-fz9"; */
+"cDi-AQ-fz9.placeholder" = "请填写收币账户地址";
+
+/* Class = "UIButton"; normalTitle = "BTCK"; ObjectID = "fRl-Xx-i9c"; */
+"fRl-Xx-i9c.normalTitle" = "BTCK";
+
+/* Class = "UILabel"; text = "矿工费每笔"; ObjectID = "nqU-11-MY4"; */
+"nqU-11-MY4.text" = "矿工费每笔";
+
+/* Class = "UILabel"; text = "可用："; ObjectID = "sTc-mg-Zz3"; */
+"sTc-mg-Zz3.text" = "可用：";
+
+/* Class = "UILabel"; text = "币种"; ObjectID = "vJ6-4X-AWW"; */
+"vJ6-4X-AWW.text" = "币种";

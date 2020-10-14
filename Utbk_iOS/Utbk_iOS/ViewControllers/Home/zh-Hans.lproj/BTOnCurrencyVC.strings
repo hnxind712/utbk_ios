@@ -1,0 +1,96 @@
+
+/* Class = "UILabel"; text = "营销预算"; ObjectID = "0Jh-Ti-60P"; */
+"0Jh-Ti-60P.text" = "营销预算";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "3GP-nQ-E1J"; */
+"3GP-nQ-E1J.text" = "*";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "524-s9-6Fg"; */
+"524-s9-6Fg.text" = "*";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "5HZ-7f-DJa"; */
+"5HZ-7f-DJa.text" = "*";
+
+/* Class = "UITextField"; placeholder = "请输入英文币种名称"; ObjectID = "5ht-fj-4r7"; */
+"5ht-fj-4r7.placeholder" = "请输入英文币种名称";
+
+/* Class = "UITextField"; placeholder = "请输入市场已流通量"; ObjectID = "5ht-qD-fv0"; */
+"5ht-qD-fv0.placeholder" = "请输入市场已流通量";
+
+/* Class = "UILabel"; text = "提交申请后请耐心等待审核，我们会尽快处理并联系您！"; ObjectID = "8dg-nZ-4e8"; */
+"8dg-nZ-4e8.text" = "提交申请后请耐心等待审核，我们会尽快处理并联系您！";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "Fft-Wz-FXm"; */
+"Fft-Wz-FXm.text" = "*";
+
+/* Class = "UILabel"; text = "联系人手机号"; ObjectID = "IXD-5O-Wty"; */
+"IXD-5O-Wty.text" = "联系人手机号";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "J3t-Go-fgR"; */
+"J3t-Go-fgR.text" = "*";
+
+/* Class = "UITextField"; placeholder = "请输入联系人姓名"; ObjectID = "JuI-PV-HFT"; */
+"JuI-PV-HFT.placeholder" = "请输入联系人姓名";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "Lp0-b7-Xrl"; */
+"Lp0-b7-Xrl.text" = "*";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "PVd-YR-1xr"; */
+"PVd-YR-1xr.text" = "*";
+
+/* Class = "UILabel"; text = "请输入项目介绍"; ObjectID = "SLO-uf-Nid"; */
+"SLO-uf-Nid.text" = "请输入项目介绍";
+
+/* Class = "UILabel"; text = "上币申请"; ObjectID = "V4X-6R-yfw"; */
+"V4X-6R-yfw.text" = "上币申请";
+
+/* Class = "UITextField"; placeholder = "请输入社区用户量"; ObjectID = "aNM-Da-O1T"; */
+"aNM-Da-O1T.placeholder" = "请输入社区用户量";
+
+/* Class = "UITextField"; placeholder = "请输入营销预算"; ObjectID = "ad8-K0-nZS"; */
+"ad8-K0-nZS.placeholder" = "请输入营销预算";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "efl-iB-HM8"; */
+"efl-iB-HM8.text" = "*";
+
+/* Class = "UILabel"; text = "联系人姓名"; ObjectID = "hdq-m7-Ufv"; */
+"hdq-m7-Ufv.text" = "联系人姓名";
+
+/* Class = "UILabel"; text = "社区用户量"; ObjectID = "jMy-23-U4w"; */
+"jMy-23-U4w.text" = "社区用户量";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "jP7-Zy-jGK"; */
+"jP7-Zy-jGK.text" = "*";
+
+/* Class = "UILabel"; text = " 为必填项"; ObjectID = "jZh-GC-Uwz"; */
+"jZh-GC-Uwz.text" = " 为必填项";
+
+/* Class = "UITextField"; placeholder = "请输入联系人手机号"; ObjectID = "k7m-M3-l5n"; */
+"k7m-M3-l5n.placeholder" = "请输入联系人手机号";
+
+/* Class = "UILabel"; text = "发行总量"; ObjectID = "qIf-Th-ra6"; */
+"qIf-Th-ra6.text" = "发行总量";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "r1F-kb-XPZ"; */
+"r1F-kb-XPZ.text" = "*";
+
+/* Class = "UILabel"; text = "市场已流通量"; ObjectID = "rwM-9m-9kj"; */
+"rwM-9m-9kj.text" = "市场已流通量";
+
+/* Class = "UILabel"; text = "币种英文名称"; ObjectID = "sfi-iS-5B5"; */
+"sfi-iS-5B5.text" = "币种英文名称";
+
+/* Class = "UIButton"; normalTitle = "完成"; ObjectID = "u1X-2A-Nbh"; */
+"u1X-2A-Nbh.normalTitle" = "完成";
+
+/* Class = "UITextField"; placeholder = "请输入发行总量"; ObjectID = "v4W-WR-ASI"; */
+"v4W-WR-ASI.placeholder" = "请输入发行总量";
+
+/* Class = "UITextField"; placeholder = "请输入中文币种名称"; ObjectID = "vyd-UG-vwO"; */
+"vyd-UG-vwO.placeholder" = "请输入中文币种名称";
+
+/* Class = "UILabel"; text = "币种中文名称"; ObjectID = "xXz-9a-gVP"; */
+"xXz-9a-gVP.text" = "币种中文名称";
+
+/* Class = "UILabel"; text = "项目介绍"; ObjectID = "zcp-Oj-RqD"; */
+"zcp-Oj-RqD.text" = "项目介绍";

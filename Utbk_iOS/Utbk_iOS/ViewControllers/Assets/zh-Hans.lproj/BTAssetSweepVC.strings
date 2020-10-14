@@ -1,0 +1,36 @@
+
+/* Class = "UILabel"; text = "从"; ObjectID = "1lI-hC-Zwh"; */
+"1lI-hC-Zwh.text" = "从";
+
+/* Class = "UIButton"; normalTitle = "全部"; ObjectID = "5a6-iV-dLv"; */
+"5a6-iV-dLv.normalTitle" = "全部";
+
+/* Class = "UILabel"; text = "0.000000 BTCK"; ObjectID = "5wr-Lf-s2I"; */
+"5wr-Lf-s2I.text" = "0.000000 BTCK";
+
+/* Class = "UILabel"; text = "币币"; ObjectID = "65v-Pf-ID1"; */
+"65v-Pf-ID1.text" = "币币";
+
+/* Class = "UITextField"; placeholder = "请输入划转数量"; ObjectID = "7zK-jZ-0dZ"; */
+"7zK-jZ-0dZ.placeholder" = "请输入划转数量";
+
+/* Class = "UILabel"; text = "BTCK"; ObjectID = "S5S-pZ-6MJ"; */
+"S5S-pZ-6MJ.text" = "BTCK";
+
+/* Class = "UILabel"; text = "可用数量："; ObjectID = "Ykh-kE-yIV"; */
+"Ykh-kE-yIV.text" = "可用数量：";
+
+/* Class = "UILabel"; text = "到"; ObjectID = "Ze6-e6-OJg"; */
+"Ze6-e6-OJg.text" = "到";
+
+/* Class = "UILabel"; text = "币种"; ObjectID = "cf9-kv-WKb"; */
+"cf9-kv-WKb.text" = "币种";
+
+/* Class = "UILabel"; text = "划转数量"; ObjectID = "kUk-t9-KL9"; */
+"kUk-t9-KL9.text" = "划转数量";
+
+/* Class = "UILabel"; text = "矿池"; ObjectID = "vwE-6c-kNX"; */
+"vwE-6c-kNX.text" = "矿池";
+
+/* Class = "UIButton"; normalTitle = "确认"; ObjectID = "zst-rB-TW7"; */
+"zst-rB-TW7.normalTitle" = "确认";

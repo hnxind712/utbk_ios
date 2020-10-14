@@ -45,7 +45,23 @@
 @property (weak, nonatomic) IBOutlet UILabel *Hlabel;
 @property (weak, nonatomic) IBOutlet UILabel *Llabel;
 @property (weak, nonatomic) IBOutlet UILabel *Alabel;
-
+@property (weak, nonatomic) IBOutlet UIButton *btn1;
+@property (weak, nonatomic) IBOutlet UIButton *btn3;
+@property (weak, nonatomic) IBOutlet UIButton *btn4;
+@property (weak, nonatomic) IBOutlet UIButton *btn5;
+@property (weak, nonatomic) IBOutlet UIButton *btn6;
+@property (weak, nonatomic) IBOutlet UIButton *btn7;
+@property (weak, nonatomic) IBOutlet UIButton *btn8;
+@property (weak, nonatomic) IBOutlet UIButton *btn9;
+@property (weak, nonatomic) IBOutlet UIButton *btn10;
+@property (weak, nonatomic) IBOutlet UIButton *btn11;
+@property (weak, nonatomic) IBOutlet UIButton *btn12;
+@property (weak, nonatomic) IBOutlet UIButton *btn13;
+@property (weak, nonatomic) IBOutlet UIButton *timeLineBtn;
+@property (weak, nonatomic) IBOutlet UIButton *moreBtn;
+@property (weak, nonatomic) IBOutlet UIButton *indexBtn;
+@property (weak, nonatomic) IBOutlet UIButton *deepthBtn;
+@property (weak, nonatomic) IBOutlet UIButton *tradeBtn;
 @property (weak, nonatomic) IBOutlet UIView *klineheaderTopView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *klineHeight;
 @property (weak, nonatomic) IBOutlet UIView *klineView;
@@ -92,12 +108,12 @@
     [super viewDidLoad];
     [self setupLayout];
     self.selectedKlineBtn = (UIButton *)[self.view viewWithTag:3];//默认取5分图
-    self.selectedIndexBtn = (UIButton *)[self.view viewWithTag:100];//取MA
-    self.selectedSubBtn = (UIButton *)[self.view viewWithTag:103];//取MACD
+    self.selectedIndexBtn = (UIButton *)[self.view viewWithTag:103];//取MA
+    self.selectedSubBtn = (UIButton *)[self.view viewWithTag:100];//取MACD
     self.selectedDepthBtn = (UIButton *)[self.view viewWithTag:500];//默认取深度
     self.tableHeight.constant = (DataRow + 1) * 30;//tableView总高度
     self.collectLabel.text = LocalizationKey(@"addFavo");
-    
+    [self resetLocalization];
     if (self.symbol) {
         _coin = [[self.symbol componentsSeparatedByString:@"/"] firstObject];
         [self.buyBtn setTitle:[NSString stringWithFormat:@"%@%@",LocalizationKey(@"Buy"),_coin] forState:UIControlStateNormal];
@@ -170,6 +186,30 @@
         self.changeLabel.text= [NSString stringWithFormat:@"+%.2f%%",model.chg*100];
     }
     
+}
+- (void)resetLocalization{
+//    "depth" = "深度";
+//    "marketTrades" = "成交";
+    self.Hlabel.text=LocalizationKey(@"highest");
+    self.Llabel.text=LocalizationKey(@"minimumest");
+    self.Alabel.text=LocalizationKey(@"24H");
+    [self.tradeBtn setTitle:LocalizationKey(@"marketTrades") forState:UIControlStateNormal];
+    [self.deepthBtn setTitle:LocalizationKey(@"depth") forState:UIControlStateNormal];
+    [self.btn1 setTitle:LocalizationKey(@"line") forState:UIControlStateNormal];
+    [self.timeLineBtn setTitle:LocalizationKey(@"min") forState:UIControlStateNormal];
+    [self.btn3 setTitle:LocalizationKey(@"fivemin") forState:UIControlStateNormal];
+    [self.btn4 setTitle:LocalizationKey(@"hours") forState:UIControlStateNormal];
+    [self.btn5 setTitle:LocalizationKey(@"days") forState:UIControlStateNormal];
+    [self.btn6 setTitle:LocalizationKey(@"mainKline") forState:UIControlStateNormal];
+    [self.btn7 setTitle:LocalizationKey(@"subKline") forState:UIControlStateNormal];
+    [self.btn8 setTitle:LocalizationKey(@"hideKline") forState:UIControlStateNormal];
+    [self.btn9 setTitle:LocalizationKey(@"hideKline") forState:UIControlStateNormal];
+    [self.btn10 setTitle:LocalizationKey(@"weeks") forState:UIControlStateNormal];
+    [self.btn11 setTitle:LocalizationKey(@"monthkline") forState:UIControlStateNormal];
+    [self.btn12 setTitle:LocalizationKey(@"fivethmin") forState:UIControlStateNormal];
+    [self.btn13 setTitle:LocalizationKey(@"thirtymin") forState:UIControlStateNormal];
+    [self.moreBtn setTitle:LocalizationKey(@"morekline") forState:UIControlStateNormal];
+    [self.indexBtn setTitle:LocalizationKey(@"index") forState:UIControlStateNormal];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];

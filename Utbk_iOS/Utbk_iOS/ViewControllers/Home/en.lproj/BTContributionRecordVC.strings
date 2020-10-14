@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "BTCK："; ObjectID = "2Vv-CR-GHb"; */
+"2Vv-CR-GHb.text" = "BTCK：";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "4Q9-A3-wQa"; */
+"4Q9-A3-wQa.text" = "0.00";
+
+/* Class = "UILabel"; text = "时间"; ObjectID = "5eq-CL-oWO"; */
+"5eq-CL-oWO.text" = "Time";
+
+/* Class = "UIButton"; normalTitle = "贡献记录"; ObjectID = "GUK-w9-6NY"; */
+"GUK-w9-6NY.normalTitle" = "Contribution record";
+
+/* Class = "UIButton"; selectedTitle = "贡献记录"; ObjectID = "GUK-w9-6NY"; */
+"GUK-w9-6NY.selectedTitle" = "Contribution record";
+
+/* Class = "UILabel"; text = "产量"; ObjectID = "Q6g-a8-Sbg"; */
+"Q6g-a8-Sbg.text" = "Production";
+
+/* Class = "UILabel"; text = "累计收益"; ObjectID = "Trr-QL-Y9M"; */
+"Trr-QL-Y9M.text" = "Accumulated earnings";
+
+/* Class = "UILabel"; text = "币种/数量"; ObjectID = "Vow-FE-qPy"; */
+"Vow-FE-qPy.text" = "Currency/quantity";
+
+/* Class = "UILabel"; text = "币种"; ObjectID = "XsW-Ng-XHz"; */
+"XsW-Ng-XHz.text" = "Currency";
+
+/* Class = "UILabel"; text = "BTK："; ObjectID = "a15-DP-22q"; */
+"a15-DP-22q.text" = "BTK：";
+
+/* Class = "UILabel"; text = "数组"; ObjectID = "ady-bo-c9w"; */
+"ady-bo-c9w.text" = "Array";
+
+/* Class = "UIButton"; normalTitle = "收益记录"; ObjectID = "fWQ-B4-m0U"; */
+"fWQ-B4-m0U.normalTitle" = "Earnings record";
+
+/* Class = "UIButton"; selectedTitle = "收益记录"; ObjectID = "fWQ-B4-m0U"; */
+"fWQ-B4-m0U.selectedTitle" = "Earnings record";
+
+/* Class = "UILabel"; text = "贡献值"; ObjectID = "i0T-Ds-ejv"; */
+"i0T-Ds-ejv.text" = "Contribution value";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "pXq-M4-XMw"; */
+"pXq-M4-XMw.text" = "0.00";
+
+/* Class = "UILabel"; text = "时间"; ObjectID = "w8H-ML-9jH"; */
+"w8H-ML-9jH.text" = "Time";

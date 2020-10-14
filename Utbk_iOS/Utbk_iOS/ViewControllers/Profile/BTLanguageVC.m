@@ -10,6 +10,7 @@
 #import "YLTabBarController.h"
 
 @interface BTLanguageVC ()
+@property (weak, nonatomic) IBOutlet UILabel *chineseLabel;
 @property (weak, nonatomic) IBOutlet UIButton *simplifiedChineseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *traditionalChineseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *englishBtn;
@@ -23,6 +24,7 @@
     [super viewDidLoad];
     self.title = LocalizationKey(@"setting");
     NSString *language = [ChangeLanguage userLanguage];
+    self.chineseLabel.text = LocalizationKey(@"简体中文");
     if ([language isEqualToString:@"en"]) {
         self.englishBtn.selected = YES;
         self.simplifiedChineseBtn.selected = NO;
@@ -54,6 +56,7 @@
             break;
     }
     self.title = LocalizationKey(@"setting");
+    self.chineseLabel.text = LocalizationKey(@"简体中文");
     //创建通知
     NSNotification *notification =[NSNotification notificationWithName:LanguageChange object:nil userInfo:nil];
     //通过通知中心发送通知

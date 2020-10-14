@@ -87,7 +87,7 @@
 }
 - (LYEmptyView *)emptyView{
     if (!_emptyView) {
-        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"暂无数据")];
+        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"noDada")];
     }
     return _emptyView;
 }
@@ -178,6 +178,7 @@
     [self.marketBtn setTitle:LocalizationKey(@"商城") forState:UIControlStateNormal];
     [self.gameBtn setTitle:LocalizationKey(@"游戏") forState:UIControlStateNormal];
     [self.deBtn setTitle:LocalizationKey(@"DEFi专区") forState:UIControlStateNormal];
+    [self.noticeView.moreBtn setTitle:LocalizationKey(@"更多") forState:UIControlStateNormal];
 }
 #pragma mark-下拉刷新数据
 - (void)refreshHeaderAction{

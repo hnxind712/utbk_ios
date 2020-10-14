@@ -1,0 +1,18 @@
+
+/* Class = "UIButton"; normalTitle = "微信朋友圈"; ObjectID = "AGj-Hk-1cQ"; */
+"AGj-Hk-1cQ.normalTitle" = "微信朋友圈";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "Ffh-8E-jzQ"; */
+"Ffh-8E-jzQ.normalTitle" = "取消";
+
+/* Class = "UIButton"; normalTitle = "保存本地"; ObjectID = "K5R-F0-8C4"; */
+"K5R-F0-8C4.normalTitle" = "保存本地";
+
+/* Class = "UILabel"; text = "分享到"; ObjectID = "L0V-Pa-uAD"; */
+"L0V-Pa-uAD.text" = "分享到";
+
+/* Class = "UIButton"; normalTitle = "复制链接"; ObjectID = "N4b-5E-nGN"; */
+"N4b-5E-nGN.normalTitle" = "复制链接";
+
+/* Class = "UIButton"; normalTitle = "微信好友"; ObjectID = "qUB-fJ-r5d"; */
+"qUB-fJ-r5d.normalTitle" = "微信好友";

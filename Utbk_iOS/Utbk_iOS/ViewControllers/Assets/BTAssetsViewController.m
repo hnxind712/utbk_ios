@@ -12,7 +12,6 @@
 #import "BTSweepAccountVC.h"
 #import "BTAssetsWithdrawVC.h"
 #import "BTAssetsTransiferVC.h"
-#import "BTAssetsDetailVC.h"
 #import "BTAssetsModel.h"
 #import "MineNetManager.h"
 #import "SPMultipleSwitch.h"
@@ -21,6 +20,7 @@
 #import "BTWithdrawRecordVC.h"
 
 @interface BTAssetsViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UILabel *totalAssets;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *totalHeight;
 @property (weak, nonatomic) IBOutlet UILabel *totalAccount;
@@ -41,13 +41,21 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title  = @"资产";
     [self setupLayout];
     [self.navigationItem setTitleView:self.multipleSwitch];
+    [self resetLocalization];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(resetLocalization) name:LanguageChange object:nil];
     // Do any additional setup after loading the view from its nib.
 }
-
+- (void)resetLocalization{
+    self.totalAssets.text = LocalizationKey(@"总资产");
+    NSArray *item = @[LocalizationKey(@"币币"),LocalizationKey(@"矿池")];
+    [self.multipleSwitch.labels enumerateObjectsUsingBlock:^(UILabel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.text = item[idx];
+    }];
+    UILabel *lb = self.multipleSwitch.selectedLabels[self.multipleSwitch.selectedSegmentIndex];
+    lb.text = item[self.multipleSwitch.selectedSegmentIndex];
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self refreshHeaderAction];
@@ -128,7 +136,7 @@
                 ErrorToast
             }
         }];
-        [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":[YLUserInfo shareUserInfo].ID} ResponseObject:^(NSDictionary *responseResult) {
+        [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":_BTS([YLUserInfo shareUserInfo].ID)} ResponseObject:^(NSDictionary *responseResult) {
             StrongSelf(strongSelf)
             if (NetSuccess) {
                 strongSelf.activeStatus = [responseResult[@"data"][@"status"] isKindOfClass:[NSNull class]] ? 0 : [responseResult[@"data"][@"status"] integerValue];

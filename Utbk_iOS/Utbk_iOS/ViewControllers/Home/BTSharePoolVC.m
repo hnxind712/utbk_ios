@@ -23,7 +23,7 @@
 @implementation BTSharePoolVC
 - (LYEmptyView *)emptyView{
     if (!_emptyView) {
-        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"暂无数据")];
+        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"noDada")];
     }
     return _emptyView;
 }

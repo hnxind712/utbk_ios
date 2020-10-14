@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,22 +14,39 @@
                 <outlet property="Llabel" destination="XHf-ly-DrQ" id="tEG-MW-kxk"/>
                 <outlet property="LowPrice" destination="SEh-da-GPn" id="h0z-fN-dKE"/>
                 <outlet property="backView" destination="i1d-Xs-rCB" id="5sO-FW-VRq"/>
+                <outlet property="btn1" destination="x3f-Jw-eyt" id="VbL-98-GGH"/>
+                <outlet property="btn10" destination="lJ8-qS-Uyg" id="Omu-p2-FxI"/>
+                <outlet property="btn11" destination="sHP-oC-PwT" id="xD0-pc-dQG"/>
+                <outlet property="btn12" destination="Pq5-et-Ry9" id="ClE-AF-wfe"/>
+                <outlet property="btn13" destination="p4q-qs-GKj" id="AaE-6o-50D"/>
+                <outlet property="btn3" destination="kte-Nc-kve" id="Aiw-oO-DpA"/>
+                <outlet property="btn4" destination="Nur-Fr-wi3" id="N95-wO-U1a"/>
+                <outlet property="btn5" destination="BSI-3f-iUA" id="IjZ-pT-Ici"/>
+                <outlet property="btn6" destination="dFo-xH-RHE" id="8Ed-Gx-GIk"/>
+                <outlet property="btn7" destination="bd4-wG-6dN" id="p0l-d0-eaD"/>
+                <outlet property="btn8" destination="BwK-2F-G6c" id="C1S-Zg-vZG"/>
+                <outlet property="btn9" destination="gEE-OX-hQr" id="P2D-0z-Spm"/>
                 <outlet property="buyBtn" destination="2aj-Y7-5vV" id="aLq-kB-e4t"/>
                 <outlet property="changeLabel" destination="cG1-N8-n9H" id="ISX-NT-xqY"/>
                 <outlet property="collectIamgeV" destination="oOl-1p-Fxe" id="41p-PV-X4L"/>
                 <outlet property="collectLabel" destination="KDS-pF-min" id="zXO-gq-fRh"/>
+                <outlet property="deepthBtn" destination="vWz-CY-GxA" id="z4F-UG-NCZ"/>
                 <outlet property="hightPrice" destination="PIk-KJ-wzq" id="Gxl-42-4Mm"/>
+                <outlet property="indexBtn" destination="VGI-GG-11B" id="YTY-e2-4vp"/>
                 <outlet property="indexView" destination="3iM-9c-UUT" id="tHd-uT-dx0"/>
                 <outlet property="kTableViewSuper" destination="CEr-HJ-s38" id="YqV-lZ-XrA"/>
                 <outlet property="klineHeight" destination="bwj-Rr-6Lw" id="aS1-Wg-nBU"/>
                 <outlet property="klineView" destination="mPQ-ve-4Bc" id="cm7-uf-H4z"/>
                 <outlet property="klineheaderTopView" destination="HXv-K8-4oA" id="8og-fH-u6Y"/>
+                <outlet property="moreBtn" destination="DBE-Jy-JCw" id="HA1-mo-cJb"/>
                 <outlet property="moreView" destination="qAN-HU-Rup" id="5nr-xA-K07"/>
                 <outlet property="nowPrice" destination="SJC-ZW-dzw" id="WJ2-7Y-EzS"/>
                 <outlet property="numberLabel" destination="LMv-Ac-fMd" id="XTy-Ms-RnR"/>
                 <outlet property="sellBtn" destination="RAS-es-j4n" id="ReA-I5-d0g"/>
                 <outlet property="tableHeight" destination="xui-bF-Fsd" id="wjI-lc-YtR"/>
                 <outlet property="tableView" destination="Ebh-1U-8TZ" id="vtx-mg-WgF"/>
+                <outlet property="timeLineBtn" destination="30j-gf-Syv" id="wIb-ac-KaN"/>
+                <outlet property="tradeBtn" destination="bzp-pZ-yY0" id="AqM-BQ-hme"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -93,17 +93,10 @@
                                 <constraint firstAttribute="width" constant="15" id="krg-WL-b7B"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KgU-fJ-v1H">
-                            <rect key="frame" x="42" y="28.5" width="318" height="43.5"/>
-                            <attributedString key="attributedText">
-                                <fragment content="温馨提示：只能划转一次，最多划转300到BTCK,超出部分自动销毁                   ">
-                                    <attributes>
-                                        <color key="NSColor" red="0.94117647058823528" green="0.32941176470588235" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" metaFont="menu" size="14"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示：只能划转一次，最多划转300到BTCK,超出部分自动销毁                   " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KgU-fJ-v1H">
+                            <rect key="frame" x="42" y="33.5" width="318" height="33.5"/>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                            <color key="textColor" red="0.94117647058823528" green="0.32941176470588235" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>

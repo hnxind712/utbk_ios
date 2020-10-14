@@ -27,7 +27,8 @@
 */
 - (void)configureNoticeViewWithModel:(BTNoticeModel *)model{
     _noticeModel = model;
-    self.message.text = [NSString stringWithFormat:@"%@：%@",LocalizationKey(@"公告"),model.title];
+    self.message.text = [NSString stringWithFormat:@"%@：%@",LocalizationKey(@"notice"),model.title];
+    [self.moreBtn setTitle:LocalizationKey(@"更多") forState:UIControlStateNormal];
 }
 - (IBAction)moreAction:(UIButton *)sender {
     if (self.noticeMoreAction) {

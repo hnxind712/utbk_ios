@@ -41,7 +41,7 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.hidden = NO;
 }
 - (IBAction)createAccount:(UIButton *)sender {
     BTCreateWalletVC *create = [[BTCreateWalletVC alloc]init];

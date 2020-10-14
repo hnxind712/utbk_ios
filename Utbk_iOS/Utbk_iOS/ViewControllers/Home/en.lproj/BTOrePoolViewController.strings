@@ -1,0 +1,60 @@
+
+/* Class = "UILabel"; text = "0"; ObjectID = "3fO-tf-IrR"; */
+"3fO-tf-IrR.text" = "0";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "A0A-mK-qYW"; */
+"A0A-mK-qYW.text" = "0";
+
+/* Class = "UILabel"; text = "推广算力"; ObjectID = "B4Y-FG-F2h"; */
+"B4Y-FG-F2h.text" = "Promotion force";
+
+/* Class = "UILabel"; text = "持币算力"; ObjectID = "Dwi-r2-Y5h"; */
+"Dwi-r2-Y5h.text" = "Cash count";
+
+/* Class = "UILabel"; text = "BTCK"; ObjectID = "EGP-r0-wnA"; */
+"EGP-r0-wnA.text" = "BTCK";
+
+/* Class = "UILabel"; text = "子、母币收益比例：BTCK20%、BTK10%\n持币算力公式：个人持币量X个人持币值=持币收益\n推广算力公式：团队除最大区合计持币量x0.001=推广收益"; ObjectID = "LcH-gt-oOR"; */
+"LcH-gt-oOR.text" = "Calculation formula: personal amount of currency X personal value of currency = earnings from currency \n Formula: Promotion calculation formula: total amount of currency held by the team except the maximum area x0.001= earnings from promotion";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "OPI-Ah-q5x"; */
+"OPI-Ah-q5x.text" = "0";
+
+/* Class = "UILabel"; text = "最佳持币"; ObjectID = "QX6-TC-J09"; */
+"QX6-TC-J09.text" = "Best cash";
+
+/* Class = "UILabel"; text = "地址"; ObjectID = "a7b-hI-X2h"; */
+"a7b-hI-X2h.text" = "Address";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "doY-ox-Ukr"; */
+"doY-ox-Ukr.text" = "0";
+
+/* Class = "UILabel"; text = "最低持币"; ObjectID = "e4Q-Qc-5CV"; */
+"e4Q-Qc-5CV.text" = "Minimum cash";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "eER-aB-PX1"; */
+"eER-aB-PX1.text" = "0";
+
+/* Class = "UILabel"; text = "排名"; ObjectID = "fUC-Cx-dNw"; */
+"fUC-Cx-dNw.text" = "Rank";
+
+/* Class = "UILabel"; text = "我的持币"; ObjectID = "i3f-C9-znc"; */
+"i3f-C9-znc.text" = "My cash";
+
+/* Class = "UILabel"; text = "空投收益"; ObjectID = "iLa-MZ-oOp"; */
+"iLa-MZ-oOp.text" = "Earnings drop";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "oNl-44-lRa"; */
+"oNl-44-lRa.text" = "0";
+
+/* Class = "UILabel"; text = "小区合计"; ObjectID = "obK-Nm-vei"; */
+"obK-Nm-vei.text" = "Community combined";
+
+/* Class = "UILabel"; text = "排行榜"; ObjectID = "rrp-Pd-fXq"; */
+"rrp-Pd-fXq.text" = "Rank list";
+
+/* Class = "UILabel"; text = "收益说明："; ObjectID = "tLJ-DS-GK0"; */
+"tLJ-DS-GK0.text" = "Benefits：";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "x1f-kA-ORX"; */
+"x1f-kA-ORX.text" = "0";

@@ -42,8 +42,6 @@
 @property (nonatomic, strong) UIView *labelContentView;
 @property (nonatomic, strong) UIView *selectedLabelContentView;
 @property (nonatomic, strong) UIImageView *tracker;
-@property (nonatomic, strong) NSMutableArray *labels;
-@property (nonatomic, strong) NSMutableArray *selectedLabels;
 @property (nonatomic, strong) UIView *maskTracker;
 @property (nonatomic, assign) CGPoint beginPoint;
 @end

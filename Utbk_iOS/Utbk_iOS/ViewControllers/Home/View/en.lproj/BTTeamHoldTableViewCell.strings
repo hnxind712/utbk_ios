@@ -1,0 +1,30 @@
+
+/* Class = "UILabel"; text = "190"; ObjectID = "5F9-4X-Pv5"; */
+"5F9-4X-Pv5.text" = "190";
+
+/* Class = "UILabel"; text = "地址(大区)"; ObjectID = "CfH-B7-5aB"; */
+"CfH-B7-5aB.text" = "Address (Region)";
+
+/* Class = "UILabel"; text = "159"; ObjectID = "IrM-e2-9bF"; */
+"IrM-e2-9bF.text" = "159";
+
+/* Class = "UILabel"; text = "总地址"; ObjectID = "Tha-dR-O4k"; */
+"Tha-dR-O4k.text" = "Tatal address";
+
+/* Class = "UILabel"; text = "ube8ec511C9dsxn6GKd8kjdbcksdjc593jh4njsdcikn3"; ObjectID = "ZiF-qO-gEx"; */
+"ZiF-qO-gEx.text" = "";
+
+/* Class = "UILabel"; text = "159"; ObjectID = "ikx-Vm-RaG"; */
+"ikx-Vm-RaG.text" = "159";
+
+/* Class = "UILabel"; text = "小区持仓"; ObjectID = "irX-L1-KYN"; */
+"irX-L1-KYN.text" = "District positions";
+
+/* Class = "UILabel"; text = "大区持仓"; ObjectID = "npt-ko-2hi"; */
+"npt-ko-2hi.text" = "Regional position";
+
+/* Class = "UILabel"; text = "个人持仓"; ObjectID = "uoC-4Q-1Jy"; */
+"uoC-4Q-1Jy.text" = "Personal position";
+
+/* Class = "UILabel"; text = "159"; ObjectID = "wrz-HC-7cv"; */
+"wrz-HC-7cv.text" = "***";

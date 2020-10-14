@@ -57,7 +57,7 @@
     self.Label5.text = LocalizationKey(@"分享APP");
     self.Label6.text = LocalizationKey(@"帮助中心");
     self.Label7.text = LocalizationKey(@"区块链浏览");
-    
+    self.navigationItem.title = LocalizationKey(@"个人中心");
 }
 - (void)addRightNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BTLanguageVC">
             <connections>
+                <outlet property="chineseLabel" destination="MsL-tD-NBG" id="WhJ-lX-JiI"/>
                 <outlet property="englishBtn" destination="cvK-tN-Na0" id="0QH-Ca-6RM"/>
                 <outlet property="simplifiedChineseBtn" destination="tnB-mV-Jiz" id="xWs-Cz-dXl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

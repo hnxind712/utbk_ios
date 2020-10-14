@@ -46,8 +46,8 @@
             filePath = "Utbk_iOS/ViewControllers/Trading/viewController/TradeViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "990"
-            endingLineNumber = "990"
+            startingLineNumber = "991"
+            endingLineNumber = "991"
             landmarkName = "-touchEvents:"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,24 +62,8 @@
             filePath = "Utbk_iOS/ViewControllers/Trading/viewController/TradeViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1024"
-            endingLineNumber = "1024"
-            landmarkName = "-touchEvents:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "53BCB903-F9F9-4E67-8967-2C70B5105C3B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Utbk_iOS/ViewControllers/Trading/viewController/TradeViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "838"
-            endingLineNumber = "838"
+            startingLineNumber = "1025"
+            endingLineNumber = "1025"
             landmarkName = "-touchEvents:"
             landmarkType = "7">
          </BreakpointContent>
@@ -97,6 +81,70 @@
             startingLineNumber = "125"
             endingLineNumber = "125"
             landmarkName = "-webView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8AB84D1D-076C-406E-95EF-65D51FCC4014"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Utbk_iOS/Remote/BaseNetManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
+            landmarkName = "+requestWithPost:header:parameters:successBlock:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8AB84D1D-076C-406E-95EF-65D51FCC4014 - 77c1d73c6333476f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__65+[BaseNetManager requestWithPost:header:parameters:successBlock:]_block_invoke"
+                  moduleName = "BTCK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Desktop/Utbk_iOS/utbk_ios/Utbk_iOS/Utbk_iOS/Remote/BaseNetManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "326"
+                  endingLineNumber = "326"
+                  offsetFromSymbolStart = "1009">
+               </Location>
+               <Location
+                  uuid = "8AB84D1D-076C-406E-95EF-65D51FCC4014 - 4b590294e9ca97f1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__65+[BaseNetManager requestWithPost:header:parameters:successBlock:]_block_invoke_5"
+                  moduleName = "BTCK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Desktop/Utbk_iOS/utbk_ios/Utbk_iOS/Utbk_iOS/Remote/BaseNetManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "327"
+                  endingLineNumber = "327"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B96CCB05-C5A8-4A9C-9384-F8F406D96591"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Utbk_iOS/Model/YLUserInfo.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "+logout"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

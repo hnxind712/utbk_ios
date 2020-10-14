@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "4CO-61-JnT"; */
+"4CO-61-JnT.text" = "0.00";
+
+/* Class = "UILabel"; text = "昨日收益"; ObjectID = "9Sr-5h-oLy"; */
+"9Sr-5h-oLy.text" = "Earnings yesterday";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "PgK-Bd-61H"; */
+"PgK-Bd-61H.text" = "0.00";
+
+/* Class = "UILabel"; text = "推广算力"; ObjectID = "RCq-DB-h4K"; */
+"RCq-DB-h4K.text" = "Promotion force";
+
+/* Class = "UILabel"; text = "累计收益"; ObjectID = "RV6-Nj-VfJ"; */
+"RV6-Nj-VfJ.text" = "Accumulated earnings";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Rf7-2Y-YeX"; */
+"Rf7-2Y-YeX.text" = "0";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "SAf-Uh-Oda"; */
+"SAf-Uh-Oda.text" = "0";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "UlU-iO-7JB"; */
+"UlU-iO-7JB.text" = "0";
+
+/* Class = "UILabel"; text = "持币算力"; ObjectID = "wGv-jl-Fsv"; */
+"wGv-jl-Fsv.text" = "Cash count";

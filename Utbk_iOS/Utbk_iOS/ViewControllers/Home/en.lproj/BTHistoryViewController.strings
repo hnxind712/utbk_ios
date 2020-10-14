@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "时间"; ObjectID = "6Mu-B6-rel"; */
+"6Mu-B6-rel.text" = "Time";
+
+/* Class = "UILabel"; text = "排名"; ObjectID = "8sc-gx-NIY"; */
+"8sc-gx-NIY.text" = "Rank";
+
+/* Class = "UILabel"; text = "产出"; ObjectID = "B6d-ll-Kwm"; */
+"B6d-ll-Kwm.text" = "Output";
+
+/* Class = "UIButton"; normalTitle = "产出记录"; ObjectID = "XMa-a2-pcz"; */
+"XMa-a2-pcz.normalTitle" = "Output records";
+
+/* Class = "UILabel"; text = "地址"; ObjectID = "bPb-3b-s6A"; */
+"bPb-3b-s6A.text" = "Address";
+
+/* Class = "UIButton"; normalTitle = "我的记录"; ObjectID = "ogD-Kt-qpw"; */
+"ogD-Kt-qpw.normalTitle" = "My record";

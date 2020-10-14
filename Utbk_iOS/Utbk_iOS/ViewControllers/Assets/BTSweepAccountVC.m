@@ -23,6 +23,7 @@
     self.title = LocalizationKey(@"划转");
     [self addRightNavigation];
     [self setupBind];
+    self.tips.text = LocalizationKey(@"温馨提示：只能划转一次，最多划转300到BTCK,超出部分自动销毁");
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -52,7 +53,7 @@
 }
 - (IBAction)confirmAction:(UIButton *)sender {
     if (!self.countInput.text.length) {
-        [self.view makeToast:LocalizationKey(@"请输入划转数量") duration:ToastHideDelay position:ToastPosition];return;
+        [self.view makeToast:LocalizationKey(@"inputTransferNumber") duration:ToastHideDelay position:ToastPosition];return;
     }
     [[XBRequest sharedInstance]postDataWithUrl:motherCoinWalletTransferAPI Parameter:@{@"amount":self.countInput.text} ResponseObject:^(NSDictionary *responseResult) {
         [self.view makeToast:responseResult[MESSAGE] duration:ToastHideDelay position:ToastPosition];

@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = LocalizationKey(@"详情");
+    self.title = LocalizationKey(@"Detail");
     [self setupBind];
     // Do any additional setup after loading the view from its nib.
 }

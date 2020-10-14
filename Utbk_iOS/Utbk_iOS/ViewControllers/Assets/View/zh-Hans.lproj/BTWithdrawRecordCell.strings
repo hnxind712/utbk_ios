@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "时间"; ObjectID = "69t-dH-Drv"; */
+"69t-dH-Drv.text" = "时间";
+
+/* Class = "UILabel"; text = "状态"; ObjectID = "XA3-cg-fms"; */
+"XA3-cg-fms.text" = "状态";
+
+/* Class = "UILabel"; text = "数量"; ObjectID = "pBk-KL-oAA"; */
+"pBk-KL-oAA.text" = "数量";

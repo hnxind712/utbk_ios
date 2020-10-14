@@ -11,6 +11,7 @@
 #import "ToolUtil.h"
 
 @interface BTAssetsCell ()
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *coinName;
 @property (weak, nonatomic) IBOutlet UIView *activityView;
 @property (weak, nonatomic) IBOutlet UILabel *activityLabel;
@@ -30,13 +31,15 @@
     // Initialization code
 }
 - (void)configureCellWithAssetsModel:(BTAssetsModel *)model{
+    self.freeze.text = LocalizationKey(@"freezeCoin");
+    self.totalLabel.text = LocalizationKey(@"总额");
     self.coinName.text = model.coin.unit;
     self.totalCoinAccount.text = [ToolUtil judgeStringForDecimalPlaces:model.balance];
     self.convertAccount.text = [ToolUtil judgeStringForDecimalPlaces:model.frozenBalance];
     if ([model.coin.unit containsString:@"USDT"]) {
-        [self.receiveBtn setTitle:LocalizationKey(@"充币") forState:UIControlStateNormal];
-        [self.transiferBtn setTitle:LocalizationKey(@"提币") forState:UIControlStateNormal];
-        [self.sTransferBtn setTitle:LocalizationKey(@"转币") forState:UIControlStateNormal];
+        [self.receiveBtn setTitle:LocalizationKey(@"chargeMoney") forState:UIControlStateNormal];
+        [self.transiferBtn setTitle:LocalizationKey(@"mentionMoney") forState:UIControlStateNormal];
+        [self.sTransferBtn setTitle:LocalizationKey(@"transfer") forState:UIControlStateNormal];
     }else{
         [self.receiveBtn setTitle:LocalizationKey(@"收币") forState:UIControlStateNormal];
         [self.transiferBtn setTitle:LocalizationKey(@"转账") forState:UIControlStateNormal];

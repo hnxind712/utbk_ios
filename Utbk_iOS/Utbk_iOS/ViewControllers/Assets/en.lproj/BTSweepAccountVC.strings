@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "原始母币："; ObjectID = "3FL-bl-7z7"; */
+"3FL-bl-7z7.text" = "Original mother COINS：";
+
+/* Class = "UIButton"; normalTitle = "确认"; ObjectID = "Meg-H0-MBh"; */
+"Meg-H0-MBh.normalTitle" = "Confirm";
+
+/* Class = "UILabel"; text = "0.000000"; ObjectID = "R28-8W-8JL"; */
+"R28-8W-8JL.text" = "0.000000";
+
+/* Class = "UITextField"; placeholder = "请填写数量"; ObjectID = "cKE-b6-Fbh"; */
+"cKE-b6-Fbh.placeholder" = "Please fill in the quantity";
+
+/* Class = "UIButton"; normalTitle = "数量"; ObjectID = "mlh-IM-BCL"; */
+"mlh-IM-BCL.normalTitle" = "Amount";

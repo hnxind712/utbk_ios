@@ -1,0 +1,39 @@
+
+/* Class = "UILabel"; text = "0"; ObjectID = "9SW-1v-4je"; */
+"9SW-1v-4je.text" = "0";
+
+/* Class = "UILabel"; text = "贡献值(V)"; ObjectID = "Ap7-5C-tF0"; */
+"Ap7-5C-tF0.text" = "贡献值(V)";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Gg5-QT-92t"; */
+"Gg5-QT-92t.text" = "0";
+
+/* Class = "UILabel"; text = "昨日收益"; ObjectID = "SDZ-wG-m4T"; */
+"SDZ-wG-m4T.text" = "昨日收益";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "cm1-pl-v4J"; */
+"cm1-pl-v4J.text" = "0";
+
+/* Class = "UILabel"; text = "总收益额(U)"; ObjectID = "dKR-W1-PC9"; */
+"dKR-W1-PC9.text" = "总收益额(U)";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "flW-io-lc6"; */
+"flW-io-lc6.text" = "0.00";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "hNA-4l-dzC"; */
+"hNA-4l-dzC.text" = "0";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "i3O-6m-Bcf"; */
+"i3O-6m-Bcf.text" = "0";
+
+/* Class = "UILabel"; text = "数量(组)"; ObjectID = "j3Z-5I-pXG"; */
+"j3Z-5I-pXG.text" = "数量(组)";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "trH-M1-RgD"; */
+"trH-M1-RgD.text" = "0.00";
+
+/* Class = "UIButton"; normalTitle = "一星"; ObjectID = "uAC-y0-ROZ"; */
+"uAC-y0-ROZ.normalTitle" = "一星";
+
+/* Class = "UILabel"; text = "累计收益"; ObjectID = "vGI-to-NRC"; */
+"vGI-to-NRC.text" = "累计收益";

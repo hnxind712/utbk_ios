@@ -46,7 +46,7 @@
     WeakSelf(weakSelf)
     [MineNetManager getPlatformMessageForCompleteHandleWithPageNo:@"1" withPageSize:@"20" CompleteHandle:^(id resPonseObj, int code) {
         if (code) {
-            LYEmptyView*emptyView=[LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"暂无数据")];
+            LYEmptyView*emptyView=[LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"noDada")];
             self.tableView.ly_emptyView = emptyView;
             if ([resPonseObj[@"code"] integerValue] == 0) {
                 StrongSelf(strongSelf)

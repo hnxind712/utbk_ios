@@ -12,7 +12,7 @@
 #import "LYEmptyView.h"
 
 @interface BTDropRecordViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+@property (weak, nonatomic) IBOutlet UILabel *totalEarnings;
 @property (weak, nonatomic) IBOutlet UILabel *coinTopEarning;
 @property (weak, nonatomic) IBOutlet UILabel *coinTop;
 @property (weak, nonatomic) IBOutlet UILabel *coinBottom;
@@ -27,7 +27,7 @@
 @implementation BTDropRecordViewController
 - (LYEmptyView *)emptyView{
     if (!_emptyView) {
-        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"暂无数据")];
+        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"noDada")];
     }
     return _emptyView;
 }
@@ -52,6 +52,7 @@
     self.coinBottomEarning.text = [ToolUtil formartScientificNotationWithString:self.model.subcoinProfitAmount];
 }
 - (void)setupLayout{
+    self.totalEarnings.text = LocalizationKey(@"累计收益");
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTDropRecordTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTDropRecordTableViewCell class])];
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
