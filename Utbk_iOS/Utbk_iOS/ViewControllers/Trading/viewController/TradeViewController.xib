@@ -34,6 +34,8 @@
                 <outlet property="nowCNY" destination="0rU-wz-MMy" id="gFg-RL-3UF"/>
                 <outlet property="nowPrice" destination="hcn-A4-tet" id="xrB-Xr-BCb"/>
                 <outlet property="pricelabel" destination="MLN-DM-OEP" id="QfJ-yM-m8v"/>
+                <outlet property="riseFallLabel" destination="kIw-dp-Yuy" id="67k-Te-mWQ"/>
+                <outlet property="riseFallView" destination="JOG-SG-m1S" id="tJf-9t-BKf"/>
                 <outlet property="sellBtn" destination="mwP-s6-I90" id="z2C-o2-sVx"/>
                 <outlet property="sellLabel" destination="RYO-7T-b3P" id="QgI-6h-9YC"/>
                 <outlet property="symbolBtn" destination="3pb-CJ-38l" id="67d-8r-SEd"/>
@@ -93,7 +95,7 @@
                                                         <action selector="moreAction:" destination="-1" eventType="touchUpInside" id="LsW-yp-Sxz"/>
                                                     </connections>
                                                 </button>
-                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOG-SG-m1S">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOG-SG-m1S">
                                                     <rect key="frame" x="125" y="5" width="50" height="20"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+2.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIw-dp-Yuy">

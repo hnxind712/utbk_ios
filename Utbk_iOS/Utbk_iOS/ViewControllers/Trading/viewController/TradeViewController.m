@@ -58,6 +58,8 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 @property(nonatomic,retain) dispatch_source_t timer;
 @property (nonatomic, assign) PriceType priceType;
 @property (nonatomic,strong) LeftMenuViewController *menu;
+@property (weak, nonatomic) IBOutlet UIView *riseFallView;
+@property (weak, nonatomic) IBOutlet UILabel *riseFallLabel;//涨跌幅度
 @property (weak, nonatomic) IBOutlet UIScrollView *Myscrollview;
 @property (weak, nonatomic) IBOutlet UIView *mainview;
 @property (weak, nonatomic) IBOutlet UIView *titleview;
@@ -1865,6 +1867,15 @@ kRemoveCellSeparator
                 NSDecimalNumber *close = [NSDecimalNumber decimalNumberWithDecimal:[model.close decimalValue]];
                 NSDecimalNumber *baseUsdRate = [NSDecimalNumber decimalNumberWithDecimal:[model.baseUsdRate decimalValue]];
                 self.nowCNY.text=[NSString stringWithFormat:@"≈%.2f CNY",[[[close decimalNumberByMultiplyingBy:baseUsdRate] decimalNumberByMultiplyingBy:((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate] doubleValue]];
+                if (model.change <0) {
+                    self.riseFallLabel.textColor = RedColor;
+                    self.riseFallLabel.text = [NSString stringWithFormat:@"%.4f%%", model.chg*100];
+
+                }else{
+                    self.riseFallLabel.textColor = GreenColor;
+                    self.riseFallLabel.text = [NSString stringWithFormat:@"+%.4f%%", model.chg*100];
+
+                }
             }
         }
     }

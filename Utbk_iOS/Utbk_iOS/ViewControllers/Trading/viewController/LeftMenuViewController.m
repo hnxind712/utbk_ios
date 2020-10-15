@@ -126,6 +126,7 @@
     else{
        dict =[[NSDictionary alloc]initWithObjectsAndKeys:currentCell.nameLabel.text,@"object",[currentCell.baseLabel.text substringFromIndex:1],@"base",nil];
     }
+    [marketManager shareInstance].symbol = [NSString stringWithFormat:@"%@/%@",dict[@"object"],dict[@"base"]];
     NSDictionary*dic;
     if ([YLUserInfo isLogIn]) {
         dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",[YLUserInfo shareUserInfo].ID,@"uid",nil];
@@ -133,8 +134,6 @@
         dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",nil];
     }
     [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:UNSUBSCRIBE_EXCHANGE_TRADE withVersion:COMMANDS_VERSION withRequestId: 0 withbody:dic];
-    
-    [marketManager shareInstance].symbol=[NSString stringWithFormat:@"%@/%@",dict[@"object"],dict[@"base"]];
 
     if (self.block) {
         self.block(dict[@"base"], dict[@"object"]);

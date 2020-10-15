@@ -16,19 +16,24 @@
 
 #define KTableViewTop 46.f
 
-@interface BTMarketViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface BTMarketViewController ()<UITableViewDelegate,UITableViewDataSource,SocketDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *coinName;
 @property (weak, nonatomic) IBOutlet UILabel *latestPrice;
 @property (weak, nonatomic) IBOutlet UILabel *riseFall;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightContraint;
-@property (strong, nonatomic) NSArray *datasource;
+@property (strong, nonatomic) NSMutableArray *datasource;
 
 @end
 
 @implementation BTMarketViewController
-
+- (NSMutableArray *)datasource{
+    if (!_datasource) {
+        _datasource = [NSMutableArray array];
+    }
+    return _datasource;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -64,6 +69,16 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:NavColor] forBarMetrics:UIBarMetricsDefault];//去除导航栏黑线
     [self.navigationController.navigationBar setShadowImage:[UIImage createImageWithColor:[UIColor clearColor]]];
     [self setupBind];
+    [SocketManager share].delegate=self;
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:SUBSCRIBE_SYMBOL_THUMB withVersion:COMMANDS_VERSION withRequestId: 0 withbody:nil];
+    [SocketManager share].delegate = self;
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:UNSUBSCRIBE_SYMBOL_THUMB withVersion:COMMANDS_VERSION withRequestId: 0 withbody:nil];
 }
 - (void)setupBind{
     WeakSelf(weakSelf)
@@ -72,6 +87,7 @@
         if (code) {
             if ([resPonseObj isKindOfClass:[NSArray class]]) {
                 StrongSelf(strongSelf)
+                [strongSelf.datasource removeAllObjects];
                 strongSelf.datasource = [symbolModel mj_objectArrayWithKeyValuesArray:resPonseObj];
                 [strongSelf.tableView reloadData];
                 [strongSelf.tableView layoutIfNeeded];
@@ -97,8 +113,19 @@
     //缩略行情
     if (cmd==PUSH_SYMBOL_THUMB) {
         if (endStr) {
-           NSDictionary *dic = [NSDictionary dictionaryWithObject:endStr forKey:@"param"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:SUBSCRIBE_SYMBOL object:nil userInfo:dic];
+//           NSDictionary *dic = [NSDictionary dictionaryWithObject:endStr forKey:@"param"];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:SUBSCRIBE_SYMBOL object:nil userInfo:dic];
+            NSDictionary *dic1 = [SocketUtils dictionaryWithJsonString:endStr];
+            symbolModel *model = [symbolModel mj_objectWithKeyValues:dic1];
+            NSMutableArray *recommendArr = (NSMutableArray *)self.datasource;
+            [recommendArr enumerateObjectsUsingBlock:^(symbolModel*  obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj.symbol isEqualToString:model.symbol]) {
+                    [recommendArr  replaceObjectAtIndex:idx withObject:model];
+                    *stop = YES;
+                   
+                    [self.tableView reloadData];
+                }
+            }];
         }
     }
     NSLog(@"行情消息-%@--%d",endStr,cmd);
@@ -131,6 +158,9 @@
     klineVC.symbol = model.symbol;
     klineVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:klineVC withBackTitle:model.symbol animated:YES];
+}
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 /*
 #pragma mark - Navigation

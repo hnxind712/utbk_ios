@@ -37,7 +37,7 @@
 #define KBottomTopHeight 40.f //主板区标签对应的高度间隔
 #define KRiseFallCellHeight 60.f
 
-@interface BTHomeViewController ()<UITableViewDelegate,UITableViewDataSource,MSCycleScrollViewDelegate>
+@interface BTHomeViewController ()<UITableViewDelegate,UITableViewDataSource,MSCycleScrollViewDelegate,SocketDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UIView *bannerSuperView;
 @property (weak, nonatomic) IBOutlet UIImageView *adImageView;
@@ -425,6 +425,53 @@
     if (![self.walletBtn.currentTitle containsString:[YLUserInfo shareUserInfo].username]) {//如果是当前账户则不再处理
         [self.walletBtn setTitle:[NSString stringWithFormat:@"%@%@",LocalizationKey(@"当前钱包："),[YLUserInfo shareUserInfo].username] forState:UIControlStateNormal];
     }
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:SUBSCRIBE_SYMBOL_THUMB withVersion:COMMANDS_VERSION withRequestId: 0 withbody:nil];
+    [SocketManager share].delegate = self;
+}
+- (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
+
+    NSData *endData = [data subdataWithRange:NSMakeRange(SOCKETRESPONSE_LENGTH, data.length -SOCKETRESPONSE_LENGTH)];
+    NSString *endStr= [[NSString alloc] initWithData:endData encoding:NSUTF8StringEncoding];
+    NSData *cmdData = [data subdataWithRange:NSMakeRange(12,2)];
+    uint16_t cmd=[SocketUtils uint16FromBytes:cmdData];
+    //缩略行情
+    if (cmd==PUSH_SYMBOL_THUMB) {
+
+        NSDictionary*dic=[SocketUtils dictionaryWithJsonString:endStr];
+        symbolModel*model = [symbolModel mj_objectWithKeyValues:dic];
+        //推荐
+        if (self.responceData.count>0) {
+            NSMutableArray*recommendArr=(NSMutableArray*)self.responceData[0];
+            [recommendArr enumerateObjectsUsingBlock:^(symbolModel*  obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj.symbol isEqualToString:model.symbol]) {
+                    [recommendArr  replaceObjectAtIndex:idx withObject:model];
+                    *stop = YES;
+                   
+                    [self.tableView reloadData];
+                }
+            }];
+            //涨幅榜
+            if (self.responceData.count < 1) {
+                return;
+            } NSMutableArray*changeRankArr=(NSMutableArray*)self.responceData[1];
+            [changeRankArr enumerateObjectsUsingBlock:^(symbolModel*  obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj.symbol isEqualToString:model.symbol]) {
+                    [changeRankArr  replaceObjectAtIndex:idx withObject:model];
+                    *stop = YES;
+                    [self.tableView reloadData];
+                }
+            }];
+        }
+    }else if (cmd==UNSUBSCRIBE_SYMBOL_THUMB){
+        NSLog(@"取消订阅首页消息");
+        
+    }else{
+        
+    }
+    //    NSLog(@"首页消息-%@--%d",endStr,cmd);
 }
 
 - (IBAction)packupAction:(UIButton *)sender {

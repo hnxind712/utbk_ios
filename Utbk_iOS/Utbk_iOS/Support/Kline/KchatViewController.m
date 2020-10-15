@@ -29,7 +29,7 @@
 #import "TradeNumModel.h"
 #import "TradeNetManager.h"
 
-#define DataRow 100  //显示的行数
+#define DataRow 30  //显示的行数
 @interface KchatViewController ()<Y_StockChartViewDataSource,SocketDelegate, Y_StockChartViewControllerDelegate>
 {
     NSString *_currentResolution;
@@ -188,8 +188,6 @@
     
 }
 - (void)resetLocalization{
-//    "depth" = "深度";
-//    "marketTrades" = "成交";
     self.Hlabel.text=LocalizationKey(@"highest");
     self.Llabel.text=LocalizationKey(@"minimumest");
     self.Alabel.text=LocalizationKey(@"24H");
@@ -223,6 +221,8 @@
     
 //    NSDictionary*dic=@{@"symbol":self.symbol};
     [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:SUBSCRIBE_EXCHANGE_TRADE withVersion:COMMANDS_VERSION withRequestId: 0 withbody:dic];
+    
+    [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:PUSH_EXCHANGE_KLINE withVersion:COMMANDS_VERSION withRequestId: 0 withbody:dic];
     [SocketManager share].delegate=self;
 }
 
@@ -237,6 +237,7 @@
     imageView.userInteractionEnabled = YES;
     self.collectIamgeV = imageView;
     UIBarButtonItem *rightItem1 = [[UIBarButtonItem alloc]initWithCustomView:imageView];
+    
     
     self.navigationItem.rightBarButtonItems = @[rightItem, rightItem1];
 }
@@ -847,8 +848,10 @@
         symbolModel*model = [symbolModel mj_objectWithKeyValues:dic];
         if ([model.symbol isEqualToString:self.symbol]) {
             self.currentmodel=model;
+            [self configModel:self.currentmodel baseCoinScale:self.baseCoinScale CoinScale:self.coinScale];
             [self.tableView reloadData];
         }
+//
     }else if (cmd==UNSUBSCRIBE_SYMBOL_THUMB){
         NSLog(@"取消订阅K线缩略行情消息");
         
