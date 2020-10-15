@@ -52,7 +52,6 @@
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S1W-yT-KtM">
                     <rect key="frame" x="132" y="343" width="150" height="150"/>
-                    <color key="backgroundColor" red="0.94117647059999998" green="0.3294117647" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                     <rect key="contentStretch" x="0.0" y="0.050000000000000003" width="1" height="1"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="6bD-qG-sVd"/>

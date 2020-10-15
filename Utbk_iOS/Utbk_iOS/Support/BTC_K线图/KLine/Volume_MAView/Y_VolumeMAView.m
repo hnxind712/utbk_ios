@@ -69,8 +69,11 @@
 
     _volumeDescLabel.text = [NSString stringWithFormat:@" %@(5,10):%.4f ",LocalizationKey(@"dealNum"),model.Volume];
  
-    _VolumeMA7Label.text = [NSString stringWithFormat:@"  MA5：%.8f ",model.Volume_MA7.floatValue];
-    _VolumeMA30Label.text = [NSString stringWithFormat:@"  MA10：%.8f",model.Volume_MA30.floatValue];
+//    _VolumeMA7Label.text = [NSString stringWithFormat:@"  MA5：%.8f ",model.Volume_MA7.floatValue];
+//    _VolumeMA30Label.text = [NSString stringWithFormat:@"  MA10：%.8f",model.Volume_MA30.floatValue];
+    //新改为
+    _VolumeMA7Label.text = [NSString stringWithFormat:@"  MA5：%.4f ",model.Volume_MA7.floatValue];
+    _VolumeMA30Label.text = [NSString stringWithFormat:@"  MA10：%.4f",model.Volume_MA30.floatValue];
 }
 - (UILabel *)private_createLabel
 {

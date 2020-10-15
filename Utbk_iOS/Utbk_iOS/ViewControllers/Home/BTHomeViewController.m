@@ -422,7 +422,7 @@
     if (![YLUserInfo shareUserInfo].isSetPw) {//如果没有设置交易密码，则必须先设置
         [self.payPasswordPopView show];
     }
-    if (![self.walletBtn.currentTitle containsString:[YLUserInfo shareUserInfo].username]) {//如果是当前账户则不再处理
+    if (![self.walletBtn.currentTitle containsString:_BTS([YLUserInfo shareUserInfo].username)]) {//如果是当前账户则不再处理
         [self.walletBtn setTitle:[NSString stringWithFormat:@"%@%@",LocalizationKey(@"当前钱包："),[YLUserInfo shareUserInfo].username] forState:UIControlStateNormal];
     }
 }

@@ -2128,14 +2128,14 @@
 		D79D73F92513513A00DE7DF7 /* KLine */ = {
 			isa = PBXGroup;
 			children = (
-				D79D73FA2513513A00DE7DF7 /* KLine_MAView */,
+				D79D74172513513A00DE7DF7 /* Y_KLineView.h */,
 				D79D73FD2513513A00DE7DF7 /* Y_KLineView.m */,
+				D79D73FA2513513A00DE7DF7 /* KLine_MAView */,
 				D79D73FE2513513A00DE7DF7 /* PriceView */,
 				D79D74012513513A00DE7DF7 /* Volume_MAView */,
 				D79D74042513513A00DE7DF7 /* AccessoryView */,
 				D79D740A2513513A00DE7DF7 /* Accessory_MAView */,
 				D79D740D2513513A00DE7DF7 /* Model */,
-				D79D74172513513A00DE7DF7 /* Y_KLineView.h */,
 				D79D74182513513A00DE7DF7 /* VolumeView */,
 				D79D741E2513513A00DE7DF7 /* MainKLineView */,
 				D79D74262513513A00DE7DF7 /* SegmentView */,
@@ -2173,9 +2173,9 @@
 		D79D74042513513A00DE7DF7 /* AccessoryView */ = {
 			isa = PBXGroup;
 			children = (
+				D79D74092513513A00DE7DF7 /* Y_KLineAccessoryView.h */,
 				D79D74052513513A00DE7DF7 /* Y_KLineAccessoryView.m */,
 				D79D74062513513A00DE7DF7 /* Line */,
-				D79D74092513513A00DE7DF7 /* Y_KLineAccessoryView.h */,
 			);
 			path = AccessoryView;
 			sourceTree = "<group>";
@@ -2224,9 +2224,9 @@
 		D79D74182513513A00DE7DF7 /* VolumeView */ = {
 			isa = PBXGroup;
 			children = (
+				D79D741D2513513A00DE7DF7 /* Y_KLineVolumeView.h */,
 				D79D74192513513A00DE7DF7 /* Y_KLineVolumeView.m */,
 				D79D741A2513513A00DE7DF7 /* Line */,
-				D79D741D2513513A00DE7DF7 /* Y_KLineVolumeView.h */,
 			);
 			path = VolumeView;
 			sourceTree = "<group>";
@@ -2243,9 +2243,9 @@
 		D79D741E2513513A00DE7DF7 /* MainKLineView */ = {
 			isa = PBXGroup;
 			children = (
+				D79D74252513513A00DE7DF7 /* Y_KLineMainView.h */,
 				D79D741F2513513A00DE7DF7 /* Y_KLineMainView.m */,
 				D79D74202513513A00DE7DF7 /* Line */,
-				D79D74252513513A00DE7DF7 /* Y_KLineMainView.h */,
 			);
 			path = MainKLineView;
 			sourceTree = "<group>";

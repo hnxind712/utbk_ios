@@ -10,6 +10,7 @@
 #import "BTWithdrawRecordVC.h"
 #import "BTLinkTypeModel.h"
 #import "BTLinkTypeCollectionCell.h"
+#import "MineNetManager.h"
 
 @interface BTAssetsRechargeVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *addressCode;
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *coinTitle;
 @property (strong, nonatomic) NSArray *datasource;
 @property (strong, nonatomic) BTLinkTypeModel *selectedModel;//选中的model
+@property (copy, nonatomic) NSString *requestAddress;//请求到的address
 
 @end
 
@@ -37,25 +39,71 @@
 - (void)setupBind{
     self.coinTitle.hidden = !self.isMotherCoin;
     self.address.text = self.model.address;
-    self.addressCode.image = [BTCommonUtils logoQrCode:nil code:self.model.address];
-    if ([self.model.coin.unit containsString:@"USDT"] && self.model.usdtAddress.count >= 2) {//只有USDT并且链地址大于1的时候self.model.usdtAddress.count >= 2 &&
-        self.linkView.hidden = NO;
-        NSMutableArray *datasource = [NSMutableArray array];
-        for (NSString *key in self.model.usdtAddress.allKeys) {
-            if ([key isEqualToString:@"USDTERC20"]) {
-                BTLinkTypeModel *linkModel = [[BTLinkTypeModel alloc]init];
-                linkModel.selected = YES;
-                linkModel.linkType = [key substringFromIndex:4];
-                [datasource addObject:linkModel];
-            }else if ([key isEqualToString:@"USDTTRC20"]){
-                BTLinkTypeModel *linkModel = [[BTLinkTypeModel alloc]init];
-                linkModel.linkType = [key substringFromIndex:4];
-                [datasource addObject:linkModel];
+    if (!self.model.address.length) {//没有地址
+        [MineNetManager getassetwalletresetaddress:@{@"unit":self.model.coin.unit} CompleteHandle:^(id resPonseObj, int code) {
+            if (code) {
+                if ([resPonseObj[@"code"] integerValue] == 0) {
+//                    [self getData];
+                }else{
+                    [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+                }
+            }else{
+                [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
             }
-        }
-        self.datasource = datasource;
-        [self.linkTypeCollection reloadData];
+        }];
     }
+    self.addressCode.image = [BTCommonUtils logoQrCode:nil code:self.model.address];
+    if ([self.model.coin.unit containsString:@"USDT"]) {
+        self.linkView.hidden = NO;
+        WeakSelf(weakSelf)
+        [[XBRequest sharedInstance]getDataWithUrl:getMinConfigsAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+            NSLog(@"数据 = %@",responseResult);
+            StrongSelf(strongSelf)
+            if (NetSuccess) {
+                NSArray *dataArray = [BTConfigureModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                __block BTConfigureModel *linkModel;
+                [dataArray enumerateObjectsUsingBlock:^(BTConfigureModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if ([obj.key isEqualToString:@"usdt-link-type"]) {//链类型对应的key
+                        linkModel = obj;*stop = YES;
+                    }
+                }];
+                if (linkModel.value.length) {
+                    NSMutableArray *list = [NSMutableArray array];
+                    NSArray *data = [linkModel.value componentsSeparatedByString:@","];
+                    [data enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        BTLinkTypeModel *model = [[BTLinkTypeModel alloc]init];
+                        model.linkType = obj;
+                        if (idx == 0) {//默认选中
+                            model.selected = YES;
+                            strongSelf.selectedModel = model;
+                        }
+                        [list addObject:model];
+                    }];
+                    strongSelf.datasource = list;
+                    [strongSelf.linkTypeCollection reloadData];
+                }
+
+            }
+        }];
+    }
+//    if ([self.model.coin.unit containsString:@"USDT"] && self.model.usdtAddress.count >= 2){//只有USDT并且链地址大于1的时候self.model.usdtAddress.count >= 2 &&
+//        self.linkView.hidden = NO;
+//        NSMutableArray *datasource = [NSMutableArray array];
+//        for (NSString *key in self.model.usdtAddress.allKeys) {
+//            if ([key isEqualToString:@"USDTERC20"]) {
+//                BTLinkTypeModel *linkModel = [[BTLinkTypeModel alloc]init];
+//                linkModel.selected = YES;
+//                linkModel.linkType = [key substringFromIndex:4];
+//                [datasource addObject:linkModel];
+//            }else if ([key isEqualToString:@"USDTTRC20"]){
+//                BTLinkTypeModel *linkModel = [[BTLinkTypeModel alloc]init];
+//                linkModel.linkType = [key substringFromIndex:4];
+//                [datasource addObject:linkModel];
+//            }
+//        }
+//        self.datasource = datasource;
+//        [self.linkTypeCollection reloadData];
+//    }
 }
 - (void)setupLayout{
     self.layout.itemSize = CGSizeMake(70.f, 25.f);

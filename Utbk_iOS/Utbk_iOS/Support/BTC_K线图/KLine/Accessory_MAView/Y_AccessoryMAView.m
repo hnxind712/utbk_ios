@@ -97,9 +97,13 @@
     } else {
         
         _accessoryDescLabel.text = @" KDJ(9,3,3)";
-        _DIFLabel.text = [NSString stringWithFormat:@"  K：%.8f ",model.KDJ_K.floatValue];
-        _DEALabel.text = [NSString stringWithFormat:@"  D：%.8f",model.KDJ_D.floatValue];
-        _MACDLabel.text = [NSString stringWithFormat:@"  J：%.8f",model.KDJ_J.floatValue];
+//        _DIFLabel.text = [NSString stringWithFormat:@"  K：%.8f ",model.KDJ_K.floatValue];
+//        _DEALabel.text = [NSString stringWithFormat:@"  D：%.8f",model.KDJ_D.floatValue];
+//        _MACDLabel.text = [NSString stringWithFormat:@"  J：%.8f",model.KDJ_J.floatValue];
+        //新改为4位
+        _DIFLabel.text = [NSString stringWithFormat:@"  K：%.4f ",model.KDJ_K.floatValue];
+        _DEALabel.text = [NSString stringWithFormat:@"  D：%.4f",model.KDJ_D.floatValue];
+        _MACDLabel.text = [NSString stringWithFormat:@"  J：%.4f",model.KDJ_J.floatValue];
     }
 
 

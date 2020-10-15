@@ -858,6 +858,7 @@
     }else if (cmd==PUSH_EXCHANGE_KLINE){
         NSDictionary*dic=[SocketUtils dictionaryWithJsonString:endStr];
         NSLog(@"订阅K线消息 --- %@",dic);
+        
         /**时间--开盘价--最高价--最低价--收盘价--成交量**/
         if (self.currentIndex == 2 && [dic[@"symbol"] isEqualToString:self.symbol]) {
             NSArray *arr = @[@[dic[@"time"], dic[@"openPrice"], dic[@"highestPrice"], dic[@"lowestPrice"], dic[@"closePrice"], dic[@"volume"]]];

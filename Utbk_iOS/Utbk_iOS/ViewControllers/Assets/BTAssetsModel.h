@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign)BOOL isLock;
 @property(nonatomic,assign)BOOL isHidden;
 @property(nonatomic,copy)NSString *releaseBalance;
-@property(nonatomic,strong)NSDictionary *usdtAddress;
+@property(nonatomic,strong)NSMutableDictionary *usdtAddress;
 
 @end
 

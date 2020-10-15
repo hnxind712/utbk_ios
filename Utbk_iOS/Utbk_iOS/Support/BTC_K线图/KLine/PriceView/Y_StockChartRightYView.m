@@ -26,19 +26,25 @@
 -(void)setMaxValue:(CGFloat)maxValue
 {
     _maxValue = maxValue;
-    self.maxValueLabel.text = [NSString stringWithFormat:@"%.8f",maxValue];
+//    self.maxValueLabel.text = [NSString stringWithFormat:@"%.8f",maxValue];
+    //新改为
+    self.maxValueLabel.text = [NSString stringWithFormat:@"%.4f",maxValue];
 }
 
 -(void)setMiddleValue:(CGFloat)middleValue
 {
     _middleValue = middleValue;
-    self.middleValueLabel.text = [NSString stringWithFormat:@"%.8f",middleValue];
+//    self.middleValueLabel.text = [NSString stringWithFormat:@"%.8f",middleValue];
+    //新改为
+    self.middleValueLabel.text = [NSString stringWithFormat:@"%.4f",middleValue];
 }
 
 -(void)setMinValue:(CGFloat)minValue
 {
     _minValue = minValue;
-    self.minValueLabel.text = [NSString stringWithFormat:@"%.8f",minValue];
+//    self.minValueLabel.text = [NSString stringWithFormat:@"%.8f",minValue];
+    //新改为
+    self.minValueLabel.text = [NSString stringWithFormat:@"%.4f",minValue];
 }
 
 -(void)setMinLabelText:(NSString *)minLabelText
