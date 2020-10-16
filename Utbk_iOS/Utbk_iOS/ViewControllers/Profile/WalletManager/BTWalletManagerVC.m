@@ -13,6 +13,7 @@
 #import "BTWalletManageDetailVC.h"
 #import "BTCurrencyViewController.h"
 #import "BTCurrencyModel.h"
+#import "YLTabBarController.h"
 
 @interface BTWalletManagerVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -38,6 +39,25 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setupBind];
+    if (self.isLogin) {
+        [self hiddenLeft];
+    }
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if (self.isLogin) {
+        if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+            self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        }
+    }
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if (self.isLogin) {
+        if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+            self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+        }
+    }
 }
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTWalletManagerCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTWalletManagerCell class])];
@@ -107,7 +127,7 @@
 //        model.secretKey = @"1c54a1e782a45372b63c5389bf5908e30e51fef31c3afd12fc81ba52e8ac3b76";
         if (model.secretKey.length) {
             [EasyShowLodingView showLodingText:LocalizationKey(@"正在切换钱包")];
-            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":@"",@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
+            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":@"Aa123456",@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
                 [EasyShowLodingView hidenLoding];
                 StrongSelf(strongSelf)
                 if (NetSuccess) {
@@ -120,7 +140,15 @@
                     NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:strongSelf.datasource];
                     [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
                     [[NSUserDefaults standardUserDefaults] synchronize];
-                    [strongSelf.navigationController popViewControllerAnimated:YES];
+                    if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
+                        [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
+                    }else{
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            YLTabBarController *tabbar = (YLTabBarController *)[AppDelegate sharedAppDelegate].window.rootViewController;
+                            tabbar.selectedIndex = 0;
+                            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+                        });
+                    }
                 }else
                     ErrorToast
                     }];

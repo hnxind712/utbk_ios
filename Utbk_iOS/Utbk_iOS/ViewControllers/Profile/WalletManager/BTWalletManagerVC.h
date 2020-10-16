@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTWalletManagerVC : BTBaseViewController
 
+@property (assign, nonatomic) BOOL isLogin;//重新登录
+
 @end
 
 NS_ASSUME_NONNULL_END

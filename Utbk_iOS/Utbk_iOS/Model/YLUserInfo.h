@@ -37,6 +37,7 @@
 @property(nonatomic,copy)NSString *address;//BTCK地址，钱包管理界面需要用到
 @property(nonatomic,copy)NSString *mnemonicWords;//助记词
 @property(nonatomic,assign)NSInteger activeStatus;//激活状态
+@property(nonatomic,copy)NSString *password;
 
 /*  通过初始化userIfo并保存在本地(单利模式)   */
 +(instancetype)getuserInfoWithDic:(NSDictionary *)dic;

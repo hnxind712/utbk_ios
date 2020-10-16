@@ -316,24 +316,6 @@
                 resultBlock(nil,0);
             }];
         }else if ([BaseNetManager showResponseCode:response] > 399 && [BaseNetManager showResponseCode:response] < 500){
-//            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//                resultBlock(nil,0);
-//                [LEEAlert alert].config
-//                .LeeTitle(LocalizationKey(@"warmPrompt"))
-//                .LeeAddContent(^(UILabel *label) {
-//                    label.text = LocalizationKey(@"GestureMessage");
-//                    label.font = [UIFont systemFontOfSize:16];
-//                })
-//                .LeeAddAction(^(LEEAction *action) {
-//                    action.title = LocalizationKey(@"ok");
-//                    action.titleColor = RGBCOLOR(43, 43, 43);
-//                    action.font = [UIFont systemFontOfSize:16];
-//                    action.clickBlock = ^{
-//                        abort();
-//                    };
-//                })
-//                .LeeShow();
-//            }];
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [EasyShowLodingView hidenLoding];
             }];

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordNew;
 @property (weak, nonatomic) IBOutlet UITextField *passwordSecond;
 @property (weak, nonatomic) IBOutlet UIButton *completedBtn;
+@property (weak, nonatomic) IBOutlet UILabel *tips;
 
 @end
 
@@ -21,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = LocalizationKey(@"修改交易密码");
+    self.tips.text = LocalizationKey(@"温馨提示：请牢记您的提币密码，如果遗忘将无法找回，将无法提现账户资产，请慎重！！");
     // Do any additional setup after loading the view from its nib.
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{

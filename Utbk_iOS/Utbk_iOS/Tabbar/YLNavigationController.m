@@ -68,7 +68,7 @@
     [super viewDidLoad];
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.backIndicatorImage = [UIImage new];
-    [self setGesture];
+//    [self setGesture];
 
 }
 

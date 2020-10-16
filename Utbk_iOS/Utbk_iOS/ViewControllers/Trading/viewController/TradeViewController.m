@@ -1435,8 +1435,12 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                         }
                         if (model.change <0) {
                             self.nowPrice.textColor=RedColor;
+                            self.riseFallLabel.textColor = RedColor;
+                            self.riseFallLabel.text = [NSString stringWithFormat:@"%.4f%%", model.chg*100];
                         }else{
                             self.nowPrice.textColor=GreenColor;
+                            self.riseFallLabel.textColor = GreenColor;
+                            self.riseFallLabel.text = [NSString stringWithFormat:@"+%.4f%%", model.chg*100];
                         }
                         if ([YLUserInfo isLogIn]) {
                             if (!_IsSell) {

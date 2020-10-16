@@ -39,19 +39,19 @@
 - (void)setupBind{
     self.coinTitle.hidden = !self.isMotherCoin;
     self.address.text = self.model.address;
-    if (!self.model.address.length) {//没有地址
-        [MineNetManager getassetwalletresetaddress:@{@"unit":self.model.coin.unit} CompleteHandle:^(id resPonseObj, int code) {
-            if (code) {
-                if ([resPonseObj[@"code"] integerValue] == 0) {
-//                    [self getData];
-                }else{
-                    [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
-                }
-            }else{
-                [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
-            }
-        }];
-    }
+//    if (!self.model.address.length) {//没有地址
+//        [MineNetManager getassetwalletresetaddress:@{@"unit":self.model.coin.unit} CompleteHandle:^(id resPonseObj, int code) {
+//            if (code) {
+//                if ([resPonseObj[@"code"] integerValue] == 0) {
+////                    [self getData];
+//                }else{
+//                    [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+//                }
+//            }else{
+//                [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
+//            }
+//        }];
+//    }
     self.addressCode.image = [BTCommonUtils logoQrCode:nil code:self.model.address];
     if ([self.model.coin.unit containsString:@"USDT"]) {
         self.linkView.hidden = NO;
@@ -166,9 +166,12 @@
     self.selectedModel.selected = NO;
     self.selectedModel = model;
     [collectionView reloadData];
-    for (NSString *key in self.model.usdtAddress.allKeys) {
-        if ([key containsString:model.linkType]) {
-            self.address.text = self.model.usdtAddress[key];break;
+    if ([self.selectedModel.linkType isEqualToString:@"ERC20"]) {//
+        self.address.text = _BTS(self.model.address);
+    }else{
+        NSDictionary *dic = self.model.usdtAddress;
+        if (dic) {
+            self.address.text = _BTS(dic[@"USDTTRC20"]);
         }
     }
 }

@@ -122,6 +122,8 @@
 "总额" = "Total amount";
 "买" = "Buy";
 "卖" = "Sell";
+"修改交易密码" = "Change the trade password";
+"温馨提示：请牢记您的提币密码，如果遗忘将无法找回，将无法提现账户资产，请慎重！！" = "Warm tip: please remember your withdrawal password. If you forget it, you will not be able to get it back. You will not be able to withdraw your account assets.";
 //可能通用
 "notice" = "Notice";
 "projectName" = "ztuo";

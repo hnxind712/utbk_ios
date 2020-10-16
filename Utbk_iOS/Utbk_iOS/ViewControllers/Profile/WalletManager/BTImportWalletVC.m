@@ -152,6 +152,7 @@
     [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];
+            info.password = self.password.text;
             [YLUserInfo saveUser:info];
             NSMutableArray *array = [NSMutableArray array];
             //取出

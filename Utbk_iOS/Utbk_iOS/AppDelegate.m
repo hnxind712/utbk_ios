@@ -15,6 +15,7 @@
 #import <WebKit/WebKit.h>
 #import "BTRegisterViewController.h"
 #import "MarketNetManager.h"
+#import "BTWalletManagerVC.h"
 
 @interface AppDelegate ()
 
@@ -34,9 +35,19 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor blackColor];
     if (![YLUserInfo isLogIn]) {
-        BTRegisterViewController *registerVC = [[BTRegisterViewController alloc]init];
-        YLNavigationController *nav = [[YLNavigationController alloc]initWithRootViewController:registerVC];
-        self.window.rootViewController = nav;
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
+        NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+        if (list.count) {
+            BTWalletManagerVC *registerVC = [[BTWalletManagerVC alloc]init];
+            registerVC.isLogin = YES;
+            YLNavigationController *nav = [[YLNavigationController alloc]initWithRootViewController:registerVC];
+            self.window.rootViewController = nav;
+        }else{
+            BTRegisterViewController *registerVC = [[BTRegisterViewController alloc]init];
+            YLNavigationController *nav = [[YLNavigationController alloc]initWithRootViewController:registerVC];
+            self.window.rootViewController = nav;
+        }
     }else{
         YLTabBarController *SectionTabbar = [[YLTabBarController alloc] init];
         self.window.rootViewController = SectionTabbar;
