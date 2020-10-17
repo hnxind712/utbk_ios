@@ -131,6 +131,9 @@ cell.preservesSuperviewLayoutMargins = NO; \
 //将所有注册或者登录过的账号都保存在本地
 #define KWalletManagerKey @"__KWalletManagerKey__"
 #define KLogoutKey @"__KLogoutKey__"
+//客服ID
+#define KCustomerServiceAppID @"29489080117b3"
+#define KCustomerServiceSiteID @"169097"
 
 static  int    COMMANDS_VERSION = 1;
 static  short  SUBSCRIBE_SYMBOL_THUMB = 20001; //订阅缩略行情

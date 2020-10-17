@@ -53,11 +53,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24H 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ld0-B1-KBD">
-                        <rect key="frame" x="248" y="19" width="60" height="22"/>
+                        <rect key="frame" x="233" y="19" width="75" height="22"/>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.32549019607843138" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="4ws-xj-CgL"/>
-                            <constraint firstAttribute="width" constant="60" id="BxN-U5-FVA"/>
+                            <constraint firstAttribute="width" constant="75" id="BxN-U5-FVA"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

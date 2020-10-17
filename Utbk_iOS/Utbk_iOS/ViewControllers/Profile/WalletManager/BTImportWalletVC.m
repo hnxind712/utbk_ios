@@ -10,6 +10,7 @@
 #import "YLTabBarController.h"
 #import "MineNetManager.h"
 #import "BTAssetsModel.h"
+#import <V5Client/V5ClientAgent.h>
 
 @interface BTImportWalletVC ()<UITextViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *mnemonicWordBtn;

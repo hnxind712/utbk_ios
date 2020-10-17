@@ -16,6 +16,7 @@
 #import "BTRegisterViewController.h"
 #import "MarketNetManager.h"
 #import "BTWalletManagerVC.h"
+#import <V5Client/V5ClientAgent.h>
 
 @interface AppDelegate ()
 
@@ -52,7 +53,10 @@
         YLTabBarController *SectionTabbar = [[YLTabBarController alloc] init];
         self.window.rootViewController = SectionTabbar;
     }
-
+    // 初始化客服SDK
+    [V5ClientAgent initWithSiteId:KCustomerServiceSiteID
+                            appId:KCustomerServiceAppID
+                   exceptionBlock:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(createTabbar) name:KfirstLogin object:nil];//第一次创建钱包备份完或者稍后备份的时候需要创建首页
     [self.window makeKeyAndVisible];
     return YES;
@@ -91,6 +95,21 @@
         }
     }];
 }
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    // 退出到后台时，通知SDK用户离线
+    [[V5ClientAgent shareClient] onApplicationDidEnterBackground];
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    // 移动到前台时，通知SDK用户上线并连接
+    [[V5ClientAgent shareClient] onApplicationWillEnterForeground];
+}
+
 #pragma mark 注册推送
 - (void)registNotification
 {
@@ -124,16 +143,11 @@
 #pragma mark-注册远程通知
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     //获取deviceToken
-//    _deviceToken= [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""]
-//                                     stringByReplacingOccurrencesOfString:@">" withString:@""]
-//                                    stringByReplacingOccurrencesOfString:@" " withString:@""];
-//    _deviceToken= [[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""]
-//                    stringByReplacingOccurrencesOfString:@">" withString:@""];
-//    [self PresentGestureLockViewController];
-//     NSDictionary*dic=[NSDictionary dictionaryWithObjectsAndKeys:[YLUserInfo shareUserInfo].ID, @"uid",_deviceToken, @"token",nil];
-//    [[ChatSocketManager share] ChatsendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:UNSUBSCRIBE_APNS withVersion:COMMANDS_VERSION withRequestId: 0 withbody:dic];
-//    [ChatSocketManager share].delegate=self;//先取消订阅
-//    NSLog(@"注册远程推送成功——————%@",_deviceToken);
+    NSString *_deviceToken = [[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""]
+                    stringByReplacingOccurrencesOfString:@">" withString:@""];
+    if (_deviceToken) {
+        [[NSUserDefaults standardUserDefaults]setObject:_deviceToken forKey:@"_deviceToken_"];
+    }
 }
 #pragma mark-注册远程通知失败
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {

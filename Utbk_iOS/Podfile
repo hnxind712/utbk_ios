@@ -19,4 +19,5 @@ target 'Utbk_iOS' do
     pod 'VTMagic'
     pod 'YBPopupMenu', '~> 1.1.2'
     pod 'PGDatePicker'
+    pod 'V5Client'
 end

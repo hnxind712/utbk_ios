@@ -31,6 +31,7 @@ PODS:
   - SDWebImage/Core (5.9.1)
   - Toast (2.0)
   - TZImagePickerController (3.3.1)
+  - V5Client (1.3.13)
   - VTMagic (1.2.4):
     - VTMagic/Core (= 1.2.4)
   - VTMagic/Core (1.2.4)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - SDWebImage
   - Toast (= 2.0.0)
   - TZImagePickerController (= 3.3.1)
+  - V5Client
   - VTMagic
   - YBPopupMenu (~> 1.1.2)
 
@@ -66,6 +68,7 @@ SPEC REPOS:
     - SDWebImage
     - Toast
     - TZImagePickerController
+    - V5Client
     - VTMagic
     - YBPopupMenu
 
@@ -83,9 +86,10 @@ SPEC CHECKSUMS:
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   Toast: 5cc02678e496690856164aa49c834d05e4fb314f
   TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
+  V5Client: 745e3149d4ca1721000fcb9b565fa7294434907f
   VTMagic: b49e5f456dbcbfd9a3588ba92417233a105bc193
   YBPopupMenu: 12452dec37bdd9b33df25ae89050dfbd695ebdd0
 
-PODFILE CHECKSUM: 38b1adb3248f6dde895cb740f4a0687dd3f4d188
+PODFILE CHECKSUM: 8d9c2613b5b13d5c7eb2f7bf8455cbaff5e46b68
 
 COCOAPODS: 1.9.3

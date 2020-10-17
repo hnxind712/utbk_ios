@@ -11,6 +11,7 @@
 #import "MineNetManager.h"
 #import "BTAssetsModel.h"
 #import "BTBackupMnemonicsVC.h"
+#import <V5Client/V5ClientAgent.h>
 
 @interface BTCreateWalletVC ()<UITextFieldDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *createBtn;

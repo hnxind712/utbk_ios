@@ -17,11 +17,12 @@
 #import "BTBackupMnemonicsVC.h"
 #import <SDWebImage/UIButton+WebCache.h>
 #import "LSAppBrowserViewController.h"
-
+#import <V5Client/V5ClientAgent.h>
+#import "IQKeyboardManager.h"
 
 #define KBlockScanURL @"https://tronscan.io/"
 
-@interface BTProfileViewController ()<TZImagePickerControllerDelegate>
+@interface BTProfileViewController ()<TZImagePickerControllerDelegate,V5ChatViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *headerBtn;
 @property (strong, nonatomic) UIImageView *navgationBg;
@@ -49,6 +50,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(resetLocalization) name:LanguageChange object:nil];
     // Do any additional setup after loading the view from its nib.
 }
+
 - (void)resetLocalization{
     self.Label1.text = LocalizationKey(@"钱包管理");
     self.Label2.text = LocalizationKey(@"团队业绩");
@@ -77,6 +79,36 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:RGBOF(0xffffff)}];
     [self setupBind];
+    [self resetLocalization];
+    if ([V5ClientAgent shareClient].isConnected) {
+        [[V5ClientAgent shareClient] stopClient];
+    }
+}
+/**
+ *  即将打开会话视图
+ */
+- (void)clientViewWillAppear {
+    //取消输入键盘插件
+    [IQKeyboardManager sharedManager].enable = NO;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+}
+
+/**
+ *  会话视图打开后
+ */
+- (void)clientViewDidAppear {
+}
+
+/**
+ *  即将关闭会话视图
+ */
+- (void)clientViewWillDisappear {
+    //开启输入键盘插件
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
+}
+- (void)onClientViewConnect{
+    [[V5ClientAgent shareClient] updateSiteInfo];
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -148,7 +180,6 @@
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
-    WeakSelf(weakSelf)
     UIImage *image = photos.firstObject;
     NSData *imageData = UIImageJPEGRepresentation(image, 0.8);
     NSString *str = @"uc/upload/oss/image";
@@ -258,7 +289,42 @@
 }
 //社区客服
 - (IBAction)communityServiceAction:(UITapGestureRecognizer *)sender {
-    [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
+    
+    //创建成功之后，部署个人信息要客服
+    V5Config *config = [V5ClientAgent shareClient].config;
+    [config shouldUpdateUserInfo];
+    config.nickname = [YLUserInfo shareUserInfo].username;
+    config.gender = 0; //性别:0-未知 1-男 2-女
+    config.openId = [YLUserInfo shareUserInfo].ID;
+    config.avatar = _BTS([YLUserInfo shareUserInfo].avatar);
+    config.deviceToken = _BTS([[NSUserDefaults standardUserDefaults]objectForKey:@"_deviceToken_"]);
+    
+    V5ChatViewController *chatViewController = [V5ClientAgent createChatViewController];
+    // 不显示底部栏（有底部栏的需加此配置）
+    chatViewController.hidesBottomBarWhenPushed = YES;
+    // 会话界面的代理
+    chatViewController.delegate = self;
+    //chatViewController.deviceToken = @"设备的deviceToken"; // 也可在config设置deviceToken
+    // 允许并设置消息铃声SystemSoundID
+    chatViewController.allowSound = YES;
+    chatViewController.soundID = 1007;
+    // 允许发送语音(默认YES)
+    chatViewController.enableVoiceRecord = YES;
+    // 允许显示头像(默认YES)
+    chatViewController.showAvatar = YES;
+    // 头像圆角
+    chatViewController.avatarRadius = 6;
+    
+    // 每次下拉获取历史消息最大数量，默认10
+    //chatViewController.numOfMessagesOnRefresh = 10;
+    // 开场显示历史消息数量，默认10（显示历史消息>0则无开场白）
+    chatViewController.numOfMessagesOnOpen = 10;
+    
+    // 设置会话界面标题
+    chatViewController.title = LocalizationKey(@"社区客服"); // 设置标题
+    [self.navigationController pushViewController:chatViewController animated:YES];
+    
+
 }
 //开源地址
 - (IBAction)openSourceAddressAction:(UITapGestureRecognizer *)sender {

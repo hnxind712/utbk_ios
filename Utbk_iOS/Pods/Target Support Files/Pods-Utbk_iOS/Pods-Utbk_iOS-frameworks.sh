@@ -210,6 +210,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Toast/Toast.framework"
+  install_framework "${PODS_ROOT}/V5Client/Frameworks/cocoapods/V5Client.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/VTMagic/VTMagic.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YBPopupMenu/YBPopupMenu.framework"
 fi
@@ -227,6 +228,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Toast/Toast.framework"
+  install_framework "${PODS_ROOT}/V5Client/Frameworks/cocoapods/V5Client.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/VTMagic/VTMagic.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YBPopupMenu/YBPopupMenu.framework"
 fi

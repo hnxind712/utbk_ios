@@ -13,6 +13,14 @@
 		3C11212C251F2E9F003FC856 /* BTSharePoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C11212A251F2E9F003FC856 /* BTSharePoolCell.m */; };
 		3C112130251F341C003FC856 /* BTSharePoolModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C11212F251F341C003FC856 /* BTSharePoolModel.m */; };
 		3C112136251F8777003FC856 /* BTPoolRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C112135251F8777003FC856 /* BTPoolRecordModel.m */; };
+		3C118FE7253B2B5D00978FE2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C118FE6253B2B5D00978FE2 /* libsqlite3.tbd */; };
+		3C118FE9253B2B6600978FE2 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C118FE8253B2B6600978FE2 /* libicucore.tbd */; };
+		3C118FEB253B2B8700978FE2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C118FEA253B2B8700978FE2 /* AVFoundation.framework */; };
+		3C118FED253B2B8F00978FE2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C118FEC253B2B8F00978FE2 /* AudioToolbox.framework */; };
+		3C118FEF253B2B9700978FE2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C118FEE253B2B9700978FE2 /* CFNetwork.framework */; };
+		3C118FF1253B2BBB00978FE2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C118FF0253B2BBB00978FE2 /* Security.framework */; };
+		3C118FF3253B2BD100978FE2 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C118FF2253B2BD100978FE2 /* MediaPlayer.framework */; };
+		3C118FF5253B2BD900978FE2 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C118FF4253B2BD900978FE2 /* WebKit.framework */; };
 		3C138486250DFEDA00866D69 /* UIView+HJTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138484250DFEDA00866D69 /* UIView+HJTheme.m */; };
 		3C138487250DFEDA00866D69 /* UIView+HJViewStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C138485250DFEDA00866D69 /* UIView+HJViewStyle.m */; };
 		3C13848C250E08AE00866D69 /* BTWalletManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C13848A250E08AE00866D69 /* BTWalletManagerVC.m */; };
@@ -412,6 +420,14 @@
 		3C11212F251F341C003FC856 /* BTSharePoolModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTSharePoolModel.m; sourceTree = "<group>"; };
 		3C112134251F8777003FC856 /* BTPoolRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPoolRecordModel.h; sourceTree = "<group>"; };
 		3C112135251F8777003FC856 /* BTPoolRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTPoolRecordModel.m; sourceTree = "<group>"; };
+		3C118FE6253B2B5D00978FE2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		3C118FE8253B2B6600978FE2 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		3C118FEA253B2B8700978FE2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3C118FEC253B2B8F00978FE2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3C118FEE253B2B9700978FE2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3C118FF0253B2BBB00978FE2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3C118FF2253B2BD100978FE2 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		3C118FF4253B2BD900978FE2 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		3C138479250DF90D00866D69 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		3C13847A250DF90D00866D69 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		3C138482250DFEDA00866D69 /* UIView+HJTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HJTheme.h"; sourceTree = "<group>"; };
@@ -1131,6 +1147,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C118FF5253B2BD900978FE2 /* WebKit.framework in Frameworks */,
+				3C118FF3253B2BD100978FE2 /* MediaPlayer.framework in Frameworks */,
+				3C118FF1253B2BBB00978FE2 /* Security.framework in Frameworks */,
+				3C118FEF253B2B9700978FE2 /* CFNetwork.framework in Frameworks */,
+				3C118FED253B2B8F00978FE2 /* AudioToolbox.framework in Frameworks */,
+				3C118FEB253B2B8700978FE2 /* AVFoundation.framework in Frameworks */,
+				3C118FE9253B2B6600978FE2 /* libicucore.tbd in Frameworks */,
+				3C118FE7253B2B5D00978FE2 /* libsqlite3.tbd in Frameworks */,
 				A7CBE052317DF6211B826506 /* Pods_Utbk_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1551,6 +1575,14 @@
 		7A0521A7907C178B55B806B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C118FF4253B2BD900978FE2 /* WebKit.framework */,
+				3C118FF2253B2BD100978FE2 /* MediaPlayer.framework */,
+				3C118FF0253B2BBB00978FE2 /* Security.framework */,
+				3C118FEE253B2B9700978FE2 /* CFNetwork.framework */,
+				3C118FEC253B2B8F00978FE2 /* AudioToolbox.framework */,
+				3C118FEA253B2B8700978FE2 /* AVFoundation.framework */,
+				3C118FE8253B2B6600978FE2 /* libicucore.tbd */,
+				3C118FE6253B2B5D00978FE2 /* libsqlite3.tbd */,
 				6BA45A25EE5BCFA354891E2D /* Pods_Utbk_iOS.framework */,
 			);
 			name = Frameworks;
@@ -3416,7 +3448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3469,7 +3501,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

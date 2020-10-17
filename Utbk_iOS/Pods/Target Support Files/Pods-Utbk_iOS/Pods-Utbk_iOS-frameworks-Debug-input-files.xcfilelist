@@ -12,5 +12,6 @@ ${BUILT_PRODUCTS_DIR}/PGPickerView/PGPickerView.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework
 ${BUILT_PRODUCTS_DIR}/Toast/Toast.framework
+${PODS_ROOT}/V5Client/Frameworks/cocoapods/V5Client.framework
 ${BUILT_PRODUCTS_DIR}/VTMagic/VTMagic.framework
 ${BUILT_PRODUCTS_DIR}/YBPopupMenu/YBPopupMenu.framework
