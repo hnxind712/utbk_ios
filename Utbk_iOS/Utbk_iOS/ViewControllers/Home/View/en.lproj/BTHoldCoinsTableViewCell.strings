@@ -12,7 +12,7 @@
 "RCq-DB-h4K.text" = "Promotion force";
 
 /* Class = "UILabel"; text = "累计收益"; ObjectID = "RV6-Nj-VfJ"; */
-"RV6-Nj-VfJ.text" = "Accumulated earnings";
+"RV6-Nj-VfJ.text" = "My cash";//改为我的持币
 
 /* Class = "UILabel"; text = "0"; ObjectID = "Rf7-2Y-YeX"; */
 "Rf7-2Y-YeX.text" = "0";

@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *coinName;
 @property (weak, nonatomic) IBOutlet UILabel *subAmount;
 @property (weak, nonatomic) IBOutlet UILabel *subCoin;
+@property (weak, nonatomic) IBOutlet UILabel *motherCoin;//累计收益母币币种
+@property (weak, nonatomic) IBOutlet UILabel *yesMotherCoin;
 
 @property (weak, nonatomic) IBOutlet UILabel *destroyTotal;
 @property (weak, nonatomic) IBOutlet UILabel *totalOutput;
@@ -34,14 +36,12 @@
 - (void)configureCellWithModel:(BTSharePoolModel *)model{
     self.coinName.text = model.coinName;
     if (model.subCoin.length) {
-        self.subCoin.text = model.subCoin;//子币
-        self.subAmount.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.subCoinYesterdayProduce]];//子币昨日收益
+        self.subAmount.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f %@",model.subCoinYesterdayProduce,model.subCoin]];//子币昨日收益
     }
-    self.destroyTotal.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.parentCoinAmount]];//母币累计产出
-    self.yesEarnings.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.yesterdayProduce]];//母币昨日收益
+    self.destroyTotal.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f %@",model.parentCoinAmount,model.coinName]];//母币累计产出
+    self.yesEarnings.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f %@",model.yesterdayProduce,model.coinName]];//母币昨日收益
     self.totalOutput.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.cumulativeProduce]];//累计产出
-    self.subOutput.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.subCoinAmount]];//子币累计产出
-    self.subOutputCoin.text = model.subCoin;
+    self.subOutput.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f %@",model.subCoinAmount,model.subCoin]];//子币累计产出
     if (model.groupsQty * KContributionValue > KContributionValue * 200) {//说明是矿主200组以上就是矿主
         self.starView.hidden = NO;
         [self.levelBtn setTitle:LocalizationKey(@"矿主") forState:UIControlStateNormal];

@@ -419,7 +419,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self refreshHeaderAction];
-    if (![YLUserInfo shareUserInfo].isSetPw) {//如果没有设置交易密码，则必须先设置
+    if (![YLUserInfo shareUserInfo].isSetPw && [YLUserInfo isLogIn]) {//如果没有设置交易密码，则必须先设置
         [self.payPasswordPopView show];
     }
     if (![self.walletBtn.currentTitle containsString:_BTS([YLUserInfo shareUserInfo].username)]) {//如果是当前账户则不再处理

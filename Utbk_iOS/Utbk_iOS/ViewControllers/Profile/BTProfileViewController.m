@@ -120,7 +120,7 @@
     }else{
         self.address.text = [YLUserInfo shareUserInfo].address;
     }
-    [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":[YLUserInfo shareUserInfo].ID} ResponseObject:^(NSDictionary *responseResult) {
+    [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":_BTS([YLUserInfo shareUserInfo].ID)} ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             YLUserInfo *info = [YLUserInfo shareUserInfo];
             info.activeStatus = [responseResult[@"data"][@"status"] isKindOfClass:[NSNull class]] ? 0 : [responseResult[@"data"][@"status"] integerValue];

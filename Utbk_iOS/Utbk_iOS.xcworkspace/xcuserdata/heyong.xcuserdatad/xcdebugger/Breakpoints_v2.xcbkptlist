@@ -71,32 +71,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B0D74675-99FE-40F7-A765-901F107BB069"
+            uuid = "1C540B43-A7F1-4453-891F-A8E99957DEF9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Utbk_iOS/ViewControllers/Trading/viewController/TradeViewController.m"
+            filePath = "Utbk_iOS/Remote/XBRequest.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1952"
-            endingLineNumber = "1952"
-            landmarkName = "-delegateSocket:didReadData:withTag:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "75CEB322-1261-4ABB-BBCD-7623730A13A8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Utbk_iOS/ViewControllers/Trading/viewController/TradeViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1956"
-            endingLineNumber = "1956"
-            landmarkName = "-delegateSocket:didReadData:withTag:"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-postDataWithUrl:Parameter:contentType:ResponseObject:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

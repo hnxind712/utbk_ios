@@ -123,11 +123,11 @@
         [weakSelf.navigationController pushViewController:walletDetail animated:YES];
     };
     cell.switchAccountAction = ^{
-//        if (model == self.currentInfo) return;
+        if (model == self.currentInfo) return;
 //        model.secretKey = @"1c54a1e782a45372b63c5389bf5908e30e51fef31c3afd12fc81ba52e8ac3b76";
         if (model.secretKey.length) {
             [EasyShowLodingView showLodingText:LocalizationKey(@"正在切换钱包")];
-            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":@"Aa123456",@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
+            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":_BTS([YLUserInfo shareUserInfo].password),@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
                 [EasyShowLodingView hidenLoding];
                 StrongSelf(strongSelf)
                 if (NetSuccess) {
