@@ -288,6 +288,7 @@
         if (NetSuccess) {
             [strongSelf.view makeToast:responseResult[@"message"] duration:ToastHideDelay position:ToastPosition];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"RefreshContribution" object:nil];
                 [strongSelf.navigationController popViewControllerAnimated:YES];
             });
         }else

@@ -32,7 +32,7 @@
     [self setupLayout];
     [self setupBind];
     [self refreshHeaderAction];
-   
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadData) name:@"RefreshContribution" object:nil];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -103,6 +103,9 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 185.f;
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 /*
 #pragma mark - Navigation
