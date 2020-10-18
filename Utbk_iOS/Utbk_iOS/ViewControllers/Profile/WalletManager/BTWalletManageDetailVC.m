@@ -36,10 +36,11 @@
         StrongSelf(strongSelf)
         if (NetSuccess) {
             if (type == KWalletTypeExportPrivateKey) {//导出私钥
+                strongSelf.walletPopView.userInfo = strongSelf.userInfo;
                 [strongSelf.walletPopView show:KWalletTypeCopyPrivateKey];
             }else if(type == KWalletTypeBackUpMnemonicWord){
                 BTBackupMnemonicsVC *mnemonics = [[BTBackupMnemonicsVC alloc]init];
-                mnemonics.userInfo = [YLUserInfo shareUserInfo];
+                mnemonics.userInfo = self.userInfo;
                 [strongSelf.navigationController pushViewController:mnemonics animated:YES];
             }
         }else

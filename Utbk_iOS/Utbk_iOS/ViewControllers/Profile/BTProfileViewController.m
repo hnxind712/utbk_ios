@@ -48,9 +48,13 @@
     [self setupBind];
     self.navigationItem.title = LocalizationKey(@"个人中心");
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(resetLocalization) name:LanguageChange object:nil];
+    [self setNeedsStatusBarAppearanceUpdate];
     // Do any additional setup after loading the view from its nib.
 }
-
+- (UIStatusBarStyle)preferredStatusBarStyle {
+// 返回你所需要的状态栏样式
+    return UIStatusBarStyleLightContent;
+}
 - (void)resetLocalization{
     self.Label1.text = LocalizationKey(@"钱包管理");
     self.Label2.text = LocalizationKey(@"团队业绩");
@@ -83,6 +87,10 @@
     if ([V5ClientAgent shareClient].isConnected) {
         [[V5ClientAgent shareClient] stopClient];
     }
+    //白色
+    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+    //view出现的时候状态栏前景颜色改为亮色
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 /**
  *  即将打开会话视图
@@ -115,8 +123,10 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-        [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:AppTextColor}];
-    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:AppTextColor}];
+    //黑色
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 - (IBAction)copyAction:(UIButton *)sender {
     if (!self.address.text.length) {

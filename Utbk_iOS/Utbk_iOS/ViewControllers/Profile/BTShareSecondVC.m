@@ -22,7 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupBind];
+    [self setNeedsStatusBarAppearanceUpdate];
     // Do any additional setup after loading the view from its nib.
+}
+- (UIStatusBarStyle)preferredStatusBarStyle {
+// 返回你所需要的状态栏样式
+    return UIStatusBarStyleLightContent;
 }
 - (void)setupBind{
     self.qrcodeImageView.image = [BTCommonUtils logoQrCode:BTUIIMAGE(@"icon_registerLogo") code:self.url];

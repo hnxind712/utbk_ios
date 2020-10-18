@@ -25,10 +25,10 @@
     sender.selected = !sender.selected;
     switch (sender.tag) {
         case 103:
-            self.passwordNew.secureTextEntry = sender.selected;
+            self.passwordNew.secureTextEntry = !sender.selected;
             break;
         case 104:
-            self.passwordSecond.secureTextEntry = sender.selected;
+            self.passwordSecond.secureTextEntry = !sender.selected;
             break;
         default:
             break;

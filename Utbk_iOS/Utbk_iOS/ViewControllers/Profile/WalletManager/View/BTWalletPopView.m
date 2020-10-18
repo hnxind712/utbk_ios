@@ -7,6 +7,7 @@
 //
 
 #import "BTWalletPopView.h"
+
 @interface BTWalletPopView ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UITextField *input;
@@ -25,6 +26,7 @@
     // Drawing code
 }
 */
+
 - (void)show:(KWalletType)walletType{
     _walletType = walletType;
     [BTKeyWindow addSubview:self];
@@ -49,7 +51,7 @@
             _title.text = LocalizationKey(@"复制私钥");
             _input.hidden = YES;
             _secretWord.hidden = NO;
-            _secretWord.text = [YLUserInfo shareUserInfo].secretKey;
+            _secretWord.text = self.userInfo ? self.userInfo.secretKey : [YLUserInfo shareUserInfo].secretKey;
             [_confirmBtn setTitle:LocalizationKey(@"复制") forState:UIControlStateNormal];
         default:
             break;
@@ -62,7 +64,7 @@
     [self removeFromSuperview];
     if (self.walletType == KWalletTypeCopyPrivateKey) {
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-        pasteboard.string = [YLUserInfo shareUserInfo].secretKey;
+        pasteboard.string = self.userInfo ? self.userInfo.secretKey : [YLUserInfo shareUserInfo].secretKey;;
         [BTKeyWindow makeToast:LocalizationKey(@"复制成功") duration:ToastHideDelay position:ToastPosition];return;
     }
     if (!_input.text.length) {

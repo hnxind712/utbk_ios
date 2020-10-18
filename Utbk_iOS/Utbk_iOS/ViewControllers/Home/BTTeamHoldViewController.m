@@ -43,6 +43,7 @@
 - (void)setupLayout{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BTTeamHoldTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([BTTeamHoldTableViewCell class])];
     self.tableView.tableFooterView = [UIView new];
+    [self headRefreshWithScrollerView:self.tableView];
 }
 - (void)addRightNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -56,17 +57,21 @@
     [btn sizeToFit];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
+#pragma mark 获取数据
+- (void)refreshHeaderAction{
+    [self setupBind];
+}
 - (void)setupBind{
     WeakSelf(weakSelf)
     [[XBRequest sharedInstance]postDataWithUrl:getTeamInfoAllAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             StrongSelf(strongSelf)
-            strongSelf.myHold.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"myBTCK"]];
-            strongSelf.totalAddressCount.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"allAddress"]];
-            strongSelf.totalDeviceCount.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"allDevices"]];
-            strongSelf.teamHold.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"allChicang"]];
-            strongSelf.regionHold.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"daChicang"]];
-            strongSelf.communityHold.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"xiaoquChicang"]];
+            strongSelf.myHold.text = [NSString stringWithFormat:@"%.2f",[responseResult[@"data"][@"myBTCK"]doubleValue]];
+            strongSelf.totalAddressCount.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"allAddress"] ? responseResult[@"data"][@"allAddress"] : @"0"];
+            strongSelf.totalDeviceCount.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"allDevices"] ? responseResult[@"data"][@"allDevices"] : @"0"];
+            strongSelf.teamHold.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"allChicang"] ? : @"0"];
+            strongSelf.regionHold.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"daChicang"] ? : @"0"];
+            strongSelf.communityHold.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"xiaoquChicang"] ? : @"0"];
         }
     }];
     [[XBRequest sharedInstance]postDataWithUrl:getTeamMembersAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {

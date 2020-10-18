@@ -64,10 +64,10 @@
     sender.selected = !sender.selected;
     switch (sender.tag) {
         case 103:
-            self.password.secureTextEntry = sender.selected;
+            self.password.secureTextEntry = !sender.selected;
             break;
         case 104:
-            self.passwordSecond.secureTextEntry = sender.selected;
+            self.passwordSecond.secureTextEntry = !sender.selected;
             break;
         default:
             break;
@@ -90,32 +90,34 @@
     params[@"password"] = _password.text;
     [[XBRequest sharedInstance]postDataWithUrl:CreateAddressAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
-            YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];//缓存个人数据
-            [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {//获取个人BTCK地址
-                if (NetSuccess) {
-                    NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
-                    for (BTAssetsModel *walletModel in dataArr) {
-                        if ([walletModel.coin.unit isEqualToString:KOriginalCoin]) {//个人中心显示BTCK的地址
-                            info.address = walletModel.address;break;
+            if (responseResult[@"data"]) {
+                YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];//缓存个人数据
+                info.password = self->_password.text;
+                [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {//获取个人BTCK地址
+                    if (NetSuccess) {
+                        NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                        for (BTAssetsModel *walletModel in dataArr) {
+                            if ([walletModel.coin.unit isEqualToString:KOriginalCoin]) {//个人中心显示BTCK的地址
+                                info.address = walletModel.address;break;
+                            }
                         }
+                        [YLUserInfo saveUser:info];
+                        NSMutableArray *array = [NSMutableArray array];
+                        //取出
+                        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                        NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
+                        NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+                        [array addObjectsFromArray:list];
+                        [array insertObject:info atIndex:0];
+                        //存
+                        NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
+                        [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                        BTBackupMnemonicsVC *backup = [[BTBackupMnemonicsVC alloc]init];
+                        [self.navigationController pushViewController:backup animated:YES];
                     }
-                    [YLUserInfo saveUser:info];
-                    NSMutableArray *array = [NSMutableArray array];
-                    //取出
-                    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                    NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
-                    NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
-                    [array addObjectsFromArray:list];
-                    [array insertObject:info atIndex:0];
-                    //存
-                    NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
-                    [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
-                    BTBackupMnemonicsVC *backup = [[BTBackupMnemonicsVC alloc]init];
-                    [self.navigationController pushViewController:backup animated:YES];
-                }
-            }];
-            
+                }];
+            }
         }else{
             ErrorToast
         }

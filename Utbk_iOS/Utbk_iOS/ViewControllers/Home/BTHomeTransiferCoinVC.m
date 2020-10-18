@@ -107,7 +107,7 @@
 //显示密码
 - (IBAction)showTradePasswordAction:(UIButton *)sender {
     sender.selected = !sender.selected;
-    _tradePasswordInput.secureTextEntry = sender.selected;
+    _tradePasswordInput.secureTextEntry = !sender.selected;
 }
 - (IBAction)confirmAction:(UIButton *)sender {
     if (!_addressInput.text.length) {

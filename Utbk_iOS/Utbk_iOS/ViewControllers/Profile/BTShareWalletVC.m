@@ -19,15 +19,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupBind];
+    [self setNeedsStatusBarAppearanceUpdate];
     // Do any additional setup after loading the view from its nib.
+}
+- (UIStatusBarStyle)preferredStatusBarStyle {
+// 返回你所需要的状态栏样式
+    return UIStatusBarStyleLightContent;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    //黑色
+    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
+    //黑色
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 - (void)viewDidDisappear:(BOOL)animated{
     

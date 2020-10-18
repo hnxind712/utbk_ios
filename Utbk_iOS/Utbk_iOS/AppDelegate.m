@@ -18,7 +18,7 @@
 #import "BTWalletManagerVC.h"
 #import <V5Client/V5ClientAgent.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
 

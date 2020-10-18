@@ -314,7 +314,7 @@
                     BTNoticeModel *model = dataArr.firstObject;//暂时取第一条
                     [strongSelf.noticeView configureNoticeViewWithModel:model];
                     for (BTNoticeModel *_model in dataArr) {
-                        if (_model.isTop && !strongSelf.isShowed) {
+                        if (_model.isTop && !strongSelf.isShowed && [[AppDelegate sharedAppDelegate].topViewController isKindOfClass:[self class]]) {
                             strongSelf.isShowed = YES;
                             [strongSelf.noticePopView show:_model];break;
                         }

@@ -42,7 +42,7 @@
 +(void)getusdTocnyRateCompleteHandle:(void(^)(id resPonseObj,int code))completeHandle{
     NSString *path = @"market/exchange-rate/usd-cny";
     NSMutableDictionary *dic = [NSMutableDictionary new];
-    [self ylNonTokenRequestWithGET:path parameters:dic successBlock:^(id resultObject, int isSuccessed) {
+    [self ylNonTokenRequestWithGET:path parameters:nil successBlock:^(id resultObject, int isSuccessed) {
         completeHandle(resultObject,isSuccessed);
     }];
 }

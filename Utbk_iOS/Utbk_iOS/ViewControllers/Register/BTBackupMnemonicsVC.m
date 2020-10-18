@@ -47,8 +47,18 @@
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
     if (self.userInfo == nil) {
-        [self hiddenLeft];
+        [self leftNavigation];
     }
+}
+- (void)leftNavigation{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:BTUIIMAGE(@"") forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(backAction1) forControlEvents:UIControlEventTouchUpInside];
+    btn.frame = CGRectMake(20, StatusBarHeight, 40, 40);
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
+- (void)backAction1{
+    
 }
 - (void)viewWillDisappear:(BOOL)animated
 {

@@ -20,12 +20,19 @@
     if (self.navigationController.viewControllers.count > 1) {
         [self addLeftNavigation];
     }
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+    [self preferredStatusBarStyle];
     
     // Do any additional setup after loading the view.
+}
+- (UIStatusBarStyle)preferredStatusBarStyle {
+// 返回你所需要的状态栏样式
+    return UIStatusBarStyleDefault;
 }
 - (void)hiddenLeft{
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.leftBarButtonItem = nil;
+
 }
 - (void)addLeftNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

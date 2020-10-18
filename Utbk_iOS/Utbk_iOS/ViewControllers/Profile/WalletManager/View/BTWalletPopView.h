@@ -18,6 +18,8 @@ typedef NS_ENUM(NSInteger,KWalletType){
 };
 @interface BTWalletPopView : UIView
 
+@property (strong, nonatomic) YLUserInfo *userInfo;
+
 @property (copy, nonatomic) void(^comfirmAction)(KWalletType wallteType, NSString *string);
 
 - (void)show:(KWalletType)walletType;

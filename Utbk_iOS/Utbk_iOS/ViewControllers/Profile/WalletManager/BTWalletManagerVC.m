@@ -44,12 +44,22 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (self.isLogin) {
-        [self backBtnNoNavBar:NO normalBack:NO];
-        [self hiddenLeft];
+//        [self backBtnNoNavBar:NO normalBack:NO];
+        [self leftNavigation];//添加一个不需要的左导航
         if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
             self.navigationController.interactivePopGestureRecognizer.enabled = NO;
         }
     }
+}
+- (void)leftNavigation{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:BTUIIMAGE(@"") forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(backAction1) forControlEvents:UIControlEventTouchUpInside];
+    btn.frame = CGRectMake(20, StatusBarHeight, 40, 40);
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
+- (void)backAction1{
+    
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -86,7 +96,7 @@
         if ([info.username isEqualToString:[YLUserInfo shareUserInfo].username]) {
             self.currentInfo = info;
         }
-        [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":info.ID} ResponseObject:^(NSDictionary *responseResult) {
+        [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":_BTS(info.ID)} ResponseObject:^(NSDictionary *responseResult) {
             index++;
             if (NetSuccess) {
                 info.activeStatus = [responseResult[@"data"][@"status"] isKindOfClass:[NSNull class]] ? 0 : [responseResult[@"data"][@"status"] integerValue];
@@ -126,8 +136,8 @@
         if (model == self.currentInfo) return;
         if (model.secretKey.length) {
             [EasyShowLodingView showLodingText:LocalizationKey(@"正在切换钱包")];
-//            _BTS([YLUserInfo shareUserInfo].password)
-            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":@"Aa123456",@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
+//            @"password":_BTS(model.password)
+            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":_BTS(model.password),@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
                 [EasyShowLodingView hidenLoding];
                 StrongSelf(strongSelf)
                 if (NetSuccess) {
