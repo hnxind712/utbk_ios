@@ -59,7 +59,8 @@
     [self setupLayout];
     [self refreshHeaderAction];
     [self setupBind];
-     [self addRightNavigation];
+    [self addRightNavigation];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAction) name:@"RefreshContribution" object:nil];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -81,7 +82,7 @@
 - (void)setupBind{
     //先给死的币种值
     self.coinName.text = [NSString stringWithFormat:@"%@：",self.model.coinName];
-    self.totalEarning.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",self.model.totalProduce]];
+    self.totalEarning.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",self.model.parentCoinAmount]];
 //    NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.f",self.model.destroyQty]],self.model.coinName]];//销毁总量
 //    [attribute addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20.f weight:UIFontWeightBold],NSForegroundColorAttributeName:RGBOF(0xA78659)} range:NSMakeRange(0, attribute.string.length)];
 //    [attribute addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.f],NSForegroundColorAttributeName:RGBOF(0xA78659)} range:[attribute.string rangeOfString:self.model.coinName]];

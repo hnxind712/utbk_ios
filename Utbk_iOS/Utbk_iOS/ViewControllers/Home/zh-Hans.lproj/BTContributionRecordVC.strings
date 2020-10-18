@@ -21,7 +21,7 @@
 "Trr-QL-Y9M.text" = "累计收益";
 
 /* Class = "UILabel"; text = "币种/数量"; ObjectID = "Vow-FE-qPy"; */
-"Vow-FE-qPy.text" = "币种/数量";
+"Vow-FE-qPy.text" = "币种";
 
 /* Class = "UILabel"; text = "币种"; ObjectID = "XsW-Ng-XHz"; */
 "XsW-Ng-XHz.text" = "币种";
@@ -30,7 +30,7 @@
 "a15-DP-22q.text" = "BTK：";
 
 /* Class = "UILabel"; text = "数组"; ObjectID = "ady-bo-c9w"; */
-"ady-bo-c9w.text" = "数组";
+"ady-bo-c9w.text" = "数量";
 
 /* Class = "UIButton"; normalTitle = "收益记录"; ObjectID = "fWQ-B4-m0U"; */
 "fWQ-B4-m0U.normalTitle" = "收益记录";
@@ -39,7 +39,7 @@
 "fWQ-B4-m0U.selectedTitle" = "收益记录";
 
 /* Class = "UILabel"; text = "贡献值"; ObjectID = "i0T-Ds-ejv"; */
-"i0T-Ds-ejv.text" = "贡献值";
+"i0T-Ds-ejv.text" = "贡献值/收益额";
 
 /* Class = "UILabel"; text = "0.00"; ObjectID = "pXq-M4-XMw"; */
 "pXq-M4-XMw.text" = "0.00";

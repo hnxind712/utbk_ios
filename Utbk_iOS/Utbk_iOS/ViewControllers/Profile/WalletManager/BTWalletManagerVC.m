@@ -39,13 +39,13 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setupBind];
-    if (self.isLogin) {
-        [self hiddenLeft];
-    }
+
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (self.isLogin) {
+        [self backBtnNoNavBar:NO normalBack:NO];
+        [self hiddenLeft];
         if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
             self.navigationController.interactivePopGestureRecognizer.enabled = NO;
         }

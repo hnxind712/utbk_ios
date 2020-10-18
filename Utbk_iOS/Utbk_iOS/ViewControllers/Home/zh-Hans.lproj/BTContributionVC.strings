@@ -9,7 +9,7 @@
 "7cZ-oO-ap6.text" = "USDT";
 
 /* Class = "UILabel"; text = "获得倍数"; ObjectID = "7xi-xl-smA"; */
-"7xi-xl-smA.text" = "获得倍数";
+"7xi-xl-smA.text" = "收益额";
 
 /* Class = "UITextField"; placeholder = "输入投入数量"; ObjectID = "AZc-Sa-kdy"; */
 "AZc-Sa-kdy.placeholder" = "输入投入数量";
@@ -32,8 +32,8 @@
 /* Class = "UILabel"; text = "投入金额"; ObjectID = "Rmk-RS-OTZ"; */
 "Rmk-RS-OTZ.text" = "投入金额";
 
-/* Class = "UILabel"; text = "备注：根据贡献的数量获得相应的倍额产出。\n投入等价于相应USDT的BTCK或BTK作为贡献。\n一星贡献 100-1900U 2倍产量\n二星贡献 2000-2900U 2.5倍产量\n三星贡献 3000-5000U 3倍产量                   "; ObjectID = "aDk-yG-ZEG"; */
-"aDk-yG-ZEG.text" = "备注：根据贡献的数量获得相应的倍额产出。\n投入等价于相应USDT的BTCK或BTK作为贡献。\n一星贡献 100-1900U 2倍产量\n二星贡献 2000-2900U 2.5倍产量\n三星贡献 3000-5000U 3倍产量                   ";
+/* Class = "UILabel"; text = "备注：根据贡献的数量获得相应的倍额产出。\n投入等价于相应USDT的BTCK或BTK作为贡献。\n一星贡献 100-1900U 2倍产量\n二星贡献 2000-2900U 2.5倍产量\n\n三星贡献 3000-5000U 3倍产量                   "; ObjectID = "aDk-yG-ZEG"; */
+"aDk-yG-ZEG.text" = "备注：根据贡献的数量获得相应的倍额产出。\n\n投入等价于相应USDT的BTCK或BTK作为贡献。\n\n一星贡献 100-1900U 2倍产量\n\n二星贡献 2000-2900U 2.5倍产量\n\n三星贡献 3000-5000U 3倍产量";
 
 /* Class = "UIButton"; normalTitle = "-"; ObjectID = "b9U-Qv-6fa"; */
 "b9U-Qv-6fa.normalTitle" = "-";

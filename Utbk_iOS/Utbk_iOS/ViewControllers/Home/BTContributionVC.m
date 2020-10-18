@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *subtractionBtn;//-
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;//+
+@property (weak, nonatomic) IBOutlet UILabel *contributionValue;
+@property (weak, nonatomic) IBOutlet UILabel *contributionT;
 @property (assign, nonatomic) CGFloat convert;//折合的l比例
 @property (assign, nonatomic) NSInteger count;//记录组数
 @property (strong, nonatomic) NSArray *starAarry;//拿到临界的U点，来处理倍额
@@ -51,6 +53,7 @@
     [self setupBind];
     [self getCoinExchangeUSDTRate];
     [self.groupCount addTarget:self action:@selector(textFieldDidchange:) forControlEvents:UIControlEventEditingChanged];
+    self.contributionT.text = LocalizationKey(@"贡献值");
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -195,7 +198,7 @@
             strongSelf.starAarry = data;//保存一下，需要计算用
             strongSelf.doubleArray = doubleData;
             NSString *str = strongSelf.doubleArray.firstObject;//默认先取2倍
-            strongSelf.multipleLabel.text = [NSString stringWithFormat:@"%.0f",str.doubleValue * KContributionValue];
+            strongSelf.multipleLabel.text = [NSString stringWithFormat:@"%.0f USDT",str.doubleValue * KContributionValue];
         }
     }];
 }
@@ -230,9 +233,10 @@
     [self.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
         if (self.count * KContributionValue <= critical.integerValue) {
             NSString *doubleS = self.doubleArray[idx];
-            self.multipleLabel.text = [NSString stringWithFormat:@"%.0f",doubleS.doubleValue * KContributionValue];*stop = YES;
+            self.multipleLabel.text = [NSString stringWithFormat:@"%.0f USDT",doubleS.doubleValue * KContributionValue * _count];*stop = YES;
         }
     }];
+    self.contributionValue.text = [NSString stringWithFormat:@"%dV",10 * _count];
 }
 //减
 - (IBAction)subtractionAction:(UIButton *)sender {
@@ -251,9 +255,10 @@
     [self.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
         if (self.count * KContributionValue <= critical.integerValue) {
             NSString *doubleS = self.doubleArray[idx];
-            self.multipleLabel.text = [NSString stringWithFormat:@"%.0f",doubleS.doubleValue * KContributionValue];*stop = YES;
+            self.multipleLabel.text = [NSString stringWithFormat:@"%.0f USDT",doubleS.doubleValue * KContributionValue * _count];*stop = YES;
         }
     }];
+    self.contributionValue.text = [NSString stringWithFormat:@"%dV",10 * _count];
 }
 //选择币种
 - (IBAction)selectCoinAction:(UIButton *)sender {
@@ -269,6 +274,7 @@
         [strongSelf getCoinExchangeUSDTRate];
         strongSelf.count = 1;
         strongSelf.groupCount.text = [NSString stringWithFormat:@"%ld",(long)strongSelf.count];
+        strongSelf.contributionValue.text = @"10V";
         strongSelf.subtractionBtn.enabled = NO;
         strongSelf.subtractionBtn.layer.borderColor = RGBOF(0xE7E7E7).CGColor;
         [strongSelf.subtractionBtn setTitleColor:RGBOF(0xE7E7E7) forState:UIControlStateNormal];
@@ -289,7 +295,11 @@
             [strongSelf.view makeToast:responseResult[@"message"] duration:ToastHideDelay position:ToastPosition];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"RefreshContribution" object:nil];
-                [strongSelf.navigationController popViewControllerAnimated:YES];
+                for (UIViewController *vc in self.navigationController.viewControllers) {
+                    if ([vc isKindOfClass:NSClassFromString(@"BTPoolViewController")]) {
+                        [self.navigationController popToViewController:vc animated:YES];break;
+                    }
+                }
             });
         }else
             ErrorToast

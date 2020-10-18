@@ -24,9 +24,8 @@
     // Do any additional setup after loading the view.
 }
 - (void)hiddenLeft{
-    self.navigationController.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.leftBarButtonItem = nil;
-//    self.navigationItem.backBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItem = nil;
 }
 - (void)addLeftNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

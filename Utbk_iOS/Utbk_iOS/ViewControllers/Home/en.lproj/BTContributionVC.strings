@@ -9,7 +9,7 @@
 "7cZ-oO-ap6.text" = "USDT";
 
 /* Class = "UILabel"; text = "获得倍数"; ObjectID = "7xi-xl-smA"; */
-"7xi-xl-smA.text" = "Obtain multiple";
+"7xi-xl-smA.text" = "earnings";
 
 /* Class = "UITextField"; placeholder = "输入投入数量"; ObjectID = "AZc-Sa-kdy"; */
 "AZc-Sa-kdy.placeholder" = "Number of input into";
@@ -33,7 +33,7 @@
 "Rmk-RS-OTZ.text" = "Investment amount";
 
 /* Class = "UILabel"; text = "备注：根据贡献的数量获得相应的倍额产出。\n投入等价于相应USDT的BTCK或BTK作为贡献。\n一星贡献 100-1900U 2倍产量\n二星贡献 2000-2900U 2.5倍产量\n三星贡献 3000-5000U 3倍产量"; ObjectID = "aDk-yG-ZEG"; */
-"aDk-yG-ZEG.text" = "Note: according to the number of contributions to get the corresponding times the amount of output.\n input equivalent to the corresponding USDT BTCK or BTK as a contribution.\n contribution 100-1900 - u 2 times a week production \n 2 star contribution to 2000-2900 - u 2.5 times production \n samsung contribution output of 3000-5000 - u 3 times";
+"aDk-yG-ZEG.text" = "Note: according to the number of contributions to get the corresponding times the amount of output.\n\n input equivalent to the corresponding USDT BTCK or BTK as a contribution.\n\n contribution 100-1900 - u 2 times a week production \n\n 2 star contribution to 2000-2900 - u 2.5 times production \n\n samsung contribution output of 3000-5000 - u 3 times";
 
 /* Class = "UIButton"; normalTitle = "-"; ObjectID = "b9U-Qv-6fa"; */
 "b9U-Qv-6fa.normalTitle" = "-";

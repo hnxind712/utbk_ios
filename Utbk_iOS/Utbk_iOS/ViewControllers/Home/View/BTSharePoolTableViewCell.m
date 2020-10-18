@@ -28,8 +28,8 @@
 }
 - (void)configureCellWithModel:(BTPoolShareContributionRecordModel *)model{
     if (self.type == 1) {
-        self.one.text = [NSString stringWithFormat:@"%.0fv", model.contributionValue];
-        self.two.text = [NSString stringWithFormat:@"%@/%.2f",model.coin,model.amount];//暂定
+        self.one.text = [NSString stringWithFormat:@"%.0fV/%.2fU", model.contributionValue,model.amount];
+        self.two.text = [NSString stringWithFormat:@"%@",model.coin];//暂定
         self.three.text = [NSString stringWithFormat:@"%ld",(long)model.groupQty];
         self.four.text = [ToolUtil transformForDayTimeString:model.saveTime];
         self.threeLeading.constant = 0.f;
