@@ -33,6 +33,7 @@
 #import "BTUpdateVersionView.h"
 #import "VersionUpdateModel.h"
 #import "marketManager.h"
+#import "BTNoticePopView.h"
 
 #define KBottomTopHeight 40.f //主板区标签对应的高度间隔
 #define KRiseFallCellHeight 60.f
@@ -75,11 +76,20 @@
 @property (weak, nonatomic) IBOutlet UIButton *deBtn;//DEFi专区
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuHeight;
 @property (weak, nonatomic) IBOutlet UIButton *packupBtn;//收起
+//首页公告弹窗相关
+@property (strong, nonatomic) BTNoticePopView *noticePopView;
+@property (strong, nonatomic) BTNoticeModel *noticeModel;
+@property (assign, nonatomic) BOOL isShowed;//已经显示
 
 @end
 
 @implementation BTHomeViewController
-
+- (BTNoticePopView *)noticePopView{
+    if (!_noticePopView) {
+        _noticePopView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([BTNoticePopView class]) owner:nil options:nil].firstObject;
+    }
+    return _noticePopView;
+}
 - (NSMutableArray *)bannerArr{
     if (!_bannerArr) {
         _bannerArr = [NSMutableArray array];
@@ -303,22 +313,13 @@
                 if (dataArr) {
                     BTNoticeModel *model = dataArr.firstObject;//暂时取第一条
                     [strongSelf.noticeView configureNoticeViewWithModel:model];
+                    for (BTNoticeModel *_model in dataArr) {
+                        if (_model.isTop && !strongSelf.isShowed) {
+                            strongSelf.isShowed = YES;
+                            [strongSelf.noticePopView show:_model];break;
+                        }
+                    }
                 }
-//                NSMutableArray *muArr = [NSMutableArray arrayWithCapacity:0];
-//                for (NSDictionary *dic in arr) {
-//                    if ([[ChangeLanguage userLanguage] isEqualToString:@"en"]) {
-//                        if (![self hasChinese:dic[@"title"]]) {
-//                            [muArr addObject:dic];
-//                        }
-//                    }else{
-//                        if ([self hasChinese:dic[@"title"]]) {
-//                            [muArr addObject:dic];
-//                        }
-//                    }
-//                }
-//                NSArray *dataArr = [PlatformMessageModel mj_objectArrayWithKeyValuesArray:muArr];
-//                [self.platformMessageArr addObjectsFromArray:dataArr];
-//                [self.tableView reloadData];
             }else{
                 [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
             }

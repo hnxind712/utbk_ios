@@ -77,6 +77,8 @@
 		3CAF5E6B250E35C0002482C1 /* BTModifyTradePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF5E69250E35C0002482C1 /* BTModifyTradePasswordVC.m */; };
 		3CAF5E70250E3A69002482C1 /* BTWalletManageDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF5E6E250E3A69002482C1 /* BTWalletManageDetailVC.m */; };
 		3CAF5E74250E3CA9002482C1 /* BTWalletPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF5E73250E3CA9002482C1 /* BTWalletPopView.m */; };
+		3CC8A568253BD93E008DD386 /* BTNoticePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC8A567253BD93E008DD386 /* BTNoticePopView.m */; };
+		3CC8A56A253BD94F008DD386 /* BTNoticePopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CC8A569253BD94F008DD386 /* BTNoticePopView.xib */; };
 		3CEA9D572535D3900089994E /* NSBundle+DAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEA9D562535D3900089994E /* NSBundle+DAUtils.m */; };
 		3CEA9D692535DF1D0089994E /* BTHomeTransiferCoinVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9D6B2535DF1D0089994E /* BTHomeTransiferCoinVC.xib */; };
 		3CEA9D772535E10E0089994E /* BTProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9D752535E10E0089994E /* BTProfileViewController.xib */; };
@@ -533,6 +535,9 @@
 		3CAF5E6E250E3A69002482C1 /* BTWalletManageDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTWalletManageDetailVC.m; sourceTree = "<group>"; };
 		3CAF5E72250E3CA9002482C1 /* BTWalletPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTWalletPopView.h; sourceTree = "<group>"; };
 		3CAF5E73250E3CA9002482C1 /* BTWalletPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTWalletPopView.m; sourceTree = "<group>"; };
+		3CC8A566253BD93E008DD386 /* BTNoticePopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTNoticePopView.h; sourceTree = "<group>"; };
+		3CC8A567253BD93E008DD386 /* BTNoticePopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTNoticePopView.m; sourceTree = "<group>"; };
+		3CC8A569253BD94F008DD386 /* BTNoticePopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTNoticePopView.xib; sourceTree = "<group>"; };
 		3CEA9D542535D0010089994E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		3CEA9D552535D3900089994E /* NSBundle+DAUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+DAUtils.h"; sourceTree = "<group>"; };
 		3CEA9D562535D3900089994E /* NSBundle+DAUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+DAUtils.m"; sourceTree = "<group>"; };
@@ -1724,6 +1729,9 @@
 				3C1DF0FB251715D300E547B0 /* BTDropRecordTableViewCell.h */,
 				3C1DF0FC251715D300E547B0 /* BTDropRecordTableViewCell.m */,
 				3C1DF0FD251715D300E547B0 /* BTDropRecordTableViewCell.xib */,
+				3CC8A566253BD93E008DD386 /* BTNoticePopView.h */,
+				3CC8A567253BD93E008DD386 /* BTNoticePopView.m */,
+				3CC8A569253BD94F008DD386 /* BTNoticePopView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2594,6 +2602,7 @@
 				3C563C2D25163E0200DFBA88 /* BTMarketTableViewCell.xib in Resources */,
 				3C63D418250DA73E001CEC7D /* LaunchScreen.storyboard in Resources */,
 				D74044C92536905C0074A336 /* BTTeamHoldTableViewCell.xib in Resources */,
+				3CC8A56A253BD94F008DD386 /* BTNoticePopView.xib in Resources */,
 				D79D737C25134A8200DE7DF7 /* commissionViewController.xib in Resources */,
 				D7DAB20F253576320029A9B3 /* BTBackupMnemonicsVC.xib in Resources */,
 				D79D735C25134A8200DE7DF7 /* OrderConfirmAlterView.xib in Resources */,
@@ -2916,6 +2925,7 @@
 				D7429BD72511C107003B04E4 /* BTComfirmMnemonicsVC.m in Sources */,
 				D79D74C22513605200DE7DF7 /* MyAdvertisingAlterView.m in Sources */,
 				D79D734025134A8200DE7DF7 /* FailBusinessViewController.m in Sources */,
+				3CC8A568253BD93E008DD386 /* BTNoticePopView.m in Sources */,
 				D79D7476251355D200DE7DF7 /* UIView+Extension.m in Sources */,
 				D79D7453251352A400DE7DF7 /* LYEmptyView.m in Sources */,
 				3C63D43B250DBB20001CEC7D /* YLNavigationController.m in Sources */,

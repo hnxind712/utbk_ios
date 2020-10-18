@@ -1,35 +1,43 @@
 //
-//  BTNoticeDetailVC.m
+//  BTNoticePopView.m
 //  Utbk_iOS
 //
-//  Created by iOS  Developer on 2020/9/15.
+//  Created by heyong on 2020/10/18.
 //  Copyright © 2020 HY. All rights reserved.
 //
 
-#import "BTNoticeDetailVC.h"
+#import "BTNoticePopView.h"
 #import <WebKit/WebKit.h>
+#import "BTNoticeModel.h"
 
-@interface BTNoticeDetailVC ()<WKUIDelegate,WKNavigationDelegate>
+@interface BTNoticePopView ()<WKUIDelegate,WKNavigationDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *noticeT;
 @property (weak, nonatomic) IBOutlet UILabel *noticeTitle;
-@property (weak, nonatomic) IBOutlet UILabel *noticeTime;
 @property (weak, nonatomic) IBOutlet WKWebView *webView;
+@property (weak, nonatomic) IBOutlet UIButton *knowT;
 
 @end
 
-@implementation BTNoticeDetailVC
+@implementation BTNoticePopView
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.title = LocalizationKey(@"通知公告");
-    [self setupBind];
-    // Do any additional setup after loading the view from its nib.
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
 }
-- (void)setupBind{
-    self.noticeTitle.text = self.noticeModel.title;
-    self.noticeTime.text = self.noticeModel.createTime;
-    [self.webView loadHTMLString:[self HTML:self.noticeModel.content] baseURL:nil];
+*/
+- (void)show:(BTNoticeModel *)model{
+    [BTKeyWindow addSubview:self];
+    self.frame = BTKeyWindow.bounds;
+    self.noticeTitle.text = model.title;
+    [self.webView loadHTMLString:[self HTML:model.content] baseURL:nil];
+    self.webView.navigationDelegate = self;
     self.webView.scrollView.backgroundColor = [UIColor clearColor];
+    [self.knowT setTitle:LocalizationKey(@"Gotit") forState:UIControlStateNormal];
+    self.noticeT.text = [NSString stringWithFormat:@"BTCK %@",LocalizationKey(@"notice")];
 }
+
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     NSString *js=@"var script = document.createElement('script');"
     "script.type = 'text/javascript';"
@@ -48,7 +56,9 @@
     js = [NSString stringWithFormat:js,[UIScreen mainScreen].bounds.size.width - 64,[UIScreen mainScreen].bounds.size.width];
     [webView evaluateJavaScript:js completionHandler:nil];
     [webView evaluateJavaScript:@"ResizeImages();" completionHandler:nil];
-    [webView evaluateJavaScript:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#333333'" completionHandler:nil];
+    [webView evaluateJavaScript:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#CCCCCC'" completionHandler:nil];
+    //修改字体大小 300%
+    [ webView evaluateJavaScript:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '200%'"completionHandler:nil];
 
 }
 - (NSString *)HTML:(NSString *)html{
@@ -72,14 +82,7 @@
     return html;
 
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)closeAction:(UIButton *)sender {
+    [self removeFromSuperview];
 }
-*/
-
 @end

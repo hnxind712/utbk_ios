@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign)BOOL isShow;
 @property(nonatomic,copy)NSString *ID;
 @property(nonatomic,copy)NSString *imgUrl;
-@property(nonatomic,copy)NSString *isTop;
+@property(nonatomic,assign)BOOL isTop;
 
 @end
 
