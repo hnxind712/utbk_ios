@@ -112,8 +112,19 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     if (_groupCount == textField) {
         if (!textField.text.length) {
+            
             textField.text = @"1";
         }
+        _count = textField.text.intValue;
+        self.countInput.text = [NSString stringWithFormat:@"%ld",KContributionValue * _count];
+        self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",100/self.convert * _count]],self.coinName];
+        [self.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (self.count * KContributionValue <= critical.integerValue) {
+                NSString *doubleS = self.doubleArray[idx];
+                self.multipleLabel.text = [NSString stringWithFormat:@"%.0f USDT",doubleS.doubleValue * KContributionValue * _count];*stop = YES;
+            }
+        }];
+        self.contributionValue.text = [NSString stringWithFormat:@"%dV",10 * _count];
     }
 }
 - (BOOL)validateNumber:(NSString*)number {
@@ -158,7 +169,7 @@
             StrongSelf(strongSelf)
             if ([resPonseObj[@"code"] integerValue] == 0) {
                 BTAssetsModel *assets = [BTAssetsModel mj_objectWithKeyValues:resPonseObj[@"data"]];
-                strongSelf.balance.text = [ToolUtil formartScientificNotationWithString:assets.balance];
+                strongSelf.balance.text = [ToolUtil stringFromNumber:assets.balance.doubleValue withlimit:2];
                 strongSelf.avaliableLabel.text = [NSString stringWithFormat:@"%@%@：",LocalizationKey(@"可用"),self.coinName];
             }
             else{
@@ -210,7 +221,7 @@
         if (NetSuccess) {
             StrongSelf(strongSelf)
             strongSelf.convert = [responseResult[@"data"]doubleValue];
-            strongSelf.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%f",[responseResult[@"data"]doubleValue] * 100]],self.coinName];
+            strongSelf.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",100/[responseResult[@"data"]doubleValue]]],self.coinName];
         }
     }];
 }
@@ -229,7 +240,7 @@
     }
     self.groupCount.text = [NSString stringWithFormat:@"%ld",(long)_count];
     self.countInput.text = [NSString stringWithFormat:@"%ld",KContributionValue * _count];
-    self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%f",self.convert * 100 * _count]],self.coinName];
+    self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",100/self.convert * _count]],self.coinName];
     [self.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
         if (self.count * KContributionValue <= critical.integerValue) {
             NSString *doubleS = self.doubleArray[idx];
@@ -251,7 +262,7 @@
     [self.addBtn setTitleColor:RGBOF(0xA78559) forState:UIControlStateNormal];
     self.groupCount.text = [NSString stringWithFormat:@"%ld",(long)_count];
     self.countInput.text = [NSString stringWithFormat:@"%ld",KContributionValue * _count];
-    self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%f",self.convert * 100 * _count]],self.coinName];
+    self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",100/self.convert * _count]],self.coinName];
     [self.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
         if (self.count * KContributionValue <= critical.integerValue) {
             NSString *doubleS = self.doubleArray[idx];
@@ -279,6 +290,14 @@
         strongSelf.subtractionBtn.layer.borderColor = RGBOF(0xE7E7E7).CGColor;
         [strongSelf.subtractionBtn setTitleColor:RGBOF(0xE7E7E7) forState:UIControlStateNormal];
         [strongSelf.coinBtn setTitle:model.currency forState:UIControlStateNormal];
+        strongSelf.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",100/self.convert * self->_count]],self.coinName];
+        [strongSelf.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (self.count * KContributionValue <= critical.integerValue) {
+                NSString *doubleS = self.doubleArray[idx];
+                self.multipleLabel.text = [NSString stringWithFormat:@"%.0f USDT",doubleS.doubleValue * KContributionValue * self->_count];*stop = YES;
+            }
+        }];
+        strongSelf.countInput.text = [NSString stringWithFormat:@"%ld",KContributionValue * self->_count];
     };
     [self.navigationController pushViewController:currency animated:YES];
 }
