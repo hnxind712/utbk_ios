@@ -88,7 +88,6 @@
 		3CEA9D902535E74F0089994E /* BTRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9D922535E74F0089994E /* BTRegisterViewController.xib */; };
 		3CEA9D982535FBF00089994E /* BTInvitationActivityVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9D9A2535FBF00089994E /* BTInvitationActivityVC.xib */; };
 		3CEA9D9F2535FC830089994E /* BTContributionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEA9DA12535FC830089994E /* BTContributionVC.xib */; };
-		A7CBE052317DF6211B826506 /* Pods_Utbk_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA45A25EE5BCFA354891E2D /* Pods_Utbk_iOS.framework */; };
 		D7055447250F61EA005E367E /* BTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7055445250F61EA005E367E /* BTRegisterViewController.m */; };
 		D705544C250F6585005E367E /* BTCreateSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D705544A250F6585005E367E /* BTCreateSuccessVC.m */; };
 		D7055451250F677C005E367E /* BTBackupMnemonicsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D705544F250F677C005E367E /* BTBackupMnemonicsVC.m */; };
@@ -1160,7 +1159,6 @@
 				3C118FEB253B2B8700978FE2 /* AVFoundation.framework in Frameworks */,
 				3C118FE9253B2B6600978FE2 /* libicucore.tbd in Frameworks */,
 				3C118FE7253B2B5D00978FE2 /* libsqlite3.tbd in Frameworks */,
-				A7CBE052317DF6211B826506 /* Pods_Utbk_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3526,7 +3524,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S5YVJH3WY3;
+				DEVELOPMENT_TEAM = 98C7RK3BSB;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Utbk_iOS/UtbkPrefixHeader.pch";
 				INFOPLIST_FILE = Utbk_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3535,7 +3533,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "HY.Utbk-iOS.com";
+				PRODUCT_BUNDLE_IDENTIFIER = lsiOSBTCK.com;
 				PRODUCT_NAME = BTCK;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3549,7 +3547,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S5YVJH3WY3;
+				DEVELOPMENT_TEAM = 98C7RK3BSB;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Utbk_iOS/UtbkPrefixHeader.pch";
 				INFOPLIST_FILE = Utbk_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3557,7 +3555,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "HY.Utbk-iOS.com";
+				PRODUCT_BUNDLE_IDENTIFIER = lsiOSBTCK.com;
 				PRODUCT_NAME = BTCK;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

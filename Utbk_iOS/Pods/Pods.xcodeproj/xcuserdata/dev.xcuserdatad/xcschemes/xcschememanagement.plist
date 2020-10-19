@@ -102,6 +102,11 @@
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
+		<key>V5Client.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
 		<key>VTMagic.xcscheme</key>
 		<dict>
 			<key>isShown</key>

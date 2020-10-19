@@ -137,7 +137,7 @@
         if (model.secretKey.length) {
             [EasyShowLodingView showLodingText:LocalizationKey(@"正在切换钱包")];
 //            @"password":_BTS(model.password)
-            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":_BTS(model.password),@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
+            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":@"Aa123123",@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
                 [EasyShowLodingView hidenLoding];
                 StrongSelf(strongSelf)
                 if (NetSuccess) {
