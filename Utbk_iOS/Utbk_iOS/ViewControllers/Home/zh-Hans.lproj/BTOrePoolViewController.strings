@@ -36,7 +36,7 @@
 "eER-aB-PX1.text" = "0";
 
 /* Class = "UILabel"; text = "排名"; ObjectID = "fUC-Cx-dNw"; */
-"fUC-Cx-dNw.text" = "排名";
+"fUC-Cx-dNw.text" = "数量";
 
 /* Class = "UILabel"; text = "我的持币"; ObjectID = "i3f-C9-znc"; */
 "i3f-C9-znc.text" = "我的持币";

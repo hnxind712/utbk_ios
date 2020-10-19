@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,10 +17,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ata-PV-2RM">
-                        <rect key="frame" x="0.0" y="8" width="56" height="14"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ata-PV-2RM">
+                        <rect key="frame" x="20" y="8" width="75" height="14"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="56" id="RtB-8V-SnH"/>
                             <constraint firstAttribute="height" constant="14" id="ahS-Q5-FHs"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -27,7 +27,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Btm5qnhse8wjdcslsdjkjhvc8325foifdj3n" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h28-Ey-h5A">
-                        <rect key="frame" x="61" y="8" width="249" height="14"/>
+                        <rect key="frame" x="100" y="8" width="210" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="56O-Rg-WgG"/>
                         </constraints>
@@ -37,8 +37,9 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="h28-Ey-h5A" firstAttribute="leading" secondItem="Ata-PV-2RM" secondAttribute="trailing" constant="5" id="7ug-FK-DQu"/>
-                    <constraint firstItem="Ata-PV-2RM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MlF-gb-nKO"/>
+                    <constraint firstItem="h28-Ey-h5A" firstAttribute="leading" secondItem="Ata-PV-2RM" secondAttribute="trailing" constant="5" id="3de-z4-LQb"/>
+                    <constraint firstItem="h28-Ey-h5A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="100" id="AlO-At-kC3"/>
+                    <constraint firstItem="Ata-PV-2RM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="MlF-gb-nKO"/>
                     <constraint firstItem="Ata-PV-2RM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="d2c-G3-dvN"/>
                     <constraint firstItem="h28-Ey-h5A" firstAttribute="centerY" secondItem="Ata-PV-2RM" secondAttribute="centerY" id="ss1-Ax-uQA"/>
                     <constraint firstAttribute="trailing" secondItem="h28-Ey-h5A" secondAttribute="trailing" constant="10" id="yf8-pE-4W5"/>
