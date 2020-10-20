@@ -143,7 +143,7 @@
         if ([str hasSuffix:@","]) {//如果是逗号结尾，则移除最后一个逗号
             str = [str substringToIndex:str.length - 1];
         }
-        params[@"remberWords"] = str;
+        params[@"remberWords"] = _BTS(str);
         params[@"primaryKey"] = @"";
     }else if (self.selectedBtn == self.privateKeyBtn){
         params[@"remberWords"] = @"";

@@ -42,7 +42,7 @@
     self.yesEarnings.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f %@",model.yesterdayProduce,model.coinName]];//母币昨日收益
     self.totalOutput.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.0f",model.totalProduce]];//累计产出
     self.subOutput.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f %@",model.subCoinAmount,model.subCoin]];//子币累计产出
-    if (model.groupsQty * KContributionValue > KContributionValue * 200) {//说明是矿主200组以上就是矿主
+    if (model.type >=2 ) {//说明是矿主200组以上就是矿主
         self.starView.hidden = NO;
         [self.levelBtn setTitle:LocalizationKey(@"矿主") forState:UIControlStateNormal];
     }else{

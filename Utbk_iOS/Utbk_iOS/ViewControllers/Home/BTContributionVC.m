@@ -227,6 +227,9 @@
 }
 //加
 - (IBAction)addAction:(UIButton *)sender {
+    if ([self.countInput isFirstResponder]) {
+        [self.view endEditing:YES];
+    }
     _count++;
     if (_count > 1) {//减法的按钮需要处理
         _subtractionBtn.enabled = YES;
@@ -251,6 +254,9 @@
 }
 //减
 - (IBAction)subtractionAction:(UIButton *)sender {
+    if ([self.countInput isFirstResponder]) {
+        [self.view endEditing:YES];
+    }
     _count--;
     if (_count == 1) {
         _subtractionBtn.enabled = NO;

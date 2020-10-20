@@ -136,28 +136,30 @@
         if (model == self.currentInfo) return;
         if (model.secretKey.length) {
             [EasyShowLodingView showLodingText:LocalizationKey(@"正在切换钱包")];
-//            @"password":_BTS(model.password)
-            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":@"Aa123123",@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
+            //            @"password":_BTS(model.password)
+            [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:@{@"primaryKey":model.secretKey,@"password":@"",@"remberWords":@""} ResponseObject:^(NSDictionary *responseResult) {
                 [EasyShowLodingView hidenLoding];
                 StrongSelf(strongSelf)
                 if (NetSuccess) {
-                    YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];
-                    info.secretKey = model.secretKey;
-                    info.address = model.address;
-                    [strongSelf.datasource replaceObjectAtIndex:indexPath.row withObject:info];//已经进行了替换
-                    strongSelf.currentInfo = info;
-                    [YLUserInfo saveUser:self.currentInfo];
-                    NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:strongSelf.datasource];
-                    [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
-                    if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
-                        [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
-                    }else{
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            YLTabBarController *tabbar = (YLTabBarController *)[AppDelegate sharedAppDelegate].window.rootViewController;
-                            tabbar.selectedIndex = 0;
-                            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
-                        });
+                    if (responseResult[@"data"]) {
+                        YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];
+                        info.secretKey = model.secretKey;
+                        info.address = model.address;
+                        [strongSelf.datasource replaceObjectAtIndex:indexPath.row withObject:info];//已经进行了替换
+                        strongSelf.currentInfo = info;
+                        [YLUserInfo saveUser:self.currentInfo];
+                        NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:strongSelf.datasource];
+                        [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                        if (![[AppDelegate sharedAppDelegate].window.rootViewController isKindOfClass:[YLTabBarController class]]) {
+                            [[NSNotificationCenter defaultCenter]postNotificationName:KfirstLogin object:nil];
+                        }else{
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                YLTabBarController *tabbar = (YLTabBarController *)[AppDelegate sharedAppDelegate].window.rootViewController;
+                                tabbar.selectedIndex = 0;
+                                [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+                            });
+                        }
                     }
                 }else
                     ErrorToast

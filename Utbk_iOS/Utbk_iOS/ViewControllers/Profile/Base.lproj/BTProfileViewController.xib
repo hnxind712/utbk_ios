@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,7 +47,6 @@
                                         <constraint firstAttribute="width" constant="65" id="eHg-6A-ikv"/>
                                         <constraint firstAttribute="width" secondItem="zzt-nQ-KAO" secondAttribute="height" multiplier="1:1" id="xad-SA-PRi"/>
                                     </constraints>
-                                    <state key="normal" image="icon_profileUser"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="32.5"/>
@@ -671,7 +671,6 @@
         <image name="icon_profileShare" width="22" height="22"/>
         <image name="icon_profileTeam" width="22" height="22"/>
         <image name="icon_profileTopbg" width="375" height="134"/>
-        <image name="icon_profileUser" width="65" height="65"/>
         <image name="icon_profileWallet" width="22" height="22"/>
         <image name="icon_profileWithdraw" width="22" height="22"/>
         <image name="icon_walletEnter" width="12" height="12"/>

@@ -52,7 +52,7 @@
 //            }
 //        }];
 //    }
-    self.addressCode.image = [BTCommonUtils logoQrCode:nil code:self.model.address];
+    self.addressCode.image = [BTCommonUtils createQRCodeWithUrl:self.model.address image:nil size:150.f];
     if ([self.model.coin.unit containsString:@"USDT"]) {
         self.linkView.hidden = NO;
         WeakSelf(weakSelf)
@@ -86,24 +86,6 @@
             }
         }];
     }
-//    if ([self.model.coin.unit containsString:@"USDT"] && self.model.usdtAddress.count >= 2){//只有USDT并且链地址大于1的时候self.model.usdtAddress.count >= 2 &&
-//        self.linkView.hidden = NO;
-//        NSMutableArray *datasource = [NSMutableArray array];
-//        for (NSString *key in self.model.usdtAddress.allKeys) {
-//            if ([key isEqualToString:@"USDTERC20"]) {
-//                BTLinkTypeModel *linkModel = [[BTLinkTypeModel alloc]init];
-//                linkModel.selected = YES;
-//                linkModel.linkType = [key substringFromIndex:4];
-//                [datasource addObject:linkModel];
-//            }else if ([key isEqualToString:@"USDTTRC20"]){
-//                BTLinkTypeModel *linkModel = [[BTLinkTypeModel alloc]init];
-//                linkModel.linkType = [key substringFromIndex:4];
-//                [datasource addObject:linkModel];
-//            }
-//        }
-//        self.datasource = datasource;
-//        [self.linkTypeCollection reloadData];
-//    }
 }
 - (void)setupLayout{
     self.layout.itemSize = CGSizeMake(70.f, 25.f);

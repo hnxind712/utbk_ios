@@ -82,9 +82,9 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     strongSelf.tableView.ly_emptyView = strongSelf.emptyView;
                     [strongSelf.tableView reloadData];
-
                 });
-            }
+            }else
+                ErrorToast
         }];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

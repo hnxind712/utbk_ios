@@ -151,6 +151,21 @@
                         if (!info.address.length) {
                             info.address = walletModel.address;
                             [YLUserInfo saveUser:info];
+                            NSMutableArray *array = [NSMutableArray array];
+                            //取出
+                            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                            NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
+                            NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+                            [array addObjectsFromArray:list];
+                            [array enumerateObjectsUsingBlock:^(YLUserInfo *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                if ([obj.username isEqualToString:info.username]) {
+                                    obj.address = walletModel.address;*stop = YES;
+                                }
+                            }];
+                            //存
+                            NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
+                            [[NSUserDefaults standardUserDefaults]setObject:arrayData forKey:KWalletManagerKey];
+                            [[NSUserDefaults standardUserDefaults] synchronize];
                         }
                         strongSelf.address.text = walletModel.address;break;
                     }
