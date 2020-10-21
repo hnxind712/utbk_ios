@@ -449,6 +449,8 @@
 		3C1530B42528A69C00AB8F37 /* BTUpdateVersionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTUpdateVersionView.m; sourceTree = "<group>"; };
 		3C1530B82528ADA800AB8F37 /* VersionUpdateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionUpdateModel.m; sourceTree = "<group>"; };
 		3C1530B92528ADA800AB8F37 /* VersionUpdateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionUpdateModel.h; sourceTree = "<group>"; };
+		3C19DF9125406D120032CE65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTAssetsWithdrawVC.strings; sourceTree = "<group>"; };
+		3C19DF9325406D140032CE65 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTAssetsWithdrawVC.strings"; sourceTree = "<group>"; };
 		3C1D2FEB251239E7002AE5AA /* BTPoolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPoolViewController.h; sourceTree = "<group>"; };
 		3C1D2FEC251239E7002AE5AA /* BTPoolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTPoolViewController.m; sourceTree = "<group>"; };
 		3C1D2FED251239E7002AE5AA /* BTPoolViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTPoolViewController.xib; sourceTree = "<group>"; };
@@ -658,8 +660,6 @@
 		D74045052536A6DE0074A336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTAssetsTransiferVC.strings; sourceTree = "<group>"; };
 		D74045072536A6DF0074A336 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTAssetsTransiferVC.strings"; sourceTree = "<group>"; };
 		D74045092536A7390074A336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTAssetsWithdrawVC.xib; sourceTree = "<group>"; };
-		D740450C2536A73D0074A336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTAssetsWithdrawVC.strings; sourceTree = "<group>"; };
-		D740450E2536A73D0074A336 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTAssetsWithdrawVC.strings"; sourceTree = "<group>"; };
 		D74045102536A7F50074A336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BTSweepAccountVC.xib; sourceTree = "<group>"; };
 		D74045172536A84B0074A336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTSweepAccountVC.strings; sourceTree = "<group>"; };
 		D74045192536A84D0074A336 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTSweepAccountVC.strings"; sourceTree = "<group>"; };
@@ -3216,8 +3216,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				D74045092536A7390074A336 /* Base */,
-				D740450C2536A73D0074A336 /* en */,
-				D740450E2536A73D0074A336 /* zh-Hans */,
+				3C19DF9125406D120032CE65 /* en */,
+				3C19DF9325406D140032CE65 /* zh-Hans */,
 			);
 			name = BTAssetsWithdrawVC.xib;
 			sourceTree = "<group>";
@@ -3531,7 +3531,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = lsiOSBTCK.com;
 				PRODUCT_NAME = BTCK;
@@ -3554,7 +3554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = lsiOSBTCK.com;
 				PRODUCT_NAME = BTCK;
 				SWIFT_VERSION = 5.0;

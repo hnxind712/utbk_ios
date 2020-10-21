@@ -128,6 +128,8 @@
 "温馨提示：最小充值金额1USDT，小于最小金额充值将无法到账且无法退回" = "Tips: The minimum recharge amount of 1USDT, less than the minimum amount of recharge will not be received and cannot be returned";
 "网体激活" = "Net activation";
 "账户激活" = "Account activation";
+"温馨提示：仅支持erc20钱包地址，地址出错将无法找回请认真核对" = "warm prompt: only support erc20 wallet address, error will not be able to find please check carefully";
+"温馨提示：仅支持trc20钱包地址，地址出错将无法找回请认真核对" = "warm prompt: only support trc20 wallet address, error will not be able to find please check carefully";
 //可能通用
 "notice" = "Notice";
 "projectName" = "ztuo";

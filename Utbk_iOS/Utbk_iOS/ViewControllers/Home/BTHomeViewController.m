@@ -305,9 +305,9 @@
 -(void)getNotice{
     WeakSelf(weakSelf)
     [MineNetManager getPlatformMessageForCompleteHandleWithPageNo:@"1" withPageSize:@"20" CompleteHandle:^(id resPonseObj, int code) {
+        StrongSelf(strongSelf)
         if (code) {
             if ([resPonseObj[@"code"] integerValue] == 0) {
-                StrongSelf(strongSelf)
                 NSArray *arr = resPonseObj[@"data"][@"content"];
                 NSArray *dataArr = [BTNoticeModel mj_objectArrayWithKeyValuesArray:arr];
                 if (dataArr) {
@@ -316,7 +316,8 @@
                     for (BTNoticeModel *_model in dataArr) {
                         if (_model.isTop && !strongSelf.isShowed && [[AppDelegate sharedAppDelegate].topViewController isKindOfClass:[self class]]) {
                             strongSelf.isShowed = YES;
-                            [strongSelf.noticePopView show:_model];break;
+                            [strongSelf.noticePopView show:_model];
+                            break;
                         }
                     }
                 }

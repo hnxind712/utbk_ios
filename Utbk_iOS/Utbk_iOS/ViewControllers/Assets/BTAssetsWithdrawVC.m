@@ -32,6 +32,8 @@
 @property (strong, nonatomic) MentionCoinInfoModel *model;
 @property (strong, nonatomic) NSArray *mentionDatasource;
 @property (strong, nonatomic) BTAssetsModel *assets;
+@property (weak, nonatomic) IBOutlet UILabel *actualAccount;
+@property (weak, nonatomic) IBOutlet UILabel *tips;
 
 @end
 
@@ -61,6 +63,16 @@
     self.layout.minimumInteritemSpacing = 20.f;
     self.layout.sectionInset = UIEdgeInsetsMake(14, 8, 14, 8);
     [self.linkTypeCollection registerNib:[UINib nibWithNibName:NSStringFromClass([BTLinkTypeCollectionCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([BTLinkTypeCollectionCell class])];
+    //
+    NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc]initWithString:LocalizationKey(@"温馨提示：仅支持erc20钱包地址，地址出错将无法找回请认真核对")];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:10];
+    //调整行间距
+    [attribute addAttribute:NSParagraphStyleAttributeName
+                             value:paragraphStyle
+                             range:NSMakeRange(0, [attribute.string length])];
+    [attribute addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12.f],NSForegroundColorAttributeName:RGBOF(0xA78659)} range:NSMakeRange(0, [attribute.string length])];
+    self.tips.attributedText = attribute;
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     NSMutableString * futureString = [NSMutableString stringWithString:textField.text];
@@ -76,6 +88,15 @@
         }
         flag++;
     }
+    if (self.model) {
+        if (futureString.doubleValue > self.model.maxTxFee.doubleValue) {
+            self.actualAccount.text = [NSString stringWithFormat:@"%.4f USDT",futureString.doubleValue - self.model.maxTxFee.doubleValue];
+        }else{
+            self.actualAccount.text = @"0.0000 USDT";
+        }
+        
+    }
+    
     return YES;
 }
 - (void)setupBind{
@@ -85,7 +106,7 @@
             StrongSelf(strongSelf)
             if ([resPonseObj[@"code"] integerValue] == 0) {
                 strongSelf.assets = [BTAssetsModel mj_objectWithKeyValues:resPonseObj[@"data"]];
-                strongSelf.balance.text = [ToolUtil stringFromNumber:self.assets.balance.doubleValue withlimit:KLimitAssetInputDigits];
+                strongSelf.balance.text = [NSString stringWithFormat:@"%@ USDT",[ToolUtil stringFromNumber:self.assets.balance.doubleValue withlimit:KLimitAssetInputDigits]];
             }else{
                 [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
             }
@@ -134,7 +155,7 @@
                         strongSelf.model = obj;*stop = YES;
                     }
                 }];
-                strongSelf.fee.text = strongSelf.model.maxTxFee;
+                strongSelf.fee.text = [NSString stringWithFormat:@"%@",strongSelf.model.maxTxFee];
             }else{
                 [strongSelf.view makeToast:responseResult[MESSAGE] duration:ToastHideDelay position:ToastPosition];
             }
@@ -169,18 +190,38 @@
         for (MentionCoinInfoModel *mentionModel in self.mentionDatasource) {
             if ([mentionModel.unit isEqualToString:@"USDT"]) {
                 self.model = mentionModel;
-                self.unit = mentionModel.unit;break;;
+                self.unit = mentionModel.unit;
+                NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc]initWithString:LocalizationKey(@"温馨提示：仅支持erc20钱包地址，地址出错将无法找回请认真核对")];
+                NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+                [paragraphStyle setLineSpacing:10];
+                //调整行间距
+                [attribute addAttribute:NSParagraphStyleAttributeName
+                                         value:paragraphStyle
+                                         range:NSMakeRange(0, [attribute.string length])];
+                [attribute addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12.f],NSForegroundColorAttributeName:RGBOF(0xA78659)} range:NSMakeRange(0, [attribute.string length])];
+                self.tips.attributedText = attribute;
+                break;
             }
         }
     }else if ([model.linkType isEqualToString:@"TRC20"]){
         for (MentionCoinInfoModel *mentionModel in self.mentionDatasource) {
             if ([mentionModel.unit containsString:@"TRC20"]) {
                 self.model = mentionModel;
-                self.unit = mentionModel.unit;break;;
+                self.unit = mentionModel.unit;
+                NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc]initWithString:LocalizationKey(@"温馨提示：仅支持trc20钱包地址，地址出错将无法找回请认真核对")];
+                NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+                [paragraphStyle setLineSpacing:10];
+                //调整行间距
+                [attribute addAttribute:NSParagraphStyleAttributeName
+                                         value:paragraphStyle
+                                         range:NSMakeRange(0, [attribute.string length])];
+                [attribute addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12.f],NSForegroundColorAttributeName:RGBOF(0xA78659)} range:NSMakeRange(0, [attribute.string length])];
+                self.tips.attributedText = attribute;
+                break;;
             }
         }
     }
-    self.fee.text = self.model.maxTxFee;
+    self.fee.text = [NSString stringWithFormat:@"%@",self.model.maxTxFee];
 }
 //扫描
 - (IBAction)scanCoinAddrssAction:(UIButton *)sender {
@@ -199,6 +240,11 @@
 - (IBAction)inputAllCoinAccountAction:(UIButton *)sender {
     if (self.assets.balance.doubleValue > 0) {
         self.coinCountInput.text = [ToolUtil stringFromNumber:self.assets.balance.doubleValue withlimit:KLimitAssetInputDigits];
+        if (self.assets.balance.doubleValue > 10.f) {
+            self.actualAccount.text = [NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:self.assets.balance.doubleValue - self.model.maxTxFee.doubleValue withlimit:KLimitAssetInputDigits]];
+        }else{
+            self.actualAccount.text = @"0.0000 USDT";
+        }
     }
 }
 //显示密码

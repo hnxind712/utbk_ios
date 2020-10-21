@@ -1,24 +1,33 @@
 
-/* Class = "UILabel"; text = "个"; ObjectID = "2lb-LC-hdg"; */
-"2lb-LC-hdg.text" = "个";
+/* Class = "UILabel"; text = "到账数量："; ObjectID = "3ku-td-GJq"; */
+"3ku-td-GJq.text" = "到账数量：";
 
 /* Class = "UIButton"; normalTitle = "全部"; ObjectID = "6Qo-pa-QVs"; */
 "6Qo-pa-QVs.normalTitle" = "全部";
 
+/* Class = "UILabel"; text = "手续费"; ObjectID = "7wF-TH-jxG"; */
+"7wF-TH-jxG.text" = "手续费";
+
+/* Class = "UILabel"; text = "USDT"; ObjectID = "9dF-zb-1sT"; */
+"9dF-zb-1sT.text" = "USDT";
+
 /* Class = "UITextField"; placeholder = "请填写收币账户地址"; ObjectID = "FSe-wv-5qF"; */
 "FSe-wv-5qF.placeholder" = "请填写收币账户地址";
 
-/* Class = "UILabel"; text = "100"; ObjectID = "G6C-06-hq5"; */
-"G6C-06-hq5.text" = "100";
+/* Class = "UILabel"; text = "3.0000"; ObjectID = "FXP-GX-PDb"; */
+"FXP-GX-PDb.text" = "3.0000";
 
 /* Class = "UILabel"; text = "可用："; ObjectID = "HCg-iC-Ak3"; */
 "HCg-iC-Ak3.text" = "可用：";
 
-/* Class = "UILabel"; text = "0.00"; ObjectID = "JPK-NA-cAs"; */
-"JPK-NA-cAs.text" = "0.00";
+/* Class = "UILabel"; text = "0.0000"; ObjectID = "JPK-NA-cAs"; */
+"JPK-NA-cAs.text" = "0.0000";
 
 /* Class = "UILabel"; text = "链类型"; ObjectID = "LJD-9i-028"; */
 "LJD-9i-028.text" = "链类型";
+
+/* Class = "UILabel"; text = "数量"; ObjectID = "Rph-uU-qUs"; */
+"Rph-uU-qUs.text" = "数量";
 
 /* Class = "UITextField"; placeholder = "请填写提币数量"; ObjectID = "baf-dx-27B"; */
 "baf-dx-27B.placeholder" = "请填写提币数量";
@@ -26,8 +35,14 @@
 /* Class = "UITextField"; placeholder = "请输入交易密码"; ObjectID = "eNL-9c-ANW"; */
 "eNL-9c-ANW.placeholder" = "请输入交易密码";
 
-/* Class = "UILabel"; text = "矿工费每笔"; ObjectID = "kn2-mo-gN5"; */
-"kn2-mo-gN5.text" = "矿工费每笔";
+/* Class = "UILabel"; text = "USDT"; ObjectID = "hPO-hO-7cU"; */
+"hPO-hO-7cU.text" = "USDT";
+
+/* Class = "UILabel"; text = "0.0000 USDT"; ObjectID = "nhd-lm-krg"; */
+"nhd-lm-krg.text" = "0.0000 USDT";
+
+/* Class = "UILabel"; text = "提币地址"; ObjectID = "vq1-cH-e4k"; */
+"vq1-cH-e4k.text" = "提币地址";
 
 /* Class = "UIButton"; normalTitle = "确认"; ObjectID = "xEZ-VL-Heh"; */
 "xEZ-VL-Heh.normalTitle" = "确认";

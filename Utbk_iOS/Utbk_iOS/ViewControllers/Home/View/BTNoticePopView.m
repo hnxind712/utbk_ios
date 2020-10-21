@@ -28,7 +28,7 @@
 }
 */
 - (void)show:(BTNoticeModel *)model{
-    [BTKeyWindow addSubview:self];
+    [[UIApplication sharedApplication].windows.lastObject addSubview:self];
     self.frame = BTKeyWindow.bounds;
     self.noticeTitle.text = model.title;
     [self.webView loadHTMLString:[self HTML:model.content] baseURL:nil];

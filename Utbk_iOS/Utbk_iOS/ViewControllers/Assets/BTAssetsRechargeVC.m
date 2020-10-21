@@ -44,7 +44,7 @@
 - (void)setupBind{
     [self.saveBtn setTitle:LocalizationKey(@"长按保存至相册") forState:UIControlStateNormal];
     self.tipsLabel.text = LocalizationKey(@"温馨提示：最小充值金额1USDT，小于最小金额充值将无法到账且无法退回");
-    self.coinTitle.hidden = !self.isMotherCoin;
+//    self.coinTitle.hidden = !self.isMotherCoin;
     self.linkView.hidden = ![self.model.coin.unit isEqualToString:@"USDT"];
     self.sepView.hidden = ![self.model.coin.unit isEqualToString:@"USDT"];
     self.linkHeight.constant = ![self.model.coin.unit isEqualToString:@"USDT"] ? 0 : 85.f;
