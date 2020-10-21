@@ -623,6 +623,7 @@
     KchatViewController*klineVC = [[KchatViewController alloc]init];
     symbolModel *model = self.datasource[indexPath.row];
     klineVC.symbol = model.symbol;
+    klineVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:klineVC withBackTitle:model.symbol animated:YES];
 }
 /*

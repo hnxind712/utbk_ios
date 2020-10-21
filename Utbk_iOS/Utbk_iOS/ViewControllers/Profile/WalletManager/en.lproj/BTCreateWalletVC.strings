@@ -15,7 +15,7 @@
 "PcT-sN-oNm.text" = "Password belongs to the protection of private key and transaction authorization, strength is very important; The platform does not store passwords. We won't get it for you. Please keep it well。";
 
 /* Class = "UITextField"; placeholder = "设置密码（6-20个字符）"; ObjectID = "Z3P-te-aoD"; */
-"Z3P-te-aoD.placeholder" = "Set the password（6 to 20 characters）";
+"Z3P-te-aoD.placeholder" = "Set the password（6-20 case plus number）";
 
 /* Class = "UILabel"; text = "钱包名称（不超过25个字）"; ObjectID = "brK-in-F0l"; */
 "brK-in-F0l.text" = "Name of the wallet（No more than 25 words）";

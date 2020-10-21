@@ -252,7 +252,7 @@
 }
 #pragma mark - 匹配6-20位的密码
 + (BOOL)matchPassword:(NSString *)password {
-    NSString *pattern = @"^[^s]{6,20}$";
+    NSString *pattern = @"(?![0-9A-Z]+$)(?![0-9a-z]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$";
     NSPredicate *regexMobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",pattern];
     BOOL result = [regexMobile evaluateWithObject:password];
     if (result)

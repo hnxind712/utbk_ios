@@ -124,6 +124,10 @@
 "卖" = "Sell";
 "修改交易密码" = "Change the trade password";
 "温馨提示：请牢记您的提币密码，如果遗忘将无法找回，将无法提现账户资产，请慎重！！" = "Warm tip: please remember your withdrawal password. If you forget it, you will not be able to get it back. You will not be able to withdraw your account assets.";
+"请输入6-20位大小写加数字的密码组合" = "Please enter a 6- to 20-digit password combination with case and number";
+"温馨提示：最小充值金额1USDT，小于最小金额充值将无法到账且无法退回" = "Tips: The minimum recharge amount of 1USDT, less than the minimum amount of recharge will not be received and cannot be returned";
+"网体激活" = "Net activation";
+"账户激活" = "Account activation";
 //可能通用
 "notice" = "Notice";
 "projectName" = "ztuo";

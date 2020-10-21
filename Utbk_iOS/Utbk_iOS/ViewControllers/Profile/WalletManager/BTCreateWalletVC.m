@@ -82,6 +82,9 @@
     if (!_password.text.length) {
         [self.view makeToast:LocalizationKey(@"请输入密码") duration:ToastHideDelay position:ToastPosition];return;
     }
+    if (![ToolUtil matchPassword:_password.text]) {
+        [self.view makeToast:LocalizationKey(@"请输入6-20位大小写加数字的密码组合") duration:ToastHideDelay position:ToastPosition];return;
+    }
     if (![_password.text isEqualToString:_passwordSecond.text]) {
         [self.view makeToast:LocalizationKey(@"两次输入的密码不一致") duration:ToastHideDelay position:ToastPosition];return;
     }

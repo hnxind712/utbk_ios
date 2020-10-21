@@ -18,7 +18,7 @@
 "AdU-jd-8Ci.selectedTitle" = "Mnemonic word";
 
 /* Class = "UITextField"; placeholder = "设置密码（6-20个字符）"; ObjectID = "Czh-MS-iNF"; */
-"Czh-MS-iNF.placeholder" = "Set the password（6 to 20 characters）";
+"Czh-MS-iNF.placeholder" = "Set the password（6-20 case plus number）";
 
 /* Class = "UIButton"; normalTitle = "确认导入"; ObjectID = "LDS-vO-yqD"; */
 "LDS-vO-yqD.normalTitle" = "Confirm the import";

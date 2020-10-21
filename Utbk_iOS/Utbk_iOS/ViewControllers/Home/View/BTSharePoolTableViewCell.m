@@ -36,7 +36,7 @@
         self.two.hidden = NO;
     }else{
         self.one.text = [NSString stringWithFormat:@"%@", model.coin];
-        self.three.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.produce]];
+        self.three.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.amount]];
         self.four.text = [ToolUtil transformForDayTimeString:model.saveTime];
         //算出第二个的right
         CGFloat width = (SCREEN_WIDTH - 48)/4;

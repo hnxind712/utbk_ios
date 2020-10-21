@@ -11,6 +11,7 @@
 #import "BTLinkTypeModel.h"
 #import "BTLinkTypeCollectionCell.h"
 #import "MineNetManager.h"
+#import <Photos/Photos.h>
 
 @interface BTAssetsRechargeVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *addressCode;
@@ -19,9 +20,13 @@
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
 @property (weak, nonatomic) IBOutlet UICollectionView *linkTypeCollection;
 @property (weak, nonatomic) IBOutlet UILabel *coinTitle;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *linkHeight;
+@property (weak, nonatomic) IBOutlet UIView *sepView;
 @property (strong, nonatomic) NSArray *datasource;
 @property (strong, nonatomic) BTLinkTypeModel *selectedModel;//选中的model
 @property (copy, nonatomic) NSString *requestAddress;//请求到的address
+@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
+@property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
 
 @end
 
@@ -29,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = RGBOF(0xa78659);
+    self.view.backgroundColor = RGBOF(0xffffff);
     self.title = self.isRechage ? LocalizationKey(@"充币") : LocalizationKey(@"收款");
     [self addRightNavigation];
     [self setupLayout];
@@ -37,7 +42,13 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (void)setupBind{
+    [self.saveBtn setTitle:LocalizationKey(@"长按保存至相册") forState:UIControlStateNormal];
+    self.tipsLabel.text = LocalizationKey(@"温馨提示：最小充值金额1USDT，小于最小金额充值将无法到账且无法退回");
     self.coinTitle.hidden = !self.isMotherCoin;
+    self.linkView.hidden = ![self.model.coin.unit isEqualToString:@"USDT"];
+    self.sepView.hidden = ![self.model.coin.unit isEqualToString:@"USDT"];
+    self.linkHeight.constant = ![self.model.coin.unit isEqualToString:@"USDT"] ? 0 : 85.f;
+    self.tipsLabel.hidden = ![self.model.coin.unit isEqualToString:@"USDT"];
     self.address.text = self.model.address;
 //    if (!self.model.address.length) {//没有地址
 //        [MineNetManager getassetwalletresetaddress:@{@"unit":self.model.coin.unit} CompleteHandle:^(id resPonseObj, int code) {
@@ -91,22 +102,29 @@
     self.layout.itemSize = CGSizeMake(70.f, 25.f);
     self.layout.minimumLineSpacing = 20.f;
     self.layout.minimumInteritemSpacing = 20.f;
-    self.layout.sectionInset = UIEdgeInsetsMake(14, 8, 14, 8);
+    self.layout.sectionInset = UIEdgeInsetsMake(14, 0, 14, 0);
     [self.linkTypeCollection registerNib:[UINib nibWithNibName:NSStringFromClass([BTLinkTypeCollectionCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([BTLinkTypeCollectionCell class])];
+    //添加长按事件
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longpressSaveAlbum:)];
+    [self.saveBtn addGestureRecognizer:longPress];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.barTintColor = RGBOF(0xa78659);
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:RGBOF(0xffffff)}];
+    self.navigationController.navigationBar.barTintColor = RGBOF(0xffffff);
+//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:RGBOF(0xffffff)}];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.barTintColor = NavColor;
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:AppTextColor}];
+//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.f],NSForegroundColorAttributeName:AppTextColor}];
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.navigationController.navigationBar.barTintColor = RGBOF(0xffffff);
 }
 - (void)addRightNavigation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:BTUIIMAGE(@"icon_transferRecord") forState:UIControlStateNormal];
+    [btn setImage:BTUIIMAGE(@"icon_transferRecordR") forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(rechargeRecordAction) forControlEvents:UIControlEventTouchUpInside];
     [btn sizeToFit];
@@ -120,16 +138,30 @@
         withdrawRecord.recordType = KRecordTypeRecharge;
     withdrawRecord.unit = self.model.coin.unit;
     [self.navigationController pushViewController:withdrawRecord animated:YES];
+    
 }
-- (void)addLeftNavigation{
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:BTUIIMAGE(@"icon_cardBack") forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-    btn.frame = CGRectMake(20, StatusBarHeight, 40, 40);
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
-}
-- (void)backAction{
-    [self.navigationController popViewControllerAnimated:YES];
+
+//长按保存至相册
+- (void)longpressSaveAlbum:(UILongPressGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        UIImage *image = self.addressCode.image;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                //写入图片到相册
+                [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+            } completionHandler:^(BOOL success, NSError * _Nullable error) {
+                
+                NSString *msg;
+                if (success) {
+                    msg = LocalizationKey(@"保存成功");
+                }else
+                    msg = LocalizationKey(@"保存失败");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.view makeToast:msg duration:ToastHideDelay position:ToastPosition];
+                });
+            }];
+        });
+    }
 }
 #pragma mark collectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

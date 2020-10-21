@@ -18,7 +18,7 @@
 "AdU-jd-8Ci.selectedTitle" = "助记词";
 
 /* Class = "UITextField"; placeholder = "设置密码（6-20个字符）"; ObjectID = "Czh-MS-iNF"; */
-"Czh-MS-iNF.placeholder" = "设置密码（6-20个字符）";
+"Czh-MS-iNF.placeholder" = "设置密码（6-20位大小写加数字）";
 
 /* Class = "UIButton"; normalTitle = "确认导入"; ObjectID = "LDS-vO-yqD"; */
 "LDS-vO-yqD.normalTitle" = "确认导入";

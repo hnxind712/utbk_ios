@@ -39,10 +39,14 @@
         [self.view makeToast:LocalizationKey(@"请输入交易密码") duration:ToastHideDelay position:ToastPosition];
         return;
     }
+    if (![ToolUtil matchPassword:_passwordNew.text]) {
+        [self.view makeToast:LocalizationKey(@"请输入6-20位大小写加数字的密码组合") duration:ToastHideDelay position:ToastPosition];return;
+    }
     if ([self.passwordSecond.text isEqualToString:@""]) {
         [self.view makeToast:LocalizationKey(@"请再次输入交易密码") duration:ToastHideDelay position:ToastPosition];
         return;
     }
+
     if (![self.passwordSecond.text isEqualToString:self.passwordNew.text]) {
         [self.view makeToast:LocalizationKey(@"两次输入的密码不一致") duration:ToastHideDelay position:ToastPosition];
         return;

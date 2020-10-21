@@ -15,7 +15,7 @@
 "PcT-sN-oNm.text" = "密码属于保护私钥以及交易授权，强度非常重要；平台不存储密码。也不帮您找回，请务必保管好。";
 
 /* Class = "UITextField"; placeholder = "设置密码（6-20个字符）"; ObjectID = "Z3P-te-aoD"; */
-"Z3P-te-aoD.placeholder" = "设置密码（6-20个字符）";
+"Z3P-te-aoD.placeholder" = "设置密码（6-20位大小写加数字）";
 
 /* Class = "UILabel"; text = "钱包名称（不超过25个字）"; ObjectID = "brK-in-F0l"; */
 "brK-in-F0l.text" = "钱包名称（不超过25个字）";

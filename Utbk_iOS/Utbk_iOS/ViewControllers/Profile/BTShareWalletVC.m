@@ -8,9 +8,12 @@
 
 #import "BTShareWalletVC.h"
 #import "BTShareSecondVC.h"
+#import "MineNetManager.h"
+#import "VersionUpdateModel.h"
 
 @interface BTShareWalletVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *codeImageView;
+@property (strong, nonatomic) VersionUpdateModel *model;
 
 @end
 
@@ -18,9 +21,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupBind];
+    [self versionUpdate];
     [self setNeedsStatusBarAppearanceUpdate];
     // Do any additional setup after loading the view from its nib.
+}
+//MARK:--版本更新接口请求
+-(void)versionUpdate{
+    WeakSelf(weakSelf)
+    [MineNetManager versionUpdateForId:@"1" CompleteHandle:^(id resPonseObj, int code) {
+        NSLog(@"版本更新接口请求 --- %@",resPonseObj);
+        if (code) {
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+                VersionUpdateModel *versionModel = [VersionUpdateModel mj_objectWithKeyValues:resPonseObj[@"data"]];
+                weakSelf.model = versionModel;
+                [weakSelf setupBind];
+            }
+        }
+    }];
+    
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
 // 返回你所需要的状态栏样式
@@ -42,15 +60,14 @@
     
 }
 - (void)setupBind{
-    self.codeImageView.image = [BTCommonUtils createQRCodeWithUrl:@"测试" image:BTUIIMAGE(@"icon_registerLogo") size:self.codeImageView.bounds.size.width];
-    //[BTCommonUtils logoQrCode:BTUIIMAGE(@"icon_registerLogo") code:@"cehsi"];
+    self.codeImageView.image = [BTCommonUtils createQRCodeWithUrl:self.model.downloadUrl image:nil size:self.codeImageView.bounds.size.width];
 }
 - (IBAction)backAction:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)shareAction:(UIButton *)sender {
     BTShareSecondVC *share = [[BTShareSecondVC alloc]init];
-    share.url = @"测试";
+    share.url = self.model.downloadUrl;
     share.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:share animated:YES completion:nil];
 }
