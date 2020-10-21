@@ -33,7 +33,7 @@
     self.addressLabel.text = model.address;
     self.activityView.backgroundColor = (model.activeStatus == 1 || model.activeStatus == 2)  ? RGBOF(0xDAC49D) : RGBOF(0xcccccc);
     self.activityLabel.textColor = (model.activeStatus == 1 || model.activeStatus == 2) ? RGBOF(0x786236) : RGBOF(0x333333);
-    self.activityLabel.text = (model.activeStatus == 1 || model.activeStatus == 2) ?  (model.activeStatus == 1 ? LocalizationKey(@"账户激活") : LocalizationKey(@"网体激活")) : LocalizationKey(@"未激活");
+    self.activityLabel.text = (model.activeStatus == 1 || model.activeStatus == 2) ?  (model.activeStatus == 1 ? LocalizationKey(@"已激活") : LocalizationKey(@"网体激活")) : LocalizationKey(@"未激活");
 }
 - (IBAction)copyAddressAction:(UIButton *)sender {
     if (!_address.length) {

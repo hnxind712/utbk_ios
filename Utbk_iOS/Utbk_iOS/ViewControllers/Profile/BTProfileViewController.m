@@ -139,6 +139,9 @@
 - (void)setupBind{
     self.walletName.text = [YLUserInfo shareUserInfo].username;
     [self.headerBtn sd_setImageWithURL:[NSURL URLWithString:[YLUserInfo shareUserInfo].avatar] forState:UIControlStateNormal placeholderImage:BTUIIMAGE(@"icon_profileUser")];
+    if (![YLUserInfo shareUserInfo].avatar.length) {
+        self.headerBtn.layer.borderWidth = 0.f;
+    }
     if (![YLUserInfo shareUserInfo].address) {
         WeakSelf(weakSelf)
         [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
@@ -183,7 +186,7 @@
             info.activeStatus = [responseResult[@"data"][@"status"] isKindOfClass:[NSNull class]] ? 0 : [responseResult[@"data"][@"status"] integerValue];
             [YLUserInfo saveUser:info];
             self.activeBtn.backgroundColor = (info.activeStatus == 1 || info.activeStatus == 2)  ? RGBOF(0xDAC49D) : RGBOF(0xcccccc);
-            NSString *title = (info.activeStatus == 1 || info.activeStatus == 2) ?  (info.activeStatus == 1 ? LocalizationKey(@"账户激活") : LocalizationKey(@"网体激活")) : LocalizationKey(@"未激活");
+            NSString *title = (info.activeStatus == 1 || info.activeStatus == 2) ?  (info.activeStatus == 1 ? LocalizationKey(@"已激活") : LocalizationKey(@"网体激活")) : LocalizationKey(@"未激活");
             [self.activeBtn setTitle:title forState:UIControlStateNormal];
             [self.activeBtn setTitleColor:(info.activeStatus == 1 || info.activeStatus == 2) ? RGBOF(0x786236) : RGBOF(0x333333) forState:UIControlStateNormal];
         }
