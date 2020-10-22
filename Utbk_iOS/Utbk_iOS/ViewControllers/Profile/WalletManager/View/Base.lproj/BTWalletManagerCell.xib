@@ -116,6 +116,7 @@
                             <constraint firstItem="muh-g8-SJ2" firstAttribute="leading" secondItem="G1v-98-nYP" secondAttribute="trailing" constant="5" id="eg2-JO-Op1"/>
                             <constraint firstItem="E9M-nU-IP1" firstAttribute="top" secondItem="msT-ba-Y2y" secondAttribute="top" constant="10" id="fAO-M6-2mL"/>
                             <constraint firstItem="PvF-HX-QEB" firstAttribute="centerY" secondItem="msT-ba-Y2y" secondAttribute="centerY" id="in9-mb-hPG"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ezP-vX-CMs" secondAttribute="trailing" constant="10" id="nqj-OP-qG3"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

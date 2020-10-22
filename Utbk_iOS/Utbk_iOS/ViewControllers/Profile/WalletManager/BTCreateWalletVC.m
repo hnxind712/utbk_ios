@@ -39,9 +39,16 @@
         self.createBtn.userInteractionEnabled = YES;
         self.createBtn.backgroundColor = RGBOF(0xDAC49D);
     }else{
-        self.createBtn.userInteractionEnabled = YES;
+        self.createBtn.userInteractionEnabled = NO;
         self.createBtn.backgroundColor = RGBOF(0xcccccc);
     }
+}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([[[textView textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textView textInputMode] primaryLanguage]) {
+        return NO;
+    }
+    NSString *checkStr = [textView.text stringByReplacingCharactersInRange:range withString:text];
+    return checkStr.length <= 25;
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     if ([[[textField textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textField textInputMode] primaryLanguage]) {
@@ -57,7 +64,7 @@
         self.createBtn.userInteractionEnabled = NO;
         self.createBtn.backgroundColor = RGBOF(0xcccccc);
     }
-    return checkStr.length <= 25;
+    return  checkStr.length >= 6 &&  checkStr.length <= 20;
 }
 
 - (IBAction)showPasswordAction:(UIButton *)sender {
