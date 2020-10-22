@@ -1436,11 +1436,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                         if (model.change <0) {
                             self.nowPrice.textColor=RedColor;
                             self.riseFallLabel.textColor = RedColor;
-                            self.riseFallLabel.text = [NSString stringWithFormat:@"%.4f%%", model.chg*100];
+                            self.riseFallLabel.text = [NSString stringWithFormat:@"%.2f%%", model.chg*100];
                         }else{
                             self.nowPrice.textColor=GreenColor;
                             self.riseFallLabel.textColor = GreenColor;
-                            self.riseFallLabel.text = [NSString stringWithFormat:@"+%.4f%%", model.chg*100];
+                            self.riseFallLabel.text = [NSString stringWithFormat:@"+%.2f%%", model.chg*100];
                         }
                         if ([YLUserInfo isLogIn]) {
                             if (!_IsSell) {
@@ -1873,11 +1873,11 @@ kRemoveCellSeparator
                 self.nowCNY.text=[NSString stringWithFormat:@"≈%.2f CNY",[[[close decimalNumberByMultiplyingBy:baseUsdRate] decimalNumberByMultiplyingBy:((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate] doubleValue]];
                 if (model.change <0) {
                     self.riseFallLabel.textColor = RedColor;
-                    self.riseFallLabel.text = [NSString stringWithFormat:@"%.4f%%", model.chg*100];
+                    self.riseFallLabel.text = [NSString stringWithFormat:@"%.2f%%", model.chg*100];
 
                 }else{
                     self.riseFallLabel.textColor = GreenColor;
-                    self.riseFallLabel.text = [NSString stringWithFormat:@"+%.4f%%", model.chg*100];
+                    self.riseFallLabel.text = [NSString stringWithFormat:@"+%.2f%%", model.chg*100];
 
                 }
             }

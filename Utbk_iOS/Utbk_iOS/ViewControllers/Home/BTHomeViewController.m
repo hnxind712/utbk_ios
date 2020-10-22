@@ -405,8 +405,10 @@
     [btn setTitleColor:RGBOF(0x333333) forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:18.f weight:UIFontWeightMedium];
     [btn addTarget:self action:@selector(walletAction) forControlEvents:UIControlEventTouchUpInside];
-    btn.frame = CGRectMake(0, 0, 200, 30);
-//    [btn sizeToFit];
+    [btn sizeToFit];
+    btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    // 让按钮的内容往左边偏移10
+    btn.contentEdgeInsets = UIEdgeInsetsMake(0, -8, 0, 0);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     _walletBtn = btn;
 }
