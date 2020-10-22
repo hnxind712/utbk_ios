@@ -95,6 +95,7 @@
     if (![_password.text isEqualToString:_passwordSecond.text]) {
         [self.view makeToast:LocalizationKey(@"两次输入的密码不一致") duration:ToastHideDelay position:ToastPosition];return;
     }
+    sender.userInteractionEnabled = NO;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"username"] = _textView.text;
     params[@"password"] = _password.text;
@@ -128,7 +129,9 @@
                     }
                 }];
             }
+            sender.userInteractionEnabled = YES;
         }else{
+            sender.userInteractionEnabled = YES;
             ErrorToast
         }
     }];

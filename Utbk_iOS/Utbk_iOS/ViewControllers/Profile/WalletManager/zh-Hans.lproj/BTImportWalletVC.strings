@@ -9,7 +9,7 @@
 "83r-sR-jmh.text" = "请再次输入密码";
 
 /* Class = "UILabel"; text = "请输入助记词单词，并使用逗号分隔"; ObjectID = "9zO-mC-O82"; */
-"9zO-mC-O82.text" = "请输入助记词单词，并使用逗号分隔";
+"9zO-mC-O82.text" = "请输入助记词单词，并使用空格分隔";
 
 /* Class = "UIButton"; normalTitle = "助记词"; ObjectID = "AdU-jd-8Ci"; */
 "AdU-jd-8Ci.normalTitle" = "助记词";

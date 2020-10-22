@@ -255,7 +255,7 @@
         StrongSelf(strongSelf)
         if (NetSuccess) {
             if ([responseResult[@"data"]isKindOfClass:[NSNull class]]) {
-                strongSelf.coinCount.text = @"0";
+                strongSelf.coinCount.text = @"0.0000";
             }else
                 strongSelf.coinCount.text = [ToolUtil stringFromNumber:[responseResult[@"data"][@"balance"]doubleValue] withlimit:KLimitAssetInputDigits];
         }
@@ -275,7 +275,7 @@
                     ass1 = [balance decimalNumberByMultiplyingBy:usdRate withBehavior:handle];break;
                 }
             }
-            self.convertCount.text = [ass1 stringValue];
+            self.convertCount.text = [ToolUtil stringFromNumber:ass1.doubleValue withlimit:KLimitAssetInputDigits];
         }
     }];
 }
@@ -405,7 +405,8 @@
     [btn setTitleColor:RGBOF(0x333333) forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:18.f weight:UIFontWeightMedium];
     [btn addTarget:self action:@selector(walletAction) forControlEvents:UIControlEventTouchUpInside];
-    [btn sizeToFit];
+    btn.frame = CGRectMake(0, 0, 200, 30);
+//    [btn sizeToFit];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     _walletBtn = btn;
 }

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -114,11 +115,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rf7-2Y-YeX">
-                                                <rect key="frame" x="20" y="40" width="13" height="16"/>
+                                                <rect key="frame" x="20" y="40" width="9" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="7uS-b9-oxk"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -155,11 +156,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlU-iO-7JB">
-                                                <rect key="frame" x="26.5" y="40" width="13" height="16"/>
+                                                <rect key="frame" x="44.5" y="40" width="9" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="aMk-uK-ISq"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -168,7 +169,7 @@
                                         <constraints>
                                             <constraint firstItem="wGv-jl-Fsv" firstAttribute="top" secondItem="Zqc-cc-cVh" secondAttribute="top" constant="20" id="Ce8-TE-eT1"/>
                                             <constraint firstItem="wGv-jl-Fsv" firstAttribute="centerX" secondItem="Zqc-cc-cVh" secondAttribute="centerX" id="Jk4-2N-jhM"/>
-                                            <constraint firstItem="UlU-iO-7JB" firstAttribute="leading" secondItem="wGv-jl-Fsv" secondAttribute="leading" id="MEJ-Qt-ffj"/>
+                                            <constraint firstItem="UlU-iO-7JB" firstAttribute="centerX" secondItem="wGv-jl-Fsv" secondAttribute="centerX" id="ZwY-cf-lSg"/>
                                             <constraint firstItem="UlU-iO-7JB" firstAttribute="top" secondItem="wGv-jl-Fsv" secondAttribute="bottom" constant="8" id="bIL-M8-y2S"/>
                                         </constraints>
                                     </view>
@@ -193,11 +194,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAf-Uh-Oda">
-                                                <rect key="frame" x="27" y="40" width="13" height="16"/>
+                                                <rect key="frame" x="45" y="40" width="9" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="jMF-Ch-fbc"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -207,9 +208,9 @@
                                             <constraint firstItem="SAf-Uh-Oda" firstAttribute="top" secondItem="RCq-DB-h4K" secondAttribute="bottom" constant="8" id="LHu-GZ-dY8"/>
                                             <constraint firstItem="RCq-DB-h4K" firstAttribute="top" secondItem="H4U-Yg-m58" secondAttribute="top" constant="20" id="Yxo-3f-GY0"/>
                                             <constraint firstItem="RCq-DB-h4K" firstAttribute="centerX" secondItem="H4U-Yg-m58" secondAttribute="centerX" id="ZWM-tV-A30"/>
+                                            <constraint firstItem="SAf-Uh-Oda" firstAttribute="centerX" secondItem="RCq-DB-h4K" secondAttribute="centerX" id="aOm-zP-c0z"/>
                                             <constraint firstItem="a4f-oC-K8c" firstAttribute="leading" secondItem="H4U-Yg-m58" secondAttribute="leading" id="bAf-M9-tla"/>
                                             <constraint firstItem="a4f-oC-K8c" firstAttribute="centerY" secondItem="H4U-Yg-m58" secondAttribute="centerY" id="l8A-xd-nGX"/>
-                                            <constraint firstItem="SAf-Uh-Oda" firstAttribute="leading" secondItem="RCq-DB-h4K" secondAttribute="leading" id="tdw-5s-HMx"/>
                                         </constraints>
                                     </view>
                                 </subviews>

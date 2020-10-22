@@ -42,12 +42,12 @@
     if (model.change <0) {
         self.currenctLabel.textColor = RedColor;
         self.riseFall.backgroundColor=RedColor;
-        self.riseFall.text = [NSString stringWithFormat:@"%.4f%%", model.chg*100];
+        self.riseFall.text = [NSString stringWithFormat:@"%.2f%%", model.chg*100];
 
     }else{
         self.currenctLabel.textColor = GreenColor;
         self.riseFall.backgroundColor = GreenColor;
-        self.riseFall.text = [NSString stringWithFormat:@"+%.4f%%", model.chg*100];
+        self.riseFall.text = [NSString stringWithFormat:@"+%.2f%%", model.chg*100];
 
     }
 }

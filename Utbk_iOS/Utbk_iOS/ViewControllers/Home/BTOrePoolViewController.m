@@ -68,11 +68,11 @@
     }];
 }
 - (void)setupData{
-    self.currency.text = [NSString stringWithFormat:@"%@ %@",self.model.coinName,[ToolUtil formartScientificNotationWithString:self.model.profitAmount]];
-    self.earningsYes.text = [NSString stringWithFormat:@"%@ %@",self.model.subcoinCoin,self.model.subcoinProfitAmount];
-    self.houdCount.text = self.extendCount.text = [ToolUtil formartScientificNotationWithString:self.model.big_airdrop_profit];
-    self.areaTotal.text = [ToolUtil formartScientificNotationWithString:self.model.smallTotalBanance];
-    self.myHoud.text = [ToolUtil formartScientificNotationWithString:self.model.balance];
+    self.currency.text = [NSString stringWithFormat:@"%@ %@",self.model.coinName,[ToolUtil stringFromNumber:self.model.profitAmount.doubleValue withlimit:KLimitAssetInputDigits]];
+    self.earningsYes.text = [NSString stringWithFormat:@"%@ %@",self.model.subcoinCoin,[ToolUtil stringFromNumber:self.model.subcoinProfitAmount.doubleValue withlimit:KLimitAssetInputDigits]];
+    self.houdCount.text = self.extendCount.text = [ToolUtil stringFromNumber:self.model.big_airdrop_profit.doubleValue withlimit:KLimitAssetInputDigits];
+    self.areaTotal.text = [ToolUtil stringFromNumber:self.model.smallTotalBanance.doubleValue withlimit:KLimitAssetInputDigits];
+    self.myHoud.text = [ToolUtil stringFromNumber:self.model.balance.doubleValue withlimit:KLimitAssetInputDigits];
 }
 - (void)transferRecordAction{
     BTDropRecordViewController *drop = [[BTDropRecordViewController alloc]init];
