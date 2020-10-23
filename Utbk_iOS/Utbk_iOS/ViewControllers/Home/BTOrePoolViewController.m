@@ -70,7 +70,8 @@
 - (void)setupData{
     self.currency.text = [NSString stringWithFormat:@"%@ %@",self.model.coinName,[ToolUtil stringFromNumber:self.model.profitAmount.doubleValue withlimit:KLimitAssetInputDigits]];
     self.earningsYes.text = [NSString stringWithFormat:@"%@ %@",self.model.subcoinCoin,[ToolUtil stringFromNumber:self.model.subcoinProfitAmount.doubleValue withlimit:KLimitAssetInputDigits]];
-    self.houdCount.text = self.extendCount.text = [ToolUtil stringFromNumber:self.model.big_airdrop_profit.doubleValue withlimit:KLimitAssetInputDigits];
+    self.houdCount.text = [ToolUtil stringFromNumber:self.model.big_airdrop_profit.doubleValue withlimit:KLimitAssetInputDigits];
+    self.extendCount.text = @"0.0010";
     self.areaTotal.text = [ToolUtil stringFromNumber:self.model.smallTotalBanance.doubleValue withlimit:KLimitAssetInputDigits];
     self.myHoud.text = [ToolUtil stringFromNumber:self.model.balance.doubleValue withlimit:KLimitAssetInputDigits];
 }

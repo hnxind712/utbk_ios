@@ -331,7 +331,7 @@
     V5ChatViewController *chatViewController = [V5ClientAgent createChatViewController];
     // 不显示底部栏（有底部栏的需加此配置）
     chatViewController.hidesBottomBarWhenPushed = YES;
-    // 会话界面的代理
+    // 会话界面的代
     chatViewController.delegate = self;
     //chatViewController.deviceToken = @"设备的deviceToken"; // 也可在config设置deviceToken
     // 允许并设置消息铃声SystemSoundID
@@ -357,11 +357,11 @@
 }
 //开源地址
 - (IBAction)openSourceAddressAction:(UITapGestureRecognizer *)sender {
-    [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
+    [self.view makeToast:LocalizationKey(@"敬请期待") duration:ToastHideDelay position:ToastPosition];
 }
 //提币地址
 - (IBAction)withdrawAddressAction:(UITapGestureRecognizer *)sender {
-    [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
+    [self.view makeToast:LocalizationKey(@"敬请期待") duration:ToastHideDelay position:ToastPosition];
 }
 //分享APP
 - (IBAction)shareAppAction:(UITapGestureRecognizer *)sender {
@@ -370,10 +370,11 @@
 }
 //帮助中心
 - (IBAction)helpCenterAction:(UITapGestureRecognizer *)sender {
-    [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
+    [self.view makeToast:LocalizationKey(@"敬请期待") duration:ToastHideDelay position:ToastPosition];
 }
 //区块链浏览
 - (IBAction)blockChainsAction:(UITapGestureRecognizer *)sender {
+    [self.view makeToast:LocalizationKey(@"敬请期待") duration:ToastHideDelay position:ToastPosition];return;
     LSAppBrowserViewController *browser = [[LSAppBrowserViewController alloc]init];
     browser.urlString = KBlockScanURL;
     [self.navigationController pushViewController:browser animated:YES];

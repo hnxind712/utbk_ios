@@ -37,7 +37,8 @@
     self.yesearningSub.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:model.subcoinYesterdayProfit],model.subcoinCoin];//子币昨日收益
     self.totalearningM.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:model.profitAmount],model.coinName];
     self.totalearningSub.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:model.subcoinProfitAmount],model.subcoinCoin];
-    self.hold.text = self.extend.text = [ToolUtil stringFromNumber:model.big_airdrop_profit.doubleValue withlimit:KLimitAssetInputDigits];
+    self.hold.text = [ToolUtil stringFromNumber:model.big_airdrop_profit.doubleValue withlimit:KLimitAssetInputDigits];
+    self.extend.text = @"0.0010";
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

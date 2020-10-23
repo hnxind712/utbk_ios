@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -9,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BTHomeViewController">
             <connections>
-                <outlet property="adImageView" destination="az4-Mj-agN" id="w7A-44-r4e"/>
                 <outlet property="bannerSuperView" destination="fxV-GE-LCE" id="mq1-eP-gwQ"/>
                 <outlet property="bottomViewHeight" destination="vnN-7m-Jt4" id="58m-Nz-7qg"/>
                 <outlet property="coinCount" destination="Y9A-BB-TQ6" id="OAm-6F-ut0"/>
@@ -437,19 +437,8 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_adBg" translatesAutoresizingMaskIntoConstraints="NO" id="az4-Mj-agN">
-                            <rect key="frame" x="12" y="415" width="390" height="70"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="70" id="bpK-GF-QHn"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="6"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bni-o0-WM0">
-                            <rect key="frame" x="12" y="490" width="390" height="314"/>
+                            <rect key="frame" x="12" y="415" width="390" height="314"/>
                             <subviews>
                                 <button opaque="NO" tag="108" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfO-OB-ah1">
                                     <rect key="frame" x="12" y="12" width="49" height="16"/>
@@ -509,19 +498,16 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="az4-Mj-agN" firstAttribute="trailing" secondItem="fxV-GE-LCE" secondAttribute="trailing" id="2bk-JO-biW"/>
                         <constraint firstItem="tLm-YB-Mn8" firstAttribute="trailing" secondItem="fxV-GE-LCE" secondAttribute="trailing" id="9ni-72-hnR"/>
-                        <constraint firstItem="bni-o0-WM0" firstAttribute="top" secondItem="az4-Mj-agN" secondAttribute="bottom" constant="5" id="Den-v8-cxj"/>
                         <constraint firstItem="bni-o0-WM0" firstAttribute="leading" secondItem="fxV-GE-LCE" secondAttribute="leading" id="JIc-hB-p5K"/>
                         <constraint firstItem="bni-o0-WM0" firstAttribute="trailing" secondItem="fxV-GE-LCE" secondAttribute="trailing" id="Mnx-9o-gy2"/>
                         <constraint firstItem="tLm-YB-Mn8" firstAttribute="leading" secondItem="fxV-GE-LCE" secondAttribute="leading" id="Qnq-9A-Xyd"/>
                         <constraint firstItem="yuU-eo-2cS" firstAttribute="top" secondItem="fxV-GE-LCE" secondAttribute="bottom" constant="5" id="WaL-fi-YIG"/>
-                        <constraint firstItem="az4-Mj-agN" firstAttribute="top" secondItem="tLm-YB-Mn8" secondAttribute="bottom" constant="5" id="X4k-ec-1b3"/>
                         <constraint firstItem="fxV-GE-LCE" firstAttribute="centerX" secondItem="6qo-Bw-NiS" secondAttribute="centerX" id="YKj-H7-pai"/>
+                        <constraint firstItem="bni-o0-WM0" firstAttribute="top" secondItem="tLm-YB-Mn8" secondAttribute="bottom" constant="5" id="dap-OX-rH9"/>
                         <constraint firstItem="yuU-eo-2cS" firstAttribute="leading" secondItem="fxV-GE-LCE" secondAttribute="leading" id="j7m-zV-kCd"/>
                         <constraint firstItem="fxV-GE-LCE" firstAttribute="leading" secondItem="6qo-Bw-NiS" secondAttribute="leading" constant="12" id="jqq-6B-mWL"/>
                         <constraint firstItem="yuU-eo-2cS" firstAttribute="trailing" secondItem="fxV-GE-LCE" secondAttribute="trailing" id="nAb-90-tb0"/>
-                        <constraint firstItem="az4-Mj-agN" firstAttribute="leading" secondItem="fxV-GE-LCE" secondAttribute="leading" id="s9F-NJ-zkr"/>
                         <constraint firstItem="tLm-YB-Mn8" firstAttribute="top" secondItem="yuU-eo-2cS" secondAttribute="bottom" constant="5" id="sso-gC-agd"/>
                         <constraint firstAttribute="bottom" secondItem="bni-o0-WM0" secondAttribute="bottom" constant="10" id="tdH-9G-CGf"/>
                         <constraint firstAttribute="trailing" secondItem="fxV-GE-LCE" secondAttribute="trailing" constant="12" id="wFn-uD-ne4"/>
@@ -541,7 +527,6 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_adBg" width="351" height="70"/>
         <image name="icon_collectCoins" width="44" height="44"/>
         <image name="icon_community" width="44" height="44"/>
         <image name="icon_game" width="44" height="44"/>

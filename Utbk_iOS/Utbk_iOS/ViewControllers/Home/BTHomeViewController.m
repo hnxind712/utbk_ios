@@ -80,6 +80,7 @@
 @property (strong, nonatomic) BTNoticePopView *noticePopView;
 @property (strong, nonatomic) BTNoticeModel *noticeModel;
 @property (assign, nonatomic) BOOL isShowed;//已经显示
+@property (assign, nonatomic) BOOL isTransfrom;//母币能否划转
 
 @end
 
@@ -256,8 +257,10 @@
         if (NetSuccess) {
             if ([responseResult[@"data"]isKindOfClass:[NSNull class]]) {
                 strongSelf.coinCount.text = @"0.0000";
-            }else
+            }else{
                 strongSelf.coinCount.text = [ToolUtil stringFromNumber:[responseResult[@"data"][@"balance"]doubleValue] withlimit:KLimitAssetInputDigits];
+                strongSelf.isTransfrom = [responseResult[@"data"][@"isTransfrom"] isKindOfClass:[NSNull class]] ? 0 : [responseResult[@"data"][@"isTransfrom"] boolValue];
+            }
         }
     }];
     [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
@@ -513,6 +516,10 @@
             break;
         case 102://划转
         {
+            if (self.isTransfrom) {
+                [self.view makeToast:LocalizationKey(@"不支持划转") duration:ToastHideDelay position:ToastPosition];return;
+                return;
+            }
             BTSweepAccountVC *transifer = [[BTSweepAccountVC alloc]init];
             [self.navigationController pushViewController:transifer animated:YES];
         }
@@ -538,7 +545,7 @@
             break;
         case 106://社区
         {
-            [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
+            [self.view makeToast:LocalizationKey(@"敬请期待") duration:ToastHideDelay position:ToastPosition];
         }
             break;
         case 107://上币
@@ -566,17 +573,17 @@
         case 108://夺宝
         case 109://商城
         {
-            [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
+            [self.view makeToast:LocalizationKey(@"敬请期待") duration:ToastHideDelay position:ToastPosition];
         }
             break;
         case 110://游戏
         {
-            [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
+            [self.view makeToast:LocalizationKey(@"敬请期待") duration:ToastHideDelay position:ToastPosition];
         }
             break;
         case 111://DeFi专区
         {
-            [self.view makeToast:LocalizationKey(@"暂未开放") duration:ToastHideDelay position:ToastPosition];
+            [self.view makeToast:LocalizationKey(@"敬请期待") duration:ToastHideDelay position:ToastPosition];
         }
             break;
         default:

@@ -9,7 +9,7 @@
 "取消" = "Cancle";
 "网络连接失败" = "Network connection failure";
 "地址为空" = "The address is empty";
-"暂未开放" = "Temporarily not opened";
+"敬请期待" = "Stay tuned for";
 "简体中文" = "Simplified Chinese";
 "保存成功" = "Save success";
 "保存失败" = "Save failed";
@@ -108,9 +108,10 @@
 "团队持仓" = "Team position";
 "币币" = "COINS COINS";
 "转币" = "Transfer";
+"不支持划转" = "Rotation is not supported";
 //资产
 "总资产" = "TotalAssets";
-"充币" = "";
+"充币" = "Filling currency";
 "请输入地址" = "Please enter the address";
 "请输入数量" = "Please enter the quantity";
 "温馨提示：只能划转一次，最多划转300到BTCK,超出部分自动销毁" = "Warm tip: only one rotation is allowed, the maximum is 300 to BTCK, and the excess part will be destroyed automatically";
