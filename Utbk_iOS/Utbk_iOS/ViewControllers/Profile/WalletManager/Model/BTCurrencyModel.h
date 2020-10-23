@@ -13,8 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BTCurrencyModel : NSObject
 
 @property (copy, nonatomic) NSString *currency;//母币
-@property (assign, nonatomic) NSInteger ID;
-@property (copy, nonatomic) NSString *subcoin;//子币
+@property (copy, nonatomic) NSString *rate;
 @property (assign, nonatomic) BOOL isSelected;
 
 @end

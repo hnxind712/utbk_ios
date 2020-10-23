@@ -107,7 +107,7 @@
             [bodydic setValue:@"1" forKey:@"type"];
             [bodydic removeObjectForKey:@"symbol"];
             [self getMineLogs:bodydic];
-        }else if (self.recordType >= 5 && self.recordType <= 8){
+        }else if (self.recordType >= 5 && self.recordType < 8){
             switch (self.recordType) {
                 case KRecordTypeMotherCoinRecharge://母币充值
                     type = @"1";
@@ -118,14 +118,13 @@
                 case KRecordTypeMotherCoinSweep://母币划转
                     type = @"2";
                     break;
-                case KRecordTypeInvitationRecord://邀请激活
-                    type = @"3";
-                    break;
                 default:
                     break;
             }
             [bodydic setValue:type forKey:@"type"];
             [self getMotherTransferRecord:bodydic];
+        }else if (self.recordType == KRecordTypeInvitationRecord){
+            [self getMotherActivityRecord:bodydic];
         }
     }
 }
@@ -183,6 +182,20 @@
 - (void)getMotherTransferRecord:(NSDictionary *)params{
     WeakSelf(weakSelf)
     [[XBRequest sharedInstance]postDataWithUrl:pageMotherCoinLogsAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
+        if (NetSuccess) {
+            if (weakSelf.currentPage == 0) {
+                [weakSelf.datasource removeAllObjects];
+            }
+            NSArray *dataArr = [BTMotherCoinModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"][@"content"]];
+            [weakSelf.datasource addObjectsFromArray:dataArr];
+            weakSelf.tableView.ly_emptyView = self.emptyView;
+            [weakSelf.tableView reloadData];
+        }
+    }];
+}
+- (void)getMotherActivityRecord:(NSDictionary *)params{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]postDataWithUrl:getRecommendPageAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             if (weakSelf.currentPage == 0) {
                 [weakSelf.datasource removeAllObjects];
@@ -256,7 +269,7 @@
                 [strongSelf.navigationController pushViewController:detail animated:YES];
             };
         }
-    }else if (self.recordType == KRecordTypeMotherCoinTransfer || self.recordType == KRecordTypeMotherCoinSweep || self.recordType == KRecordTypeMotherCoinRecharge || self.recordType == KRecordTypeInvitationRecord){//原始母币相关记录
+    }else if (self.recordType == KRecordTypeMotherCoinTransfer || self.recordType == KRecordTypeMotherCoinSweep || self.recordType == KRecordTypeMotherCoinRecharge){//原始母币相关记录
         BTMotherCoinModel *model = self.datasource[indexPath.row];
         [cell configureCellWithMotherTransferRecordModel:model];
         WeakSelf(weakSelf)
@@ -269,7 +282,11 @@
                 [strongSelf.navigationController pushViewController:detail animated:YES];
             };
         }
-    }else if (self.recordType == KRecordTypeContributionRecord){//弃用
+    }else if (self.recordType == KRecordTypeInvitationRecord){
+        BTMotherCoinModel *model = self.datasource[indexPath.row];
+        [cell configureCellWithMotherActivityRecordModel:model];
+    }
+    else if (self.recordType == KRecordTypeContributionRecord){//弃用
         BTPoolShareContributionRecordModel *model = self.datasource[indexPath.row];
         [cell configureCellWithContributionRecordModel:model];
     }

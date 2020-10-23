@@ -164,21 +164,36 @@
 }
 - (void)getWallet{
     WeakSelf(weakSelf)
-    [TradeNetManager getwallettWithcoin:self.coinName CompleteHandle:^(id resPonseObj, int code) {
-        if (code) {
+    if ([self.coinName containsString:@"BTCK"] && ![self.coinName isEqualToString:@"BTCK"]) {//代表是原始母币
+        [[XBRequest sharedInstance]getDataWithUrl:getMotherCoinWalletAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
             StrongSelf(strongSelf)
-            if ([resPonseObj[@"code"] integerValue] == 0) {
-                BTAssetsModel *assets = [BTAssetsModel mj_objectWithKeyValues:resPonseObj[@"data"]];
-                strongSelf.balance.text = [ToolUtil stringFromNumber:assets.balance.doubleValue withlimit:2];
-                strongSelf.avaliableLabel.text = [NSString stringWithFormat:@"%@%@：",LocalizationKey(@"可用"),self.coinName];
+            if (NetSuccess) {
+                if ([responseResult[@"data"]isKindOfClass:[NSNull class]]) {
+                    strongSelf.balance.text = @"0.00";
+                    strongSelf.avaliableLabel.text = [NSString stringWithFormat:@"%@%@：",LocalizationKey(@"可用"),self.coinName];
+                }else{
+                    strongSelf.balance.text = [ToolUtil stringFromNumber:[responseResult[@"data"][@"balance"]doubleValue] withlimit:2];
+                    strongSelf.avaliableLabel.text = [NSString stringWithFormat:@"%@%@：",LocalizationKey(@"可用"),self.coinName];
+                }
             }
-            else{
-                [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+        }];
+    }else{
+        [TradeNetManager getwallettWithcoin:self.coinName CompleteHandle:^(id resPonseObj, int code) {
+            if (code) {
+                StrongSelf(strongSelf)
+                if ([resPonseObj[@"code"] integerValue] == 0) {
+                    BTAssetsModel *assets = [BTAssetsModel mj_objectWithKeyValues:resPonseObj[@"data"]];
+                    strongSelf.balance.text = [ToolUtil stringFromNumber:assets.balance.doubleValue withlimit:2];
+                    strongSelf.avaliableLabel.text = [NSString stringWithFormat:@"%@%@：",LocalizationKey(@"可用"),self.coinName];
+                }
+                else{
+                    [self.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+                }
+            }else{
+                [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
             }
-        }else{
-            [self.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
-        }
-    }];
+        }];
+    }
 }
 - (void)setupBind{
     WeakSelf(weakSelf)
@@ -288,7 +303,7 @@
         StrongSelf(strongSelf)
         strongSelf.coinName = model.currency;
         [strongSelf getWallet];
-        [strongSelf getCoinExchangeUSDTRate];
+        strongSelf.convert = model.rate.doubleValue;
         strongSelf.count = 1;
         strongSelf.groupCount.text = [NSString stringWithFormat:@"%ld",(long)strongSelf.count];
         strongSelf.contributionValue.text = @"10V";

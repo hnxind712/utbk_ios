@@ -34,9 +34,6 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (void)backAction{
-    if (self.selectedCurrency) {
-        self.selectedCurrency(self.currencyModel);
-    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)setupLayout{
@@ -46,31 +43,18 @@
 - (void)setupBind{
     WeakSelf(weakSelf)
     if (self.index == 0) {//贡献值
-        [[XBRequest sharedInstance]postDataWithUrl:getCoinRelationAPI Parameter:@{@"coin":self.motherCoin} ResponseObject:^(NSDictionary *responseResult) {
+        [[XBRequest sharedInstance]postDataWithUrl:getMineShareCoinsAPI Parameter:@{@"coin":self.motherCoin} ResponseObject:^(NSDictionary *responseResult) {
             StrongSelf(strongSelf)
             if (NetSuccess) {
                 //取字母对
-                if ([responseResult[@"data"] isKindOfClass:[NSDictionary class]]) {
-                    NSDictionary *dic = responseResult[@"data"];
-                    NSMutableArray *array = [NSMutableArray array];
-                    BTCurrencyModel *motherModel = [[BTCurrencyModel alloc]init];
-                    motherModel.currency = dic[@"parentCoin"];
-                    motherModel.isSelected = [dic[@"parentCoin"] isEqualToString:self.curreny];
-                    [array addObject:motherModel];
-                    if ([dic[@"parentCoin"] isEqualToString:self.curreny]) {
-                        strongSelf.currencyModel = motherModel;
+                strongSelf.datasource = [BTCurrencyModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                for (BTCurrencyModel *model in strongSelf.datasource) {
+                    if ([model.currency isEqualToString:self.curreny]) {
+                        model.isSelected = YES;
+                        strongSelf.currencyModel = model;
                     }
-                    BTCurrencyModel *subModel = [[BTCurrencyModel alloc]init];
-                    subModel.currency = dic[@"subcoin"];
-                    subModel.isSelected = [dic[@"subcoin"] isEqualToString:self.curreny];
-                    [array addObject:subModel];
-                    if ([dic[@"subcoin"] isEqualToString:self.curreny]) {
-                        strongSelf.currencyModel = subModel;
-                    }
-                    strongSelf.datasource = array;
-                    [strongSelf.tableView reloadData];
                 }
-                
+                [strongSelf.tableView reloadData];
             }
         }];
     }else if(self.index == 1){//团队持仓

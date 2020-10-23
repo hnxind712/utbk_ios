@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)configureCellWithMotherTransferRecordModel:(id)model;//原始母币转账
 
+- (void)configureCellWithMotherActivityRecordModel:(id)model;//邀请激活记录
+
 - (void)configureCellWithContributionRecordModel:(id)model;//贡献值记录
 
 @end

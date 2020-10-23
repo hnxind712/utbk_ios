@@ -11,7 +11,7 @@
 @implementation BTCurrencyModel
 + (NSDictionary *)mj_replacedKeyFromPropertyName{
     return @{
-        @"currency":@"parentCoin"
+        @"currency":@"coin"
     };
 }
 @end

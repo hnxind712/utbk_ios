@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *status;
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UIButton *moreBtn;
+@property (weak, nonatomic) IBOutlet UILabel *statusTitle;
 
 @end
 
@@ -51,7 +52,20 @@
     self.status.text = LocalizationKey(@"Success");
     self.moreBtn.hidden = (self.index == 3 || self.index == 4);
 }
-
+//邀请记录
+- (void)configureCellWithMotherActivityRecordModel:(BTMotherCoinModel *)model{
+    self.statusTitle.text = LocalizationKey(@"币种");
+    if ([[NSString stringWithFormat:@"%@",model.memberId] isEqualToString:[YLUserInfo shareUserInfo].ID]) {
+        self.title.text = [NSString stringWithFormat:@"%@ %@",model.username,LocalizationKey(@"为您激活")];
+        self.count.text = @"+0.0100";
+    }else{
+        self.title.text = [NSString stringWithFormat:@"%@ %@",LocalizationKey(@"激活账户"),model.username];
+        self.count.text = @"-0.0100";
+    }
+    self.status.text = [NSString stringWithFormat:@"BTCK%@",LocalizationKey(@"原始母币")];
+    self.time.text = [ToolUtil transformForTimeString:model.saveTime];
+    self.moreBtn.hidden = YES;
+}
 - (void)configureCellWithMotherTransferRecordModel:(BTMotherCoinModel *)model{
     self.title.text = [self typeString];
     self.count.text = [ToolUtil judgeStringForDecimalPlaces:model.amount];

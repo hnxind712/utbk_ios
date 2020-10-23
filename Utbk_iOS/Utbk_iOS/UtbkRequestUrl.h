@@ -62,6 +62,10 @@ mine/getMineShare"
 #define   getMineShareLogsAPI   @""HOST@"\
 mine/getMineShareLogs"
 
+//贡献币种列表
+#define   getMineShareCoinsAPI   @""HOST@"\
+mine/getMineShareCoins"
+
 //贡献值转入
 #define   addMineShareAPI   @""HOST@"\
 mine/addMineShare"
@@ -92,6 +96,10 @@ uc/transfer/mothertransfer"
 //母币转账记录
 #define   pageMotherCoinLogsAPI   @""HOST@"\
 uc/transfer/pageMotherCoinLogs"
+
+//邀请激活记录
+#define   getRecommendPageAPI   @""HOST@"\
+uc/mine/getRecommendPage"
 
 //上币
 #define   saveUpCoinApplyAPI   @""HOST@"\

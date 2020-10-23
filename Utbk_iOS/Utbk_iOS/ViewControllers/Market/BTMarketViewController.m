@@ -94,7 +94,7 @@
                 if (strongSelf.tableView.contentSize.height > SCREEN_HEIGHT - NavBarHeight - 120 - TabbarSafeBottomMargin) {
                     strongSelf.heightContraint.constant = SCREEN_HEIGHT - NavBarHeight - 120 - TabbarSafeBottomMargin;
                 }else{
-                    strongSelf.heightContraint.constant = strongSelf.tableView.contentSize.height;
+                    strongSelf.heightContraint.constant = strongSelf.datasource.count * 60.f;
                 }
             }else{
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];

@@ -25,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) NSInteger type;
 @property (nonatomic,copy) NSString *amount;
 @property (nonatomic,copy) NSString *address;
+//母币激活列表字段
+@property (nonatomic,copy)NSString *username;
+@property (nonatomic,copy)NSString *saveTime;
+@property (nonatomic,copy)NSString *memberId;//通过当前参数来判断是否为激活还是被激活
 
 @end
 

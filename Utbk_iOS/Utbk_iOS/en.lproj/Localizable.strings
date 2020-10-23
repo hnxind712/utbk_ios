@@ -109,6 +109,9 @@
 "币币" = "COINS COINS";
 "转币" = "Transfer";
 "不支持划转" = "Rotation is not supported";
+"为您激活" = "For you to activate";
+"激活账户" = "Activate the account";
+
 //资产
 "总资产" = "TotalAssets";
 "充币" = "Filling currency";
