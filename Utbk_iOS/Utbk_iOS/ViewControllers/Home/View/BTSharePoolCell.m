@@ -57,7 +57,7 @@
 //        }];
 //    }
     self.contributionValue.text = [ToolUtil formartScientificNotationWithString:model.contributionValue];//贡献值
-    self.sections.text = [NSString stringWithFormat:@"%d",model.groupsQty];//组数
+    self.sections.text = [ToolUtil stringFromNumber:model.smalltotal.doubleValue withlimit:4];//小区合计
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -116,11 +116,17 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 
 //修改版
 @property (strong, nonatomic) UIButton *selecetBtn;
+@property (strong, nonatomic) LYEmptyView *emptyView;
 
 @end
 
 @implementation TradeViewController
-
+- (LYEmptyView *)emptyView{
+    if (!_emptyView) {
+        _emptyView = [LYEmptyView emptyViewWithImageStr:@"emptyData" titleStr:LocalizationKey(@"noDada")];
+    }
+    return _emptyView;
+}
 - (NSMutableArray *)askcontentArr
 {
     if (!_askcontentArr) {
@@ -1586,7 +1592,6 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                     [self.hisdataArr addObject:model];
                 }
                 self.viewheights.constant = [self getviewheightspce];
- 
                 [self.entrusttableView reloadData];
                 
             }else if ([resPonseObj[@"code"] integerValue]==4000){
@@ -1602,6 +1607,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 
 //就是滑动高度
 -(CGFloat)getviewheightspce{
+    self.entrusttableView.ly_emptyView = self.emptyView;
     if (self.isHistory) {
         return 40 + (self.hisdataArr.count > 0 ? 185 * self.hisdataArr.count : 133);
     }else{
@@ -1787,16 +1793,18 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     [TradeNetManager getwallettWithcoin:coin CompleteHandle:^(id resPonseObj, int code) {
         if (code) {
             if ([resPonseObj[@"code"] integerValue] == 0) {
-                NSDictionary*dict=resPonseObj[@"data"];
-                self.Useable.text = [NSString stringWithFormat:@"%@%@ %@",LocalizationKey(@"usabel"),[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_baseCoinScale],coin];
-                if (self.priceType == PriceType_Fixed) {
-                    self.sliderMaxValue = [ToolUtil stringFromNumber:[dict[@"balance"] doubleValue]/[self.PriceTF.text doubleValue] withlimit:_coinScale];
-                    self.priceLimitBuy = dict[@"balance"];
-                }else if (self.priceType == PriceType_Market){
-                   self.sliderMaxValue = [ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_coinScale];
-                }else{
-                    self.sliderMaxValue =[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue]/[self.PriceTF.text doubleValue] withlimit:_coinScale];
-                    self.priceLimitBuy = dict[@"balance"];
+                if ([resPonseObj[@"data"]isKindOfClass:[NSDictionary class]]) {
+                    NSDictionary*dict=resPonseObj[@"data"];
+                    self.Useable.text = [NSString stringWithFormat:@"%@%@ %@",LocalizationKey(@"usabel"),[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_baseCoinScale],coin];
+                    if (self.priceType == PriceType_Fixed) {
+                        self.sliderMaxValue = [ToolUtil stringFromNumber:[dict[@"balance"] doubleValue]/[self.PriceTF.text doubleValue] withlimit:_coinScale];
+                        self.priceLimitBuy = dict[@"balance"];
+                    }else if (self.priceType == PriceType_Market){
+                       self.sliderMaxValue = [ToolUtil stringFromNumber:[dict[@"balance"] doubleValue] withlimit:_coinScale];
+                    }else{
+                        self.sliderMaxValue =[ToolUtil stringFromNumber:[dict[@"balance"] doubleValue]/[self.PriceTF.text doubleValue] withlimit:_coinScale];
+                        self.priceLimitBuy = dict[@"balance"];
+                    }
                 }
             }else{
                 [self.view makeToast:resPonseObj[MESSAGE] duration:1.5 position:ToastPosition];

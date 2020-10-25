@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) NSInteger userId;
 @property (nonatomic,assign) CGFloat yesterdayProduce;//昨日产出
 @property (nonatomic,assign) CGFloat cumulativeProduce;//累计产出
+@property (nonatomic,copy) NSString *smalltotal;//小区合计
 //下面两个后台加
 @property (nonatomic,copy) NSString *coinName;
 @property (nonatomic,assign) CGFloat destroyQty;//销毁总量
