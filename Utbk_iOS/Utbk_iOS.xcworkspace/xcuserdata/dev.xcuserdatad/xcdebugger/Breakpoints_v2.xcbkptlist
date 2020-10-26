@@ -52,5 +52,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "452891C1-49C0-4C0F-A717-41DA71DE6CDD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Utbk_iOS/ViewControllers/Profile/WalletManager/BTWalletManagerVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "-setupBind"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "452891C1-49C0-4C0F-A717-41DA71DE6CDD - 585e20da1c9ba34"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BTWalletManagerVC setupBind]"
+                  moduleName = "BTCK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Desktop/Utbk_iOS/utbk_ios/Utbk_iOS/Utbk_iOS/ViewControllers/Profile/WalletManager/BTWalletManagerVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "1071">
+               </Location>
+               <Location
+                  uuid = "452891C1-49C0-4C0F-A717-41DA71DE6CDD - 585e20da1c9ba34"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BTWalletManagerVC setupBind]"
+                  moduleName = "BTCK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Desktop/Utbk_iOS/utbk_ios/Utbk_iOS/Utbk_iOS/ViewControllers/Profile/WalletManager/BTWalletManagerVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "1084">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

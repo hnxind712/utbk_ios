@@ -119,8 +119,9 @@
     if (!_tradePasswordInput.text.length) {
         [self.view makeToast:LocalizationKey(@"请输入交易密码") duration:ToastHideDelay position:ToastPosition];return;
     }
+    NSString *inputAddress = [self.addressInput.text stringByReplacingOccurrencesOfString:@" " withString:@""];//去除空格
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"address"] = self.addressInput.text;
+    params[@"address"] = inputAddress;
     params[@"amount"] = self.coinCountInput.text;
     params[@"jyPassword"] = self.tradePasswordInput.text;
     [[XBRequest sharedInstance]postDataWithUrl:mothertransferAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {

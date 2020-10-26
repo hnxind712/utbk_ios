@@ -30,16 +30,7 @@
         self.withdrawCount.text = [NSString stringWithFormat:@"%@%@ %@",self.model.type == 0 ? @"-" : @"+",[ToolUtil judgeStringForDecimalPlaces:self.model.amount],self.model.coinId];
         self.time.text = [ToolUtil transformForTimeString:self.model.createTime];
         self.address.text = self.model.address;
-        if (self.model.status == 0) {
-             self.status.text = LocalizationKey(@"auditing");
-         }else if (self. model.status == 1){
-             self.status.text = LocalizationKey(@"Assetstoreleased");
-
-         }else if (self.model.status == 2){
-             self.status.text = LocalizationKey(@"failure");
-         }else if(self.model.status == 3){
-             self.status.text = LocalizationKey(@"Success");
-         }
+        self.status.text = LocalizationKey(@"Success");
         self.type.text = [self typeString];
     }else if (self.assetModel){
         //对应的转账、资产转矿池为-号，充值以及矿池转资产为+
@@ -52,7 +43,16 @@
         self.withdrawCount.text = [NSString stringWithFormat:@"%@%@ %@",self.index ? @"-" : @"+",[ToolUtil judgeStringForDecimalPlaces:self.recordModel.totalAmount],self.recordModel.coin.unit];
         self.time.text = [ToolUtil transformForTimeString:self.recordModel.createTime];
         self.address.text = self.recordModel.address;
-        self.status.text = LocalizationKey(@"Success");
+        if (self.model.status == 0) {
+             self.status.text = LocalizationKey(@"auditing");
+         }else if (self. model.status == 1){
+             self.status.text = LocalizationKey(@"Assetstoreleased");
+
+         }else if (self.model.status == 2){
+             self.status.text = LocalizationKey(@"failure");
+         }else if(self.model.status == 3){
+             self.status.text = LocalizationKey(@"Success");
+         }
         self.type.text = LocalizationKey(@"提币");
     }
     

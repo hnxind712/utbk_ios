@@ -17,8 +17,12 @@
 
 @interface BTWalletManagerVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *createBtn;
+@property (weak, nonatomic) IBOutlet UIButton *importBtn;
 @property (strong, nonatomic) NSMutableArray *datasource;
 @property (strong, nonatomic) YLUserInfo *currentInfo;
+@property (strong, nonatomic) BTConfigureModel *configureModel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstrant;
 
 @end
 
@@ -34,7 +38,31 @@
     [super viewDidLoad];
     self.title = LocalizationKey(@"钱包管理");
     [self setupLayout];
-//    [self addRightNavigation];
+    [self getMaxWalletCount];
+}
+- (void)getMaxWalletCount{
+    WeakSelf(weakSelf)
+    [[XBRequest sharedInstance]getDataWithUrl:getMinConfigsAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
+        NSLog(@"数据 = %@",responseResult);
+        StrongSelf(strongSelf)
+        if (NetSuccess) {
+            NSArray *dataArray = [BTConfigureModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+            [dataArray enumerateObjectsUsingBlock:^(BTConfigureModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj.key isEqualToString:@"app_limit_wallet_qty"]) {//链类型对应的key
+                    strongSelf.configureModel = obj;*stop = YES;
+                }
+            }];
+            if (strongSelf.configureModel.value.integerValue <= strongSelf.datasource.count) {
+                strongSelf.importBtn.hidden = YES;
+                strongSelf.createBtn.hidden = YES;
+                strongSelf.bottomConstrant.constant = -120.f;
+            }else{
+                strongSelf.importBtn.hidden = NO;
+                strongSelf.createBtn.hidden = NO;
+                strongSelf.bottomConstrant.constant = 30.f;
+            }
+        }
+    }];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -44,7 +72,6 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (self.isLogin) {
-//        [self backBtnNoNavBar:NO normalBack:NO];
         [self leftNavigation];//添加一个不需要的左导航
         if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
             self.navigationController.interactivePopGestureRecognizer.enabled = NO;
@@ -109,6 +136,18 @@
             }
         }];
     }
+    if (self.configureModel) {
+        if (self.configureModel.value.integerValue <= self.datasource.count) {
+            self.importBtn.hidden = YES;
+            self.createBtn.hidden = YES;
+            self.bottomConstrant.constant = -120.f;
+        }else{
+            self.importBtn.hidden = NO;
+            self.createBtn.hidden = NO;
+            self.bottomConstrant.constant = 30.f;
+        }
+    }
+
 }
 - (void)transferAction{
     BTCurrencyViewController *currency = [[BTCurrencyViewController alloc]init];

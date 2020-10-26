@@ -50,14 +50,26 @@
     if ([[[textView textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textView textInputMode] primaryLanguage]) {
         return NO;
     }
-
-    if ([text isEqualToString:@" "] && self.lastSpace) {//如果前一个已经是空格则不允许再次输入
+    if ([text isEqualToString:@"\n"]) {
         return NO;
     }
-    self.lastSpace = NO;
-    if (self.selectedBtn == self.mnemonicWordBtn) {//如果是助记词
-        if ([text isEqualToString:@" "]) {//如果是空格
-            self.lastSpace = YES;
+    if (self.selectedBtn == self.privateKeyBtn) {
+        NSString *tem = [[text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]componentsJoinedByString:@""];
+
+        if (![text isEqualToString:tem]) {
+
+            return NO;
+
+        }
+    }else{
+        if ([text isEqualToString:@" "] && self.lastSpace) {//如果前一个已经是空格则不允许再次输入
+            return NO;
+        }
+        self.lastSpace = NO;
+        if (self.selectedBtn == self.mnemonicWordBtn) {//如果是助记词
+            if ([text isEqualToString:@" "]) {//如果是空格
+                self.lastSpace = YES;
+            }
         }
     }
     return YES;
@@ -149,8 +161,9 @@
         params[@"remberWords"] = _BTS(str);
         params[@"primaryKey"] = @"";
     }else if (self.selectedBtn == self.privateKeyBtn){
+        NSString *privateString = [self.textView.text stringByReplacingOccurrencesOfString:@" " withString:@""];//去除空格
         params[@"remberWords"] = @"";
-        params[@"primaryKey"] = self.textView.text;
+        params[@"primaryKey"] = privateString;
     }
     params[@"password"] = self.password.text;
     [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {

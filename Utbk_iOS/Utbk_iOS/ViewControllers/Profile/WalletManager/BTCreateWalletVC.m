@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *passwordSecond;
 @property (weak, nonatomic) IBOutlet UILabel *textViewPlaceh;
+@property (strong, nonatomic) NSArray *specialStringArray;
+
 @end
 
 @implementation BTCreateWalletVC
@@ -26,7 +28,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LocalizationKey(@"创建钱包");
+    [self specialKeyword];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)specialKeyword{
+    //字符串
+    NSString *specialStringStr = @"~,￥,#,&,*,<,>,《,》,(,),[,],{,},【,】,^,@,/,￡,¤,,|,§,¨,「,」,『,』,￠,￢,￣,（,）,——,+,|,$,_,€,¥,？,/,|,，,。,!,！";
+    self.specialStringArray = [specialStringStr componentsSeparatedByString:@","];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -46,6 +54,12 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     if ([[[textView textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textView textInputMode] primaryLanguage]) {
         return NO;
+    }
+    for (NSInteger i = 0; i < self.specialStringArray.count; i++) {
+    //判断字符串中是否含有特殊符号
+        if ([text rangeOfString:self.specialStringArray[i]].location != NSNotFound) {
+            return NO;
+        }
     }
     NSString *checkStr = [textView.text stringByReplacingCharactersInRange:range withString:text];
     return checkStr.length <= 25;
