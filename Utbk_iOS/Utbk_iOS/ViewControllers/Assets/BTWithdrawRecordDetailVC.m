@@ -40,20 +40,20 @@
         self.status.text = LocalizationKey(@"Success");
         self.type.text = [self typeStringWithModelType];
     }else if (self.recordModel){
-        self.withdrawCount.text = [NSString stringWithFormat:@"%@%@ %@",self.index ? @"-" : @"+",[ToolUtil judgeStringForDecimalPlaces:self.recordModel.totalAmount],self.recordModel.coin.unit];
+        self.withdrawCount.text = [NSString stringWithFormat:@"-%@ %@",[ToolUtil judgeStringForDecimalPlaces:self.recordModel.totalAmount],self.recordModel.coin.unit];
         self.time.text = [ToolUtil transformForTimeString:self.recordModel.createTime];
         self.address.text = self.recordModel.address;
-        if (self.model.status == 0) {
+        if (self.recordModel.status == 0) {
              self.status.text = LocalizationKey(@"auditing");
-         }else if (self. model.status == 1){
+         }else if (self.recordModel.status == 1){
              self.status.text = LocalizationKey(@"Assetstoreleased");
 
-         }else if (self.model.status == 2){
+         }else if (self.recordModel.status == 2){
              self.status.text = LocalizationKey(@"failure");
-         }else if(self.model.status == 3){
+         }else if(self.recordModel.status == 3){
              self.status.text = LocalizationKey(@"Success");
          }
-        self.type.text = LocalizationKey(@"提币");
+        self.type.text = self.index == 1 ? LocalizationKey(@"提币") : LocalizationKey(@"转账");
     }
     
 }
@@ -69,6 +69,7 @@
 - (NSString *)typeStringWithModelType{//需按照类型来处理
     NSDictionary *dic = @{
         @(0):LocalizationKey(@"充币"),
+        @(1):LocalizationKey(@"提币"),
         @(2):LocalizationKey(@"转账"),
         @(17):LocalizationKey(@"划转"),
         @(18):LocalizationKey(@"划转"),

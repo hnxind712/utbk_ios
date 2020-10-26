@@ -82,14 +82,15 @@
     [bodydic setValue:pageNoStr forKey:@"pageNo"];
     [bodydic setValue:@"10" forKey:@"pageSize"];
     [bodydic setValue:self.unit forKey:@"symbol"];
-    if (self.recordType == KRecordTypeWithdraw) {//提币
+    if (self.recordType == KRecordTypeWithdraw || self.recordType == KRecordTypeTransfer) {//提币
         [bodydic setValue:pageNoStr forKey:@"page"];
         [bodydic removeObjectForKey:@"pageNo"];
         [bodydic removeObjectForKey:@"symbol"];
+        [bodydic setValue:self.unit forKey:@"unit"];
         [self withdrawData:bodydic];
     }else{
         NSString *type;
-        if (self.recordType == KRecordTypeRecharge || self.recordType == KRecordTypeTransfer) {//充币、转账、资产转矿池、矿池转资产
+        if (self.recordType == KRecordTypeRecharge) {//充币、转账、资产转矿池、矿池转资产
             switch (self.recordType) {
                 case KRecordTypeRecharge:
                     type = @"0";
@@ -142,6 +143,13 @@
                 [weakSelf.datasource addObjectsFromArray:dataArr];
                 weakSelf.tableView.ly_emptyView = self.emptyView;
                 [weakSelf.tableView reloadData];
+                if (weakSelf.currentPage >= [resPonseObj[@"data"][@"totalPages"]integerValue]) {
+                    [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+                    weakSelf.tableView.mj_footer.hidden = YES;
+                }else{
+                    [weakSelf.tableView.mj_footer resetNoMoreData];
+                    weakSelf.tableView.mj_footer.hidden = NO;
+                }
             }else if ([resPonseObj[@"code"] integerValue] == 3000 ||[resPonseObj[@"code"] integerValue] == 4000 ){
                 //[ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
                 [YLUserInfo logout];
@@ -247,7 +255,7 @@
     BTWithdrawRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTWithdrawRecordCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.index = self.recordType;
-    if (self.recordType == KRecordTypeWithdraw) {//USDT提币记录
+    if (self.recordType == KRecordTypeWithdraw || self.recordType == KRecordTypeTransfer) {//USDT提币记录
         BTWithdrawRecordModel *model = self.datasource[indexPath.row];
         [cell configureCellWithRecordModel:model];
         WeakSelf(weakSelf)
@@ -257,7 +265,7 @@
             detail.recordModel = model;
             [strongSelf.navigationController pushViewController:detail animated:YES];
         };
-    }else if (self.recordType == KRecordTypeRecharge || self.recordType == KRecordTypeTransfer || self.recordType == KRecordTypeTransterIn || self.recordType == KRecordTypeTransterOut){//资产流水相关
+    }else if (self.recordType == KRecordTypeRecharge || self.recordType == KRecordTypeTransterIn || self.recordType == KRecordTypeTransterOut){//资产流水相关
         BTAssetRecordModel *model = self.datasource[indexPath.row];
         [cell configureCellWithStreamRecordModel:model];
         if (self.recordType == KRecordTypeRecharge || self.recordType == KRecordTypeTransfer) {//充值以及转账可以有详情
