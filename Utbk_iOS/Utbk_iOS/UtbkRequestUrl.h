@@ -54,6 +54,14 @@ mine/getMineLogs"
 #define   transferWalletAPI   @""HOST@"\
 mine/transferWallet"
 
+//资产转账
+#define   AssetsTransferAPI   @""HOST@"\
+uc/transfer/btkOrBtck"
+
+//转账记录
+#define   pageTranferBTKorBTCKAPI   @""HOST@"\
+uc/transfer/pageTranferBTKorBTCK"
+
 //获取用户共享矿池
 #define   getMineShareAPI   @""HOST@"\
 mine/getMineShare"

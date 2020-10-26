@@ -516,11 +516,8 @@
             break;
         case 102://划转
         {
-            if (self.isTransfrom) {
-                [self.view makeToast:LocalizationKey(@"不支持划转") duration:ToastHideDelay position:ToastPosition];return;
-                return;
-            }
             BTSweepAccountVC *transifer = [[BTSweepAccountVC alloc]init];
+            transifer.canTransfer = self.isTransfrom;
             [self.navigationController pushViewController:transifer animated:YES];
         }
             break;

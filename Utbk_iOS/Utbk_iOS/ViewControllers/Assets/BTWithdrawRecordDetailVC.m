@@ -34,11 +34,12 @@
         self.type.text = [self typeString];
     }else if (self.assetModel){
         //对应的转账、资产转矿池为-号，充值以及矿池转资产为+
-        self.withdrawCount.text = [NSString stringWithFormat:@"%@%@ %@",[[NSString stringWithFormat:@"%@",self.assetModel.amount] containsString:@"-"] ? @"" : @"+",self.assetModel.amount,self.assetModel.symbol];
+        self.withdrawCount.text = [NSString stringWithFormat:@"%@%@ %@",self.assetModel.type ? @"-" : @"+",self.assetModel.amount,self.assetModel.coinId];
         self.time.text = [ToolUtil transformForTimeString:self.assetModel.createTime];
         self.address.text = self.assetModel.address;
         self.status.text = LocalizationKey(@"Success");
         self.type.text = [self typeStringWithModelType];
+        
     }else if (self.recordModel){
         self.withdrawCount.text = [NSString stringWithFormat:@"-%@ %@",[ToolUtil judgeStringForDecimalPlaces:self.recordModel.totalAmount],self.recordModel.coin.unit];
         self.time.text = [ToolUtil transformForTimeString:self.recordModel.createTime];
@@ -69,10 +70,7 @@
 - (NSString *)typeStringWithModelType{//需按照类型来处理
     NSDictionary *dic = @{
         @(0):LocalizationKey(@"充币"),
-        @(1):LocalizationKey(@"提币"),
-        @(2):LocalizationKey(@"转账"),
-        @(17):LocalizationKey(@"划转"),
-        @(18):LocalizationKey(@"划转"),
+        @(1):LocalizationKey(@"转出"),
     };
     return dic[@(self.assetModel.type)];
 };

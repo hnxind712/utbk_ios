@@ -36,16 +36,16 @@
     
     // 1.设置标题和背景色
     self.title = @"扫描";
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = NavColor;
     
     // 2.设置UIBarButtonItem， iOS8系统之后才支持本地扫描
-    UIBarButtonItem * rightItem = [[UIBarButtonItem alloc]initWithTitle:@"相册" style:UIBarButtonItemStyleDone target:self action:@selector(alumbEvent)];
-    self.navigationItem.rightBarButtonItem = rightItem;
+//    UIBarButtonItem * rightItem = [[UIBarButtonItem alloc]initWithTitle:@"相册" style:UIBarButtonItemStyleDone target:self action:@selector(alumbEvent)];
+//    self.navigationItem.rightBarButtonItem = rightItem;
     
-    UIBarButtonItem * leftItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(backButtonEvent)];
+    UIBarButtonItem * leftItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"icon_navLeft"] style:UIBarButtonItemStyleDone target:self action:@selector(backButtonEvent)];
     self.navigationItem.leftBarButtonItem = leftItem;
     
-    //     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonEvent)];
+//         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonEvent)];
     
     [self.view addSubview:self.readview];
     

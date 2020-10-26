@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *countInput;
 @property (weak, nonatomic) IBOutlet UILabel *balance;
 @property (weak, nonatomic) IBOutlet UILabel *tips;
+@property (weak, nonatomic) IBOutlet UIButton *comfirmBtn;
 
 @end
 
@@ -25,6 +26,7 @@
     [self setupBind];
     self.tips.text = LocalizationKey(@"温馨提示：只能划转一次，最多划转300到BTCK,超出部分自动销毁");
     self.countInput.keyboardType = UIKeyboardTypeDecimalPad;
+
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -69,6 +71,9 @@
     [self.navigationController pushViewController:withdrawRecord animated:YES];
 }
 - (IBAction)confirmAction:(UIButton *)sender {
+    if (self.canTransfer) {
+        [self.view makeToast:LocalizationKey(@"不支持划转") duration:ToastHideDelay position:ToastPosition];return;
+    }
     if (!self.countInput.text.length) {
         [self.view makeToast:LocalizationKey(@"inputTransferNumber") duration:ToastHideDelay position:ToastPosition];return;
     }

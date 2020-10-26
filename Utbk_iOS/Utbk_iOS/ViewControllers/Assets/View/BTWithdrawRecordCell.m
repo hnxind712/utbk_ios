@@ -94,9 +94,7 @@
 - (NSString *)typeStringWithType:(NSInteger)type{
     NSDictionary *dic = @{
         @(0):LocalizationKey(@"充币"),
-        @(2):LocalizationKey(@"转账"),
-        @(17):LocalizationKey(@"划转"),
-        @(18):LocalizationKey(@"划转"),
+        @(1):LocalizationKey(@"转出"),
     };
     return dic[@(type)];
 }

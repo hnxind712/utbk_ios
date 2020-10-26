@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 //以下为空投矿池记录新增
 @property (copy, nonatomic) NSString *remarks;
 @property (copy, nonatomic) NSString *saveTime;
-
+@property (copy, nonatomic) NSString *coinId;
 @end
 
 NS_ASSUME_NONNULL_END

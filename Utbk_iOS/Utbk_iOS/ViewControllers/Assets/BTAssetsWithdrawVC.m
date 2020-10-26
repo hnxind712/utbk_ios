@@ -187,6 +187,7 @@
     self.selectedModel.selected = NO;
     self.selectedModel = model;
     [collectionView reloadData];
+    self.addressInput.text = @"";
     if ([model.linkType isEqualToString:@"ERC20"]) {
         for (MentionCoinInfoModel *mentionModel in self.mentionDatasource) {
             if ([mentionModel.unit isEqualToString:@"USDT"]) {

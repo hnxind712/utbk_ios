@@ -119,15 +119,17 @@
                                   objectForKey:(NSString *)kCGImagePropertyExifBrightnessValue] floatValue];
         NSLog(@"%s %f", __FUNCTION__, brightnessValue);
         if (brightnessValue <= 0) {
-            if (!self.buttonTurn.selected) {
-                self.openDetection = NO;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self turnTorchEvent:self.buttonTurn];
-                    [self setTurnOn:YES];
-                    //              [self.captureSession removeOutput:self.captureVideoDataOutput];
-                });
-                
-            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                            if (!self.buttonTurn.selected) {
+                    self.openDetection = NO;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self turnTorchEvent:self.buttonTurn];
+                        [self setTurnOn:YES];
+                        //              [self.captureSession removeOutput:self.captureVideoDataOutput];
+                    });
+                    
+                }
+            });
         }
     }
 }

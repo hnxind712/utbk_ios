@@ -136,7 +136,7 @@
         withdrawRecord.recordType = KRecordTypeMotherCoinRecharge;
     }else
         withdrawRecord.recordType = KRecordTypeRecharge;
-    withdrawRecord.unit = self.model.coin.unit;
+    withdrawRecord.unit = (self.selectedModel && [self.selectedModel.linkType isEqualToString:@"TRC20"]) ? @"USDTTRC20" : self.model.coin.unit;
     [self.navigationController pushViewController:withdrawRecord animated:YES];
     
 }
@@ -182,19 +182,22 @@
     [collectionView reloadData];
     if ([self.selectedModel.linkType isEqualToString:@"ERC20"]) {//
         self.address.text = _BTS(self.model.address);
+        self.addressCode.image = [BTCommonUtils createQRCodeWithUrl:_BTS(self.model.address) image:nil size:150.f];
     }else{
         NSDictionary *dic = self.model.usdtAddress;
         if (dic) {
             self.address.text = _BTS(dic[@"USDTTRC20"]);
+            self.addressCode.image = [BTCommonUtils createQRCodeWithUrl:_BTS(dic[@"USDTTRC20"]) image:nil size:150.f];
         }
     }
+    
 }
 - (IBAction)copyAction:(UIButton *)sender {
     if (!self.model.address.length) {
         [BTKeyWindow makeToast:LocalizationKey(@"地址为空") duration:ToastHideDelay position:ToastPosition];return;
     }
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = self.model.address;
+    pasteboard.string = self.address.text;
     [self.view makeToast:LocalizationKey(@"复制成功") duration:ToastHideDelay position:ToastPosition];
 }
 /*

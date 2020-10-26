@@ -71,6 +71,7 @@
 "涨幅榜" = "performer/24H";
 "收币" = "Collect COINS";
 "转账" = "transfer Currency";
+"转出" = "transfer out";
 "划转" = "transfer";
 "邀请激活" = "Invitation activate";
 "矿池" = "Ore pool";
