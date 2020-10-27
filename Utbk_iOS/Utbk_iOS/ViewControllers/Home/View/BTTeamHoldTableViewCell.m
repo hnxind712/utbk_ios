@@ -26,7 +26,7 @@
 - (void)configureCellWithModel:(BTTeamHoldModel *)model{
     self.address.text = model.address;
     self.totalAddessCount.text = [NSString stringWithFormat:@"%d",model.allAddress];
-    self.personalHold.text = [NSString stringWithFormat:@"%.2f",model.myBTCK];
+    self.personalHold.text = [NSString stringWithFormat:@"%.2f",model.allChicang];
     self.regionHold.text = [NSString stringWithFormat:@"%.2f",model.daChicang];
     self.communityHold.text = [NSString stringWithFormat:@"%.2f",model.xiaoquChicang];
 }

@@ -113,7 +113,8 @@
 "为您激活" = "For you to activate";
 "正在创建钱包" = "Creating wallet";
 "激活账户" = "Activate the account";
-
+"地址(大区)" = "地址(大区)";
+"地址(小区)" = "地址(小区)";
 //资产
 "总资产" = "TotalAssets";
 "充币" = "Filling currency";

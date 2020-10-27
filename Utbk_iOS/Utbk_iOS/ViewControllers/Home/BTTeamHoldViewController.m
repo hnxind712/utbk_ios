@@ -80,7 +80,8 @@
             strongSelf.datasource = [BTTeamHoldModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
             strongSelf.tableView.ly_emptyView = strongSelf.emptyView;
             [strongSelf.tableView reloadData];
-        }
+        }else
+            ErrorToast
     }];
 }
 - (void)teamHoldAction{
@@ -93,6 +94,11 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTTeamHoldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTTeamHoldTableViewCell class])];
+    if (indexPath.row == 0) {
+        cell.addressTitle.text = LocalizationKey(@"地址(大区)");
+    }else{
+        cell.addressTitle.text = LocalizationKey(@"地址(小区)");
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell configureCellWithModel:self.datasource[indexPath.row]];
     return cell;

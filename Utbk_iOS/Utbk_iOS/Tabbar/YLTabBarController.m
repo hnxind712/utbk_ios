@@ -124,6 +124,10 @@
 }
 
 -(void)showLoginViewController{
+    if ([YLUserInfo shareUserInfo].token) {
+         [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERINFO];
+        [[NSUserDefaults standardUserDefaults] synchronize];//及时存储数据;
+    }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if ([[[AppDelegate sharedAppDelegate]topViewController]isKindOfClass:[BTWalletManagerVC class]]) return;
         BTWalletManagerVC *loginVC = [[BTWalletManagerVC alloc]init];

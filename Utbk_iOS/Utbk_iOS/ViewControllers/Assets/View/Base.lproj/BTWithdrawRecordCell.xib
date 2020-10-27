@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qp-Iu-yeE">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qp-Iu-yeE">
                         <rect key="frame" x="12" y="13" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -92,7 +92,7 @@
                 <constraints>
                     <constraint firstItem="6qp-Iu-yeE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="1f7-Tg-6wS"/>
                     <constraint firstItem="POQ-1a-d3e" firstAttribute="centerY" secondItem="T7g-Om-lRp" secondAttribute="centerY" id="591-HL-jnG"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6qp-Iu-yeE" secondAttribute="trailing" constant="15" id="6Pt-TM-cHb"/>
+                    <constraint firstItem="aR5-Is-GUG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6qp-Iu-yeE" secondAttribute="trailing" constant="10" id="BHE-1q-rw3"/>
                     <constraint firstItem="T7g-Om-lRp" firstAttribute="top" secondItem="pBk-KL-oAA" secondAttribute="bottom" constant="10" id="EAh-En-yUs"/>
                     <constraint firstItem="XA3-cg-fms" firstAttribute="centerY" secondItem="pBk-KL-oAA" secondAttribute="centerY" id="Hq0-2y-Box"/>
                     <constraint firstItem="T7g-Om-lRp" firstAttribute="leading" secondItem="6qp-Iu-yeE" secondAttribute="leading" id="I0v-B6-HZh"/>

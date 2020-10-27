@@ -30,6 +30,8 @@
 		3C1384A3250E175F00866D69 /* BTImportWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1384A1250E175F00866D69 /* BTImportWalletVC.m */; };
 		3C1530B52528A69C00AB8F37 /* BTUpdateVersionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1530B42528A69C00AB8F37 /* BTUpdateVersionView.m */; };
 		3C1530BA2528ADA800AB8F37 /* VersionUpdateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1530B82528ADA800AB8F37 /* VersionUpdateModel.m */; };
+		3C163CAF25487D9600737C97 /* BTAdvertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C163CAD25487D9600737C97 /* BTAdvertViewController.m */; };
+		3C163CB025487D9600737C97 /* BTAdvertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C163CAE25487D9600737C97 /* BTAdvertViewController.xib */; };
 		3C1D2FEE251239E7002AE5AA /* BTPoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D2FEC251239E7002AE5AA /* BTPoolViewController.m */; };
 		3C1D2FEF251239E7002AE5AA /* BTPoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1D2FED251239E7002AE5AA /* BTPoolViewController.xib */; };
 		3C1D2FF325123ABE002AE5AA /* BTSharePoolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D2FF125123ABE002AE5AA /* BTSharePoolVC.m */; };
@@ -449,6 +451,9 @@
 		3C1530B42528A69C00AB8F37 /* BTUpdateVersionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTUpdateVersionView.m; sourceTree = "<group>"; };
 		3C1530B82528ADA800AB8F37 /* VersionUpdateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionUpdateModel.m; sourceTree = "<group>"; };
 		3C1530B92528ADA800AB8F37 /* VersionUpdateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionUpdateModel.h; sourceTree = "<group>"; };
+		3C163CAC25487D9600737C97 /* BTAdvertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTAdvertViewController.h; sourceTree = "<group>"; };
+		3C163CAD25487D9600737C97 /* BTAdvertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTAdvertViewController.m; sourceTree = "<group>"; };
+		3C163CAE25487D9600737C97 /* BTAdvertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTAdvertViewController.xib; sourceTree = "<group>"; };
 		3C19DF9125406D120032CE65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BTAssetsWithdrawVC.strings; sourceTree = "<group>"; };
 		3C19DF9325406D140032CE65 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BTAssetsWithdrawVC.strings"; sourceTree = "<group>"; };
 		3C1D2FEB251239E7002AE5AA /* BTPoolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPoolViewController.h; sourceTree = "<group>"; };
@@ -1295,6 +1300,9 @@
 				3CEA9D7B2535E1F50089994E /* Resources */,
 				3C63D408250DA73C001CEC7D /* AppDelegate.h */,
 				3C63D409250DA73C001CEC7D /* AppDelegate.m */,
+				3C163CAC25487D9600737C97 /* BTAdvertViewController.h */,
+				3C163CAD25487D9600737C97 /* BTAdvertViewController.m */,
+				3C163CAE25487D9600737C97 /* BTAdvertViewController.xib */,
 				3C63D434250DBB20001CEC7D /* Tabbar */,
 				3C63D421250DAD99001CEC7D /* Common */,
 				D79D738C25134DE400DE7DF7 /* Remote */,
@@ -2569,6 +2577,7 @@
 				D79D735B25134A8200DE7DF7 /* Adversiting3TableViewCell.xib in Resources */,
 				D7DAB216253576890029A9B3 /* BTBackupSuccessVC.xib in Resources */,
 				D740452F2536DC560074A336 /* BTShareSecondVC.xib in Resources */,
+				3C163CB025487D9600737C97 /* BTAdvertViewController.xib in Resources */,
 				D79D734225134A8200DE7DF7 /* AuthenticationBusViewController.xib in Resources */,
 				D79D738025134A8200DE7DF7 /* tradeCell.xib in Resources */,
 				D79D737625134A8200DE7DF7 /* TradeViewController.xib in Resources */,
@@ -2907,6 +2916,7 @@
 				D79D738425134A8200DE7DF7 /* ZWMSegmentView.m in Sources */,
 				D732227D2521C27700E4FFC1 /* LSAppBrowserViewController.m in Sources */,
 				D79D734925134A8200DE7DF7 /* BuyCoinsViewController.m in Sources */,
+				3C163CAF25487D9600737C97 /* BTAdvertViewController.m in Sources */,
 				D7429BED2511FA99003B04E4 /* BTCurrencyModel.m in Sources */,
 				3C63D43D250DBB20001CEC7D /* AnimationContoller.m in Sources */,
 				3C1DF0FE251715D300E547B0 /* BTDropRecordTableViewCell.m in Sources */,

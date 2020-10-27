@@ -146,6 +146,8 @@
             break;
     }
     self.currentPage = 0;
+    [self.datasource removeAllObjects];
+    [self.tableView reloadData];
     [self refreshHeaderAction];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

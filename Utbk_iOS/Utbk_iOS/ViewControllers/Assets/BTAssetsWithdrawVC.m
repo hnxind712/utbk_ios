@@ -167,7 +167,7 @@
 - (void)withDrawRecordAction{
     BTWithdrawRecordVC *withdrawRecord = [[BTWithdrawRecordVC alloc]init];
     withdrawRecord.recordType = KRecordTypeWithdraw;
-    withdrawRecord.unit = self.unit;
+    withdrawRecord.unit = [self.selectedModel.linkType isEqualToString:@"TRC20"] ? @"USDTTRC20" : self.unit;
     [self.navigationController pushViewController:withdrawRecord animated:YES];
 }
 #pragma mark collectionViewDelegate
