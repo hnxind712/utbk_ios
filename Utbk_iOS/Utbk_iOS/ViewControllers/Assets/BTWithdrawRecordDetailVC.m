@@ -34,7 +34,7 @@
         self.type.text = [self typeString];
     }else if (self.assetModel){
         //对应的转账、资产转矿池为-号，充值以及矿池转资产为+
-        self.withdrawCount.text = [NSString stringWithFormat:@"%@%@ %@",self.assetModel.type ? @"-" : @"+",self.assetModel.amount,self.assetModel.coinId];
+        self.withdrawCount.text = [NSString stringWithFormat:@"%@%@ %@",self.assetModel.type ? @"-" : @"+",self.assetModel.amount,self.assetModel.coinId.length ?self.assetModel.coinId :self.assetModel.symbol];
         self.time.text = [ToolUtil transformForTimeString:self.assetModel.createTime];
         self.address.text = self.assetModel.address;
         self.status.text = LocalizationKey(@"Success");

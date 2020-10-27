@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, KRecordType) {
     KRecordTypeMotherCoinRecharge,//原始母币收款
     KRecordTypeInvitationRecord,//邀请记录
     KRecordTypeContributionRecord,//贡献记录
+    KRecordTypeUSDTRecharge,//USDT的充币记录
 };
 @interface BTWithdrawRecordVC : BTBaseViewController
 

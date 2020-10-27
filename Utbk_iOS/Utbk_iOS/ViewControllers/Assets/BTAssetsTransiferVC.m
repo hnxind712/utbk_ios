@@ -195,26 +195,6 @@
                }else
                    ErrorToast;
            }];
-//    }else{
-//        [MineNetManager mentionCoinApplyForUnit:self.unit withAddress:inputAddress withAmount:self.coinCountInput.text withFee:self.model.maxTxFee withRemark:remark withJyPassword:self.tradePasswordInput.text mobilecode:nil googleCode:nil CompleteHandle:^(id resPonseObj, int code) {
-//            StrongSelf(strongSelf)
-//            if (code) {
-//                if ([resPonseObj[@"code"] integerValue] == 0) {
-//                    [strongSelf.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
-//                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                        [strongSelf.navigationController popViewControllerAnimated:YES];
-//                    });
-//                }else if ([resPonseObj[@"code"] integerValue] == 3000 ||[resPonseObj[@"code"] integerValue] == 4000 ){
-//                    //[ShowLoGinVC showLoginVc:self withTipMessage:resPonseObj[MESSAGE]];
-//                    [YLUserInfo logout];
-//                }else{
-//                    [strongSelf.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
-//                }
-//            }else{
-//                [strongSelf.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
-//            }
-//        }];
-//    }
 }
 
 /*

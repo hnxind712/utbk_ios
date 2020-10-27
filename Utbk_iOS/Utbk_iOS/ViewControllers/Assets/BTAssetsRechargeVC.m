@@ -134,11 +134,12 @@
     BTWithdrawRecordVC *withdrawRecord = [[BTWithdrawRecordVC alloc]init];
     if (self.isMotherCoin) {
         withdrawRecord.recordType = KRecordTypeMotherCoinRecharge;
+    }else if([self.model.coin.unit containsString:@"USDT"]){
+        withdrawRecord.recordType = KRecordTypeUSDTRecharge;
     }else
         withdrawRecord.recordType = KRecordTypeRecharge;
-    withdrawRecord.unit = (self.selectedModel && [self.selectedModel.linkType isEqualToString:@"TRC20"]) ? @"USDTTRC20" : self.model.coin.unit;
+    withdrawRecord.unit = self.model.coin.unit;
     [self.navigationController pushViewController:withdrawRecord animated:YES];
-    
 }
 
 //长按保存至相册

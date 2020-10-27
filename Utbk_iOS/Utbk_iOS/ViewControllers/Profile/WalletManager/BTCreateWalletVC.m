@@ -78,7 +78,7 @@
         self.createBtn.userInteractionEnabled = NO;
         self.createBtn.backgroundColor = RGBOF(0xcccccc);
     }
-    return  checkStr.length >= 6 &&  checkStr.length <= 20;
+    return  checkStr.length <= 20;
 }
 
 - (IBAction)showPasswordAction:(UIButton *)sender {
@@ -113,6 +113,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"username"] = _textView.text;
     params[@"password"] = _password.text;
+    [EasyShowLodingView showLodingText:LocalizationKey(@"正在创建钱包")];
     [[XBRequest sharedInstance]postDataWithUrl:CreateAddressAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             if (responseResult[@"data"]) {
@@ -141,10 +142,14 @@
                         BTBackupMnemonicsVC *backup = [[BTBackupMnemonicsVC alloc]init];
                         [self.navigationController pushViewController:backup animated:YES];
                     }
+                    [EasyShowLodingView hidenLoding];
                 }];
+            }else{
+                [EasyShowLodingView hidenLoding];
             }
             sender.userInteractionEnabled = YES;
         }else{
+            [EasyShowLodingView hidenLoding];
             sender.userInteractionEnabled = YES;
             ErrorToast
         }

@@ -111,6 +111,7 @@
 "转币" = "Transfer";
 "不支持划转" = "Rotation is not supported";
 "为您激活" = "For you to activate";
+"正在创建钱包" = "Creating wallet";
 "激活账户" = "Activate the account";
 
 //资产
@@ -118,6 +119,7 @@
 "充币" = "Filling currency";
 "请输入地址" = "Please enter the address";
 "请输入数量" = "Please enter the quantity";
+"转入" = "transfer in";
 "温馨提示：只能划转一次，最多划转300到BTCK,超出部分自动销毁" = "Warm tip: only one rotation is allowed, the maximum is 300 to BTCK, and the excess part will be destroyed automatically";
 "划转数量不能大于余额" = "The amount of transfer shall not be greater than the balance";
 "收款" = "collection";

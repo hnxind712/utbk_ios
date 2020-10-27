@@ -39,47 +39,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "452891C1-49C0-4C0F-A717-41DA71DE6CDD"
+            uuid = "CA12CB82-DFCB-4076-8209-4B8A8C56484F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Utbk_iOS/ViewControllers/Profile/WalletManager/BTWalletManagerVC.m"
+            filePath = "Utbk_iOS/Remote/XBRequest.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "-setupBind"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-postDataWithUrl:Parameter:contentType:ResponseObject:"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "452891C1-49C0-4C0F-A717-41DA71DE6CDD - 585e20da1c9ba34"
+                  uuid = "CA12CB82-DFCB-4076-8209-4B8A8C56484F - 544bfd8f168549d5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[BTWalletManagerVC setupBind]"
+                  symbolName = "-[XBRequest postDataWithUrl:Parameter:contentType:ResponseObject:]"
                   moduleName = "BTCK"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dev/Desktop/Utbk_iOS/utbk_ios/Utbk_iOS/Utbk_iOS/ViewControllers/Profile/WalletManager/BTWalletManagerVC.m"
+                  urlString = "file:///Users/dev/Desktop/Utbk_iOS/utbk_ios/Utbk_iOS/Utbk_iOS/Remote/XBRequest.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
-                  offsetFromSymbolStart = "1071">
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "1492">
                </Location>
                <Location
-                  uuid = "452891C1-49C0-4C0F-A717-41DA71DE6CDD - 585e20da1c9ba34"
+                  uuid = "CA12CB82-DFCB-4076-8209-4B8A8C56484F - 3eef59b1601406d9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[BTWalletManagerVC setupBind]"
+                  symbolName = "__66-[XBRequest postDataWithUrl:Parameter:contentType:ResponseObject:]_block_invoke"
                   moduleName = "BTCK"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dev/Desktop/Utbk_iOS/utbk_ios/Utbk_iOS/Utbk_iOS/ViewControllers/Profile/WalletManager/BTWalletManagerVC.m"
+                  urlString = "file:///Users/dev/Desktop/Utbk_iOS/utbk_ios/Utbk_iOS/Utbk_iOS/Remote/XBRequest.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
-                  offsetFromSymbolStart = "1084">
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "15">
                </Location>
             </Locations>
          </BreakpointContent>
