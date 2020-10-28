@@ -168,6 +168,8 @@
     params[@"password"] = self.password.text;
     [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERINFO];
+            [[NSUserDefaults standardUserDefaults] synchronize];//及时存储数据;
             YLUserInfo *info = [YLUserInfo getuserInfoWithDic:responseResult[@"data"]];
             info.password = self.password.text;
             [YLUserInfo saveUser:info];

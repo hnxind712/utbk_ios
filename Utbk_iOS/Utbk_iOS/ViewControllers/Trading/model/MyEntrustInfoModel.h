@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @class DetailInfo;
 @interface MyEntrustInfoModel : NSObject
-@property(nonatomic,copy)NSString *amount;
+@property(nonatomic,copy)NSString *amount;//委托量
 @property(nonatomic,copy)NSString *baseSymbol;
 @property(nonatomic,copy)NSString *canceledTime;
 @property(nonatomic,copy)NSString *coinSymbol;
@@ -17,12 +17,12 @@
 @property(nonatomic,copy)NSString *direction;
 @property(nonatomic,copy)NSString *memberId;
 @property(nonatomic,copy)NSString *orderId;
-@property(nonatomic,copy)NSString *price;
+@property(nonatomic,copy)NSString *price;//委托均价
 @property(nonatomic,copy)NSString *status;
 @property(nonatomic,copy)NSString *symbol;
 @property(nonatomic,copy)NSString *time;
 @property(nonatomic,copy)NSString *tradedAmount;
-@property(nonatomic,copy)NSString *turnover;
+@property(nonatomic,copy)NSString *turnover;//成交总额
 @property(nonatomic,copy)NSString *type;
 @property(nonatomic,strong)NSArray *detail;
 @property(nonatomic,copy)NSString *triggerPrice;

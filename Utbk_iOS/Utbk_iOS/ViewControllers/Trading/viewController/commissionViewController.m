@@ -12,6 +12,7 @@
 #import "marketManager.h"
 #import "sectionHeaderView.h"
 #import "MyEntrustTableViewCell.h"
+#import "EntrustCell.h"
 
 @interface commissionViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
@@ -65,7 +66,7 @@
 }
 
 -(void)setTablewViewHeard{
-    [self.tableView registerNib:[UINib nibWithNibName:@"MyEntrustTableViewCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"EntrustCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     self.tableView.tableFooterView=[UIView new];
 }
 
@@ -129,59 +130,66 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 176.f;//暂定
+    return 115.f;//暂定
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MyEntrustTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"MyEntrustTableViewCell" owner:nil options:nil][0];
+//    MyEntrustTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+//    if (!cell) {
+//        cell = [[NSBundle mainBundle] loadNibNamed:@"MyEntrustTableViewCell" owner:nil options:nil][0];
+//    }
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//
+//    cell.model = self.contentArr[indexPath.row];
+//    __weak typeof(self)weakself = self;
+//    cell.entrustBlock = ^{
+//        commissionModel*model=weakself.contentArr[indexPath.row];
+//        NSString*price;//委托价
+//        NSString*commissionAmount;//委托量
+//        NSString*commissionTotal;//委托总额
+//        if ([model.type isEqualToString:@"LIMIT_PRICE"]) {
+//
+//
+//            price=[NSString stringWithFormat:@"%@%@",model.price,model.baseSymbol];
+//            commissionAmount=[NSString stringWithFormat:@"%@%@",model.amount,model.coinSymbol];
+//
+//            NSDecimalNumber *price = [[NSDecimalNumber alloc] initWithString:model.price];
+//            NSDecimalNumber *tradedAmount = [[NSDecimalNumber alloc] initWithString:model.amount];
+//            commissionTotal=[NSString stringWithFormat:@"%@%@",[[price decimalNumberByMultiplyingBy:tradedAmount] stringValue],model.baseSymbol];
+//        }else if ([model.type isEqualToString:@"CHECK_FULL_STOP"]){
+//
+//            price=[NSString stringWithFormat:@"%@%@",model.price,model.baseSymbol];
+//            commissionAmount=[NSString stringWithFormat:@"%@%@",model.amount,model.coinSymbol];
+//
+//            NSDecimalNumber *price = [[NSDecimalNumber alloc] initWithString:model.price];
+//            NSDecimalNumber *tradedAmount = [[NSDecimalNumber alloc] initWithString:model.amount];
+//            commissionTotal=[NSString stringWithFormat:@"%@%@",[[price decimalNumberByMultiplyingBy:tradedAmount] stringValue],model.baseSymbol];
+//        }else{
+//            price=LocalizationKey(@"marketPrice");
+//            if ([model.direction isEqualToString:@"SELL"]) {
+//                commissionAmount=[NSString stringWithFormat:@"%.2f%@",[model.amount doubleValue],model.coinSymbol];
+//                commissionTotal=[NSString stringWithFormat:@"%@%@",@"--",model.baseSymbol];
+//            }else{
+//                commissionAmount=[NSString stringWithFormat:@"%@%@",@"--",model.coinSymbol];
+//                commissionTotal=[NSString stringWithFormat:@"%.2f%@",[model.amount doubleValue],model.baseSymbol];
+//            }
+//        }
+//        EasyShowAlertView *showView =[EasyShowAlertView showActionSheetWithTitle:LocalizationKey(@"Confirmation") left1message:price right1message:commissionAmount left2message:commissionTotal right2message:[model.direction isEqualToString:@"BUY"]==YES?LocalizationKey(@"Buy"):LocalizationKey(@"Sell")];
+//        [showView addItemWithTitle:LocalizationKey(@"Cancelorder") itemType:ShowAlertItemTypeBlack callback:^(EasyShowAlertView *showview) {
+//            [weakself cancelCommissionwithOrderID:model.orderId];//撤单
+//        }];
+//        [showView addItemWithTitle:LocalizationKey(@"cancel") itemType:ShowAlertItemTypeBlack callback:^(EasyShowAlertView *showview) {
+//        }];
+//        [showView show];
+//    };
+    EntrustCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    if (_contentArr.count>0) {
+        [cell configModel:_contentArr[indexPath.row]];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-    cell.model = self.contentArr[indexPath.row];
-    __weak typeof(self)weakself = self;
-    cell.entrustBlock = ^{
-        commissionModel*model=weakself.contentArr[indexPath.row];
-        NSString*price;//委托价
-        NSString*commissionAmount;//委托量
-        NSString*commissionTotal;//委托总额
-        if ([model.type isEqualToString:@"LIMIT_PRICE"]) {
-
-            
-            price=[NSString stringWithFormat:@"%@%@",model.price,model.baseSymbol];
-            commissionAmount=[NSString stringWithFormat:@"%@%@",model.amount,model.coinSymbol];
-            
-            NSDecimalNumber *price = [[NSDecimalNumber alloc] initWithString:model.price];
-            NSDecimalNumber *tradedAmount = [[NSDecimalNumber alloc] initWithString:model.amount];
-            commissionTotal=[NSString stringWithFormat:@"%@%@",[[price decimalNumberByMultiplyingBy:tradedAmount] stringValue],model.baseSymbol];
-        }else if ([model.type isEqualToString:@"CHECK_FULL_STOP"]){
-            
-            price=[NSString stringWithFormat:@"%@%@",model.price,model.baseSymbol];
-            commissionAmount=[NSString stringWithFormat:@"%@%@",model.amount,model.coinSymbol];
-            
-            NSDecimalNumber *price = [[NSDecimalNumber alloc] initWithString:model.price];
-            NSDecimalNumber *tradedAmount = [[NSDecimalNumber alloc] initWithString:model.amount];
-            commissionTotal=[NSString stringWithFormat:@"%@%@",[[price decimalNumberByMultiplyingBy:tradedAmount] stringValue],model.baseSymbol];
-        }else{
-            price=LocalizationKey(@"marketPrice");
-            if ([model.direction isEqualToString:@"SELL"]) {
-                commissionAmount=[NSString stringWithFormat:@"%.2f%@",[model.amount doubleValue],model.coinSymbol];
-                commissionTotal=[NSString stringWithFormat:@"%@%@",@"--",model.baseSymbol];
-            }else{
-                commissionAmount=[NSString stringWithFormat:@"%@%@",@"--",model.coinSymbol];
-                commissionTotal=[NSString stringWithFormat:@"%.2f%@",[model.amount doubleValue],model.baseSymbol];
-            }
-        }
-        EasyShowAlertView *showView =[EasyShowAlertView showActionSheetWithTitle:LocalizationKey(@"Confirmation") left1message:price right1message:commissionAmount left2message:commissionTotal right2message:[model.direction isEqualToString:@"BUY"]==YES?LocalizationKey(@"Buy"):LocalizationKey(@"Sell")];
-        [showView addItemWithTitle:LocalizationKey(@"Cancelorder") itemType:ShowAlertItemTypeBlack callback:^(EasyShowAlertView *showview) {
-            [weakself cancelCommissionwithOrderID:model.orderId];//撤单
-        }];
-        [showView addItemWithTitle:LocalizationKey(@"cancel") itemType:ShowAlertItemTypeBlack callback:^(EasyShowAlertView *showview) {
-        }];
-        [showView show];
-    };
+    cell.withDraw.tag=indexPath.row;
+    [cell.withDraw addTarget:self action:@selector(withDraw:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

@@ -52,18 +52,18 @@
         }
         cell.coinType.text = _model.symbol;
         cell.dealNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"dealTotal" value:nil table:@"Localizable"],_model.baseSymbol];
-        cell.dealNumData.text = _model.turnover;
+        cell.dealNumData.text = [ToolUtil stringFromNumber:_model.turnover.doubleValue withlimit:KLimitAssetInputDigits];
         cell.dealPerPriceTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"dealPerPrice" value:nil table:@"Localizable"],_model.baseSymbol];
         if ([_model.tradedAmount floatValue] <= 0) {
             cell.dealPerPriceData.text = [NSString stringWithFormat:@"0.00"];
         }else{
             NSDecimalNumber *turnover = [[NSDecimalNumber alloc] initWithString:_model.turnover];
             NSDecimalNumber *tradedAmount = [[NSDecimalNumber alloc] initWithString:_model.tradedAmount];
-            cell.dealPerPriceData.text= [NSString stringWithFormat:@"%.8f",[[turnover decimalNumberByDividingBy:tradedAmount] floatValue]];
+            cell.dealPerPriceData.text= [NSString stringWithFormat:@"%.4f",[[turnover decimalNumberByDividingBy:tradedAmount] floatValue]];
         }
         
         cell.dealTotalNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"dealNum" value:nil table:@"Localizable"],_model.coinSymbol];
-        cell.dealTotalNumData.text = _model.tradedAmount;
+        cell.dealTotalNumData.text = [ToolUtil stringFromNumber:_model.tradedAmount.doubleValue withlimit:KLimitAssetInputDigits];
         return cell;
     }else{
         MyEntrustDetail2TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyEntrustDetail2TableViewCell class]) forIndexPath:indexPath];

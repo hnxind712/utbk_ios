@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *datasource;
 @property (strong, nonatomic) LYEmptyView *emptyView;
+@property (copy, nonatomic) NSString *memberId;//区分列表大小区
 
 @end
 
@@ -72,6 +73,7 @@
             strongSelf.teamHold.text = [NSString stringWithFormat:@"%.2f",responseResult[@"data"][@"allChicang"] ? [responseResult[@"data"][@"allChicang"] doubleValue] : 0];
             strongSelf.regionHold.text = [NSString stringWithFormat:@"%.2f",responseResult[@"data"][@"daChicang"] ?[responseResult[@"data"][@"daChicang"]doubleValue] : 0];
             strongSelf.communityHold.text = [NSString stringWithFormat:@"%.2f",responseResult[@"data"][@"xiaoquChicang"] ? [responseResult[@"data"][@"xiaoquChicang"]doubleValue] : 0];
+            strongSelf.memberId = responseResult[@"data"][@"daMemberId"];
         }
     }];
     [[XBRequest sharedInstance]postDataWithUrl:getTeamMembersAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
@@ -94,13 +96,14 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTTeamHoldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTTeamHoldTableViewCell class])];
-    if (indexPath.row == 0) {
+    BTTeamHoldModel *model = self.datasource[indexPath.row];
+    if ([[NSString stringWithFormat:@"%d",model.memberId] isEqualToString:[NSString stringWithFormat:@"%@",self.memberId]]) {
         cell.addressTitle.text = LocalizationKey(@"地址(大区)");
     }else{
         cell.addressTitle.text = LocalizationKey(@"地址(小区)");
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell configureCellWithModel:self.datasource[indexPath.row]];
+    [cell configureCellWithModel:model];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

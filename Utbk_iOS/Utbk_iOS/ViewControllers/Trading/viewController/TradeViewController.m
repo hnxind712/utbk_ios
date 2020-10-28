@@ -643,7 +643,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             MyEntrustTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyEntrustTableViewCell class]) forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             MyEntrustInfoModel *model = self.hisdataArr[indexPath.row];
-            cell.model = model;
+            cell.infomodel = model;
             //        if (self.isHistory) {
             //            MyEntrustInfoModel *model = self.hisdataArr[indexPath.row];
             //            cell.infomodel = model;

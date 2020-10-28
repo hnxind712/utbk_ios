@@ -23,11 +23,12 @@
 - (void)setInfomodel:(MyEntrustInfoModel *)infomodel{
     _infomodel = infomodel;
     self.timeTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"time" value:nil table:@"Localizable"];
-    self.entrustPriceTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"type" value:nil table:@"Localizable"];
-    self.entrustNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"price" value:nil table:@"Localizable"],_infomodel.baseSymbol];
-    self.dealTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"amonut" value:nil table:@"Localizable"],_infomodel.coinSymbol];
-    self.dealPerPriceTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"tradeDeal" value:nil table:@"Localizable"];
-    self.dealNumTitle.text = [[ChangeLanguage bundle] localizedStringForKey:@"Triggerprice" value:nil table:@"Localizable"];
+    self.entrustPriceTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"enterPrice" value:nil table:@"Localizable"],_infomodel.baseSymbol];//委托价格
+    self.entrustNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"entrustNum" value:nil table:@"Localizable"],_infomodel.coinSymbol];//委托量
+    self.dealTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"dealTotal" value:nil table:@"Localizable"],_infomodel.baseSymbol];//成交总额
+    self.dealPerPriceTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"dealPerPrice" value:nil table:@"Localizable"],_infomodel.baseSymbol];
+    self.dealNumTitle.text = [NSString stringWithFormat:@"%@(%@)",[[ChangeLanguage bundle] localizedStringForKey:@"dealNum" value:nil table:@"Localizable"],_infomodel.coinSymbol];
+    
     self.lastLabel.text = [[ChangeLanguage bundle] localizedStringForKey:@"Entrustmentamount" value:nil table:@"Localizable"];
     
     self.symbolLabel.text = _infomodel.symbol;
@@ -42,37 +43,42 @@
     NSArray *times = [time componentsSeparatedByString:@"-"];
     self.timeData.text = [NSString stringWithFormat:@"%@:%@ %@/%@", times[3], times[4], times[1], times[2]];
     
-    if ([_infomodel.type isEqualToString:@"LIMIT_PRICE"]) {
-        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"limitPrice" value:nil table:@"Localizable"];
-    }else if ([_infomodel.type isEqualToString:@"CHECK_FULL_STOP"]){
-        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"Stoploss" value:nil table:@"Localizable"];
-    }else{
-        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"marketPrice" value:nil table:@"Localizable"];
-    }
-    
-    //价格
-    if ([_infomodel.tradedAmount floatValue] <= 0) {
-        self.entrustNumData.text = [NSString stringWithFormat:@"0.00"];
-    }else{
-        NSDecimalNumber *dec = [[NSDecimalNumber alloc] initWithString:_infomodel.price];
-        self.entrustNumData.text = [dec stringValue];
-    }
-    //数量
-    if ([_infomodel.type isEqualToString:@"MARKET_PRICE"]) {
-        NSDecimalNumber *dec = [[NSDecimalNumber alloc] initWithString:_infomodel.tradedAmount];
-        self.dealData.text =  [dec stringValue];
-    }else{
-        NSDecimalNumber *dec = [[NSDecimalNumber alloc] initWithString:_infomodel.amount];
-        self.dealData.text =  [dec stringValue];
-    }
-    //已成交
-    NSDecimalNumber *tradedAmount = [[NSDecimalNumber alloc] initWithString:_infomodel.tradedAmount];
-    self.dealPerPriceData.text = [tradedAmount stringValue];
-    //触发价
-    if (_infomodel.triggerPrice) {
-        NSDecimalNumber *triggerPrice = [[NSDecimalNumber alloc] initWithString:_infomodel.triggerPrice];
-        self.dealNumData.text = [triggerPrice stringValue];
-    }
+//    if ([_infomodel.type isEqualToString:@"LIMIT_PRICE"]) {//委托价数据
+//        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"limitPrice" value:nil table:@"Localizable"];
+//    }else if ([_infomodel.type isEqualToString:@"CHECK_FULL_STOP"]){
+//        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"Stoploss" value:nil table:@"Localizable"];
+//    }else{
+//        self.ntrustPriceData.text = [[ChangeLanguage bundle] localizedStringForKey:@"marketPrice" value:nil table:@"Localizable"];
+//    }
+    //委托价
+    self.ntrustPriceData.text = [ToolUtil stringFromNumber:infomodel.price.doubleValue withlimit:KLimitAssetInputDigits];
+    //委托量
+    self.entrustNumData.text = [ToolUtil stringFromNumber:infomodel.amount.doubleValue withlimit:KLimitAssetInputDigits];
+    //
+//    if ([_infomodel.tradedAmount floatValue] <= 0) {
+//        self.entrustNumData.text = [NSString stringWithFormat:@"0.00"];
+//    }else{
+//        NSDecimalNumber *dec = [[NSDecimalNumber alloc] initWithString:_infomodel.price];
+//        self.entrustNumData.text = [dec stringValue];
+//    }
+    //成交总量
+    self.dealData.text = [ToolUtil stringFromNumber:infomodel.turnover.doubleValue withlimit:KLimitAssetInputDigits];
+//    if ([_infomodel.type isEqualToString:@"MARKET_PRICE"]) {
+//        NSDecimalNumber *dec = [[NSDecimalNumber alloc] initWithString:_infomodel.tradedAmount];
+//        self.dealData.text =  [dec stringValue];
+//    }else{
+//        NSDecimalNumber *dec = [[NSDecimalNumber alloc] initWithString:_infomodel.amount];
+//        self.dealData.text =  [dec stringValue];
+//    }
+    //成交均价
+//    NSDecimalNumber *tradedAmount = [[NSDecimalNumber alloc] initWithString:_infomodel.tradedAmount];
+    self.dealPerPriceData.text = [ToolUtil stringFromNumber:infomodel.turnover.doubleValue/infomodel.tradedAmount.doubleValue withlimit:KLimitAssetInputDigits];;
+    //成交价
+    self.dealNumData.text = [ToolUtil stringFromNumber:infomodel.tradedAmount.doubleValue withlimit:KLimitAssetInputDigits];
+//    if (_infomodel.triggerPrice) {
+//        NSDecimalNumber *triggerPrice = [[NSDecimalNumber alloc] initWithString:_infomodel.triggerPrice];
+//        self.dealNumData.text = [triggerPrice stringValue];
+//    }
     //委托价格
     NSDecimalNumber *turnover = [[NSDecimalNumber alloc] initWithString:_infomodel.turnover];
     self.lastValueLabel.text = [turnover stringValue];

@@ -17,6 +17,7 @@
 #import "MarketNetManager.h"
 #import "BTWalletManagerVC.h"
 #import <V5Client/V5ClientAgent.h>
+#import "BTAdvertViewController.h"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -35,24 +36,29 @@
     [self configure];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor blackColor];
-    if (![YLUserInfo isLogIn]) {
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
-        NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
-        if (list.count) {
-            BTWalletManagerVC *registerVC = [[BTWalletManagerVC alloc]init];
-            registerVC.isLogin = YES;
-            YLNavigationController *nav = [[YLNavigationController alloc]initWithRootViewController:registerVC];
-            self.window.rootViewController = nav;
+    //引导页
+    BTAdvertViewController *ad = [[BTAdvertViewController alloc]init];
+    ad.skipAction = ^{
+        if (![YLUserInfo isLogIn]) {
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            NSData *listData = [userDefaults  objectForKey:KWalletManagerKey];
+            NSArray *list = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+            if (list.count) {
+                BTWalletManagerVC *registerVC = [[BTWalletManagerVC alloc]init];
+                registerVC.isLogin = YES;
+                YLNavigationController *nav = [[YLNavigationController alloc]initWithRootViewController:registerVC];
+                self.window.rootViewController = nav;
+            }else{
+                BTRegisterViewController *registerVC = [[BTRegisterViewController alloc]init];
+                YLNavigationController *nav = [[YLNavigationController alloc]initWithRootViewController:registerVC];
+                self.window.rootViewController = nav;
+            }
         }else{
-            BTRegisterViewController *registerVC = [[BTRegisterViewController alloc]init];
-            YLNavigationController *nav = [[YLNavigationController alloc]initWithRootViewController:registerVC];
-            self.window.rootViewController = nav;
+            YLTabBarController *SectionTabbar = [[YLTabBarController alloc] init];
+            self.window.rootViewController = SectionTabbar;
         }
-    }else{
-        YLTabBarController *SectionTabbar = [[YLTabBarController alloc] init];
-        self.window.rootViewController = SectionTabbar;
-    }
+    };
+    self.window.rootViewController = ad;
     // 初始化客服SDK
     [V5ClientAgent initWithSiteId:KCustomerServiceSiteID
                             appId:KCustomerServiceAppID

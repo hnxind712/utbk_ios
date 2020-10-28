@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) CGFloat daChicang;
 @property (nonatomic,assign) CGFloat myBTCK;
 @property (nonatomic,assign) CGFloat xiaoquChicang;
+@property (assign, nonatomic) NSInteger memberId;
 
 @end
 

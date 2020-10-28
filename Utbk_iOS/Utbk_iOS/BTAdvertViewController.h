@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTAdvertViewController : BTBaseViewController
 
+@property (copy, nonatomic) void(^skipAction)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END
