@@ -79,8 +79,16 @@
     [[XBRequest sharedInstance]postDataWithUrl:getTeamMembersAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             StrongSelf(strongSelf)
-            strongSelf.datasource = [BTTeamHoldModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+            NSArray *datasource = [BTTeamHoldModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
             strongSelf.tableView.ly_emptyView = strongSelf.emptyView;
+            NSMutableArray *data = [NSMutableArray arrayWithArray:datasource];
+            [datasource enumerateObjectsUsingBlock:^(BTTeamHoldModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([[NSString stringWithFormat:@"%d",obj.memberId] isEqualToString:[NSString stringWithFormat:@"%@",self.memberId]]) {
+                    [data removeObject:obj];
+                    [data insertObject:obj atIndex:0];
+                }
+            }];
+            strongSelf.datasource = data;
             [strongSelf.tableView reloadData];
         }else
             ErrorToast
