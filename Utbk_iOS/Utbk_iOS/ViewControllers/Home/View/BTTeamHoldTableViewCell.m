@@ -26,9 +26,9 @@
 - (void)configureCellWithModel:(BTTeamHoldModel *)model{
     self.address.text = model.address;
     self.totalAddessCount.text = [NSString stringWithFormat:@"%d",model.allAddress];
-    self.personalHold.text = [NSString stringWithFormat:@"%.2f",model.allChicang];
-    self.regionHold.text = [NSString stringWithFormat:@"%.2f",model.daChicang];
-    self.communityHold.text = [NSString stringWithFormat:@"%.2f",model.xiaoquChicang];
+    self.personalHold.text = [NSString stringWithFormat:@"%.4f",model.allChicang];
+    self.regionHold.text = [NSString stringWithFormat:@"%.4f",model.daChicang];
+    self.communityHold.text = [NSString stringWithFormat:@"%.4f",model.xiaoquChicang];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

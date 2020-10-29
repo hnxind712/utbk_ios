@@ -26,7 +26,7 @@
     // Configure the view for the selected state
 }
 - (void)configureCellWithModel:(BTHistoryRecordModel *)model{
-    self.rankLabel.text = [NSString stringWithFormat:@"%.2f",model.balance];
+    self.rankLabel.text = [NSString stringWithFormat:@"%.4f",model.balance];
     self.address.text = model.address;
 }
 @end

@@ -257,30 +257,32 @@
         if (NetSuccess) {
             if ([responseResult[@"data"]isKindOfClass:[NSNull class]]) {
                 strongSelf.coinCount.text = @"0.0000";
+                self.convertCount.text = @"0.0000";
             }else{
                 strongSelf.coinCount.text = [ToolUtil stringFromNumber:[responseResult[@"data"][@"balance"]doubleValue] withlimit:KLimitAssetInputDigits];
                 strongSelf.isTransfrom = [responseResult[@"data"][@"isTransfrom"] isKindOfClass:[NSNull class]] ? 0 : [responseResult[@"data"][@"isTransfrom"] boolValue];
+                [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
+                    if (NetSuccess) {
+                        NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
+                        NSDecimalNumber *ass1 = [[NSDecimalNumber alloc] initWithString:@"0"];
+                        for (BTAssetsModel *walletModel in dataArr) {
+                            //计算总资产
+                            if ([walletModel.coin.unit isEqualToString:KOriginalCoin]) {
+                                self.assetModel = walletModel;
+                                NSDecimalNumberHandler *handle = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:4 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+                                NSDecimalNumber *balance = [[NSDecimalNumber alloc] initWithString:self.coinCount.text];
+                                NSDecimalNumber *usdRate = [[NSDecimalNumber alloc] initWithString:[NSString stringWithFormat:@"%@",walletModel.coin.usdRate]];
+                                
+                                ass1 = [balance decimalNumberByMultiplyingBy:usdRate withBehavior:handle];break;
+                            }
+                        }
+                        self.convertCount.text = [ToolUtil stringFromNumber:ass1.doubleValue withlimit:KLimitAssetInputDigits];
+                    }
+                }];
             }
         }
     }];
-    [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
-        if (NetSuccess) {
-            NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
-            NSDecimalNumber *ass1 = [[NSDecimalNumber alloc] initWithString:@"0"];
-            for (BTAssetsModel *walletModel in dataArr) {
-                //计算总资产
-                if ([walletModel.coin.unit isEqualToString:KOriginalCoin]) {
-                    self.assetModel = walletModel;
-                    NSDecimalNumberHandler *handle = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:4 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
-                    NSDecimalNumber *balance = [[NSDecimalNumber alloc] initWithString:walletModel.balance];
-                    NSDecimalNumber *usdRate = [[NSDecimalNumber alloc] initWithString:[NSString stringWithFormat:@"%@",walletModel.coin.usdRate]];
-                    
-                    ass1 = [balance decimalNumberByMultiplyingBy:usdRate withBehavior:handle];break;
-                }
-            }
-            self.convertCount.text = [ToolUtil stringFromNumber:ass1.doubleValue withlimit:KLimitAssetInputDigits];
-        }
-    }];
+    
 }
 #pragma mark-获取首页推荐信息
 -(void)getData{
@@ -450,6 +452,16 @@
 
         NSDictionary*dic=[SocketUtils dictionaryWithJsonString:endStr];
         symbolModel*model = [symbolModel mj_objectWithKeyValues:dic];
+        NSRange range = [model.symbol rangeOfString:@"/"];
+        if ([[model.symbol substringToIndex:range.location]isEqualToString:KOriginalCoin]) {//BTCK
+            NSDecimalNumber *ass1 = [[NSDecimalNumber alloc] initWithString:@"0"];
+            NSDecimalNumberHandler *handle = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:4 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+            NSDecimalNumber *balance = [[NSDecimalNumber alloc] initWithString:self.coinCount.text];
+            NSDecimalNumber *usdRate = [[NSDecimalNumber alloc] initWithString:[NSString stringWithFormat:@"%.4f",model.usdRate]];
+            
+            ass1 = [balance decimalNumberByMultiplyingBy:usdRate withBehavior:handle];
+            self.convertCount.text = [ToolUtil stringFromNumber:ass1.doubleValue withlimit:KLimitAssetInputDigits];
+        }
         //推荐
         if (self.responceData.count>0) {
             NSMutableArray*recommendArr=(NSMutableArray*)self.responceData[0];

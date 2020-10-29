@@ -151,6 +151,7 @@
     if (![_password.text isEqualToString:_passwordSecond.text]) {
         [self.view makeToast:LocalizationKey(@"两次输入的密码不一致") duration:ToastHideDelay position:ToastPosition];return;
     }
+    sender.userInteractionEnabled = NO;
     WeakSelf(weakSelf)
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     if (self.selectedBtn == self.mnemonicWordBtn) {
@@ -167,6 +168,7 @@
     }
     params[@"password"] = self.password.text;
     [[XBRequest sharedInstance]postDataWithUrl:importMnemonicAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
+        sender.userInteractionEnabled = YES;
         if (NetSuccess) {
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERINFO];
             [[NSUserDefaults standardUserDefaults] synchronize];//及时存储数据;

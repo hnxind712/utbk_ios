@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -150,7 +151,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZkH-sk-1dj">
-                            <rect key="frame" x="12" y="180" width="390" height="170"/>
+                            <rect key="frame" x="12" y="180" width="390" height="149"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设置密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3GB-Jy-oJ8">
                                     <rect key="frame" x="11" y="21" width="57.5" height="17"/>
@@ -250,7 +251,7 @@
                                 <constraint firstItem="q3d-hi-AGg" firstAttribute="leading" secondItem="ieG-h4-zVg" secondAttribute="trailing" constant="15" id="phz-RA-2FE"/>
                                 <constraint firstItem="aFD-N5-m71" firstAttribute="centerX" secondItem="ZkH-sk-1dj" secondAttribute="centerX" id="uTa-Jc-3rf"/>
                                 <constraint firstItem="3GB-Jy-oJ8" firstAttribute="top" secondItem="ZkH-sk-1dj" secondAttribute="top" constant="21" id="uwT-7b-NPU"/>
-                                <constraint firstAttribute="bottom" secondItem="c5K-tE-oY2" secondAttribute="bottom" constant="31" id="wZB-FM-DqF"/>
+                                <constraint firstAttribute="bottom" secondItem="c5K-tE-oY2" secondAttribute="bottom" constant="10" id="wZB-FM-DqF"/>
                                 <constraint firstItem="18Q-g8-fKi" firstAttribute="centerY" secondItem="Czh-MS-iNF" secondAttribute="centerY" id="zOL-Wz-BSm"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
@@ -260,7 +261,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="63h-HP-Ye6">
-                            <rect key="frame" x="24" y="360" width="366" height="30"/>
+                            <rect key="frame" x="24" y="339" width="366" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="dtR-6N-i0o"/>
                             </constraints>
@@ -273,7 +274,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDS-vO-yqD">
-                            <rect key="frame" x="39" y="440" width="336" height="44"/>
+                            <rect key="frame" x="39" y="419" width="336" height="44"/>
                             <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="1h3-cl-tvY"/>

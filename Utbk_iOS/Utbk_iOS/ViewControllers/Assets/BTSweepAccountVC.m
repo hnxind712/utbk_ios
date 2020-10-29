@@ -77,7 +77,9 @@
     if (!self.countInput.text.length) {
         [self.view makeToast:LocalizationKey(@"inputTransferNumber") duration:ToastHideDelay position:ToastPosition];return;
     }
+    sender.userInteractionEnabled = NO;
     [[XBRequest sharedInstance]postDataWithUrl:motherCoinWalletTransferAPI Parameter:@{@"amount":self.countInput.text} ResponseObject:^(NSDictionary *responseResult) {
+        sender.userInteractionEnabled = YES;
         [self.view makeToast:responseResult[MESSAGE] duration:ToastHideDelay position:ToastPosition];
         if (NetSuccess) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

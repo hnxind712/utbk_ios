@@ -51,7 +51,9 @@
         [self.view makeToast:LocalizationKey(@"两次输入的密码不一致") duration:ToastHideDelay position:ToastPosition];
         return;
     }
+    sender.userInteractionEnabled = NO;
     [MineNetManager moneyPasswordForJyPassword:self.passwordSecond.text CompleteHandle:^(id resPonseObj, int code) {
+        sender.userInteractionEnabled = YES;
         if (code) {
             if ([resPonseObj[@"code"] integerValue]==0) {
                 //获取数据成功

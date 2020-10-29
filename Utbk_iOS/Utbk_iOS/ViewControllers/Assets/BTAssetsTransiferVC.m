@@ -176,9 +176,9 @@
             remark = address.remark;
         }
     }
+    sender.userInteractionEnabled = NO;
     NSString *inputAddress = [self.coinAddress.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     WeakSelf(weakSelf)
-//    if (![self.unit containsString:@"USDT"]) {
         NSMutableDictionary *dic = [NSMutableDictionary new];
            dic[@"unit"] = self.unit;
            dic[@"address"] = inputAddress;
@@ -186,6 +186,7 @@
            dic[@"fee"] = self.model.maxTxFee;
            dic[@"jyPassword"] = self.tradePasswordInput.text;
            [[XBRequest sharedInstance]postDataWithUrl:AssetsTransferAPI Parameter:dic ResponseObject:^(NSDictionary *responseResult) {
+               sender.userInteractionEnabled = YES;
                StrongSelf(strongSelf)
                if (NetSuccess) {
                    [strongSelf.view makeToast:responseResult[MESSAGE] duration:ToastHideDelay position:ToastPosition];

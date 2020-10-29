@@ -457,7 +457,7 @@
                                                 <outlet property="delegate" destination="-1" id="Br9-RS-1dd"/>
                                             </connections>
                                         </tableView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJl-Sl-0fE">
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJl-Sl-0fE">
                                             <rect key="frame" x="215" y="218.33333333333334" width="175" height="1"/>
                                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -483,7 +483,7 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LGe-ty-2Rs">
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LGe-ty-2Rs">
                                             <rect key="frame" x="215" y="265.33333333333331" width="175" height="1"/>
                                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>

@@ -70,9 +70,11 @@
     if (!_coinAddress.text.length) {
         [self.view makeToast:LocalizationKey(@"请填写对方账户地址") duration:ToastHideDelay position:ToastPosition];return;
     }
+    sender.userInteractionEnabled = NO;
     NSString *inputAddress = [self.coinAddress.text stringByReplacingOccurrencesOfString:@" " withString:@""];//去除空格
     WeakSelf(weakSelf)
     [[XBRequest sharedInstance]postDataWithUrl:activeOneAPI Parameter:@{@"toAddr":inputAddress} ResponseObject:^(NSDictionary *responseResult) {
+        sender.userInteractionEnabled = YES;
         StrongSelf(strongSelf)
         if (NetSuccess) {
             [strongSelf.view makeToast:responseResult[@"message"] duration:ToastHideDelay position:ToastPosition];

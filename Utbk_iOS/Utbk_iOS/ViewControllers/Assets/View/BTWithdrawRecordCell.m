@@ -87,7 +87,7 @@
 }
 - (void)configureCellWithContributionRecordModel:(BTPoolShareContributionRecordModel *)model{
     self.title.text = model.remarks;
-    self.count.text = [ToolUtil judgeStringForDecimalPlaces:[NSString stringWithFormat:@"%.2f",model.amount]];
+    self.count.text = [ToolUtil judgeStringForDecimalPlaces:[NSString stringWithFormat:@"%.4f",model.amount]];
     self.time.text = [ToolUtil transformForTimeString:model.saveTime];
     self.status.text = LocalizationKey(@"已完成");
 }

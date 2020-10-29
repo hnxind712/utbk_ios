@@ -264,6 +264,7 @@
     if (![self.tradePasswordInput.text length]) {
         [self.view makeToast:LocalizationKey(@"请输入交易密码") duration:ToastHideDelay position:ToastPosition];return;
     }
+    sender.userInteractionEnabled = NO;
     NSString *remark = @"";
      for (AddressInfo *address in self.model.addresses) {
          if ([self.addressInput.text isEqualToString:address.address]) {
@@ -273,18 +274,19 @@
     WeakSelf(weakSelf)
     [MineNetManager mentionCoinApplyForUnit:self.unit withAddress:self.addressInput.text withAmount:self.coinCountInput.text withFee:self.model.maxTxFee withRemark:remark withJyPassword:self.tradePasswordInput.text mobilecode:nil googleCode:nil CompleteHandle:^(id resPonseObj, int code) {
         StrongSelf(strongSelf)
-       if (code) {
-              if ([resPonseObj[@"code"] integerValue] == 0) {
-                  [strongSelf.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
-                  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                      [strongSelf.navigationController popViewControllerAnimated:YES];
-                  });
-              }else{
-                  [strongSelf.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
-              }
-          }else{
-              [strongSelf.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
-          }
+        sender.userInteractionEnabled = YES;
+        if (code) {
+            if ([resPonseObj[@"code"] integerValue] == 0) {
+                [strongSelf.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ToastHideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [strongSelf.navigationController popViewControllerAnimated:YES];
+                });
+            }else{
+                [strongSelf.view makeToast:resPonseObj[MESSAGE] duration:ToastHideDelay position:ToastPosition];
+            }
+        }else{
+            [strongSelf.view makeToast:LocalizationKey(@"网络连接失败") duration:ToastHideDelay position:ToastPosition];
+        }
     }];
 }
 /*

@@ -30,13 +30,13 @@
     if (self.type == 1) {
         self.one.text = [NSString stringWithFormat:@"%.0fV/%.0fU", model.contributionValue,model.produce];
         self.two.text = [NSString stringWithFormat:@"%@",model.coin];//暂定
-        self.three.text = [NSString stringWithFormat:@"%.2f",model.amount];
+        self.three.text = [NSString stringWithFormat:@"%.4f",model.amount];
         self.four.text = [ToolUtil transformForDayTimeString:model.saveTime];
         self.threeLeading.constant = 0.f;
         self.two.hidden = NO;
     }else{
         self.one.text = [NSString stringWithFormat:@"%@", model.coin];
-        self.three.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",model.amount]];
+        self.three.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f",model.amount]];
         self.four.text = [ToolUtil transformForDayTimeString:model.saveTime];
         //算出第二个的right
         CGFloat width = (SCREEN_WIDTH - 48)/4;

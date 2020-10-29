@@ -160,6 +160,7 @@
     if (self.transferCount.text.doubleValue > self.assets.balance.doubleValue) {
         [self.view makeToast:LocalizationKey(@"划转数量不能大于余额") duration:ToastHideDelay position:ToastPosition];return;
     }
+    sender.userInteractionEnabled = NO;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"type"] = @(self.assetIndex);
     params[@"apiKey"] = [YLUserInfo shareUserInfo].secretKey;
@@ -167,6 +168,7 @@
     params[@"coinName"] = self.assets.coin.unit;
     WeakSelf(weakSelf)
     [[XBRequest sharedInstance]postDataWithUrl:transferWalletAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
+        sender.userInteractionEnabled = YES;
         StrongSelf(strongSelf)
         if (NetSuccess) {
             [strongSelf.view makeToast:responseResult[@"message"] duration:ToastHideDelay position:ToastPosition];

@@ -67,12 +67,12 @@
     [[XBRequest sharedInstance]postDataWithUrl:getTeamInfoAllAPI Parameter:nil ResponseObject:^(NSDictionary *responseResult) {
         if (NetSuccess) {
             StrongSelf(strongSelf)
-            strongSelf.myHold.text = [NSString stringWithFormat:@"%.2f",[responseResult[@"data"][@"myBTCK"]doubleValue]];
+            strongSelf.myHold.text = [NSString stringWithFormat:@"%.4f",[responseResult[@"data"][@"myBTCK"]doubleValue]];
             strongSelf.totalAddressCount.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"allAddress"] ? responseResult[@"data"][@"allAddress"] : @"0"];
             strongSelf.totalDeviceCount.text = [NSString stringWithFormat:@"%@",responseResult[@"data"][@"allDevices"] ? responseResult[@"data"][@"allDevices"] : @"0"];
-            strongSelf.teamHold.text = [NSString stringWithFormat:@"%.2f",responseResult[@"data"][@"allChicang"] ? [responseResult[@"data"][@"allChicang"] doubleValue] : 0];
-            strongSelf.regionHold.text = [NSString stringWithFormat:@"%.2f",responseResult[@"data"][@"daChicang"] ?[responseResult[@"data"][@"daChicang"]doubleValue] : 0];
-            strongSelf.communityHold.text = [NSString stringWithFormat:@"%.2f",responseResult[@"data"][@"xiaoquChicang"] ? [responseResult[@"data"][@"xiaoquChicang"]doubleValue] : 0];
+            strongSelf.teamHold.text = [NSString stringWithFormat:@"%.4f",responseResult[@"data"][@"allChicang"] ? [responseResult[@"data"][@"allChicang"] doubleValue] : 0];
+            strongSelf.regionHold.text = [NSString stringWithFormat:@"%.4f",responseResult[@"data"][@"daChicang"] ?[responseResult[@"data"][@"daChicang"]doubleValue] : 0];
+            strongSelf.communityHold.text = [NSString stringWithFormat:@"%.4f",responseResult[@"data"][@"xiaoquChicang"] ? [responseResult[@"data"][@"xiaoquChicang"]doubleValue] : 0];
             strongSelf.memberId = responseResult[@"data"][@"daMemberId"];
         }
     }];

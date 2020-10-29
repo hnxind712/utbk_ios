@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,15 +16,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="453" height="45"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32.663" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7a-PL-44G">
-                        <rect key="frame" x="262.5" y="0.0" width="180.5" height="45"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7a-PL-44G">
+                        <rect key="frame" x="224" y="0.0" width="219" height="45"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF3-UV-oI0">
-                        <rect key="frame" x="0.0" y="0.0" width="257.5" height="45"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF3-UV-oI0">
+                        <rect key="frame" x="0.0" y="0.0" width="219" height="45"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                         <color key="textColor" red="0.22313357440000001" green="0.64895304570000001" blue="0.30811498650000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -42,7 +43,7 @@
                     <constraint firstAttribute="trailing" secondItem="LYs-d7-U2D" secondAttribute="trailing" id="IBr-QJ-njj"/>
                     <constraint firstAttribute="bottom" secondItem="xF3-UV-oI0" secondAttribute="bottom" id="KdP-uT-w0a"/>
                     <constraint firstItem="xF3-UV-oI0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NtO-8G-dd7"/>
-                    <constraint firstItem="D7a-PL-44G" firstAttribute="width" secondItem="xF3-UV-oI0" secondAttribute="width" multiplier="0.7" id="QFk-Je-IEF"/>
+                    <constraint firstItem="D7a-PL-44G" firstAttribute="width" secondItem="xF3-UV-oI0" secondAttribute="width" id="QFk-Je-IEF"/>
                     <constraint firstAttribute="bottom" secondItem="D7a-PL-44G" secondAttribute="bottom" id="UJC-Gg-AW6"/>
                     <constraint firstAttribute="trailing" secondItem="D7a-PL-44G" secondAttribute="trailing" constant="10" id="WE8-Yo-YfR"/>
                     <constraint firstAttribute="bottom" secondItem="LYs-d7-U2D" secondAttribute="bottom" id="aoB-r2-OXu"/>

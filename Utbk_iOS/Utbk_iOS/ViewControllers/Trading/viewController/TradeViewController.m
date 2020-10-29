@@ -591,11 +591,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 
             }else{
                 cell.priceLabel.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:bidplatemodel.price withlimit:_baseCoinScale]];
-                if (bidplatemodel.amount>=1000) {
-                    cell.amountLabel.text=[NSString stringWithFormat:@"%@K",[ToolUtil stringFromNumber:bidplatemodel.amount/1000 withlimit:_coinScale]];
-                }else{
+//                if (bidplatemodel.amount>=1000) {
+//                    cell.amountLabel.text=[NSString stringWithFormat:@"%@K",[ToolUtil stringFromNumber:bidplatemodel.amount/1000 withlimit:_coinScale]];
+//                }else{
                     cell.amountLabel.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:bidplatemodel.amount withlimit:_coinScale]];
-                }
+//                }
 //                cell.amountLabel.textColor=RedColor;
                 cell.priceLabel.textColor=RedColor;
             }
@@ -622,11 +622,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             cell.backwidth.constant = 0;
         }else{
             cell.priceLabel.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:askplatemodel.price withlimit:_baseCoinScale]];
-            if (askplatemodel.amount>=1000) {
-                cell.amountLabel.text=[NSString stringWithFormat:@"%@K",[ToolUtil stringFromNumber:askplatemodel.amount/1000 withlimit:_coinScale]];
-            }else{
+//            if (askplatemodel.amount>=1000) {
+//                cell.amountLabel.text=[NSString stringWithFormat:@"%@K",[ToolUtil stringFromNumber:askplatemodel.amount/1000 withlimit:_coinScale]];
+//            }else{
                 cell.amountLabel.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:askplatemodel.amount withlimit:_coinScale]];
-            }
+//            }
 //            cell.amountLabel.textColor=GreenColor;
             cell.priceLabel.textColor=GreenColor;
         }

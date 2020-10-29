@@ -36,12 +36,12 @@
 - (void)configureCellWithModel:(BTSharePoolModel *)model{
     self.coinName.text = model.coinName;
     if (model.subCoin.length) {
-        self.subAmount.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f %@",model.subCoinYesterdayProduce,model.subCoin]];//子币昨日收益
+        self.subAmount.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f %@",model.subCoinYesterdayProduce,model.subCoin]];//子币昨日收益
     }
-    self.destroyTotal.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f %@",model.parentCoinAmount,model.coinName]];//母币累计产出
-    self.yesEarnings.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f %@",model.yesterdayProduce,model.coinName]];//母币昨日收益
+    self.destroyTotal.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f %@",model.parentCoinAmount,model.coinName]];//母币累计产出
+    self.yesEarnings.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f %@",model.yesterdayProduce,model.coinName]];//母币昨日收益
     self.totalOutput.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.0f",model.totalProduce]];//累计产出
-    self.subOutput.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f %@",model.subCoinAmount,model.subCoin]];//子币累计产出
+    self.subOutput.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f %@",model.subCoinAmount,model.subCoin]];//子币累计产出
     if (model.type >=2 ) {//说明是矿主200组以上就是矿主
         self.starView.hidden = NO;
         [self.levelBtn setTitle:LocalizationKey(@"矿主") forState:UIControlStateNormal];

@@ -81,8 +81,10 @@
         [self.view makeToast:LocalizationKey(@"两次输入的密码不一致") duration:ToastHideDelay position:ToastPosition];
         return;
     }
+    sender.userInteractionEnabled = NO;
     WeakSelf(weakSelf)
     [MineNetManager resetMoneyPasswordForOldPassword:self.passwordOld.text withLatestPassword:self.passwordNew.text code:@"" googleCode:nil CompleteHandle:^(id resPonseObj, int code) {
+        sender.userInteractionEnabled = YES;
         StrongSelf(strongSelf)
         if (code) {
             if ([resPonseObj[@"code"] integerValue]==0) {

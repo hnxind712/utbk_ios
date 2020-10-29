@@ -117,7 +117,7 @@
         }
         _count = textField.text.intValue;
         self.countInput.text = [NSString stringWithFormat:@"%ld",KContributionValue * _count];
-        self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",100/self.convert * _count]],self.coinName];
+        self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f",100/self.convert * _count]],self.coinName];
         [self.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
             if (self.count * KContributionValue <= critical.integerValue) {
                 NSString *doubleS = self.doubleArray[idx];
@@ -236,7 +236,7 @@
         if (NetSuccess) {
             StrongSelf(strongSelf)
             strongSelf.convert = [responseResult[@"data"]doubleValue];
-            strongSelf.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",100/[responseResult[@"data"]doubleValue]]],self.coinName];
+            strongSelf.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f",100/[responseResult[@"data"]doubleValue]]],self.coinName];
         }
     }];
 }
@@ -258,7 +258,7 @@
     }
     self.groupCount.text = [NSString stringWithFormat:@"%ld",(long)_count];
     self.countInput.text = [NSString stringWithFormat:@"%ld",KContributionValue * _count];
-    self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",100/self.convert * _count]],self.coinName];
+    self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f",100/self.convert * _count]],self.coinName];
     [self.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
         if (self.count * KContributionValue <= critical.integerValue) {
             NSString *doubleS = self.doubleArray[idx];
@@ -283,7 +283,7 @@
     [self.addBtn setTitleColor:RGBOF(0xA78559) forState:UIControlStateNormal];
     self.groupCount.text = [NSString stringWithFormat:@"%ld",(long)_count];
     self.countInput.text = [NSString stringWithFormat:@"%ld",KContributionValue * _count];
-    self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",100/self.convert * _count]],self.coinName];
+    self.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f",100/self.convert * _count]],self.coinName];
     [self.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
         if (self.count * KContributionValue <= critical.integerValue) {
             NSString *doubleS = self.doubleArray[idx];
@@ -311,7 +311,7 @@
         strongSelf.subtractionBtn.layer.borderColor = RGBOF(0xE7E7E7).CGColor;
         [strongSelf.subtractionBtn setTitleColor:RGBOF(0xE7E7E7) forState:UIControlStateNormal];
         [strongSelf.coinBtn setTitle:model.currency forState:UIControlStateNormal];
-        strongSelf.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.2f",100/self.convert * self->_count]],self.coinName];
+        strongSelf.equivalentLabel.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f",100/self.convert * self->_count]],self.coinName];
         [strongSelf.starAarry enumerateObjectsUsingBlock:^(NSString *critical, NSUInteger idx, BOOL * _Nonnull stop) {
             if (self.count * KContributionValue <= critical.integerValue) {
                 NSString *doubleS = self.doubleArray[idx];
@@ -324,12 +324,14 @@
 }
 //确认
 - (IBAction)confirmAction:(UIButton *)sender {
+    sender.userInteractionEnabled = NO;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"groupQty"] = @(self.count);
     params[@"coinName"] = self.coinName;
     params[@"apiKey"] = [YLUserInfo shareUserInfo].secretKey;
     WeakSelf(weakSelf)
     [[XBRequest sharedInstance]postDataWithUrl:addMineShareAPI Parameter:params ResponseObject:^(NSDictionary *responseResult) {
+        sender.userInteractionEnabled = YES;
         StrongSelf(strongSelf)
         if (NetSuccess) {
             [strongSelf.view makeToast:responseResult[@"message"] duration:ToastHideDelay position:ToastPosition];
