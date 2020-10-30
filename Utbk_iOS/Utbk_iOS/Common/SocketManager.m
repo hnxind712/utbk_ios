@@ -22,8 +22,8 @@
 #import "SocketManager.h"
 #import "SocketUtils.h"
 
-static  NSString * s_host = @"8.129.59.185";
-//static  NSString * s_host = @"47.242.6.150";//正式
+//static  NSString * s_host = @"8.129.59.185";
+static  NSString * s_host = @"47.242.6.150";//正式
 
 static const uint16_t s_port = 28901;
 

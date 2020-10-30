@@ -625,10 +625,10 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 //            if (askplatemodel.amount>=1000) {
 //                cell.amountLabel.text=[NSString stringWithFormat:@"%@K",[ToolUtil stringFromNumber:askplatemodel.amount/1000 withlimit:_coinScale]];
 //            }else{
-                cell.amountLabel.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:askplatemodel.amount withlimit:_coinScale]];
+                cell.amountLabel.text = [NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:askplatemodel.amount withlimit:_coinScale]];
 //            }
 //            cell.amountLabel.textColor=GreenColor;
-            cell.priceLabel.textColor=GreenColor;
+            cell.priceLabel.textColor = GreenColor;
         }
         if (askplatemodel.amount>=0 && allDepthbuyAmount > 0) {
             CGFloat width = askplatemodel.totalAmount/allDepthbuyAmount * cell.contentView.width;
