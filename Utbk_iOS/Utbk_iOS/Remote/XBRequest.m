@@ -51,6 +51,8 @@ static XBRequest *_sharedInstance = nil;
             id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             if ([result isKindOfClass:[NSDictionary class]]) {
                 if ([result[@"code"]intValue] == 4000) {
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERINFO];
+                    [[NSUserDefaults standardUserDefaults] synchronize];//及时存储数据;
                     [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];
                 }else{
                     NSDictionary *resultDic = (NSDictionary *)result;
@@ -92,6 +94,8 @@ static XBRequest *_sharedInstance = nil;
             id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             if ([result isKindOfClass:[NSDictionary class]]) {
                 if ([result[@"code"]intValue] == 4000) {
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERINFO];
+                    [[NSUserDefaults standardUserDefaults] synchronize];//及时存储数据;
                     [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];
                 }else{
                     NSDictionary *resultDic = (NSDictionary *)result;
@@ -147,6 +151,8 @@ static XBRequest *_sharedInstance = nil;
             id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             if ([result isKindOfClass:[NSDictionary class]]) {
                 if ([result[@"code"]intValue] == 4000) {
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERINFO];
+                    [[NSUserDefaults standardUserDefaults] synchronize];//及时存储数据;
                     [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];
                 }else{
                     NSDictionary *resultDic = (NSDictionary *)result;
@@ -203,6 +209,8 @@ static XBRequest *_sharedInstance = nil;
             id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             if ([result isKindOfClass:[NSDictionary class]]) {
                 if ([result[@"code"]intValue] == 4000) {
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERINFO];
+                    [[NSUserDefaults standardUserDefaults] synchronize];//及时存储数据;
                     [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];
                 }else{
                     NSDictionary *resultDic = (NSDictionary *)result;
@@ -248,6 +256,8 @@ static XBRequest *_sharedInstance = nil;
         id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         if ([result isKindOfClass:[NSDictionary class]]) {
             if ([result[@"code"]intValue] == 4000) {
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERINFO];
+                [[NSUserDefaults standardUserDefaults] synchronize];//及时存储数据;
                 [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];
             }else{
                 NSDictionary *resultDic = (NSDictionary *)result;
@@ -284,6 +294,8 @@ static XBRequest *_sharedInstance = nil;
         id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         if ([result isKindOfClass:[NSDictionary class]]) {
             if ([result[@"code"]intValue] == 4000) {
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERINFO];
+                [[NSUserDefaults standardUserDefaults] synchronize];//及时存储数据;
                 [[NSNotificationCenter defaultCenter]postNotificationName:KLogoutKey object:nil];
             }else{
                 NSDictionary *resultDic = (NSDictionary *)result;

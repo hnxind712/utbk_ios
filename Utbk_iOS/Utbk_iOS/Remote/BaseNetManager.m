@@ -37,14 +37,15 @@
     [BaseNetManager requestWithPost:urlStr header:dict parameters:para successBlock:^(id resultObject, int isSuccessed) {
         NSLog(@"URL=%@\n参数=%@\njson=%@",urlStr,para,resultObject);
         if (isSuccessed) {
-//            if ([resultObject[@"code"]integerValue] == 4000) {//认证失败，token实效
-//
-//            }else{
-//
-//            }
-            resultBlock(resultObject,1);
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                if (resultBlock) {
+                    resultBlock(resultObject,1);
+                }
+            }];
         }else{
-            resultBlock(nil,0);
+            if (resultBlock) {
+                resultBlock(nil,0);
+            }
         }
     }];
 }

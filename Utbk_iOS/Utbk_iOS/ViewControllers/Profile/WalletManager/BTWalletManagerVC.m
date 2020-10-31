@@ -120,7 +120,7 @@
     [self.datasource addObjectsFromArray:arr];
     __block NSInteger index = 0;
     for (YLUserInfo *info in self.datasource) {
-        if ([info.username isEqualToString:[YLUserInfo shareUserInfo].username]) {
+        if ([info.username isEqualToString:[YLUserInfo shareUserInfo].username] && !self.isLogin) {
             self.currentInfo = info;
         }
         [[XBRequest sharedInstance]postDataWithUrl:getMemberStatusAPI Parameter:@{@"memberId":_BTS(info.ID)} ResponseObject:^(NSDictionary *responseResult) {
@@ -164,7 +164,7 @@
     BTWalletManagerCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTWalletManagerCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     YLUserInfo *model = self.datasource[indexPath.row];
-    [cell configureWithModel:self.datasource[indexPath.row]];
+    [cell configureWithModel:model];
     WeakSelf(weakSelf)
     cell.walletDetailAction = ^{
         BTWalletManageDetailVC *walletDetail = [[BTWalletManageDetailVC alloc]init];

@@ -27,6 +27,7 @@
     // Do any additional setup after loading the view from its nib.
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(dountDown) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop]addTimer:self.timer forMode:NSRunLoopCommonModes];
+    [self.skipActionBtn setTitle:[NSString stringWithFormat:@"%@%d",LocalizationKey(@"skip"),self.interval] forState:UIControlStateNormal];
 }
 - (void)dountDown{
     self.interval--;
@@ -38,7 +39,6 @@
         }
     }
     [self.skipActionBtn setTitle:[NSString stringWithFormat:@"%@%d",LocalizationKey(@"skip"),self.interval] forState:UIControlStateNormal];
-
 }
 - (IBAction)skip:(UIButton *)sender {
     if (self.timer) {
