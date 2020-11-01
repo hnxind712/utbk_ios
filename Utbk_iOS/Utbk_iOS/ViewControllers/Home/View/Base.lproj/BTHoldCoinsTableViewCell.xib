@@ -289,11 +289,11 @@
                 <outlet property="yesearnings" destination="4CO-61-JnT" id="xwU-eO-mhv"/>
                 <outlet property="yesearningsCoin" destination="una-QZ-rjD" id="HNt-vM-N04"/>
             </connections>
-            <point key="canvasLocation" x="136.95652173913044" y="128.57142857142856"/>
+            <point key="canvasLocation" x="136.95652173913044" y="127.90178571428571"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="icon_poolCardbj" width="354.5" height="175.5"/>
-        <image name="icon_registerLogo" width="54" height="54"/>
+        <image name="icon_registerLogo" width="58" height="58"/>
     </resources>
 </document>

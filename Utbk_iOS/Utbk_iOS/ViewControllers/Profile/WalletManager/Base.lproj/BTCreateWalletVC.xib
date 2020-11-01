@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,7 +68,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuG-PF-Jyc">
-                    <rect key="frame" x="12" y="174" width="390" height="170"/>
+                    <rect key="frame" x="12" y="174" width="390" height="149"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设置密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBE-e5-h2Z">
                             <rect key="frame" x="11" y="21" width="57.5" height="17"/>
@@ -158,7 +159,7 @@
                         <constraint firstItem="hOZ-X7-0B6" firstAttribute="leading" secondItem="bm4-sj-IGO" secondAttribute="trailing" constant="15" id="Quj-Cv-Co2"/>
                         <constraint firstItem="TOr-yl-Bmp" firstAttribute="centerY" secondItem="AnP-ya-MA9" secondAttribute="centerY" id="SJm-0o-hpK"/>
                         <constraint firstItem="Z3P-te-aoD" firstAttribute="top" secondItem="FBE-e5-h2Z" secondAttribute="bottom" constant="10" id="TIP-Fl-fim"/>
-                        <constraint firstAttribute="bottom" secondItem="AnP-ya-MA9" secondAttribute="bottom" constant="31" id="UN4-fR-ZCD"/>
+                        <constraint firstAttribute="bottom" secondItem="AnP-ya-MA9" secondAttribute="bottom" constant="10" id="UN4-fR-ZCD"/>
                         <constraint firstItem="FBE-e5-h2Z" firstAttribute="top" secondItem="TuG-PF-Jyc" secondAttribute="top" constant="21" id="X7h-iI-KUz"/>
                         <constraint firstItem="AnP-ya-MA9" firstAttribute="top" secondItem="pa5-SN-fLZ" secondAttribute="bottom" constant="10" id="ZJv-fJ-AF9"/>
                         <constraint firstItem="UYS-TM-lCR" firstAttribute="leading" secondItem="FBE-e5-h2Z" secondAttribute="leading" id="dfv-P6-7CW"/>
@@ -177,7 +178,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAE-L6-Zpp">
-                    <rect key="frame" x="39" y="433" width="336" height="44"/>
+                    <rect key="frame" x="39" y="412" width="336" height="44"/>
                     <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="YrF-l3-k52"/>
@@ -194,7 +195,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码属于保护私钥以及交易授权，强度非常重要；平台不存储密码。也不帮您找回，请务必保管好。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcT-sN-oNm">
-                    <rect key="frame" x="24" y="354" width="366" height="29"/>
+                    <rect key="frame" x="24" y="333" width="366" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.65490196079999996" green="0.52549019610000003" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>

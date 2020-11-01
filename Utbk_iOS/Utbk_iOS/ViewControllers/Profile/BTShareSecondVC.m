@@ -30,7 +30,8 @@
     return UIStatusBarStyleLightContent;
 }
 - (void)setupBind{
-    self.qrcodeImageView.image = [BTCommonUtils logoQrCode:BTUIIMAGE(@"icon_registerLogo") code:self.url];
+    self.qrcodeImageView.image = [BTCommonUtils createQRCodeWithUrl:self.url image:nil size:self.qrcodeImageView.bounds.size.width];
+    //[BTCommonUtils logoQrCode:BTUIIMAGE(@"icon_registerLogo") code:self.url];
 }
 - (IBAction)shareAction:(UIButton *)sender {
     switch (sender.tag) {

@@ -38,26 +38,18 @@
     if (model.subCoin.length) {
         self.subAmount.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f %@",model.subCoinYesterdayProduce,model.subCoin]];//子币昨日收益
     }
-    self.destroyTotal.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f %@",model.parentCoinAmount,model.coinName]];//母币累计产出
-    self.yesEarnings.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f %@",model.yesterdayProduce,model.coinName]];//母币昨日收益
+    self.destroyTotal.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil stringFromNumber:model.parentCoinAmount withlimit:KLimitAssetInputDigits],model.coinName];
+    self.yesEarnings.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil stringFromNumber:model.yesterdayProduce withlimit:KLimitAssetInputDigits],model.coinName];
     self.totalOutput.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.0f",model.totalProduce]];//累计产出
-    self.subOutput.text = [ToolUtil formartScientificNotationWithString:[NSString stringWithFormat:@"%.4f %@",model.subCoinAmount,model.subCoin]];//子币累计产出
+    self.subOutput.text = [NSString stringWithFormat:@"%@ %@",[ToolUtil stringFromNumber:model.subCoinAmount withlimit:KLimitAssetInputDigits],model.subCoin];
     if (model.type >=2 ) {//说明是矿主200组以上就是矿主
         self.starView.hidden = NO;
         [self.levelBtn setTitle:LocalizationKey(@"矿主") forState:UIControlStateNormal];
     }else{
         self.starView.hidden = YES;
     }
-//    else{
-//        [self.starArray enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            double value = obj.doubleValue;
-//            if (model.groupsQty * KContributionValue < value) {
-//                [self.levelBtn setTitle:[NSString stringWithFormat:@"%ld",idx + 1] forState:UIControlStateNormal];*stop = YES;
-//            }
-//        }];
-//    }
     self.contributionValue.text = [ToolUtil formartScientificNotationWithString:model.contributionValue];//贡献值
-    self.sections.text = [ToolUtil stringFromNumber:model.smalltotal.doubleValue withlimit:4];//小区合计
+    self.sections.text = [ToolUtil stringFromNumber:model.smallTotal.doubleValue withlimit:4];//小区合计
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

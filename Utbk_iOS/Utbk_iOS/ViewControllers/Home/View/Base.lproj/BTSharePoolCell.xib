@@ -187,7 +187,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SW-1v-4je">
-                                                <rect key="frame" x="62.5" y="35" width="9" height="16"/>
+                                                <rect key="frame" x="45.5" y="35" width="9" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="IrG-ha-LMz"/>
                                                 </constraints>
@@ -198,9 +198,9 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="9SW-1v-4je" firstAttribute="centerX" secondItem="j3Z-5I-pXG" secondAttribute="centerX" id="GUh-lP-4IF"/>
                                             <constraint firstItem="446-8u-QwK" firstAttribute="centerY" secondItem="T31-vj-AHV" secondAttribute="centerY" id="M75-Zg-MPR"/>
                                             <constraint firstItem="446-8u-QwK" firstAttribute="leading" secondItem="T31-vj-AHV" secondAttribute="leading" id="bhM-mL-eP6"/>
-                                            <constraint firstItem="9SW-1v-4je" firstAttribute="trailing" secondItem="j3Z-5I-pXG" secondAttribute="trailing" id="lSE-kq-ADV"/>
                                             <constraint firstItem="j3Z-5I-pXG" firstAttribute="centerX" secondItem="T31-vj-AHV" secondAttribute="centerX" id="lYM-vH-TtR"/>
                                             <constraint firstItem="j3Z-5I-pXG" firstAttribute="top" secondItem="T31-vj-AHV" secondAttribute="top" constant="15" id="n9y-rx-3Ab"/>
                                             <constraint firstItem="9SW-1v-4je" firstAttribute="top" secondItem="j3Z-5I-pXG" secondAttribute="bottom" constant="8" id="zoH-3g-477"/>
@@ -313,6 +313,6 @@
     </objects>
     <resources>
         <image name="icon_poolCardbj" width="354.5" height="175.5"/>
-        <image name="icon_registerLogo" width="54" height="54"/>
+        <image name="icon_registerLogo" width="58" height="58"/>
     </resources>
 </document>

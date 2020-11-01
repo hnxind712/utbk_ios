@@ -66,6 +66,7 @@
             }];
         }
     }];
+    
 }
 - (void)setupData{
     self.currency.text = [NSString stringWithFormat:@"%@ %@",self.model.coinName,[ToolUtil stringFromNumber:self.model.profitAmount.doubleValue withlimit:KLimitAssetInputDigits]];
