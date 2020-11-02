@@ -27,8 +27,8 @@
     // Initialization code
 }
 - (void)configureWithModel:(YLUserInfo *)model{
-    self.selectedBtn.selected = [[YLUserInfo shareUserInfo].username isEqualToString:model.username];
-    self.currentLabel.textColor = [[YLUserInfo shareUserInfo].username isEqualToString:model.username] ? RGBOF(0x333333) : RGBOF(0xcccccc);
+    self.selectedBtn.selected = [self.currentModel.username isEqualToString:model.username];
+    self.currentLabel.textColor = [self.currentModel.username isEqualToString:model.username] ? RGBOF(0x333333) : RGBOF(0xcccccc);
     self.nickName.text = model.username;
     self.addressLabel.text = model.address;
     self.activityView.backgroundColor = (model.activeStatus == 1 || model.activeStatus == 2)  ? RGBOF(0xDAC49D) : RGBOF(0xcccccc);

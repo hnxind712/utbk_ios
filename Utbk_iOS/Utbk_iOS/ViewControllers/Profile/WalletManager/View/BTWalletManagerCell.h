@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTWalletManagerCell : UITableViewCell
 
+@property (strong, nonatomic) YLUserInfo *currentModel;
 @property (copy, nonatomic) void(^walletDetailAction)(void);
 @property (copy, nonatomic) void(^switchAccountAction)(void);
 

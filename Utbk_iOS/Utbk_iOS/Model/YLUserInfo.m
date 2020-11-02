@@ -38,7 +38,6 @@ static YLUserInfo *userInfo = nil;
 }
 /*  获取用户已登陆的信息 */
 +(instancetype)shareUserInfo{
-    
     if (userInfo == nil) {
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:USERINFO];
         if (data) {

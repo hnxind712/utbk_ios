@@ -172,7 +172,7 @@
 
     NSDecimalNumber *close = [NSDecimalNumber decimalNumberWithDecimal:[model.close decimalValue]];
     NSDecimalNumber *baseUsdRate = [NSDecimalNumber decimalNumberWithDecimal:[model.baseUsdRate decimalValue]];
-    self.CNYLabel.text=[NSString stringWithFormat:@"≈%.2f CNY",[[[close decimalNumberByMultiplyingBy:baseUsdRate] decimalNumberByMultiplyingBy:((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate] doubleValue]];
+    self.CNYLabel.text=[NSString stringWithFormat:@"%.2f CNY",[[[close decimalNumberByMultiplyingBy:baseUsdRate] decimalNumberByMultiplyingBy:((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate] doubleValue]];
     self.hightPrice.text= [ToolUtil stringFromNumber:model.high withlimit:baseCoinScale];
     self.LowPrice.text= [ToolUtil stringFromNumber:model.low withlimit:baseCoinScale];
     self.numberLabel.text= [ToolUtil stringFromNumber:model.volume withlimit:CoinScale];

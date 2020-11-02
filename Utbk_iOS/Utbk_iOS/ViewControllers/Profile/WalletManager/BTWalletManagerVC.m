@@ -164,6 +164,7 @@
     BTWalletManagerCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTWalletManagerCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     YLUserInfo *model = self.datasource[indexPath.row];
+    cell.currentModel = self.currentInfo;
     [cell configureWithModel:model];
     WeakSelf(weakSelf)
     cell.walletDetailAction = ^{
