@@ -9,7 +9,7 @@
 "5wr-Lf-s2I.text" = "0.000000 BTCK";
 
 /* Class = "UILabel"; text = "币币"; ObjectID = "65v-Pf-ID1"; */
-"65v-Pf-ID1.text" = "币币";
+"65v-Pf-ID1.text" = "币币账户";
 
 /* Class = "UITextField"; placeholder = "请输入划转数量"; ObjectID = "7zK-jZ-0dZ"; */
 "7zK-jZ-0dZ.placeholder" = "请输入划转数量";

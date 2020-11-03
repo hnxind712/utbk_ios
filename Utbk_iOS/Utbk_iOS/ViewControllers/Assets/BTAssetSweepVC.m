@@ -89,11 +89,11 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if (_assetIndex == 1) {
-        self.coinsCoins.text = LocalizationKey(@"币币");
+        self.coinsCoins.text = LocalizationKey(@"AccountCoin");
         self.orePool.text = LocalizationKey(@"矿池");
     }else{
         self.coinsCoins.text = LocalizationKey(@"矿池");
-        self.orePool.text = LocalizationKey(@"币币");
+        self.orePool.text = LocalizationKey(@"AccountCoin");
         self.switchBtn.selected = YES;
     }
 }
@@ -145,10 +145,10 @@
     if (sender.selected) {
         self.assetIndex = 2;
         self.coinsCoins.text = LocalizationKey(@"矿池");
-        self.orePool.text = LocalizationKey(@"币币");
+        self.orePool.text = LocalizationKey(@"AccountCoin");
     }else{
         self.assetIndex = 1;
-        self.coinsCoins.text = LocalizationKey(@"币币");
+        self.coinsCoins.text = LocalizationKey(@"AccountCoin");
         self.orePool.text = LocalizationKey(@"矿池");
     }
     [self setupBind];
