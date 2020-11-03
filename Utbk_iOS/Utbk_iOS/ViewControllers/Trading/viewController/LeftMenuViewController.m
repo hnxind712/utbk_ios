@@ -182,6 +182,9 @@
 - (IBAction)hideToLeft:(id)sender {
     [self hide];
     [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:UNSUBSCRIBE_SYMBOL_THUMB withVersion:COMMANDS_VERSION withRequestId: 0 withbody:nil];
+    if (self.hiddenBlock) {
+        self.hiddenBlock();
+    }
 }
 kRemoveCellSeparator
 

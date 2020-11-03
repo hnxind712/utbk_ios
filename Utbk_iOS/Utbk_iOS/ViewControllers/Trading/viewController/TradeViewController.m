@@ -481,7 +481,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
         dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",nil];
     }
     [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:SUBSCRIBE_EXCHANGE_TRADE withVersion:COMMANDS_VERSION withRequestId: 0 withbody:dic];
-     [SocketManager share].delegate=self;
+    [SocketManager share].delegate=self;
 }
 
 #pragma mark-左侧弹出菜单
@@ -497,6 +497,19 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     __weak typeof(self)weakself = self;
     self.menu.block = ^(NSString *baseSymbol, NSString *changeSymbol) {
         [weakself reloadShowDataWithBaseSymbol:baseSymbol changeSymbol:changeSymbol];
+    };
+    WeakSelf(weakSelf)
+    self.menu.hiddenBlock = ^{
+        StrongSelf(strongSelf)
+        [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:SUBSCRIBE_SYMBOL_THUMB withVersion:COMMANDS_VERSION withRequestId: 0 withbody:nil];
+        NSDictionary*dic;
+        if ([YLUserInfo isLogIn]) {
+            dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",[YLUserInfo shareUserInfo].ID,@"uid",nil];
+        }else{
+            dic=[NSDictionary dictionaryWithObjectsAndKeys:[marketManager shareInstance].symbol,@"symbol",nil];
+        }
+        [[SocketManager share] sendMsgWithLength:SOCKETREQUEST_LENGTH withsequenceId:0 withcmd:SUBSCRIBE_EXCHANGE_TRADE withVersion:COMMANDS_VERSION withRequestId: 0 withbody:dic];
+        [SocketManager share].delegate = strongSelf;
     };
 }
 -(void)reloadShowDataWithBaseSymbol:(NSString *)baseSymbol changeSymbol:(NSString *)changeSymbol{

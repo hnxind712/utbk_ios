@@ -21,4 +21,6 @@ typedef enum : NSUInteger {
 @property(assign,nonatomic)ChildViewType viewType;
 - (void)showFromLeft;
 @property (nonatomic, copy) selSymbolBlock block;
+@property (nonatomic, copy) void(^hiddenBlock)(void);
+
 @end
