@@ -34,10 +34,10 @@
                 resultStr = [NSString stringWithFormat:@"%@.%@",arr[0],[arr[1] substringWithRange:NSMakeRange(0, 2)]];
             }
         }
-        self.cnyLabel.text=[NSString stringWithFormat:@"%@ CNY",resultStr];
+        self.cnyLabel.text=[NSString stringWithFormat:@"≈%@ CNY",resultStr];
         
     }else{
-        self.cnyLabel.text = @"0.00 CNY";
+        self.cnyLabel.text = @"≈0.00 CNY";
     }
     self.tradeNumbel.text=[NSString stringWithFormat:@"%@ %.2f",LocalizationKey(@"hourvol"),model.volume];
    

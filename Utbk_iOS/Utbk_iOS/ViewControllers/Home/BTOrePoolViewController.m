@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;//排行榜
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableHeight;
 @property (strong, nonatomic) NSArray *datasource;//排名信息
+@property (weak, nonatomic) IBOutlet UILabel *tips;
 
 @end
 
@@ -39,6 +40,9 @@
     [self setupBind];
     [self setupData];
     [self setupConfirgure];
+//    子、母币收益比例：BTCK20%、BTK10%
+//    持币算力公式：个人持币量X个人持币值=持币收益
+//    推广算力公式：团队除最大区合计持币量x0.001=推广收益
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{
@@ -62,6 +66,9 @@
                     strongSelf.minHoud.text = [ToolUtil formartScientificNotationWithString:obj.value];
                 }else if ([obj.key isEqualToString:@"optimum_num"]){
                     strongSelf.bestHoud.text = [ToolUtil formartScientificNotationWithString:obj.value];
+                }
+                if ([obj.key isEqualToString:@"parent_coin_share_proportion"]) {//母币收益比例
+                    self.tips.text = [NSString stringWithFormat:@"%@%@%.0f%%、%@%.0f%%\n%@\n%@",LocalizationKey(@"子、母币收益比例："),self.model.coinName,obj.value.doubleValue * 100,self.model.subcoinCoin,(1 - obj.value.doubleValue) * 100,LocalizationKey(@"持币算力公式：个人持币量X个人持币值=持币收益"),LocalizationKey(@"推广算力公式：团队除最大区合计持币量x0.001=推广收益")];
                 }
             }];
         }

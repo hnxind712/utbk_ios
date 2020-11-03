@@ -17,8 +17,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *tradePasswordInput;
 @property (weak, nonatomic) IBOutlet UILabel *balance;
 @property (weak, nonatomic) IBOutlet UILabel *fee;
-@property (weak, nonatomic) IBOutlet UILabel *tips;
+@property (weak, nonatomic) IBOutlet UILabel *feeTitle;//矿工费标题
 @property (assign, nonatomic) CGFloat feeRate;//旷工费
+@property (weak, nonatomic) IBOutlet UILabel *unitL;
 
 @end
 
@@ -31,6 +32,8 @@
     [self setupBind];
     self.coinCountInput.keyboardType = UIKeyboardTypeDecimalPad;
     [self.coinCountInput addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    self.feeTitle.text = LocalizationKey(@"矿工费每笔：");
+    self.unitL.text = LocalizationKey(@"个");
     // Do any additional setup after loading the view from its nib.
 }
 - (void)addRightNavigation{

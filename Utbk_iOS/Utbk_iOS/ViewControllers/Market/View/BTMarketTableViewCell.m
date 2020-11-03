@@ -31,10 +31,10 @@
                  resultStr = [NSString stringWithFormat:@"%@.%@",arr[0],[arr[1] substringWithRange:NSMakeRange(0, 2)]];
              }
          }
-         self.convertLabel.text=[NSString stringWithFormat:@"￥%@ CNY",resultStr];
+         self.convertLabel.text=[NSString stringWithFormat:@"≈%@ CNY",resultStr];
          
      }else{
-         self.convertLabel.text = @"￥0.00 CNY";
+         self.convertLabel.text = @"≈0.00 CNY";
      }
     self.leading.constant = (SCREEN_WIDTH - 24)/2 - 30;
     self.currenctLabel.text = [NSString stringWithFormat:@"%.4f",model.close.doubleValue];

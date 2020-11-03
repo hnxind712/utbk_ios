@@ -138,6 +138,11 @@
 "账户激活" = "Account activation";
 "温馨提示：仅支持erc20钱包地址，地址出错将无法找回请认真核对" = "warm prompt: only support erc20 wallet address, error will not be able to find please check carefully";
 "温馨提示：仅支持trc20钱包地址，地址出错将无法找回请认真核对" = "warm prompt: only support trc20 wallet address, error will not be able to find please check carefully";
+"矿工费每笔：" = "Miners cost every penny：";
+"个" = "pieces";
+"子、母币收益比例：" = "Percentage of return of child and mother currency:";
+"持币算力公式：个人持币量X个人持币值=持币收益" = "Calculation formula: personal amount of currency X personal value of currency = earnings from currency";
+"推广算力公式：团队除最大区合计持币量x0.001=推广收益" = "Formula: Promotion calculation formula: total amount of currency held by the team except the maximum area x0.001= earnings from promotion";
 //可能通用
 "notice" = "Notice";
 "projectName" = "ztuo";

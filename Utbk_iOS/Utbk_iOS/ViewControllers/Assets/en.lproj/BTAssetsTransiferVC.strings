@@ -15,7 +15,7 @@
 "K1A-rH-DhN.placeholder" = "Please fill in the number of COINS transferred";
 
 /* Class = "UILabel"; text = "个"; ObjectID = "UYV-s1-0j0"; */
-"UYV-s1-0j0.text" = "个";
+"UYV-s1-0j0.text" = "pieces";
 
 /* Class = "UIButton"; normalTitle = "全部"; ObjectID = "Wkk-hh-IeJ"; */
 "Wkk-hh-IeJ.normalTitle" = "All";

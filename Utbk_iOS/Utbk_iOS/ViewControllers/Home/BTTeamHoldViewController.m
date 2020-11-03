@@ -105,10 +105,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BTTeamHoldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BTTeamHoldTableViewCell class])];
     BTTeamHoldModel *model = self.datasource[indexPath.row];
-    if ([[NSString stringWithFormat:@"%d",model.memberId] isEqualToString:[NSString stringWithFormat:@"%@",self.memberId]]) {
+    if (self.memberId.intValue == 0 && indexPath.row == 0) {
         cell.addressTitle.text = LocalizationKey(@"地址(大区)");
     }else{
-        cell.addressTitle.text = LocalizationKey(@"地址(小区)");
+        if ([[NSString stringWithFormat:@"%d",model.memberId] isEqualToString:[NSString stringWithFormat:@"%@",self.memberId]]) {
+            cell.addressTitle.text = LocalizationKey(@"地址(大区)");
+        }else{
+            cell.addressTitle.text = LocalizationKey(@"地址(小区)");
+        }
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell configureCellWithModel:model];

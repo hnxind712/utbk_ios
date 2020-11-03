@@ -116,11 +116,12 @@
 - (void)setupBind{
     //获取我的钱包
     WeakSelf(weakSelf)
+    [self.datasource removeAllObjects];
+    [self.tableView reloadData];//先清除列表
     if (self.type == 0) {
         [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
             StrongSelf(strongSelf)
             if (NetSuccess) {
-                [strongSelf.datasource removeAllObjects];
                 NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
                 NSDecimalNumber *ass1 = [[NSDecimalNumber alloc] initWithString:@"0"];
                 NSDecimalNumber *ass2 = [[NSDecimalNumber alloc] initWithString:@"0"];
@@ -160,7 +161,6 @@
         [[XBRequest sharedInstance]getDataWithUrl:getMineWalletAPI Parameter:@{@"apiKey":_BTS([YLUserInfo shareUserInfo].secretKey)} ResponseObject:^(NSDictionary *responseResult) {
             StrongSelf(strongSelf)
             if (NetSuccess) {
-                [strongSelf.datasource removeAllObjects];
                 NSArray *list = [BTPoolHoldCoinModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
                 //转换为BTAssetModel,只需要两个参数，一个balance,一个unit
                 for (BTPoolHoldCoinModel *model in list) {

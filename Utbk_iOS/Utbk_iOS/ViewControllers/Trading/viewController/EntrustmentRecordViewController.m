@@ -56,7 +56,7 @@
     self.title = LocalizationKey(@"全部");
     [self setupLayout];
     [self setChildController];
-    [self RightsetupNavgationItemWithpictureName:@"图层 601"];
+//    [self RightsetupNavgationItemWithpictureName:@"图层 601"];
 }
 - (void)setupLayout{
     [self.view addSubview:self.bgView];

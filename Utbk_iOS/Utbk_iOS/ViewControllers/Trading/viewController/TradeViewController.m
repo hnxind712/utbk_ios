@@ -310,7 +310,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     if ([self.nowPrice.text floatValue] > 0) {
         self.PriceTF.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:[self.nowPrice.text floatValue] withlimit:_baseCoinScale]];
         NSString*cnyRate= [((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate stringValue];
-        self.CNYPrice.text=[NSString stringWithFormat:@"%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
+        self.CNYPrice.text=[NSString stringWithFormat:@"≈%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
     }
 }
 
@@ -604,11 +604,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
 
             }else{
                 cell.priceLabel.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:bidplatemodel.price withlimit:_baseCoinScale]];
-//                if (bidplatemodel.amount>=1000) {
-//                    cell.amountLabel.text=[NSString stringWithFormat:@"%@K",[ToolUtil stringFromNumber:bidplatemodel.amount/1000 withlimit:_coinScale]];
-//                }else{
+                if (bidplatemodel.amount>=1000) {
+                    cell.amountLabel.text=[NSString stringWithFormat:@"%@K",[ToolUtil stringFromNumber:bidplatemodel.amount/1000 withlimit:_coinScale]];
+                }else{
                     cell.amountLabel.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:bidplatemodel.amount withlimit:_coinScale]];
-//                }
+                }
 //                cell.amountLabel.textColor=RedColor;
                 cell.priceLabel.textColor=RedColor;
             }
@@ -635,11 +635,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             cell.backwidth.constant = 0;
         }else{
             cell.priceLabel.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:askplatemodel.price withlimit:_baseCoinScale]];
-//            if (askplatemodel.amount>=1000) {
-//                cell.amountLabel.text=[NSString stringWithFormat:@"%@K",[ToolUtil stringFromNumber:askplatemodel.amount/1000 withlimit:_coinScale]];
-//            }else{
+            if (askplatemodel.amount>=1000) {
+                cell.amountLabel.text=[NSString stringWithFormat:@"%@K",[ToolUtil stringFromNumber:askplatemodel.amount/1000 withlimit:_coinScale]];
+            }else{
                 cell.amountLabel.text = [NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:askplatemodel.amount withlimit:_coinScale]];
-//            }
+            }
 //            cell.amountLabel.textColor=GreenColor;
             cell.priceLabel.textColor = GreenColor;
         }
@@ -710,7 +710,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             if (bidplatemodel.price>=0) {
                 self.PriceTF.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:bidplatemodel.price withlimit:_baseCoinScale]];
                 NSString*cnyRate= [((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate stringValue];
-                self.CNYPrice.text=[NSString stringWithFormat:@"%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
+                self.CNYPrice.text=[NSString stringWithFormat:@"≈%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
                 
             }
             [self textfieldValueChange:self.PriceTF];
@@ -720,7 +720,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             if (askplatemodel.price>=0) {
                 self.PriceTF.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:askplatemodel.price withlimit:_baseCoinScale]];
                 NSString*cnyRate= [((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate stringValue];
-                self.CNYPrice.text=[NSString stringWithFormat:@"%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
+                self.CNYPrice.text=[NSString stringWithFormat:@"≈%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
             }
             [self textfieldValueChange:self.PriceTF];
 
@@ -733,7 +733,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             if (bidplatemodel.price>=0) {
                 self.PriceTF.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:bidplatemodel.price withlimit:_baseCoinScale]];
                 NSString*cnyRate= [((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate stringValue];
-                self.CNYPrice.text=[NSString stringWithFormat:@"%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
+                self.CNYPrice.text=[NSString stringWithFormat:@"≈%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
             }
             
         }else if ([tableView isEqual:self.bidtableView]){
@@ -741,7 +741,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             if (askplatemodel.price>=0) {
                 self.PriceTF.text=[NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:askplatemodel.price withlimit:_baseCoinScale]];
                 NSString*cnyRate= [((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate stringValue];
-                self.CNYPrice.text=[NSString stringWithFormat:@"%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
+                self.CNYPrice.text=[NSString stringWithFormat:@"≈%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
             }
         }else{
             
@@ -1014,7 +1014,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
              
                 self.PriceTF.text=[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue]-(1/(double)pow(10, _baseCoinScale)) withlimit:_baseCoinScale];//10的N次幂
                 NSString*cnyRate= [((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate stringValue];
-                self.CNYPrice.text=[NSString stringWithFormat:@"%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
+                self.CNYPrice.text=[NSString stringWithFormat:@"≈%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
                 self.TradeNumber.text=[NSString stringWithFormat:@"%@ %@%@",LocalizationKey(@"entrustment"),[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName];
                 [self textfieldValueChange:self.PriceTF];
 
@@ -1027,7 +1027,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             if ([self.PriceTF.text doubleValue]>=0) {
                self.PriceTF.text= [ToolUtil stringFromNumber:[self.PriceTF.text doubleValue]+(1/(double)pow(10, _baseCoinScale)) withlimit:_baseCoinScale];//10的N次幂
                 NSString*cnyRate= [((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate stringValue];
-                self.CNYPrice.text=[NSString stringWithFormat:@"%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
+                self.CNYPrice.text=[NSString stringWithFormat:@"≈%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
                 self.TradeNumber.text=[NSString stringWithFormat:@"%@ %@%@",LocalizationKey(@"entrustment"),[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue] withlimit:_baseCoinScale] ,_baseCoinName];
                 [self textfieldValueChange:self.PriceTF];
             }
@@ -1271,7 +1271,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
         if ([self.triggerTF.text doubleValue]>=0) {
             self.triggerTF.text= [ToolUtil stringFromNumber:[self.triggerTF.text doubleValue]+(1/(double)pow(10, _baseCoinScale)) withlimit:_baseCoinScale];//10的N次幂
             NSString*cnyRate= [((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate stringValue];
-            self.CNYPrice.text=[NSString stringWithFormat:@"%.2f CNY",[self.triggerTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
+            self.CNYPrice.text=[NSString stringWithFormat:@"≈%.2f CNY",[self.triggerTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
         }
     }else if(sender.tag == 520){
         //减
@@ -1279,7 +1279,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             
             self.triggerTF.text=[ToolUtil stringFromNumber:[self.triggerTF.text doubleValue]-(1/(double)pow(10, _baseCoinScale)) withlimit:_baseCoinScale];//10的N次幂
             NSString*cnyRate= [((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate stringValue];
-            self.CNYPrice.text=[NSString stringWithFormat:@"%.2f CNY",[self.triggerTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
+            self.CNYPrice.text=[NSString stringWithFormat:@"≈%.2f CNY",[self.triggerTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
         }
     }
 }
@@ -1438,11 +1438,11 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                         NSString*cnyRate= [((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate stringValue];
                         NSDecimalNumber *close = [NSDecimalNumber decimalNumberWithDecimal:[model.close decimalValue]];
                         NSDecimalNumber *baseUsdRate = [NSDecimalNumber decimalNumberWithDecimal:[model.baseUsdRate decimalValue]];
-                        self.nowCNY.text=[NSString stringWithFormat:@"%.2f CNY",[[[close decimalNumberByMultiplyingBy:baseUsdRate] decimalNumberByMultiplyingBy:((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate] doubleValue]];
+                        self.nowCNY.text=[NSString stringWithFormat:@"≈%.2f CNY",[[[close decimalNumberByMultiplyingBy:baseUsdRate] decimalNumberByMultiplyingBy:((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate] doubleValue]];
                         _usdRate= [model.baseUsdRate doubleValue];
                         if (self.priceType == PriceType_Fixed) {
                             self.PriceTF.text=[ToolUtil stringFromNumber:[model.close doubleValue] withlimit:_baseCoinScale];
-                            self.CNYPrice.text=[NSString stringWithFormat:@"%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
+                            self.CNYPrice.text=[NSString stringWithFormat:@"≈%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
                             self.heightConstant.constant=35;
                             
                         }else if(self.priceType == PriceType_Market){
@@ -1450,7 +1450,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                             self.PriceTF.text=LocalizationKey(@"Optimal");
                         }else{
                             self.PriceTF.text=[ToolUtil stringFromNumber:[model.close doubleValue] withlimit:_baseCoinScale];
-                            self.CNYPrice.text=[NSString stringWithFormat:@"%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
+                            self.CNYPrice.text=[NSString stringWithFormat:@"≈%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
                             self.heightConstant.constant=35;
                         }
                         if (model.change <0) {
@@ -1719,7 +1719,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
     if (self.priceType == PriceType_Fixed) {
         self.TradeNumber.text=[NSString stringWithFormat:@"%@ %@%@",LocalizationKey(@"entrustment"),[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName];
         NSString*cnyRate= [((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate stringValue];
-        self.CNYPrice.text=[NSString stringWithFormat:@"%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
+        self.CNYPrice.text=[NSString stringWithFormat:@"≈%.2f CNY",[self.PriceTF.text doubleValue]*[cnyRate doubleValue]*_usdRate];
     }
 }
 #pragma mark-UITextFieldDelegate
@@ -1892,7 +1892,7 @@ kRemoveCellSeparator
                 self.nowPrice.text = [NSString stringWithFormat:@"%@",[ToolUtil stringFromNumber:[model.close doubleValue] withlimit:_baseCoinScale]];
                 NSDecimalNumber *close = [NSDecimalNumber decimalNumberWithDecimal:[model.close decimalValue]];
                 NSDecimalNumber *baseUsdRate = [NSDecimalNumber decimalNumberWithDecimal:[model.baseUsdRate decimalValue]];
-                self.nowCNY.text=[NSString stringWithFormat:@"%.2f CNY",[[[close decimalNumberByMultiplyingBy:baseUsdRate] decimalNumberByMultiplyingBy:((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate] doubleValue]];
+                self.nowCNY.text=[NSString stringWithFormat:@"≈%.2f CNY",[[[close decimalNumberByMultiplyingBy:baseUsdRate] decimalNumberByMultiplyingBy:((AppDelegate*)[UIApplication sharedApplication].delegate).CNYRate] doubleValue]];
                 if (model.change <0) {
                     self.riseFallLabel.textColor = RedColor;
                     self.riseFallLabel.text = [NSString stringWithFormat:@"%.2f%%", model.chg*100];
