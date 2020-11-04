@@ -30,7 +30,7 @@
 "nqU-11-MY4.text" = "Miners cost every penny";
 
 /* Class = "UILabel"; text = "可用："; ObjectID = "sTc-mg-Zz3"; */
-"sTc-mg-Zz3.text" = "available：";
+"sTc-mg-Zz3.text" = "available balance：";
 
 /* Class = "UILabel"; text = "币种"; ObjectID = "vJ6-4X-AWW"; */
 "vJ6-4X-AWW.text" = "Currency";

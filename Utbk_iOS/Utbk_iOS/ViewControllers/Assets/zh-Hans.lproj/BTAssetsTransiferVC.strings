@@ -30,7 +30,7 @@
 "nqU-11-MY4.text" = "矿工费每笔";
 
 /* Class = "UILabel"; text = "可用："; ObjectID = "sTc-mg-Zz3"; */
-"sTc-mg-Zz3.text" = "可用：";
+"sTc-mg-Zz3.text" = "可用数量：";
 
 /* Class = "UILabel"; text = "币种"; ObjectID = "vJ6-4X-AWW"; */
 "vJ6-4X-AWW.text" = "币种";
