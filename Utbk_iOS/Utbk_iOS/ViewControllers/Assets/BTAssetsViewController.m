@@ -30,6 +30,7 @@
 @property (assign, nonatomic) NSInteger type;
 @property (strong, nonatomic) SPMultipleSwitch *multipleSwitch;
 @property (strong, nonatomic) LYEmptyView *emptyView;
+@property (assign, nonatomic) NSInteger selectedIndex;
 
 @end
 
@@ -89,6 +90,11 @@
     return _multipleSwitch;
 }
 - (void)switchAction:(SPMultipleSwitch *)multipleSwitch{
+    if (self.selectedIndex == multipleSwitch.selectedSegmentIndex) {
+        return;
+    }
+    self.selectedIndex = multipleSwitch.selectedSegmentIndex;
+    multipleSwitch.userInteractionEnabled = NO;
     switch (multipleSwitch.selectedSegmentIndex) {
          case 0:
             self.type = 0;
@@ -121,6 +127,7 @@
     if (self.type == 0) {
         [MineNetManager getMyWalletInfoForCompleteHandle:^(NSDictionary *responseResult, int code) {
             StrongSelf(strongSelf)
+            self.multipleSwitch.userInteractionEnabled = YES;
             if (NetSuccess) {
                 NSArray *dataArr = [BTAssetsModel mj_objectArrayWithKeyValuesArray:responseResult[@"data"]];
                 NSDecimalNumber *ass1 = [[NSDecimalNumber alloc] initWithString:@"0"];
@@ -175,6 +182,7 @@
             }else{
                 strongSelf.tableView.ly_emptyView = strongSelf.emptyView;
             }
+            self.multipleSwitch.userInteractionEnabled = YES;
         }];
     }
 }

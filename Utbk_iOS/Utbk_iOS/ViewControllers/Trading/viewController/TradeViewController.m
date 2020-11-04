@@ -355,7 +355,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
             self.selecetBtn.selected = NO;
             self.selecetBtn.backgroundColor = [UIColor whiteColor];
         }else if ([textField.text floatValue] > [self.sliderMaxValue floatValue]){
-            [self.view makeToast:_IsSell?LocalizationKey(@"tradSlideTip2"):LocalizationKey(@"tradSlideTip1") duration:1.5 position:ToastPosition];
+            [self.view makeToast:_IsSell?LocalizationKey(@"tradSlideTip2"):LocalizationKey(@"tradSlideTip1") duration:ToastHideDelay position:@"center"];
             textField.text = @"";
             self.selecetBtn.selected = NO;
             self.selecetBtn.backgroundColor = [UIColor whiteColor];
@@ -1163,7 +1163,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                     }
                  
                     __weak TradeViewController*weakSelf=self;
-                    EasyShowAlertView *showView =[EasyShowAlertView showActionSheetWithTitle:LocalizationKey(@"commissionsell") left1message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName] right1message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.AmountTF.text doubleValue] withlimit:_coinScale],_ObjectCoinName] left2message:[NSString stringWithFormat:@"%.8f%@",[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue],_baseCoinName] right2message:LocalizationKey(@"sellDirection")];
+                    EasyShowAlertView *showView =[EasyShowAlertView showActionSheetWithTitle:LocalizationKey(@"commissionsell") left1message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName] right1message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.AmountTF.text doubleValue] withlimit:_coinScale],_ObjectCoinName] left2message:[NSString stringWithFormat:@"%.4f%@",[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue],_baseCoinName] right2message:LocalizationKey(@"sellDirection")];
                     [showView addItemWithTitle:LocalizationKey(@"confirm") itemType:ShowAlertItemTypeBlack callback:^(EasyShowAlertView *showview) {
                         [weakSelf commitBuyCommission:@"SELL"];
                     }];
@@ -1218,7 +1218,7 @@ typedef NS_ENUM(NSUInteger, PriceType) {
                     }
                     
                     __weak TradeViewController*weakSelf=self;
-                    EasyShowAlertView *showView =[EasyShowAlertView showActionSheetWithTitle:LocalizationKey(@"commissionsell") left1message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName] right1message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.AmountTF.text doubleValue] withlimit:_coinScale],_ObjectCoinName] left2message:[NSString stringWithFormat:@"%.8f%@",[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue],_baseCoinName] right2message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.triggerTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName]];
+                    EasyShowAlertView *showView =[EasyShowAlertView showActionSheetWithTitle:LocalizationKey(@"commissionsell") left1message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.PriceTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName] right1message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.AmountTF.text doubleValue] withlimit:_coinScale],_ObjectCoinName] left2message:[NSString stringWithFormat:@"%.4f%@",[self.PriceTF.text doubleValue]*[self.AmountTF.text doubleValue],_baseCoinName] right2message:[NSString stringWithFormat:@"%@%@",[ToolUtil stringFromNumber:[self.triggerTF.text doubleValue] withlimit:_baseCoinScale],_baseCoinName]];
                     showView.typeStr = LocalizationKey(@"Triggerprice");
                     [showView addItemWithTitle:LocalizationKey(@"confirm") itemType:ShowAlertItemTypeBlack callback:^(EasyShowAlertView *showview) {
                         [weakSelf commitBuyCommission:@"SELL"];

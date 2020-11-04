@@ -72,7 +72,7 @@
 //    }
     //成交均价
 //    NSDecimalNumber *tradedAmount = [[NSDecimalNumber alloc] initWithString:_infomodel.tradedAmount];
-    self.dealPerPriceData.text = [ToolUtil stringFromNumber:infomodel.turnover.doubleValue/infomodel.tradedAmount.doubleValue withlimit:KLimitAssetInputDigits];;
+    self.dealPerPriceData.text = infomodel.tradedAmount.doubleValue == 0 ? @"0.0000" : [ToolUtil stringFromNumber:infomodel.turnover.doubleValue/infomodel.tradedAmount.doubleValue withlimit:KLimitAssetInputDigits];;
     //成交价
     self.dealNumData.text = [ToolUtil stringFromNumber:infomodel.tradedAmount.doubleValue withlimit:KLimitAssetInputDigits];
 //    if (_infomodel.triggerPrice) {
