@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,11 +18,11 @@
                 <outlet property="btn1" destination="x3f-Jw-eyt" id="VbL-98-GGH"/>
                 <outlet property="btn10" destination="lJ8-qS-Uyg" id="Omu-p2-FxI"/>
                 <outlet property="btn11" destination="sHP-oC-PwT" id="xD0-pc-dQG"/>
-                <outlet property="btn12" destination="Pq5-et-Ry9" id="ClE-AF-wfe"/>
-                <outlet property="btn13" destination="p4q-qs-GKj" id="AaE-6o-50D"/>
+                <outlet property="btn12" destination="Nur-Fr-wi3" id="RgS-9t-PVT"/>
+                <outlet property="btn13" destination="BSI-3f-iUA" id="mHh-J2-aIO"/>
                 <outlet property="btn3" destination="kte-Nc-kve" id="Aiw-oO-DpA"/>
-                <outlet property="btn4" destination="Nur-Fr-wi3" id="N95-wO-U1a"/>
-                <outlet property="btn5" destination="BSI-3f-iUA" id="IjZ-pT-Ici"/>
+                <outlet property="btn4" destination="Pq5-et-Ry9" id="fZi-Iy-K95"/>
+                <outlet property="btn5" destination="p4q-qs-GKj" id="gal-XL-SvI"/>
                 <outlet property="btn6" destination="dFo-xH-RHE" id="8Ed-Gx-GIk"/>
                 <outlet property="btn7" destination="bd4-wG-6dN" id="p0l-d0-eaD"/>
                 <outlet property="btn8" destination="BwK-2F-G6c" id="C1S-Zg-vZG"/>
@@ -291,10 +292,10 @@
                                         <action selector="btnClickAction:" destination="-1" eventType="touchUpInside" id="KhA-6q-ojs"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nur-Fr-wi3">
+                                <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nur-Fr-wi3">
                                     <rect key="frame" x="150.5" y="0.0" width="50" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <state key="normal" title="1时">
+                                    <state key="normal" title="15分">
                                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <state key="selected">
@@ -304,10 +305,10 @@
                                         <action selector="btnClickAction:" destination="-1" eventType="touchUpInside" id="rfd-mH-P4O"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSI-3f-iUA">
+                                <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSI-3f-iUA">
                                     <rect key="frame" x="200.5" y="0.0" width="50" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <state key="normal" title="1天">
+                                    <state key="normal" title="30分">
                                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <state key="selected">
@@ -366,10 +367,10 @@
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAN-HU-Rup">
                                     <rect key="frame" x="0.0" y="31" width="351" height="40"/>
                                     <subviews>
-                                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pq5-et-Ry9">
+                                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pq5-et-Ry9">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <state key="normal" title="15分">
+                                            <state key="normal" title="1时">
                                                 <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <state key="selected">
@@ -379,10 +380,10 @@
                                                 <action selector="btnClickAction:" destination="-1" eventType="touchUpInside" id="6f2-m7-kwx"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4q-qs-GKj">
+                                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4q-qs-GKj">
                                             <rect key="frame" x="50" y="0.0" width="50.5" height="40"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <state key="normal" title="30分">
+                                            <state key="normal" title="1天">
                                                 <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <state key="selected">

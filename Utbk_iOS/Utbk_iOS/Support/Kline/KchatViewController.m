@@ -272,8 +272,8 @@
             }
             self.moreView.hidden = YES;
             return;
-        case 6://15
-        case 7://30
+        case 4://1时
+        case 5://1天
         case 8://1week
         case 9://1month
         {
