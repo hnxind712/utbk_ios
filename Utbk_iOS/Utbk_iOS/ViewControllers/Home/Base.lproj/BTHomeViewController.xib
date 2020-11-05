@@ -72,8 +72,8 @@
                                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9A-BB-TQ6">
-                                            <rect key="frame" x="74" y="40" width="78.5" height="13"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9A-BB-TQ6">
+                                            <rect key="frame" x="74" y="40" width="57" height="13"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="13" id="1OV-tO-xUZ"/>
                                             </constraints>
@@ -120,9 +120,6 @@
                                         <constraint firstItem="iq4-dX-W4D" firstAttribute="top" secondItem="UpA-Bl-4q7" secondAttribute="bottom" constant="12" id="Z52-fu-ypd"/>
                                     </constraints>
                                 </view>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_indexbj" translatesAutoresizingMaskIntoConstraints="NO" id="c7E-gB-oBO">
-                                    <rect key="frame" x="170" y="0.0" width="220" height="70.5"/>
-                                </imageView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
@@ -131,9 +128,7 @@
                                 <constraint firstAttribute="trailing" secondItem="QrT-3n-BrC" secondAttribute="trailing" id="EEz-ke-j6M"/>
                                 <constraint firstAttribute="bottom" secondItem="QrT-3n-BrC" secondAttribute="bottom" id="KKT-pP-aBQ"/>
                                 <constraint firstItem="QrT-3n-BrC" firstAttribute="width" secondItem="eUI-68-uyB" secondAttribute="width" multiplier="0.979275" id="LpY-YO-mqa"/>
-                                <constraint firstItem="c7E-gB-oBO" firstAttribute="top" secondItem="yuU-eo-2cS" secondAttribute="top" id="Nru-ac-GkM"/>
                                 <constraint firstItem="QrT-3n-BrC" firstAttribute="leading" secondItem="eUI-68-uyB" secondAttribute="trailing" id="ZSG-pS-wis"/>
-                                <constraint firstAttribute="trailing" secondItem="c7E-gB-oBO" secondAttribute="trailing" id="bgL-yM-gaI"/>
                                 <constraint firstItem="QrT-3n-BrC" firstAttribute="top" secondItem="yuU-eo-2cS" secondAttribute="top" id="g1O-ux-Z64"/>
                                 <constraint firstAttribute="bottom" secondItem="eUI-68-uyB" secondAttribute="bottom" id="tZ8-au-TZ6"/>
                                 <constraint firstItem="eUI-68-uyB" firstAttribute="leading" secondItem="yuU-eo-2cS" secondAttribute="leading" id="z57-2M-Cna"/>
@@ -531,7 +526,6 @@
         <image name="icon_community" width="44" height="44"/>
         <image name="icon_game" width="44" height="44"/>
         <image name="icon_hMore" width="44" height="44"/>
-        <image name="icon_indexbj" width="220" height="70.5"/>
         <image name="icon_pool" width="44" height="44"/>
         <image name="icon_snatchTreasure" width="44" height="44"/>
         <image name="icon_store" width="44" height="44"/>
