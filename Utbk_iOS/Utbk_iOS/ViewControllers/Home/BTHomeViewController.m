@@ -315,7 +315,7 @@
             if ([resPonseObj[@"code"] integerValue] == 0) {
                 NSArray *arr = resPonseObj[@"data"][@"content"];
                 NSArray *dataArr = [BTNoticeModel mj_objectArrayWithKeyValuesArray:arr];
-                if (dataArr) {
+                if (dataArr.count) {
                     BTNoticeModel *model = dataArr.firstObject;//暂时取第一条
                     [strongSelf.noticeView configureNoticeViewWithModel:model];
                     for (BTNoticeModel *_model in dataArr) {
