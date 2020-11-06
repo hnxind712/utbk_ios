@@ -17,7 +17,7 @@
 #else
 
 //#define   HOST     @"http://8.129.19.4:20080/"//测试环境地址
-#define   HOST     @"http://47.242.6.150:80/"
+#define   HOST     @"https://api.ckglobal.top/"
 
 #endif
 
