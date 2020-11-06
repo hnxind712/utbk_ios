@@ -490,7 +490,7 @@
 		3C563C2925163E0200DFBA88 /* BTMarketTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTMarketTableViewCell.h; sourceTree = "<group>"; };
 		3C563C2A25163E0200DFBA88 /* BTMarketTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTMarketTableViewCell.m; sourceTree = "<group>"; };
 		3C563C2B25163E0200DFBA88 /* BTMarketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTMarketTableViewCell.xib; sourceTree = "<group>"; };
-		3C63D405250DA73C001CEC7D /* BTCK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTCK.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C63D405250DA73C001CEC7D /* CK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C63D408250DA73C001CEC7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3C63D409250DA73C001CEC7D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3C63D412250DA73C001CEC7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1289,7 +1289,7 @@
 		3C63D406250DA73C001CEC7D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3C63D405250DA73C001CEC7D /* BTCK.app */,
+				3C63D405250DA73C001CEC7D /* CK.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2528,7 +2528,7 @@
 			);
 			name = Utbk_iOS;
 			productName = Utbk_iOS;
-			productReference = 3C63D405250DA73C001CEC7D /* BTCK.app */;
+			productReference = 3C63D405250DA73C001CEC7D /* CK.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -3545,7 +3545,7 @@
 				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = lsiOSBTCK.com;
-				PRODUCT_NAME = BTCK;
+				PRODUCT_NAME = CK;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -3568,7 +3568,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = lsiOSBTCK.com;
-				PRODUCT_NAME = BTCK;
+				PRODUCT_NAME = CK;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
