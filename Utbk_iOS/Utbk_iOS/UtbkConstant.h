@@ -108,7 +108,7 @@ cell.preservesSuperviewLayoutMargins = NO; \
 #define AdjustsScrollViewInsetNever(controller,view) if(@available(iOS 11.0, *)) {view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;} else if([controller isKindOfClass:[UIViewController class]]) {controller.automaticallyAdjustsScrollViewInsets = false;}
 
 #define ToastHideDelay 1.f
-#define ToastPosition @"bottom"
+#define ToastPosition @"center"
 
 #define KPageSize 20
 #define SOCKETTERMINAL           @"1002";  //安卓:1001,苹果:1002,WEB:1003,PC:1004

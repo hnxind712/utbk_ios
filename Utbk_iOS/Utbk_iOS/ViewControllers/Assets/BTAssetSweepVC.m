@@ -11,7 +11,9 @@
 #import "BTPoolHoldCoinModel.h"
 #import "BTWithdrawRecordVC.h"
 
-@interface BTAssetSweepVC ()
+@interface BTAssetSweepVC (){
+    BOOL isHaveDian;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *coinsCoins;//币币
 @property (weak, nonatomic) IBOutlet UILabel *orePool;//矿池
@@ -120,18 +122,56 @@
     }];
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    NSMutableString * futureString = [NSMutableString stringWithString:textField.text];
-    [futureString  insertString:string atIndex:range.location];
-    NSInteger flag=0;
-    const NSInteger limited = KLimitAssetInputDigits;//小数点后需要限制的个数
-    for (int i = (int)(futureString.length - 1); i>=0; i--) {
-        if ([futureString characterAtIndex:i] == '.') {
-            if (flag > limited) {
-                return NO;
+    if ([textField.text rangeOfString:@"."].location == NSNotFound) {
+        isHaveDian = NO;
+    }
+    if ([string length] > 0) {
+     
+        unichar single = [string characterAtIndex:0];//当前输入的字符
+        if ((single >= '0' && single <= '9') || single == '.') {//数据格式正确
+         
+            //首字母不能为0和小数点
+            if([textField.text length] == 0){
+                if(single == '.') {
+                    [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                    return NO;
+                }
             }
-            break;
+             
+            //输入的字符是否是小数点
+            if (single == '.') {
+                if(!isHaveDian)//text中还没有小数点
+                {
+                    isHaveDian = YES;
+                    return YES;
+                     
+                }else{
+                    [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                    return NO;
+                }
+            }else{
+                if (isHaveDian) {//存在小数点
+                 
+                    //判断小数点的位数
+                    NSRange ran = [textField.text rangeOfString:@"."];
+                    if (range.location - ran.location <= KLimitAssetInputDigits) {
+                        return YES;
+                    }else{
+                        [self.view makeToast:LocalizationKey(@"最多输入4位小数") duration:ToastHideDelay position:ToastPosition];
+                        return NO;
+                    }
+                }else{
+                    return YES;
+                }
+            }
+        }else{//输入的数据格式不正确
+            [textField.text stringByReplacingCharactersInRange:range withString:@""];
+            return NO;
         }
-        flag++;
+    }
+    else
+    {
+        return YES;
     }
     return YES;
 }

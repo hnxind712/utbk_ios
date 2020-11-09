@@ -490,7 +490,6 @@
 		3C563C2925163E0200DFBA88 /* BTMarketTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTMarketTableViewCell.h; sourceTree = "<group>"; };
 		3C563C2A25163E0200DFBA88 /* BTMarketTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTMarketTableViewCell.m; sourceTree = "<group>"; };
 		3C563C2B25163E0200DFBA88 /* BTMarketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BTMarketTableViewCell.xib; sourceTree = "<group>"; };
-
 		3C63D405250DA73C001CEC7D /* CK Global.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CK Global.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C63D408250DA73C001CEC7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3C63D409250DA73C001CEC7D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -3534,19 +3533,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 98C7RK3BSB;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Utbk_iOS/UtbkPrefixHeader.pch";
 				INFOPLIST_FILE = Utbk_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = lsiOSBTCK.com;
+				PRODUCT_BUNDLE_IDENTIFIER = CKGlobalTest.com;
 				PRODUCT_NAME = "CK Global";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -3558,18 +3559,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 98C7RK3BSB;
+				DEVELOPMENT_TEAM = 6D34SUQ8C2;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Utbk_iOS/UtbkPrefixHeader.pch";
 				INFOPLIST_FILE = Utbk_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = lsiOSBTCK.com;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = CKGlobalTest.com;
 				PRODUCT_NAME = "CK Global";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

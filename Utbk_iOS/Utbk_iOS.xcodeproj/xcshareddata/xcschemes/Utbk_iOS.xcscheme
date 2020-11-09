@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3C63D404250DA73C001CEC7D"
-               BuildableName = "CK.app"
+               BuildableName = "CK Global.app"
                BlueprintName = "Utbk_iOS"
                ReferencedContainer = "container:Utbk_iOS.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3C63D404250DA73C001CEC7D"
-            BuildableName = "CK.app"
+            BuildableName = "CK Global.app"
             BlueprintName = "Utbk_iOS"
             ReferencedContainer = "container:Utbk_iOS.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3C63D404250DA73C001CEC7D"
-            BuildableName = "CK.app"
+            BuildableName = "CK Global.app"
             BlueprintName = "Utbk_iOS"
             ReferencedContainer = "container:Utbk_iOS.xcodeproj">
          </BuildableReference>

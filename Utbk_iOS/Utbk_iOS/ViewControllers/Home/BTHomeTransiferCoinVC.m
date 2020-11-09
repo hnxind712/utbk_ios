@@ -11,7 +11,9 @@
 #import "BTWithdrawRecordVC.h"
 
 @interface BTHomeTransiferCoinVC ()<STQRCodeControllerDelegate,UITextFieldDelegate>
-
+{
+    BOOL isHaveDian;
+}
 @property (weak, nonatomic) IBOutlet UITextField *addressInput;
 @property (weak, nonatomic) IBOutlet UITextField *coinCountInput;
 @property (weak, nonatomic) IBOutlet UITextField *tradePasswordInput;
@@ -51,21 +53,120 @@
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSMutableString * futureString = [NSMutableString stringWithString:textField.text];
-    [futureString  insertString:string atIndex:range.location];
-    NSInteger flag = 0;
-    const NSInteger limited = KLimitAssetInputDigits;//小数点后需要限制的个数4
-    for (int i = (int)(futureString.length - 1); i>=0; i--) {
-        if ([futureString characterAtIndex:i] == '.') {
-            if (flag > limited) {
-                return NO;
+    if ([textField.text rangeOfString:@"."].location == NSNotFound) {
+        isHaveDian = NO;
+    }
+    if ([string length] > 0) {
+     
+        unichar single = [string characterAtIndex:0];//当前输入的字符
+        if ((single >= '0' && single <= '9') || single == '.') {//数据格式正确
+         
+            //首字母不能为0和小数点
+            if([textField.text length] == 0){
+                if(single == '.') {
+                    [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                    return NO;
+                }
             }
-            break;
+             
+            //输入的字符是否是小数点
+            if (single == '.') {
+                if(!isHaveDian)//text中还没有小数点
+                {
+                    isHaveDian = YES;
+                    return YES;
+                     
+                }else{
+                    [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                    return NO;
+                }
+            }else{
+                if (isHaveDian) {//存在小数点
+                 
+                    //判断小数点的位数
+                    NSRange ran = [textField.text rangeOfString:@"."];
+                    if (range.location - ran.location <= KLimitAssetInputDigits) {
+                        return YES;
+                    }else{
+                        [self.view makeToast:LocalizationKey(@"最多输入4位小数") duration:ToastHideDelay position:ToastPosition];
+                        return NO;
+                    }
+                }else{
+                    return YES;
+                }
+            }
+        }else{//输入的数据格式不正确
+            [textField.text stringByReplacingCharactersInRange:range withString:@""];
+            return NO;
         }
-        flag++;
+    }
+    else
+    {
+        return YES;
     }
     return YES;
 }
+/*
+ if ([textField.text rangeOfString:@"."].location == NSNotFound) {
+     isHaveDian = NO;
+ }
+ if ([string length] > 0) {
+  
+     unichar single = [string characterAtIndex:0];//当前输入的字符
+     if ((single >= '0' && single <= '9') || single == '.') {//数据格式正确
+      
+         //首字母不能为0和小数点
+         if([textField.text length] == 0){
+             if(single == '.') {
+                 [self showError:@"亲，第一个数字不能为小数点"];
+                 [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                 return NO;
+             }
+             if (single == '0') {
+                 [self showError:@"亲，第一个数字不能为0"];
+                 [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                 return NO;
+             }
+         }
+          
+         //输入的字符是否是小数点
+         if (single == '.') {
+             if(!isHaveDian)//text中还没有小数点
+             {
+                 isHaveDian = YES;
+                 return YES;
+                  
+             }else{
+                 [self showError:@"亲，您已经输入过小数点了"];
+                 [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                 return NO;
+             }
+         }else{
+             if (isHaveDian) {//存在小数点
+              
+                 //判断小数点的位数
+                 NSRange ran = [textField.text rangeOfString:@"."];
+                 if (range.location - ran.location <= 2) {
+                     return YES;
+                 }else{
+                     [self showError:@"亲，您最多输入两位小数"];
+                     return NO;
+                 }
+             }else{
+                 return YES;
+             }
+         }
+     }else{//输入的数据格式不正确
+         [self showError:@"亲，您输入的格式不正确"];
+         [textField.text stringByReplacingCharactersInRange:range withString:@""];
+         return NO;
+     }
+ }
+ else
+ {
+     return YES;
+ }
+ */
 -(void)textFieldDidChange:(UITextField *)textField{
     if (!textField.text.length) {
         self.fee.text = @"0.0000";
