@@ -42,7 +42,7 @@ static XBRequest *_sharedInstance = nil;
         [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"x-auth-token"];
     }
     
-    sessionManager.requestSerializer.timeoutInterval = 30.f;
+    sessionManager.requestSerializer.timeoutInterval = 300.f;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"application/x-www-form-urlencoded", nil];
     NSString *str = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"URL=%@\n参数=%@",url,param);
@@ -85,7 +85,7 @@ static XBRequest *_sharedInstance = nil;
         [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"x-auth-token"];
     }
     
-    sessionManager.requestSerializer.timeoutInterval = 30.f;
+    sessionManager.requestSerializer.timeoutInterval = 300.f;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"application/x-www-form-urlencoded", nil];
     NSString *str = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"URL=%@\n参数=%@",url,param);
@@ -141,7 +141,7 @@ static XBRequest *_sharedInstance = nil;
         [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"x-auth-token"];
     }
 
-    sessionManager.requestSerializer.timeoutInterval = 30.f;
+    sessionManager.requestSerializer.timeoutInterval = 300.f;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"text/plain",@"image/png",@"application/x-www-form-urlencoded", nil];
     
     NSString *str = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -199,7 +199,7 @@ static XBRequest *_sharedInstance = nil;
         [sessionManager.requestSerializer setValue:[YLUserInfo shareUserInfo].token forHTTPHeaderField:@"x-auth-token"];
     }
     
-    sessionManager.requestSerializer.timeoutInterval = 30.f;
+    sessionManager.requestSerializer.timeoutInterval = 300.f;
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/javascript",@"text/plain",@"image/png",@"application/x-www-form-urlencoded", nil];
     
     NSString *str = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
